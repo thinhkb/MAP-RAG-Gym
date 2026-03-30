@@ -17,6 +17,13 @@ from map_rag_gym.prompts.templates import (
 from map_rag_gym.retrieval.bm25 import LocalBM25Retriever
 
 
+def _extract_text(item: str | Dict) -> str:
+    """Extract text from either a string or a dictionary."""
+    if isinstance(item, dict):
+        return str(item.get("query") or item.get("question") or item.get("text") or item.get("raw_text") or "").strip()
+    return str(item).strip()
+
+
 class QueryRewriter(Executor):
     name = "QR"
 
@@ -71,6 +78,7 @@ class ParallelDecomposer(Executor):
         resp = self.llm.generate(parallel_decompose_prompt(state.question), n=1)[0]
         payload = try_parse_json(resp.text)
         parts = payload.get("sub_questions") or [state.question, f"supporting fact for {state.question}"]
+        parts = [_extract_text(p) for p in parts]
         state.working_memory["sub_questions"] = parts
         return self.step(state, {"question": state.question}, {"sub_questions": parts, "payload": payload}, {"tokens": resp.estimated_tokens})
 
@@ -85,6 +93,7 @@ class SerialDecomposer(Executor):
         resp = self.llm.generate(serial_decompose_prompt(state.question), n=1)[0]
         payload = try_parse_json(resp.text)
         parts = payload.get("sub_questions") or [state.question, f"Find bridge entity for {state.question}"]
+        parts = [_extract_text(p) for p in parts]
         state.working_memory["sub_questions"] = parts
         return self.step(state, {"question": state.question}, {"sub_questions": parts, "payload": payload}, {"tokens": resp.estimated_tokens})
 

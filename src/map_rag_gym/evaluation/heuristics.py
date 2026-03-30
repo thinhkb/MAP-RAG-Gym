@@ -55,9 +55,17 @@ def compute_utility(final_scores: Dict[str, float], total_cost: Dict[str, float]
     return round(utility, 4)
 
 
+def _extract_text(item: str | Dict) -> str:
+    """Extract text from either a string or a dictionary."""
+    if isinstance(item, dict):
+        return str(item.get("query") or item.get("question") or item.get("text") or item.get("raw_text") or "").strip()
+    return str(item).strip()
+
+
 def evaluate_step(state: PipelineState, step: StepRecord) -> StepRecord:
     if step.module == "QR":
         candidates = step.output_data.get("query_candidates", [])
+        candidates = [_extract_text(c) for c in candidates]
         step.scores["query_quality"] = max([score_query(state.question, c) for c in candidates] or [0.0])
     elif step.module == "RA":
         docs = state.working_memory.get("retrieved_docs", [])
@@ -67,6 +75,7 @@ def evaluate_step(state: PipelineState, step: StepRecord) -> StepRecord:
         step.scores["selection_precision"] = score_retrieval(state.question, docs, state.gold_answer)
     elif step.module in {"AG", "AS"}:
         candidates = step.output_data.get("answer_candidates") or [step.output_data.get("final_answer", "")]
+        candidates = [_extract_text(c) for c in candidates]
         docs = state.working_memory.get("selected_docs") or state.working_memory.get("retrieved_docs") or []
         best = max(candidates, key=lambda x: score_grounding(x, docs)) if candidates else ""
         step.scores["grounding"] = score_grounding(best, docs)
@@ -74,9 +83,11 @@ def evaluate_step(state: PipelineState, step: StepRecord) -> StepRecord:
             step.scores.update(score_answer(best, state.gold_answer))
     elif step.module in {"QDS", "QDP"}:
         subs = step.output_data.get("sub_questions", [])
+        subs = [_extract_text(s) for s in subs]
         step.scores["decomposition_quality"] = round(sum(score_query(state.question, s) for s in subs) / max(1, len(subs)), 4)
     elif step.module == "REFLECT":
         q = step.output_data.get("reflected_query", "")
+        q = _extract_text(q)
         step.scores["reflection_quality"] = score_query(state.question, q)
     elif step.module == "DRAFT":
         draft = step.output_data.get("draft_reasoning", "")

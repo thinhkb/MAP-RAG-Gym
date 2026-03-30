@@ -20,6 +20,10 @@ class LocalBM25Retriever:
         return [Document(**row) for row in data]
 
     def search(self, query: str, top_k: int = 3) -> List[Document]:
+        # Handle dict inputs by extracting text
+        if isinstance(query, dict):
+            query = str(query.get("query") or query.get("question") or query.get("text") or query.get("raw_text") or "").strip()
+        query = str(query).strip()
         scores = self.bm25.get_scores(query.lower().split())
         pairs = sorted(enumerate(scores), key=lambda x: x[1], reverse=True)[:top_k]
         results = []
