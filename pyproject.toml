@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "map-rag-gym"
+version = "0.1.0"
+description = "Course-project blueprint: adaptive multi-workflow RAG with process evaluation"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "pydantic>=2.7",
+  "PyYAML>=6.0",
+  "scikit-learn>=1.4",
+  "rank-bm25>=0.2.2",
+  "numpy>=1.26",
+  "pandas>=2.2",
+  "tqdm>=4.66",
+  "requests>=2.31",
+  "python-dotenv>=1.0"
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]

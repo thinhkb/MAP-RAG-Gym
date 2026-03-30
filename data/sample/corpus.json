@@ -1,0 +1,9 @@
+[
+  {"doc_id":"d1","title":"Pride and Prejudice","text":"Pride and Prejudice is a novel by Jane Austen.","metadata":{"source":"sample"}},
+  {"doc_id":"d2","title":"Jane Austen","text":"Jane Austen was an English novelist. Her works include Pride and Prejudice.","metadata":{"source":"sample"}},
+  {"doc_id":"d3","title":"Persuasion","text":"Persuasion is a novel by Jane Austen that was published posthumously.","metadata":{"source":"sample"}},
+  {"doc_id":"d4","title":"California GDP","text":"California has a GDP larger than most countries.","metadata":{"source":"sample"}},
+  {"doc_id":"d5","title":"Japan GDP","text":"Japan is one of the largest economies in the world.","metadata":{"source":"sample"}},
+  {"doc_id":"d6","title":"Confederation of Canada","text":"Sir John A. Macdonald was a Canadian Father of Confederation.","metadata":{"source":"sample"}},
+  {"doc_id":"d7","title":"Wikipedia style note","text":"When answering questions, retrieval and grounding reduce hallucination risk.","metadata":{"source":"sample"}}
+]
