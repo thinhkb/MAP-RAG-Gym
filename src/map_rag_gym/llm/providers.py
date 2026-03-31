@@ -3,11 +3,13 @@ from __future__ import annotations
 import json
 import os
 import re
+import time
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Dict, List
 
 import requests
+from requests.exceptions import ConnectionError, ReadTimeout
 from dotenv import load_dotenv
 
 @dataclass
@@ -134,18 +136,37 @@ class GeminiLLM(BaseLLM):
 
 
 class OllamaLLM(BaseLLM):
-    def __init__(self, model: str = "llama3.1:8b-instruct", base_url: str | None = None) -> None:
+    def __init__(self, model: str = "llama3.2", base_url: str | None = None) -> None:
         self.model = model
         self.base_url = base_url or os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
+        self.timeout = int(os.getenv("OLLAMA_TIMEOUT", "600"))
+        self.max_retries = int(os.getenv("OLLAMA_MAX_RETRIES", "3"))
+        self.retry_backoff_sec = float(os.getenv("OLLAMA_RETRY_BACKOFF_SEC", "5"))
+        self.session = requests.Session()
 
     def generate(self, prompt: str, n: int = 1) -> List[LLMResponse]:
         url = f"{self.base_url.rstrip('/')}/api/generate"
         out = []
         for _ in range(n):
             payload = {"model": self.model, "prompt": prompt, "stream": False, "format": "json", "options": {"temperature": 0.2}}
-            resp = requests.post(url, json=payload, timeout=120)
-            resp.raise_for_status()
-            data = resp.json()
+            last_error: Exception | None = None
+            for attempt in range(1, self.max_retries + 1):
+                try:
+                    resp = self.session.post(url, json=payload, timeout=self.timeout)
+                    resp.raise_for_status()
+                    data = resp.json()
+                    break
+                except (ReadTimeout, ConnectionError) as exc:
+                    last_error = exc
+                    if attempt == self.max_retries:
+                        raise RuntimeError(
+                            f"Ollama request failed after {self.max_retries} attempts "
+                            f"(model={self.model}, timeout={self.timeout}s, url={url}). "
+                            "Increase OLLAMA_TIMEOUT, reduce batch size, or use a smaller/faster model."
+                        ) from exc
+                    time.sleep(self.retry_backoff_sec * attempt)
+            else:
+                raise RuntimeError("Ollama request failed without a captured exception.")
             text = data.get("response", "")
             out.append(LLMResponse(text=text, provider="ollama", model=self.model, estimated_tokens=max(1, len(prompt.split()) // 2)))
         return out
@@ -171,5 +192,5 @@ def build_llm(provider: str = "dummy", model: str | None = None) -> BaseLLM:
     if provider == "gemini":
         return GeminiLLM(model or "gemini-2.5-flash")
     if provider == "ollama":
-        return OllamaLLM(model or "llama3.1:8b-instruct")
+        return OllamaLLM(model or "llama3.2")
     return DummyLLM(model or "dummy-free")

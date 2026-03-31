@@ -75,5 +75,9 @@ python scripts/run_gemini_eval.py --corpus data/hotpotqa/corpus.json --qa data/h
 ```bash
 ollama serve
 ollama pull llama3.1:8b-instruct
-python scripts/batch_rollout.py --corpus data/hotpotqa/corpus.json --qa data/hotpotqa/qa.json --llm_provider ollama --llm_model llama3.1:8b-instruct --limit 20
+export OLLAMA_TIMEOUT=300
+export OLLAMA_MAX_RETRIES=3
+python scripts/batch_rollout.py --corpus data/hotpotqa/corpus.json --qa data/hotpotqa/qa.json --llm_provider ollama --llm_model llama3.1:8b-instruct --limit 20 --resume
 ```
+
+Neu may yeu hoac prompt dai, hay thu model nho hon nhu `qwen2.5:3b-instruct` hoac tang `OLLAMA_TIMEOUT` len `600`.
