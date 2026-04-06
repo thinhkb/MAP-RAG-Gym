@@ -27,6 +27,7 @@ class BaseLLM:
 
 class DummyLLM(BaseLLM):
     def __init__(self, model: str = "dummy-free") -> None:
+        self.provider = "dummy"
         self.model = model
 
     def _extract(self, prompt: str, key: str) -> str:
@@ -106,6 +107,7 @@ class DummyLLM(BaseLLM):
 
 class GeminiLLM(BaseLLM):
     def __init__(self, model: str = "gemini-2.5-flash") -> None:
+        self.provider = "gemini"
         self.model = model
         # Load from .env file if it exists
         env_path = Path.cwd() / ".env"
@@ -137,6 +139,7 @@ class GeminiLLM(BaseLLM):
 
 class OllamaLLM(BaseLLM):
     def __init__(self, model: str = "llama3.2", base_url: str | None = None) -> None:
+        self.provider = "ollama"
         self.model = model
         self.base_url = base_url or os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
         self.timeout = int(os.getenv("OLLAMA_TIMEOUT", "600"))

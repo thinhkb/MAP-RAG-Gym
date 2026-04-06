@@ -6,6 +6,22 @@ from map_rag_gym.core.schemas import Document, PipelineState, StepRecord
 
 
 STOPWORDS = {"the", "a", "an", "of", "in", "on", "to", "for", "and", "or", "is", "was", "were", "by"}
+UTILITY_CONFIG = {
+    "reward_weights": {
+        "f1_proxy": 1.0,
+        "process_score": 0.35,
+    },
+    "cost_weights": {
+        "tokens": 0.08,
+        "retrieval_calls": 0.1,
+        "latency_ms": 0.05,
+    },
+    "cost_normalizers": {
+        "tokens": 2000.0,
+        "retrieval_calls": 4.0,
+        "latency_ms": 10000.0,
+    },
+}
 
 
 def _normalize(text: str) -> List[str]:
@@ -48,10 +64,16 @@ def score_answer(answer: str, gold_answer: str) -> Dict[str, float]:
 
 
 def compute_utility(final_scores: Dict[str, float], total_cost: Dict[str, float], process_score: float) -> float:
-    token_cost = total_cost.get("tokens", 0.0) / 2000.0
-    retrieval_cost = total_cost.get("retrieval_calls", 0.0) / 4.0
-    latency_cost = total_cost.get("latency_ms", 0.0) / 10000.0
-    utility = final_scores.get("f1_proxy", 0.0) + 0.35 * process_score - 0.08 * token_cost - 0.1 * retrieval_cost - 0.05 * latency_cost
+    token_cost = total_cost.get("tokens", 0.0) / UTILITY_CONFIG["cost_normalizers"]["tokens"]
+    retrieval_cost = total_cost.get("retrieval_calls", 0.0) / UTILITY_CONFIG["cost_normalizers"]["retrieval_calls"]
+    latency_cost = total_cost.get("latency_ms", 0.0) / UTILITY_CONFIG["cost_normalizers"]["latency_ms"]
+    utility = (
+        UTILITY_CONFIG["reward_weights"]["f1_proxy"] * final_scores.get("f1_proxy", 0.0)
+        + UTILITY_CONFIG["reward_weights"]["process_score"] * process_score
+        - UTILITY_CONFIG["cost_weights"]["tokens"] * token_cost
+        - UTILITY_CONFIG["cost_weights"]["retrieval_calls"] * retrieval_cost
+        - UTILITY_CONFIG["cost_weights"]["latency_ms"] * latency_cost
+    )
     return round(utility, 4)
 
 

@@ -5,8 +5,11 @@ from collections import Counter, defaultdict
 from statistics import mean
 
 from map_rag_gym.core.pipeline import MAPRAGGym
+from map_rag_gym.evaluation.heuristics import UTILITY_CONFIG
 from map_rag_gym.router.learned import LearnedRouter
 from map_rag_gym.router.rule_based import RuleBasedRouter
+from map_rag_gym.utils.dataset import normalize_qa_records
+from map_rag_gym.utils.experiment import build_experiment_manifest, set_global_seed
 from map_rag_gym.utils.io import read_json, write_json
 
 
@@ -49,15 +52,39 @@ def main():
     ap.add_argument("--llm_model", default=None)
     ap.add_argument("--limit", type=int, default=50)
     ap.add_argument("--n_candidates", type=int, default=1)
+    ap.add_argument("--seed", type=int, default=13)
+    ap.add_argument("--dataset_name", default=None)
+    ap.add_argument("--dataset_split", default=None)
+    ap.add_argument("--prompt_version", default="v1")
     ap.add_argument("--fixed_workflows", nargs="+", default=["W1", "W2", "W3", "W6"])
     ap.add_argument("--out", default="outputs/router_eval.json")
     args = ap.parse_args()
 
-    qa = read_json(args.qa)[: args.limit]
+    set_global_seed(args.seed)
+    qa = normalize_qa_records(read_json(args.qa))[: args.limit]
     pipe = MAPRAGGym(args.corpus, llm_provider=args.llm_provider, llm_model=args.llm_model)
-    learned = LearnedRouter()
+    learned = LearnedRouter(random_state=args.seed)
     learned.load(args.router_model)
     rule_based = RuleBasedRouter()
+    manifest = build_experiment_manifest(
+        script_name="scripts/eval_phase4_router.py",
+        qa_path=args.qa,
+        corpus_path=args.corpus,
+        llm_provider=pipe.llm_provider,
+        llm_model=pipe.llm_model,
+        dataset_name=args.dataset_name,
+        dataset_split=args.dataset_split,
+        limit=args.limit,
+        effective_questions=len(qa),
+        seed=args.seed,
+        prompt_version=args.prompt_version,
+        router_model_path=args.router_model,
+        utility_config=UTILITY_CONFIG,
+        settings={
+            "fixed_workflows": args.fixed_workflows,
+            "n_candidates": args.n_candidates,
+        },
+    )
 
     buckets: dict[str, list[dict]] = defaultdict(list)
     per_question: list[dict] = []
@@ -65,11 +92,13 @@ def main():
     for item in qa:
         q = item["question"]
         a = item["answer"]
-        entry: dict = {"question": q, "gold_answer": a, "results": {}}
+        entry: dict = {"question_id": item["id"], "question": q, "gold_answer": a, "results": {}}
 
         for wf in args.fixed_workflows:
             run = pipe.run(q, a, wf, planner_reason=f"fixed:{wf}", n_candidates=args.n_candidates)
             payload = run.to_dict()
+            payload.setdefault("metadata", {})["question_id"] = item["id"]
+            payload["metadata"]["dataset_split"] = manifest["dataset"]["split"]
             buckets[f"fixed_{wf}"].append(payload)
             entry["results"][f"fixed_{wf}"] = {
                 "workflow_id": wf,
@@ -81,6 +110,8 @@ def main():
         rb = rule_based.decide(q)
         rb_run = pipe.run(q, a, rb.workflow_id, planner_reason=f"rule:{rb.reason}", n_candidates=args.n_candidates)
         rb_payload = rb_run.to_dict()
+        rb_payload.setdefault("metadata", {})["question_id"] = item["id"]
+        rb_payload["metadata"]["dataset_split"] = manifest["dataset"]["split"]
         buckets["rule_based"].append(rb_payload)
         entry["results"]["rule_based"] = {
             "workflow_id": rb.workflow_id,
@@ -93,6 +124,8 @@ def main():
         lr_run = pipe.run(q, a, pred, planner_reason=f"learned:{prob:.4f}", n_candidates=args.n_candidates)
         lr_payload = lr_run.to_dict()
         lr_payload.setdefault("metadata", {})["router_confidence"] = prob
+        lr_payload["metadata"]["question_id"] = item["id"]
+        lr_payload["metadata"]["dataset_split"] = manifest["dataset"]["split"]
         buckets["learned_router"].append(lr_payload)
         entry["results"]["learned_router"] = {
             "workflow_id": pred,
@@ -115,11 +148,13 @@ def main():
         )
 
     payload = {
+        "manifest": manifest,
         "settings": {
             "limit": args.limit,
-            "llm_provider": args.llm_provider,
-            "llm_model": args.llm_model,
+            "llm_provider": pipe.llm_provider,
+            "llm_model": pipe.llm_model,
             "n_candidates": args.n_candidates,
+            "seed": args.seed,
             "fixed_workflows": args.fixed_workflows,
             "router_model": args.router_model,
         },

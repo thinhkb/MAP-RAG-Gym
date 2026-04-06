@@ -25,6 +25,9 @@ class MAPRAGGym:
     def __init__(self, corpus_path: str, llm_provider: str = "dummy", llm_model: str | None = None) -> None:
         llm = build_llm(llm_provider, llm_model)
         retriever = LocalBM25Retriever(corpus_path)
+        self.corpus_path = corpus_path
+        self.llm_provider = getattr(llm, "provider", llm_provider)
+        self.llm_model = getattr(llm, "model", llm_model)
         self.executors = {
             "QR": QueryRewriter(llm),
             "RA": RetrieverAgent(retriever),
@@ -97,5 +100,12 @@ class MAPRAGGym:
             final_scores=final_scores,
             total_cost=total_cost,
             steps=state.history,
-            metadata={"n_candidates": n_candidates, "elapsed_ms": round((time.time() - state.start_time) * 1000.0, 2)},
+            metadata={
+                "n_candidates": n_candidates,
+                "elapsed_ms": round((time.time() - state.start_time) * 1000.0, 2),
+                "llm_provider": self.llm_provider,
+                "llm_model": self.llm_model,
+                "corpus_path": self.corpus_path,
+                "workflow_steps": steps,
+            },
         )

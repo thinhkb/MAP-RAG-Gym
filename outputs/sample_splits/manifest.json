@@ -1,0 +1,14 @@
+{
+  "source_qa": "G:\\MAP-RAG-Gym\\data\\sample\\qa.json",
+  "seed": 13,
+  "ratios": {
+    "train": 0.7,
+    "val": 0.15,
+    "test": 0.15
+  },
+  "counts": {
+    "train": 2,
+    "val": 0,
+    "test": 1
+  }
+}

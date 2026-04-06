@@ -78,14 +78,30 @@ Based on evaluation of 30 queries from HotpotQA validation set using Ollama (lla
 ### Prepare a paper-style free dataset (HotpotQA)
 ```bash
 pip install -e .
-python scripts/prepare_hotpotqa.py --split validation --limit 200 --out_dir data/hotpotqa
+python scripts/prepare_hotpotqa.py --split validation --limit 200 --out_dir data/hotpotqa --write_splits
+```
+
+### Create deterministic train/val/test splits for any QA file
+```bash
+python scripts/create_qa_splits.py --qa data/hotpotqa/qa.json --out_dir data/hotpotqa/splits --seed 13
 ```
 
 ### Batch rollout to create router training data
 ```bash
-python scripts/batch_rollout.py --corpus data/hotpotqa/corpus.json --qa data/hotpotqa/qa.json --llm_provider dummy --limit 50 --out outputs/hotpotqa_rollouts.json
-python scripts/train_phase4_router.py --input outputs/hotpotqa_rollouts.json --output outputs/router_hotpot.joblib
+python scripts/batch_rollout.py --corpus data/hotpotqa/corpus.json --qa data/hotpotqa/splits/train.json --dataset_split train --llm_provider dummy --limit 50 --seed 13 --out outputs/hotpotqa_rollouts.json
+python scripts/train_phase4_router.py --input outputs/hotpotqa_rollouts.json --output outputs/router_hotpot.joblib --seed 13
+python scripts/eval_phase4_router.py --corpus data/hotpotqa/corpus.json --qa data/hotpotqa/splits/val.json --dataset_split val --router_model outputs/router_hotpot.joblib --llm_provider dummy --limit 50 --seed 13 --out outputs/router_eval.json
 ```
+
+Rollout/eval outputs now include a `manifest` with dataset split, model, seed, prompt version, utility config, and git commit. Trained router models also write a sidecar metadata file at `*.meta.json`.
+
+### Build process-supervision data and a baseline critic
+```bash
+python scripts/build_process_dataset.py --input outputs/hotpotqa_rollouts.json --out outputs/hotpotqa_process.json
+python scripts/train_process_critic.py --input outputs/hotpotqa_process.json --output outputs/process_critic_hotpot.joblib --seed 13 --holdout_ratio 0.15
+```
+
+The process dataset expands rollouts into step/action-level examples with `local_reward`, `outcome_utility`, and `blended_reward`. The critic is a lightweight sklearn regressor that predicts `blended_reward` from question text, action text, module/workflow ids, and cheap structural features.
 
 ### Run with Gemini
 ```bash

@@ -1,0 +1,12 @@
+[
+  {
+    "question": "Who wrote Pride and Prejudice?",
+    "answer": "Jane Austen",
+    "id": "0"
+  },
+  {
+    "question": "Compare California and Japan in terms of GDP.",
+    "answer": "California has a GDP larger than Japan in this sample corpus",
+    "id": "2"
+  }
+]

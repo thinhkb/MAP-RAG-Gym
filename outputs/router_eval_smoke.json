@@ -1,0 +1,283 @@
+{
+  "manifest": {
+    "script": "scripts/eval_phase4_router.py",
+    "generated_at_utc": "2026-04-06T14:33:27+00:00",
+    "git_commit": "b44a3a8e779fa1ded972fc2a70428acb03458578",
+    "python_version": "3.12.13",
+    "platform": "Windows-11-10.0.22621-SP0",
+    "paths": {
+      "qa": "G:\\MAP-RAG-Gym\\data\\sample\\qa.json",
+      "corpus": "G:\\MAP-RAG-Gym\\data\\sample\\corpus.json",
+      "router_model": "G:\\MAP-RAG-Gym\\outputs\\router_smoke.joblib"
+    },
+    "dataset": {
+      "name": "sample",
+      "split": "all",
+      "limit": 3,
+      "effective_questions": 3
+    },
+    "llm": {
+      "provider": "dummy",
+      "model": "dummy-free"
+    },
+    "reproducibility": {
+      "seed": 13,
+      "prompt_version": "v1",
+      "utility": {
+        "reward_weights": {
+          "f1_proxy": 1.0,
+          "process_score": 0.35
+        },
+        "cost_weights": {
+          "tokens": 0.08,
+          "retrieval_calls": 0.1,
+          "latency_ms": 0.05
+        },
+        "cost_normalizers": {
+          "tokens": 2000.0,
+          "retrieval_calls": 4.0,
+          "latency_ms": 10000.0
+        }
+      }
+    },
+    "settings": {
+      "fixed_workflows": [
+        "W1",
+        "W2",
+        "W3",
+        "W6"
+      ],
+      "n_candidates": 1
+    }
+  },
+  "settings": {
+    "limit": 3,
+    "llm_provider": "dummy",
+    "llm_model": "dummy-free",
+    "n_candidates": 1,
+    "seed": 13,
+    "fixed_workflows": [
+      "W1",
+      "W2",
+      "W3",
+      "W6"
+    ],
+    "router_model": "outputs\\router_smoke.joblib"
+  },
+  "summary": {
+    "fixed_W1": {
+      "num_runs": 3,
+      "avg_utility": 0.4096,
+      "avg_em": 0.3333,
+      "avg_f1_proxy": 0.3333,
+      "avg_process_score": 0.2222,
+      "avg_tokens": 37.0,
+      "avg_retrieval_calls": 0.0,
+      "avg_latency_ms": 0.0,
+      "workflow_counts": {
+        "W1": 3
+      }
+    },
+    "fixed_W2": {
+      "num_runs": 3,
+      "avg_utility": 1.2295,
+      "avg_em": 1.0,
+      "avg_f1_proxy": 1.0,
+      "avg_process_score": 0.7385,
+      "avg_tokens": 99.3333,
+      "avg_retrieval_calls": 1.0,
+      "avg_latency_ms": 0.0,
+      "workflow_counts": {
+        "W2": 3
+      }
+    },
+    "fixed_W3": {
+      "num_runs": 3,
+      "avg_utility": 1.213,
+      "avg_em": 1.0,
+      "avg_f1_proxy": 1.0,
+      "avg_process_score": 0.6858,
+      "avg_tokens": 50.0,
+      "avg_retrieval_calls": 1.0,
+      "avg_latency_ms": 0.0,
+      "workflow_counts": {
+        "W3": 3
+      }
+    },
+    "fixed_W6": {
+      "num_runs": 3,
+      "avg_utility": 1.2218,
+      "avg_em": 1.0,
+      "avg_f1_proxy": 1.0,
+      "avg_process_score": 0.7207,
+      "avg_tokens": 136.0,
+      "avg_retrieval_calls": 1.0,
+      "avg_latency_ms": 0.0,
+      "workflow_counts": {
+        "W6": 3
+      }
+    },
+    "rule_based": {
+      "num_runs": 3,
+      "avg_utility": 0.9447,
+      "avg_em": 0.6667,
+      "avg_f1_proxy": 0.7949,
+      "avg_process_score": 0.5656,
+      "avg_tokens": 160.0,
+      "avg_retrieval_calls": 1.6667,
+      "avg_latency_ms": 0.1667,
+      "workflow_counts": {
+        "W6": 2,
+        "W4": 1
+      }
+    },
+    "learned_router": {
+      "num_runs": 3,
+      "avg_utility": 0.8229,
+      "avg_em": 0.6667,
+      "avg_f1_proxy": 0.6667,
+      "avg_process_score": 0.4768,
+      "avg_tokens": 58.6667,
+      "avg_retrieval_calls": 0.3333,
+      "avg_latency_ms": 0.0,
+      "workflow_counts": {
+        "W1": 2,
+        "W2": 1
+      }
+    }
+  },
+  "per_question": [
+    {
+      "question_id": "0",
+      "question": "Who wrote Pride and Prejudice?",
+      "gold_answer": "Jane Austen",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0014,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 1.2373,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 1.2301,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 1.2249,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 1.2249,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "learned_router": {
+          "workflow_id": "W1",
+          "confidence": 0.3981,
+          "utility_total": -0.0014,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "1",
+      "question": "Which novel by the author of Pride and Prejudice was published posthumously?",
+      "gold_answer": "Persuasion",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0016,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 1.2381,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 1.233,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 1.2328,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 1.2328,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.412,
+          "utility_total": 1.2381,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        }
+      }
+    },
+    {
+      "question_id": "2",
+      "question": "Compare California and Japan in terms of GDP.",
+      "gold_answer": "California has a GDP larger than Japan in this sample corpus",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": 1.2319,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 1.2131,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 1.176,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 1.2077,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "rule_based": {
+          "workflow_id": "W4",
+          "utility_total": 0.3765,
+          "em": 0.0,
+          "f1_proxy": 0.3846
+        },
+        "learned_router": {
+          "workflow_id": "W1",
+          "confidence": 0.3698,
+          "utility_total": 1.2319,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        }
+      }
+    }
+  ]
+}
