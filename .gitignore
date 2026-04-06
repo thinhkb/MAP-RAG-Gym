@@ -39,6 +39,6 @@ env/
 *~
 
 # Project specific
-outputs/
+
 *.joblib
 .ipynb_checkpoints/

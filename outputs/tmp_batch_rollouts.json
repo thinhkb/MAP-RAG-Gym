@@ -1,0 +1,2044 @@
+{
+  "runs": [
+    {
+      "run_id": "897c52a1-60cd-48fc-a268-4fc00fe55f36",
+      "question": "Were Scott Derrickson and Ed Wood of the same nationality?",
+      "gold_answer": "yes",
+      "workflow_id": "W1",
+      "planner_reason": "batch-rollout",
+      "final_answer": "uncertain",
+      "final_scores": {
+        "em": 0.0,
+        "f1_proxy": 0.0,
+        "process_score": 0.0,
+        "utility_total": -0.0015
+      },
+      "total_cost": {
+        "tokens": 38.0,
+        "retrieval_calls": 0.0,
+        "latency_ms": 0.21
+      },
+      "steps": [
+        {
+          "step_id": 1,
+          "module": "AG",
+          "input_data": {
+            "question": "Were Scott Derrickson and Ed Wood of the same nationality?",
+            "num_docs": 0,
+            "n": 3
+          },
+          "output_data": {
+            "answer_candidates": [
+              "uncertain"
+            ],
+            "payloads": [
+              {
+                "answer": "uncertain",
+                "evidence_ids": [],
+                "confidence": 0.2
+              }
+            ]
+          },
+          "scores": {
+            "grounding": 0.0,
+            "em": 0.0,
+            "f1_proxy": 0.0
+          },
+          "cost": {
+            "tokens": 38,
+            "latency_ms": 0.21
+          },
+          "notes": ""
+        }
+      ],
+      "metadata": {
+        "n_candidates": 3,
+        "elapsed_ms": 0.26
+      },
+      "timestamp": 1774945350.13107
+    },
+    {
+      "run_id": "46243a02-d6a9-4d71-9d42-35637cb0cc69",
+      "question": "Were Scott Derrickson and Ed Wood of the same nationality?",
+      "gold_answer": "yes",
+      "workflow_id": "W2",
+      "planner_reason": "batch-rollout",
+      "final_answer": "[1] Woodson, Arkansas: Woodson is a census-designated place (CDP) in Pulaski County, Arkansas, in the United States",
+      "final_scores": {
+        "em": 0.0,
+        "f1_proxy": 0.0,
+        "process_score": 0.2532,
+        "utility_total": 0.0551
+      },
+      "total_cost": {
+        "tokens": 212.0,
+        "retrieval_calls": 1.0,
+        "latency_ms": 4.43
+      },
+      "steps": [
+        {
+          "step_id": 1,
+          "module": "QR",
+          "input_data": {
+            "question": "Were Scott Derrickson and Ed Wood of the same nationality?",
+            "n": 3
+          },
+          "output_data": {
+            "query_candidates": [
+              "Were Scott Derrickson and Ed Wood of the same nationality"
+            ],
+            "payloads": [
+              {
+                "query": "Were Scott Derrickson and Ed Wood of the same nationality",
+                "rationale": "preserve key entities"
+              }
+            ]
+          },
+          "scores": {
+            "query_quality": 1.0
+          },
+          "cost": {
+            "tokens": 37,
+            "latency_ms": 0.64
+          },
+          "notes": ""
+        },
+        {
+          "step_id": 2,
+          "module": "RA",
+          "input_data": {
+            "query": "Were Scott Derrickson and Ed Wood of the same nationality",
+            "top_k": 4
+          },
+          "output_data": {
+            "docs": [
+              {
+                "doc_id": "Woodson,_Arkansas",
+                "title": "Woodson, Arkansas",
+                "score": 28.24797257185213
+              },
+              {
+                "doc_id": "The_Exorcism_of_Emily_Rose",
+                "title": "The Exorcism of Emily Rose",
+                "score": 21.76824805224835
+              },
+              {
+                "doc_id": "Sinister_(film)",
+                "title": "Sinister (film)",
+                "score": 21.32004047857166
+              },
+              {
+                "doc_id": "Ed_Wood_(film)",
+                "title": "Ed Wood (film)",
+                "score": 21.136554941241297
+              }
+            ]
+          },
+          "scores": {
+            "retrieval_utility": 0.2078
+          },
+          "cost": {
+            "retrieval_calls": 1,
+            "latency_ms": 3.19
+          },
+          "notes": ""
+        },
+        {
+          "step_id": 3,
+          "module": "AG",
+          "input_data": {
+            "question": "Were Scott Derrickson and Ed Wood of the same nationality?",
+            "num_docs": 4,
+            "n": 3
+          },
+          "output_data": {
+            "answer_candidates": [
+              "[1] Woodson, Arkansas: Woodson is a census-designated place (CDP) in Pulaski County, Arkansas, in the United States"
+            ],
+            "payloads": [
+              {
+                "answer": "[1] Woodson, Arkansas: Woodson is a census-designated place (CDP) in Pulaski County, Arkansas, in the United States",
+                "evidence_ids": [
+                  1
+                ],
+                "confidence": 0.6
+              }
+            ]
+          },
+          "scores": {
+            "grounding": 0.0584,
+            "em": 0.0,
+            "f1_proxy": 0.0
+          },
+          "cost": {
+            "tokens": 175,
+            "latency_ms": 0.6
+          },
+          "notes": ""
+        }
+      ],
+      "metadata": {
+        "n_candidates": 3,
+        "elapsed_ms": 4.72
+      },
+      "timestamp": 1774945350.1358345
+    },
+    {
+      "run_id": "bf2f7bd3-81e4-4c93-ba13-8fc72cbb2f6a",
+      "question": "Were Scott Derrickson and Ed Wood of the same nationality?",
+      "gold_answer": "yes",
+      "workflow_id": "W3",
+      "planner_reason": "batch-rollout",
+      "final_answer": "[1] Woodson, Arkansas: Woodson is a census-designated place (CDP) in Pulaski County, Arkansas, in the United States",
+      "final_scores": {
+        "em": 0.0,
+        "f1_proxy": 0.0,
+        "process_score": 0.105,
+        "utility_total": 0.0072
+      },
+      "total_cost": {
+        "tokens": 114.0,
+        "retrieval_calls": 1.0,
+        "latency_ms": 2.71
+      },
+      "steps": [
+        {
+          "step_id": 1,
+          "module": "RA",
+          "input_data": {
+            "query": "Were Scott Derrickson and Ed Wood of the same nationality?",
+            "top_k": 4
+          },
+          "output_data": {
+            "docs": [
+              {
+                "doc_id": "Woodson,_Arkansas",
+                "title": "Woodson, Arkansas",
+                "score": 28.24797257185213
+              },
+              {
+                "doc_id": "The_Exorcism_of_Emily_Rose",
+                "title": "The Exorcism of Emily Rose",
+                "score": 21.76824805224835
+              },
+              {
+                "doc_id": "Sinister_(film)",
+                "title": "Sinister (film)",
+                "score": 21.32004047857166
+              },
+              {
+                "doc_id": "Ed_Wood_(film)",
+                "title": "Ed Wood (film)",
+                "score": 21.136554941241297
+              }
+            ]
+          },
+          "scores": {
+            "retrieval_utility": 0.2078
+          },
+          "cost": {
+            "retrieval_calls": 1,
+            "latency_ms": 2.6
+          },
+          "notes": ""
+        },
+        {
+          "step_id": 2,
+          "module": "DS",
+          "input_data": {
+            "num_docs": 4,
+            "keep_k": 2
+          },
+          "output_data": {
+            "selected_doc_ids": [
+              "Woodson,_Arkansas",
+              "The_Exorcism_of_Emily_Rose"
+            ]
+          },
+          "scores": {
+            "selection_precision": 0.2138
+          },
+          "cost": {
+            "latency_ms": 0.01
+          },
+          "notes": ""
+        },
+        {
+          "step_id": 3,
+          "module": "AG",
+          "input_data": {
+            "question": "Were Scott Derrickson and Ed Wood of the same nationality?",
+            "num_docs": 2,
+            "n": 3
+          },
+          "output_data": {
+            "answer_candidates": [
+              "[1] Woodson, Arkansas: Woodson is a census-designated place (CDP) in Pulaski County, Arkansas, in the United States"
+            ],
+            "payloads": [
+              {
+                "answer": "[1] Woodson, Arkansas: Woodson is a census-designated place (CDP) in Pulaski County, Arkansas, in the United States",
+                "evidence_ids": [
+                  1
+                ],
+                "confidence": 0.6
+              }
+            ]
+          },
+          "scores": {
+            "grounding": 0.1034,
+            "em": 0.0,
+            "f1_proxy": 0.0
+          },
+          "cost": {
+            "tokens": 114,
+            "latency_ms": 0.1
+          },
+          "notes": ""
+        }
+      ],
+      "metadata": {
+        "n_candidates": 3,
+        "elapsed_ms": 2.97
+      },
+      "timestamp": 1774945350.1388469
+    },
+    {
+      "run_id": "6c836797-46cd-4ef8-b67b-35288b77e515",
+      "question": "Were Scott Derrickson and Ed Wood of the same nationality?",
+      "gold_answer": "yes",
+      "workflow_id": "W4",
+      "planner_reason": "batch-rollout",
+      "final_answer": "[1] Sinister (film): Sinister is a 2012 supernatural horror film directed by Scott Derrickson and written by Derrickson and C",
+      "final_scores": {
+        "em": 0.0,
+        "f1_proxy": 0.0,
+        "process_score": 0.0996,
+        "utility_total": -0.0595
+      },
+      "total_cost": {
+        "tokens": 483.0,
+        "retrieval_calls": 3.0,
+        "latency_ms": 5.02
+      },
+      "steps": [
+        {
+          "step_id": 1,
+          "module": "QDP",
+          "input_data": {
+            "question": "Were Scott Derrickson and Ed Wood of the same nationality?"
+          },
+          "output_data": {
+            "sub_questions": [
+              "Were Scott Derrickson",
+              "Ed Wood of the same nationality?"
+            ],
+            "payload": {
+              "sub_questions": [
+                "Were Scott Derrickson",
+                "Ed Wood of the same nationality?"
+              ],
+              "reason": "split by independent components"
+            }
+          },
+          "scores": {
+            "decomposition_quality": 0.5
+          },
+          "cost": {
+            "tokens": 38,
+            "latency_ms": 0.09
+          },
+          "notes": ""
+        },
+        {
+          "step_id": 2,
+          "module": "RA",
+          "input_data": {
+            "query": "Were Scott Derrickson",
+            "top_k": 4
+          },
+          "output_data": {
+            "docs": [
+              {
+                "doc_id": "Sinister_(film)",
+                "title": "Sinister (film)",
+                "score": 16.20217304782276
+              },
+              {
+                "doc_id": "Hellraiser:_Inferno",
+                "title": "Hellraiser: Inferno",
+                "score": 14.609160893868356
+              },
+              {
+                "doc_id": "The_Exorcism_of_Emily_Rose",
+                "title": "The Exorcism of Emily Rose",
+                "score": 12.311465605809095
+              },
+              {
+                "doc_id": "Deliver_Us_from_Evil_(2014_film)",
+                "title": "Deliver Us from Evil (2014 film)",
+                "score": 11.349450797452324
+              }
+            ]
+          },
+          "scores": {
+            "retrieval_utility": 0.2042
+          },
+          "cost": {
+            "retrieval_calls": 1,
+            "latency_ms": 1.01
+          },
+          "notes": ""
+        },
+        {
+          "step_id": 3,
+          "module": "AG",
+          "input_data": {
+            "question": "Were Scott Derrickson",
+            "num_docs": 4,
+            "n": 1
+          },
+          "output_data": {
+            "answer_candidates": [
+              "[1] Sinister (film): Sinister is a 2012 supernatural horror film directed by Scott Derrickson and written by Derrickson and C"
+            ],
+            "payloads": [
+              {
+                "answer": "[1] Sinister (film): Sinister is a 2012 supernatural horror film directed by Scott Derrickson and written by Derrickson and C",
+                "evidence_ids": [
+                  1
+                ],
+                "confidence": 0.6
+              }
+            ]
+          },
+          "scores": {
+            "grounding": 0.0704,
+            "em": 0.0,
+            "f1_proxy": 0.0
+          },
+          "cost": {
+            "tokens": 168,
+            "latency_ms": 0.08
+          },
+          "notes": ""
+        },
+        {
+          "step_id": 4,
+          "module": "RA",
+          "input_data": {
+            "query": "Ed Wood of the same nationality?",
+            "top_k": 4
+          },
+          "output_data": {
+            "docs": [
+              {
+                "doc_id": "Woodson,_Arkansas",
+                "title": "Woodson, Arkansas",
+                "score": 25.32480210338826
+              },
+              {
+                "doc_id": "Ed_Wood_(film)",
+                "title": "Ed Wood (film)",
+                "score": 18.112796275425545
+              },
+              {
+                "doc_id": "Conrad_Brooks",
+                "title": "Conrad Brooks",
+                "score": 17.945511706279834
+              },
+              {
+                "doc_id": "Miner_Memorial_Library",
+                "title": "Miner Memorial Library",
+                "score": 11.907882229373318
+              }
+            ]
+          },
+          "scores": {
+            "retrieval_utility": 0.2029
+          },
+          "cost": {
+            "retrieval_calls": 1,
+            "latency_ms": 1.5
+          },
+          "notes": ""
+        },
+        {
+          "step_id": 5,
+          "module": "AG",
+          "input_data": {
+            "question": "Ed Wood of the same nationality?",
+            "num_docs": 4,
+            "n": 1
+          },
+          "output_data": {
+            "answer_candidates": [
+              "[1] Woodson, Arkansas: Woodson is a census-designated place (CDP) in Pulaski County, Arkansas, in the United States"
+            ],
+            "payloads": [
+              {
+                "answer": "[1] Woodson, Arkansas: Woodson is a census-designated place (CDP) in Pulaski County, Arkansas, in the United States",
+                "evidence_ids": [
+                  1
+                ],
+                "confidence": 0.6
+              }
+            ]
+          },
+          "scores": {
+            "grounding": 0.0443,
+            "em": 0.0,
+            "f1_proxy": 0.0
+          },
+          "cost": {
+            "tokens": 224,
+            "latency_ms": 0.08
+          },
+          "notes": ""
+        },
+        {
+          "step_id": 6,
+          "module": "RA",
+          "input_data": {
+            "query": "Were Scott Derrickson and Ed Wood of the same nationality?",
+            "top_k": 4
+          },
+          "output_data": {
+            "docs": [
+              {
+                "doc_id": "Woodson,_Arkansas",
+                "title": "Woodson, Arkansas",
+                "score": 28.24797257185213
+              },
+              {
+                "doc_id": "The_Exorcism_of_Emily_Rose",
+                "title": "The Exorcism of Emily Rose",
+                "score": 21.76824805224835
+              },
+              {
+                "doc_id": "Sinister_(film)",
+                "title": "Sinister (film)",
+                "score": 21.32004047857166
+              },
+              {
+                "doc_id": "Ed_Wood_(film)",
+                "title": "Ed Wood (film)",
+                "score": 21.136554941241297
+              }
+            ]
+          },
+          "scores": {
+            "retrieval_utility": 0.2078
+          },
+          "cost": {
+            "retrieval_calls": 1,
+            "latency_ms": 2.09
+          },
+          "notes": ""
+        },
+        {
+          "step_id": 7,
+          "module": "AS",
+          "input_data": {
+            "items": [
+              "[1] Sinister (film): Sinister is a 2012 supernatural horror film directed by Scott Derrickson and written by Derrickson and C",
+              "[1] Woodson, Arkansas: Woodson is a census-designated place (CDP) in Pulaski County, Arkansas, in the United States"
+            ]
+          },
+          "output_data": {
+            "final_answer": "[1] Sinister (film): Sinister is a 2012 supernatural horror film directed by Scott Derrickson and written by Derrickson and C",
+            "payload": {
+              "final_answer": "[1] Sinister (film): Sinister is a 2012 supernatural horror film directed by Scott Derrickson and written by Derrickson and C",
+              "consistency_note": "dummy summarizer"
+            }
+          },
+          "scores": {
+            "grounding": 0.0649,
+            "em": 0.0,
+            "f1_proxy": 0.0
+          },
+          "cost": {
+            "tokens": 53,
+            "latency_ms": 0.17
+          },
+          "notes": ""
+        }
+      ],
+      "metadata": {
+        "n_candidates": 3,
+        "elapsed_ms": 5.66
+      },
+      "timestamp": 1774945350.144576
+    },
+    {
+      "run_id": "127e863e-0d7d-46fb-bee4-d7917f2eb92f",
+      "question": "Were Scott Derrickson and Ed Wood of the same nationality?",
+      "gold_answer": "yes",
+      "workflow_id": "W5",
+      "planner_reason": "batch-rollout",
+      "final_answer": "[1] Woodson, Arkansas: Woodson is a census-designated place (CDP) in Pulaski County, Arkansas, in the United States",
+      "final_scores": {
+        "em": 0.0,
+        "f1_proxy": 0.0,
+        "process_score": 0.1855,
+        "utility_total": -0.0298
+      },
+      "total_cost": {
+        "tokens": 492.0,
+        "retrieval_calls": 3.0,
+        "latency_ms": 8.319999999999999
+      },
+      "steps": [
+        {
+          "step_id": 1,
+          "module": "QDS",
+          "input_data": {
+            "question": "Were Scott Derrickson and Ed Wood of the same nationality?"
+          },
+          "output_data": {
+            "sub_questions": [
+              "Were Scott Derrickson and Ed Wood of the same nationality?",
+              "Find the bridge entity for: Were Scott Derrickson and Ed Wood of the same nationality?"
+            ],
+            "payload": {
+              "sub_questions": [
+                "Were Scott Derrickson and Ed Wood of the same nationality?",
+                "Find the bridge entity for: Were Scott Derrickson and Ed Wood of the same nationality?"
+              ],
+              "reason": "later step depends on earlier answer"
+            }
+          },
+          "scores": {
+            "decomposition_quality": 0.8
+          },
+          "cost": {
+            "tokens": 42,
+            "latency_ms": 0.03
+          },
+          "notes": ""
+        },
+        {
+          "step_id": 2,
+          "module": "RA",
+          "input_data": {
+            "query": "Were Scott Derrickson and Ed Wood of the same nationality?",
+            "top_k": 4
+          },
+          "output_data": {
+            "docs": [
+              {
+                "doc_id": "Woodson,_Arkansas",
+                "title": "Woodson, Arkansas",
+                "score": 28.24797257185213
+              },
+              {
+                "doc_id": "The_Exorcism_of_Emily_Rose",
+                "title": "The Exorcism of Emily Rose",
+                "score": 21.76824805224835
+              },
+              {
+                "doc_id": "Sinister_(film)",
+                "title": "Sinister (film)",
+                "score": 21.32004047857166
+              },
+              {
+                "doc_id": "Ed_Wood_(film)",
+                "title": "Ed Wood (film)",
+                "score": 21.136554941241297
+              }
+            ]
+          },
+          "scores": {
+            "retrieval_utility": 0.2078
+          },
+          "cost": {
+            "retrieval_calls": 1,
+            "latency_ms": 2.4
+          },
+          "notes": ""
+        },
+        {
+          "step_id": 3,
+          "module": "AG",
+          "input_data": {
+            "question": "Were Scott Derrickson and Ed Wood of the same nationality?",
+            "num_docs": 4,
+            "n": 1
+          },
+          "output_data": {
+            "answer_candidates": [
+              "[1] Woodson, Arkansas: Woodson is a census-designated place (CDP) in Pulaski County, Arkansas, in the United States"
+            ],
+            "payloads": [
+              {
+                "answer": "[1] Woodson, Arkansas: Woodson is a census-designated place (CDP) in Pulaski County, Arkansas, in the United States",
+                "evidence_ids": [
+                  1
+                ],
+                "confidence": 0.6
+              }
+            ]
+          },
+          "scores": {
+            "grounding": 0.0584,
+            "em": 0.0,
+            "f1_proxy": 0.0
+          },
+          "cost": {
+            "tokens": 175,
+            "latency_ms": 0.07
+          },
+          "notes": ""
+        },
+        {
+          "step_id": 4,
+          "module": "RA",
+          "input_data": {
+            "query": "Find the bridge entity for: Were Scott Derrickson and Ed Wood of the same nationality?",
+            "top_k": 4
+          },
+          "output_data": {
+            "docs": [
+              {
+                "doc_id": "Woodson,_Arkansas",
+                "title": "Woodson, Arkansas",
+                "score": 31.9348310275425
+              },
+              {
+                "doc_id": "The_Exorcism_of_Emily_Rose",
+                "title": "The Exorcism of Emily Rose",
+                "score": 25.071642118576566
+              },
+              {
+                "doc_id": "Hellraiser:_Inferno",
+                "title": "Hellraiser: Inferno",
+                "score": 24.250990374068213
+              },
+              {
+                "doc_id": "Ed_Wood_(film)",
+                "title": "Ed Wood (film)",
+                "score": 24.160313607057052
+              }
+            ]
+          },
+          "scores": {
+            "retrieval_utility": 0.2076
+          },
+          "cost": {
+            "retrieval_calls": 1,
+            "latency_ms": 3.3
+          },
+          "notes": ""
+        },
+        {
+          "step_id": 5,
+          "module": "AG",
+          "input_data": {
+            "question": "Find the bridge entity for: Were Scott Derrickson and Ed Wood of the same nationality?",
+            "num_docs": 4,
+            "n": 1
+          },
+          "output_data": {
+            "answer_candidates": [
+              "[1] Woodson, Arkansas: Woodson is a census-designated place (CDP) in Pulaski County, Arkansas, in the United States"
+            ],
+            "payloads": [
+              {
+                "answer": "[1] Woodson, Arkansas: Woodson is a census-designated place (CDP) in Pulaski County, Arkansas, in the United States",
+                "evidence_ids": [
+                  1
+                ],
+                "confidence": 0.6
+              }
+            ]
+          },
+          "scores": {
+            "grounding": 0.057,
+            "em": 0.0,
+            "f1_proxy": 0.0
+          },
+          "cost": {
+            "tokens": 186,
+            "latency_ms": 0.09
+          },
+          "notes": ""
+        },
+        {
+          "step_id": 6,
+          "module": "QR",
+          "input_data": {
+            "question": "Were Scott Derrickson and Ed Wood of the same nationality?",
+            "n": 3
+          },
+          "output_data": {
+            "query_candidates": [
+              "Were Scott Derrickson and Ed Wood of the same nationality"
+            ],
+            "payloads": [
+              {
+                "query": "Were Scott Derrickson and Ed Wood of the same nationality",
+                "rationale": "preserve key entities"
+              }
+            ]
+          },
+          "scores": {
+            "query_quality": 1.0
+          },
+          "cost": {
+            "tokens": 37,
+            "latency_ms": 0.03
+          },
+          "notes": ""
+        },
+        {
+          "step_id": 7,
+          "module": "RA",
+          "input_data": {
+            "query": "Were Scott Derrickson and Ed Wood of the same nationality",
+            "top_k": 4
+          },
+          "output_data": {
+            "docs": [
+              {
+                "doc_id": "Woodson,_Arkansas",
+                "title": "Woodson, Arkansas",
+                "score": 28.24797257185213
+              },
+              {
+                "doc_id": "The_Exorcism_of_Emily_Rose",
+                "title": "The Exorcism of Emily Rose",
+                "score": 21.76824805224835
+              },
+              {
+                "doc_id": "Sinister_(film)",
+                "title": "Sinister (film)",
+                "score": 21.32004047857166
+              },
+              {
+                "doc_id": "Ed_Wood_(film)",
+                "title": "Ed Wood (film)",
+                "score": 21.136554941241297
+              }
+            ]
+          },
+          "scores": {
+            "retrieval_utility": 0.2078
+          },
+          "cost": {
+            "retrieval_calls": 1,
+            "latency_ms": 2.36
+          },
+          "notes": ""
+        },
+        {
+          "step_id": 8,
+          "module": "AS",
+          "input_data": {
+            "items": [
+              "[1] Woodson, Arkansas: Woodson is a census-designated place (CDP) in Pulaski County, Arkansas, in the United States",
+              "[1] Woodson, Arkansas: Woodson is a census-designated place (CDP) in Pulaski County, Arkansas, in the United States"
+            ]
+          },
+          "output_data": {
+            "final_answer": "[1] Woodson, Arkansas: Woodson is a census-designated place (CDP) in Pulaski County, Arkansas, in the United States",
+            "payload": {
+              "final_answer": "[1] Woodson, Arkansas: Woodson is a census-designated place (CDP) in Pulaski County, Arkansas, in the United States",
+              "consistency_note": "dummy summarizer"
+            }
+          },
+          "scores": {
+            "grounding": 0.0584,
+            "em": 0.0,
+            "f1_proxy": 0.0
+          },
+          "cost": {
+            "tokens": 52,
+            "latency_ms": 0.04
+          },
+          "notes": ""
+        }
+      ],
+      "metadata": {
+        "n_candidates": 3,
+        "elapsed_ms": 8.91
+      },
+      "timestamp": 1774945350.1535513
+    },
+    {
+      "run_id": "336c3d0d-757e-4847-97d0-95e8f9e76da9",
+      "question": "Were Scott Derrickson and Ed Wood of the same nationality?",
+      "gold_answer": "yes",
+      "workflow_id": "W6",
+      "planner_reason": "batch-rollout",
+      "final_answer": "[1] Woodson, Arkansas: Woodson is a census-designated place (CDP) in Pulaski County, Arkansas, in the United States",
+      "final_scores": {
+        "em": 0.0,
+        "f1_proxy": 0.0,
+        "process_score": 0.3221,
+        "utility_total": 0.0777
+      },
+      "total_cost": {
+        "tokens": 250.0,
+        "retrieval_calls": 1.0,
+        "latency_ms": 2.51
+      },
+      "steps": [
+        {
+          "step_id": 1,
+          "module": "DRAFT",
+          "input_data": {
+            "question": "Were Scott Derrickson and Ed Wood of the same nationality?"
+          },
+          "output_data": {
+            "draft_reasoning": "Need evidence to answer: Were Scott Derrickson and Ed Wood of the same nationality?",
+            "payload": {
+              "draft_reasoning": "Need evidence to answer: Were Scott Derrickson and Ed Wood of the same nationality?",
+              "predicted_answer": "unknown"
+            }
+          },
+          "scores": {
+            "draft_relevance": 0.6666666666666666
+          },
+          "cost": {
+            "tokens": 32,
+            "latency_ms": 0.03
+          },
+          "notes": ""
+        },
+        {
+          "step_id": 2,
+          "module": "REFLECT",
+          "input_data": {
+            "draft_reasoning": "Need evidence to answer: Were Scott Derrickson and Ed Wood of the same nationality?"
+          },
+          "output_data": {
+            "reflected_query": "Were Scott Derrickson and Ed Wood of the same nationality",
+            "payload": {
+              "missing_information": [
+                "missing supporting fact"
+              ],
+              "query": "Were Scott Derrickson and Ed Wood of the same nationality"
+            }
+          },
+          "scores": {
+            "reflection_quality": 1.0
+          },
+          "cost": {
+            "tokens": 43,
+            "latency_ms": 0.02
+          },
+          "notes": ""
+        },
+        {
+          "step_id": 3,
+          "module": "RA",
+          "input_data": {
+            "query": "Were Scott Derrickson and Ed Wood of the same nationality",
+            "top_k": 4
+          },
+          "output_data": {
+            "docs": [
+              {
+                "doc_id": "Woodson,_Arkansas",
+                "title": "Woodson, Arkansas",
+                "score": 28.24797257185213
+              },
+              {
+                "doc_id": "The_Exorcism_of_Emily_Rose",
+                "title": "The Exorcism of Emily Rose",
+                "score": 21.76824805224835
+              },
+              {
+                "doc_id": "Sinister_(film)",
+                "title": "Sinister (film)",
+                "score": 21.32004047857166
+              },
+              {
+                "doc_id": "Ed_Wood_(film)",
+                "title": "Ed Wood (film)",
+                "score": 21.136554941241297
+              }
+            ]
+          },
+          "scores": {
+            "retrieval_utility": 0.2078
+          },
+          "cost": {
+            "retrieval_calls": 1,
+            "latency_ms": 2.37
+          },
+          "notes": ""
+        },
+        {
+          "step_id": 4,
+          "module": "AG",
+          "input_data": {
+            "question": "Were Scott Derrickson and Ed Wood of the same nationality?",
+            "num_docs": 4,
+            "n": 3
+          },
+          "output_data": {
+            "answer_candidates": [
+              "[1] Woodson, Arkansas: Woodson is a census-designated place (CDP) in Pulaski County, Arkansas, in the United States"
+            ],
+            "payloads": [
+              {
+                "answer": "[1] Woodson, Arkansas: Woodson is a census-designated place (CDP) in Pulaski County, Arkansas, in the United States",
+                "evidence_ids": [
+                  1
+                ],
+                "confidence": 0.6
+              }
+            ]
+          },
+          "scores": {
+            "grounding": 0.0584,
+            "em": 0.0,
+            "f1_proxy": 0.0
+          },
+          "cost": {
+            "tokens": 175,
+            "latency_ms": 0.09
+          },
+          "notes": ""
+        }
+      ],
+      "metadata": {
+        "n_candidates": 3,
+        "elapsed_ms": 2.75
+      },
+      "timestamp": 1774945350.156348
+    },
+    {
+      "run_id": "f558d1fa-d1a7-475f-9a35-e3a67904b7a1",
+      "question": "What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?",
+      "gold_answer": "Chief of Protocol",
+      "workflow_id": "W1",
+      "planner_reason": "batch-rollout",
+      "final_answer": "uncertain",
+      "final_scores": {
+        "em": 0.0,
+        "f1_proxy": 0.0,
+        "process_score": 0.0,
+        "utility_total": -0.0017
+      },
+      "total_cost": {
+        "tokens": 42.0,
+        "retrieval_calls": 0.0,
+        "latency_ms": 0.05
+      },
+      "steps": [
+        {
+          "step_id": 1,
+          "module": "AG",
+          "input_data": {
+            "question": "What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?",
+            "num_docs": 0,
+            "n": 3
+          },
+          "output_data": {
+            "answer_candidates": [
+              "uncertain"
+            ],
+            "payloads": [
+              {
+                "answer": "uncertain",
+                "evidence_ids": [],
+                "confidence": 0.2
+              }
+            ]
+          },
+          "scores": {
+            "grounding": 0.0,
+            "em": 0.0,
+            "f1_proxy": 0.0
+          },
+          "cost": {
+            "tokens": 42,
+            "latency_ms": 0.05
+          },
+          "notes": ""
+        }
+      ],
+      "metadata": {
+        "n_candidates": 3,
+        "elapsed_ms": 0.07
+      },
+      "timestamp": 1774945350.157272
+    },
+    {
+      "run_id": "f70186c2-6d3b-430a-ab06-1ac5d5439fc1",
+      "question": "What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?",
+      "gold_answer": "Chief of Protocol",
+      "workflow_id": "W2",
+      "planner_reason": "batch-rollout",
+      "final_answer": "[1] A Kiss for Corliss: A Kiss for Corliss is a 1949 American comedy film directed by Richard Wallace and written by Howard Dimsdale",
+      "final_scores": {
+        "em": 0.0,
+        "f1_proxy": 0.0,
+        "process_score": 0.259,
+        "utility_total": 0.0564
+      },
+      "total_cost": {
+        "tokens": 231.0,
+        "retrieval_calls": 1.0,
+        "latency_ms": 4.4399999999999995
+      },
+      "steps": [
+        {
+          "step_id": 1,
+          "module": "QR",
+          "input_data": {
+            "question": "What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?",
+            "n": 3
+          },
+          "output_data": {
+            "query_candidates": [
+              "What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell"
+            ],
+            "payloads": [
+              {
+                "query": "What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell",
+                "rationale": "preserve key entities"
+              }
+            ]
+          },
+          "scores": {
+            "query_quality": 1.0
+          },
+          "cost": {
+            "tokens": 41,
+            "latency_ms": 0.03
+          },
+          "notes": ""
+        },
+        {
+          "step_id": 2,
+          "module": "RA",
+          "input_data": {
+            "query": "What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell",
+            "top_k": 4
+          },
+          "output_data": {
+            "docs": [
+              {
+                "doc_id": "A_Kiss_for_Corliss",
+                "title": "A Kiss for Corliss",
+                "score": 36.63561603461519
+              },
+              {
+                "doc_id": "Kiss_and_Tell_(1945_film)",
+                "title": "Kiss and Tell (1945 film)",
+                "score": 35.9976952350199
+              },
+              {
+                "doc_id": "Meet_Corliss_Archer_(TV_series)",
+                "title": "Meet Corliss Archer (TV series)",
+                "score": 30.255228115353624
+              },
+              {
+                "doc_id": "Vice_President_of_Panama",
+                "title": "Vice President of Panama",
+                "score": 27.591340066833222
+              }
+            ]
+          },
+          "scores": {
+            "retrieval_utility": 0.2157
+          },
+          "cost": {
+            "retrieval_calls": 1,
+            "latency_ms": 4.35
+          },
+          "notes": ""
+        },
+        {
+          "step_id": 3,
+          "module": "AG",
+          "input_data": {
+            "question": "What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?",
+            "num_docs": 4,
+            "n": 3
+          },
+          "output_data": {
+            "answer_candidates": [
+              "[1] A Kiss for Corliss: A Kiss for Corliss is a 1949 American comedy film directed by Richard Wallace and written by Howard Dimsdale"
+            ],
+            "payloads": [
+              {
+                "answer": "[1] A Kiss for Corliss: A Kiss for Corliss is a 1949 American comedy film directed by Richard Wallace and written by Howard Dimsdale",
+                "evidence_ids": [
+                  1
+                ],
+                "confidence": 0.6
+              }
+            ]
+          },
+          "scores": {
+            "grounding": 0.0795,
+            "em": 0.0,
+            "f1_proxy": 0.0
+          },
+          "cost": {
+            "tokens": 190,
+            "latency_ms": 0.06
+          },
+          "notes": ""
+        }
+      ],
+      "metadata": {
+        "n_candidates": 3,
+        "elapsed_ms": 4.64
+      },
+      "timestamp": 1774945350.161944
+    },
+    {
+      "run_id": "f8b2e6a2-5d66-4d03-b0b9-bcbb31cb6453",
+      "question": "What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?",
+      "gold_answer": "Chief of Protocol",
+      "workflow_id": "W3",
+      "planner_reason": "batch-rollout",
+      "final_answer": "[1] A Kiss for Corliss: A Kiss for Corliss is a 1949 American comedy film directed by Richard Wallace and written by Howard Dimsdale",
+      "final_scores": {
+        "em": 0.0,
+        "f1_proxy": 0.0,
+        "process_score": 0.1151,
+        "utility_total": 0.0107
+      },
+      "total_cost": {
+        "tokens": 114.0,
+        "retrieval_calls": 1.0,
+        "latency_ms": 3.9799999999999995
+      },
+      "steps": [
+        {
+          "step_id": 1,
+          "module": "RA",
+          "input_data": {
+            "query": "What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?",
+            "top_k": 4
+          },
+          "output_data": {
+            "docs": [
+              {
+                "doc_id": "A_Kiss_for_Corliss",
+                "title": "A Kiss for Corliss",
+                "score": 36.63561603461519
+              },
+              {
+                "doc_id": "Meet_Corliss_Archer_(TV_series)",
+                "title": "Meet Corliss Archer (TV series)",
+                "score": 30.255228115353624
+              },
+              {
+                "doc_id": "Kiss_and_Tell_(1945_film)",
+                "title": "Kiss and Tell (1945 film)",
+                "score": 28.691304496008144
+              },
+              {
+                "doc_id": "Vice_President_of_Panama",
+                "title": "Vice President of Panama",
+                "score": 27.591340066833222
+              }
+            ]
+          },
+          "scores": {
+            "retrieval_utility": 0.2157
+          },
+          "cost": {
+            "retrieval_calls": 1,
+            "latency_ms": 3.92
+          },
+          "notes": ""
+        },
+        {
+          "step_id": 2,
+          "module": "DS",
+          "input_data": {
+            "num_docs": 4,
+            "keep_k": 2
+          },
+          "output_data": {
+            "selected_doc_ids": [
+              "A_Kiss_for_Corliss",
+              "Meet_Corliss_Archer_(TV_series)"
+            ]
+          },
+          "scores": {
+            "selection_precision": 0.2136
+          },
+          "cost": {
+            "latency_ms": 0.01
+          },
+          "notes": ""
+        },
+        {
+          "step_id": 3,
+          "module": "AG",
+          "input_data": {
+            "question": "What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?",
+            "num_docs": 2,
+            "n": 3
+          },
+          "output_data": {
+            "answer_candidates": [
+              "[1] A Kiss for Corliss: A Kiss for Corliss is a 1949 American comedy film directed by Richard Wallace and written by Howard Dimsdale"
+            ],
+            "payloads": [
+              {
+                "answer": "[1] A Kiss for Corliss: A Kiss for Corliss is a 1949 American comedy film directed by Richard Wallace and written by Howard Dimsdale",
+                "evidence_ids": [
+                  1
+                ],
+                "confidence": 0.6
+              }
+            ]
+          },
+          "scores": {
+            "grounding": 0.1463,
+            "em": 0.0,
+            "f1_proxy": 0.0
+          },
+          "cost": {
+            "tokens": 114,
+            "latency_ms": 0.05
+          },
+          "notes": ""
+        }
+      ],
+      "metadata": {
+        "n_candidates": 3,
+        "elapsed_ms": 4.14
+      },
+      "timestamp": 1774945350.1661227
+    },
+    {
+      "run_id": "fb7283de-7301-48a5-b64e-2d1bb4a399b3",
+      "question": "What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?",
+      "gold_answer": "Chief of Protocol",
+      "workflow_id": "W4",
+      "planner_reason": "batch-rollout",
+      "final_answer": "[1] A Kiss for Corliss: A Kiss for Corliss is a 1949 American comedy film directed by Richard Wallace and written by Howard Dimsdale",
+      "final_scores": {
+        "em": 0.0,
+        "f1_proxy": 0.0,
+        "process_score": 0.0978,
+        "utility_total": -0.0607
+      },
+      "total_cost": {
+        "tokens": 496.0,
+        "retrieval_calls": 3.0,
+        "latency_ms": 8.399999999999999
+      },
+      "steps": [
+        {
+          "step_id": 1,
+          "module": "QDP",
+          "input_data": {
+            "question": "What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?"
+          },
+          "output_data": {
+            "sub_questions": [
+              "What government position was held by the woman who portrayed Corliss Archer in the film Kiss",
+              "Tell?"
+            ],
+            "payload": {
+              "sub_questions": [
+                "What government position was held by the woman who portrayed Corliss Archer in the film Kiss",
+                "Tell?"
+              ],
+              "reason": "split by independent components"
+            }
+          },
+          "scores": {
+            "decomposition_quality": 0.4583
+          },
+          "cost": {
+            "tokens": 42,
+            "latency_ms": 0.03
+          },
+          "notes": ""
+        },
+        {
+          "step_id": 2,
+          "module": "RA",
+          "input_data": {
+            "query": "What government position was held by the woman who portrayed Corliss Archer in the film Kiss",
+            "top_k": 4
+          },
+          "output_data": {
+            "docs": [
+              {
+                "doc_id": "A_Kiss_for_Corliss",
+                "title": "A Kiss for Corliss",
+                "score": 33.67135855193838
+              },
+              {
+                "doc_id": "Meet_Corliss_Archer_(TV_series)",
+                "title": "Meet Corliss Archer (TV series)",
+                "score": 28.1992894101924
+              },
+              {
+                "doc_id": "Abteilungsleiter_(NSDAP)",
+                "title": "Abteilungsleiter (NSDAP)",
+                "score": 27.2253826699292
+              },
+              {
+                "doc_id": "Kiss_and_Tell_(1945_film)",
+                "title": "Kiss and Tell (1945 film)",
+                "score": 26.586111062751893
+              }
+            ]
+          },
+          "scores": {
+            "retrieval_utility": 0.2136
+          },
+          "cost": {
+            "retrieval_calls": 1,
+            "latency_ms": 3.5
+          },
+          "notes": ""
+        },
+        {
+          "step_id": 3,
+          "module": "AG",
+          "input_data": {
+            "question": "What government position was held by the woman who portrayed Corliss Archer in the film Kiss",
+            "num_docs": 4,
+            "n": 1
+          },
+          "output_data": {
+            "answer_candidates": [
+              "[1] A Kiss for Corliss: A Kiss for Corliss is a 1949 American comedy film directed by Richard Wallace and written by Howard Dimsdale"
+            ],
+            "payloads": [
+              {
+                "answer": "[1] A Kiss for Corliss: A Kiss for Corliss is a 1949 American comedy film directed by Richard Wallace and written by Howard Dimsdale",
+                "evidence_ids": [
+                  1
+                ],
+                "confidence": 0.6
+              }
+            ]
+          },
+          "scores": {
+            "grounding": 0.0795,
+            "em": 0.0,
+            "f1_proxy": 0.0
+          },
+          "cost": {
+            "tokens": 179,
+            "latency_ms": 0.07
+          },
+          "notes": ""
+        },
+        {
+          "step_id": 4,
+          "module": "RA",
+          "input_data": {
+            "query": "Tell?",
+            "top_k": 4
+          },
+          "output_data": {
+            "docs": [
+              {
+                "doc_id": "Adam_Collis",
+                "title": "Adam Collis",
+                "score": 0.0
+              },
+              {
+                "doc_id": "Ed_Wood_(film)",
+                "title": "Ed Wood (film)",
+                "score": 0.0
+              },
+              {
+                "doc_id": "Tyler_Bates",
+                "title": "Tyler Bates",
+                "score": 0.0
+              },
+              {
+                "doc_id": "Doctor_Strange_(2016_film)",
+                "title": "Doctor Strange (2016 film)",
+                "score": 0.0
+              }
+            ]
+          },
+          "scores": {
+            "retrieval_utility": 0.2026
+          },
+          "cost": {
+            "retrieval_calls": 1,
+            "latency_ms": 0.42
+          },
+          "notes": ""
+        },
+        {
+          "step_id": 5,
+          "module": "AG",
+          "input_data": {
+            "question": "Tell?",
+            "num_docs": 4,
+            "n": 1
+          },
+          "output_data": {
+            "answer_candidates": [
+              "[1] Adam Collis: Adam Collis is an American filmmaker and actor"
+            ],
+            "payloads": [
+              {
+                "answer": "[1] Adam Collis: Adam Collis is an American filmmaker and actor",
+                "evidence_ids": [
+                  1
+                ],
+                "confidence": 0.6
+              }
+            ]
+          },
+          "scores": {
+            "grounding": 0.0226,
+            "em": 0.0,
+            "f1_proxy": 0.0
+          },
+          "cost": {
+            "tokens": 219,
+            "latency_ms": 0.06
+          },
+          "notes": ""
+        },
+        {
+          "step_id": 6,
+          "module": "RA",
+          "input_data": {
+            "query": "What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?",
+            "top_k": 4
+          },
+          "output_data": {
+            "docs": [
+              {
+                "doc_id": "A_Kiss_for_Corliss",
+                "title": "A Kiss for Corliss",
+                "score": 36.63561603461519
+              },
+              {
+                "doc_id": "Meet_Corliss_Archer_(TV_series)",
+                "title": "Meet Corliss Archer (TV series)",
+                "score": 30.255228115353624
+              },
+              {
+                "doc_id": "Kiss_and_Tell_(1945_film)",
+                "title": "Kiss and Tell (1945 film)",
+                "score": 28.691304496008144
+              },
+              {
+                "doc_id": "Vice_President_of_Panama",
+                "title": "Vice President of Panama",
+                "score": 27.591340066833222
+              }
+            ]
+          },
+          "scores": {
+            "retrieval_utility": 0.2157
+          },
+          "cost": {
+            "retrieval_calls": 1,
+            "latency_ms": 4.27
+          },
+          "notes": ""
+        },
+        {
+          "step_id": 7,
+          "module": "AS",
+          "input_data": {
+            "items": [
+              "[1] A Kiss for Corliss: A Kiss for Corliss is a 1949 American comedy film directed by Richard Wallace and written by Howard Dimsdale",
+              "[1] Adam Collis: Adam Collis is an American filmmaker and actor"
+            ]
+          },
+          "output_data": {
+            "final_answer": "[1] A Kiss for Corliss: A Kiss for Corliss is a 1949 American comedy film directed by Richard Wallace and written by Howard Dimsdale",
+            "payload": {
+              "final_answer": "[1] A Kiss for Corliss: A Kiss for Corliss is a 1949 American comedy film directed by Richard Wallace and written by Howard Dimsdale",
+              "consistency_note": "dummy summarizer"
+            }
+          },
+          "scores": {
+            "grounding": 0.0795,
+            "em": 0.0,
+            "f1_proxy": 0.0
+          },
+          "cost": {
+            "tokens": 56,
+            "latency_ms": 0.05
+          },
+          "notes": ""
+        }
+      ],
+      "metadata": {
+        "n_candidates": 3,
+        "elapsed_ms": 8.98
+      },
+      "timestamp": 1774945350.1751602
+    },
+    {
+      "run_id": "24fb569d-9de5-43c4-87f4-adfa29186493",
+      "question": "What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?",
+      "gold_answer": "Chief of Protocol",
+      "workflow_id": "W5",
+      "planner_reason": "batch-rollout",
+      "final_answer": "[1] A Kiss for Corliss: A Kiss for Corliss is a 1949 American comedy film directed by Richard Wallace and written by Howard Dimsdale",
+      "final_scores": {
+        "em": 0.0,
+        "f1_proxy": 0.0,
+        "process_score": 0.1967,
+        "utility_total": -0.0278
+      },
+      "total_cost": {
+        "tokens": 539.0,
+        "retrieval_calls": 3.0,
+        "latency_ms": 12.84
+      },
+      "steps": [
+        {
+          "step_id": 1,
+          "module": "QDS",
+          "input_data": {
+            "question": "What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?"
+          },
+          "output_data": {
+            "sub_questions": [
+              "What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?",
+              "Find the bridge entity for: What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?"
+            ],
+            "payload": {
+              "sub_questions": [
+                "What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?",
+                "Find the bridge entity for: What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?"
+              ],
+              "reason": "later step depends on earlier answer"
+            }
+          },
+          "scores": {
+            "decomposition_quality": 0.875
+          },
+          "cost": {
+            "tokens": 46,
+            "latency_ms": 0.03
+          },
+          "notes": ""
+        },
+        {
+          "step_id": 2,
+          "module": "RA",
+          "input_data": {
+            "query": "What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?",
+            "top_k": 4
+          },
+          "output_data": {
+            "docs": [
+              {
+                "doc_id": "A_Kiss_for_Corliss",
+                "title": "A Kiss for Corliss",
+                "score": 36.63561603461519
+              },
+              {
+                "doc_id": "Meet_Corliss_Archer_(TV_series)",
+                "title": "Meet Corliss Archer (TV series)",
+                "score": 30.255228115353624
+              },
+              {
+                "doc_id": "Kiss_and_Tell_(1945_film)",
+                "title": "Kiss and Tell (1945 film)",
+                "score": 28.691304496008144
+              },
+              {
+                "doc_id": "Vice_President_of_Panama",
+                "title": "Vice President of Panama",
+                "score": 27.591340066833222
+              }
+            ]
+          },
+          "scores": {
+            "retrieval_utility": 0.2157
+          },
+          "cost": {
+            "retrieval_calls": 1,
+            "latency_ms": 4.09
+          },
+          "notes": ""
+        },
+        {
+          "step_id": 3,
+          "module": "AG",
+          "input_data": {
+            "question": "What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?",
+            "num_docs": 4,
+            "n": 1
+          },
+          "output_data": {
+            "answer_candidates": [
+              "[1] A Kiss for Corliss: A Kiss for Corliss is a 1949 American comedy film directed by Richard Wallace and written by Howard Dimsdale"
+            ],
+            "payloads": [
+              {
+                "answer": "[1] A Kiss for Corliss: A Kiss for Corliss is a 1949 American comedy film directed by Richard Wallace and written by Howard Dimsdale",
+                "evidence_ids": [
+                  1
+                ],
+                "confidence": 0.6
+              }
+            ]
+          },
+          "scores": {
+            "grounding": 0.0795,
+            "em": 0.0,
+            "f1_proxy": 0.0
+          },
+          "cost": {
+            "tokens": 190,
+            "latency_ms": 0.06
+          },
+          "notes": ""
+        },
+        {
+          "step_id": 4,
+          "module": "RA",
+          "input_data": {
+            "query": "Find the bridge entity for: What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?",
+            "top_k": 4
+          },
+          "output_data": {
+            "docs": [
+              {
+                "doc_id": "A_Kiss_for_Corliss",
+                "title": "A Kiss for Corliss",
+                "score": 39.599873517292004
+              },
+              {
+                "doc_id": "Meet_Corliss_Archer_(TV_series)",
+                "title": "Meet Corliss Archer (TV series)",
+                "score": 33.60585716410355
+              },
+              {
+                "doc_id": "Kiss_and_Tell_(1945_film)",
+                "title": "Kiss and Tell (1945 film)",
+                "score": 31.86046709038837
+              },
+              {
+                "doc_id": "Village_accountant",
+                "title": "Village accountant",
+                "score": 31.209617306459716
+              }
+            ]
+          },
+          "scores": {
+            "retrieval_utility": 0.213
+          },
+          "cost": {
+            "retrieval_calls": 1,
+            "latency_ms": 4.57
+          },
+          "notes": ""
+        },
+        {
+          "step_id": 5,
+          "module": "AG",
+          "input_data": {
+            "question": "Find the bridge entity for: What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?",
+            "num_docs": 4,
+            "n": 1
+          },
+          "output_data": {
+            "answer_candidates": [
+              "[1] A Kiss for Corliss: A Kiss for Corliss is a 1949 American comedy film directed by Richard Wallace and written by Howard Dimsdale"
+            ],
+            "payloads": [
+              {
+                "answer": "[1] A Kiss for Corliss: A Kiss for Corliss is a 1949 American comedy film directed by Richard Wallace and written by Howard Dimsdale",
+                "evidence_ids": [
+                  1
+                ],
+                "confidence": 0.6
+              }
+            ]
+          },
+          "scores": {
+            "grounding": 0.0759,
+            "em": 0.0,
+            "f1_proxy": 0.0
+          },
+          "cost": {
+            "tokens": 199,
+            "latency_ms": 0.07
+          },
+          "notes": ""
+        },
+        {
+          "step_id": 6,
+          "module": "QR",
+          "input_data": {
+            "question": "What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?",
+            "n": 3
+          },
+          "output_data": {
+            "query_candidates": [
+              "What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell"
+            ],
+            "payloads": [
+              {
+                "query": "What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell",
+                "rationale": "preserve key entities"
+              }
+            ]
+          },
+          "scores": {
+            "query_quality": 1.0
+          },
+          "cost": {
+            "tokens": 41,
+            "latency_ms": 0.03
+          },
+          "notes": ""
+        },
+        {
+          "step_id": 7,
+          "module": "RA",
+          "input_data": {
+            "query": "What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell",
+            "top_k": 4
+          },
+          "output_data": {
+            "docs": [
+              {
+                "doc_id": "A_Kiss_for_Corliss",
+                "title": "A Kiss for Corliss",
+                "score": 36.63561603461519
+              },
+              {
+                "doc_id": "Kiss_and_Tell_(1945_film)",
+                "title": "Kiss and Tell (1945 film)",
+                "score": 35.9976952350199
+              },
+              {
+                "doc_id": "Meet_Corliss_Archer_(TV_series)",
+                "title": "Meet Corliss Archer (TV series)",
+                "score": 30.255228115353624
+              },
+              {
+                "doc_id": "Vice_President_of_Panama",
+                "title": "Vice President of Panama",
+                "score": 27.591340066833222
+              }
+            ]
+          },
+          "scores": {
+            "retrieval_utility": 0.2157
+          },
+          "cost": {
+            "retrieval_calls": 1,
+            "latency_ms": 3.94
+          },
+          "notes": ""
+        },
+        {
+          "step_id": 8,
+          "module": "AS",
+          "input_data": {
+            "items": [
+              "[1] A Kiss for Corliss: A Kiss for Corliss is a 1949 American comedy film directed by Richard Wallace and written by Howard Dimsdale",
+              "[1] A Kiss for Corliss: A Kiss for Corliss is a 1949 American comedy film directed by Richard Wallace and written by Howard Dimsdale"
+            ]
+          },
+          "output_data": {
+            "final_answer": "[1] A Kiss for Corliss: A Kiss for Corliss is a 1949 American comedy film directed by Richard Wallace and written by Howard Dimsdale",
+            "payload": {
+              "final_answer": "[1] A Kiss for Corliss: A Kiss for Corliss is a 1949 American comedy film directed by Richard Wallace and written by Howard Dimsdale",
+              "consistency_note": "dummy summarizer"
+            }
+          },
+          "scores": {
+            "grounding": 0.0795,
+            "em": 0.0,
+            "f1_proxy": 0.0
+          },
+          "cost": {
+            "tokens": 63,
+            "latency_ms": 0.05
+          },
+          "notes": ""
+        }
+      ],
+      "metadata": {
+        "n_candidates": 3,
+        "elapsed_ms": 13.37
+      },
+      "timestamp": 1774945350.1885996
+    },
+    {
+      "run_id": "2adf8fbe-d503-495d-86f5-79eea69b27d9",
+      "question": "What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?",
+      "gold_answer": "Chief of Protocol",
+      "workflow_id": "W6",
+      "planner_reason": "batch-rollout",
+      "final_answer": "[1] A Kiss for Corliss: A Kiss for Corliss is a 1949 American comedy film directed by Richard Wallace and written by Howard Dimsdale",
+      "final_scores": {
+        "em": 0.0,
+        "f1_proxy": 0.0,
+        "process_score": 0.3492,
+        "utility_total": 0.0861
+      },
+      "total_cost": {
+        "tokens": 277.0,
+        "retrieval_calls": 1.0,
+        "latency_ms": 3.9099999999999997
+      },
+      "steps": [
+        {
+          "step_id": 1,
+          "module": "DRAFT",
+          "input_data": {
+            "question": "What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?"
+          },
+          "output_data": {
+            "draft_reasoning": "Need evidence to answer: What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?",
+            "payload": {
+              "draft_reasoning": "Need evidence to answer: What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?",
+              "predicted_answer": "unknown"
+            }
+          },
+          "scores": {
+            "draft_relevance": 0.8
+          },
+          "cost": {
+            "tokens": 36,
+            "latency_ms": 0.03
+          },
+          "notes": ""
+        },
+        {
+          "step_id": 2,
+          "module": "REFLECT",
+          "input_data": {
+            "draft_reasoning": "Need evidence to answer: What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?"
+          },
+          "output_data": {
+            "reflected_query": "What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell",
+            "payload": {
+              "missing_information": [
+                "missing supporting fact"
+              ],
+              "query": "What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell"
+            }
+          },
+          "scores": {
+            "reflection_quality": 1.0
+          },
+          "cost": {
+            "tokens": 51,
+            "latency_ms": 0.02
+          },
+          "notes": ""
+        },
+        {
+          "step_id": 3,
+          "module": "RA",
+          "input_data": {
+            "query": "What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell",
+            "top_k": 4
+          },
+          "output_data": {
+            "docs": [
+              {
+                "doc_id": "A_Kiss_for_Corliss",
+                "title": "A Kiss for Corliss",
+                "score": 36.63561603461519
+              },
+              {
+                "doc_id": "Kiss_and_Tell_(1945_film)",
+                "title": "Kiss and Tell (1945 film)",
+                "score": 35.9976952350199
+              },
+              {
+                "doc_id": "Meet_Corliss_Archer_(TV_series)",
+                "title": "Meet Corliss Archer (TV series)",
+                "score": 30.255228115353624
+              },
+              {
+                "doc_id": "Vice_President_of_Panama",
+                "title": "Vice President of Panama",
+                "score": 27.591340066833222
+              }
+            ]
+          },
+          "scores": {
+            "retrieval_utility": 0.2157
+          },
+          "cost": {
+            "retrieval_calls": 1,
+            "latency_ms": 3.78
+          },
+          "notes": ""
+        },
+        {
+          "step_id": 4,
+          "module": "AG",
+          "input_data": {
+            "question": "What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?",
+            "num_docs": 4,
+            "n": 3
+          },
+          "output_data": {
+            "answer_candidates": [
+              "[1] A Kiss for Corliss: A Kiss for Corliss is a 1949 American comedy film directed by Richard Wallace and written by Howard Dimsdale"
+            ],
+            "payloads": [
+              {
+                "answer": "[1] A Kiss for Corliss: A Kiss for Corliss is a 1949 American comedy film directed by Richard Wallace and written by Howard Dimsdale",
+                "evidence_ids": [
+                  1
+                ],
+                "confidence": 0.6
+              }
+            ]
+          },
+          "scores": {
+            "grounding": 0.0795,
+            "em": 0.0,
+            "f1_proxy": 0.0
+          },
+          "cost": {
+            "tokens": 190,
+            "latency_ms": 0.08
+          },
+          "notes": ""
+        }
+      ],
+      "metadata": {
+        "n_candidates": 3,
+        "elapsed_ms": 4.14
+      },
+      "timestamp": 1774945350.1927934
+    }
+  ],
+  "best_labels": [
+    {
+      "question": "Were Scott Derrickson and Ed Wood of the same nationality?",
+      "answer": "yes",
+      "best_workflow": "W6",
+      "best_utility": 0.0777
+    },
+    {
+      "question": "What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?",
+      "answer": "Chief of Protocol",
+      "best_workflow": "W6",
+      "best_utility": 0.0861
+    }
+  ],
+  "workflow_avg_utility": {
+    "W1": -0.0016,
+    "W2": 0.0558,
+    "W3": 0.0089,
+    "W4": -0.0601,
+    "W5": -0.0288,
+    "W6": 0.0819
+  }
+}

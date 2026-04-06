@@ -1,0 +1,559 @@
+[
+  {
+    "run_id": "ccf004be-e838-45a7-8d0b-34f4a6b184e2",
+    "question": "Who wrote Pride and Prejudice?",
+    "gold_answer": "Jane Austen",
+    "workflow_id": "W6",
+    "planner_reason": "fallback reflective retrieval",
+    "final_answer": "Jane Austen",
+    "final_scores": {
+      "em": 1.0,
+      "f1_proxy": 1.0,
+      "process_score": 0.7289,
+      "utility_total": 1.2249
+    },
+    "total_cost": {
+      "tokens": 130.0,
+      "retrieval_calls": 1.0,
+      "latency_ms": 0.55
+    },
+    "steps": [
+      {
+        "step_id": 1,
+        "module": "DRAFT",
+        "input_data": {
+          "question": "Who wrote Pride and Prejudice?"
+        },
+        "output_data": {
+          "draft_reasoning": "Need evidence to answer: Who wrote Pride and Prejudice?",
+          "payload": {
+            "draft_reasoning": "Need evidence to answer: Who wrote Pride and Prejudice?",
+            "predicted_answer": "unknown"
+          }
+        },
+        "scores": {
+          "draft_relevance": 0.5714285714285714
+        },
+        "cost": {
+          "tokens": 30,
+          "latency_ms": 0.3
+        },
+        "notes": ""
+      },
+      {
+        "step_id": 2,
+        "module": "REFLECT",
+        "input_data": {
+          "draft_reasoning": "Need evidence to answer: Who wrote Pride and Prejudice?"
+        },
+        "output_data": {
+          "reflected_query": "Who wrote Pride and Prejudice",
+          "payload": {
+            "missing_information": [
+              "missing supporting fact"
+            ],
+            "query": "Who wrote Pride and Prejudice"
+          }
+        },
+        "scores": {
+          "reflection_quality": 1.0
+        },
+        "cost": {
+          "tokens": 38,
+          "latency_ms": 0.05
+        },
+        "notes": ""
+      },
+      {
+        "step_id": 3,
+        "module": "RA",
+        "input_data": {
+          "query": "Who wrote Pride and Prejudice",
+          "top_k": 4
+        },
+        "output_data": {
+          "docs": [
+            {
+              "doc_id": "d1",
+              "title": "Pride and Prejudice",
+              "score": 2.608167589189497
+            },
+            {
+              "doc_id": "d2",
+              "title": "Jane Austen",
+              "score": 0.9471188569837249
+            },
+            {
+              "doc_id": "d7",
+              "title": "Wikipedia style note",
+              "score": 0.2615489525095403
+            },
+            {
+              "doc_id": "d3",
+              "title": "Persuasion",
+              "score": 0.0
+            }
+          ]
+        },
+        "scores": {
+          "retrieval_utility": 0.7222
+        },
+        "cost": {
+          "retrieval_calls": 1,
+          "latency_ms": 0.14
+        },
+        "notes": ""
+      },
+      {
+        "step_id": 4,
+        "module": "AG",
+        "input_data": {
+          "question": "Who wrote Pride and Prejudice?",
+          "num_docs": 4,
+          "n": 3
+        },
+        "output_data": {
+          "answer_candidates": [
+            "Jane Austen"
+          ],
+          "payloads": [
+            {
+              "answer": "Jane Austen",
+              "evidence_ids": [
+                1
+              ],
+              "confidence": 0.6
+            }
+          ]
+        },
+        "scores": {
+          "grounding": 0.08,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "cost": {
+          "tokens": 62,
+          "latency_ms": 0.06
+        },
+        "notes": ""
+      }
+    ],
+    "metadata": {
+      "n_candidates": 3,
+      "elapsed_ms": 0.69
+    },
+    "timestamp": 1774841512.011737
+  },
+  {
+    "run_id": "5e407b40-a3a3-48e3-8d38-3cef092078a9",
+    "question": "Which novel by the author of Pride and Prejudice was published posthumously?",
+    "gold_answer": "Persuasion",
+    "workflow_id": "W6",
+    "planner_reason": "fallback reflective retrieval",
+    "final_answer": "Persuasion",
+    "final_scores": {
+      "em": 1.0,
+      "f1_proxy": 1.0,
+      "process_score": 0.753,
+      "utility_total": 1.2328
+    },
+    "total_cost": {
+      "tokens": 144.0,
+      "retrieval_calls": 1.0,
+      "latency_ms": 0.39999999999999997
+    },
+    "steps": [
+      {
+        "step_id": 1,
+        "module": "DRAFT",
+        "input_data": {
+          "question": "Which novel by the author of Pride and Prejudice was published posthumously?"
+        },
+        "output_data": {
+          "draft_reasoning": "Need evidence to answer: Which novel by the author of Pride and Prejudice was published posthumously?",
+          "payload": {
+            "draft_reasoning": "Need evidence to answer: Which novel by the author of Pride and Prejudice was published posthumously?",
+            "predicted_answer": "unknown"
+          }
+        },
+        "scores": {
+          "draft_relevance": 0.7
+        },
+        "cost": {
+          "tokens": 33,
+          "latency_ms": 0.13
+        },
+        "notes": ""
+      },
+      {
+        "step_id": 2,
+        "module": "REFLECT",
+        "input_data": {
+          "draft_reasoning": "Need evidence to answer: Which novel by the author of Pride and Prejudice was published posthumously?"
+        },
+        "output_data": {
+          "reflected_query": "Which novel by the author of Pride and Prejudice was published posthumously",
+          "payload": {
+            "missing_information": [
+              "missing supporting fact"
+            ],
+            "query": "Which novel by the author of Pride and Prejudice was published posthumously"
+          }
+        },
+        "scores": {
+          "reflection_quality": 1.0
+        },
+        "cost": {
+          "tokens": 45,
+          "latency_ms": 0.05
+        },
+        "notes": ""
+      },
+      {
+        "step_id": 3,
+        "module": "RA",
+        "input_data": {
+          "query": "Which novel by the author of Pride and Prejudice was published posthumously",
+          "top_k": 4
+        },
+        "output_data": {
+          "docs": [
+            {
+              "doc_id": "d1",
+              "title": "Pride and Prejudice",
+              "score": 4.2493005564635435
+            },
+            {
+              "doc_id": "d3",
+              "title": "Persuasion",
+              "score": 3.1311992979118224
+            },
+            {
+              "doc_id": "d5",
+              "title": "Japan GDP",
+              "score": 2.868402820844042
+            },
+            {
+              "doc_id": "d2",
+              "title": "Jane Austen",
+              "score": 1.1760389302693026
+            }
+          ]
+        },
+        "scores": {
+          "retrieval_utility": 0.7682
+        },
+        "cost": {
+          "retrieval_calls": 1,
+          "latency_ms": 0.15
+        },
+        "notes": ""
+      },
+      {
+        "step_id": 4,
+        "module": "AG",
+        "input_data": {
+          "question": "Which novel by the author of Pride and Prejudice was published posthumously?",
+          "num_docs": 4,
+          "n": 3
+        },
+        "output_data": {
+          "answer_candidates": [
+            "Persuasion"
+          ],
+          "payloads": [
+            {
+              "answer": "Persuasion",
+              "evidence_ids": [
+                1
+              ],
+              "confidence": 0.6
+            }
+          ]
+        },
+        "scores": {
+          "grounding": 0.05,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "cost": {
+          "tokens": 66,
+          "latency_ms": 0.07
+        },
+        "notes": ""
+      }
+    ],
+    "metadata": {
+      "n_candidates": 3,
+      "elapsed_ms": 0.54
+    },
+    "timestamp": 1774841512.0126343
+  },
+  {
+    "run_id": "93e514c0-0881-495a-a737-326181024941",
+    "question": "Compare California and Japan in terms of GDP.",
+    "gold_answer": "California has a GDP larger than Japan in this sample corpus",
+    "workflow_id": "W4",
+    "planner_reason": "comparative or independent multi-hop",
+    "final_answer": "[1] California GDP: California has a GDP larger than most countries",
+    "final_scores": {
+      "em": 0.0,
+      "f1_proxy": 0.3846,
+      "process_score": 0.2148,
+      "utility_total": 0.3765
+    },
+    "total_cost": {
+      "tokens": 206.0,
+      "retrieval_calls": 3.0,
+      "latency_ms": 0.65
+    },
+    "steps": [
+      {
+        "step_id": 1,
+        "module": "QDP",
+        "input_data": {
+          "question": "Compare California and Japan in terms of GDP."
+        },
+        "output_data": {
+          "sub_questions": [
+            "Compare California",
+            "Japan in terms of GDP."
+          ],
+          "payload": {
+            "sub_questions": [
+              "Compare California",
+              "Japan in terms of GDP."
+            ],
+            "reason": "split by independent components"
+          }
+        },
+        "scores": {
+          "decomposition_quality": 0.5
+        },
+        "cost": {
+          "tokens": 37,
+          "latency_ms": 0.12
+        },
+        "notes": ""
+      },
+      {
+        "step_id": 2,
+        "module": "RA",
+        "input_data": {
+          "query": "Compare California",
+          "top_k": 4
+        },
+        "output_data": {
+          "docs": [
+            {
+              "doc_id": "d4",
+              "title": "California GDP",
+              "score": 1.6021735193467375
+            },
+            {
+              "doc_id": "d1",
+              "title": "Pride and Prejudice",
+              "score": 0.0
+            },
+            {
+              "doc_id": "d2",
+              "title": "Jane Austen",
+              "score": 0.0
+            },
+            {
+              "doc_id": "d3",
+              "title": "Persuasion",
+              "score": 0.0
+            }
+          ]
+        },
+        "scores": {
+          "retrieval_utility": 0.225
+        },
+        "cost": {
+          "retrieval_calls": 1,
+          "latency_ms": 0.04
+        },
+        "notes": ""
+      },
+      {
+        "step_id": 3,
+        "module": "AG",
+        "input_data": {
+          "question": "Compare California",
+          "num_docs": 4,
+          "n": 1
+        },
+        "output_data": {
+          "answer_candidates": [
+            "[1] California GDP: California has a GDP larger than most countries"
+          ],
+          "payloads": [
+            {
+              "answer": "[1] California GDP: California has a GDP larger than most countries",
+              "evidence_ids": [
+                1
+              ],
+              "confidence": 0.6
+            }
+          ]
+        },
+        "scores": {
+          "grounding": 0.3043,
+          "em": 0.0,
+          "f1_proxy": 0.3846
+        },
+        "cost": {
+          "tokens": 60,
+          "latency_ms": 0.08
+        },
+        "notes": ""
+      },
+      {
+        "step_id": 4,
+        "module": "RA",
+        "input_data": {
+          "query": "Japan in terms of GDP.",
+          "top_k": 4
+        },
+        "output_data": {
+          "docs": [
+            {
+              "doc_id": "d5",
+              "title": "Japan GDP",
+              "score": 3.6970204947246588
+            },
+            {
+              "doc_id": "d6",
+              "title": "Confederation of Canada",
+              "score": 0.783348565372709
+            },
+            {
+              "doc_id": "d1",
+              "title": "Pride and Prejudice",
+              "score": 0.0
+            },
+            {
+              "doc_id": "d2",
+              "title": "Jane Austen",
+              "score": 0.0
+            }
+          ]
+        },
+        "scores": {
+          "retrieval_utility": 0.2231
+        },
+        "cost": {
+          "retrieval_calls": 1,
+          "latency_ms": 0.06
+        },
+        "notes": ""
+      },
+      {
+        "step_id": 5,
+        "module": "AG",
+        "input_data": {
+          "question": "Japan in terms of GDP.",
+          "num_docs": 4,
+          "n": 1
+        },
+        "output_data": {
+          "answer_candidates": [
+            "[1] Japan GDP: Japan is one of the largest economies in the world"
+          ],
+          "payloads": [
+            {
+              "answer": "[1] Japan GDP: Japan is one of the largest economies in the world",
+              "evidence_ids": [
+                1
+              ],
+              "confidence": 0.6
+            }
+          ]
+        },
+        "scores": {
+          "grounding": 0.2,
+          "em": 0.0,
+          "f1_proxy": 0.0667
+        },
+        "cost": {
+          "tokens": 63,
+          "latency_ms": 0.06
+        },
+        "notes": ""
+      },
+      {
+        "step_id": 6,
+        "module": "RA",
+        "input_data": {
+          "query": "Compare California and Japan in terms of GDP.",
+          "top_k": 4
+        },
+        "output_data": {
+          "docs": [
+            {
+              "doc_id": "d5",
+              "title": "Japan GDP",
+              "score": 3.6970204947246588
+            },
+            {
+              "doc_id": "d4",
+              "title": "California GDP",
+              "score": 1.6021735193467375
+            },
+            {
+              "doc_id": "d6",
+              "title": "Confederation of Canada",
+              "score": 0.783348565372709
+            },
+            {
+              "doc_id": "d1",
+              "title": "Pride and Prejudice",
+              "score": 0.2615489525095403
+            }
+          ]
+        },
+        "scores": {
+          "retrieval_utility": 0.2346
+        },
+        "cost": {
+          "retrieval_calls": 1,
+          "latency_ms": 0.07
+        },
+        "notes": ""
+      },
+      {
+        "step_id": 7,
+        "module": "AS",
+        "input_data": {
+          "items": [
+            "[1] California GDP: California has a GDP larger than most countries",
+            "[1] Japan GDP: Japan is one of the largest economies in the world"
+          ]
+        },
+        "output_data": {
+          "final_answer": "[1] California GDP: California has a GDP larger than most countries",
+          "payload": {
+            "final_answer": "[1] California GDP: California has a GDP larger than most countries",
+            "consistency_note": "dummy summarizer"
+          }
+        },
+        "scores": {
+          "grounding": 0.2692,
+          "em": 0.0,
+          "f1_proxy": 0.3846
+        },
+        "cost": {
+          "tokens": 46,
+          "latency_ms": 0.22
+        },
+        "notes": ""
+      }
+    ],
+    "metadata": {
+      "n_candidates": 3,
+      "elapsed_ms": 0.86
+    },
+    "timestamp": 1774841512.0136292
+  }
+]
