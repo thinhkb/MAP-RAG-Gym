@@ -1,189 +1,213 @@
 # MAP-RAG-Gym
 
-MVP project that combines two ideas:
-- MAO-ARAG style routing over multiple workflows.
-- RAG-Gym style process-level supervision, logging, and critic training.
+Project này ghép hai ý tưởng:
+- `MAO-ARAG` ở tầng `macro`: planner/router chọn workflow theo `query + budget + cost`.
+- `RAG-Gym` ở tầng `micro`: critic chấm chất lượng step/candidate action bên trong workflow.
 
-The current repo is a practical free-stack baseline: local BM25 retrieval, lightweight workflow routing, experiment manifests, and offline process-supervision utilities.
+Trạng thái hiện tại:
+- Đã mở `offline full-system RL`.
+- Chưa mở `online RL`.
+- Bundle đang được giữ làm mốc an toàn là `outputs/final_budget_policy_bundle_rl_ready.json`.
+- Candidate bundle của offline RL đã train xong nhưng chưa được promote vì bị regression ở budget `low`.
 
-## Goals
-- Keep the full pipeline runnable with a free or local stack.
-- Separate workflow selection, execution, and process evaluation so each part can be tested independently.
-- Provide a base that can later absorb stronger retrieval, stronger LLMs, or learned critics without rewriting the project.
+## Kiến trúc hiện tại
 
-## Current Scope
-- Phase 0 completed as baseline: data preparation, deterministic splits, config, and experiment manifest logging.
-- Phase 1 completed as baseline: workflow library and module executors for `W1` to `W6`.
-- Phase 2 completed as baseline: rule-based router.
-- Phase 3 completed as baseline: heuristic process scoring, process dataset generation, and offline process critic training.
-- Phase 4 completed as baseline: sklearn learned router and offline evaluation.
-- Not completed yet: critic-guided inference, hybrid retrieval, calibrated routing, large-scale evaluation, and any online/RL training loop.
+### Macro layer
+- `low`: ưu tiên rẻ, bundle hiện tại chọn `hybrid_router`.
+- `medium`: trade-off chất lượng/chi phí, bundle hiện tại chọn `gated_bandit_router`.
+- `high`: ưu tiên chất lượng, bundle hiện tại chọn `bandit_router` trên cặp `W2/W3`.
 
-## Workflow Library
+### Micro layer
+- Critic đang sẵn sàng làm `offline reward model` cho:
+  - `QR`: dùng `local_reward`
+  - `AG`: dùng `blended_reward`
+- Critic chưa được bật mặc định để rerank online vì vẫn làm utility giảm nhẹ và tăng cost.
 
-| Workflow | Steps | Intended use |
+### Workflow library
+
+| Workflow | Steps | Ý nghĩa |
 | --- | --- | --- |
-| `W1` | `AG` | Direct answer for cheap/simple questions |
-| `W2` | `QR -> RA -> AG` | Rewrite first, then retrieve and answer |
-| `W3` | `RA -> DS -> AG` | Retrieve, select evidence, then answer |
-| `W4` | `QDP -> RA -> AS` | Parallel decomposition for comparative multi-hop |
-| `W5` | `QDS -> QR -> RA -> AS` | Serial decomposition for dependency-heavy questions |
-| `W6` | `DRAFT -> REFLECT -> RA -> AG` | Reflective retrieval path |
+| `W1` | `AG` | Direct answer, rẻ nhất |
+| `W2` | `QR -> RA -> AG` | Rewrite rồi retrieve |
+| `W3` | `RA -> DS -> AG` | Retrieve rồi select evidence |
+| `W4` | `QDP -> RA -> AS` | Parallel decomposition |
+| `W5` | `QDS -> QR -> RA -> AS` | Serial decomposition |
+| `W6` | `DRAFT -> REFLECT -> RA -> AG` | Reflective retrieval |
 
-## Installation
+## Kết quả chính
+
+### 1. Frozen bundle hiện tại là bundle tốt nhất và an toàn nhất
+
+File:
+- `outputs/final_budget_policy_bundle_rl_ready.json`
+- `outputs/final_budget_policy_test_eval_rl_ready.json`
+- `outputs/final_project_report_rl_ready.json`
+
+Kết quả test 90 câu mỗi budget:
+
+| Budget | Policy | Utility | So với static reference |
+| --- | --- | ---: | ---: |
+| `low` | `hybrid_router` | `0.2899` | `+0.0031` |
+| `medium` | `gated_bandit_router` | `0.3849` | `+0.0145` |
+| `high` | `bandit_router` | `0.4544` | `+0.0307` |
+
+Kết luận:
+- Adaptive macro routing đã thắng static reference ở cả `low/medium/high`.
+- Frontier theo budget là hợp lý: `low < medium < high`.
+- Kiến trúc hiện tại đã đúng tinh thần `MAO-ARAG + RAG-Gym` ở mức routing + reward modeling offline.
+
+### 2. Offline full-system RL đã được mở
+
+File:
+- `outputs/full_system_rl_package.json`
+
+Gate hiện tại:
+- `ready_for_offline_full_system_rl = true`
+- `ready_for_online_full_system_rl = false`
+- `deployment_mode = offline_reward_model_only`
+
+Ý nghĩa:
+- Có thể train offline policy improvement trên tầng macro.
+- Có thể dùng critic làm reward model ở tầng micro.
+- Chưa được bật direct online rerank/update.
+
+### 3. Candidate offline RL đã train xong nhưng chưa nên promote
+
+File:
+- `outputs/offline_full_system_rl/final_budget_policy_bundle_offline_rl_candidate.json`
+- `outputs/offline_full_system_rl/final_budget_policy_test_eval_offline_rl_candidate.json`
+- `outputs/offline_full_system_rl/offline_full_system_rl_training_report.json`
+
+So sánh candidate offline RL với frozen bundle:
+
+| Budget | Frozen | Offline RL candidate | Delta |
+| --- | ---: | ---: | ---: |
+| `low` | `0.2899` | `0.2811` | `-0.0088` |
+| `medium` | `0.3849` | `0.3859` | `+0.0010` |
+| `high` | `0.4544` | `0.4559` | `+0.0015` |
+
+Kết luận:
+- `medium` và `high` nhích lên nhẹ.
+- `low` bị giảm rõ hơn mức gain ở hai budget còn lại.
+- Vì vậy candidate offline RL hiện tại **chưa đủ điều kiện để thay frozen bundle**.
+
+### 4. Critic micro đã đủ tốt cho offline reward modeling, nhưng chưa đủ tốt cho online deployment
+
+File:
+- `outputs/process_critic_budget_qr_local.joblib.meta.json`
+- `outputs/process_critic_budget_ag.joblib.meta.json`
+- `outputs/router_eval_large_budget_high_w2w3_det_critic2_val.json`
+
+Chất lượng critic:
+- `QR`: `spearman = 0.6669`
+- `AG`: `spearman = 0.3543`
+
+Kiểm tra direct critic deployment trên high-budget:
+- `bandit_router`: utility `0.4397`, tokens `156.8`
+- `bandit_router_critic`: utility `0.4362`, tokens `229.0`
+- Gap utility: `-0.0035`
+- Token multiplier: `1.4601x`
+
+Kết luận:
+- Critic đủ tốt để dùng làm `offline reward model`.
+- Critic **chưa đủ tốt để bật rerank online mặc định**.
+
+## Những gì đã làm được
+
+- Đã xây dựng workflow library `W1` đến `W6`.
+- Đã có router rule-based, learned, hybrid, bandit, gated-bandit.
+- Đã đưa `budget_mode` vào utility và routing.
+- Đã build benchmark lớn hơn với `420 train / 90 val / 90 test`.
+- Đã train critic budget-aware cho `QR` và `AG`.
+- Đã chọn được frozen final bundle thắng static reference trên held-out test.
+- Đã mở được gate `offline full-system RL`.
+- Đã train xong candidate macro policies cho offline RL.
+
+## Những gì chưa làm được
+
+- Chưa có candidate offline RL nào thắng frozen bundle trên cả 3 budget cùng lúc.
+- Chưa giữ được chất lượng `low-budget` sau bước offline policy improvement.
+- Chưa đưa critic vào online rerank mà vẫn giữ utility không giảm.
+- Chưa mở `online RL` toàn hệ thống.
+- High-budget macro bandit vẫn còn holdout regret khá cao, nên chưa phù hợp cho online update.
+
+## Kế hoạch tiếp theo
+
+### Ưu tiên 1: sửa regression ở `low-budget`
+- Ràng chặt hơn cost cap khi train offline RL candidate cho `low`.
+- Giữ bias về `W3` mạnh hơn, tránh bandit chuyển sang `W1` quá nhiều.
+- Chỉ promote candidate nếu `low` không còn bị âm so với frozen bundle.
+
+### Ưu tiên 2: làm mạnh hơn high-bandit để chuẩn bị online RL
+- Cải thiện feature/context cho high bandit.
+- Giảm holdout regret và tăng exact-best rate trên budget `high`.
+- Chỉ mở online update khi macro bandit đủ ổn định trên holdout.
+
+### Ưu tiên 3: giảm cost của critic deployment
+- Thử critic theo module hẹp hơn, thay vì bật toàn pipeline.
+- Thử chỉ critic ở `AG`, hoặc chỉ trên một subset query khó.
+- Tối ưu `critic_n_candidates` và gate để token multiplier thấp hơn.
+
+## Các file đang được giữ lại
+
+### Frozen path
+- `outputs/final_budget_policy_bundle_rl_ready.json`
+- `outputs/final_budget_policy_test_eval_rl_ready.json`
+- `outputs/final_budget_policy_test_eval_v2_det90.json`
+- `outputs/final_project_report_rl_ready.json`
+- `outputs/full_system_rl_package.json`
+
+### Data và rollout để tái lập
+- `outputs/hotpotqa_large_train_rollouts.json`
+- `outputs/hotpotqa_large_train_rollouts_high_w2w3_det.json`
+- `outputs/hotpotqa_large_process_train_budget.json`
+
+### Critic và macro eval còn dùng
+- `outputs/process_critic_budget_qr_local.joblib.meta.json`
+- `outputs/process_critic_budget_ag.joblib.meta.json`
+- `outputs/router_eval_large_budget_low_bandit_v2.json`
+- `outputs/router_eval_large_budget_medium_bandit.json`
+- `outputs/router_eval_large_budget_high_w2w3_det_val.json`
+- `outputs/router_eval_large_budget_high_w2w3_det_test.json`
+- `outputs/router_eval_large_budget_high_switch_qrag_det.json`
+- `outputs/router_eval_large_budget_high_w2w3_det_critic2_val.json`
+
+### Offline full-system RL candidate
+- `outputs/offline_full_system_rl/final_budget_policy_bundle_offline_rl_candidate.json`
+- `outputs/offline_full_system_rl/final_budget_policy_test_eval_offline_rl_candidate.json`
+- `outputs/offline_full_system_rl/offline_full_system_rl_training_report.json`
+
+## Lệnh còn cần dùng
+
+### 1. Re-evaluate frozen bundle
 ```bash
-python -m venv .venv
+python scripts/eval_final_budget_bundle.py --corpus data/hotpotqa_large/corpus.json --qa data/hotpotqa_large/splits/test.json --dataset_split test --dataset_name hotpotqa_large --policy_bundle outputs/final_budget_policy_bundle_rl_ready.json --router_model outputs/router_hotpot_budget_calibrated.joblib --llm_provider ollama --llm_model llama3.2 --hybrid_min_confidence 0.55 --hybrid_low_cost_confidence 0.55 --hybrid_low_cost_workflows W1 --budget_modes low medium high --limit 90 --seed 13 --out outputs/final_budget_policy_test_eval_rl_ready.json
 ```
 
-Windows PowerShell:
+### 2. Rebuild the full-system RL gate
 ```bash
-.venv\Scripts\Activate.ps1
-pip install -e .
+python scripts/build_full_system_rl_package.py --policy_bundle outputs/final_budget_policy_bundle_rl_ready.json --final_eval outputs/final_budget_policy_test_eval_rl_ready.json --final_report outputs/final_project_report_rl_ready.json --reference_eval outputs/final_budget_policy_test_eval_v2_det90.json --macro_rollout low=outputs/hotpotqa_large_train_rollouts.json medium=outputs/hotpotqa_large_train_rollouts.json high=outputs/hotpotqa_large_train_rollouts_high_w2w3_det.json --critic_model QR=outputs/process_critic_budget_qr_local.joblib AG=outputs/process_critic_budget_ag.joblib --critic_meta QR=outputs/process_critic_budget_qr_local.joblib.meta.json AG=outputs/process_critic_budget_ag.joblib.meta.json --direct_critic_eval high=outputs/router_eval_large_budget_high_w2w3_det_critic2_val.json --out outputs/full_system_rl_package.json
 ```
 
-macOS/Linux:
+### 3. Train offline full-system RL candidate
 ```bash
-source .venv/bin/activate
-pip install -e .
+python scripts/train_offline_full_system_rl.py --package outputs/full_system_rl_package.json --out_dir outputs/offline_full_system_rl --base_router_model outputs/router_hotpot_budget_calibrated.joblib --probe_corpus data/hotpotqa_large/corpus.json --seed 13
 ```
 
-## Quick Demo
+### 4. Evaluate offline RL candidate before promotion
 ```bash
-python scripts/run_phase1_demo.py
-python scripts/run_phase2_router_demo.py
-python scripts/run_phase3_evaluate.py
-python scripts/train_phase4_router.py
+python scripts/eval_final_budget_bundle.py --corpus data/hotpotqa_large/corpus.json --qa data/hotpotqa_large/splits/test.json --dataset_split test --dataset_name hotpotqa_large --policy_bundle outputs/offline_full_system_rl/final_budget_policy_bundle_offline_rl_candidate.json --router_model outputs/router_hotpot_budget_calibrated.joblib --llm_provider ollama --llm_model llama3.2 --hybrid_min_confidence 0.55 --hybrid_low_cost_confidence 0.55 --hybrid_low_cost_workflows W1 --budget_modes low medium high --limit 90 --seed 13 --out outputs/offline_full_system_rl/final_budget_policy_test_eval_offline_rl_candidate.json
 ```
 
-These demo scripts regenerate their own small outputs when needed. The `outputs/` folder is now trimmed to keep only representative experiment artefacts and a small quick-demo snapshot.
+## Kết luận cuối cùng
 
-## Main Experiment Commands
+Project hiện tại đã đạt đúng tinh thần `MAO-ARAG + RAG-Gym` ở mức:
+- `macro`: chọn workflow theo query/budget/cost
+- `micro`: critic chấm step/candidate action
+- `system`: đã có gate rõ ràng để phân biệt `offline RL ready` và `online RL ready`
 
-### Prepare HotpotQA subset and splits
-```bash
-python scripts/prepare_hotpotqa.py --split validation --limit 200 --out_dir data/hotpotqa --write_splits
-python scripts/create_qa_splits.py --qa data/hotpotqa/qa.json --out_dir data/hotpotqa/splits --seed 13
-```
-
-### Build router training rollouts
-```bash
-python scripts/batch_rollout.py --corpus data/hotpotqa/corpus.json --qa data/hotpotqa/splits/train.json --dataset_split train --llm_provider ollama --llm_model llama3.2 --limit 140 --n_candidates 3 --seed 13 --out outputs/hotpotqa_train_rollouts.json
-```
-
-### Train and evaluate the learned router
-```bash
-python scripts/train_phase4_router.py --input outputs/hotpotqa_train_rollouts.json --output outputs/router_hotpot_phase1.joblib --seed 13
-python scripts/eval_phase4_router.py --corpus data/hotpotqa/corpus.json --qa data/hotpotqa/splits/val.json --dataset_split val --router_model outputs/router_hotpot_phase1.joblib --llm_provider ollama --llm_model llama3.2 --limit 30 --seed 13 --out outputs/router_eval_phase1.json
-```
-
-### Build process-supervision data and train the critic
-```bash
-python scripts/build_process_dataset.py --input outputs/hotpotqa_train_rollouts.json --out outputs/hotpotqa_process_train.json
-python scripts/train_process_critic.py --input outputs/hotpotqa_process_train.json --output outputs/process_critic_hotpot_phase2.joblib --seed 13 --holdout_ratio 0.15
-```
-
-All major experiment files include a `manifest` with split, seed, model, prompt version, and git commit so runs are easier to compare and reproduce.
-
-## Retained Outputs
-- `outputs/hotpotqa_train_rollouts.json`: main rollout set used to train the router and derive process data.
-- `outputs/router_hotpot_phase1.joblib` and `outputs/router_hotpot_phase1.joblib.meta.json`: learned router baseline and training metadata.
-- `outputs/router_eval_phase1.json`: latest retained router evaluation on HotpotQA validation.
-- `outputs/hotpotqa_process_train.json`: process-supervision dataset derived from the retained rollout set.
-- `outputs/process_critic_hotpot_phase2.joblib` and `outputs/process_critic_hotpot_phase2.joblib.meta.json`: baseline process critic and evaluation metadata.
-- `outputs/phase1_demo.json` and `outputs/phase2_router.json`: small quick-demo snapshots.
-
-Sample, smoke, tmp, and stale result files were removed because they were either redundant, generated from tiny toy runs, or no longer matched the current retained experiment path.
-
-## Latest Results
-
-### Router evaluation snapshot
-Source artefacts:
-- `outputs/router_eval_phase1.json`
-- `outputs/router_hotpot_phase1.joblib.meta.json`
-
-Setup:
-- Train split: 140 HotpotQA questions, 132 usable router labels after filtering.
-- Validation split: 30 HotpotQA questions.
-- LLM provider: Ollama `llama3.2`.
-- Candidate count during rollout generation: `n_candidates=3`.
-
-Results:
-
-| Method | Avg utility | Avg tokens | Avg latency ms | Notes |
-| --- | ---: | ---: | ---: | --- |
-| Fixed `W3` | 0.4911 | 119.6 | 931.9 | Best overall retained utility |
-| Fixed `W2` | 0.4858 | 233.0 | 2355.5 | Strong utility, higher cost than `W3` |
-| Rule-based router | 0.3558 | 221.6 | 2347.8 | Best adaptive baseline so far |
-| Fixed `W6` | 0.3527 | 292.5 | 3729.2 | Reflective path helps some cases but is expensive |
-| Learned router | 0.2758 | 120.3 | 1701.3 | Efficient, but clearly behind the rule router |
-| Fixed `W1` | 0.1703 | 40.2 | 989.5 | Cheapest but weakest quality |
-
-Interpretation:
-- Multi-step retrieval workflows are already useful; `W2` and `W3` beat direct answering by a wide margin.
-- The current rule router is the strongest adaptive option in the retained experiments.
-- The learned router is cheaper than the rule router, but its quality drops too much to claim a win yet.
-- The learned router is biased toward `W1` on validation, which suggests label imbalance and under-retrieval on harder questions.
-
-### Process critic snapshot
-Source artefact:
-- `outputs/process_critic_hotpot_phase2.joblib.meta.json`
-
-Setup:
-- Training source: `outputs/hotpotqa_train_rollouts.json`
-- Process examples: 6,278 total
-- Holdout evaluation examples: 948
-- Target: `blended_reward = 0.7 * local_reward + 0.3 * outcome_utility`
-
-Results:
-- Overall MAE: `0.1781`
-- Overall RMSE: `0.2529`
-- Pearson: `0.3989`
-- Spearman: `0.5092`
-
-Interpretation:
-- The critic does learn a meaningful signal from process traces.
-- Rank correlation is decent for a lightweight baseline, so the critic is promising as a reranker or filter.
-- Module quality is uneven: some modules like `QDS` are ranked reasonably well, while `RA` and `DS` remain weak and likely need better features or more balanced data.
-
-## Assessment
-
-### What is already working
-- The repo now has an end-to-end baseline from dataset prep to rollout logging, router training, and critic training.
-- Experiment manifests make retained results auditable instead of relying on unnamed JSON dumps.
-- `W2` and `W3` show that the workflow library is not just decorative; the better retrieval-heavy paths materially improve utility.
-- The rule router is strong enough to act as a useful baseline for later learning-based work.
-- Process-supervision data generation is in place, and the critic baseline shows non-trivial ranking signal.
-
-### Current limitations
-- The latest learned router does not beat the rule router on the retained validation run.
-- Router labels are imbalanced toward cheap workflows, which likely pushes the model to over-predict `W1`.
-- Evaluation is still small-scale: 30 validation questions is enough for direction, not for strong claims.
-- The critic is trained and evaluated offline only; it is not yet plugged back into inference-time action selection.
-- Retrieval remains local BM25 over the prepared corpus, so evidence coverage is still a bottleneck.
-- There is no calibrated confidence, abstention policy, or budget-aware fallback yet.
-
-### Feasible solutions
-- Rebalance router labels or use cost-aware weighting so the learned router does not collapse toward `W1`.
-- Add a confidence threshold: if the learned router is uncertain, fall back to the rule router or to `W3`.
-- Use the process critic to rerank query rewrites, retrieved evidence, and answer candidates before final selection.
-- Expand the experiment matrix to a larger train/val/test split and keep one untouched final test set.
-- Upgrade retrieval from plain BM25 to a hybrid BM25 plus embedding retriever once the baseline protocol is stable.
-- Add module-specific critic features for retrieval and document selection, because those stages are currently the weakest.
-
-## Next Phases
-- Phase 5: critic-guided inference. Use the trained process critic to rerank candidates inside `QR`, `RA`, `DS`, and `AG`, then measure whether utility improves without exploding cost.
-- Phase 6: stronger router and evaluation. Rebuild router labels on a larger dataset, add confidence calibration and fallback logic, and compare learned vs rule routing on a fixed validation/test protocol.
-- Phase 7: retrieval upgrade. Replace pure local BM25 with a stronger corpus and hybrid retrieval so the best workflows are limited less by missing evidence.
-- Phase 8: closed-loop improvement. Use retained traces, critic scores, and harder benchmarks to move from offline analysis toward iterative policy improvement.
-
-## Model Provider Notes
-- `dummy` provider is still useful for smoke tests and pipeline debugging.
-- Ollama is the main local path for the retained experiments. The kept artefacts were generated with `llama3.2`.
-- Gemini support remains available for future runs through `scripts/run_gemini_eval.py`.
-
-## Mapping to the Original Repos
-RAG-Gym contributes the process-supervision framing: trajectory logging, step-level rewards, critic training, and best-of-N style action selection.
-
-MAO-ARAG contributes the planner idea: choose different workflows based on the question instead of forcing one static chain.
-
-This repo intentionally keeps the implementation lightweight. The current priority is reproducible analysis and better routing decisions, not jumping straight to heavy RL or GPU-dependent training.
+Trạng thái cuối:
+- `offline full-system RL`: **đã mở**
+- `online RL`: **chưa mở**
+- Bundle nên dùng hiện tại: **frozen rl_ready bundle**
+- Offline RL candidate: **đã train xong nhưng chưa promote**

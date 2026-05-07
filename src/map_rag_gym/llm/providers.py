@@ -114,6 +114,7 @@ class GeminiLLM(BaseLLM):
         if env_path.exists():
             load_dotenv(env_path, override=True)
         self.api_key = os.getenv("GEMINI_API_KEY", "")
+        self.temperature = float(os.getenv("GEMINI_TEMPERATURE", "0"))
 
     def generate(self, prompt: str, n: int = 1) -> List[LLMResponse]:
         if not self.api_key:
@@ -124,7 +125,7 @@ class GeminiLLM(BaseLLM):
             payload = {
                 "contents": [{"parts": [{"text": prompt}]}],
                 "generationConfig": {
-                    "temperature": 0.2,
+                    "temperature": self.temperature,
                     "responseMimeType": "application/json",
                 },
             }
@@ -145,13 +146,24 @@ class OllamaLLM(BaseLLM):
         self.timeout = int(os.getenv("OLLAMA_TIMEOUT", "600"))
         self.max_retries = int(os.getenv("OLLAMA_MAX_RETRIES", "3"))
         self.retry_backoff_sec = float(os.getenv("OLLAMA_RETRY_BACKOFF_SEC", "5"))
+        self.temperature = float(os.getenv("OLLAMA_TEMPERATURE", "0"))
+        self.top_p = float(os.getenv("OLLAMA_TOP_P", "1"))
         self.session = requests.Session()
 
     def generate(self, prompt: str, n: int = 1) -> List[LLMResponse]:
         url = f"{self.base_url.rstrip('/')}/api/generate"
         out = []
         for _ in range(n):
-            payload = {"model": self.model, "prompt": prompt, "stream": False, "format": "json", "options": {"temperature": 0.2}}
+            payload = {
+                "model": self.model,
+                "prompt": prompt,
+                "stream": False,
+                "format": "json",
+                "options": {
+                    "temperature": self.temperature,
+                    "top_p": self.top_p,
+                },
+            }
             last_error: Exception | None = None
             for attempt in range(1, self.max_retries + 1):
                 try:

@@ -14,7 +14,7 @@ from map_rag_gym.prompts.templates import (
     serial_decompose_prompt,
     summarize_prompt,
 )
-from map_rag_gym.retrieval.bm25 import LocalBM25Retriever
+from map_rag_gym.retrieval.common import RetrieverBackend
 
 
 def _extract_text(item: str | Dict) -> str:
@@ -43,17 +43,28 @@ class QueryRewriter(Executor):
 class RetrieverAgent(Executor):
     name = "RA"
 
-    def __init__(self, retriever: LocalBM25Retriever) -> None:
+    def __init__(self, retriever: RetrieverBackend, retriever_name: str = "bm25") -> None:
         self.retriever = retriever
+        self.retriever_name = retriever_name
 
-    def run(self, state: PipelineState, query: str | None = None, top_k: int = 4, **_: Any):
+    def run(
+        self,
+        state: PipelineState,
+        query: str | None = None,
+        top_k: int = 4,
+        retriever: RetrieverBackend | None = None,
+        retriever_name: str | None = None,
+        **_: Any,
+    ):
         q = query or state.working_memory.get("selected_query") or state.question
-        docs = self.retriever.search(q, top_k=top_k)
+        backend = retriever or self.retriever
+        backend_name = retriever_name or self.retriever_name
+        docs = backend.search(q, top_k=top_k)
         state.working_memory["retrieved_docs"] = docs
         return self.step(
             state,
-            {"query": q, "top_k": top_k},
-            {"docs": [{"doc_id": d.doc_id, "title": d.title, "score": d.score} for d in docs]},
+            {"query": q, "top_k": top_k, "retriever_type": backend_name},
+            {"docs": [{"doc_id": d.doc_id, "title": d.title, "score": d.score} for d in docs], "retriever_type": backend_name},
             {"retrieval_calls": 1},
         )
 

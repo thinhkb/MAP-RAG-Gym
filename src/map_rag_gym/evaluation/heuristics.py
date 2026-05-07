@@ -22,6 +22,33 @@ UTILITY_CONFIG = {
         "latency_ms": 10000.0,
     },
 }
+UTILITY_PROFILES = {
+    "low": {
+        "reward_weights": {
+            "f1_proxy": 1.0,
+            "process_score": 0.25,
+        },
+        "cost_weights": {
+            "tokens": 0.16,
+            "retrieval_calls": 0.2,
+            "latency_ms": 0.12,
+        },
+        "cost_normalizers": UTILITY_CONFIG["cost_normalizers"],
+    },
+    "medium": UTILITY_CONFIG,
+    "high": {
+        "reward_weights": {
+            "f1_proxy": 1.0,
+            "process_score": 0.45,
+        },
+        "cost_weights": {
+            "tokens": 0.04,
+            "retrieval_calls": 0.06,
+            "latency_ms": 0.03,
+        },
+        "cost_normalizers": UTILITY_CONFIG["cost_normalizers"],
+    },
+}
 
 
 def _normalize(text: str) -> List[str]:
@@ -63,18 +90,48 @@ def score_answer(answer: str, gold_answer: str) -> Dict[str, float]:
     return {"em": exact, "f1_proxy": round(overlap, 4)}
 
 
-def compute_utility(final_scores: Dict[str, float], total_cost: Dict[str, float], process_score: float) -> float:
-    token_cost = total_cost.get("tokens", 0.0) / UTILITY_CONFIG["cost_normalizers"]["tokens"]
-    retrieval_cost = total_cost.get("retrieval_calls", 0.0) / UTILITY_CONFIG["cost_normalizers"]["retrieval_calls"]
-    latency_cost = total_cost.get("latency_ms", 0.0) / UTILITY_CONFIG["cost_normalizers"]["latency_ms"]
+def get_utility_profile(budget_mode: str = "medium") -> Dict[str, Dict[str, float]]:
+    mode = str(budget_mode or "medium").strip().lower()
+    if mode not in UTILITY_PROFILES:
+        raise ValueError(f"Unknown utility profile '{budget_mode}'. Expected one of {sorted(UTILITY_PROFILES)}.")
+    return UTILITY_PROFILES[mode]
+
+
+def compute_utility_with_config(
+    final_scores: Dict[str, float],
+    total_cost: Dict[str, float],
+    process_score: float,
+    config: Dict[str, Dict[str, float]],
+) -> float:
+    token_cost = total_cost.get("tokens", 0.0) / config["cost_normalizers"]["tokens"]
+    retrieval_cost = total_cost.get("retrieval_calls", 0.0) / config["cost_normalizers"]["retrieval_calls"]
+    latency_cost = total_cost.get("latency_ms", 0.0) / config["cost_normalizers"]["latency_ms"]
     utility = (
-        UTILITY_CONFIG["reward_weights"]["f1_proxy"] * final_scores.get("f1_proxy", 0.0)
-        + UTILITY_CONFIG["reward_weights"]["process_score"] * process_score
-        - UTILITY_CONFIG["cost_weights"]["tokens"] * token_cost
-        - UTILITY_CONFIG["cost_weights"]["retrieval_calls"] * retrieval_cost
-        - UTILITY_CONFIG["cost_weights"]["latency_ms"] * latency_cost
+        config["reward_weights"]["f1_proxy"] * final_scores.get("f1_proxy", 0.0)
+        + config["reward_weights"]["process_score"] * process_score
+        - config["cost_weights"]["tokens"] * token_cost
+        - config["cost_weights"]["retrieval_calls"] * retrieval_cost
+        - config["cost_weights"]["latency_ms"] * latency_cost
     )
     return round(utility, 4)
+
+
+def compute_budgeted_utility(
+    final_scores: Dict[str, float],
+    total_cost: Dict[str, float],
+    process_score: float,
+    budget_mode: str = "medium",
+) -> float:
+    return compute_utility_with_config(
+        final_scores=final_scores,
+        total_cost=total_cost,
+        process_score=process_score,
+        config=get_utility_profile(budget_mode),
+    )
+
+
+def compute_utility(final_scores: Dict[str, float], total_cost: Dict[str, float], process_score: float) -> float:
+    return compute_utility_with_config(final_scores, total_cost, process_score, UTILITY_CONFIG)
 
 
 def _extract_text(item: str | Dict) -> str:

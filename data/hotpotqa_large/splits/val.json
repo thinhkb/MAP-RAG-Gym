@@ -1,0 +1,812 @@
+[
+  {
+    "id": "307",
+    "question": "What prolific English engineer, who died on 15 December 1857, contributed to the advent of the hot air engine by way of their open cycle devices?",
+    "answer": "George Cayley",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "23",
+    "question": "Which performance act has a higher instrument to person ratio, Badly Drawn Boy or Wolf Alice? ",
+    "answer": "Badly Drawn Boy",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "388",
+    "question": "The man, who the award in which \"Summer of the Monkeys\" won, was a spokesman for white sector of America?",
+    "answer": "middle America",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "503",
+    "question": "What is the birthday of this Anglo-Irish actress, courtean, and mistress, who was the mother to the illegitimate daughter of King William IV?",
+    "answer": "22 November",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "534",
+    "question": "In what year did the Guild of Music Supervisors Awards recognize a British-American romantic drama film based on the 1952 romance novel \"The Price of Salt\" starring Cate Blanchett?",
+    "answer": "2016",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "235",
+    "question": "The Kansas City Wizards have had three home venues in Kansas City in their time.  Which was their first?",
+    "answer": "Arrowhead Stadium",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "203",
+    "question": "At the 71st Golden Globe Awards for television in 2013, what achievement did Breaking Bad, police sitcom Brooklyn Nine-Nine and American Hustle attain?",
+    "answer": "multiple awards",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "162",
+    "question": "What major city is the Faith Lutheran Middle School and High School located by?",
+    "answer": "Las Vegas",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "495",
+    "question": "How many restaurants comprise the quick service restaurant chain that Ron Joyce helped found?",
+    "answer": "4,613",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "586",
+    "question": "Fantasy Records is know for recordings of comedian Lenny Bruce, Creedence Clearwater Revival, and what American jazz pianist who composed the music for the animated television adaptations of the \"Peanuts\" comic strip?",
+    "answer": "Vincent Anthony Guaraldi",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "179",
+    "question": "What country does Hatton Hill and Hatton Castle, Angus have in common?",
+    "answer": "Scotland",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "328",
+    "question": "Were Enrique Carreras and Lionel Ngakane both filmakers during the 20th century? ",
+    "answer": "yes",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "104",
+    "question": "Since 2 June 2017, The Leader of Fine Gael had been held by which Irish Fine Gael politician who has served as Taoiseach and Minister for Defence?",
+    "answer": "Leo Varadkar",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "546",
+    "question": "What drug is among the list of illegal drugs in the Philippines and can be taken by mouth or by injection?",
+    "answer": "Ephedrine",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "147",
+    "question": "What is the name of the Isles who were led by Aonghus Mór and covered a total land area of over 8300 km2?",
+    "answer": "Kingdom of the Isles",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "303",
+    "question": "Which film starring Patrick Tatten is based on a book written by Steve Lopez?",
+    "answer": "The Soloist",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "125",
+    "question": "Mummulgum is a stop on the Bruxner Highway before reaching the town on the banks of which river?",
+    "answer": "Richmond",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "395",
+    "question": "Which Grand Slam singles tournament have Francesca Schiavone and Olga Morozova both been finalists in?",
+    "answer": "French Open",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "182",
+    "question": "Which English musician is known for both the songs \"See Yourself\" and \"Withing You Without You\"?",
+    "answer": "George Harrison",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "567",
+    "question": "Which company owns the hotel on whose premises the Cotal Arena is located ?",
+    "answer": "Las Vegas Sands company.",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "588",
+    "question": "Which country borders the Central African Republic and is south of Libya and east of Niger?",
+    "answer": "Republic of Chad",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "578",
+    "question": "Chicagoland Sports Hall of Fame was founded by the company located in what Washington town, near the state capital?",
+    "answer": "Tumwater, Washington",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "448",
+    "question": "What is the name of the film starring Rose McGowan and features the character Earl McGraw's daughter?",
+    "answer": "Planet Terror",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "110",
+    "question": "Based on a True Story... is an album by which country music star, with the single My Eyes?",
+    "answer": "Blake Shelton",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "555",
+    "question": "Name a musician that worked with Hiren Roy and Vilayat Khan.",
+    "answer": "Nikhil Banerjee",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "421",
+    "question": "\"A Summer in the Cage\" and \"American Hardcore\" are both what kind of film?",
+    "answer": "documentary",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "531",
+    "question": "Are Mauritz Stiller and Johannes Grenzfurthner both of the same nationality?",
+    "answer": "no",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "217",
+    "question": "From March 631 to April 631, Farrukhzad Khosrau V was the king of an empire that succeeded which empire?",
+    "answer": "the Parthian Empire",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "132",
+    "question": "Alice David is the voice of Lara Croft in a video game developed by which company ?",
+    "answer": "Crystal Dynamics",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "74",
+    "question": "Robert Suettinger was the national intelligence officer under which former Governor of Arkansas?",
+    "answer": "William Jefferson Clinton",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "378",
+    "question": "Which of the movie which has Rich Lee 3-D previsualizations was directed by Francis Lawrence?",
+    "answer": "Constantine",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "80",
+    "question": "What is the county seat of the county where East Lempster, New Hampshire is located?",
+    "answer": "Newport",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "365",
+    "question": " What is the latest album of Tim Hecker, the Canadian electronic music maker?",
+    "answer": "Love Streams",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "256",
+    "question": "What year did Roy Rogers and his third wife star in a film directed by Frank McDonald?",
+    "answer": "1945",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "192",
+    "question": "Georges-Henri Bousquet translated the work of a historian who is of what heritage?",
+    "answer": "North African Arab",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "16",
+    "question": "The Vermont Catamounts men's soccer team currently competes in a conference that was formerly known as what from 1988 to 1996?",
+    "answer": "the North Atlantic Conference",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "408",
+    "question": "How large is the shopping mall where KGOT radio station has its studios ?",
+    "answer": "728,000 ft²",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "151",
+    "question": "Marcus Wayne Garland spent nine seasons with an American professional baseball team that is based in Baltimore, Maryland, and was one of the AMerican League's original eight charter franchises when the league was established in what year?",
+    "answer": "1901",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "106",
+    "question": "hree Men on a Horse is a play by a playwright born in which year ?",
+    "answer": "1887",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "342",
+    "question": "Who was the president of the Sinn Fein political party during the Hume-Adams Dialogue?",
+    "answer": "Gerard \"Gerry\" Adams",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "114",
+    "question": "Which component of shellite has the formula (ON)CHOH?",
+    "answer": "picric acid",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "242",
+    "question": "Which professional baseball player and National 1993 Baseball Hall of Fame inductee is featured in the Greatest Sports Legends anthology? ",
+    "answer": "Reginald Martinez \"Reggie\" Jackson",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "493",
+    "question": "After he was contracted by the team that is headquartered in Affalterbach, Baden-Württemberg, Germany, Dario Franchitti competed in what series?",
+    "answer": "DTM",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "264",
+    "question": "What was the name of the fanzine that interviewed the Sex Pistols bassist when he was in the band \"The Flowers of Romance?\"",
+    "answer": "SKUM",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "272",
+    "question": "What movie did Pitof direct which had an action-adventure tie-in video game based off of it in 2004?",
+    "answer": "Catwoman",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "549",
+    "question": "WAVN is a Gospel formatted broadcast radio station tied to which city in DeSoto County, Mississippi?",
+    "answer": "Southaven, Mississippi",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "254",
+    "question": "in 1999, Spirit Halloween LLC was purchased by a mall retailer that has how many stores in the United States and Canada ?",
+    "answer": "over 600 stores",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "79",
+    "question": "In which year was the King who made the 1925 Birthday Honours born?",
+    "answer": "1865",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "171",
+    "question": "What is the birthplace of the Senator who represents the first of 62 districts in the State Senate?",
+    "answer": "Brooklyn, New York",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "528",
+    "question": "Which band was formed first, Wavves or Social Code?",
+    "answer": "Social Code",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "536",
+    "question": "What number president was Annie Caputo nominated by to become a member of the Nuclear Regulatory Commission?",
+    "answer": "45th",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "18",
+    "question": "Roger O. Egeberg was Assistant Secretary for Health and Scientific Affairs during the administration of a president that served during what years?",
+    "answer": "1969 until 1974",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "427",
+    "question": "Which river system in Chilhowie, Virginia was the starting place for most Longhunters?",
+    "answer": "Holston River",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "436",
+    "question": "Where is the school that Tyler Kalinoski went to located?",
+    "answer": "located in Olathe, Kansas",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "187",
+    "question": "Which travel parody series featured American actor, comedian, and radio host best known as the host of \"The Joe Schmo Show\"?",
+    "answer": "Hidden America with Jonah Ray",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "267",
+    "question": "Candy Coburn has shared the stage with an American country music group with who playing guitar?",
+    "answer": "Charles Kelley",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "240",
+    "question": "What arcade game is named after the only player in major league history to have a 0.300 batting average for 7 consecutive seasons?",
+    "answer": "a pinball machine",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "517",
+    "question": "Which avant-garde Japanese composer studied with John Cage and wrote Music for Electric Metronomes?",
+    "answer": "Toshi Ichiyanagi",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "357",
+    "question": "Which novelist, J. G. Farrell or Louis Aragon, wrote of the political and human consequences of his country's colonial rule?",
+    "answer": "Farrell",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "305",
+    "question": "The 1984 film \"Marlene\" is a documentary about an actress born in what year?",
+    "answer": "1901",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "289",
+    "question": "Which came to market first, \"Hey Pa! There's a Goat on the Roof\" or \"Poleconomy\"",
+    "answer": "Hey Pa! There's a Goat on the Roof",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "137",
+    "question": "During Siege of Bharatpur, which Commander-in-Chief of Ireland and Commander-in-Chief of India contributed to the storming of the castle?",
+    "answer": "Lord Combermere",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "464",
+    "question": "What kind of dinosaur does Raymond Ochoa voice in the Pixar film \"The Good Dinosaur\"?",
+    "answer": "Apatosaurus",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "154",
+    "question": "Are Broughtonia and Laeliocattleya both orchids?",
+    "answer": "yes",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "208",
+    "question": "Who has written more than 300 papers, Semyon Aranovich Gershgorin or Pavel Alexandrov?",
+    "answer": "Pavel Sergeyevich Alexandrov",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "62",
+    "question": "Who was born earlier, Emma Bull or Virginia Woolf?",
+    "answer": "Adeline Virginia Woolf",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "159",
+    "question": "The song \"Chim Chim Cher-ee\" can be heard  in the \"Mary Poppins\" scene of a Disney ride that debuted in what year?",
+    "answer": "1989",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "64",
+    "question": "Scott Parkin has been a vocal critic of Exxonmobil and another corporation that has operations in how many countries ?",
+    "answer": "more than 70 countries",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "1",
+    "question": "What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?",
+    "answer": "Chief of Protocol",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "565",
+    "question": "What are both James Hetfield and Bob Marley?",
+    "answer": "musician, singer, and songwriter",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "47",
+    "question": "What type of forum did a former Soviet statesman initiate?",
+    "answer": "Organizations could come together to address global issues",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "330",
+    "question": "Where is the singer of \"B Boy\" raised?",
+    "answer": "Philadelphia",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "175",
+    "question": "Are Bamboo Mañalac and Danny Jones both musicians?",
+    "answer": "yes",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "422",
+    "question": "How many novels are there in the series of novels of which Shadows in Flight is the tenth novel ?",
+    "answer": "fifteen",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "225",
+    "question": "What is the name of the ethnic group who settled in Canada in the 17th century that participated in a conflict with Irish Catholic immigrants in the Shiners' War?",
+    "answer": "French Canadians",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "19",
+    "question": "Which writer was from England, Henry Roth or Robert Erskine Childers?",
+    "answer": "Robert Erskine Childers DSC",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "355",
+    "question": "Are Phlebodium and Pieris both species of ferns?",
+    "answer": "no",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "278",
+    "question": "Meaning \"reddish water\" in Hawaiian, which location was Butch Van Artsdalen known for surfing 25-foot waves at?",
+    "answer": "Waimea Bay",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "413",
+    "question": "The VMAQT-1 logo is a female spirit in Irish mythology who heralds the death of what?",
+    "answer": "a family member",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "520",
+    "question": "Which movie directed by James Gunn portrayed the fictional character, Ego the Living Planet?",
+    "answer": "Guardians of the Galaxy Vol. 2",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "304",
+    "question": "Are Skeptical Inquirer and The Progressive Populist both tabloid-style magazines?",
+    "answer": "no",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "329",
+    "question": "The city that contains the Yunnan Provincial Museum is also known by what nickname?",
+    "answer": "Spring city",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "589",
+    "question": "Which piece did Ludwig van Beethoven publish in 1801 that was dedicated to Count Moritz von Fries? ",
+    "answer": "Symphony No. 7",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "35",
+    "question": "Alexander Kerensky was defeated and destroyed by the Bolsheviks in the course of a civil war that ended when ?",
+    "answer": "October 1922",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "85",
+    "question": "When was the American lawyer, lobbyist and political consultant who was a senior member of the presidential campaign of Donald Trump born?",
+    "answer": "April 1, 1949",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "115",
+    "question": "The Argentine PGA Championship record holder has won how many tournaments worldwide?",
+    "answer": "230",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "579",
+    "question": "The album \"The Best of LeAnn Rimes\" contained a song used as the theme song for a film. What is the name of the film?",
+    "answer": "Coyote Ugly",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "57",
+    "question": "who is younger Keith Bostic or Jerry Glanville ?",
+    "answer": "Keith Bostic",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "284",
+    "question": "I'd Come for You is a single by the band formed in what Alberta city?",
+    "answer": "Hanna",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  },
+  {
+    "id": "350",
+    "question": "when was the album that includes the song by Dustin Lynch released to country radio on February 17, 2017?",
+    "answer": "September 8, 2017",
+    "metadata": {
+      "dataset": "hotpotqa",
+      "source_split": "validation"
+    }
+  }
+]

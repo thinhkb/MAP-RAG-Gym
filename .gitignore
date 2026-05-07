@@ -39,6 +39,8 @@ env/
 *~
 
 # Project specific
-
+baocao/
 *.joblib
 .ipynb_checkpoints/
+
+outputs/

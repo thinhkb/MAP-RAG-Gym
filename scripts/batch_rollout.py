@@ -7,7 +7,8 @@ from statistics import mean
 
 from map_rag_gym.core.pipeline import MAPRAGGym
 from map_rag_gym.core.workflows import WORKFLOWS
-from map_rag_gym.evaluation.heuristics import UTILITY_CONFIG
+from map_rag_gym.evaluation.heuristics import get_utility_profile
+from map_rag_gym.retrieval.policy import parse_workflow_retriever_overrides
 from map_rag_gym.utils.dataset import normalize_qa_records
 from map_rag_gym.utils.experiment import build_experiment_manifest, compare_manifest_fields, set_global_seed
 from map_rag_gym.utils.io import read_json, write_json
@@ -36,9 +37,14 @@ def main():
     ap.add_argument("--qa", required=True)
     ap.add_argument("--llm_provider", default="dummy")
     ap.add_argument("--llm_model", default=None)
+    ap.add_argument("--retriever_type", default="bm25", choices=["bm25", "tfidf", "hybrid"])
+    ap.add_argument("--retriever_bm25_weight", type=float, default=0.5)
+    ap.add_argument("--workflow_retriever_overrides", nargs="+", default=[], help="Optional overrides like W6=hybrid W3=bm25.")
+    ap.add_argument("--workflow_ids", nargs="+", default=None, help="Optional workflow subset, e.g. W2 W3.")
     ap.add_argument("--limit", type=int, default=50)
     ap.add_argument("--n_candidates", type=int, default=3)
     ap.add_argument("--seed", type=int, default=13)
+    ap.add_argument("--budget_mode", default="medium", choices=["low", "medium", "high"])
     ap.add_argument("--dataset_name", default=None)
     ap.add_argument("--dataset_split", default=None)
     ap.add_argument("--prompt_version", default="v1")
@@ -47,8 +53,20 @@ def main():
     args = ap.parse_args()
 
     set_global_seed(args.seed)
+    workflow_retriever_overrides = parse_workflow_retriever_overrides(args.workflow_retriever_overrides)
+    workflow_ids = [str(workflow_id).upper() for workflow_id in (args.workflow_ids or list(WORKFLOWS))]
+    unknown_workflows = [workflow_id for workflow_id in workflow_ids if workflow_id not in WORKFLOWS]
+    if unknown_workflows:
+        raise ValueError(f"Unknown workflows: {unknown_workflows}. Valid workflows: {sorted(WORKFLOWS)}")
     qa = normalize_qa_records(read_json(args.qa))[: args.limit]
-    pipe = MAPRAGGym(args.corpus, llm_provider=args.llm_provider, llm_model=args.llm_model)
+    pipe = MAPRAGGym(
+        args.corpus,
+        llm_provider=args.llm_provider,
+        llm_model=args.llm_model,
+        retriever_type=args.retriever_type,
+        retriever_bm25_weight=args.retriever_bm25_weight,
+        workflow_retriever_overrides=workflow_retriever_overrides,
+    )
     out_path = Path(args.out)
     all_runs = []
     best_labels = []
@@ -66,10 +84,14 @@ def main():
         effective_questions=len(qa),
         seed=args.seed,
         prompt_version=args.prompt_version,
-        utility_config=UTILITY_CONFIG,
+        utility_config=get_utility_profile(args.budget_mode),
         settings={
-            "workflow_ids": list(WORKFLOWS.keys()),
+            "workflow_ids": workflow_ids,
             "n_candidates": args.n_candidates,
+            "budget_mode": args.budget_mode,
+            "retriever_type": args.retriever_type,
+            "retriever_bm25_weight": args.retriever_bm25_weight,
+            "workflow_retriever_overrides": workflow_retriever_overrides,
             "resume": args.resume,
         },
     )
@@ -90,6 +112,10 @@ def main():
                 ("reproducibility", "prompt_version"),
                 ("settings", "workflow_ids"),
                 ("settings", "n_candidates"),
+                ("settings", "budget_mode"),
+                ("settings", "retriever_type"),
+                ("settings", "retriever_bm25_weight"),
+                ("settings", "workflow_retriever_overrides"),
             ],
         )
         if mismatches:
@@ -105,8 +131,15 @@ def main():
         if item["question"] in completed_questions:
             continue
         candidates = []
-        for wf in WORKFLOWS:
-            run = pipe.run(item["question"], item["answer"], wf, planner_reason="batch-rollout", n_candidates=args.n_candidates)
+        for wf in workflow_ids:
+            run = pipe.run(
+                item["question"],
+                item["answer"],
+                wf,
+                planner_reason="batch-rollout",
+                n_candidates=args.n_candidates,
+                budget_mode=args.budget_mode,
+            )
             payload = run.to_dict()
             payload.setdefault("metadata", {})["question_id"] = item["id"]
             payload["metadata"]["dataset_split"] = manifest["dataset"]["split"]

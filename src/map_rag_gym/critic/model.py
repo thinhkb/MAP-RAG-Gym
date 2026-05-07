@@ -11,15 +11,22 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder
 
 
+def _text_value(value: object, placeholder: str) -> str:
+    text = str(value or "").strip()
+    return text if text else placeholder
+
+
 class ProcessCritic:
     def __init__(self, random_state: int = 13) -> None:
         self.random_state = random_state
         self.pipeline = Pipeline([
             ("features", ColumnTransformer([
                 ("question", TfidfVectorizer(ngram_range=(1, 2), max_features=4000), "question"),
+                ("query", TfidfVectorizer(ngram_range=(1, 2), max_features=2500), "query_text"),
                 ("action", TfidfVectorizer(ngram_range=(1, 2), max_features=5000), "action_text"),
+                ("doc_title", TfidfVectorizer(ngram_range=(1, 2), max_features=2500), "doc_title"),
                 ("history", TfidfVectorizer(ngram_range=(1, 2), max_features=1000), "history_text"),
-                ("cats", OneHotEncoder(handle_unknown="ignore"), ["module", "workflow_id"]),
+                ("cats", OneHotEncoder(handle_unknown="ignore"), ["module", "workflow_id", "retriever_type", "budget_mode"]),
                 (
                     "nums",
                     "passthrough",
@@ -32,6 +39,8 @@ class ProcessCritic:
                         "tokens",
                         "retrieval_calls",
                         "latency_ms",
+                        "doc_rank",
+                        "doc_score",
                     ],
                 ),
             ])),
@@ -42,11 +51,15 @@ class ProcessCritic:
         data = []
         for row in rows:
             data.append({
-                "question": row.get("question", ""),
-                "action_text": row.get("action_text", ""),
-                "history_text": row.get("history_text", ""),
+                "question": _text_value(row.get("question", ""), "__empty_question__"),
+                "query_text": _text_value(row.get("query_text", ""), "__empty_query__"),
+                "action_text": _text_value(row.get("action_text", ""), "__empty_action__"),
+                "doc_title": _text_value(row.get("doc_title", ""), "__empty_doc_title__"),
+                "history_text": _text_value(row.get("history_text", ""), "__empty_history__"),
                 "module": row.get("module", ""),
                 "workflow_id": row.get("workflow_id", ""),
+                "retriever_type": row.get("retriever_type", ""),
+                "budget_mode": row.get("budget_mode", "medium"),
                 "step_id": int(row.get("step_id", 0)),
                 "action_len": int(row.get("action_len", 0)),
                 "num_actions_in_step": int(row.get("num_actions_in_step", 1)),
@@ -55,6 +68,8 @@ class ProcessCritic:
                 "tokens": float(row.get("tokens", 0.0)),
                 "retrieval_calls": float(row.get("retrieval_calls", 0.0)),
                 "latency_ms": float(row.get("latency_ms", 0.0)),
+                "doc_rank": int(row.get("doc_rank", 0)),
+                "doc_score": float(row.get("doc_score", 0.0)),
             })
         return pd.DataFrame(data)
 

@@ -15,6 +15,9 @@ def main():
     ap.add_argument("--train_ratio", type=float, default=0.7)
     ap.add_argument("--val_ratio", type=float, default=0.15)
     ap.add_argument("--test_ratio", type=float, default=0.15)
+    ap.add_argument("--train_count", type=int, default=None)
+    ap.add_argument("--val_count", type=int, default=None)
+    ap.add_argument("--test_count", type=int, default=None)
     args = ap.parse_args()
 
     qa = normalize_qa_records(read_json(args.qa))
@@ -24,6 +27,9 @@ def main():
         val_ratio=args.val_ratio,
         test_ratio=args.test_ratio,
         seed=args.seed,
+        train_count=args.train_count,
+        val_count=args.val_count,
+        test_count=args.test_count,
     )
 
     out_dir = Path(args.out_dir)
@@ -41,7 +47,15 @@ def main():
                 "val": args.val_ratio,
                 "test": args.test_ratio,
             },
+            "exact_counts": {
+                "train": args.train_count,
+                "val": args.val_count,
+                "test": args.test_count,
+            }
+            if all(count is not None for count in (args.train_count, args.val_count, args.test_count))
+            else None,
             "counts": {name: len(rows) for name, rows in splits.items()},
+            "unused_count": max(0, len(qa) - sum(len(rows) for rows in splits.values())),
         },
     )
     print(f"Saved splits to {out_dir}")

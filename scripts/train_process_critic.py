@@ -144,10 +144,12 @@ def main():
         "train_counts": {
             "num_examples": len(train_rows),
             "modules": dict(Counter(row["module"] for row in train_rows)),
+            "budget_modes": dict(Counter(row.get("budget_mode", "medium") for row in train_rows)),
         },
         "eval_counts": {
             "num_examples": len(eval_rows),
             "modules": dict(Counter(row["module"] for row in eval_rows)),
+            "budget_modes": dict(Counter(row.get("budget_mode", "medium") for row in eval_rows)),
         },
         "evaluation": eval_summary,
         "predictions": prediction_rows[:200],

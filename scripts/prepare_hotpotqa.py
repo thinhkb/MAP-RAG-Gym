@@ -19,6 +19,9 @@ def main():
     ap.add_argument("--train_ratio", type=float, default=0.7)
     ap.add_argument("--val_ratio", type=float, default=0.15)
     ap.add_argument("--test_ratio", type=float, default=0.15)
+    ap.add_argument("--train_count", type=int, default=None)
+    ap.add_argument("--val_count", type=int, default=None)
+    ap.add_argument("--test_count", type=int, default=None)
     args = ap.parse_args()
 
     ds = load_dataset("hotpotqa/hotpot_qa", "fullwiki", split=args.split)
@@ -63,11 +66,15 @@ def main():
             val_ratio=args.val_ratio,
             test_ratio=args.test_ratio,
             seed=args.split_seed,
+            train_count=args.train_count,
+            val_count=args.val_count,
+            test_count=args.test_count,
         )
         split_dir = out / "splits"
         split_dir.mkdir(parents=True, exist_ok=True)
         for split_name, rows in splits.items():
             write_json(str(split_dir / f"{split_name}.json"), rows)
+        explicit_counts = all(count is not None for count in (args.train_count, args.val_count, args.test_count))
         write_json(
             str(split_dir / "manifest.json"),
             {
@@ -79,7 +86,15 @@ def main():
                     "val": args.val_ratio,
                     "test": args.test_ratio,
                 },
+                "exact_counts": {
+                    "train": args.train_count,
+                    "val": args.val_count,
+                    "test": args.test_count,
+                }
+                if explicit_counts
+                else None,
                 "counts": {name: len(rows) for name, rows in splits.items()},
+                "unused_count": max(0, len(qa) - sum(len(rows) for rows in splits.values())),
             },
         )
         print(f"Saved deterministic splits to {split_dir}")
