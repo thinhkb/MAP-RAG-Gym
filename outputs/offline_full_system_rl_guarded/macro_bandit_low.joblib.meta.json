@@ -1,0 +1,4127 @@
+{
+  "manifest": {
+    "script": "scripts/train_bandit_router.py",
+    "generated_at_utc": "2026-05-18T20:00:16+00:00",
+    "git_commit": "4401b12d34eee72111646697c4d33a9b212ae42a",
+    "python_version": "3.12.13",
+    "platform": "Windows-11-10.0.22621-SP0",
+    "paths": {
+      "qa": "G:\\MAP-RAG-Gym\\outputs\\hotpotqa_large_train_rollouts.json",
+      "corpus": null,
+      "router_model": "G:\\MAP-RAG-Gym\\outputs\\offline_full_system_rl_guarded\\macro_bandit_low.joblib"
+    },
+    "dataset": {
+      "name": "hotpotqa_large",
+      "split": "train",
+      "limit": 420,
+      "effective_questions": 357
+    },
+    "llm": {
+      "provider": null,
+      "model": null
+    },
+    "reproducibility": {
+      "seed": 13,
+      "prompt_version": "v1",
+      "utility": null
+    },
+    "settings": {
+      "input_rollout_file": "outputs/hotpotqa_large_train_rollouts.json",
+      "budget_mode": "low",
+      "allowed_workflows": [
+        "W1",
+        "W3"
+      ],
+      "holdout_ratio": 0.15,
+      "alpha": 0.1,
+      "preference_margin": 0.02,
+      "preferred_workflows": [
+        "W3"
+      ],
+      "base_router_model": "outputs/router_hotpot_phase4.joblib",
+      "probe_corpus": "data/hotpotqa_large/corpus.json",
+      "utility_profile": {
+        "reward_weights": {
+          "f1_proxy": 1.0,
+          "process_score": 0.25
+        },
+        "cost_weights": {
+          "tokens": 0.16,
+          "retrieval_calls": 0.2,
+          "latency_ms": 0.12
+        },
+        "cost_normalizers": {
+          "tokens": 2000.0,
+          "retrieval_calls": 4.0,
+          "latency_ms": 10000.0
+        }
+      }
+    }
+  },
+  "source_rollout_manifest": {
+    "script": "scripts/batch_rollout.py",
+    "generated_at_utc": "2026-05-18T14:15:05+00:00",
+    "git_commit": "4401b12d34eee72111646697c4d33a9b212ae42a",
+    "python_version": "3.12.13",
+    "platform": "Windows-11-10.0.22621-SP0",
+    "paths": {
+      "qa": "G:\\MAP-RAG-Gym\\data\\hotpotqa_large\\splits\\train.json",
+      "corpus": "G:\\MAP-RAG-Gym\\data\\hotpotqa_large\\corpus.json",
+      "router_model": null
+    },
+    "dataset": {
+      "name": "hotpotqa_large",
+      "split": "train",
+      "limit": 420,
+      "effective_questions": 420
+    },
+    "llm": {
+      "provider": "ollama",
+      "model": "llama3.2"
+    },
+    "reproducibility": {
+      "seed": 42,
+      "prompt_version": "v1",
+      "utility": {
+        "reward_weights": {
+          "f1_proxy": 1.0,
+          "process_score": 0.35
+        },
+        "cost_weights": {
+          "tokens": 0.08,
+          "retrieval_calls": 0.1,
+          "latency_ms": 0.05
+        },
+        "cost_normalizers": {
+          "tokens": 2000.0,
+          "retrieval_calls": 4.0,
+          "latency_ms": 10000.0
+        }
+      }
+    },
+    "settings": {
+      "workflow_ids": [
+        "W1",
+        "W2",
+        "W3",
+        "W6"
+      ],
+      "n_candidates": 3,
+      "budget_mode": "medium",
+      "retriever_type": "bm25",
+      "retriever_bm25_weight": 0.5,
+      "workflow_retriever_overrides": {},
+      "resume": true
+    }
+  },
+  "num_questions_total": 420,
+  "num_questions_train": 357,
+  "num_questions_holdout": 63,
+  "num_train_rows": 714,
+  "num_holdout_rows": 126,
+  "allowed_workflows": [
+    "W1",
+    "W3"
+  ],
+  "budget_mode": "low",
+  "base_router_model": "outputs/router_hotpot_phase4.joblib",
+  "probe_corpus": "data/hotpotqa_large/corpus.json",
+  "row_counts_by_workflow": {
+    "W1": 357,
+    "W3": 357
+  },
+  "reward_metrics": {
+    "train_mae": 0.137,
+    "train_rmse": 0.189,
+    "holdout_mae": 0.3273,
+    "holdout_rmse": 0.4039
+  },
+  "holdout_policy_eval": {
+    "num_questions": 63,
+    "avg_policy_utility": 0.3817,
+    "avg_oracle_utility": 0.4076,
+    "avg_regret": 0.0259,
+    "exact_best_rate": 0.8095,
+    "preview": [
+      {
+        "question": "What is the middle name of the actress who plays Bobbi Bacha in Suburban Madness?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.5691,
+        "predicted_scores": {
+          "W1": 0.1886,
+          "W3": 0.2582
+        },
+        "oracle_workflow": "W1",
+        "oracle_reward": -0.0384,
+        "chosen_reward": -0.0746,
+        "regret": 0.0362
+      },
+      {
+        "question": "Erica Packer was the second wife of what Australian businessman?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.8877,
+        "predicted_scores": {
+          "W1": 0.1327,
+          "W3": 0.6495
+        },
+        "oracle_workflow": "W3",
+        "oracle_reward": 1.0688,
+        "chosen_reward": 1.0688,
+        "regret": 0.0
+      },
+      {
+        "question": "Which band, Letters to Cleo or Screaming Trees, had more members?",
+        "predicted_workflow": "W1",
+        "predicted_confidence": 0.8721,
+        "predicted_scores": {
+          "W1": 0.6234,
+          "W3": 0.1435
+        },
+        "oracle_workflow": "W1",
+        "oracle_reward": 1.1285,
+        "chosen_reward": 1.1285,
+        "regret": 0.0
+      },
+      {
+        "question": "What is the inhabitant of the city where  122nd SS-Standarte was formed in2014",
+        "predicted_workflow": "W1",
+        "predicted_confidence": 0.6879,
+        "predicted_scores": {
+          "W1": 0.1629,
+          "W3": -0.0348
+        },
+        "oracle_workflow": "W1",
+        "oracle_reward": -0.0404,
+        "chosen_reward": -0.0404,
+        "regret": 0.0
+      },
+      {
+        "question": "Who is older, Annie Morton or Terry Richardson?",
+        "predicted_workflow": "W1",
+        "predicted_confidence": 0.9046,
+        "predicted_scores": {
+          "W1": 1.1189,
+          "W3": 0.5565
+        },
+        "oracle_workflow": "W1",
+        "oracle_reward": 1.13,
+        "chosen_reward": 1.13,
+        "regret": 0.0
+      },
+      {
+        "question": "What city did the Freebooters F.C. soccer team lose in that is now known as Croke Park?",
+        "predicted_workflow": "W1",
+        "predicted_confidence": 0.9303,
+        "predicted_scores": {
+          "W1": 0.6925,
+          "W3": 0.0447
+        },
+        "oracle_workflow": "W1",
+        "oracle_reward": 1.1308,
+        "chosen_reward": 1.1308,
+        "regret": 0.0
+      },
+      {
+        "question": "Jens Risom introduced what type of design, characterized by minimalism and functionality?",
+        "predicted_workflow": "W1",
+        "predicted_confidence": 0.6806,
+        "predicted_scores": {
+          "W1": 0.4508,
+          "W3": 0.2617
+        },
+        "oracle_workflow": "W1",
+        "oracle_reward": 1.1279,
+        "chosen_reward": 1.1279,
+        "regret": 0.0
+      },
+      {
+        "question": "Jacques Mathou starred in Delicatessen, the 1991 French movie in the style of which celebrated American animator?",
+        "predicted_workflow": "W1",
+        "predicted_confidence": 0.6714,
+        "predicted_scores": {
+          "W1": 0.4759,
+          "W3": 0.2972
+        },
+        "oracle_workflow": "W1",
+        "oracle_reward": -0.0393,
+        "chosen_reward": -0.0393,
+        "regret": 0.0
+      },
+      {
+        "question": "The 1974 Texas Tech Raiders football team represented what public research university in Lubbock, Texas?",
+        "predicted_workflow": "W1",
+        "predicted_confidence": 0.7223,
+        "predicted_scores": {
+          "W1": 0.3433,
+          "W3": 0.1043
+        },
+        "oracle_workflow": "W1",
+        "oracle_reward": 1.1281,
+        "chosen_reward": 1.1281,
+        "regret": 0.0
+      },
+      {
+        "question": "What was the Roud Folk Song Index of the nursery rhyme inspiring What Are Little Girls Made Of?",
+        "predicted_workflow": "W1",
+        "predicted_confidence": 0.6773,
+        "predicted_scores": {
+          "W1": 0.2085,
+          "W3": 0.0231
+        },
+        "oracle_workflow": "W1",
+        "oracle_reward": -0.0487,
+        "chosen_reward": -0.0487,
+        "regret": 0.0
+      },
+      {
+        "question": "Where is the company that Sachin Warrier worked for as a software engineer headquartered? ",
+        "predicted_workflow": "W1",
+        "predicted_confidence": 0.7539,
+        "predicted_scores": {
+          "W1": 0.0788,
+          "W3": -0.2011
+        },
+        "oracle_workflow": "W1",
+        "oracle_reward": -0.0451,
+        "chosen_reward": -0.0451,
+        "regret": 0.0
+      },
+      {
+        "question": "Which close friend of an American former basketball player was signed for to play for the Timberwolves?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.7312,
+        "predicted_scores": {
+          "W1": -0.1508,
+          "W3": 0.0994
+        },
+        "oracle_workflow": "W1",
+        "oracle_reward": -0.0385,
+        "chosen_reward": -0.1228,
+        "regret": 0.0843
+      },
+      {
+        "question": "The northern English anglian Kingdom in the Humber estuary spoke what dialect of english?",
+        "predicted_workflow": "W1",
+        "predicted_confidence": 0.8024,
+        "predicted_scores": {
+          "W1": 0.6026,
+          "W3": 0.2523
+        },
+        "oracle_workflow": "W1",
+        "oracle_reward": 1.1336,
+        "chosen_reward": 1.1336,
+        "regret": 0.0
+      },
+      {
+        "question": "Which game was released first, Icehouse pieces or Kill Doctor Lucky?",
+        "predicted_workflow": "W1",
+        "predicted_confidence": 0.7719,
+        "predicted_scores": {
+          "W1": 0.6502,
+          "W3": 0.3454
+        },
+        "oracle_workflow": "W1",
+        "oracle_reward": 1.1309,
+        "chosen_reward": 1.1309,
+        "regret": 0.0
+      },
+      {
+        "question": "What nationality were social anthropologists Alfred Gell and Edmund Leach?",
+        "predicted_workflow": "W1",
+        "predicted_confidence": 0.9491,
+        "predicted_scores": {
+          "W1": 0.7681,
+          "W3": 0.0369
+        },
+        "oracle_workflow": "W1",
+        "oracle_reward": 1.1286,
+        "chosen_reward": 1.1286,
+        "regret": 0.0
+      },
+      {
+        "question": "One Raffles Place is one of the tallest skyscrapers in the city of Singapore and tallest in the wolrd outside North America until it was succeeded by a Building in city?",
+        "predicted_workflow": "W1",
+        "predicted_confidence": 0.7073,
+        "predicted_scores": {
+          "W1": 0.1984,
+          "W3": -0.0222
+        },
+        "oracle_workflow": "W1",
+        "oracle_reward": -0.0451,
+        "chosen_reward": -0.0451,
+        "regret": 0.0
+      },
+      {
+        "question": "What city and nation was the location of the 2015 Pacific Games where the Kiribati national basketball team finished with a 0-4 record?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.7845,
+        "predicted_scores": {
+          "W1": 0.321,
+          "W3": 0.6441
+        },
+        "oracle_workflow": "W3",
+        "oracle_reward": 1.0635,
+        "chosen_reward": 1.0635,
+        "regret": 0.0
+      },
+      {
+        "question": " William Cammisano was part of which Mafia family?",
+        "predicted_workflow": "W1",
+        "predicted_confidence": 0.883,
+        "predicted_scores": {
+          "W1": 0.6776,
+          "W3": 0.1724
+        },
+        "oracle_workflow": "W1",
+        "oracle_reward": 0.3981,
+        "chosen_reward": 0.3981,
+        "regret": 0.0
+      },
+      {
+        "question": "Were Goo Goo Dolls and Echosmith formed in the same city?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.5301,
+        "predicted_scores": {
+          "W1": 0.0529,
+          "W3": 0.083
+        },
+        "oracle_workflow": "W3",
+        "oracle_reward": -0.0358,
+        "chosen_reward": -0.0358,
+        "regret": 0.0
+      },
+      {
+        "question": "A puzzle-platform video game developed by the Valve Corporation is part of what 2012 action-adventure game?",
+        "predicted_workflow": "W1",
+        "predicted_confidence": 0.5853,
+        "predicted_scores": {
+          "W1": 0.2354,
+          "W3": 0.1493
+        },
+        "oracle_workflow": "W1",
+        "oracle_reward": -0.0479,
+        "chosen_reward": -0.0479,
+        "regret": 0.0
+      },
+      {
+        "question": "Snowdrop is a proprietary game engine first revealed with an online-only action role-playing video game developed by who?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.6738,
+        "predicted_scores": {
+          "W1": -0.0161,
+          "W3": 0.1653
+        },
+        "oracle_workflow": "W1",
+        "oracle_reward": -0.0379,
+        "chosen_reward": -0.063,
+        "regret": 0.0251
+      },
+      {
+        "question": "Which mall, Wilton Mall or Viaport Rotterdam, has had more owners?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.8016,
+        "predicted_scores": {
+          "W1": -0.1623,
+          "W3": 0.1869
+        },
+        "oracle_workflow": "W3",
+        "oracle_reward": 1.0537,
+        "chosen_reward": 1.0537,
+        "regret": 0.0
+      },
+      {
+        "question": "What edition of tennis' US Open was the 2017 US Open when Petra Kvitova was a quarterfinalist?",
+        "predicted_workflow": "W1",
+        "predicted_confidence": 0.8068,
+        "predicted_scores": {
+          "W1": 0.3276,
+          "W3": -0.0297
+        },
+        "oracle_workflow": "W1",
+        "oracle_reward": -0.0388,
+        "chosen_reward": -0.0388,
+        "regret": 0.0
+      },
+      {
+        "question": "In which city is the ambassador of the Rabat-Salé-Kénitra administrative region to China based?",
+        "predicted_workflow": "W1",
+        "predicted_confidence": 0.8469,
+        "predicted_scores": {
+          "W1": 0.6854,
+          "W3": 0.2577
+        },
+        "oracle_workflow": "W1",
+        "oracle_reward": 1.1304,
+        "chosen_reward": 1.1304,
+        "regret": 0.0
+      },
+      {
+        "question": "Cardinal Pole Roman Catholic School was named after the last Roman Catholic to hold what position?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.9192,
+        "predicted_scores": {
+          "W1": 0.1687,
+          "W3": 0.7767
+        },
+        "oracle_workflow": "W3",
+        "oracle_reward": 0.4939,
+        "chosen_reward": 0.4939,
+        "regret": 0.0
+      },
+      {
+        "question": "Which suburb is a soap opera featuring a character named Beverly Marshall set in?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.8876,
+        "predicted_scores": {
+          "W1": -0.1865,
+          "W3": 0.33
+        },
+        "oracle_workflow": "W1",
+        "oracle_reward": -0.0382,
+        "chosen_reward": -0.0881,
+        "regret": 0.0499
+      },
+      {
+        "question": "Are the Laleli Mosque and Esma Sultan Mansion located in the same neighborhood?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.884,
+        "predicted_scores": {
+          "W1": 0.3571,
+          "W3": 0.8649
+        },
+        "oracle_workflow": "W3",
+        "oracle_reward": -0.0343,
+        "chosen_reward": -0.0343,
+        "regret": 0.0
+      },
+      {
+        "question": "What WB supernatrual drama series was Jawbreaker star Rose Mcgowan best known for being in?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.9349,
+        "predicted_scores": {
+          "W1": -0.1175,
+          "W3": 0.5488
+        },
+        "oracle_workflow": "W3",
+        "oracle_reward": 1.061,
+        "chosen_reward": 1.061,
+        "regret": 0.0
+      },
+      {
+        "question": "What competition held in Kathmandu, Nepal did Julian Bolling compete in 1984?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.6712,
+        "predicted_scores": {
+          "W1": 0.013,
+          "W3": 0.1913
+        },
+        "oracle_workflow": "W1",
+        "oracle_reward": -0.0371,
+        "chosen_reward": -0.0919,
+        "regret": 0.0548
+      },
+      {
+        "question": "Where does the hotel and casino located in which Bill Cosby's third album was recorded?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.8249,
+        "predicted_scores": {
+          "W1": -0.2322,
+          "W3": 0.1552
+        },
+        "oracle_workflow": "W3",
+        "oracle_reward": 0.2138,
+        "chosen_reward": 0.2138,
+        "regret": 0.0
+      },
+      {
+        "question": "What criteria subjectively qualifies the Houston Astrodome to be called the Eighth Wonder of the World?",
+        "predicted_workflow": "W1",
+        "predicted_confidence": 0.8886,
+        "predicted_scores": {
+          "W1": 0.5066,
+          "W3": -0.0126
+        },
+        "oracle_workflow": "W1",
+        "oracle_reward": 0.0374,
+        "chosen_reward": 0.0374,
+        "regret": 0.0
+      },
+      {
+        "question": "When did the rock band that sang \"All Join Hands\" rise to prominence? ",
+        "predicted_workflow": "W1",
+        "predicted_confidence": 0.7849,
+        "predicted_scores": {
+          "W1": 0.1495,
+          "W3": -0.1741
+        },
+        "oracle_workflow": "W1",
+        "oracle_reward": -0.0388,
+        "chosen_reward": -0.0388,
+        "regret": 0.0
+      },
+      {
+        "question": "David Huntsinger has worked with this gospel singer born in the month of July?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.8699,
+        "predicted_scores": {
+          "W1": -0.6006,
+          "W3": -0.1257
+        },
+        "oracle_workflow": "W1",
+        "oracle_reward": -0.0464,
+        "chosen_reward": -0.0677,
+        "regret": 0.0213
+      },
+      {
+        "question": "Which man who presented the Australia 2022 FIFA World Cup bid was born on October 22, 1930?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.9853,
+        "predicted_scores": {
+          "W1": -0.41,
+          "W3": 0.6418
+        },
+        "oracle_workflow": "W3",
+        "oracle_reward": 1.0553,
+        "chosen_reward": 1.0553,
+        "regret": 0.0
+      },
+      {
+        "question": "What are the names of the members of the Detroit-based hip hop duo who has worked with Jason Gilbert?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.8786,
+        "predicted_scores": {
+          "W1": -0.3812,
+          "W3": 0.1137
+        },
+        "oracle_workflow": "W1",
+        "oracle_reward": -0.0361,
+        "chosen_reward": -0.071,
+        "regret": 0.0349
+      },
+      {
+        "question": "Were the bands Skin Yard and Ostava from the U.S.?",
+        "predicted_workflow": "W1",
+        "predicted_confidence": 0.8131,
+        "predicted_scores": {
+          "W1": 0.5693,
+          "W3": 0.2018
+        },
+        "oracle_workflow": "W1",
+        "oracle_reward": 1.1325,
+        "chosen_reward": 1.1325,
+        "regret": 0.0
+      },
+      {
+        "question": "Who is the psychologist who wrote about the disciple of the person known as the \"Wild Woman of Buttle\"?",
+        "predicted_workflow": "W1",
+        "predicted_confidence": 0.5449,
+        "predicted_scores": {
+          "W1": 0.1876,
+          "W3": 0.1425
+        },
+        "oracle_workflow": "W1",
+        "oracle_reward": -0.0432,
+        "chosen_reward": -0.0432,
+        "regret": 0.0
+      },
+      {
+        "question": "What is the full name of the viral respiratory disease in which Yi Guan's research helped to prevent the outbreak of?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.9859,
+        "predicted_scores": {
+          "W1": -0.3052,
+          "W3": 0.7573
+        },
+        "oracle_workflow": "W3",
+        "oracle_reward": 1.0577,
+        "chosen_reward": 1.0577,
+        "regret": 0.0
+      },
+      {
+        "question": "Rejuvelac is kind of grain water invented and promoted by a \"holistic health\" practitioner born in which year ?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.9803,
+        "predicted_scores": {
+          "W1": -0.2548,
+          "W3": 0.7225
+        },
+        "oracle_workflow": "W3",
+        "oracle_reward": 1.0791,
+        "chosen_reward": 1.0791,
+        "regret": 0.0
+      },
+      {
+        "question": "Patrick Kennedy is known for his collections of Irish  folktales from a province situated in which part of Ireland ?",
+        "predicted_workflow": "W1",
+        "predicted_confidence": 0.5973,
+        "predicted_scores": {
+          "W1": 0.3855,
+          "W3": 0.2869
+        },
+        "oracle_workflow": "W1",
+        "oracle_reward": -0.0383,
+        "chosen_reward": -0.0383,
+        "regret": 0.0
+      },
+      {
+        "question": "Which director had the longest career, Alain Resnais or Scott Sidney?",
+        "predicted_workflow": "W1",
+        "predicted_confidence": 0.7678,
+        "predicted_scores": {
+          "W1": 0.4824,
+          "W3": 0.1835
+        },
+        "oracle_workflow": "W1",
+        "oracle_reward": -0.0402,
+        "chosen_reward": -0.0402,
+        "regret": 0.0
+      },
+      {
+        "question": "What Danish eurodance group had a single called \"Barbie Girl\" which resulted in a lawsuit in 2002?",
+        "predicted_workflow": "W1",
+        "predicted_confidence": 0.7759,
+        "predicted_scores": {
+          "W1": 0.4805,
+          "W3": 0.17
+        },
+        "oracle_workflow": "W1",
+        "oracle_reward": 1.122,
+        "chosen_reward": 1.122,
+        "regret": 0.0
+      },
+      {
+        "question": "Which case came first, Craig v. Boren or United States v. Paramount Pictures, Inc.?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.7943,
+        "predicted_scores": {
+          "W1": 0.0408,
+          "W3": 0.3785
+        },
+        "oracle_workflow": "W1",
+        "oracle_reward": 0.0919,
+        "chosen_reward": 0.0891,
+        "regret": 0.0028
+      },
+      {
+        "question": "What was the release date and price for the release of Mac OS X that has the software for creating WWF files?",
+        "predicted_workflow": "W1",
+        "predicted_confidence": 0.9208,
+        "predicted_scores": {
+          "W1": 0.381,
+          "W3": -0.2323
+        },
+        "oracle_workflow": "W1",
+        "oracle_reward": -0.0513,
+        "chosen_reward": -0.0513,
+        "regret": 0.0
+      },
+      {
+        "question": "D1NZ is a series based on what oversteering technique?",
+        "predicted_workflow": "W1",
+        "predicted_confidence": 0.8331,
+        "predicted_scores": {
+          "W1": 0.3251,
+          "W3": -0.0767
+        },
+        "oracle_workflow": "W1",
+        "oracle_reward": -0.0431,
+        "chosen_reward": -0.0431,
+        "regret": 0.0
+      },
+      {
+        "question": "What year did the series on CBS, starring the actor who known for his role in \"Rebel Without a Cause,\" air?",
+        "predicted_workflow": "W1",
+        "predicted_confidence": 0.8435,
+        "predicted_scores": {
+          "W1": 0.5357,
+          "W3": 0.1146
+        },
+        "oracle_workflow": "W1",
+        "oracle_reward": 1.1263,
+        "chosen_reward": 1.1263,
+        "regret": 0.0
+      },
+      {
+        "question": "In what city was the Italian Baroque composer who composed a set of sonatas, titled Op. 5, born?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.5125,
+        "predicted_scores": {
+          "W1": 0.0806,
+          "W3": 0.0931
+        },
+        "oracle_workflow": "W1",
+        "oracle_reward": -0.0368,
+        "chosen_reward": -0.0963,
+        "regret": 0.0595
+      },
+      {
+        "question": "What year was the brother of this first round draft pick by the Washington Redskins drafted?",
+        "predicted_workflow": "W1",
+        "predicted_confidence": 0.8601,
+        "predicted_scores": {
+          "W1": 0.4285,
+          "W3": -0.0256
+        },
+        "oracle_workflow": "W1",
+        "oracle_reward": -0.0381,
+        "chosen_reward": -0.0381,
+        "regret": 0.0
+      },
+      {
+        "question": "Folie à Deux is a studio album by the American rock band formed in which city?",
+        "predicted_workflow": "W1",
+        "predicted_confidence": 0.5961,
+        "predicted_scores": {
+          "W1": 0.3657,
+          "W3": 0.2683
+        },
+        "oracle_workflow": "W1",
+        "oracle_reward": -0.0396,
+        "chosen_reward": -0.0396,
+        "regret": 0.0
+      },
+      {
+        "question": "The mass killing that took place at Oakland, California on April 2, 2012 was less deadly than the one that took place on October 1, 2015 in which state?",
+        "predicted_workflow": "W1",
+        "predicted_confidence": 0.7772,
+        "predicted_scores": {
+          "W1": 0.0916,
+          "W3": -0.2207
+        },
+        "oracle_workflow": "W1",
+        "oracle_reward": -0.0421,
+        "chosen_reward": -0.0421,
+        "regret": 0.0
+      },
+      {
+        "question": "Can Stenocereus and Pachypodium both include tree like plants?",
+        "predicted_workflow": "W1",
+        "predicted_confidence": 0.742,
+        "predicted_scores": {
+          "W1": 0.5601,
+          "W3": 0.2961
+        },
+        "oracle_workflow": "W1",
+        "oracle_reward": 1.1288,
+        "chosen_reward": 1.1288,
+        "regret": 0.0
+      },
+      {
+        "question": "What country does Eric A. Sykes and Eccles, Greater Manchester have ion common?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.9215,
+        "predicted_scores": {
+          "W1": 0.0203,
+          "W3": 0.636
+        },
+        "oracle_workflow": "W3",
+        "oracle_reward": 1.0515,
+        "chosen_reward": 1.0515,
+        "regret": 0.0
+      },
+      {
+        "question": "Which songwriting duo composed music for \"La La Land\", and created lyrics for \"A Christmas Story: The Musical\"? ",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.9703,
+        "predicted_scores": {
+          "W1": -0.1432,
+          "W3": 0.7284
+        },
+        "oracle_workflow": "W3",
+        "oracle_reward": 0.6624,
+        "chosen_reward": 0.6624,
+        "regret": 0.0
+      },
+      {
+        "question": "The \"civic rally cross\" was sold alongside what other model sold exclusively in Japan at Honda Verno dealerships? ",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.9893,
+        "predicted_scores": {
+          "W1": -0.6125,
+          "W3": 0.519
+        },
+        "oracle_workflow": "W3",
+        "oracle_reward": 0.3114,
+        "chosen_reward": 0.3114,
+        "regret": 0.0
+      },
+      {
+        "question": "Season 2 of Rick and Morty began with the episode directed by whom?",
+        "predicted_workflow": "W1",
+        "predicted_confidence": 0.8173,
+        "predicted_scores": {
+          "W1": 0.4155,
+          "W3": 0.0409
+        },
+        "oracle_workflow": "W1",
+        "oracle_reward": -0.0392,
+        "chosen_reward": -0.0392,
+        "regret": 0.0
+      },
+      {
+        "question": "Which former mill town is near Rivington Hall Barn?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.9724,
+        "predicted_scores": {
+          "W1": -0.184,
+          "W3": 0.7063
+        },
+        "oracle_workflow": "W3",
+        "oracle_reward": -0.0335,
+        "chosen_reward": -0.0335,
+        "regret": 0.0
+      },
+      {
+        "question": "Jacques Sernas, actor in Fugitive in Trieste, was of what nationality?",
+        "predicted_workflow": "W1",
+        "predicted_confidence": 0.8729,
+        "predicted_scores": {
+          "W1": 0.5648,
+          "W3": 0.083
+        },
+        "oracle_workflow": "W1",
+        "oracle_reward": 0.5057,
+        "chosen_reward": 0.5057,
+        "regret": 0.0
+      },
+      {
+        "question": "Yoann Lemoine, a French video director, has created music videos for Lana Del Rey, Katy Perry, and an orchestral country pop ballad by which top pop artist?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.5,
+        "predicted_scores": {
+          "W1": 0.31,
+          "W3": 0.2942
+        },
+        "oracle_workflow": "W1",
+        "oracle_reward": 1.1234,
+        "chosen_reward": -0.0435,
+        "regret": 1.1669
+      },
+      {
+        "question": "Seven Brief Lessons on Physics was written by an Italian physicist that has worked in France since what year?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.7084,
+        "predicted_scores": {
+          "W1": -0.0863,
+          "W3": 0.1356
+        },
+        "oracle_workflow": "W1",
+        "oracle_reward": -0.0394,
+        "chosen_reward": -0.0797,
+        "regret": 0.0403
+      },
+      {
+        "question": "When did the tour begin for the album Taylor Swift released on October 22, 2012?",
+        "predicted_workflow": "W1",
+        "predicted_confidence": 0.7804,
+        "predicted_scores": {
+          "W1": 0.1277,
+          "W3": -0.1893
+        },
+        "oracle_workflow": "W1",
+        "oracle_reward": -0.0443,
+        "chosen_reward": -0.0443,
+        "regret": 0.0
+      },
+      {
+        "question": "What studio album did Kanye West record with Roc-A-Fella Records and soul singer Dwele?",
+        "predicted_workflow": "W1",
+        "predicted_confidence": 0.8605,
+        "predicted_scores": {
+          "W1": 0.4462,
+          "W3": -0.0086
+        },
+        "oracle_workflow": "W1",
+        "oracle_reward": -0.032,
+        "chosen_reward": -0.032,
+        "regret": 0.0
+      },
+      {
+        "question": "Aside from the Apple Remote, what other device can control the program Apple Remote was originally designed to interact with?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.8528,
+        "predicted_scores": {
+          "W1": -0.2909,
+          "W3": 0.1483
+        },
+        "oracle_workflow": "W1",
+        "oracle_reward": -0.0397,
+        "chosen_reward": -0.0956,
+        "regret": 0.0559
+      },
+      {
+        "question": "The Jeep Cherokee was originally sold as a variant of a Jeep model produced during what years?",
+        "predicted_workflow": "W1",
+        "predicted_confidence": 0.8133,
+        "predicted_scores": {
+          "W1": 0.4683,
+          "W3": 0.1004
+        },
+        "oracle_workflow": "W1",
+        "oracle_reward": -0.0421,
+        "chosen_reward": -0.0421,
+        "regret": 0.0
+      }
+    ]
+  },
+  "train_diagnostics_preview": [
+    {
+      "question": "The Memphis Hustle are based in a suburb of a city with a population of what in 2010?",
+      "best_workflow": "W3",
+      "best_reward": 1.0671,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0396,
+      "reward_span": 1.1067,
+      "reward_by_workflow": {
+        "W3": 1.0671,
+        "W1": -0.0396
+      }
+    },
+    {
+      "question": "The Argentine National Anthem was adopted 3 years after which event that led to the removal of Viceroy Baltasar Hildalgo de Cisneros?",
+      "best_workflow": "W1",
+      "best_reward": 1.0395,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0427,
+      "reward_span": 1.0822,
+      "reward_by_workflow": {
+        "W1": 1.0395,
+        "W3": -0.0427
+      }
+    },
+    {
+      "question": "This singer of A Rather Blustery Day also voiced what hedgehog?",
+      "best_workflow": "W1",
+      "best_reward": -0.0367,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0684,
+      "reward_span": 0.0317,
+      "reward_by_workflow": {
+        "W1": -0.0367,
+        "W3": -0.0684
+      }
+    },
+    {
+      "question": "What airport serviced by American Airlines Shuttle, is also the largest airport in the New England region and 17th busiest in the U.S?",
+      "best_workflow": "W3",
+      "best_reward": 1.0022,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": 0.7681,
+      "reward_span": 0.2341,
+      "reward_by_workflow": {
+        "W3": 1.0022,
+        "W1": 0.7681
+      }
+    },
+    {
+      "question": "Red Mountain is a film that centers on an attempt by a group of what group of Civil War rangers?",
+      "best_workflow": "W1",
+      "best_reward": -0.0387,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0933,
+      "reward_span": 0.0546,
+      "reward_by_workflow": {
+        "W1": -0.0387,
+        "W3": -0.0933
+      }
+    },
+    {
+      "question": "Where was the sports complex at which Will Brodie made his debut in the thirty-five point loss against Melbourne located?",
+      "best_workflow": "W1",
+      "best_reward": -0.0404,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0923,
+      "reward_span": 0.0519,
+      "reward_by_workflow": {
+        "W1": -0.0404,
+        "W3": -0.0923
+      }
+    },
+    {
+      "question": "What Kentucky county has a population of 60,316 and features the Lake Louisvilla neighborhood?",
+      "best_workflow": "W1",
+      "best_reward": 0.3203,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.3108,
+      "reward_span": 0.0095,
+      "reward_by_workflow": {
+        "W1": 0.3203,
+        "W3": 0.3108
+      }
+    },
+    {
+      "question": "Which Genus has more species Eucryphia or Lepidozamia ?",
+      "best_workflow": "W1",
+      "best_reward": 1.1282,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 1.0628,
+      "reward_span": 0.0654,
+      "reward_by_workflow": {
+        "W1": 1.1282,
+        "W3": 1.0628
+      }
+    },
+    {
+      "question": "What was the nationality of the actor playing a Russian hostage taker in \"Hostage for a Day\"?",
+      "best_workflow": "W1",
+      "best_reward": -0.0357,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0544,
+      "reward_span": 0.0187,
+      "reward_by_workflow": {
+        "W1": -0.0357,
+        "W3": -0.0544
+      }
+    },
+    {
+      "question": "The 1st Virginia Regiment saw action at a battle that led to the departure of what Royal Governor?",
+      "best_workflow": "W3",
+      "best_reward": 0.4375,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.048,
+      "reward_span": 0.4855,
+      "reward_by_workflow": {
+        "W3": 0.4375,
+        "W1": -0.048
+      }
+    },
+    {
+      "question": "The Detroit mayoral elections of 2009 took place to fill the vacancy created by a politician who was sentenced to what?",
+      "best_workflow": "W1",
+      "best_reward": -0.0421,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0844,
+      "reward_span": 0.0423,
+      "reward_by_workflow": {
+        "W1": -0.0421,
+        "W3": -0.0844
+      }
+    },
+    {
+      "question": "What season was the character introduced that becomes the main antagonist in the  following season, from the animated television series created by Bryan Konietzko and Michael Dante DiMartino as a sequel to \"\", which aired from 2005 to 2008? ",
+      "best_workflow": "W1",
+      "best_reward": -0.0417,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0692,
+      "reward_span": 0.0275,
+      "reward_by_workflow": {
+        "W1": -0.0417,
+        "W3": -0.0692
+      }
+    },
+    {
+      "question": "What foundation do scholars give for the likelihood of collaboration on a William Shakespeare Play written between 1588 and 1593?",
+      "best_workflow": "W1",
+      "best_reward": -0.073,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0943,
+      "reward_span": 0.0213,
+      "reward_by_workflow": {
+        "W1": -0.073,
+        "W3": -0.0943
+      }
+    },
+    {
+      "question": "Are both Cypress and Ajuga genera?",
+      "best_workflow": "W1",
+      "best_reward": 1.1314,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 1.0606,
+      "reward_span": 0.0708,
+      "reward_by_workflow": {
+        "W1": 1.1314,
+        "W3": 1.0606
+      }
+    },
+    {
+      "question": "The 2017–18 Wigan Athletic F.C. season will be a year in which the team competes in the league cup known as what for sponsorship reasons?",
+      "best_workflow": "W1",
+      "best_reward": 1.1229,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 1.0238,
+      "reward_span": 0.0991,
+      "reward_by_workflow": {
+        "W1": 1.1229,
+        "W3": 1.0238
+      }
+    },
+    {
+      "question": "Which case was decided first, Selle v. Gibb or Reynolds v. Sims?",
+      "best_workflow": "W1",
+      "best_reward": -0.0412,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0951,
+      "reward_span": 0.0539,
+      "reward_by_workflow": {
+        "W1": -0.0412,
+        "W3": -0.0951
+      }
+    },
+    {
+      "question": "\"Kapitän zur See\" Ernst Lindemann was the commander of which one of two battleships built for Nazi Germany's \"Kriegsmarine\"?",
+      "best_workflow": "W1",
+      "best_reward": 1.1229,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 1.0696,
+      "reward_span": 0.0533,
+      "reward_by_workflow": {
+        "W1": 1.1229,
+        "W3": 1.0696
+      }
+    },
+    {
+      "question": "What is the name of this Fortune 500 American company that operates a chain of retail home improvement stores that sponsored House Rules?",
+      "best_workflow": "W3",
+      "best_reward": -0.031,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0402,
+      "reward_span": 0.0092,
+      "reward_by_workflow": {
+        "W3": -0.031,
+        "W1": -0.0402
+      }
+    },
+    {
+      "question": "American Blues included the drummer from which American rock band?",
+      "best_workflow": "W1",
+      "best_reward": -0.0375,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0625,
+      "reward_span": 0.025,
+      "reward_by_workflow": {
+        "W1": -0.0375,
+        "W3": -0.0625
+      }
+    },
+    {
+      "question": "The movies Queen of Blood and Battle Beyond the Sun both contained scenes from what 1959 Soviet feature?",
+      "best_workflow": "W3",
+      "best_reward": -0.0326,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0344,
+      "reward_span": 0.0018,
+      "reward_by_workflow": {
+        "W3": -0.0326,
+        "W1": -0.0344
+      }
+    },
+    {
+      "question": "Were both the Battle of Stones River and the Battle of the Ch'ongch'on River fought in the 19th century?",
+      "best_workflow": "W1",
+      "best_reward": 1.1306,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0452,
+      "reward_span": 1.1758,
+      "reward_by_workflow": {
+        "W1": 1.1306,
+        "W3": -0.0452
+      }
+    },
+    {
+      "question": "Two positions were filled in The Voice of Ireland b which British-Irish girl group based in London, England?",
+      "best_workflow": "W3",
+      "best_reward": 1.0601,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0404,
+      "reward_span": 1.1005,
+      "reward_by_workflow": {
+        "W3": 1.0601,
+        "W1": -0.0404
+      }
+    },
+    {
+      "question": "In what month is the annual documentary film festival, that is presented by the fortnightly published British journal of literary essays, held? ",
+      "best_workflow": "W3",
+      "best_reward": 1.0141,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0416,
+      "reward_span": 1.0557,
+      "reward_by_workflow": {
+        "W3": 1.0141,
+        "W1": -0.0416
+      }
+    },
+    {
+      "question": "Which character does this protagonist, who secretly loves and marries a member of the rival house, of William Shakespeare's tragedy that has a fictional character Benvolio slay?",
+      "best_workflow": "W3",
+      "best_reward": -0.0272,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0403,
+      "reward_span": 0.0131,
+      "reward_by_workflow": {
+        "W3": -0.0272,
+        "W1": -0.0403
+      }
+    },
+    {
+      "question": "The Column of Saint Zanobi  is a monumental marble column located just north of religious building with the status of what?",
+      "best_workflow": "W1",
+      "best_reward": -0.0426,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0831,
+      "reward_span": 0.0405,
+      "reward_by_workflow": {
+        "W1": -0.0426,
+        "W3": -0.0831
+      }
+    },
+    {
+      "question": "Which author influenced the animated Easter television special \"The First Easter Rabbit\"? ",
+      "best_workflow": "W3",
+      "best_reward": 1.0622,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0422,
+      "reward_span": 1.1044,
+      "reward_by_workflow": {
+        "W3": 1.0622,
+        "W1": -0.0422
+      }
+    },
+    {
+      "question": "This work of literature _______ , known by its Greek title Oedipus Tyrannus was argued by Sigmund Freud to be one of the greatest works of world literature in his 1928 article. ",
+      "best_workflow": "W1",
+      "best_reward": -0.0379,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0414,
+      "reward_span": 0.0035,
+      "reward_by_workflow": {
+        "W1": -0.0379,
+        "W3": -0.0414
+      }
+    },
+    {
+      "question": "What Division was the college footbal team that fired their head coach on November 24, 2006?",
+      "best_workflow": "W3",
+      "best_reward": 0.1576,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.1152,
+      "reward_span": 0.2728,
+      "reward_by_workflow": {
+        "W3": 0.1576,
+        "W1": -0.1152
+      }
+    },
+    {
+      "question": "To which aircraft carrier was the VMF-213 Marine Fighting Squadron assigned to durning World War II?",
+      "best_workflow": "W1",
+      "best_reward": 0.6754,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.6605,
+      "reward_span": 0.0149,
+      "reward_by_workflow": {
+        "W1": 0.6754,
+        "W3": 0.6605
+      }
+    },
+    {
+      "question": "What is the name of the singer who's song was released as the lead single from the album \"Confessions\", and that had popular song stuck behind for eight consecutive weeks?",
+      "best_workflow": "W1",
+      "best_reward": -0.0439,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0981,
+      "reward_span": 0.0542,
+      "reward_by_workflow": {
+        "W1": -0.0439,
+        "W3": -0.0981
+      }
+    },
+    {
+      "question": "Which band formed in England, Of Montreal or Vib Gyor?",
+      "best_workflow": "W3",
+      "best_reward": -0.0345,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0362,
+      "reward_span": 0.0017,
+      "reward_by_workflow": {
+        "W3": -0.0345,
+        "W1": -0.0362
+      }
+    },
+    {
+      "question": "which is traditionally drunk before retiring to bed, Hot toddy or Kir?",
+      "best_workflow": "W1",
+      "best_reward": -0.0351,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0361,
+      "reward_span": 0.001,
+      "reward_by_workflow": {
+        "W1": -0.0351,
+        "W3": -0.0361
+      }
+    },
+    {
+      "question": "A medieval fortress in Dirleton, East Lothian, Scotland borders on the south side of what coastal area?",
+      "best_workflow": "W1",
+      "best_reward": -0.0462,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0832,
+      "reward_span": 0.037,
+      "reward_by_workflow": {
+        "W1": -0.0462,
+        "W3": -0.0832
+      }
+    },
+    {
+      "question": "Bordan Tkachuk was the CEO of a company that provides what sort of products?",
+      "best_workflow": "W3",
+      "best_reward": 0.1706,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0284,
+      "reward_span": 0.199,
+      "reward_by_workflow": {
+        "W3": 0.1706,
+        "W1": -0.0284
+      }
+    },
+    {
+      "question": "What was the name of the 1996 loose adaptation of William Shakespeare's \"Romeo & Juliet\" written by James Gunn?",
+      "best_workflow": "W3",
+      "best_reward": 1.0613,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0377,
+      "reward_span": 1.099,
+      "reward_by_workflow": {
+        "W3": 1.0613,
+        "W1": -0.0377
+      }
+    },
+    {
+      "question": "What job did Jörgen Smit work, where he was working in the world center for the anthroposophical movement?",
+      "best_workflow": "W3",
+      "best_reward": -0.0407,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0444,
+      "reward_span": 0.0037,
+      "reward_by_workflow": {
+        "W3": -0.0407,
+        "W1": -0.0444
+      }
+    },
+    {
+      "question": "What is the year of the event that occured first, Making Today a Perfect Day was produced, or Frozen was produced?",
+      "best_workflow": "W1",
+      "best_reward": -0.0426,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0751,
+      "reward_span": 0.0325,
+      "reward_by_workflow": {
+        "W1": -0.0426,
+        "W3": -0.0751
+      }
+    },
+    {
+      "question": "The songs from the sountrack to \"When Harry Met Sally\" are performed by a singer that has had how many top 20 US albums?",
+      "best_workflow": "W1",
+      "best_reward": -0.0421,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0872,
+      "reward_span": 0.0451,
+      "reward_by_workflow": {
+        "W1": -0.0421,
+        "W3": -0.0872
+      }
+    },
+    {
+      "question": "Wheat salad is composed typically of what red fruit?",
+      "best_workflow": "W3",
+      "best_reward": -0.0377,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0394,
+      "reward_span": 0.0017,
+      "reward_by_workflow": {
+        "W3": -0.0377,
+        "W1": -0.0394
+      }
+    },
+    {
+      "question": "Who is Bruce Spizer an expert on, known as the most influential act of the rock era?",
+      "best_workflow": "W3",
+      "best_reward": 1.065,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0389,
+      "reward_span": 1.1039,
+      "reward_by_workflow": {
+        "W3": 1.065,
+        "W1": -0.0389
+      }
+    },
+    {
+      "question": "Francisco Jose Hernandez was a participant in an invasion that took place in what year?",
+      "best_workflow": "W1",
+      "best_reward": -0.0378,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.1006,
+      "reward_span": 0.0628,
+      "reward_by_workflow": {
+        "W1": -0.0378,
+        "W3": -0.1006
+      }
+    },
+    {
+      "question": "Handi-Snacks are a snack food product line sold by what American multinational confectionery, food, and beverage company that is based in Illinois?",
+      "best_workflow": "W3",
+      "best_reward": 0.6619,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0397,
+      "reward_span": 0.7016,
+      "reward_by_workflow": {
+        "W3": 0.6619,
+        "W1": -0.0397
+      }
+    },
+    {
+      "question": "Which Kentucky Writers Hall of Fame author has had works published by Dim Gray Bar Press?",
+      "best_workflow": "W1",
+      "best_reward": -0.0352,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0629,
+      "reward_span": 0.0277,
+      "reward_by_workflow": {
+        "W1": -0.0352,
+        "W3": -0.0629
+      }
+    },
+    {
+      "question": "How did Emilie du Chatelet, Voltaire's love, contribute to the basic laws of physics?",
+      "best_workflow": "W1",
+      "best_reward": 0.011,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0718,
+      "reward_span": 0.0828,
+      "reward_by_workflow": {
+        "W1": 0.011,
+        "W3": -0.0718
+      }
+    },
+    {
+      "question": "In what 1997 American mystery crime film did Johnny Galecki start in?",
+      "best_workflow": "W3",
+      "best_reward": 1.0577,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.041,
+      "reward_span": 1.0987,
+      "reward_by_workflow": {
+        "W3": 1.0577,
+        "W1": -0.041
+      }
+    },
+    {
+      "question": "Which American Space Western animated series did Celebrity Home Entertainment released ",
+      "best_workflow": "W1",
+      "best_reward": -0.0382,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0918,
+      "reward_span": 0.0536,
+      "reward_by_workflow": {
+        "W1": -0.0382,
+        "W3": -0.0918
+      }
+    },
+    {
+      "question": "What 2016 film stars actor Xavier Samuel and an actress who portrayed Vasilisa Dragomir in the film \"Vampire Academy\"?",
+      "best_workflow": "W1",
+      "best_reward": -0.0488,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0808,
+      "reward_span": 0.032,
+      "reward_by_workflow": {
+        "W1": -0.0488,
+        "W3": -0.0808
+      }
+    },
+    {
+      "question": "During which years was the model of car, featured on the cover of Earth's \"Pentastar: In the Style of Demons\" manufactured?",
+      "best_workflow": "W1",
+      "best_reward": -0.0433,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0864,
+      "reward_span": 0.0431,
+      "reward_by_workflow": {
+        "W1": -0.0433,
+        "W3": -0.0864
+      }
+    },
+    {
+      "question": "Tefik Selim Mborja was a part of a party that held power in Albania until what year? ",
+      "best_workflow": "W1",
+      "best_reward": -0.0397,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.1029,
+      "reward_span": 0.0632,
+      "reward_by_workflow": {
+        "W1": -0.0397,
+        "W3": -0.1029
+      }
+    },
+    {
+      "question": "Vanessa Bley is what person who organizes and often finances concerts, plays, or operas, performing a role?",
+      "best_workflow": "W3",
+      "best_reward": 1.0507,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0352,
+      "reward_span": 1.0859,
+      "reward_by_workflow": {
+        "W3": 1.0507,
+        "W1": -0.0352
+      }
+    },
+    {
+      "question": "Born on 6 March 1937, this man was also a citizen of the United Kingdom.",
+      "best_workflow": "W1",
+      "best_reward": -0.0379,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.097,
+      "reward_span": 0.0591,
+      "reward_by_workflow": {
+        "W1": -0.0379,
+        "W3": -0.097
+      }
+    },
+    {
+      "question": "Curt Menefee is the host of the Fox network's NFL show with co-host Michael Anthony Strahan who spent his entire 15-year career with what team?",
+      "best_workflow": "W1",
+      "best_reward": 1.1262,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 1.0493,
+      "reward_span": 0.0769,
+      "reward_by_workflow": {
+        "W1": 1.1262,
+        "W3": 1.0493
+      }
+    },
+    {
+      "question": "Rex Riot is known for a remix of the Kanye West song that was from which album?",
+      "best_workflow": "W1",
+      "best_reward": -0.0433,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0939,
+      "reward_span": 0.0506,
+      "reward_by_workflow": {
+        "W1": -0.0433,
+        "W3": -0.0939
+      }
+    },
+    {
+      "question": "The English actor Kris Marshall played which character in the highly rated comedy-drama television series \"Death in Paradise\"?",
+      "best_workflow": "W3",
+      "best_reward": 0.3573,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0355,
+      "reward_span": 0.3928,
+      "reward_by_workflow": {
+        "W3": 0.3573,
+        "W1": -0.0355
+      }
+    },
+    {
+      "question": "What was the name of the 19th century foundry which was located in a village directly across the Hudson River from Westpoint in Putnam County, New York?",
+      "best_workflow": "W3",
+      "best_reward": 0.5278,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": 0.1051,
+      "reward_span": 0.4227,
+      "reward_by_workflow": {
+        "W3": 0.5278,
+        "W1": 0.1051
+      }
+    },
+    {
+      "question": "who is the younger brother of The episode guest stars of The Hard Easy ",
+      "best_workflow": "W1",
+      "best_reward": -0.037,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0863,
+      "reward_span": 0.0493,
+      "reward_by_workflow": {
+        "W1": -0.037,
+        "W3": -0.0863
+      }
+    },
+    {
+      "question": "Which British first-generation jet-powered medium bomber was used in the South West Pacific theatre of World War II?",
+      "best_workflow": "W1",
+      "best_reward": -0.043,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0462,
+      "reward_span": 0.0032,
+      "reward_by_workflow": {
+        "W1": -0.043,
+        "W3": -0.0462
+      }
+    },
+    {
+      "question": "Which Australian city founded in 1838 contains a boarding school opened by a Prime Minister of Australia and named after a school in London of the same name.",
+      "best_workflow": "W1",
+      "best_reward": -0.038,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0514,
+      "reward_span": 0.0134,
+      "reward_by_workflow": {
+        "W1": -0.038,
+        "W3": -0.0514
+      }
+    },
+    {
+      "question": "What genre of music was played by both Tappi Tíkarrass and INXS?",
+      "best_workflow": "W1",
+      "best_reward": 1.1313,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0332,
+      "reward_span": 1.1645,
+      "reward_by_workflow": {
+        "W1": 1.1313,
+        "W3": -0.0332
+      }
+    },
+    {
+      "question": "What distinction is held by the former NBA player who was a member of the Charlotte Hornets during their 1992-93 season and was head coach for the WNBA team Charlotte Sting?",
+      "best_workflow": "W1",
+      "best_reward": 0.0575,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0975,
+      "reward_span": 0.155,
+      "reward_by_workflow": {
+        "W1": 0.0575,
+        "W3": -0.0975
+      }
+    },
+    {
+      "question": "What was the father of Kasper Schmeichel voted to be by the IFFHS in 1992?",
+      "best_workflow": "W3",
+      "best_reward": -0.0339,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0359,
+      "reward_span": 0.002,
+      "reward_by_workflow": {
+        "W3": -0.0339,
+        "W1": -0.0359
+      }
+    },
+    {
+      "question": "The Duke Steps Out stars an actress who was ranked tenth on a list of greatest female Hollywood stars in what year?",
+      "best_workflow": "W3",
+      "best_reward": 1.0633,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0401,
+      "reward_span": 1.1034,
+      "reward_by_workflow": {
+        "W3": 1.0633,
+        "W1": -0.0401
+      }
+    },
+    {
+      "question": "Are  Chrysalis and Look both women's magazines?",
+      "best_workflow": "W1",
+      "best_reward": -0.0403,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0845,
+      "reward_span": 0.0442,
+      "reward_by_workflow": {
+        "W1": -0.0403,
+        "W3": -0.0845
+      }
+    },
+    {
+      "question": "The 2011–12 VCU Rams men's basketball team, led by third year head coach Shaka Smart, represented Virginia Commonwealth University which was founded in what year?",
+      "best_workflow": "W1",
+      "best_reward": -0.0436,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0931,
+      "reward_span": 0.0495,
+      "reward_by_workflow": {
+        "W1": -0.0436,
+        "W3": -0.0931
+      }
+    },
+    {
+      "question": "In what field does the firm at which Claudio Fernández-Aráoz was a currently a senior adviser offers services?",
+      "best_workflow": "W1",
+      "best_reward": 0.234,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0943,
+      "reward_span": 0.3283,
+      "reward_by_workflow": {
+        "W1": 0.234,
+        "W3": -0.0943
+      }
+    },
+    {
+      "question": "The was the album with the song  Unbelievable by American rapper The Notorious B.I.G released?",
+      "best_workflow": "W1",
+      "best_reward": -0.0419,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.1029,
+      "reward_span": 0.061,
+      "reward_by_workflow": {
+        "W1": -0.0419,
+        "W3": -0.1029
+      }
+    },
+    {
+      "question": "The actor who appeared on Charlotte's Shorts and Weeds was born in what year?",
+      "best_workflow": "W1",
+      "best_reward": -0.0378,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0808,
+      "reward_span": 0.043,
+      "reward_by_workflow": {
+        "W1": -0.0378,
+        "W3": -0.0808
+      }
+    },
+    {
+      "question": "Who has more scope of profession, Phil Rosen or  Delmer Daves?",
+      "best_workflow": "W1",
+      "best_reward": 0.6838,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0958,
+      "reward_span": 0.7796,
+      "reward_by_workflow": {
+        "W1": 0.6838,
+        "W3": -0.0958
+      }
+    },
+    {
+      "question": "Are Random House Tower and 888 7th Avenue both used for real estate?",
+      "best_workflow": "W3",
+      "best_reward": 1.0762,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0368,
+      "reward_span": 1.113,
+      "reward_by_workflow": {
+        "W3": 1.0762,
+        "W1": -0.0368
+      }
+    },
+    {
+      "question": "What is the date of birth of the English inventor that developed the Richard Hornsby & Sons oil engine? ",
+      "best_workflow": "W1",
+      "best_reward": -0.038,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0854,
+      "reward_span": 0.0474,
+      "reward_by_workflow": {
+        "W1": -0.038,
+        "W3": -0.0854
+      }
+    },
+    {
+      "question": "When was the palace founded at which Columba de Dunbar died in 1435?",
+      "best_workflow": "W1",
+      "best_reward": -0.0521,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0898,
+      "reward_span": 0.0377,
+      "reward_by_workflow": {
+        "W1": -0.0521,
+        "W3": -0.0898
+      }
+    },
+    {
+      "question": "Are Yingkou and Fuding the same level of city?",
+      "best_workflow": "W1",
+      "best_reward": 1.129,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0535,
+      "reward_span": 1.1825,
+      "reward_by_workflow": {
+        "W1": 1.129,
+        "W3": -0.0535
+      }
+    },
+    {
+      "question": "Works by Hanna Leena Kristiina Varis are part of a collection in a museum that houses approximately 65,000 what?",
+      "best_workflow": "W3",
+      "best_reward": 1.0575,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0381,
+      "reward_span": 1.0956,
+      "reward_by_workflow": {
+        "W3": 1.0575,
+        "W1": -0.0381
+      }
+    },
+    {
+      "question": "What 2017 Christopher B. Landon directed American slasher film is Jessica Rothe starring in?",
+      "best_workflow": "W1",
+      "best_reward": 1.1242,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 1.0721,
+      "reward_span": 0.0521,
+      "reward_by_workflow": {
+        "W1": 1.1242,
+        "W3": 1.0721
+      }
+    },
+    {
+      "question": "What city did the characters from Gargoyles the Movie: The Heroes Awaken wake up in after being in an enchantedly petrified state for a thousand years?",
+      "best_workflow": "W1",
+      "best_reward": 0.7684,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.7397,
+      "reward_span": 0.0287,
+      "reward_by_workflow": {
+        "W1": 0.7684,
+        "W3": 0.7397
+      }
+    },
+    {
+      "question": "What is the height of the player who won the 2015 AFL Rising Star award?",
+      "best_workflow": "W1",
+      "best_reward": -0.0387,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0893,
+      "reward_span": 0.0506,
+      "reward_by_workflow": {
+        "W1": -0.0387,
+        "W3": -0.0893
+      }
+    },
+    {
+      "question": "What type of activity does Owner earnings and Warren Buffett have in common?",
+      "best_workflow": "W3",
+      "best_reward": -0.0318,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0354,
+      "reward_span": 0.0036,
+      "reward_by_workflow": {
+        "W3": -0.0318,
+        "W1": -0.0354
+      }
+    },
+    {
+      "question": "Which American audio engineer and clandestine chemist, who was a key figure in the San Francisco Bay Area hippie movement during the 1960s recorded the album \"Old and in the Way?\"",
+      "best_workflow": "W3",
+      "best_reward": 1.0485,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.049,
+      "reward_span": 1.0975,
+      "reward_by_workflow": {
+        "W3": 1.0485,
+        "W1": -0.049
+      }
+    },
+    {
+      "question": "Hayden is a singer-songwriter from Canada, but where does Buck-Tick hail from?",
+      "best_workflow": "W1",
+      "best_reward": -0.0344,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0905,
+      "reward_span": 0.0561,
+      "reward_by_workflow": {
+        "W1": -0.0344,
+        "W3": -0.0905
+      }
+    },
+    {
+      "question": "Who is the author of the 1993 production Madge Ryan participated in?",
+      "best_workflow": "W1",
+      "best_reward": -0.0469,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0982,
+      "reward_span": 0.0513,
+      "reward_by_workflow": {
+        "W1": -0.0469,
+        "W3": -0.0982
+      }
+    },
+    {
+      "question": "Chris Williams last played for which football club from the National League North?",
+      "best_workflow": "W1",
+      "best_reward": -0.0395,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.1003,
+      "reward_span": 0.0608,
+      "reward_by_workflow": {
+        "W1": -0.0395,
+        "W3": -0.1003
+      }
+    },
+    {
+      "question": "Which came out first, Dinosaur or McFarland, USA",
+      "best_workflow": "W1",
+      "best_reward": 1.1298,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 1.0348,
+      "reward_span": 0.095,
+      "reward_by_workflow": {
+        "W1": 1.1298,
+        "W3": 1.0348
+      }
+    },
+    {
+      "question": "What was the name of a woman from the book titled \"Their Lives: The Women Targeted by the Clinton Machine \" and was also a former white house intern?",
+      "best_workflow": "W1",
+      "best_reward": 1.115,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 1.0525,
+      "reward_span": 0.0625,
+      "reward_by_workflow": {
+        "W1": 1.115,
+        "W3": 1.0525
+      }
+    },
+    {
+      "question": "Christopher Oscar Pena was recognized by an entertainment-industry brand aimed at what?",
+      "best_workflow": "W3",
+      "best_reward": 0.5962,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0325,
+      "reward_span": 0.6287,
+      "reward_by_workflow": {
+        "W3": 0.5962,
+        "W1": -0.0325
+      }
+    },
+    {
+      "question": "How long is the river for which Frenchmans Creek is a tributary?",
+      "best_workflow": "W3",
+      "best_reward": 0.186,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0367,
+      "reward_span": 0.2227,
+      "reward_by_workflow": {
+        "W3": 0.186,
+        "W1": -0.0367
+      }
+    },
+    {
+      "question": "Jamie Harris is best known for his role as The Hook-Handed Man in a movie directed by who ?",
+      "best_workflow": "W1",
+      "best_reward": -0.0429,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0853,
+      "reward_span": 0.0424,
+      "reward_by_workflow": {
+        "W1": -0.0429,
+        "W3": -0.0853
+      }
+    },
+    {
+      "question": "Are Chlidanthus and Maianthemum both flowering plants?",
+      "best_workflow": "W3",
+      "best_reward": 1.0153,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0342,
+      "reward_span": 1.0495,
+      "reward_by_workflow": {
+        "W3": 1.0153,
+        "W1": -0.0342
+      }
+    },
+    {
+      "question": "What class of instrument does Apatim Majumdar play?",
+      "best_workflow": "W3",
+      "best_reward": -0.0349,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0354,
+      "reward_span": 0.0005,
+      "reward_by_workflow": {
+        "W3": -0.0349,
+        "W1": -0.0354
+      }
+    },
+    {
+      "question": "Are Ferocactus and Silene both types of plant?",
+      "best_workflow": "W1",
+      "best_reward": 1.1315,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0979,
+      "reward_span": 1.2294,
+      "reward_by_workflow": {
+        "W1": 1.1315,
+        "W3": -0.0979
+      }
+    },
+    {
+      "question": "Which record label released Van Morrison's \"I've Been Working\" on the album \"His Band and the Street Choir\"?",
+      "best_workflow": "W3",
+      "best_reward": 1.0117,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0389,
+      "reward_span": 1.0506,
+      "reward_by_workflow": {
+        "W3": 1.0117,
+        "W1": -0.0389
+      }
+    },
+    {
+      "question": "Which city was the man who is known for a science humor story based on the tongue-in-cheek combination of two adages born in?",
+      "best_workflow": "W1",
+      "best_reward": 1.0408,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 1.0259,
+      "reward_span": 0.0149,
+      "reward_by_workflow": {
+        "W1": 1.0408,
+        "W3": 1.0259
+      }
+    },
+    {
+      "question": "What material did a hairdresser from Yorkshire, England invent that was named by his granddaughter?",
+      "best_workflow": "W3",
+      "best_reward": 1.0628,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0365,
+      "reward_span": 1.0993,
+      "reward_by_workflow": {
+        "W3": 1.0628,
+        "W1": -0.0365
+      }
+    },
+    {
+      "question": "A Japanese manga series based on a 16 year old high school student Ichitaka Seto, is written and illustrated by someone born in what year?",
+      "best_workflow": "W1",
+      "best_reward": -0.0362,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0934,
+      "reward_span": 0.0572,
+      "reward_by_workflow": {
+        "W1": -0.0362,
+        "W3": -0.0934
+      }
+    },
+    {
+      "question": "Are both Duke Energy and Affiliated Managers Group based in Massachusetts?",
+      "best_workflow": "W1",
+      "best_reward": 1.1292,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 1.0698,
+      "reward_span": 0.0594,
+      "reward_by_workflow": {
+        "W1": 1.1292,
+        "W3": 1.0698
+      }
+    },
+    {
+      "question": "What was the position of Jean Baptiste Androuet du Cerceau under the man who was King of the Polish-Lithuanian Commonwealth from 1573 to 1575?",
+      "best_workflow": "W1",
+      "best_reward": -0.0419,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0521,
+      "reward_span": 0.0102,
+      "reward_by_workflow": {
+        "W1": -0.0419,
+        "W3": -0.0521
+      }
+    },
+    {
+      "question": "What occupation do Chris Menges and Aram Avakian share?",
+      "best_workflow": "W3",
+      "best_reward": 1.0396,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.029,
+      "reward_span": 1.0686,
+      "reward_by_workflow": {
+        "W3": 1.0396,
+        "W1": -0.029
+      }
+    },
+    {
+      "question": "Where was the coach of the 1999 Oklahoma State Cowboys football team hired in 2013?",
+      "best_workflow": "W1",
+      "best_reward": -0.0398,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0849,
+      "reward_span": 0.0451,
+      "reward_by_workflow": {
+        "W1": -0.0398,
+        "W3": -0.0849
+      }
+    },
+    {
+      "question": "Woman's Era and Naj are what kind of magazines?",
+      "best_workflow": "W1",
+      "best_reward": -0.0378,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0872,
+      "reward_span": 0.0494,
+      "reward_by_workflow": {
+        "W1": -0.0378,
+        "W3": -0.0872
+      }
+    },
+    {
+      "question": "How many laps did Harry Prowell run during the 10,000 metres race at the 1967 Pan American Games?",
+      "best_workflow": "W1",
+      "best_reward": -0.0385,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0792,
+      "reward_span": 0.0407,
+      "reward_by_workflow": {
+        "W1": -0.0385,
+        "W3": -0.0792
+      }
+    },
+    {
+      "question": "The 2000 British film Snatch was later adapted into a television series for what streaming service?",
+      "best_workflow": "W1",
+      "best_reward": -0.0404,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.1053,
+      "reward_span": 0.0649,
+      "reward_by_workflow": {
+        "W1": -0.0404,
+        "W3": -0.1053
+      }
+    },
+    {
+      "question": "James Fieser received his B.A. from what liberal arts work college that was founded in 1855?",
+      "best_workflow": "W1",
+      "best_reward": 0.3168,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.2801,
+      "reward_span": 0.0367,
+      "reward_by_workflow": {
+        "W1": 0.3168,
+        "W3": 0.2801
+      }
+    },
+    {
+      "question": "The Ingerophrynus gollum is named after a character in a book that sold how many copies?",
+      "best_workflow": "W1",
+      "best_reward": -0.0379,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.086,
+      "reward_span": 0.0481,
+      "reward_by_workflow": {
+        "W1": -0.0379,
+        "W3": -0.086
+      }
+    },
+    {
+      "question": "Iselin Solheim provided vocals in the song released on what date?",
+      "best_workflow": "W3",
+      "best_reward": 0.1824,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0364,
+      "reward_span": 0.2188,
+      "reward_by_workflow": {
+        "W3": 0.1824,
+        "W1": -0.0364
+      }
+    },
+    {
+      "question": "Alvaro Mexia had a diplomatic mission with which tribe of indigenous people?",
+      "best_workflow": "W1",
+      "best_reward": -0.0349,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0912,
+      "reward_span": 0.0563,
+      "reward_by_workflow": {
+        "W1": -0.0349,
+        "W3": -0.0912
+      }
+    },
+    {
+      "question": "Which band has more members, Test Icicles or X Ambassadors?",
+      "best_workflow": "W1",
+      "best_reward": -0.0383,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.082,
+      "reward_span": 0.0437,
+      "reward_by_workflow": {
+        "W1": -0.0383,
+        "W3": -0.082
+      }
+    },
+    {
+      "question": "What star of \"Attack of the Gryphon\" was also a voice artist in Johnny Bravo?  ",
+      "best_workflow": "W1",
+      "best_reward": -0.0354,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0863,
+      "reward_span": 0.0509,
+      "reward_by_workflow": {
+        "W1": -0.0354,
+        "W3": -0.0863
+      }
+    },
+    {
+      "question": "When was the American actor, film director which  Dana Brunetti is the president of his company born ",
+      "best_workflow": "W1",
+      "best_reward": -0.0382,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0879,
+      "reward_span": 0.0497,
+      "reward_by_workflow": {
+        "W1": -0.0382,
+        "W3": -0.0879
+      }
+    },
+    {
+      "question": "The telenova \"El Ardiente Secreto\" was based ona novel published under what pen name?",
+      "best_workflow": "W1",
+      "best_reward": -0.0422,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.088,
+      "reward_span": 0.0458,
+      "reward_by_workflow": {
+        "W1": -0.0422,
+        "W3": -0.088
+      }
+    },
+    {
+      "question": "Do The Importance of Being Icelandic and The Five Obstructions belong to different film genres ?",
+      "best_workflow": "W3",
+      "best_reward": -0.0326,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0371,
+      "reward_span": 0.0045,
+      "reward_by_workflow": {
+        "W3": -0.0326,
+        "W1": -0.0371
+      }
+    },
+    {
+      "question": "Which American music star appeared as a guest in a Will & Grace episode called \"Back Up, Dancer\"?",
+      "best_workflow": "W3",
+      "best_reward": 0.4346,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0419,
+      "reward_span": 0.4765,
+      "reward_by_workflow": {
+        "W3": 0.4346,
+        "W1": -0.0419
+      }
+    },
+    {
+      "question": "In between Berghuis v. Thompkins and Mississippi University for Women v. Hogan which one was a  case decided 5-4 by the Supreme Court of the United States?",
+      "best_workflow": "W3",
+      "best_reward": 0.5738,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0554,
+      "reward_span": 0.6292,
+      "reward_by_workflow": {
+        "W3": 0.5738,
+        "W1": -0.0554
+      }
+    },
+    {
+      "question": "Mick Carter is the landlord of a public house located at what address?",
+      "best_workflow": "W1",
+      "best_reward": -0.0366,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0907,
+      "reward_span": 0.0541,
+      "reward_by_workflow": {
+        "W1": -0.0366,
+        "W3": -0.0907
+      }
+    },
+    {
+      "question": "Who was born first, Arthur Conan Doyle or Penelope Lively?",
+      "best_workflow": "W1",
+      "best_reward": 0.7756,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.2679,
+      "reward_span": 0.5077,
+      "reward_by_workflow": {
+        "W1": 0.7756,
+        "W3": 0.2679
+      }
+    },
+    {
+      "question": "SuperMansion starred the actress who had a recurring role as whom on Workaholics?",
+      "best_workflow": "W1",
+      "best_reward": -0.0382,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0951,
+      "reward_span": 0.0569,
+      "reward_by_workflow": {
+        "W1": -0.0382,
+        "W3": -0.0951
+      }
+    },
+    {
+      "question": "Ambrose Mendy has managed and/or advised a British professional boxer that as of July 2017 is ranked the world's seventh best super middleweight by who?",
+      "best_workflow": "W3",
+      "best_reward": 0.2274,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0436,
+      "reward_span": 0.271,
+      "reward_by_workflow": {
+        "W3": 0.2274,
+        "W1": -0.0436
+      }
+    },
+    {
+      "question": "What professions did S. Sylvan Simon and Danny Cannon have in common?",
+      "best_workflow": "W1",
+      "best_reward": 0.6802,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.2705,
+      "reward_span": 0.4097,
+      "reward_by_workflow": {
+        "W1": 0.6802,
+        "W3": 0.2705
+      }
+    },
+    {
+      "question": "Both Bishop Carroll Catholic High School and Kapaun Mt. Carmel Catholic High School are located in which city in Kansas?",
+      "best_workflow": "W1",
+      "best_reward": 1.1245,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 1.0634,
+      "reward_span": 0.0611,
+      "reward_by_workflow": {
+        "W1": 1.1245,
+        "W3": 1.0634
+      }
+    },
+    {
+      "question": "Which television series featured an actor who also performed in \"The Young Ones\"?",
+      "best_workflow": "W1",
+      "best_reward": -0.0374,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0951,
+      "reward_span": 0.0577,
+      "reward_by_workflow": {
+        "W1": -0.0374,
+        "W3": -0.0951
+      }
+    },
+    {
+      "question": "Which dog's ancestors include Gordon and Irish Setters: the Manchester Terrier or the Scotch Collie?",
+      "best_workflow": "W3",
+      "best_reward": 1.0615,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0369,
+      "reward_span": 1.0984,
+      "reward_by_workflow": {
+        "W3": 1.0615,
+        "W1": -0.0369
+      }
+    },
+    {
+      "question": "What type of movie are Wishing Stairs and Voice?",
+      "best_workflow": "W1",
+      "best_reward": 0.2349,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0562,
+      "reward_span": 0.2911,
+      "reward_by_workflow": {
+        "W1": 0.2349,
+        "W3": -0.0562
+      }
+    },
+    {
+      "question": "Where is the academy, for which Joseph D. Stewart was appointed Superintendent, located?",
+      "best_workflow": "W1",
+      "best_reward": -0.0452,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0996,
+      "reward_span": 0.0544,
+      "reward_by_workflow": {
+        "W1": -0.0452,
+        "W3": -0.0996
+      }
+    },
+    {
+      "question": "Are Local H and For Against both from the United States?",
+      "best_workflow": "W1",
+      "best_reward": -0.0354,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0954,
+      "reward_span": 0.06,
+      "reward_by_workflow": {
+        "W1": -0.0354,
+        "W3": -0.0954
+      }
+    },
+    {
+      "question": "Which \"Official Ireland\" group comprises about  78.3% of the population of Ireland? ",
+      "best_workflow": "W3",
+      "best_reward": 0.1818,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": 0.0348,
+      "reward_span": 0.147,
+      "reward_by_workflow": {
+        "W3": 0.1818,
+        "W1": 0.0348
+      }
+    },
+    {
+      "question": "Which of the city at the south of Shelly Beach, New South Wales is a local government area in the Hunter region of New South Wales, Australia?",
+      "best_workflow": "W1",
+      "best_reward": -0.0404,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0915,
+      "reward_span": 0.0511,
+      "reward_by_workflow": {
+        "W1": -0.0404,
+        "W3": -0.0915
+      }
+    },
+    {
+      "question": "How many days did it take the Best New Artist of 2009 to sell 2 million copies of an album in the UK and break a twenty year old record?",
+      "best_workflow": "W1",
+      "best_reward": -0.0409,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.1311,
+      "reward_span": 0.0902,
+      "reward_by_workflow": {
+        "W1": -0.0409,
+        "W3": -0.1311
+      }
+    },
+    {
+      "question": "When did the game which held three times in  in East Asia first held ",
+      "best_workflow": "W1",
+      "best_reward": -0.0293,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0885,
+      "reward_span": 0.0592,
+      "reward_by_workflow": {
+        "W1": -0.0293,
+        "W3": -0.0885
+      }
+    },
+    {
+      "question": "The Azad Hind Dal was created by an Indian nationalist whose defiant patriotism made him a hero in India, but whose attempt to rid India of British rule during what war left a troubled legacy?",
+      "best_workflow": "W1",
+      "best_reward": 1.1211,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 1.0492,
+      "reward_span": 0.0719,
+      "reward_by_workflow": {
+        "W1": 1.1211,
+        "W3": 1.0492
+      }
+    },
+    {
+      "question": "When was the British author who wrote the novel on which \"Here We Go Round the Mulberry Bush\" was based born? ",
+      "best_workflow": "W3",
+      "best_reward": 0.1134,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0384,
+      "reward_span": 0.1518,
+      "reward_by_workflow": {
+        "W3": 0.1134,
+        "W1": -0.0384
+      }
+    },
+    {
+      "question": "Which song was behind the third single on the album  \"A Lot About Livin' (And a Little 'bout Love)\" for two weeks on the country charts?",
+      "best_workflow": "W1",
+      "best_reward": -0.0443,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0837,
+      "reward_span": 0.0394,
+      "reward_by_workflow": {
+        "W1": -0.0443,
+        "W3": -0.0837
+      }
+    },
+    {
+      "question": "What act for Innocent Records achieved Platinum sales and shares its name with a primary color in the RGB color model?",
+      "best_workflow": "W3",
+      "best_reward": -0.0384,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0439,
+      "reward_span": 0.0055,
+      "reward_by_workflow": {
+        "W3": -0.0384,
+        "W1": -0.0439
+      }
+    },
+    {
+      "question": "James Spedding was chiefly known as the editor of the works of an author who served both as Attorney General and as what?",
+      "best_workflow": "W1",
+      "best_reward": -0.0378,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0875,
+      "reward_span": 0.0497,
+      "reward_by_workflow": {
+        "W1": -0.0378,
+        "W3": -0.0875
+      }
+    },
+    {
+      "question": "What is the population of the town at the intersection of Interstate Highways 77 and  the longest Interstate highway within the borders of Virginia?",
+      "best_workflow": "W1",
+      "best_reward": -0.0382,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.085,
+      "reward_span": 0.0468,
+      "reward_by_workflow": {
+        "W1": -0.0382,
+        "W3": -0.085
+      }
+    },
+    {
+      "question": "What took place first, The Korean War or The Western Allied invasion of Germany?",
+      "best_workflow": "W1",
+      "best_reward": 1.1259,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 1.0365,
+      "reward_span": 0.0894,
+      "reward_by_workflow": {
+        "W1": 1.1259,
+        "W3": 1.0365
+      }
+    },
+    {
+      "question": "The Government of Canada, which is the federal administration of Canada, is involved in what scandal in the province of Quebec?",
+      "best_workflow": "W3",
+      "best_reward": 1.0035,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": 0.3154,
+      "reward_span": 0.6881,
+      "reward_by_workflow": {
+        "W3": 1.0035,
+        "W1": 0.3154
+      }
+    },
+    {
+      "question": "The Tennessee Volunteers football team plays as a member for a conference in what city?",
+      "best_workflow": "W1",
+      "best_reward": -0.0376,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0937,
+      "reward_span": 0.0561,
+      "reward_by_workflow": {
+        "W1": -0.0376,
+        "W3": -0.0937
+      }
+    },
+    {
+      "question": "In what city did the \"Prince of tenors\" star in a film based on an opera by Giacomo Puccini?",
+      "best_workflow": "W1",
+      "best_reward": -0.0374,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.1028,
+      "reward_span": 0.0654,
+      "reward_by_workflow": {
+        "W1": -0.0374,
+        "W3": -0.1028
+      }
+    },
+    {
+      "question": "What type of media does Bitter Jester and Sicko have in common?",
+      "best_workflow": "W1",
+      "best_reward": -0.0374,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0378,
+      "reward_span": 0.0004,
+      "reward_by_workflow": {
+        "W1": -0.0374,
+        "W3": -0.0378
+      }
+    },
+    {
+      "question": "Anthony Avent played basketball fo a High School that is located in a city approcimately 8 mi west of where?",
+      "best_workflow": "W1",
+      "best_reward": -0.0423,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0986,
+      "reward_span": 0.0563,
+      "reward_by_workflow": {
+        "W1": -0.0423,
+        "W3": -0.0986
+      }
+    },
+    {
+      "question": "Are Buried Country and South of the Border both films turned into stage performances?",
+      "best_workflow": "W3",
+      "best_reward": -0.0383,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0406,
+      "reward_span": 0.0023,
+      "reward_by_workflow": {
+        "W3": -0.0383,
+        "W1": -0.0406
+      }
+    },
+    {
+      "question": "What is the name of the fight song of the university whose main campus is in Lawrence, Kansas and whose branch campuses are in the Kansas City metropolitan area?",
+      "best_workflow": "W1",
+      "best_reward": -0.0437,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.1145,
+      "reward_span": 0.0708,
+      "reward_by_workflow": {
+        "W1": -0.0437,
+        "W3": -0.1145
+      }
+    },
+    {
+      "question": "Which of Tara Strong major voice role in animated series is an American animated television series based on the DC Comics fictional superhero team, the \"Teen Titans\"?",
+      "best_workflow": "W3",
+      "best_reward": -0.0391,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0426,
+      "reward_span": 0.0035,
+      "reward_by_workflow": {
+        "W3": -0.0391,
+        "W1": -0.0426
+      }
+    },
+    {
+      "question": "Rock Springs is a collection of short stories by an author born in what year?",
+      "best_workflow": "W1",
+      "best_reward": -0.0371,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0832,
+      "reward_span": 0.0461,
+      "reward_by_workflow": {
+        "W1": -0.0371,
+        "W3": -0.0832
+      }
+    },
+    {
+      "question": "What type of magazine is Eugene Habecker the chairman of?",
+      "best_workflow": "W1",
+      "best_reward": -0.0396,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0948,
+      "reward_span": 0.0552,
+      "reward_by_workflow": {
+        "W1": -0.0396,
+        "W3": -0.0948
+      }
+    },
+    {
+      "question": "Which film was Oscar nominated, LaLee's Kin: The Legacy of Cotton or Gimme Shelter, the 1970 Rolling Stones documentary?",
+      "best_workflow": "W3",
+      "best_reward": 1.0674,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0399,
+      "reward_span": 1.1073,
+      "reward_by_workflow": {
+        "W3": 1.0674,
+        "W1": -0.0399
+      }
+    },
+    {
+      "question": "What movie is the the Spinning turtle attraction in the worlds 21st largest theme park based off of?",
+      "best_workflow": "W1",
+      "best_reward": -0.0335,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0945,
+      "reward_span": 0.061,
+      "reward_by_workflow": {
+        "W1": -0.0335,
+        "W3": -0.0945
+      }
+    },
+    {
+      "question": "What kind of movie directed by F. Javier gutierrez did an Italian model and actress star in?",
+      "best_workflow": "W1",
+      "best_reward": -0.0455,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0875,
+      "reward_span": 0.042,
+      "reward_by_workflow": {
+        "W1": -0.0455,
+        "W3": -0.0875
+      }
+    },
+    {
+      "question": "Haruki Murakami said that writing \"Dance Dance Dance\" had been a healing act after his unexpected fame following the publication of a novel published in which year ?",
+      "best_workflow": "W1",
+      "best_reward": -0.0403,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0857,
+      "reward_span": 0.0454,
+      "reward_by_workflow": {
+        "W1": -0.0403,
+        "W3": -0.0857
+      }
+    },
+    {
+      "question": "What amount was the settlement that the character from the Son of al Quada got in 2017?",
+      "best_workflow": "W1",
+      "best_reward": -0.0398,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0899,
+      "reward_span": 0.0501,
+      "reward_by_workflow": {
+        "W1": -0.0398,
+        "W3": -0.0899
+      }
+    },
+    {
+      "question": "Who is the writer of this song that was inspired by words on a tombstone and was the first track on the box set Back to Mono?",
+      "best_workflow": "W1",
+      "best_reward": -0.043,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.1184,
+      "reward_span": 0.0754,
+      "reward_by_workflow": {
+        "W1": -0.043,
+        "W3": -0.1184
+      }
+    },
+    {
+      "question": "What year was the film \"Mom\" released, starring the voice of Shashaa Tirupati?",
+      "best_workflow": "W3",
+      "best_reward": 1.006,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0395,
+      "reward_span": 1.0455,
+      "reward_by_workflow": {
+        "W3": 1.006,
+        "W1": -0.0395
+      }
+    },
+    {
+      "question": "What fictional character created by Tom Clancy was turned into a film in 2002?",
+      "best_workflow": "W1",
+      "best_reward": 1.1273,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 1.0204,
+      "reward_span": 0.1069,
+      "reward_by_workflow": {
+        "W1": 1.1273,
+        "W3": 1.0204
+      }
+    },
+    {
+      "question": "What year did Guns N Roses perform a promo for a movie starring Arnold Schwarzenegger as a former New York Police detective?",
+      "best_workflow": "W1",
+      "best_reward": -0.0432,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0446,
+      "reward_span": 0.0014,
+      "reward_by_workflow": {
+        "W1": -0.0432,
+        "W3": -0.0446
+      }
+    },
+    {
+      "question": "Chimaja Appawas the younger brother of a general of the Maratha Empire in India, who served as what to the fifth Maratha Chhatrapati Shahu from 1720 until his death?",
+      "best_workflow": "W3",
+      "best_reward": -0.0357,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0433,
+      "reward_span": 0.0076,
+      "reward_by_workflow": {
+        "W3": -0.0357,
+        "W1": -0.0433
+      }
+    },
+    {
+      "question": "In 2017, what was 3/4th of the organization that also has a Center for Veterinary Medicine as well as part of the U.S. Department of Health and Human Services, spent on?",
+      "best_workflow": "W1",
+      "best_reward": -0.0587,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.1065,
+      "reward_span": 0.0478,
+      "reward_by_workflow": {
+        "W1": -0.0587,
+        "W3": -0.1065
+      }
+    },
+    {
+      "question": "Scott Sandelin grew up in a town in what Minnesota county?",
+      "best_workflow": "W1",
+      "best_reward": 0.2286,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0921,
+      "reward_span": 0.3207,
+      "reward_by_workflow": {
+        "W1": 0.2286,
+        "W3": -0.0921
+      }
+    },
+    {
+      "question": "What other political position did the person who introduced the DISCLOSE Act hold?",
+      "best_workflow": "W1",
+      "best_reward": -0.0523,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0904,
+      "reward_span": 0.0381,
+      "reward_by_workflow": {
+        "W1": -0.0523,
+        "W3": -0.0904
+      }
+    },
+    {
+      "question": "The actress that played the leading role in the independent film \"A Perfect Ending\" also stars with John Bregar in a 2008 film directed by who?",
+      "best_workflow": "W1",
+      "best_reward": -0.0442,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0735,
+      "reward_span": 0.0293,
+      "reward_by_workflow": {
+        "W1": -0.0442,
+        "W3": -0.0735
+      }
+    },
+    {
+      "question": "Which actor does American Beauty and American Beauty have in common?",
+      "best_workflow": "W1",
+      "best_reward": 1.1251,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0907,
+      "reward_span": 1.2158,
+      "reward_by_workflow": {
+        "W1": 1.1251,
+        "W3": -0.0907
+      }
+    },
+    {
+      "question": "Rostker v. Goldberg held that the practice of what way of filling armed forces vacancies was consitutional?",
+      "best_workflow": "W1",
+      "best_reward": -0.0435,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0773,
+      "reward_span": 0.0338,
+      "reward_by_workflow": {
+        "W1": -0.0435,
+        "W3": -0.0773
+      }
+    },
+    {
+      "question": "What screenwriter with credits for \"Evolution\" co-wrote a film starring Nicolas Cage and Téa Leoni?",
+      "best_workflow": "W3",
+      "best_reward": 0.3148,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0426,
+      "reward_span": 0.3574,
+      "reward_by_workflow": {
+        "W3": 0.3148,
+        "W1": -0.0426
+      }
+    },
+    {
+      "question": "On what date will the comedy film directed by Kevin Tent and starring the Bulgarian-Canadian actress known for portraying the role of Mia Jones be released on video on demand services?",
+      "best_workflow": "W1",
+      "best_reward": -0.0391,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0842,
+      "reward_span": 0.0451,
+      "reward_by_workflow": {
+        "W1": -0.0391,
+        "W3": -0.0842
+      }
+    },
+    {
+      "question": "Which band has released the most studio albums, Blonde Redhead or Rob Zombie's band White Zombie?",
+      "best_workflow": "W3",
+      "best_reward": 1.0671,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.037,
+      "reward_span": 1.1041,
+      "reward_by_workflow": {
+        "W3": 1.0671,
+        "W1": -0.037
+      }
+    },
+    {
+      "question": "The American restaurant chain, the Original House of Pies, is also responsible for an American chain of fruit drink beverage stores with an eponymous beverage consisting of what?",
+      "best_workflow": "W3",
+      "best_reward": 1.0717,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0345,
+      "reward_span": 1.1062,
+      "reward_by_workflow": {
+        "W3": 1.0717,
+        "W1": -0.0345
+      }
+    },
+    {
+      "question": "Who did the Star and Dagger bass player marry?",
+      "best_workflow": "W1",
+      "best_reward": -0.0376,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0879,
+      "reward_span": 0.0503,
+      "reward_by_workflow": {
+        "W1": -0.0376,
+        "W3": -0.0879
+      }
+    },
+    {
+      "question": "Which tower is taller, 712 Fifth Avenue or Manhattan Life Insurance Building?",
+      "best_workflow": "W1",
+      "best_reward": -0.0458,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0551,
+      "reward_span": 0.0093,
+      "reward_by_workflow": {
+        "W1": -0.0458,
+        "W3": -0.0551
+      }
+    },
+    {
+      "question": "Garden Island Naval Chapel is the oldest Chistian chapel of a naval branch of what defence force?",
+      "best_workflow": "W1",
+      "best_reward": 0.1752,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.1741,
+      "reward_span": 0.0011,
+      "reward_by_workflow": {
+        "W1": 0.1752,
+        "W3": 0.1741
+      }
+    },
+    {
+      "question": "In what year was the team that Luke Clark plays either right back or central midfielder for founded?",
+      "best_workflow": "W1",
+      "best_reward": -0.0373,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0734,
+      "reward_span": 0.0361,
+      "reward_by_workflow": {
+        "W1": -0.0373,
+        "W3": -0.0734
+      }
+    },
+    {
+      "question": "Are Staten Island Catapult and This Is Elvis both documentaries?",
+      "best_workflow": "W1",
+      "best_reward": -0.0353,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.089,
+      "reward_span": 0.0537,
+      "reward_by_workflow": {
+        "W1": -0.0353,
+        "W3": -0.089
+      }
+    },
+    {
+      "question": "Which has more species, Aichryson or Polypodium?",
+      "best_workflow": "W1",
+      "best_reward": 1.1304,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.086,
+      "reward_span": 1.2164,
+      "reward_by_workflow": {
+        "W1": 1.1304,
+        "W3": -0.086
+      }
+    },
+    {
+      "question": "Which is a Macedonian weekly, Hänt Extra or Tea Moderna?",
+      "best_workflow": "W3",
+      "best_reward": 1.0831,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0361,
+      "reward_span": 1.1192,
+      "reward_by_workflow": {
+        "W3": 1.0831,
+        "W1": -0.0361
+      }
+    },
+    {
+      "question": "What drum machine was introduced in 1989 and allowed 32 notes to be played simultaneously?",
+      "best_workflow": "W1",
+      "best_reward": -0.0469,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.1029,
+      "reward_span": 0.056,
+      "reward_by_workflow": {
+        "W1": -0.0469,
+        "W3": -0.1029
+      }
+    },
+    {
+      "question": "Katherine Waterston and Chrisann Brennan has what in common?",
+      "best_workflow": "W3",
+      "best_reward": 1.0612,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0371,
+      "reward_span": 1.0983,
+      "reward_by_workflow": {
+        "W3": 1.0612,
+        "W1": -0.0371
+      }
+    },
+    {
+      "question": "Andrew Jaspan was the co-founder of what not-for-profit media outlet?",
+      "best_workflow": "W3",
+      "best_reward": 1.0605,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0327,
+      "reward_span": 1.0932,
+      "reward_by_workflow": {
+        "W3": 1.0605,
+        "W1": -0.0327
+      }
+    },
+    {
+      "question": "Which of these battles occurred earlier--the Battle of Peleliu or the Battle of Belleau Wood?",
+      "best_workflow": "W3",
+      "best_reward": 1.0532,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": 0.684,
+      "reward_span": 0.3692,
+      "reward_by_workflow": {
+        "W3": 1.0532,
+        "W1": 0.684
+      }
+    },
+    {
+      "question": "Eric Ambler and Carol Shields are both best Known for what profession?",
+      "best_workflow": "W1",
+      "best_reward": -0.0357,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.086,
+      "reward_span": 0.0503,
+      "reward_by_workflow": {
+        "W1": -0.0357,
+        "W3": -0.086
+      }
+    },
+    {
+      "question": "Who was known by his stage name Aladin and helped organizations improve their performance as a consultant?",
+      "best_workflow": "W1",
+      "best_reward": -0.0382,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0817,
+      "reward_span": 0.0435,
+      "reward_by_workflow": {
+        "W1": -0.0382,
+        "W3": -0.0817
+      }
+    },
+    {
+      "question": "The Dogwoman telemovies were created by an actress born in what year?",
+      "best_workflow": "W1",
+      "best_reward": -0.0409,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0828,
+      "reward_span": 0.0419,
+      "reward_by_workflow": {
+        "W1": -0.0409,
+        "W3": -0.0828
+      }
+    },
+    {
+      "question": "Which magazine is published more often, Shonen Jump or Rolling Stone?",
+      "best_workflow": "W1",
+      "best_reward": -0.0371,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.1028,
+      "reward_span": 0.0657,
+      "reward_by_workflow": {
+        "W1": -0.0371,
+        "W3": -0.1028
+      }
+    },
+    {
+      "question": "Where was the movement that August Brancart published literature from centerd?",
+      "best_workflow": "W1",
+      "best_reward": -0.0363,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0847,
+      "reward_span": 0.0484,
+      "reward_by_workflow": {
+        "W1": -0.0363,
+        "W3": -0.0847
+      }
+    },
+    {
+      "question": "The Polar Bears featuring the voice of Armie Hammer, is also the same voice actor for which character in Cars 3?",
+      "best_workflow": "W1",
+      "best_reward": -0.04,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0943,
+      "reward_span": 0.0543,
+      "reward_by_workflow": {
+        "W1": -0.04,
+        "W3": -0.0943
+      }
+    },
+    {
+      "question": "Is the Pakistan fast bowler who joined the Kent County Cricket Club in June, 2011 a left-hand or right-hand batsmans?",
+      "best_workflow": "W1",
+      "best_reward": -0.0386,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0845,
+      "reward_span": 0.0459,
+      "reward_by_workflow": {
+        "W1": -0.0386,
+        "W3": -0.0845
+      }
+    },
+    {
+      "question": "Are Hot Rod and The Memory of Our People both magazines?",
+      "best_workflow": "W1",
+      "best_reward": -0.0345,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0908,
+      "reward_span": 0.0563,
+      "reward_by_workflow": {
+        "W1": -0.0345,
+        "W3": -0.0908
+      }
+    },
+    {
+      "question": "The Livesey Hal War Memorial commemorates the fallen of which war, that had over 60 million casualties?",
+      "best_workflow": "W3",
+      "best_reward": 0.7588,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": 0.5019,
+      "reward_span": 0.2569,
+      "reward_by_workflow": {
+        "W3": 0.7588,
+        "W1": 0.5019
+      }
+    },
+    {
+      "question": "Who was the writer of These Boots Are Made for Walkin' and who died in 2007?",
+      "best_workflow": "W3",
+      "best_reward": 0.6169,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0445,
+      "reward_span": 0.6614,
+      "reward_by_workflow": {
+        "W3": 0.6169,
+        "W1": -0.0445
+      }
+    },
+    {
+      "question": "Dead but Rising was a song by the Danish band fomed in what city in 2001?",
+      "best_workflow": "W1",
+      "best_reward": 1.1286,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 1.0144,
+      "reward_span": 0.1142,
+      "reward_by_workflow": {
+        "W1": 1.1286,
+        "W3": 1.0144
+      }
+    },
+    {
+      "question": "What type of film are both \"500 Years Later\" and \"Manson\"?",
+      "best_workflow": "W3",
+      "best_reward": 1.0635,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0358,
+      "reward_span": 1.0993,
+      "reward_by_workflow": {
+        "W3": 1.0635,
+        "W1": -0.0358
+      }
+    },
+    {
+      "question": "Where is the stadium at which 1964 Georgia Tech Yellow Jackets football team played their home game located? ",
+      "best_workflow": "W1",
+      "best_reward": -0.0396,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0851,
+      "reward_span": 0.0455,
+      "reward_by_workflow": {
+        "W1": -0.0396,
+        "W3": -0.0851
+      }
+    },
+    {
+      "question": "What director worked with Vikram Bhatt on a film starring actors Rajneesh Duggal and Adah Sharma?",
+      "best_workflow": "W1",
+      "best_reward": -0.0445,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0937,
+      "reward_span": 0.0492,
+      "reward_by_workflow": {
+        "W1": -0.0445,
+        "W3": -0.0937
+      }
+    },
+    {
+      "question": "Randall Cunningham II was a multi-sport athlete at the high school located in what Nevada city?",
+      "best_workflow": "W1",
+      "best_reward": -0.0363,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0918,
+      "reward_span": 0.0555,
+      "reward_by_workflow": {
+        "W1": -0.0363,
+        "W3": -0.0918
+      }
+    },
+    {
+      "question": "In what city can a person find both the Nusretiye Clock Tower and the Eski Imaret Mosque be found?",
+      "best_workflow": "W1",
+      "best_reward": 0.5022,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.4871,
+      "reward_span": 0.0151,
+      "reward_by_workflow": {
+        "W1": 0.5022,
+        "W3": 0.4871
+      }
+    },
+    {
+      "question": "In which city are the headquarters of the American research and scientific development company where Ravi Sethi worked as computer scientist located?",
+      "best_workflow": "W3",
+      "best_reward": 1.071,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0384,
+      "reward_span": 1.1094,
+      "reward_by_workflow": {
+        "W3": 1.071,
+        "W1": -0.0384
+      }
+    },
+    {
+      "question": "Mamie Gummer played the role of Nancy Crozier on the TV series airing on what network?",
+      "best_workflow": "W1",
+      "best_reward": -0.036,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.1007,
+      "reward_span": 0.0647,
+      "reward_by_workflow": {
+        "W1": -0.036,
+        "W3": -0.1007
+      }
+    },
+    {
+      "question": "Which Argentine telenovela broadcast by Telefe from March 12 to December 19, 2012 starred Isabel Macedo as Jimena Benitez?",
+      "best_workflow": "W3",
+      "best_reward": 1.0676,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.046,
+      "reward_span": 1.1136,
+      "reward_by_workflow": {
+        "W3": 1.0676,
+        "W1": -0.046
+      }
+    },
+    {
+      "question": "What was the nickname of the hitman hired by an Italian American Criminal Organization?",
+      "best_workflow": "W1",
+      "best_reward": -0.0368,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.1068,
+      "reward_span": 0.07,
+      "reward_by_workflow": {
+        "W1": -0.0368,
+        "W3": -0.1068
+      }
+    },
+    {
+      "question": "Lorenzo Monaco was influenced by which Italian painter and architect?",
+      "best_workflow": "W3",
+      "best_reward": 1.0464,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.037,
+      "reward_span": 1.0834,
+      "reward_by_workflow": {
+        "W3": 1.0464,
+        "W1": -0.037
+      }
+    },
+    {
+      "question": "Kaiser Ventures corporation was founded by an American industrialist who became known as the father of modern American shipbuilding?",
+      "best_workflow": "W3",
+      "best_reward": 0.4867,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0409,
+      "reward_span": 0.5276,
+      "reward_by_workflow": {
+        "W3": 0.4867,
+        "W1": -0.0409
+      }
+    },
+    {
+      "question": "Which lead actor/actress in War Chhod Na Yaar has also acted in Bengali and English-language films?",
+      "best_workflow": "W3",
+      "best_reward": 1.0674,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": 0.2332,
+      "reward_span": 0.8342,
+      "reward_by_workflow": {
+        "W3": 1.0674,
+        "W1": 0.2332
+      }
+    },
+    {
+      "question": "Ellie Goulding worked with what other writers on her third studio album, Delirium?",
+      "best_workflow": "W1",
+      "best_reward": -0.039,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0814,
+      "reward_span": 0.0424,
+      "reward_by_workflow": {
+        "W1": -0.039,
+        "W3": -0.0814
+      }
+    },
+    {
+      "question": "Which cast member of Alice Upside Down also stars in the ABC Family/Freeform drama \"Switched at Birth?\"",
+      "best_workflow": "W3",
+      "best_reward": -0.0409,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0449,
+      "reward_span": 0.004,
+      "reward_by_workflow": {
+        "W3": -0.0409,
+        "W1": -0.0449
+      }
+    },
+    {
+      "question": "What race track in the midwest hosts a 500 mile race eavery May?",
+      "best_workflow": "W1",
+      "best_reward": 1.1237,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0483,
+      "reward_span": 1.172,
+      "reward_by_workflow": {
+        "W1": 1.1237,
+        "W3": -0.0483
+      }
+    }
+  ],
+  "holdout_diagnostics_preview": [
+    {
+      "question": "What is the middle name of the actress who plays Bobbi Bacha in Suburban Madness?",
+      "best_workflow": "W1",
+      "best_reward": -0.0384,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0746,
+      "reward_span": 0.0362,
+      "reward_by_workflow": {
+        "W1": -0.0384,
+        "W3": -0.0746
+      }
+    },
+    {
+      "question": "Erica Packer was the second wife of what Australian businessman?",
+      "best_workflow": "W3",
+      "best_reward": 1.0688,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0359,
+      "reward_span": 1.1047,
+      "reward_by_workflow": {
+        "W3": 1.0688,
+        "W1": -0.0359
+      }
+    },
+    {
+      "question": "Which band, Letters to Cleo or Screaming Trees, had more members?",
+      "best_workflow": "W1",
+      "best_reward": 1.1285,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 1.0125,
+      "reward_span": 0.116,
+      "reward_by_workflow": {
+        "W1": 1.1285,
+        "W3": 1.0125
+      }
+    },
+    {
+      "question": "What is the inhabitant of the city where  122nd SS-Standarte was formed in2014",
+      "best_workflow": "W1",
+      "best_reward": -0.0404,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.083,
+      "reward_span": 0.0426,
+      "reward_by_workflow": {
+        "W1": -0.0404,
+        "W3": -0.083
+      }
+    },
+    {
+      "question": "Who is older, Annie Morton or Terry Richardson?",
+      "best_workflow": "W1",
+      "best_reward": 1.13,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 1.0654,
+      "reward_span": 0.0646,
+      "reward_by_workflow": {
+        "W1": 1.13,
+        "W3": 1.0654
+      }
+    },
+    {
+      "question": "What city did the Freebooters F.C. soccer team lose in that is now known as Croke Park?",
+      "best_workflow": "W1",
+      "best_reward": 1.1308,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 1.0604,
+      "reward_span": 0.0704,
+      "reward_by_workflow": {
+        "W1": 1.1308,
+        "W3": 1.0604
+      }
+    },
+    {
+      "question": "Jens Risom introduced what type of design, characterized by minimalism and functionality?",
+      "best_workflow": "W1",
+      "best_reward": 1.1279,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.2287,
+      "reward_span": 0.8992,
+      "reward_by_workflow": {
+        "W1": 1.1279,
+        "W3": 0.2287
+      }
+    },
+    {
+      "question": "Jacques Mathou starred in Delicatessen, the 1991 French movie in the style of which celebrated American animator?",
+      "best_workflow": "W1",
+      "best_reward": -0.0393,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0827,
+      "reward_span": 0.0434,
+      "reward_by_workflow": {
+        "W1": -0.0393,
+        "W3": -0.0827
+      }
+    },
+    {
+      "question": "The 1974 Texas Tech Raiders football team represented what public research university in Lubbock, Texas?",
+      "best_workflow": "W1",
+      "best_reward": 1.1281,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 1.0674,
+      "reward_span": 0.0607,
+      "reward_by_workflow": {
+        "W1": 1.1281,
+        "W3": 1.0674
+      }
+    },
+    {
+      "question": "What was the Roud Folk Song Index of the nursery rhyme inspiring What Are Little Girls Made Of?",
+      "best_workflow": "W1",
+      "best_reward": -0.0487,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0854,
+      "reward_span": 0.0367,
+      "reward_by_workflow": {
+        "W1": -0.0487,
+        "W3": -0.0854
+      }
+    },
+    {
+      "question": "Where is the company that Sachin Warrier worked for as a software engineer headquartered? ",
+      "best_workflow": "W1",
+      "best_reward": -0.0451,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.089,
+      "reward_span": 0.0439,
+      "reward_by_workflow": {
+        "W1": -0.0451,
+        "W3": -0.089
+      }
+    },
+    {
+      "question": "Which close friend of an American former basketball player was signed for to play for the Timberwolves?",
+      "best_workflow": "W1",
+      "best_reward": -0.0385,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.1228,
+      "reward_span": 0.0843,
+      "reward_by_workflow": {
+        "W1": -0.0385,
+        "W3": -0.1228
+      }
+    },
+    {
+      "question": "The northern English anglian Kingdom in the Humber estuary spoke what dialect of english?",
+      "best_workflow": "W1",
+      "best_reward": 1.1336,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0462,
+      "reward_span": 1.1798,
+      "reward_by_workflow": {
+        "W1": 1.1336,
+        "W3": -0.0462
+      }
+    },
+    {
+      "question": "Which game was released first, Icehouse pieces or Kill Doctor Lucky?",
+      "best_workflow": "W1",
+      "best_reward": 1.1309,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 1.0749,
+      "reward_span": 0.056,
+      "reward_by_workflow": {
+        "W1": 1.1309,
+        "W3": 1.0749
+      }
+    },
+    {
+      "question": "What nationality were social anthropologists Alfred Gell and Edmund Leach?",
+      "best_workflow": "W1",
+      "best_reward": 1.1286,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 1.0646,
+      "reward_span": 0.064,
+      "reward_by_workflow": {
+        "W1": 1.1286,
+        "W3": 1.0646
+      }
+    },
+    {
+      "question": "One Raffles Place is one of the tallest skyscrapers in the city of Singapore and tallest in the wolrd outside North America until it was succeeded by a Building in city?",
+      "best_workflow": "W1",
+      "best_reward": -0.0451,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0888,
+      "reward_span": 0.0437,
+      "reward_by_workflow": {
+        "W1": -0.0451,
+        "W3": -0.0888
+      }
+    },
+    {
+      "question": "What city and nation was the location of the 2015 Pacific Games where the Kiribati national basketball team finished with a 0-4 record?",
+      "best_workflow": "W3",
+      "best_reward": 1.0635,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.047,
+      "reward_span": 1.1105,
+      "reward_by_workflow": {
+        "W3": 1.0635,
+        "W1": -0.047
+      }
+    },
+    {
+      "question": " William Cammisano was part of which Mafia family?",
+      "best_workflow": "W1",
+      "best_reward": 0.3981,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0911,
+      "reward_span": 0.4892,
+      "reward_by_workflow": {
+        "W1": 0.3981,
+        "W3": -0.0911
+      }
+    },
+    {
+      "question": "Were Goo Goo Dolls and Echosmith formed in the same city?",
+      "best_workflow": "W3",
+      "best_reward": -0.0358,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0375,
+      "reward_span": 0.0017,
+      "reward_by_workflow": {
+        "W3": -0.0358,
+        "W1": -0.0375
+      }
+    },
+    {
+      "question": "A puzzle-platform video game developed by the Valve Corporation is part of what 2012 action-adventure game?",
+      "best_workflow": "W1",
+      "best_reward": -0.0479,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.089,
+      "reward_span": 0.0411,
+      "reward_by_workflow": {
+        "W1": -0.0479,
+        "W3": -0.089
+      }
+    },
+    {
+      "question": "Snowdrop is a proprietary game engine first revealed with an online-only action role-playing video game developed by who?",
+      "best_workflow": "W1",
+      "best_reward": -0.0379,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.063,
+      "reward_span": 0.0251,
+      "reward_by_workflow": {
+        "W1": -0.0379,
+        "W3": -0.063
+      }
+    },
+    {
+      "question": "Which mall, Wilton Mall or Viaport Rotterdam, has had more owners?",
+      "best_workflow": "W3",
+      "best_reward": 1.0537,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0368,
+      "reward_span": 1.0905,
+      "reward_by_workflow": {
+        "W3": 1.0537,
+        "W1": -0.0368
+      }
+    },
+    {
+      "question": "What edition of tennis' US Open was the 2017 US Open when Petra Kvitova was a quarterfinalist?",
+      "best_workflow": "W1",
+      "best_reward": -0.0388,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0923,
+      "reward_span": 0.0535,
+      "reward_by_workflow": {
+        "W1": -0.0388,
+        "W3": -0.0923
+      }
+    },
+    {
+      "question": "In which city is the ambassador of the Rabat-Salé-Kénitra administrative region to China based?",
+      "best_workflow": "W1",
+      "best_reward": 1.1304,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0837,
+      "reward_span": 1.2141,
+      "reward_by_workflow": {
+        "W1": 1.1304,
+        "W3": -0.0837
+      }
+    },
+    {
+      "question": "Cardinal Pole Roman Catholic School was named after the last Roman Catholic to hold what position?",
+      "best_workflow": "W3",
+      "best_reward": 0.4939,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.034,
+      "reward_span": 0.5279,
+      "reward_by_workflow": {
+        "W3": 0.4939,
+        "W1": -0.034
+      }
+    },
+    {
+      "question": "Which suburb is a soap opera featuring a character named Beverly Marshall set in?",
+      "best_workflow": "W1",
+      "best_reward": -0.0382,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0881,
+      "reward_span": 0.0499,
+      "reward_by_workflow": {
+        "W1": -0.0382,
+        "W3": -0.0881
+      }
+    },
+    {
+      "question": "Are the Laleli Mosque and Esma Sultan Mansion located in the same neighborhood?",
+      "best_workflow": "W3",
+      "best_reward": -0.0343,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.038,
+      "reward_span": 0.0037,
+      "reward_by_workflow": {
+        "W3": -0.0343,
+        "W1": -0.038
+      }
+    },
+    {
+      "question": "What WB supernatrual drama series was Jawbreaker star Rose Mcgowan best known for being in?",
+      "best_workflow": "W3",
+      "best_reward": 1.061,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0389,
+      "reward_span": 1.0999,
+      "reward_by_workflow": {
+        "W3": 1.061,
+        "W1": -0.0389
+      }
+    },
+    {
+      "question": "What competition held in Kathmandu, Nepal did Julian Bolling compete in 1984?",
+      "best_workflow": "W1",
+      "best_reward": -0.0371,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0919,
+      "reward_span": 0.0548,
+      "reward_by_workflow": {
+        "W1": -0.0371,
+        "W3": -0.0919
+      }
+    },
+    {
+      "question": "Where does the hotel and casino located in which Bill Cosby's third album was recorded?",
+      "best_workflow": "W3",
+      "best_reward": 0.2138,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0391,
+      "reward_span": 0.2529,
+      "reward_by_workflow": {
+        "W3": 0.2138,
+        "W1": -0.0391
+      }
+    },
+    {
+      "question": "What criteria subjectively qualifies the Houston Astrodome to be called the Eighth Wonder of the World?",
+      "best_workflow": "W1",
+      "best_reward": 0.0374,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0986,
+      "reward_span": 0.136,
+      "reward_by_workflow": {
+        "W1": 0.0374,
+        "W3": -0.0986
+      }
+    },
+    {
+      "question": "When did the rock band that sang \"All Join Hands\" rise to prominence? ",
+      "best_workflow": "W1",
+      "best_reward": -0.0388,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0865,
+      "reward_span": 0.0477,
+      "reward_by_workflow": {
+        "W1": -0.0388,
+        "W3": -0.0865
+      }
+    },
+    {
+      "question": "David Huntsinger has worked with this gospel singer born in the month of July?",
+      "best_workflow": "W1",
+      "best_reward": -0.0464,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0677,
+      "reward_span": 0.0213,
+      "reward_by_workflow": {
+        "W1": -0.0464,
+        "W3": -0.0677
+      }
+    },
+    {
+      "question": "Which man who presented the Australia 2022 FIFA World Cup bid was born on October 22, 1930?",
+      "best_workflow": "W3",
+      "best_reward": 1.0553,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0405,
+      "reward_span": 1.0958,
+      "reward_by_workflow": {
+        "W3": 1.0553,
+        "W1": -0.0405
+      }
+    },
+    {
+      "question": "What are the names of the members of the Detroit-based hip hop duo who has worked with Jason Gilbert?",
+      "best_workflow": "W1",
+      "best_reward": -0.0361,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.071,
+      "reward_span": 0.0349,
+      "reward_by_workflow": {
+        "W1": -0.0361,
+        "W3": -0.071
+      }
+    },
+    {
+      "question": "Were the bands Skin Yard and Ostava from the U.S.?",
+      "best_workflow": "W1",
+      "best_reward": 1.1325,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0302,
+      "reward_span": 1.1627,
+      "reward_by_workflow": {
+        "W1": 1.1325,
+        "W3": -0.0302
+      }
+    },
+    {
+      "question": "Who is the psychologist who wrote about the disciple of the person known as the \"Wild Woman of Buttle\"?",
+      "best_workflow": "W1",
+      "best_reward": -0.0432,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.1089,
+      "reward_span": 0.0657,
+      "reward_by_workflow": {
+        "W1": -0.0432,
+        "W3": -0.1089
+      }
+    },
+    {
+      "question": "What is the full name of the viral respiratory disease in which Yi Guan's research helped to prevent the outbreak of?",
+      "best_workflow": "W3",
+      "best_reward": 1.0577,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0327,
+      "reward_span": 1.0904,
+      "reward_by_workflow": {
+        "W3": 1.0577,
+        "W1": -0.0327
+      }
+    },
+    {
+      "question": "Rejuvelac is kind of grain water invented and promoted by a \"holistic health\" practitioner born in which year ?",
+      "best_workflow": "W3",
+      "best_reward": 1.0791,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0385,
+      "reward_span": 1.1176,
+      "reward_by_workflow": {
+        "W3": 1.0791,
+        "W1": -0.0385
+      }
+    },
+    {
+      "question": "Patrick Kennedy is known for his collections of Irish  folktales from a province situated in which part of Ireland ?",
+      "best_workflow": "W1",
+      "best_reward": -0.0383,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0848,
+      "reward_span": 0.0465,
+      "reward_by_workflow": {
+        "W1": -0.0383,
+        "W3": -0.0848
+      }
+    },
+    {
+      "question": "Which director had the longest career, Alain Resnais or Scott Sidney?",
+      "best_workflow": "W1",
+      "best_reward": -0.0402,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0875,
+      "reward_span": 0.0473,
+      "reward_by_workflow": {
+        "W1": -0.0402,
+        "W3": -0.0875
+      }
+    },
+    {
+      "question": "What Danish eurodance group had a single called \"Barbie Girl\" which resulted in a lawsuit in 2002?",
+      "best_workflow": "W1",
+      "best_reward": 1.122,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 1.0616,
+      "reward_span": 0.0604,
+      "reward_by_workflow": {
+        "W1": 1.122,
+        "W3": 1.0616
+      }
+    },
+    {
+      "question": "Which case came first, Craig v. Boren or United States v. Paramount Pictures, Inc.?",
+      "best_workflow": "W1",
+      "best_reward": 0.0919,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0891,
+      "reward_span": 0.0028,
+      "reward_by_workflow": {
+        "W1": 0.0919,
+        "W3": 0.0891
+      }
+    },
+    {
+      "question": "What was the release date and price for the release of Mac OS X that has the software for creating WWF files?",
+      "best_workflow": "W1",
+      "best_reward": -0.0513,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.1017,
+      "reward_span": 0.0504,
+      "reward_by_workflow": {
+        "W1": -0.0513,
+        "W3": -0.1017
+      }
+    },
+    {
+      "question": "D1NZ is a series based on what oversteering technique?",
+      "best_workflow": "W1",
+      "best_reward": -0.0431,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0889,
+      "reward_span": 0.0458,
+      "reward_by_workflow": {
+        "W1": -0.0431,
+        "W3": -0.0889
+      }
+    },
+    {
+      "question": "What year did the series on CBS, starring the actor who known for his role in \"Rebel Without a Cause,\" air?",
+      "best_workflow": "W1",
+      "best_reward": 1.1263,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0839,
+      "reward_span": 1.2102,
+      "reward_by_workflow": {
+        "W1": 1.1263,
+        "W3": -0.0839
+      }
+    },
+    {
+      "question": "In what city was the Italian Baroque composer who composed a set of sonatas, titled Op. 5, born?",
+      "best_workflow": "W1",
+      "best_reward": -0.0368,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0963,
+      "reward_span": 0.0595,
+      "reward_by_workflow": {
+        "W1": -0.0368,
+        "W3": -0.0963
+      }
+    },
+    {
+      "question": "What year was the brother of this first round draft pick by the Washington Redskins drafted?",
+      "best_workflow": "W1",
+      "best_reward": -0.0381,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0866,
+      "reward_span": 0.0485,
+      "reward_by_workflow": {
+        "W1": -0.0381,
+        "W3": -0.0866
+      }
+    },
+    {
+      "question": "Folie à Deux is a studio album by the American rock band formed in which city?",
+      "best_workflow": "W1",
+      "best_reward": -0.0396,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0922,
+      "reward_span": 0.0526,
+      "reward_by_workflow": {
+        "W1": -0.0396,
+        "W3": -0.0922
+      }
+    },
+    {
+      "question": "The mass killing that took place at Oakland, California on April 2, 2012 was less deadly than the one that took place on October 1, 2015 in which state?",
+      "best_workflow": "W1",
+      "best_reward": -0.0421,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0991,
+      "reward_span": 0.057,
+      "reward_by_workflow": {
+        "W1": -0.0421,
+        "W3": -0.0991
+      }
+    },
+    {
+      "question": "Can Stenocereus and Pachypodium both include tree like plants?",
+      "best_workflow": "W1",
+      "best_reward": 1.1288,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.9996,
+      "reward_span": 0.1292,
+      "reward_by_workflow": {
+        "W1": 1.1288,
+        "W3": 0.9996
+      }
+    },
+    {
+      "question": "What country does Eric A. Sykes and Eccles, Greater Manchester have ion common?",
+      "best_workflow": "W3",
+      "best_reward": 1.0515,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0401,
+      "reward_span": 1.0916,
+      "reward_by_workflow": {
+        "W3": 1.0515,
+        "W1": -0.0401
+      }
+    },
+    {
+      "question": "Which songwriting duo composed music for \"La La Land\", and created lyrics for \"A Christmas Story: The Musical\"? ",
+      "best_workflow": "W3",
+      "best_reward": 0.6624,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": 0.3809,
+      "reward_span": 0.2815,
+      "reward_by_workflow": {
+        "W3": 0.6624,
+        "W1": 0.3809
+      }
+    },
+    {
+      "question": "The \"civic rally cross\" was sold alongside what other model sold exclusively in Japan at Honda Verno dealerships? ",
+      "best_workflow": "W3",
+      "best_reward": 0.3114,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.038,
+      "reward_span": 0.3494,
+      "reward_by_workflow": {
+        "W3": 0.3114,
+        "W1": -0.038
+      }
+    },
+    {
+      "question": "Season 2 of Rick and Morty began with the episode directed by whom?",
+      "best_workflow": "W1",
+      "best_reward": -0.0392,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0868,
+      "reward_span": 0.0476,
+      "reward_by_workflow": {
+        "W1": -0.0392,
+        "W3": -0.0868
+      }
+    },
+    {
+      "question": "Which former mill town is near Rivington Hall Barn?",
+      "best_workflow": "W3",
+      "best_reward": -0.0335,
+      "runner_up_workflow": "W1",
+      "runner_up_reward": -0.0391,
+      "reward_span": 0.0056,
+      "reward_by_workflow": {
+        "W3": -0.0335,
+        "W1": -0.0391
+      }
+    },
+    {
+      "question": "Jacques Sernas, actor in Fugitive in Trieste, was of what nationality?",
+      "best_workflow": "W1",
+      "best_reward": 0.5057,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0297,
+      "reward_span": 0.5354,
+      "reward_by_workflow": {
+        "W1": 0.5057,
+        "W3": -0.0297
+      }
+    },
+    {
+      "question": "Yoann Lemoine, a French video director, has created music videos for Lana Del Rey, Katy Perry, and an orchestral country pop ballad by which top pop artist?",
+      "best_workflow": "W1",
+      "best_reward": 1.1234,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0435,
+      "reward_span": 1.1669,
+      "reward_by_workflow": {
+        "W1": 1.1234,
+        "W3": -0.0435
+      }
+    },
+    {
+      "question": "Seven Brief Lessons on Physics was written by an Italian physicist that has worked in France since what year?",
+      "best_workflow": "W1",
+      "best_reward": -0.0394,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0797,
+      "reward_span": 0.0403,
+      "reward_by_workflow": {
+        "W1": -0.0394,
+        "W3": -0.0797
+      }
+    },
+    {
+      "question": "When did the tour begin for the album Taylor Swift released on October 22, 2012?",
+      "best_workflow": "W1",
+      "best_reward": -0.0443,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.1091,
+      "reward_span": 0.0648,
+      "reward_by_workflow": {
+        "W1": -0.0443,
+        "W3": -0.1091
+      }
+    },
+    {
+      "question": "What studio album did Kanye West record with Roc-A-Fella Records and soul singer Dwele?",
+      "best_workflow": "W1",
+      "best_reward": -0.032,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0918,
+      "reward_span": 0.0598,
+      "reward_by_workflow": {
+        "W1": -0.032,
+        "W3": -0.0918
+      }
+    },
+    {
+      "question": "Aside from the Apple Remote, what other device can control the program Apple Remote was originally designed to interact with?",
+      "best_workflow": "W1",
+      "best_reward": -0.0397,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0956,
+      "reward_span": 0.0559,
+      "reward_by_workflow": {
+        "W1": -0.0397,
+        "W3": -0.0956
+      }
+    },
+    {
+      "question": "The Jeep Cherokee was originally sold as a variant of a Jeep model produced during what years?",
+      "best_workflow": "W1",
+      "best_reward": -0.0421,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.1017,
+      "reward_span": 0.0596,
+      "reward_by_workflow": {
+        "W1": -0.0421,
+        "W3": -0.1017
+      }
+    }
+  ]
+}

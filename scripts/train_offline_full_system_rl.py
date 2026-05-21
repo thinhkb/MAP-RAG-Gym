@@ -30,6 +30,48 @@ DEFAULT_PREFERRED_WORKFLOWS_BY_BUDGET = {
     "high": [],
 }
 
+DEFAULT_POLICY_METHOD_BY_BUDGET = {
+    "low": "gated_bandit_router",
+    "medium": "bandit_router",
+    "high": "bandit_router",
+}
+
+DEFAULT_GATE_BASELINE_WORKFLOW_BY_BUDGET = {
+    "low": "W3",
+}
+
+DEFAULT_GATE_MIN_ADVANTAGE_BY_BUDGET = {
+    "low": 0.2,
+}
+
+DEFAULT_GATE_MIN_CONFIDENCE_BY_BUDGET = {
+    "low": 0.65,
+}
+
+DEFAULT_GATE_ALLOWED_WORKFLOWS_BY_BUDGET = {
+    "low": ["W1"],
+}
+
+DEFAULT_CONSTRAINTS_BY_BUDGET = {
+    "low": {
+        "max_tokens": 110.0,
+        "max_latency_ms": 900.0,
+        "max_retrieval_calls": None,
+    },
+    "medium": {
+        "max_tokens": None,
+        "max_latency_ms": None,
+        "max_retrieval_calls": None,
+    },
+    "high": {
+        "max_tokens": None,
+        "max_latency_ms": None,
+        "max_retrieval_calls": None,
+    },
+}
+
+SUPPORTED_POLICY_METHODS = {"bandit_router", "gated_bandit_router"}
+
 
 def _parse_key_values(entries: list[str] | None) -> dict[str, str]:
     parsed: dict[str, str] = {}
@@ -49,6 +91,13 @@ def _parse_budget_float_overrides(entries: list[str] | None, defaults: dict[str,
     values = dict(defaults)
     for key, raw_value in _parse_key_values(entries).items():
         values[normalize_budget_mode(key)] = float(raw_value)
+    return values
+
+
+def _parse_budget_string_overrides(entries: list[str] | None, defaults: dict[str, str]) -> dict[str, str]:
+    values = dict(defaults)
+    for key, raw_value in _parse_key_values(entries).items():
+        values[normalize_budget_mode(key)] = raw_value
     return values
 
 
@@ -127,19 +176,20 @@ def _policy_payload(
     model_path: str,
     source_rollout: str,
     holdout_eval: dict[str, Any],
+    recommended_method: str,
+    gate_settings: dict[str, Any],
 ) -> dict[str, Any]:
+    router_settings: dict[str, Any] = {
+        "bandit_router_model": model_path,
+    }
+    if recommended_method == "gated_bandit_router":
+        router_settings.update(gate_settings)
     return {
         "budget_mode": budget_mode,
-        "recommended_method": "bandit_router",
-        "constraints": {
-            "max_tokens": 110.0 if budget_mode == "low" else None,
-            "max_latency_ms": 900.0 if budget_mode == "low" else None,
-            "max_retrieval_calls": None,
-        },
+        "recommended_method": recommended_method,
+        "constraints": dict(DEFAULT_CONSTRAINTS_BY_BUDGET[budget_mode]),
         "source_eval_file": source_rollout,
-        "router_settings": {
-            "bandit_router_model": model_path,
-        },
+        "router_settings": router_settings,
         "offline_rl": {
             "stage": "macro_candidate_policy",
             "holdout_policy_eval": holdout_eval,
@@ -185,6 +235,11 @@ def main() -> None:
     ap.add_argument("--preference_margin_by_budget", nargs="+", default=[])
     ap.add_argument("--preferred_workflows_by_budget", nargs="+", default=[])
     ap.add_argument("--candidate_workflows_by_budget", nargs="+", default=["high=W2,W3"])
+    ap.add_argument("--policy_method_by_budget", nargs="+", default=[])
+    ap.add_argument("--gate_baseline_workflow_by_budget", nargs="+", default=[])
+    ap.add_argument("--gate_min_advantage_by_budget", nargs="+", default=[])
+    ap.add_argument("--gate_min_confidence_by_budget", nargs="+", default=[])
+    ap.add_argument("--gate_allowed_workflows_by_budget", nargs="+", default=[])
     ap.add_argument("--budget_modes", nargs="+", default=None)
     ap.add_argument("--force", action="store_true")
     ap.add_argument("--dry_run", action="store_true")
@@ -212,6 +267,26 @@ def main() -> None:
         DEFAULT_PREFERRED_WORKFLOWS_BY_BUDGET,
     )
     candidate_workflows_by_budget = _parse_budget_workflow_overrides(args.candidate_workflows_by_budget)
+    policy_method_by_budget = _parse_budget_string_overrides(
+        args.policy_method_by_budget,
+        DEFAULT_POLICY_METHOD_BY_BUDGET,
+    )
+    gate_baseline_workflow_by_budget = _parse_budget_string_overrides(
+        args.gate_baseline_workflow_by_budget,
+        DEFAULT_GATE_BASELINE_WORKFLOW_BY_BUDGET,
+    )
+    gate_min_advantage_by_budget = _parse_budget_float_overrides(
+        args.gate_min_advantage_by_budget,
+        DEFAULT_GATE_MIN_ADVANTAGE_BY_BUDGET,
+    )
+    gate_min_confidence_by_budget = _parse_budget_float_overrides(
+        args.gate_min_confidence_by_budget,
+        DEFAULT_GATE_MIN_CONFIDENCE_BY_BUDGET,
+    )
+    gate_allowed_workflows_by_budget = _parse_budget_workflow_overrides(
+        args.gate_allowed_workflows_by_budget,
+        DEFAULT_GATE_ALLOWED_WORKFLOWS_BY_BUDGET,
+    )
 
     coverage = package.get("macro_layer", {}).get("counterfactual_rollout_coverage", {})
     requested_budgets = [normalize_budget_mode(mode) for mode in (args.budget_modes or sorted(coverage))]
@@ -233,6 +308,30 @@ def main() -> None:
             rollout_path=rollout_path,
             explicit_workflows=candidate_workflows_by_budget,
         )
+        recommended_method = policy_method_by_budget.get(budget_mode, "bandit_router")
+        if recommended_method not in SUPPORTED_POLICY_METHODS:
+            raise ValueError(
+                f"Unsupported policy method '{recommended_method}' for {budget_mode}. "
+                f"Expected one of {sorted(SUPPORTED_POLICY_METHODS)}."
+            )
+        gate_settings = {}
+        if recommended_method == "gated_bandit_router":
+            baseline_workflow = str(gate_baseline_workflow_by_budget.get(budget_mode, "W3")).upper()
+            if baseline_workflow not in workflows:
+                raise ValueError(
+                    f"Gate baseline workflow '{baseline_workflow}' for {budget_mode} "
+                    f"is not in candidate workflows {workflows}."
+                )
+            allowed_switch_workflows = gate_allowed_workflows_by_budget.get(
+                budget_mode,
+                [workflow for workflow in workflows if workflow != baseline_workflow],
+            )
+            gate_settings = {
+                "bandit_gate_baseline_workflow": baseline_workflow,
+                "bandit_gate_min_advantage": float(gate_min_advantage_by_budget.get(budget_mode, 0.0)),
+                "bandit_gate_min_confidence": float(gate_min_confidence_by_budget.get(budget_mode, 0.0)),
+                "bandit_gate_allowed_workflows": [str(workflow).upper() for workflow in allowed_switch_workflows],
+            }
         output_model = str(out_dir / f"macro_bandit_{budget_mode}.joblib")
         command = [
             sys.executable,
@@ -271,6 +370,8 @@ def main() -> None:
             "alpha": alpha_by_budget[budget_mode],
             "preference_margin": preference_margin_by_budget[budget_mode],
             "preferred_workflows": preferred_workflows,
+            "recommended_method": recommended_method,
+            "gate_settings": gate_settings,
             "subprocess": run_result,
         }
         if run_result["returncode"] not in (0, None):
@@ -284,6 +385,8 @@ def main() -> None:
             model_path=output_model,
             source_rollout=rollout_path,
             holdout_eval=holdout_eval,
+            recommended_method=recommended_method,
+            gate_settings=gate_settings,
         )
         policy_path = str(out_dir / f"budget_policy_{budget_mode}_offline_rl_candidate.json")
         if not args.dry_run:
@@ -310,6 +413,11 @@ def main() -> None:
             "probe_corpus": args.probe_corpus,
             "holdout_ratio": args.holdout_ratio,
             "budget_modes": requested_budgets,
+            "policy_method_by_budget": policy_method_by_budget,
+            "gate_baseline_workflow_by_budget": gate_baseline_workflow_by_budget,
+            "gate_min_advantage_by_budget": gate_min_advantage_by_budget,
+            "gate_min_confidence_by_budget": gate_min_confidence_by_budget,
+            "gate_allowed_workflows_by_budget": gate_allowed_workflows_by_budget,
             "dry_run": args.dry_run,
         },
     )
@@ -362,7 +470,8 @@ def main() -> None:
     for budget_mode, row in train_runs.items():
         holdout = policies[budget_mode].get("offline_rl", {}).get("holdout_policy_eval", {})
         print(
-            f"{budget_mode}: workflows={row['candidate_workflows']} | model={row['model_path']} | "
+            f"{budget_mode}: method={row['recommended_method']} | workflows={row['candidate_workflows']} | "
+            f"model={row['model_path']} | "
             f"holdout_utility={holdout.get('avg_policy_utility')} | regret={holdout.get('avg_regret')} | "
             f"best_rate={holdout.get('exact_best_rate')}"
         )

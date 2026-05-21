@@ -59,8 +59,13 @@ class QuestionFeatures:
     comparative_flag: int
     conjunction_flag: int
     ambiguity_flag: int
-    wh_word: str
-    estimated_hops: int
+    temporal_flag: int = 0
+    negation_flag: int = 0
+    superlative_flag: int = 0
+    multi_entity_flag: int = 0
+    entity_density: float = 0.0
+    wh_word: str = "unknown"
+    estimated_hops: int = 1
 
 
 @dataclass

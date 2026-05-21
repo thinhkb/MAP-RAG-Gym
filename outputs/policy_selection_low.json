@@ -1,0 +1,166 @@
+{
+  "source_eval_file": "outputs/router_eval_large_budget_low_val.json",
+  "budget_mode": "low",
+  "constraints": {
+    "max_tokens": null,
+    "max_latency_ms": null,
+    "max_retrieval_calls": null
+  },
+  "methods": [
+    "fixed_W1",
+    "fixed_W2",
+    "fixed_W3",
+    "fixed_W6",
+    "learned_router",
+    "rule_based"
+  ],
+  "pareto_frontier": [
+    {
+      "method": "fixed_W3",
+      "num_runs": 90,
+      "avg_utility": 0.3081,
+      "avg_em": 0.2,
+      "avg_f1_proxy": 0.31,
+      "avg_process_score": 0.2879,
+      "avg_tokens": 121.8444,
+      "avg_retrieval_calls": 1.0,
+      "avg_latency_ms": 1178.7649,
+      "workflow_counts": {
+        "W3": 90
+      }
+    },
+    {
+      "method": "rule_based",
+      "num_runs": 90,
+      "avg_utility": 0.3034,
+      "avg_em": 0.1889,
+      "avg_f1_proxy": 0.3026,
+      "avg_process_score": 0.2838,
+      "avg_tokens": 117.5778,
+      "avg_retrieval_calls": 0.9333,
+      "avg_latency_ms": 1176.4348,
+      "workflow_counts": {
+        "W3": 84,
+        "W1": 6
+      }
+    },
+    {
+      "method": "learned_router",
+      "num_runs": 90,
+      "avg_utility": 0.2112,
+      "avg_em": 0.1333,
+      "avg_f1_proxy": 0.2009,
+      "avg_process_score": 0.1226,
+      "avg_tokens": 48.3778,
+      "avg_retrieval_calls": 0.0889,
+      "avg_latency_ms": 1002.5553,
+      "workflow_counts": {
+        "W1": 82,
+        "W3": 8
+      }
+    },
+    {
+      "method": "fixed_W1",
+      "num_runs": 90,
+      "avg_utility": 0.178,
+      "avg_em": 0.1111,
+      "avg_f1_proxy": 0.1707,
+      "avg_process_score": 0.094,
+      "avg_tokens": 41.1222,
+      "avg_retrieval_calls": 0.0,
+      "avg_latency_ms": 1075.0413,
+      "workflow_counts": {
+        "W1": 90
+      }
+    }
+  ],
+  "feasible_methods": [
+    {
+      "method": "fixed_W3",
+      "num_runs": 90,
+      "avg_utility": 0.3081,
+      "avg_em": 0.2,
+      "avg_f1_proxy": 0.31,
+      "avg_process_score": 0.2879,
+      "avg_tokens": 121.8444,
+      "avg_retrieval_calls": 1.0,
+      "avg_latency_ms": 1178.7649,
+      "workflow_counts": {
+        "W3": 90
+      }
+    },
+    {
+      "method": "rule_based",
+      "num_runs": 90,
+      "avg_utility": 0.3034,
+      "avg_em": 0.1889,
+      "avg_f1_proxy": 0.3026,
+      "avg_process_score": 0.2838,
+      "avg_tokens": 117.5778,
+      "avg_retrieval_calls": 0.9333,
+      "avg_latency_ms": 1176.4348,
+      "workflow_counts": {
+        "W3": 84,
+        "W1": 6
+      }
+    },
+    {
+      "method": "fixed_W2",
+      "num_runs": 90,
+      "avg_utility": 0.2642,
+      "avg_em": 0.2111,
+      "avg_f1_proxy": 0.3013,
+      "avg_process_score": 0.2691,
+      "avg_tokens": 243.1222,
+      "avg_retrieval_calls": 1.0,
+      "avg_latency_ms": 2907.1907,
+      "workflow_counts": {
+        "W2": 90
+      }
+    },
+    {
+      "method": "fixed_W6",
+      "num_runs": 90,
+      "avg_utility": 0.2247,
+      "avg_em": 0.2,
+      "avg_f1_proxy": 0.2889,
+      "avg_process_score": 0.2557,
+      "avg_tokens": 300.4556,
+      "avg_retrieval_calls": 1.0,
+      "avg_latency_ms": 4506.3416,
+      "workflow_counts": {
+        "W6": 90
+      }
+    },
+    {
+      "method": "learned_router",
+      "num_runs": 90,
+      "avg_utility": 0.2112,
+      "avg_em": 0.1333,
+      "avg_f1_proxy": 0.2009,
+      "avg_process_score": 0.1226,
+      "avg_tokens": 48.3778,
+      "avg_retrieval_calls": 0.0889,
+      "avg_latency_ms": 1002.5553,
+      "workflow_counts": {
+        "W1": 82,
+        "W3": 8
+      }
+    },
+    {
+      "method": "fixed_W1",
+      "num_runs": 90,
+      "avg_utility": 0.178,
+      "avg_em": 0.1111,
+      "avg_f1_proxy": 0.1707,
+      "avg_process_score": 0.094,
+      "avg_tokens": 41.1222,
+      "avg_retrieval_calls": 0.0,
+      "avg_latency_ms": 1075.0413,
+      "workflow_counts": {
+        "W1": 90
+      }
+    }
+  ],
+  "recommended_method": "fixed_W3"
+}

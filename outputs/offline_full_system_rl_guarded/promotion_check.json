@@ -1,0 +1,132 @@
+{
+  "manifest": {
+    "script": "scripts/check_offline_rl_promotion.py",
+    "generated_at_utc": "2026-05-18T20:04:55+00:00",
+    "git_commit": "4401b12d34eee72111646697c4d33a9b212ae42a",
+    "python_version": "3.12.13",
+    "platform": "Windows-11-10.0.22621-SP0",
+    "paths": {
+      "qa": "G:\\MAP-RAG-Gym\\outputs\\offline_full_system_rl_guarded\\final_budget_policy_test_eval_offline_rl_candidate.json",
+      "corpus": null,
+      "router_model": "G:\\MAP-RAG-Gym\\outputs\\final_budget_policy_test_eval.json"
+    },
+    "dataset": {
+      "name": "offline_full_system_rl",
+      "split": "promotion_gate",
+      "limit": null,
+      "effective_questions": 270
+    },
+    "llm": {
+      "provider": null,
+      "model": null
+    },
+    "reproducibility": {
+      "seed": null,
+      "prompt_version": "v1",
+      "utility": null
+    },
+    "settings": {
+      "candidate_eval": "outputs/offline_full_system_rl_guarded/final_budget_policy_test_eval_offline_rl_candidate.json",
+      "frozen_eval": "outputs/final_budget_policy_test_eval.json",
+      "budget_modes": [
+        "high",
+        "low",
+        "medium"
+      ],
+      "min_delta": 0.0,
+      "min_delta_by_budget": {
+        "_default": 0.0
+      },
+      "tolerance": 0.0,
+      "tolerance_by_budget": {
+        "_default": 0.0
+      },
+      "require_frontier": false
+    }
+  },
+  "ready_to_promote": false,
+  "blocked_budgets": [
+    "high",
+    "low",
+    "medium"
+  ],
+  "budget_reports": {
+    "high": {
+      "budget_mode": "high",
+      "passed": false,
+      "candidate_method": "bandit_router",
+      "frozen_method": "fixed_W3",
+      "candidate_utility": 0.4375,
+      "frozen_utility": 0.4388,
+      "utility_delta": -0.0013,
+      "min_delta": 0.0,
+      "tolerance": 0.0,
+      "candidate_tokens": 176.5333,
+      "frozen_tokens": 128.0778,
+      "candidate_workflow_counts": {
+        "W3": 53,
+        "W2": 37
+      },
+      "frozen_workflow_counts": {
+        "W3": 90
+      }
+    },
+    "low": {
+      "budget_mode": "low",
+      "passed": false,
+      "candidate_method": "gated_bandit_router",
+      "frozen_method": "fixed_W3",
+      "candidate_utility": 0.2776,
+      "frozen_utility": 0.3286,
+      "utility_delta": -0.051,
+      "min_delta": 0.0,
+      "tolerance": 0.0,
+      "candidate_tokens": 104.4556,
+      "frozen_tokens": 128.0778,
+      "candidate_workflow_counts": {
+        "W1": 25,
+        "W3": 65
+      },
+      "frozen_workflow_counts": {
+        "W3": 90
+      }
+    },
+    "medium": {
+      "budget_mode": "medium",
+      "passed": false,
+      "candidate_method": "bandit_router",
+      "frozen_method": "fixed_W3",
+      "candidate_utility": 0.3613,
+      "frozen_utility": 0.3944,
+      "utility_delta": -0.0331,
+      "min_delta": 0.0,
+      "tolerance": 0.0,
+      "candidate_tokens": 116.4,
+      "frozen_tokens": 128.0778,
+      "candidate_workflow_counts": {
+        "W1": 36,
+        "W3": 43,
+        "W2": 6,
+        "W6": 5
+      },
+      "frozen_workflow_counts": {
+        "W3": 90
+      }
+    }
+  },
+  "frontier_check": {
+    "required": true,
+    "passed": true,
+    "budget_order": [
+      "low",
+      "medium",
+      "high"
+    ],
+    "candidate_utilities": {
+      "low": 0.2776,
+      "medium": 0.3613,
+      "high": 0.4375
+    }
+  },
+  "promotion_rule": "Promote only when every requested budget is non-regressive vs the frozen bundle."
+}

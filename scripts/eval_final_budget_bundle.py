@@ -249,6 +249,7 @@ def main():
     ap.add_argument("--limit", type=int, default=50)
     ap.add_argument("--n_candidates", type=int, default=1)
     ap.add_argument("--critic_n_candidates", type=int, default=3)
+    ap.add_argument("--progress_every", type=int, default=0, help="Print progress every N questions per budget.")
     ap.add_argument("--seed", type=int, default=13)
     ap.add_argument("--out", default="outputs/final_budget_bundle_eval.json")
     args = ap.parse_args()
@@ -374,7 +375,7 @@ def main():
 
         runs = []
         per_question = []
-        for item in qa:
+        for idx, item in enumerate(qa, start=1):
             payload = _run_selected_method(
                 method_name,
                 item["question"],
@@ -410,6 +411,8 @@ def main():
                     "f1_proxy": payload["final_scores"]["f1_proxy"],
                 }
             )
+            if args.progress_every > 0 and (idx % args.progress_every == 0 or idx == len(qa)):
+                print(f"{budget_mode}: progress {idx}/{len(qa)}", flush=True)
 
         summary = _summarize(runs)
         budget_results[budget_mode] = {
@@ -423,7 +426,8 @@ def main():
         }
         print(
             f"{budget_mode}: {method_name} | utility={summary['avg_utility']:.4f} | "
-            f"tokens={summary['avg_tokens']:.1f} | latency={summary['avg_latency_ms']:.1f}"
+            f"tokens={summary['avg_tokens']:.1f} | latency={summary['avg_latency_ms']:.1f}",
+            flush=True,
         )
 
     payload = {

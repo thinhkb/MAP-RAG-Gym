@@ -1,0 +1,190 @@
+﻿budget_mode,question,predicted_workflow,predicted_confidence,oracle_workflow,oracle_reward,chosen_reward,regret,correct
+high,Which suburb is a soap opera featuring a character named Beverly Marshall set in?,W2,0.598,W2,0.0129,0.0129,0.0,1
+high,One Raffles Place is one of the tallest skyscrapers in the city of Singapore and tallest in the wolrd outside North Amer,W2,0.6554,W3,0.019,0.0007,0.0183,0
+high,Erica Packer was the second wife of what Australian businessman?,W3,0.9445,W3,1.2837,1.2837,0.0,1
+high,Patrick Kennedy is known for his collections of Irish  folktales from a province situated in which part of Ireland ?,W3,0.6958,W3,0.0125,0.0125,0.0,1
+high,"Which man who presented the Australia 2022 FIFA World Cup bid was born on October 22, 1930?",W3,0.8453,W3,1.2796,1.2796,0.0,1
+high,The Jeep Cherokee was originally sold as a variant of a Jeep model produced during what years?,W3,0.7439,W3,0.0039,0.0039,0.0,1
+high,What WB supernatrual drama series was Jawbreaker star Rose Mcgowan best known for being in?,W3,0.9459,W3,1.2775,1.2775,0.0,1
+high, William Cammisano was part of which Mafia family?,W2,0.5503,W2,0.0246,0.0246,0.0,1
+high,What criteria subjectively qualifies the Houston Astrodome to be called the Eighth Wonder of the World?,W3,0.941,W2,0.0101,0.0025,0.0076,0
+high,Where does the hotel and casino located in which Bill Cosby's third album was recorded?,W3,0.8832,W3,0.3298,0.3298,0.0,1
+high,Cardinal Pole Roman Catholic School was named after the last Roman Catholic to hold what position?,W3,0.9038,W3,0.6474,0.6474,0.0,1
+high,What edition of tennis' US Open was the 2017 US Open when Petra Kvitova was a quarterfinalist?,W3,0.5799,W2,0.0175,0.0096,0.0079,0
+high,"Which mall, Wilton Mall or Viaport Rotterdam, has had more owners?",W2,0.6521,W3,1.2754,0.0423,1.2331,0
+high,Are the Laleli Mosque and Esma Sultan Mansion located in the same neighborhood?,W3,0.9523,W3,0.0969,0.0969,0.0,1
+high,What city and nation was the location of the 2015 Pacific Games where the Kiribati national basketball team finished wit,W3,0.9111,W3,1.291,1.291,0.0,1
+high,Which close friend of an American former basketball player was signed for to play for the Timberwolves?,W2,0.9673,W2,0.4921,0.4921,0.0,1
+high,What year was the brother of this first round draft pick by the Washington Redskins drafted?,W2,0.7767,W2,0.0147,0.0147,0.0,1
+high,What is the inhabitant of the city where  122nd SS-Standarte was formed in2014,W3,0.8763,W3,0.0067,0.0067,0.0,1
+high,Were Goo Goo Dolls and Echosmith formed in the same city?,W3,0.9464,W3,0.0952,0.0952,0.0,1
+high,"Jens Risom introduced what type of design, characterized by minimalism and functionality?",W2,0.5422,W3,0.3741,0.3124,0.0617,0
+high,"The 1974 Texas Tech Raiders football team represented what public research university in Lubbock, Texas?",W3,0.8468,W3,1.2849,1.2849,0.0,1
+high,"What year did the series on CBS, starring the actor who known for his role in ""Rebel Without a Cause,"" air?",W3,0.7798,W3,0.008,0.008,0.0,1
+high,Seven Brief Lessons on Physics was written by an Italian physicist that has worked in France since what year?,W3,0.8831,W3,0.0095,0.0095,0.0,1
+high,"Yoann Lemoine, a French video director, has created music videos for Lana Del Rey, Katy Perry, and an orchestral country",W3,0.8631,W3,0.0978,0.0978,0.0,1
+high,The northern English anglian Kingdom in the Humber estuary spoke what dialect of english?,W3,0.8482,W2,1.2601,0.1018,1.1583,0
+high,"The ""civic rally cross"" was sold alongside what other model sold exclusively in Japan at Honda Verno dealerships? ",W3,0.9358,W3,0.4651,0.4651,0.0,1
+high,"Who is the psychologist who wrote about the disciple of the person known as the ""Wild Woman of Buttle""?",W3,0.7166,W3,0.005,0.005,0.0,1
+high,"Which director had the longest career, Alain Resnais or Scott Sidney?",W2,0.9413,W2,0.0133,0.0133,0.0,1
+high,"Which case came first, Craig v. Boren or United States v. Paramount Pictures, Inc.?",W3,0.8664,W3,0.2431,0.2431,0.0,1
+high,"When did the tour begin for the album Taylor Swift released on October 22, 2012?",W3,0.6381,W2,0.0027,0.0017,0.001,0
+high,What was the Roud Folk Song Index of the nursery rhyme inspiring What Are Little Girls Made Of?,W2,0.8699,W2,0.0555,0.0555,0.0,1
+high,"In what city was the Italian Baroque composer who composed a set of sonatas, titled Op. 5, born?",W2,0.9187,W2,0.0628,0.0628,0.0,1
+high,What was the release date and price for the release of Mac OS X that has the software for creating WWF files?,W2,0.7333,W2,0.0077,0.0077,0.0,1
+high,David Huntsinger has worked with this gospel singer born in the month of July?,W3,0.9254,W3,0.0521,0.0521,0.0,1
+high,"Jacques Mathou starred in Delicatessen, the 1991 French movie in the style of which celebrated American animator?",W2,0.9108,W2,1.2213,1.2213,0.0,1
+high,What are the names of the members of the Detroit-based hip hop duo who has worked with Jason Gilbert?,W3,0.9565,W3,0.0476,0.0476,0.0,1
+high,Season 2 of Rick and Morty began with the episode directed by whom?,W2,0.5514,W3,0.0094,0.0039,0.0055,0
+high,"Aside from the Apple Remote, what other device can control the program Apple Remote was originally designed to interact ",W3,0.7799,W3,0.0081,0.0081,0.0,1
+high,"What Danish eurodance group had a single called ""Barbie Girl"" which resulted in a lawsuit in 2002?",W3,0.8883,W3,1.2776,1.2776,0.0,1
+high,Were the bands Skin Yard and Ostava from the U.S.?,W2,0.5427,W2,1.2412,1.2412,0.0,1
+high,"Which game was released first, Icehouse pieces or Kill Doctor Lucky?",W3,0.6858,W3,1.2895,1.2895,0.0,1
+high,A puzzle-platform video game developed by the Valve Corporation is part of what 2012 action-adventure game?,W2,0.7348,W2,0.0142,0.0142,0.0,1
+high,Where is the company that Sachin Warrier worked for as a software engineer headquartered? ,W2,0.6185,W3,0.0099,-0.0181,0.028,0
+high,"Jacques Sernas, actor in Fugitive in Trieste, was of what nationality?",W2,0.501,W3,0.0996,0.067,0.0326,0
+high,"What country does Eric A. Sykes and Eccles, Greater Manchester have ion common?",W3,0.9271,W3,1.2731,1.2731,0.0,1
+high,Snowdrop is a proprietary game engine first revealed with an online-only action role-playing video game developed by who,W3,0.9571,W3,0.0551,0.0551,0.0,1
+high,What is the middle name of the actress who plays Bobbi Bacha in Suburban Madness?,W3,0.5657,W2,0.0258,0.0117,0.0141,0
+high,"Who is older, Annie Morton or Terry Richardson?",W2,0.8764,W3,1.2781,0.0591,1.219,0
+high,In which city is the ambassador of the Rabat-Salé-Kénitra administrative region to China based?,W2,0.6115,W2,0.0237,0.0237,0.0,1
+high,"The mass killing that took place at Oakland, California on April 2, 2012 was less deadly than the one that took place on",W2,0.5511,W3,0.0043,-0.0141,0.0184,0
+high,Which former mill town is near Rivington Hall Barn?,W3,0.909,W3,0.1003,0.1003,0.0,1
+high,What studio album did Kanye West record with Roc-A-Fella Records and soul singer Dwele?,W3,0.5898,W2,0.0183,0.0098,0.0085,0
+high,"When did the rock band that sang ""All Join Hands"" rise to prominence? ",W3,0.6814,W3,0.0072,0.0072,0.0,1
+high,"Which songwriting duo composed music for ""La La Land"", and created lyrics for ""A Christmas Story: The Musical""? ",W3,0.7786,W3,0.8284,0.8284,0.0,1
+high,"Rejuvelac is kind of grain water invented and promoted by a ""holistic health"" practitioner born in which year ?",W3,0.8907,W3,1.2908,1.2908,0.0,1
+high,D1NZ is a series based on what oversteering technique?,W2,0.7643,W2,0.0185,0.0185,0.0,1
+high,Can Stenocereus and Pachypodium both include tree like plants?,W3,0.5841,W3,1.1821,1.1821,0.0,1
+high,What city did the Freebooters F.C. soccer team lose in that is now known as Croke Park?,W3,0.7569,W3,1.2788,1.2788,0.0,1
+high,What nationality were social anthropologists Alfred Gell and Edmund Leach?,W3,0.8662,W3,1.2775,1.2775,0.0,1
+high,Folie à Deux is a studio album by the American rock band formed in which city?,W3,0.6372,W2,0.0099,0.0059,0.004,0
+high,"Which band, Letters to Cleo or Screaming Trees, had more members?",W2,0.9651,W2,1.2086,1.2086,0.0,1
+high,"What competition held in Kathmandu, Nepal did Julian Bolling compete in 1984?",W2,0.502,W3,0.0063,0.0036,0.0027,0
+high,What is the full name of the viral respiratory disease in which Yi Guan's research helped to prevent the outbreak of?,W3,0.9537,W3,1.2773,1.2773,0.0,1
+low,What is the middle name of the actress who plays Bobbi Bacha in Suburban Madness?,W3,0.5691,W1,-0.0384,-0.0746,0.0362,0
+low,Erica Packer was the second wife of what Australian businessman?,W3,0.8877,W3,1.0688,1.0688,0.0,1
+low,"Which band, Letters to Cleo or Screaming Trees, had more members?",W1,0.8721,W1,1.1285,1.1285,0.0,1
+low,What is the inhabitant of the city where  122nd SS-Standarte was formed in2014,W1,0.6879,W1,-0.0404,-0.0404,0.0,1
+low,"Who is older, Annie Morton or Terry Richardson?",W1,0.9046,W1,1.13,1.13,0.0,1
+low,What city did the Freebooters F.C. soccer team lose in that is now known as Croke Park?,W1,0.9303,W1,1.1308,1.1308,0.0,1
+low,"Jens Risom introduced what type of design, characterized by minimalism and functionality?",W1,0.6806,W1,1.1279,1.1279,0.0,1
+low,"Jacques Mathou starred in Delicatessen, the 1991 French movie in the style of which celebrated American animator?",W1,0.6714,W1,-0.0393,-0.0393,0.0,1
+low,"The 1974 Texas Tech Raiders football team represented what public research university in Lubbock, Texas?",W1,0.7223,W1,1.1281,1.1281,0.0,1
+low,What was the Roud Folk Song Index of the nursery rhyme inspiring What Are Little Girls Made Of?,W1,0.6773,W1,-0.0487,-0.0487,0.0,1
+low,Where is the company that Sachin Warrier worked for as a software engineer headquartered? ,W1,0.7539,W1,-0.0451,-0.0451,0.0,1
+low,Which close friend of an American former basketball player was signed for to play for the Timberwolves?,W3,0.7312,W1,-0.0385,-0.1228,0.0843,0
+low,The northern English anglian Kingdom in the Humber estuary spoke what dialect of english?,W1,0.8024,W1,1.1336,1.1336,0.0,1
+low,"Which game was released first, Icehouse pieces or Kill Doctor Lucky?",W1,0.7719,W1,1.1309,1.1309,0.0,1
+low,What nationality were social anthropologists Alfred Gell and Edmund Leach?,W1,0.9491,W1,1.1286,1.1286,0.0,1
+low,One Raffles Place is one of the tallest skyscrapers in the city of Singapore and tallest in the wolrd outside North Amer,W1,0.7073,W1,-0.0451,-0.0451,0.0,1
+low,What city and nation was the location of the 2015 Pacific Games where the Kiribati national basketball team finished wit,W3,0.7845,W3,1.0635,1.0635,0.0,1
+low, William Cammisano was part of which Mafia family?,W1,0.883,W1,0.3981,0.3981,0.0,1
+low,Were Goo Goo Dolls and Echosmith formed in the same city?,W3,0.5301,W3,-0.0358,-0.0358,0.0,1
+low,A puzzle-platform video game developed by the Valve Corporation is part of what 2012 action-adventure game?,W1,0.5853,W1,-0.0479,-0.0479,0.0,1
+low,Snowdrop is a proprietary game engine first revealed with an online-only action role-playing video game developed by who,W3,0.6738,W1,-0.0379,-0.063,0.0251,0
+low,"Which mall, Wilton Mall or Viaport Rotterdam, has had more owners?",W3,0.8016,W3,1.0537,1.0537,0.0,1
+low,What edition of tennis' US Open was the 2017 US Open when Petra Kvitova was a quarterfinalist?,W1,0.8068,W1,-0.0388,-0.0388,0.0,1
+low,In which city is the ambassador of the Rabat-Salé-Kénitra administrative region to China based?,W1,0.8469,W1,1.1304,1.1304,0.0,1
+low,Cardinal Pole Roman Catholic School was named after the last Roman Catholic to hold what position?,W3,0.9192,W3,0.4939,0.4939,0.0,1
+low,Which suburb is a soap opera featuring a character named Beverly Marshall set in?,W3,0.8876,W1,-0.0382,-0.0881,0.0499,0
+low,Are the Laleli Mosque and Esma Sultan Mansion located in the same neighborhood?,W3,0.884,W3,-0.0343,-0.0343,0.0,1
+low,What WB supernatrual drama series was Jawbreaker star Rose Mcgowan best known for being in?,W3,0.9349,W3,1.061,1.061,0.0,1
+low,"What competition held in Kathmandu, Nepal did Julian Bolling compete in 1984?",W3,0.6712,W1,-0.0371,-0.0919,0.0548,0
+low,Where does the hotel and casino located in which Bill Cosby's third album was recorded?,W3,0.8249,W3,0.2138,0.2138,0.0,1
+low,What criteria subjectively qualifies the Houston Astrodome to be called the Eighth Wonder of the World?,W1,0.8886,W1,0.0374,0.0374,0.0,1
+low,"When did the rock band that sang ""All Join Hands"" rise to prominence? ",W1,0.7849,W1,-0.0388,-0.0388,0.0,1
+low,David Huntsinger has worked with this gospel singer born in the month of July?,W3,0.8699,W1,-0.0464,-0.0677,0.0213,0
+low,"Which man who presented the Australia 2022 FIFA World Cup bid was born on October 22, 1930?",W3,0.9853,W3,1.0553,1.0553,0.0,1
+low,What are the names of the members of the Detroit-based hip hop duo who has worked with Jason Gilbert?,W3,0.8786,W1,-0.0361,-0.071,0.0349,0
+low,Were the bands Skin Yard and Ostava from the U.S.?,W1,0.8131,W1,1.1325,1.1325,0.0,1
+low,"Who is the psychologist who wrote about the disciple of the person known as the ""Wild Woman of Buttle""?",W1,0.5449,W1,-0.0432,-0.0432,0.0,1
+low,What is the full name of the viral respiratory disease in which Yi Guan's research helped to prevent the outbreak of?,W3,0.9859,W3,1.0577,1.0577,0.0,1
+low,"Rejuvelac is kind of grain water invented and promoted by a ""holistic health"" practitioner born in which year ?",W3,0.9803,W3,1.0791,1.0791,0.0,1
+low,Patrick Kennedy is known for his collections of Irish  folktales from a province situated in which part of Ireland ?,W1,0.5973,W1,-0.0383,-0.0383,0.0,1
+low,"Which director had the longest career, Alain Resnais or Scott Sidney?",W1,0.7678,W1,-0.0402,-0.0402,0.0,1
+low,"What Danish eurodance group had a single called ""Barbie Girl"" which resulted in a lawsuit in 2002?",W1,0.7759,W1,1.122,1.122,0.0,1
+low,"Which case came first, Craig v. Boren or United States v. Paramount Pictures, Inc.?",W3,0.7943,W1,0.0919,0.0891,0.0028,0
+low,What was the release date and price for the release of Mac OS X that has the software for creating WWF files?,W1,0.9208,W1,-0.0513,-0.0513,0.0,1
+low,D1NZ is a series based on what oversteering technique?,W1,0.8331,W1,-0.0431,-0.0431,0.0,1
+low,"What year did the series on CBS, starring the actor who known for his role in ""Rebel Without a Cause,"" air?",W1,0.8435,W1,1.1263,1.1263,0.0,1
+low,"In what city was the Italian Baroque composer who composed a set of sonatas, titled Op. 5, born?",W3,0.5125,W1,-0.0368,-0.0963,0.0595,0
+low,What year was the brother of this first round draft pick by the Washington Redskins drafted?,W1,0.8601,W1,-0.0381,-0.0381,0.0,1
+low,Folie à Deux is a studio album by the American rock band formed in which city?,W1,0.5961,W1,-0.0396,-0.0396,0.0,1
+low,"The mass killing that took place at Oakland, California on April 2, 2012 was less deadly than the one that took place on",W1,0.7772,W1,-0.0421,-0.0421,0.0,1
+low,Can Stenocereus and Pachypodium both include tree like plants?,W1,0.742,W1,1.1288,1.1288,0.0,1
+low,"What country does Eric A. Sykes and Eccles, Greater Manchester have ion common?",W3,0.9215,W3,1.0515,1.0515,0.0,1
+low,"Which songwriting duo composed music for ""La La Land"", and created lyrics for ""A Christmas Story: The Musical""? ",W3,0.9703,W3,0.6624,0.6624,0.0,1
+low,"The ""civic rally cross"" was sold alongside what other model sold exclusively in Japan at Honda Verno dealerships? ",W3,0.9893,W3,0.3114,0.3114,0.0,1
+low,Season 2 of Rick and Morty began with the episode directed by whom?,W1,0.8173,W1,-0.0392,-0.0392,0.0,1
+low,Which former mill town is near Rivington Hall Barn?,W3,0.9724,W3,-0.0335,-0.0335,0.0,1
+low,"Jacques Sernas, actor in Fugitive in Trieste, was of what nationality?",W1,0.8729,W1,0.5057,0.5057,0.0,1
+low,"Yoann Lemoine, a French video director, has created music videos for Lana Del Rey, Katy Perry, and an orchestral country",W3,0.5,W1,1.1234,-0.0435,1.1669,0
+low,Seven Brief Lessons on Physics was written by an Italian physicist that has worked in France since what year?,W3,0.7084,W1,-0.0394,-0.0797,0.0403,0
+low,"When did the tour begin for the album Taylor Swift released on October 22, 2012?",W1,0.7804,W1,-0.0443,-0.0443,0.0,1
+low,What studio album did Kanye West record with Roc-A-Fella Records and soul singer Dwele?,W1,0.8605,W1,-0.032,-0.032,0.0,1
+low,"Aside from the Apple Remote, what other device can control the program Apple Remote was originally designed to interact ",W3,0.8528,W1,-0.0397,-0.0956,0.0559,0
+low,The Jeep Cherokee was originally sold as a variant of a Jeep model produced during what years?,W1,0.8133,W1,-0.0421,-0.0421,0.0,1
+medium,What year was the brother of this first round draft pick by the Washington Redskins drafted?,W1,0.6442,W1,-0.0167,-0.0167,0.0,1
+medium,"Which man who presented the Australia 2022 FIFA World Cup bid was born on October 22, 1930?",W3,0.664,W3,1.1863,1.1863,0.0,1
+medium,Snowdrop is a proprietary game engine first revealed with an online-only action role-playing video game developed by who,W3,0.8985,W3,0.0152,0.0152,0.0,1
+medium,What is the full name of the viral respiratory disease in which Yi Guan's research helped to prevent the outbreak of?,W3,0.8743,W3,1.1876,1.1876,0.0,1
+medium,What was the Roud Folk Song Index of the nursery rhyme inspiring What Are Little Girls Made Of?,W2,0.802,W2,0.0048,0.0048,0.0,1
+medium,"Which band, Letters to Cleo or Screaming Trees, had more members?",W1,0.5044,W1,1.2167,1.2167,0.0,1
+medium,Can Stenocereus and Pachypodium both include tree like plants?,W1,0.8495,W1,1.2168,1.2168,0.0,1
+medium,"Who is older, Annie Morton or Terry Richardson?",W1,0.7205,W1,1.2173,1.2173,0.0,1
+medium,The Jeep Cherokee was originally sold as a variant of a Jeep model produced during what years?,W1,0.7593,W1,-0.0184,-0.0184,0.0,1
+medium,What are the names of the members of the Detroit-based hip hop duo who has worked with Jason Gilbert?,W3,0.9145,W3,0.0093,0.0093,0.0,1
+medium,"Who is the psychologist who wrote about the disciple of the person known as the ""Wild Woman of Buttle""?",W3,0.6324,W1,-0.0189,-0.0311,0.0122,0
+medium,David Huntsinger has worked with this gospel singer born in the month of July?,W3,0.858,W3,0.0101,0.0101,0.0,1
+medium,"Rejuvelac is kind of grain water invented and promoted by a ""holistic health"" practitioner born in which year ?",W3,0.5659,W3,1.2005,1.2005,0.0,1
+medium,Which close friend of an American former basketball player was signed for to play for the Timberwolves?,W2,0.9603,W2,0.4229,0.4229,0.0,1
+medium,"Jacques Mathou starred in Delicatessen, the 1991 French movie in the style of which celebrated American animator?",W2,0.9067,W2,1.1266,1.1266,0.0,1
+medium,"The 1974 Texas Tech Raiders football team represented what public research university in Lubbock, Texas?",W1,0.833,W1,1.2165,1.2165,0.0,1
+medium,Were the bands Skin Yard and Ostava from the U.S.?,W1,0.9013,W1,1.2183,1.2183,0.0,1
+medium, William Cammisano was part of which Mafia family?,W1,0.8502,W1,0.4312,0.4312,0.0,1
+medium,Where is the company that Sachin Warrier worked for as a software engineer headquartered? ,W1,0.7757,W1,-0.0196,-0.0196,0.0,1
+medium,Which former mill town is near Rivington Hall Barn?,W3,0.7177,W3,0.052,0.052,0.0,1
+medium,What WB supernatrual drama series was Jawbreaker star Rose Mcgowan best known for being in?,W3,0.87,W3,1.1882,1.1882,0.0,1
+medium,"What competition held in Kathmandu, Nepal did Julian Bolling compete in 1984?",W6,0.8601,W6,0.767,0.767,0.0,1
+medium,The northern English anglian Kingdom in the Humber estuary spoke what dialect of english?,W1,0.8413,W1,1.2188,1.2188,0.0,1
+medium,"The mass killing that took place at Oakland, California on April 2, 2012 was less deadly than the one that took place on",W1,0.8236,W1,-0.0185,-0.0185,0.0,1
+medium,What is the inhabitant of the city where  122nd SS-Standarte was formed in2014,W1,0.7736,W1,-0.0176,-0.0176,0.0,1
+medium,Folie à Deux is a studio album by the American rock band formed in which city?,W6,0.7976,W6,-0.0041,-0.0041,0.0,1
+medium,"Which director had the longest career, Alain Resnais or Scott Sidney?",W2,0.7403,W1,-0.0175,-0.0297,0.0122,0
+medium,"Jacques Sernas, actor in Fugitive in Trieste, was of what nationality?",W6,0.7305,W6,0.5544,0.5544,0.0,1
+medium,"Which case came first, Craig v. Boren or United States v. Paramount Pictures, Inc.?",W3,0.7115,W3,0.1854,0.1854,0.0,1
+medium,What studio album did Kanye West record with Roc-A-Fella Records and soul singer Dwele?,W1,0.8504,W1,-0.0142,-0.0142,0.0,1
+medium,What edition of tennis' US Open was the 2017 US Open when Petra Kvitova was a quarterfinalist?,W6,0.7656,W6,-0.015,-0.015,0.0,1
+medium,"Jens Risom introduced what type of design, characterized by minimalism and functionality?",W1,0.7505,W1,1.2164,1.2164,0.0,1
+medium,Were Goo Goo Dolls and Echosmith formed in the same city?,W3,0.8587,W3,0.0483,0.0483,0.0,1
+medium,Are the Laleli Mosque and Esma Sultan Mansion located in the same neighborhood?,W3,0.8995,W3,0.0494,0.0494,0.0,1
+medium,What city did the Freebooters F.C. soccer team lose in that is now known as Croke Park?,W1,0.9102,W1,1.2176,1.2176,0.0,1
+medium,Erica Packer was the second wife of what Australian businessman?,W3,0.7693,W3,1.1934,1.1934,0.0,1
+medium,"In what city was the Italian Baroque composer who composed a set of sonatas, titled Op. 5, born?",W2,0.8565,W2,0.0035,0.0035,0.0,1
+medium,What nationality were social anthropologists Alfred Gell and Edmund Leach?,W1,0.9507,W1,1.2167,1.2167,0.0,1
+medium,"Which songwriting duo composed music for ""La La Land"", and created lyrics for ""A Christmas Story: The Musical""? ",W3,0.6245,W3,0.7649,0.7649,0.0,1
+medium,Seven Brief Lessons on Physics was written by an Italian physicist that has worked in France since what year?,W3,0.7363,W3,-0.0165,-0.0165,0.0,1
+medium,Patrick Kennedy is known for his collections of Irish  folktales from a province situated in which part of Ireland ?,W6,0.5993,W1,-0.0168,-0.0175,0.0007,0
+medium,"Aside from the Apple Remote, what other device can control the program Apple Remote was originally designed to interact ",W3,0.5566,W1,-0.0174,-0.0235,0.0061,0
+medium,"Which game was released first, Icehouse pieces or Kill Doctor Lucky?",W1,0.7918,W1,1.2177,1.2177,0.0,1
+medium,"Yoann Lemoine, a French video director, has created music videos for Lana Del Rey, Katy Perry, and an orchestral country",W1,0.5435,W1,1.2144,1.2144,0.0,1
+medium,D1NZ is a series based on what oversteering technique?,W2,0.7153,W1,-0.0187,-0.036,0.0173,0
+medium,"When did the tour begin for the album Taylor Swift released on October 22, 2012?",W2,0.7151,W1,-0.0193,-0.0409,0.0216,0
+medium,What city and nation was the location of the 2015 Pacific Games where the Kiribati national basketball team finished wit,W3,0.8692,W3,1.1955,1.1955,0.0,1
+medium,Where does the hotel and casino located in which Bill Cosby's third album was recorded?,W3,0.8058,W3,0.2905,0.2905,0.0,1
+medium,"What Danish eurodance group had a single called ""Barbie Girl"" which resulted in a lawsuit in 2002?",W1,0.7994,W1,1.2139,1.2139,0.0,1
+medium,What is the middle name of the actress who plays Bobbi Bacha in Suburban Madness?,W6,0.7523,W6,-0.0041,-0.0041,0.0,1
+medium,Which suburb is a soap opera featuring a character named Beverly Marshall set in?,W6,0.6813,W6,-0.0021,-0.0021,0.0,1
+medium,What criteria subjectively qualifies the Houston Astrodome to be called the Eighth Wonder of the World?,W1,0.89,W1,0.0753,0.0753,0.0,1
+medium,"The ""civic rally cross"" was sold alongside what other model sold exclusively in Japan at Honda Verno dealerships? ",W3,0.8608,W3,0.4078,0.4078,0.0,1
+medium,"What country does Eric A. Sykes and Eccles, Greater Manchester have ion common?",W3,0.8796,W3,1.1828,1.1828,0.0,1
+medium,"What year did the series on CBS, starring the actor who known for his role in ""Rebel Without a Cause,"" air?",W1,0.7969,W1,1.2157,1.2157,0.0,1
+medium,"Which mall, Wilton Mall or Viaport Rotterdam, has had more owners?",W2,0.5934,W3,1.1844,-0.0106,1.195,0
+medium,One Raffles Place is one of the tallest skyscrapers in the city of Singapore and tallest in the wolrd outside North Amer,W1,0.5275,W3,-0.0165,-0.0198,0.0033,0
+medium,Cardinal Pole Roman Catholic School was named after the last Roman Catholic to hold what position?,W3,0.8466,W3,0.5887,0.5887,0.0,1
+medium,Season 2 of Rick and Morty began with the episode directed by whom?,W6,0.8102,W6,-0.0045,-0.0045,0.0,1
+medium,"When did the rock band that sang ""All Join Hands"" rise to prominence? ",W1,0.7949,W1,-0.017,-0.017,0.0,1
+medium,What was the release date and price for the release of Mac OS X that has the software for creating WWF files?,W1,0.7517,W1,-0.0222,-0.0222,0.0,1
+medium,A puzzle-platform video game developed by the Valve Corporation is part of what 2012 action-adventure game?,W2,0.6434,W1,-0.0208,-0.0363,0.0155,0
+medium,In which city is the ambassador of the Rabat-Salé-Kénitra administrative region to China based?,W1,0.877,W1,1.2174,1.2174,0.0,1

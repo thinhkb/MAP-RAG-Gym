@@ -10,7 +10,10 @@ from typing import Any, Dict, List
 
 import requests
 from requests.exceptions import ConnectionError, ReadTimeout
-from dotenv import load_dotenv
+try:
+    from dotenv import load_dotenv
+except ImportError:
+    load_dotenv = None
 
 @dataclass
 class LLMResponse:
@@ -111,7 +114,7 @@ class GeminiLLM(BaseLLM):
         self.model = model
         # Load from .env file if it exists
         env_path = Path.cwd() / ".env"
-        if env_path.exists():
+        if env_path.exists() and load_dotenv is not None:
             load_dotenv(env_path, override=True)
         self.api_key = os.getenv("GEMINI_API_KEY", "")
         self.temperature = float(os.getenv("GEMINI_TEMPERATURE", "0"))

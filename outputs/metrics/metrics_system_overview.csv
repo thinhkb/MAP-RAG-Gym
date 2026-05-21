@@ -1,0 +1,15 @@
+﻿category,metric,value
+RL Gate,offline_rl_ready,False
+RL Gate,online_rl_ready,True
+RL Gate,deployment_mode,selective_critic_online
+RL Gate,recommended_next_stage,online_full_system_rl_with_selective_critic
+Bandit Gate,avg_regret,0.0352
+Bandit Gate,exact_best_rate,0.8047
+Bandit Gate,meets_online_threshold,True
+Critic Gate,token_multiplier,1.0
+Critic Gate,utility_gap,0.0
+Critic Gate,meets_online_threshold,True
+Promotion,promoted,True
+Promotion,high_utility_delta,0.4375
+Promotion,low_utility_delta,0.2776
+Promotion,medium_utility_delta,0.3613

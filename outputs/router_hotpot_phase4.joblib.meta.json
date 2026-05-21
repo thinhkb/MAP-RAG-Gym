@@ -1,0 +1,4854 @@
+{
+  "manifest": {
+    "script": "scripts/train_phase4_router.py",
+    "generated_at_utc": "2026-05-18T18:10:23+00:00",
+    "git_commit": "4401b12d34eee72111646697c4d33a9b212ae42a",
+    "python_version": "3.12.13",
+    "platform": "Windows-11-10.0.22621-SP0",
+    "paths": {
+      "qa": "G:\\MAP-RAG-Gym\\outputs\\hotpotqa_large_train_rollouts.json",
+      "corpus": null,
+      "router_model": "G:\\MAP-RAG-Gym\\outputs\\router_hotpot_phase4.joblib"
+    },
+    "dataset": {
+      "name": "hotpotqa_large",
+      "split": "train",
+      "limit": 420,
+      "effective_questions": 1260
+    },
+    "llm": {
+      "provider": null,
+      "model": null
+    },
+    "reproducibility": {
+      "seed": 13,
+      "prompt_version": "v1",
+      "utility": null
+    },
+    "settings": {
+      "input_rollout_file": "outputs/hotpotqa_large_train_rollouts.json",
+      "output_model": "outputs/router_hotpot_phase4.joblib",
+      "allowed_workflows": [
+        "W1",
+        "W2",
+        "W3",
+        "W6"
+      ],
+      "min_samples_per_label": 2,
+      "budget_modes": [
+        "low",
+        "medium",
+        "high"
+      ],
+      "utility_profiles": {
+        "low": {
+          "reward_weights": {
+            "f1_proxy": 1.0,
+            "process_score": 0.25
+          },
+          "cost_weights": {
+            "tokens": 0.16,
+            "retrieval_calls": 0.2,
+            "latency_ms": 0.12
+          },
+          "cost_normalizers": {
+            "tokens": 2000.0,
+            "retrieval_calls": 4.0,
+            "latency_ms": 10000.0
+          }
+        },
+        "medium": {
+          "reward_weights": {
+            "f1_proxy": 1.0,
+            "process_score": 0.35
+          },
+          "cost_weights": {
+            "tokens": 0.08,
+            "retrieval_calls": 0.1,
+            "latency_ms": 0.05
+          },
+          "cost_normalizers": {
+            "tokens": 2000.0,
+            "retrieval_calls": 4.0,
+            "latency_ms": 10000.0
+          }
+        },
+        "high": {
+          "reward_weights": {
+            "f1_proxy": 1.0,
+            "process_score": 0.45
+          },
+          "cost_weights": {
+            "tokens": 0.04,
+            "retrieval_calls": 0.06,
+            "latency_ms": 0.03
+          },
+          "cost_normalizers": {
+            "tokens": 2000.0,
+            "retrieval_calls": 4.0,
+            "latency_ms": 10000.0
+          }
+        }
+      },
+      "budget_margin_overrides": {},
+      "budget_preferred_workflows": {}
+    }
+  },
+  "source_rollout_manifest": {
+    "script": "scripts/batch_rollout.py",
+    "generated_at_utc": "2026-05-18T14:15:05+00:00",
+    "git_commit": "4401b12d34eee72111646697c4d33a9b212ae42a",
+    "python_version": "3.12.13",
+    "platform": "Windows-11-10.0.22621-SP0",
+    "paths": {
+      "qa": "G:\\MAP-RAG-Gym\\data\\hotpotqa_large\\splits\\train.json",
+      "corpus": "G:\\MAP-RAG-Gym\\data\\hotpotqa_large\\corpus.json",
+      "router_model": null
+    },
+    "dataset": {
+      "name": "hotpotqa_large",
+      "split": "train",
+      "limit": 420,
+      "effective_questions": 420
+    },
+    "llm": {
+      "provider": "ollama",
+      "model": "llama3.2"
+    },
+    "reproducibility": {
+      "seed": 42,
+      "prompt_version": "v1",
+      "utility": {
+        "reward_weights": {
+          "f1_proxy": 1.0,
+          "process_score": 0.35
+        },
+        "cost_weights": {
+          "tokens": 0.08,
+          "retrieval_calls": 0.1,
+          "latency_ms": 0.05
+        },
+        "cost_normalizers": {
+          "tokens": 2000.0,
+          "retrieval_calls": 4.0,
+          "latency_ms": 10000.0
+        }
+      }
+    },
+    "settings": {
+      "workflow_ids": [
+        "W1",
+        "W2",
+        "W3",
+        "W6"
+      ],
+      "n_candidates": 3,
+      "budget_mode": "medium",
+      "retriever_type": "bm25",
+      "retriever_bm25_weight": 0.5,
+      "workflow_retriever_overrides": {},
+      "resume": true
+    }
+  },
+  "label_counts_before_min_filter": {
+    "W3": 448,
+    "W1": 565,
+    "W2": 121,
+    "W6": 126
+  },
+  "label_counts_used": {
+    "W3": 448,
+    "W1": 565,
+    "W2": 121,
+    "W6": 126
+  },
+  "label_counts_by_budget_used": {
+    "low": {
+      "W3": 117,
+      "W1": 303
+    },
+    "medium": {
+      "W3": 161,
+      "W1": 183,
+      "W2": 42,
+      "W6": 34
+    },
+    "high": {
+      "W3": 170,
+      "W1": 79,
+      "W2": 79,
+      "W6": 92
+    }
+  },
+  "num_labels_total": 1260,
+  "num_labels_after_allowed_filter": 1260,
+  "num_labels_used": 1260,
+  "dropped_below_min_samples": 0,
+  "calibration_counts": {},
+  "diagnostics_preview": [
+    {
+      "question_id": "476",
+      "question": "What Division was the college footbal team that fired their head coach on November 24, 2006?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.1576
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.1152
+        }
+      ]
+    },
+    {
+      "question_id": "476",
+      "question": "What Division was the college footbal team that fired their head coach on November 24, 2006?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.2559
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0184
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0207
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0488
+        }
+      ]
+    },
+    {
+      "question_id": "476",
+      "question": "What Division was the college footbal team that fired their head coach on November 24, 2006?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.3145
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.0546
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.0475
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0288
+        }
+      ]
+    },
+    {
+      "question_id": "452",
+      "question": "Which Argentine telenovela broadcast by Telefe from March 12 to December 19, 2012 starred Isabel Macedo as Jimena Benitez?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 1.0676
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.046
+        }
+      ]
+    },
+    {
+      "question_id": "452",
+      "question": "Which Argentine telenovela broadcast by Telefe from March 12 to December 19, 2012 starred Isabel Macedo as Jimena Benitez?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 1.1927
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 1.1236
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 1.1081
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.02
+        }
+      ]
+    },
+    {
+      "question_id": "452",
+      "question": "Which Argentine telenovela broadcast by Telefe from March 12 to December 19, 2012 starred Isabel Macedo as Jimena Benitez?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 1.2832
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 1.2206
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 1.2051
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0115
+        }
+      ]
+    },
+    {
+      "question_id": "336",
+      "question": "What country do both Adnan Akmal and Kamran Akmal represent in cricket?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.038
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0554
+        }
+      ]
+    },
+    {
+      "question_id": "336",
+      "question": "What country do both Adnan Akmal and Kamran Akmal represent in cricket?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.0397
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.004
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0166
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0223
+        }
+      ]
+    },
+    {
+      "question_id": "336",
+      "question": "What country do both Adnan Akmal and Kamran Akmal represent in cricket?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.0945
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.0574
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.0436
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0095
+        }
+      ]
+    },
+    {
+      "question_id": "469",
+      "question": "What 2016 film stars actor Xavier Samuel and an actress who portrayed Vasilisa Dragomir in the film \"Vampire Academy\"?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0488
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0808
+        }
+      ]
+    },
+    {
+      "question_id": "469",
+      "question": "What 2016 film stars actor Xavier Samuel and an actress who portrayed Vasilisa Dragomir in the film \"Vampire Academy\"?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": -0.0149
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0212
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0562
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0594
+        }
+      ]
+    },
+    {
+      "question_id": "469",
+      "question": "What 2016 film stars actor Xavier Samuel and an actress who portrayed Vasilisa Dragomir in the film \"Vampire Academy\"?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.0162
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0109
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0122
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0138
+        }
+      ]
+    },
+    {
+      "question_id": "574",
+      "question": "Lorenzo Monaco was influenced by which Italian painter and architect?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 1.0464
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.037
+        }
+      ]
+    },
+    {
+      "question_id": "574",
+      "question": "Lorenzo Monaco was influenced by which Italian painter and architect?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 1.1805
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 1.1489
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 1.1368
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0162
+        }
+      ]
+    },
+    {
+      "question_id": "574",
+      "question": "Lorenzo Monaco was influenced by which Italian painter and architect?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 1.2746
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 1.257
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 1.227
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0092
+        }
+      ]
+    },
+    {
+      "question_id": "559",
+      "question": "Who is the psychologist who wrote about the disciple of the person known as the \"Wild Woman of Buttle\"?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0432
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.1089
+        }
+      ]
+    },
+    {
+      "question_id": "559",
+      "question": "Who is the psychologist who wrote about the disciple of the person known as the \"Wild Woman of Buttle\"?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0189
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0311
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0516
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0629
+        }
+      ]
+    },
+    {
+      "question_id": "559",
+      "question": "Who is the psychologist who wrote about the disciple of the person known as the \"Wild Woman of Buttle\"?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.0048
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.0023
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0108
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0135
+        }
+      ]
+    },
+    {
+      "question_id": "205",
+      "question": "Onika Tanya Maraj is a judge on a television show hosted by whom? ",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0399
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0855
+        }
+      ]
+    },
+    {
+      "question_id": "205",
+      "question": "Onika Tanya Maraj is a judge on a television show hosted by whom? ",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": -0.0172
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0174
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0396
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0687
+        }
+      ]
+    },
+    {
+      "question_id": "205",
+      "question": "Onika Tanya Maraj is a judge on a television show hosted by whom? ",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.0145
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.0114
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.01
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0212
+        }
+      ]
+    },
+    {
+      "question_id": "84",
+      "question": "What was the name of a woman from the book titled \"Their Lives: The Women Targeted by the Clinton Machine \" and was also a former white house intern?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.115
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 1.0525
+        }
+      ]
+    },
+    {
+      "question_id": "84",
+      "question": "What was the name of a woman from the book titled \"Their Lives: The Women Targeted by the Clinton Machine \" and was also a former white house intern?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.2109
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 1.1852
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 1.1153
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 1.1063
+        }
+      ]
+    },
+    {
+      "question_id": "84",
+      "question": "What was the name of a woman from the book titled \"Their Lives: The Women Targeted by the Clinton Machine \" and was also a former white house intern?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.2871
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 1.2792
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 1.2216
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 1.2
+        }
+      ]
+    },
+    {
+      "question_id": "532",
+      "question": "Luke Null is an actor who was on the program that premiered its 43rd season on which date?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0302
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.1071
+        }
+      ]
+    },
+    {
+      "question_id": "532",
+      "question": "Luke Null is an actor who was on the program that premiered its 43rd season on which date?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 0.1759
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.1675
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0134
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0298
+        }
+      ]
+    },
+    {
+      "question_id": "532",
+      "question": "Luke Null is an actor who was on the program that premiered its 43rd season on which date?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 0.2316
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.2158
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0062
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0075
+        }
+      ]
+    },
+    {
+      "question_id": "49",
+      "question": "Which British first-generation jet-powered medium bomber was used in the South West Pacific theatre of World War II?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.043
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0462
+        }
+      ]
+    },
+    {
+      "question_id": "49",
+      "question": "Which British first-generation jet-powered medium bomber was used in the South West Pacific theatre of World War II?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 1.1073
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0461
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.0019
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0187
+        }
+      ]
+    },
+    {
+      "question_id": "49",
+      "question": "Which British first-generation jet-powered medium bomber was used in the South West Pacific theatre of World War II?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 1.2067
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0995
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.0661
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0107
+        }
+      ]
+    },
+    {
+      "question_id": "294",
+      "question": "Which American music star appeared as a guest in a Will & Grace episode called \"Back Up, Dancer\"?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.4346
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0419
+        }
+      ]
+    },
+    {
+      "question_id": "294",
+      "question": "Which American music star appeared as a guest in a Will & Grace episode called \"Back Up, Dancer\"?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.5134
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.4823
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0183
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0385
+        }
+      ]
+    },
+    {
+      "question_id": "294",
+      "question": "Which American music star appeared as a guest in a Will & Grace episode called \"Back Up, Dancer\"?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.5558
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.5426
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.0152
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0105
+        }
+      ]
+    },
+    {
+      "question_id": "471",
+      "question": "In what field does the firm at which Claudio Fernández-Aráoz was a currently a senior adviser offers services?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 0.234
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0943
+        }
+      ]
+    },
+    {
+      "question_id": "471",
+      "question": "In what field does the firm at which Claudio Fernández-Aráoz was a currently a senior adviser offers services?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 0.263
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0238
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0411
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.049
+        }
+      ]
+    },
+    {
+      "question_id": "471",
+      "question": "In what field does the firm at which Claudio Fernández-Aráoz was a currently a senior adviser offers services?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 0.2783
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.0132
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0091
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.0069
+        }
+      ]
+    },
+    {
+      "question_id": "384",
+      "question": "Which American writer wrote both The Ganymede Takeover (1967) and The Man in the High Castle (1962)?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.1282
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 1.0553
+        }
+      ]
+    },
+    {
+      "question_id": "384",
+      "question": "Which American writer wrote both The Ganymede Takeover (1967) and The Man in the High Castle (1962)?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.2165
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 1.1872
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 1.1372
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 1.1311
+        }
+      ]
+    },
+    {
+      "question_id": "384",
+      "question": "Which American writer wrote both The Ganymede Takeover (1967) and The Man in the High Castle (1962)?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.2904
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 1.2806
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 1.2376
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 1.2354
+        }
+      ]
+    },
+    {
+      "question_id": "530",
+      "question": "What took place first, The Korean War or The Western Allied invasion of Germany?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.1259
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 1.0365
+        }
+      ]
+    },
+    {
+      "question_id": "530",
+      "question": "What took place first, The Korean War or The Western Allied invasion of Germany?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.2156
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 1.155
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.0046
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0007
+        }
+      ]
+    },
+    {
+      "question_id": "530",
+      "question": "What took place first, The Korean War or The Western Allied invasion of Germany?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.2898
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 1.2374
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.0668
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.0568
+        }
+      ]
+    },
+    {
+      "question_id": "92",
+      "question": "Where does the hotel and casino located in which Bill Cosby's third album was recorded?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.2138
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0391
+        }
+      ]
+    },
+    {
+      "question_id": "92",
+      "question": "Where does the hotel and casino located in which Bill Cosby's third album was recorded?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.2905
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.2291
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0171
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0381
+        }
+      ]
+    },
+    {
+      "question_id": "92",
+      "question": "Where does the hotel and casino located in which Bill Cosby's third album was recorded?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.3296
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.2797
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.0052
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0098
+        }
+      ]
+    },
+    {
+      "question_id": "484",
+      "question": "The Detroit mayoral elections of 2009 took place to fill the vacancy created by a politician who was sentenced to what?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0421
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0844
+        }
+      ]
+    },
+    {
+      "question_id": "484",
+      "question": "The Detroit mayoral elections of 2009 took place to fill the vacancy created by a politician who was sentenced to what?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0184
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0185
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0225
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0511
+        }
+      ]
+    },
+    {
+      "question_id": "484",
+      "question": "The Detroit mayoral elections of 2009 took place to fill the vacancy created by a politician who was sentenced to what?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W6",
+          "utility": 0.0264
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0125
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0043
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0105
+        }
+      ]
+    },
+    {
+      "question_id": "564",
+      "question": "Who is the author of the 1993 production Madge Ryan participated in?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0469
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0982
+        }
+      ]
+    },
+    {
+      "question_id": "564",
+      "question": "Who is the author of the 1993 production Madge Ryan participated in?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0203
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0267
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0298
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0361
+        }
+      ]
+    },
+    {
+      "question_id": "564",
+      "question": "Who is the author of the 1993 production Madge Ryan participated in?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 0.0256
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.0127
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0065
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0117
+        }
+      ]
+    },
+    {
+      "question_id": "324",
+      "question": "This work of literature _______ , known by its Greek title Oedipus Tyrannus was argued by Sigmund Freud to be one of the greatest works of world literature in his 1928 article. ",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0379
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0414
+        }
+      ]
+    },
+    {
+      "question_id": "324",
+      "question": "This work of literature _______ , known by its Greek title Oedipus Tyrannus was argued by Sigmund Freud to be one of the greatest works of world literature in his 1928 article. ",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.0481
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0114
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0168
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0309
+        }
+      ]
+    },
+    {
+      "question_id": "324",
+      "question": "This work of literature _______ , known by its Greek title Oedipus Tyrannus was argued by Sigmund Freud to be one of the greatest works of world literature in his 1928 article. ",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.1009
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.0455
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.0237
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0095
+        }
+      ]
+    },
+    {
+      "question_id": "50",
+      "question": "Which year and which conference was the 14th season for this conference as part of the NCAA Division that the Colorado Buffaloes played in with a record of 2-6 in conference play?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0407
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0951
+        }
+      ]
+    },
+    {
+      "question_id": "50",
+      "question": "Which year and which conference was the 14th season for this conference as part of the NCAA Division that the Colorado Buffaloes played in with a record of 2-6 in conference play?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0179
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0239
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0286
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0466
+        }
+      ]
+    },
+    {
+      "question_id": "50",
+      "question": "Which year and which conference was the 14th season for this conference as part of the NCAA Division that the Colorado Buffaloes played in with a record of 2-6 in conference play?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W6",
+          "utility": 0.0262
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0099
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.0034
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0102
+        }
+      ]
+    },
+    {
+      "question_id": "108",
+      "question": "When was the  former Indian cricketer who made his ODI debuts during the 2000 ICC KnockOut Trophy born? ",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0386
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0943
+        }
+      ]
+    },
+    {
+      "question_id": "108",
+      "question": "When was the  former Indian cricketer who made his ODI debuts during the 2000 ICC KnockOut Trophy born? ",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0169
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0228
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.037
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0473
+        }
+      ]
+    },
+    {
+      "question_id": "108",
+      "question": "When was the  former Indian cricketer who made his ODI debuts during the 2000 ICC KnockOut Trophy born? ",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W6",
+          "utility": 0.0128
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0108
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.0102
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0096
+        }
+      ]
+    },
+    {
+      "question_id": "538",
+      "question": "What is the date of birth of the English inventor that developed the Richard Hornsby & Sons oil engine? ",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.038
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0854
+        }
+      ]
+    },
+    {
+      "question_id": "538",
+      "question": "What is the date of birth of the English inventor that developed the Richard Hornsby & Sons oil engine? ",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0167
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.019
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0353
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0398
+        }
+      ]
+    },
+    {
+      "question_id": "538",
+      "question": "What is the date of birth of the English inventor that developed the Richard Hornsby & Sons oil engine? ",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W6",
+          "utility": 0.0148
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0123
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.0083
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0095
+        }
+      ]
+    },
+    {
+      "question_id": "309",
+      "question": "Are Staten Island Catapult and This Is Elvis both documentaries?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0353
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.089
+        }
+      ]
+    },
+    {
+      "question_id": "309",
+      "question": "Are Staten Island Catapult and This Is Elvis both documentaries?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0155
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0227
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0313
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0351
+        }
+      ]
+    },
+    {
+      "question_id": "309",
+      "question": "Are Staten Island Catapult and This Is Elvis both documentaries?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 0.0204
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.0102
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0083
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0088
+        }
+      ]
+    },
+    {
+      "question_id": "93",
+      "question": "Do the drinks Gibson and Zurracapote both contain gin?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0364
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0528
+        }
+      ]
+    },
+    {
+      "question_id": "93",
+      "question": "Do the drinks Gibson and Zurracapote both contain gin?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.0179
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.003
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0159
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0255
+        }
+      ]
+    },
+    {
+      "question_id": "93",
+      "question": "Do the drinks Gibson and Zurracapote both contain gin?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.0567
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.0556
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.0335
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0091
+        }
+      ]
+    },
+    {
+      "question_id": "67",
+      "question": "What is the name of the singer who's song was released as the lead single from the album \"Confessions\", and that had popular song stuck behind for eight consecutive weeks?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0439
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0981
+        }
+      ]
+    },
+    {
+      "question_id": "67",
+      "question": "What is the name of the singer who's song was released as the lead single from the album \"Confessions\", and that had popular song stuck behind for eight consecutive weeks?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W6",
+          "utility": 1.1012
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0141
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0193
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0249
+        }
+      ]
+    },
+    {
+      "question_id": "67",
+      "question": "What is the name of the singer who's song was released as the lead single from the album \"Confessions\", and that had popular song stuck behind for eight consecutive weeks?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W6",
+          "utility": 1.1937
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.0529
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0093
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.011
+        }
+      ]
+    },
+    {
+      "question_id": "501",
+      "question": "Which city was the man who is known for a science humor story based on the tongue-in-cheek combination of two adages born in?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.0408
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 1.0259
+        }
+      ]
+    },
+    {
+      "question_id": "501",
+      "question": "Which city was the man who is known for a science humor story based on the tongue-in-cheek combination of two adages born in?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 1.1321
+        },
+        {
+          "workflow_id": "W1",
+          "utility": 1.098
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 1.0657
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 1.0375
+        }
+      ]
+    },
+    {
+      "question_id": "501",
+      "question": "Which city was the man who is known for a science humor story based on the tongue-in-cheek combination of two adages born in?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 1.2042
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 1.1413
+        },
+        {
+          "workflow_id": "W1",
+          "utility": 1.1393
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 1.1109
+        }
+      ]
+    },
+    {
+      "question_id": "275",
+      "question": "Marion Greene was a health policy analyst for St. Judt Medical company, which had how many principal operations worldwide?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0393
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0886
+        }
+      ]
+    },
+    {
+      "question_id": "275",
+      "question": "Marion Greene was a health policy analyst for St. Judt Medical company, which had how many principal operations worldwide?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W6",
+          "utility": -0.0107
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0172
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0222
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0271
+        }
+      ]
+    },
+    {
+      "question_id": "275",
+      "question": "Marion Greene was a health policy analyst for St. Judt Medical company, which had how many principal operations worldwide?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W6",
+          "utility": 0.0441
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.0362
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0095
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0098
+        }
+      ]
+    },
+    {
+      "question_id": "101",
+      "question": "David Huntsinger has worked with this gospel singer born in the month of July?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0464
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0677
+        }
+      ]
+    },
+    {
+      "question_id": "101",
+      "question": "David Huntsinger has worked with this gospel singer born in the month of July?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.0101
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0117
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0201
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0342
+        }
+      ]
+    },
+    {
+      "question_id": "101",
+      "question": "David Huntsinger has worked with this gospel singer born in the month of July?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.052
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.0426
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.0194
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0116
+        }
+      ]
+    },
+    {
+      "question_id": "587",
+      "question": "When was the date of birth of one of the founder of Congo Reform Association?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0387
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0786
+        }
+      ]
+    },
+    {
+      "question_id": "587",
+      "question": "When was the date of birth of one of the founder of Congo Reform Association?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": -0.0098
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0169
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0171
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0329
+        }
+      ]
+    },
+    {
+      "question_id": "587",
+      "question": "When was the date of birth of one of the founder of Congo Reform Association?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 0.0427
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.0145
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0117
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0097
+        }
+      ]
+    },
+    {
+      "question_id": "81",
+      "question": "The Album Against the Wind was the 11th Album of a Rock singer Robert C Seger born may 6 1945. What was the Rock singers stage name ?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.4898
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0395
+        }
+      ]
+    },
+    {
+      "question_id": "81",
+      "question": "The Album Against the Wind was the 11th Album of a Rock singer Robert C Seger born may 6 1945. What was the Rock singers stage name ?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 1.1226
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.586
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.5195
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0174
+        }
+      ]
+    },
+    {
+      "question_id": "81",
+      "question": "The Album Against the Wind was the 11th Album of a Rock singer Robert C Seger born may 6 1945. What was the Rock singers stage name ?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 1.2218
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.6472
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.5807
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0099
+        }
+      ]
+    },
+    {
+      "question_id": "287",
+      "question": "Where did Ian Harland study prior to studying at the oldest college at the University of Cambridge?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0371
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.1058
+        }
+      ]
+    },
+    {
+      "question_id": "287",
+      "question": "Where did Ian Harland study prior to studying at the oldest college at the University of Cambridge?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0163
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0289
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0344
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0483
+        }
+      ]
+    },
+    {
+      "question_id": "287",
+      "question": "Where did Ian Harland study prior to studying at the oldest college at the University of Cambridge?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W6",
+          "utility": 0.0144
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0072
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0002
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0093
+        }
+      ]
+    },
+    {
+      "question_id": "233",
+      "question": "Which case came first, Craig v. Boren or United States v. Paramount Pictures, Inc.?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 0.0919
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0891
+        }
+      ]
+    },
+    {
+      "question_id": "233",
+      "question": "Which case came first, Craig v. Boren or United States v. Paramount Pictures, Inc.?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.1854
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.1228
+        },
+        {
+          "workflow_id": "W1",
+          "utility": 0.1207
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.1027
+        }
+      ]
+    },
+    {
+      "question_id": "233",
+      "question": "Which case came first, Craig v. Boren or United States v. Paramount Pictures, Inc.?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.2425
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.1933
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.1586
+        },
+        {
+          "workflow_id": "W1",
+          "utility": 0.1329
+        }
+      ]
+    },
+    {
+      "question_id": "362",
+      "question": "The 37th Disney animated feature film Tarzan features You'll be in my heart by which artist?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.1251
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 1.0073
+        }
+      ]
+    },
+    {
+      "question_id": "362",
+      "question": "The 37th Disney animated feature film Tarzan features You'll be in my heart by which artist?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.2152
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 1.1159
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 1.1099
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 1.0705
+        }
+      ]
+    },
+    {
+      "question_id": "362",
+      "question": "The 37th Disney animated feature film Tarzan features You'll be in my heart by which artist?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.2896
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 1.2096
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 1.1881
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 1.1511
+        }
+      ]
+    },
+    {
+      "question_id": "337",
+      "question": "Did Franki Valli sing with Hellogoodbye or The Four Seasons?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.1295
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 1.0571
+        }
+      ]
+    },
+    {
+      "question_id": "337",
+      "question": "Did Franki Valli sing with Hellogoodbye or The Four Seasons?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.2171
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 1.1861
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 1.1395
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 1.1193
+        }
+      ]
+    },
+    {
+      "question_id": "337",
+      "question": "Did Franki Valli sing with Hellogoodbye or The Four Seasons?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.2907
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 1.2784
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 1.2442
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 1.2183
+        }
+      ]
+    },
+    {
+      "question_id": "512",
+      "question": "The Argentine National Anthem was adopted 3 years after which event that led to the removal of Viceroy Baltasar Hildalgo de Cisneros?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.0395
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0427
+        }
+      ]
+    },
+    {
+      "question_id": "512",
+      "question": "The Argentine National Anthem was adopted 3 years after which event that led to the removal of Viceroy Baltasar Hildalgo de Cisneros?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 1.1413
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 1.1326
+        },
+        {
+          "workflow_id": "W1",
+          "utility": 1.0975
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0465
+        }
+      ]
+    },
+    {
+      "question_id": "512",
+      "question": "The Argentine National Anthem was adopted 3 years after which event that led to the removal of Viceroy Baltasar Hildalgo de Cisneros?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 1.2519
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 1.2304
+        },
+        {
+          "workflow_id": "W1",
+          "utility": 1.139
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0992
+        }
+      ]
+    },
+    {
+      "question_id": "210",
+      "question": "Who was the captain of the only battleship to provide gunfire support during the Vietnam War?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0396
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0922
+        }
+      ]
+    },
+    {
+      "question_id": "210",
+      "question": "Who was the captain of the only battleship to provide gunfire support during the Vietnam War?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0173
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0235
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0397
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0404
+        }
+      ]
+    },
+    {
+      "question_id": "210",
+      "question": "Who was the captain of the only battleship to provide gunfire support during the Vietnam War?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 0.0133
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0085
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.0058
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0099
+        }
+      ]
+    },
+    {
+      "question_id": "112",
+      "question": "When was the British author who wrote the novel on which \"Here We Go Round the Mulberry Bush\" was based born? ",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.1134
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0384
+        }
+      ]
+    },
+    {
+      "question_id": "112",
+      "question": "When was the British author who wrote the novel on which \"Here We Go Round the Mulberry Bush\" was based born? ",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.1896
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.1812
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0169
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0444
+        }
+      ]
+    },
+    {
+      "question_id": "112",
+      "question": "When was the British author who wrote the novel on which \"Here We Go Round the Mulberry Bush\" was based born? ",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W6",
+          "utility": 0.2337
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.2273
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.0033
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0096
+        }
+      ]
+    },
+    {
+      "question_id": "332",
+      "question": "The Ingerophrynus gollum is named after a character in a book that sold how many copies?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0379
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.086
+        }
+      ]
+    },
+    {
+      "question_id": "332",
+      "question": "The Ingerophrynus gollum is named after a character in a book that sold how many copies?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0166
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0215
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0337
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0521
+        }
+      ]
+    },
+    {
+      "question_id": "332",
+      "question": "The Ingerophrynus gollum is named after a character in a book that sold how many copies?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.0091
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.009
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0095
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0111
+        }
+      ]
+    },
+    {
+      "question_id": "128",
+      "question": "Where is the Bubblegum Alley, that is similar to Gum Wall, located in California?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 0.7723
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.7462
+        }
+      ]
+    },
+    {
+      "question_id": "128",
+      "question": "Where is the Bubblegum Alley, that is similar to Gum Wall, located in California?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.8513
+        },
+        {
+          "workflow_id": "W1",
+          "utility": 0.82
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.8061
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.7843
+        }
+      ]
+    },
+    {
+      "question_id": "128",
+      "question": "Where is the Bubblegum Alley, that is similar to Gum Wall, located in California?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.9191
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.8819
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.8539
+        },
+        {
+          "workflow_id": "W1",
+          "utility": 0.8525
+        }
+      ]
+    },
+    {
+      "question_id": "290",
+      "question": "What record did the Super Bowl XXXIV champions finish the regular-season with in 1999?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0388
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0855
+        }
+      ]
+    },
+    {
+      "question_id": "290",
+      "question": "What record did the Super Bowl XXXIV champions finish the regular-season with in 1999?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.017
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0209
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0428
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0581
+        }
+      ]
+    },
+    {
+      "question_id": "290",
+      "question": "What record did the Super Bowl XXXIV champions finish the regular-season with in 1999?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.0089
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.0061
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0097
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0107
+        }
+      ]
+    },
+    {
+      "question_id": "166",
+      "question": "Which came out first, Dinosaur or McFarland, USA",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.1298
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 1.0348
+        }
+      ]
+    },
+    {
+      "question_id": "166",
+      "question": "Which came out first, Dinosaur or McFarland, USA",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.2173
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 1.1738
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 1.1238
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 1.0315
+        }
+      ]
+    },
+    {
+      "question_id": "166",
+      "question": "Which came out first, Dinosaur or McFarland, USA",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.2908
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 1.2709
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 1.2221
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 1.1149
+        }
+      ]
+    },
+    {
+      "question_id": "238",
+      "question": "What airport serviced by American Airlines Shuttle, is also the largest airport in the New England region and 17th busiest in the U.S?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 1.0022
+        },
+        {
+          "workflow_id": "W1",
+          "utility": 0.7681
+        }
+      ]
+    },
+    {
+      "question_id": "238",
+      "question": "What airport serviced by American Airlines Shuttle, is also the largest airport in the New England region and 17th busiest in the U.S?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 1.1363
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 1.1146
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 1.0966
+        },
+        {
+          "workflow_id": "W1",
+          "utility": 0.8181
+        }
+      ]
+    },
+    {
+      "question_id": "238",
+      "question": "What airport serviced by American Airlines Shuttle, is also the largest airport in the New England region and 17th busiest in the U.S?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 1.2387
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 1.1949
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 1.1887
+        },
+        {
+          "workflow_id": "W1",
+          "utility": 0.8514
+        }
+      ]
+    },
+    {
+      "question_id": "518",
+      "question": "Where is the academy, for which Joseph D. Stewart was appointed Superintendent, located?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0452
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0996
+        }
+      ]
+    },
+    {
+      "question_id": "518",
+      "question": "Where is the academy, for which Joseph D. Stewart was appointed Superintendent, located?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 1.1429
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0196
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0287
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0666
+        }
+      ]
+    },
+    {
+      "question_id": "518",
+      "question": "Where is the academy, for which Joseph D. Stewart was appointed Superintendent, located?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 1.2439
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0048
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0113
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0221
+        }
+      ]
+    },
+    {
+      "question_id": "473",
+      "question": "Which \"Official Ireland\" group comprises about  78.3% of the population of Ireland? ",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.1818
+        },
+        {
+          "workflow_id": "W1",
+          "utility": 0.0348
+        }
+      ]
+    },
+    {
+      "question_id": "473",
+      "question": "Which \"Official Ireland\" group comprises about  78.3% of the population of Ireland? ",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 1.057
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.2512
+        },
+        {
+          "workflow_id": "W1",
+          "utility": 0.0692
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0533
+        }
+      ]
+    },
+    {
+      "question_id": "473",
+      "question": "Which \"Official Ireland\" group comprises about  78.3% of the population of Ireland? ",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 1.1322
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.2867
+        },
+        {
+          "workflow_id": "W1",
+          "utility": 0.082
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.008
+        }
+      ]
+    },
+    {
+      "question_id": "514",
+      "question": "What number album is the first W.A.S.P. album to feature Steven Edward Duren playing guitar?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0389
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0906
+        }
+      ]
+    },
+    {
+      "question_id": "514",
+      "question": "What number album is the first W.A.S.P. album to feature Steven Edward Duren playing guitar?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.017
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0186
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0218
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.023
+        }
+      ]
+    },
+    {
+      "question_id": "514",
+      "question": "What number album is the first W.A.S.P. album to feature Steven Edward Duren playing guitar?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W6",
+          "utility": 0.0327
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.0309
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0105
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0097
+        }
+      ]
+    },
+    {
+      "question_id": "377",
+      "question": "Jens Risom introduced what type of design, characterized by minimalism and functionality?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.1279
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.2287
+        }
+      ]
+    },
+    {
+      "question_id": "377",
+      "question": "Jens Risom introduced what type of design, characterized by minimalism and functionality?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.2164
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.3209
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.2578
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.2556
+        }
+      ]
+    },
+    {
+      "question_id": "377",
+      "question": "Jens Risom introduced what type of design, characterized by minimalism and functionality?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.2903
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.3773
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.3186
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.3167
+        }
+      ]
+    },
+    {
+      "question_id": "102",
+      "question": "What year was the brother of this first round draft pick by the Washington Redskins drafted?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0381
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0866
+        }
+      ]
+    },
+    {
+      "question_id": "102",
+      "question": "What year was the brother of this first round draft pick by the Washington Redskins drafted?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0167
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0205
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0326
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0561
+        }
+      ]
+    },
+    {
+      "question_id": "102",
+      "question": "What year was the brother of this first round draft pick by the Washington Redskins drafted?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 0.022
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0107
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0095
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0098
+        }
+      ]
+    },
+    {
+      "question_id": "277",
+      "question": "In what city was the Italian Baroque composer who composed a set of sonatas, titled Op. 5, born?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0368
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0963
+        }
+      ]
+    },
+    {
+      "question_id": "277",
+      "question": "In what city was the Italian Baroque composer who composed a set of sonatas, titled Op. 5, born?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 0.0035
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0162
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0257
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0484
+        }
+      ]
+    },
+    {
+      "question_id": "277",
+      "question": "In what city was the Italian Baroque composer who composed a set of sonatas, titled Op. 5, born?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 0.0704
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0071
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0078
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0092
+        }
+      ]
+    },
+    {
+      "question_id": "390",
+      "question": "What type of movie are Wishing Stairs and Voice?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 0.2349
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0562
+        }
+      ]
+    },
+    {
+      "question_id": "390",
+      "question": "What type of movie are Wishing Stairs and Voice?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 0.5329
+        },
+        {
+          "workflow_id": "W1",
+          "utility": 0.2635
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.2452
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0161
+        }
+      ]
+    },
+    {
+      "question_id": "390",
+      "question": "What type of movie are Wishing Stairs and Voice?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 0.6055
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.3046
+        },
+        {
+          "workflow_id": "W1",
+          "utility": 0.2785
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0553
+        }
+      ]
+    },
+    {
+      "question_id": "526",
+      "question": "The Duke Steps Out stars an actress who was ranked tenth on a list of greatest female Hollywood stars in what year?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 1.0633
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0401
+        }
+      ]
+    },
+    {
+      "question_id": "526",
+      "question": "The Duke Steps Out stars an actress who was ranked tenth on a list of greatest female Hollywood stars in what year?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 1.1903
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0058
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0176
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.045
+        }
+      ]
+    },
+    {
+      "question_id": "526",
+      "question": "The Duke Steps Out stars an actress who was ranked tenth on a list of greatest female Hollywood stars in what year?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 1.2819
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.057
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.0084
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.01
+        }
+      ]
+    },
+    {
+      "question_id": "21",
+      "question": "This singer of A Rather Blustery Day also voiced what hedgehog?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0367
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0684
+        }
+      ]
+    },
+    {
+      "question_id": "21",
+      "question": "This singer of A Rather Blustery Day also voiced what hedgehog?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.0101
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.0046
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0161
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.027
+        }
+      ]
+    },
+    {
+      "question_id": "21",
+      "question": "This singer of A Rather Blustery Day also voiced what hedgehog?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W6",
+          "utility": 0.0697
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0519
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.0253
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0092
+        }
+      ]
+    },
+    {
+      "question_id": "218",
+      "question": "Which suburb is a soap opera featuring a character named Beverly Marshall set in?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0382
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0881
+        }
+      ]
+    },
+    {
+      "question_id": "218",
+      "question": "Which suburb is a soap opera featuring a character named Beverly Marshall set in?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W6",
+          "utility": -0.0021
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0167
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0221
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0309
+        }
+      ]
+    },
+    {
+      "question_id": "218",
+      "question": "Which suburb is a soap opera featuring a character named Beverly Marshall set in?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W6",
+          "utility": 0.0474
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.0182
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0087
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0095
+        }
+      ]
+    },
+    {
+      "question_id": "333",
+      "question": "What Danish eurodance group had a single called \"Barbie Girl\" which resulted in a lawsuit in 2002?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.122
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 1.0616
+        }
+      ]
+    },
+    {
+      "question_id": "333",
+      "question": "What Danish eurodance group had a single called \"Barbie Girl\" which resulted in a lawsuit in 2002?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.2139
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 1.1887
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 1.1328
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 1.0976
+        }
+      ]
+    },
+    {
+      "question_id": "333",
+      "question": "What Danish eurodance group had a single called \"Barbie Girl\" which resulted in a lawsuit in 2002?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.2889
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 1.2803
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 1.2288
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 1.1825
+        }
+      ]
+    },
+    {
+      "question_id": "325",
+      "question": "Katherine Waterston and Chrisann Brennan has what in common?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 1.0612
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0371
+        }
+      ]
+    },
+    {
+      "question_id": "325",
+      "question": "Katherine Waterston and Chrisann Brennan has what in common?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 1.1886
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 1.1391
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 1.1164
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0162
+        }
+      ]
+    },
+    {
+      "question_id": "325",
+      "question": "Katherine Waterston and Chrisann Brennan has what in common?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 1.2798
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 1.238
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 1.2085
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0093
+        }
+      ]
+    },
+    {
+      "question_id": "116",
+      "question": "Suicide's 1977 released album features a song based on what brand's comic character?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0376
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0911
+        }
+      ]
+    },
+    {
+      "question_id": "116",
+      "question": "Suicide's 1977 released album features a song based on what brand's comic character?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W6",
+          "utility": -0.001
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0142
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0164
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0236
+        }
+      ]
+    },
+    {
+      "question_id": "116",
+      "question": "Suicide's 1977 released album features a song based on what brand's comic character?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W6",
+          "utility": 0.0532
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.0476
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.008
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0094
+        }
+      ]
+    },
+    {
+      "question_id": "392",
+      "question": "What kind of movie directed by F. Javier gutierrez did an Italian model and actress star in?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0455
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0875
+        }
+      ]
+    },
+    {
+      "question_id": "392",
+      "question": "What kind of movie directed by F. Javier gutierrez did an Italian model and actress star in?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0198
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0233
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0361
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0402
+        }
+      ]
+    },
+    {
+      "question_id": "392",
+      "question": "What kind of movie directed by F. Javier gutierrez did an Italian model and actress star in?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.0079
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.0053
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0002
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0114
+        }
+      ]
+    },
+    {
+      "question_id": "9",
+      "question": "Are Local H and For Against both from the United States?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0354
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0954
+        }
+      ]
+    },
+    {
+      "question_id": "9",
+      "question": "Are Local H and For Against both from the United States?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0155
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.024
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.027
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.027
+        }
+      ]
+    },
+    {
+      "question_id": "9",
+      "question": "Are Local H and For Against both from the United States?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W6",
+          "utility": 0.0192
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.0176
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0062
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0089
+        }
+      ]
+    },
+    {
+      "question_id": "571",
+      "question": "What was the release date and price for the release of Mac OS X that has the software for creating WWF files?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0513
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.1017
+        }
+      ]
+    },
+    {
+      "question_id": "571",
+      "question": "What was the release date and price for the release of Mac OS X that has the software for creating WWF files?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0222
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.027
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0355
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0424
+        }
+      ]
+    },
+    {
+      "question_id": "571",
+      "question": "What was the release date and price for the release of Mac OS X that has the software for creating WWF files?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W6",
+          "utility": 0.0172
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.0149
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0076
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0128
+        }
+      ]
+    },
+    {
+      "question_id": "220",
+      "question": "Which Netflix series \"Unbreakable\" character is Elizabeth Claire Kemper known for playing?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.1181
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.036
+        }
+      ]
+    },
+    {
+      "question_id": "220",
+      "question": "Which Netflix series \"Unbreakable\" character is Elizabeth Claire Kemper known for playing?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.1916
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.1868
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.1785
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0158
+        }
+      ]
+    },
+    {
+      "question_id": "220",
+      "question": "Which Netflix series \"Unbreakable\" character is Elizabeth Claire Kemper known for playing?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W6",
+          "utility": 0.2355
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.2347
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.2283
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.009
+        }
+      ]
+    },
+    {
+      "question_id": "8",
+      "question": "Who is older, Annie Morton or Terry Richardson?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.13
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 1.0654
+        }
+      ]
+    },
+    {
+      "question_id": "8",
+      "question": "Who is older, Annie Morton or Terry Richardson?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.2173
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 1.1907
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.0054
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.0041
+        }
+      ]
+    },
+    {
+      "question_id": "8",
+      "question": "Who is older, Annie Morton or Terry Richardson?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.2908
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 1.2812
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.0645
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.0641
+        }
+      ]
+    },
+    {
+      "question_id": "313",
+      "question": "Who was born first Am Rong or Ava DuVernay ?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.1281
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0838
+        }
+      ]
+    },
+    {
+      "question_id": "313",
+      "question": "Who was born first Am Rong or Ava DuVernay ?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.2165
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0167
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0374
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0383
+        }
+      ]
+    },
+    {
+      "question_id": "313",
+      "question": "Who was born first Am Rong or Ava DuVernay ?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.2904
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0143
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.0092
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.0069
+        }
+      ]
+    },
+    {
+      "question_id": "577",
+      "question": "At which university did the notable psychoanalyst associated with the University of Chicago serve most of his career as a professor of psychiatry?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.6366
+        },
+        {
+          "workflow_id": "W1",
+          "utility": 0.1766
+        }
+      ]
+    },
+    {
+      "question_id": "577",
+      "question": "At which university did the notable psychoanalyst associated with the University of Chicago serve most of his career as a professor of psychiatry?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.7513
+        },
+        {
+          "workflow_id": "W1",
+          "utility": 0.2058
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.1725
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.1512
+        }
+      ]
+    },
+    {
+      "question_id": "577",
+      "question": "At which university did the notable psychoanalyst associated with the University of Chicago serve most of his career as a professor of psychiatry?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.8225
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.2281
+        },
+        {
+          "workflow_id": "W1",
+          "utility": 0.22
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.2069
+        }
+      ]
+    },
+    {
+      "question_id": "204",
+      "question": "Which actor does American Beauty and American Beauty have in common?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.1251
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0907
+        }
+      ]
+    },
+    {
+      "question_id": "204",
+      "question": "Which actor does American Beauty and American Beauty have in common?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.2153
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 1.1416
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 1.0692
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0004
+        }
+      ]
+    },
+    {
+      "question_id": "204",
+      "question": "Which actor does American Beauty and American Beauty have in common?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.2896
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 1.2386
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 1.154
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0467
+        }
+      ]
+    },
+    {
+      "question_id": "472",
+      "question": "Eric Ambler and Carol Shields are both best Known for what profession?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0357
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.086
+        }
+      ]
+    },
+    {
+      "question_id": "472",
+      "question": "Eric Ambler and Carol Shields are both best Known for what profession?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W6",
+          "utility": -0.0112
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0157
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0213
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0342
+        }
+      ]
+    },
+    {
+      "question_id": "472",
+      "question": "Eric Ambler and Carol Shields are both best Known for what profession?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W6",
+          "utility": 0.0388
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.0162
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.009
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0089
+        }
+      ]
+    },
+    {
+      "question_id": "599",
+      "question": "When was the American actor, film director which  Dana Brunetti is the president of his company born ",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0382
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0879
+        }
+      ]
+    },
+    {
+      "question_id": "599",
+      "question": "When was the American actor, film director which  Dana Brunetti is the president of his company born ",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0167
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0194
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0428
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0513
+        }
+      ]
+    },
+    {
+      "question_id": "599",
+      "question": "When was the American actor, film director which  Dana Brunetti is the president of his company born ",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.0125
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.0006
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0095
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0098
+        }
+      ]
+    },
+    {
+      "question_id": "200",
+      "question": "The 2000 British film Snatch was later adapted into a television series for what streaming service?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0404
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.1053
+        }
+      ]
+    },
+    {
+      "question_id": "200",
+      "question": "The 2000 British film Snatch was later adapted into a television series for what streaming service?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W6",
+          "utility": -0.014
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0177
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0306
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0606
+        }
+      ]
+    },
+    {
+      "question_id": "200",
+      "question": "The 2000 British film Snatch was later adapted into a television series for what streaming service?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W6",
+          "utility": 0.0386
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0041
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0092
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0101
+        }
+      ]
+    },
+    {
+      "question_id": "417",
+      "question": "Which mall, Wilton Mall or Viaport Rotterdam, has had more owners?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 1.0537
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0368
+        }
+      ]
+    },
+    {
+      "question_id": "417",
+      "question": "Which mall, Wilton Mall or Viaport Rotterdam, has had more owners?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 1.1844
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 1.1155
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0106
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0161
+        }
+      ]
+    },
+    {
+      "question_id": "417",
+      "question": "Which mall, Wilton Mall or Viaport Rotterdam, has had more owners?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 1.2776
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 1.2106
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.0472
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0092
+        }
+      ]
+    },
+    {
+      "question_id": "402",
+      "question": "American Blues included the drummer from which American rock band?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0375
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0625
+        }
+      ]
+    },
+    {
+      "question_id": "402",
+      "question": "American Blues included the drummer from which American rock band?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.0151
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.0115
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0164
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.04
+        }
+      ]
+    }
+  ]
+}
