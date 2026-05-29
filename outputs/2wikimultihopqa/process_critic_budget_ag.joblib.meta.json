@@ -1,0 +1,2127 @@
+{
+  "manifest": {
+    "script": "scripts/train_process_critic.py",
+    "generated_at_utc": "2026-05-28T11:45:09+00:00",
+    "git_commit": "a54903934a1f91922edecee1faf49a9676388b39",
+    "python_version": "3.12.13",
+    "platform": "Windows-11-10.0.22621-SP0",
+    "paths": {
+      "qa": "G:\\MAP-RAG-Gym\\outputs\\2wikimultihopqa\\hotpotqa_large_process_train_budget.json",
+      "corpus": null,
+      "router_model": "G:\\MAP-RAG-Gym\\outputs\\2wikimultihopqa\\process_critic_budget_ag.joblib"
+    },
+    "dataset": {
+      "name": "2wikimultihopqa",
+      "split": "train",
+      "limit": 13860,
+      "effective_questions": 357
+    },
+    "llm": {
+      "provider": null,
+      "model": null
+    },
+    "reproducibility": {
+      "seed": 13,
+      "prompt_version": "v1",
+      "utility": null
+    },
+    "settings": {
+      "target": "blended_reward",
+      "holdout_ratio": 0.15,
+      "eval_input": null,
+      "modules": [
+        "AG"
+      ]
+    }
+  },
+  "source_process_manifest": {
+    "script": "scripts/build_process_dataset.py",
+    "generated_at_utc": "2026-05-28T11:44:54+00:00",
+    "git_commit": "a54903934a1f91922edecee1faf49a9676388b39",
+    "python_version": "3.12.13",
+    "platform": "Windows-11-10.0.22621-SP0",
+    "paths": {
+      "qa": "G:\\MAP-RAG-Gym\\outputs\\2wikimultihopqa\\hotpotqa_large_train_rollouts.json",
+      "corpus": "G:\\MAP-RAG-Gym\\data\\2wikimultihopqa\\corpus.json",
+      "router_model": null
+    },
+    "dataset": {
+      "name": "2wikimultihopqa",
+      "split": "train",
+      "limit": 420,
+      "effective_questions": 420
+    },
+    "llm": {
+      "provider": "ollama",
+      "model": "llama3.2"
+    },
+    "reproducibility": {
+      "seed": 42,
+      "prompt_version": "v1",
+      "utility": {
+        "medium": {
+          "reward_weights": {
+            "f1_proxy": 1.0,
+            "process_score": 0.35
+          },
+          "cost_weights": {
+            "tokens": 0.08,
+            "retrieval_calls": 0.1,
+            "latency_ms": 0.05
+          },
+          "cost_normalizers": {
+            "tokens": 2000.0,
+            "retrieval_calls": 4.0,
+            "latency_ms": 10000.0
+          }
+        }
+      }
+    },
+    "settings": {
+      "source_rollout_file": "outputs/2wikimultihopqa/hotpotqa_large_train_rollouts.json",
+      "reward_target": "blended_reward",
+      "reward_formula": "0.7 * local_reward + 0.3 * outcome_utility",
+      "budget_modes": [
+        "medium"
+      ]
+    }
+  },
+  "train_counts": {
+    "num_examples": 4284,
+    "modules": {
+      "AG": 4284
+    },
+    "budget_modes": {
+      "medium": 4284
+    }
+  },
+  "eval_counts": {
+    "num_examples": 756,
+    "modules": {
+      "AG": 756
+    },
+    "budget_modes": {
+      "medium": 756
+    }
+  },
+  "evaluation": {
+    "overall": {
+      "count": 756,
+      "mae": 0.148,
+      "rmse": 0.2133,
+      "pearson": 0.4899,
+      "spearman": 0.5243
+    },
+    "per_module": {
+      "AG": {
+        "count": 756,
+        "mae": 0.148,
+        "rmse": 0.2133,
+        "pearson": 0.4899,
+        "spearman": 0.5243
+      }
+    }
+  },
+  "predictions": [
+    {
+      "example_id": "7f6465ce-2efb-4bc3-a394-243490b3bb34:medium:1:0",
+      "module": "AG",
+      "question_id": "dev_476",
+      "question": "Who is the father of the director of film Plunkett & Macleane?",
+      "action_text": "Ivan Reitman",
+      "target": -0.0197,
+      "prediction": 0.0178,
+      "abs_error": 0.0375
+    },
+    {
+      "example_id": "7f6465ce-2efb-4bc3-a394-243490b3bb34:medium:1:1",
+      "module": "AG",
+      "question_id": "dev_476",
+      "question": "Who is the father of the director of film Plunkett & Macleane?",
+      "action_text": "Ivan Reitman",
+      "target": -0.0197,
+      "prediction": 0.0182,
+      "abs_error": 0.0379
+    },
+    {
+      "example_id": "7f6465ce-2efb-4bc3-a394-243490b3bb34:medium:1:2",
+      "module": "AG",
+      "question_id": "dev_476",
+      "question": "Who is the father of the director of film Plunkett & Macleane?",
+      "action_text": "Ivan Reitman",
+      "target": -0.0197,
+      "prediction": 0.0182,
+      "abs_error": 0.0379
+    },
+    {
+      "example_id": "8b8ff698-ed26-428b-babd-f2f14127dd58:medium:3:0",
+      "module": "AG",
+      "question_id": "dev_476",
+      "question": "Who is the father of the director of film Plunkett & Macleane?",
+      "action_text": "Ridley Scott",
+      "target": 0.7674,
+      "prediction": -0.0095,
+      "abs_error": 0.7769
+    },
+    {
+      "example_id": "8b8ff698-ed26-428b-babd-f2f14127dd58:medium:3:1",
+      "module": "AG",
+      "question_id": "dev_476",
+      "question": "Who is the father of the director of film Plunkett & Macleane?",
+      "action_text": "Ridley Scott",
+      "target": 0.7674,
+      "prediction": -0.0091,
+      "abs_error": 0.7765
+    },
+    {
+      "example_id": "8b8ff698-ed26-428b-babd-f2f14127dd58:medium:3:2",
+      "module": "AG",
+      "question_id": "dev_476",
+      "question": "Who is the father of the director of film Plunkett & Macleane?",
+      "action_text": "Ridley Scott",
+      "target": 0.7674,
+      "prediction": -0.0091,
+      "abs_error": 0.7765
+    },
+    {
+      "example_id": "ec5eb5a3-770f-4ce9-af28-9e6f318e5312:medium:3:0",
+      "module": "AG",
+      "question_id": "dev_476",
+      "question": "Who is the father of the director of film Plunkett & Macleane?",
+      "action_text": "Ridley Scott",
+      "target": 0.7801,
+      "prediction": -0.0106,
+      "abs_error": 0.7907
+    },
+    {
+      "example_id": "ec5eb5a3-770f-4ce9-af28-9e6f318e5312:medium:3:1",
+      "module": "AG",
+      "question_id": "dev_476",
+      "question": "Who is the father of the director of film Plunkett & Macleane?",
+      "action_text": "Ridley Scott",
+      "target": 0.7801,
+      "prediction": -0.0102,
+      "abs_error": 0.7903
+    },
+    {
+      "example_id": "ec5eb5a3-770f-4ce9-af28-9e6f318e5312:medium:3:2",
+      "module": "AG",
+      "question_id": "dev_476",
+      "question": "Who is the father of the director of film Plunkett & Macleane?",
+      "action_text": "Ridley Scott",
+      "target": 0.7801,
+      "prediction": -0.0102,
+      "abs_error": 0.7903
+    },
+    {
+      "example_id": "2d31b833-e983-4e6f-aae5-ba6b185a7642:medium:4:0",
+      "module": "AG",
+      "question_id": "dev_476",
+      "question": "Who is the father of the director of film Plunkett & Macleane?",
+      "action_text": "Arthur Beauchamp",
+      "target": -0.0175,
+      "prediction": -0.0221,
+      "abs_error": 0.0046
+    },
+    {
+      "example_id": "2d31b833-e983-4e6f-aae5-ba6b185a7642:medium:4:1",
+      "module": "AG",
+      "question_id": "dev_476",
+      "question": "Who is the father of the director of film Plunkett & Macleane?",
+      "action_text": "Arthur Beauchamp",
+      "target": -0.0175,
+      "prediction": -0.0217,
+      "abs_error": 0.0042
+    },
+    {
+      "example_id": "2d31b833-e983-4e6f-aae5-ba6b185a7642:medium:4:2",
+      "module": "AG",
+      "question_id": "dev_476",
+      "question": "Who is the father of the director of film Plunkett & Macleane?",
+      "action_text": "Arthur Beauchamp",
+      "target": -0.0175,
+      "prediction": -0.0217,
+      "abs_error": 0.0042
+    },
+    {
+      "example_id": "ea80a9f1-0c3d-4963-80a0-5276a458a517:medium:1:0",
+      "module": "AG",
+      "question_id": "dev_336",
+      "question": "Who is Frederick Of Luxembourg's paternal grandfather?",
+      "action_text": "John of Bohemia",
+      "target": -0.0079,
+      "prediction": 0.0588,
+      "abs_error": 0.0667
+    },
+    {
+      "example_id": "ea80a9f1-0c3d-4963-80a0-5276a458a517:medium:1:1",
+      "module": "AG",
+      "question_id": "dev_336",
+      "question": "Who is Frederick Of Luxembourg's paternal grandfather?",
+      "action_text": "Charles IV, Holy Roman Emperor",
+      "target": -0.0079,
+      "prediction": 0.0633,
+      "abs_error": 0.0712
+    },
+    {
+      "example_id": "ea80a9f1-0c3d-4963-80a0-5276a458a517:medium:1:2",
+      "module": "AG",
+      "question_id": "dev_336",
+      "question": "Who is Frederick Of Luxembourg's paternal grandfather?",
+      "action_text": "Charles IV, Holy Roman Emperor",
+      "target": -0.0079,
+      "prediction": 0.0633,
+      "abs_error": 0.0712
+    },
+    {
+      "example_id": "7cd92dc0-3fd1-4aa7-9851-f4e92f9eba39:medium:3:0",
+      "module": "AG",
+      "question_id": "dev_336",
+      "question": "Who is Frederick Of Luxembourg's paternal grandfather?",
+      "action_text": "Otto I",
+      "target": -0.0095,
+      "prediction": -0.0556,
+      "abs_error": 0.0461
+    },
+    {
+      "example_id": "7cd92dc0-3fd1-4aa7-9851-f4e92f9eba39:medium:3:1",
+      "module": "AG",
+      "question_id": "dev_336",
+      "question": "Who is Frederick Of Luxembourg's paternal grandfather?",
+      "action_text": "Otto I",
+      "target": -0.0095,
+      "prediction": -0.0552,
+      "abs_error": 0.0457
+    },
+    {
+      "example_id": "7cd92dc0-3fd1-4aa7-9851-f4e92f9eba39:medium:3:2",
+      "module": "AG",
+      "question_id": "dev_336",
+      "question": "Who is Frederick Of Luxembourg's paternal grandfather?",
+      "action_text": "Otto I",
+      "target": -0.0095,
+      "prediction": -0.0552,
+      "abs_error": 0.0457
+    },
+    {
+      "example_id": "d1a58d7d-800d-43b1-b56a-2ca09a8039dd:medium:3:0",
+      "module": "AG",
+      "question_id": "dev_336",
+      "question": "Who is Frederick Of Luxembourg's paternal grandfather?",
+      "action_text": "Frederick VIII of Denmark",
+      "target": -0.0,
+      "prediction": 0.1569,
+      "abs_error": 0.1569
+    },
+    {
+      "example_id": "d1a58d7d-800d-43b1-b56a-2ca09a8039dd:medium:3:1",
+      "module": "AG",
+      "question_id": "dev_336",
+      "question": "Who is Frederick Of Luxembourg's paternal grandfather?",
+      "action_text": "Frederick VIII of Denmark",
+      "target": -0.0,
+      "prediction": 0.1573,
+      "abs_error": 0.1573
+    },
+    {
+      "example_id": "d1a58d7d-800d-43b1-b56a-2ca09a8039dd:medium:3:2",
+      "module": "AG",
+      "question_id": "dev_336",
+      "question": "Who is Frederick Of Luxembourg's paternal grandfather?",
+      "action_text": "Frederick VIII of Denmark",
+      "target": -0.0,
+      "prediction": 0.1573,
+      "abs_error": 0.1573
+    },
+    {
+      "example_id": "78ca30c2-d39e-46d7-bfa3-086936b2abc0:medium:4:0",
+      "module": "AG",
+      "question_id": "dev_336",
+      "question": "Who is Frederick Of Luxembourg's paternal grandfather?",
+      "action_text": "Otto I",
+      "target": -0.0127,
+      "prediction": -0.0662,
+      "abs_error": 0.0535
+    },
+    {
+      "example_id": "78ca30c2-d39e-46d7-bfa3-086936b2abc0:medium:4:1",
+      "module": "AG",
+      "question_id": "dev_336",
+      "question": "Who is Frederick Of Luxembourg's paternal grandfather?",
+      "action_text": "Otto I",
+      "target": -0.0127,
+      "prediction": -0.0659,
+      "abs_error": 0.0532
+    },
+    {
+      "example_id": "78ca30c2-d39e-46d7-bfa3-086936b2abc0:medium:4:2",
+      "module": "AG",
+      "question_id": "dev_336",
+      "question": "Who is Frederick Of Luxembourg's paternal grandfather?",
+      "action_text": "Otto I",
+      "target": -0.0127,
+      "prediction": -0.0659,
+      "abs_error": 0.0532
+    },
+    {
+      "example_id": "06bbda1c-ebf8-4e8f-931e-9f5b7f76e0a7:medium:1:0",
+      "module": "AG",
+      "question_id": "dev_50",
+      "question": "Who lived longer, Giuseppe Cesari or Nicos Poulantzas?",
+      "action_text": "Nicos Poulantzas",
+      "target": -0.0096,
+      "prediction": 0.231,
+      "abs_error": 0.2406
+    },
+    {
+      "example_id": "06bbda1c-ebf8-4e8f-931e-9f5b7f76e0a7:medium:1:1",
+      "module": "AG",
+      "question_id": "dev_50",
+      "question": "Who lived longer, Giuseppe Cesari or Nicos Poulantzas?",
+      "action_text": "Nicos Poulantzas",
+      "target": -0.0096,
+      "prediction": 0.2314,
+      "abs_error": 0.241
+    },
+    {
+      "example_id": "06bbda1c-ebf8-4e8f-931e-9f5b7f76e0a7:medium:1:2",
+      "module": "AG",
+      "question_id": "dev_50",
+      "question": "Who lived longer, Giuseppe Cesari or Nicos Poulantzas?",
+      "action_text": "Nicos Poulantzas",
+      "target": -0.0096,
+      "prediction": 0.2314,
+      "abs_error": 0.241
+    },
+    {
+      "example_id": "b3b1656e-d359-4a7a-b965-a925c564ff1e:medium:3:0",
+      "module": "AG",
+      "question_id": "dev_50",
+      "question": "Who lived longer, Giuseppe Cesari or Nicos Poulantzas?",
+      "action_text": "Nicos Poulantzas",
+      "target": -0.0194,
+      "prediction": 0.2196,
+      "abs_error": 0.239
+    },
+    {
+      "example_id": "b3b1656e-d359-4a7a-b965-a925c564ff1e:medium:3:1",
+      "module": "AG",
+      "question_id": "dev_50",
+      "question": "Who lived longer, Giuseppe Cesari or Nicos Poulantzas?",
+      "action_text": "Nicos Poulantzas",
+      "target": -0.0194,
+      "prediction": 0.2199,
+      "abs_error": 0.2393
+    },
+    {
+      "example_id": "b3b1656e-d359-4a7a-b965-a925c564ff1e:medium:3:2",
+      "module": "AG",
+      "question_id": "dev_50",
+      "question": "Who lived longer, Giuseppe Cesari or Nicos Poulantzas?",
+      "action_text": "Nicos Poulantzas",
+      "target": -0.0194,
+      "prediction": 0.2199,
+      "abs_error": 0.2393
+    },
+    {
+      "example_id": "97e561e6-96de-4065-a831-60425052496b:medium:3:0",
+      "module": "AG",
+      "question_id": "dev_50",
+      "question": "Who lived longer, Giuseppe Cesari or Nicos Poulantzas?",
+      "action_text": "Vincenzo Manenti",
+      "target": -0.0085,
+      "prediction": 0.2163,
+      "abs_error": 0.2248
+    },
+    {
+      "example_id": "97e561e6-96de-4065-a831-60425052496b:medium:3:1",
+      "module": "AG",
+      "question_id": "dev_50",
+      "question": "Who lived longer, Giuseppe Cesari or Nicos Poulantzas?",
+      "action_text": "Vincenzo Manenti",
+      "target": -0.0085,
+      "prediction": 0.2166,
+      "abs_error": 0.2251
+    },
+    {
+      "example_id": "97e561e6-96de-4065-a831-60425052496b:medium:3:2",
+      "module": "AG",
+      "question_id": "dev_50",
+      "question": "Who lived longer, Giuseppe Cesari or Nicos Poulantzas?",
+      "action_text": "Vincenzo Manenti",
+      "target": -0.0085,
+      "prediction": 0.2166,
+      "abs_error": 0.2251
+    },
+    {
+      "example_id": "364599c4-20cc-447a-82eb-bbaf8803a1dc:medium:4:0",
+      "module": "AG",
+      "question_id": "dev_50",
+      "question": "Who lived longer, Giuseppe Cesari or Nicos Poulantzas?",
+      "action_text": "uncertain",
+      "target": -0.0087,
+      "prediction": 0.0723,
+      "abs_error": 0.081
+    },
+    {
+      "example_id": "364599c4-20cc-447a-82eb-bbaf8803a1dc:medium:4:1",
+      "module": "AG",
+      "question_id": "dev_50",
+      "question": "Who lived longer, Giuseppe Cesari or Nicos Poulantzas?",
+      "action_text": "uncertain",
+      "target": -0.0087,
+      "prediction": 0.0727,
+      "abs_error": 0.0814
+    },
+    {
+      "example_id": "364599c4-20cc-447a-82eb-bbaf8803a1dc:medium:4:2",
+      "module": "AG",
+      "question_id": "dev_50",
+      "question": "Who lived longer, Giuseppe Cesari or Nicos Poulantzas?",
+      "action_text": "uncertain",
+      "target": -0.0087,
+      "prediction": 0.0727,
+      "abs_error": 0.0814
+    },
+    {
+      "example_id": "77cfdfad-d1d3-46b2-be56-6f0814331e9c:medium:1:0",
+      "module": "AG",
+      "question_id": "dev_67",
+      "question": "Where was the place of death of Lambert I, Count Of Louvain's father?",
+      "action_text": "Cologne",
+      "target": -0.0093,
+      "prediction": 0.0684,
+      "abs_error": 0.0777
+    },
+    {
+      "example_id": "77cfdfad-d1d3-46b2-be56-6f0814331e9c:medium:1:1",
+      "module": "AG",
+      "question_id": "dev_67",
+      "question": "Where was the place of death of Lambert I, Count Of Louvain's father?",
+      "action_text": "Cologne",
+      "target": -0.0093,
+      "prediction": 0.0688,
+      "abs_error": 0.0781
+    },
+    {
+      "example_id": "77cfdfad-d1d3-46b2-be56-6f0814331e9c:medium:1:2",
+      "module": "AG",
+      "question_id": "dev_67",
+      "question": "Where was the place of death of Lambert I, Count Of Louvain's father?",
+      "action_text": "Cologne",
+      "target": -0.0093,
+      "prediction": 0.0688,
+      "abs_error": 0.0781
+    },
+    {
+      "example_id": "4fd008f9-d349-47fc-ae92-455e1aa8869b:medium:3:0",
+      "module": "AG",
+      "question_id": "dev_67",
+      "question": "Where was the place of death of Lambert I, Count Of Louvain's father?",
+      "action_text": "Florennes",
+      "target": -0.0177,
+      "prediction": 0.0565,
+      "abs_error": 0.0742
+    },
+    {
+      "example_id": "4fd008f9-d349-47fc-ae92-455e1aa8869b:medium:3:1",
+      "module": "AG",
+      "question_id": "dev_67",
+      "question": "Where was the place of death of Lambert I, Count Of Louvain's father?",
+      "action_text": "Florennes",
+      "target": -0.0177,
+      "prediction": 0.0568,
+      "abs_error": 0.0745
+    },
+    {
+      "example_id": "4fd008f9-d349-47fc-ae92-455e1aa8869b:medium:3:2",
+      "module": "AG",
+      "question_id": "dev_67",
+      "question": "Where was the place of death of Lambert I, Count Of Louvain's father?",
+      "action_text": "Florennes",
+      "target": -0.0177,
+      "prediction": 0.0568,
+      "abs_error": 0.0745
+    },
+    {
+      "example_id": "6e1003c9-0611-4f94-a4fb-d9ca12fecbdb:medium:3:0",
+      "module": "AG",
+      "question_id": "dev_67",
+      "question": "Where was the place of death of Lambert I, Count Of Louvain's father?",
+      "action_text": "Louvain",
+      "target": -0.0167,
+      "prediction": 0.065,
+      "abs_error": 0.0817
+    },
+    {
+      "example_id": "6e1003c9-0611-4f94-a4fb-d9ca12fecbdb:medium:3:1",
+      "module": "AG",
+      "question_id": "dev_67",
+      "question": "Where was the place of death of Lambert I, Count Of Louvain's father?",
+      "action_text": "Louvain",
+      "target": -0.0167,
+      "prediction": 0.0654,
+      "abs_error": 0.0821
+    },
+    {
+      "example_id": "6e1003c9-0611-4f94-a4fb-d9ca12fecbdb:medium:3:2",
+      "module": "AG",
+      "question_id": "dev_67",
+      "question": "Where was the place of death of Lambert I, Count Of Louvain's father?",
+      "action_text": "Louvain",
+      "target": -0.0167,
+      "prediction": 0.0654,
+      "abs_error": 0.0821
+    },
+    {
+      "example_id": "6a920997-f2fc-41d6-bb01-bb5d667e9a45:medium:4:0",
+      "module": "AG",
+      "question_id": "dev_67",
+      "question": "Where was the place of death of Lambert I, Count Of Louvain's father?",
+      "action_text": "uncertain",
+      "target": -0.0225,
+      "prediction": -0.0704,
+      "abs_error": 0.0479
+    },
+    {
+      "example_id": "6a920997-f2fc-41d6-bb01-bb5d667e9a45:medium:4:1",
+      "module": "AG",
+      "question_id": "dev_67",
+      "question": "Where was the place of death of Lambert I, Count Of Louvain's father?",
+      "action_text": "uncertain",
+      "target": -0.0225,
+      "prediction": -0.07,
+      "abs_error": 0.0475
+    },
+    {
+      "example_id": "6a920997-f2fc-41d6-bb01-bb5d667e9a45:medium:4:2",
+      "module": "AG",
+      "question_id": "dev_67",
+      "question": "Where was the place of death of Lambert I, Count Of Louvain's father?",
+      "action_text": "uncertain",
+      "target": -0.0225,
+      "prediction": -0.07,
+      "abs_error": 0.0475
+    },
+    {
+      "example_id": "c6946576-19e6-46aa-8f4d-05128d62d41d:medium:1:0",
+      "module": "AG",
+      "question_id": "dev_275",
+      "question": "Which film whose director is younger, Dallas 362 or Revenge Of The Barbarians?",
+      "action_text": "Revenge Of The Barbarians",
+      "target": -0.0098,
+      "prediction": 0.4406,
+      "abs_error": 0.4504
+    },
+    {
+      "example_id": "c6946576-19e6-46aa-8f4d-05128d62d41d:medium:1:1",
+      "module": "AG",
+      "question_id": "dev_275",
+      "question": "Which film whose director is younger, Dallas 362 or Revenge Of The Barbarians?",
+      "action_text": "Revenge Of The Barbarians",
+      "target": -0.0098,
+      "prediction": 0.441,
+      "abs_error": 0.4508
+    },
+    {
+      "example_id": "c6946576-19e6-46aa-8f4d-05128d62d41d:medium:1:2",
+      "module": "AG",
+      "question_id": "dev_275",
+      "question": "Which film whose director is younger, Dallas 362 or Revenge Of The Barbarians?",
+      "action_text": "Revenge Of The Barbarians",
+      "target": -0.0098,
+      "prediction": 0.441,
+      "abs_error": 0.4508
+    },
+    {
+      "example_id": "73fde527-243e-4943-8d79-e14380191cec:medium:3:0",
+      "module": "AG",
+      "question_id": "dev_275",
+      "question": "Which film whose director is younger, Dallas 362 or Revenge Of The Barbarians?",
+      "action_text": "Dallas 362",
+      "target": 0.7732,
+      "prediction": 0.304,
+      "abs_error": 0.4692
+    },
+    {
+      "example_id": "73fde527-243e-4943-8d79-e14380191cec:medium:3:1",
+      "module": "AG",
+      "question_id": "dev_275",
+      "question": "Which film whose director is younger, Dallas 362 or Revenge Of The Barbarians?",
+      "action_text": "Dallas 362",
+      "target": 0.7732,
+      "prediction": 0.3043,
+      "abs_error": 0.4689
+    },
+    {
+      "example_id": "73fde527-243e-4943-8d79-e14380191cec:medium:3:2",
+      "module": "AG",
+      "question_id": "dev_275",
+      "question": "Which film whose director is younger, Dallas 362 or Revenge Of The Barbarians?",
+      "action_text": "Dallas 362",
+      "target": 0.7732,
+      "prediction": 0.3043,
+      "abs_error": 0.4689
+    },
+    {
+      "example_id": "05757c0d-b979-4e89-b16e-880ce5959195:medium:3:0",
+      "module": "AG",
+      "question_id": "dev_275",
+      "question": "Which film whose director is younger, Dallas 362 or Revenge Of The Barbarians?",
+      "action_text": "The Revenge of Spartacus",
+      "target": 0.0232,
+      "prediction": 0.3283,
+      "abs_error": 0.3051
+    },
+    {
+      "example_id": "05757c0d-b979-4e89-b16e-880ce5959195:medium:3:1",
+      "module": "AG",
+      "question_id": "dev_275",
+      "question": "Which film whose director is younger, Dallas 362 or Revenge Of The Barbarians?",
+      "action_text": "The Revenge of Spartacus",
+      "target": 0.0232,
+      "prediction": 0.3287,
+      "abs_error": 0.3055
+    },
+    {
+      "example_id": "05757c0d-b979-4e89-b16e-880ce5959195:medium:3:2",
+      "module": "AG",
+      "question_id": "dev_275",
+      "question": "Which film whose director is younger, Dallas 362 or Revenge Of The Barbarians?",
+      "action_text": "The Revenge of Spartacus",
+      "target": 0.0232,
+      "prediction": 0.3287,
+      "abs_error": 0.3055
+    },
+    {
+      "example_id": "fd7585c5-edf7-450d-8c38-41ecc9a98869:medium:4:0",
+      "module": "AG",
+      "question_id": "dev_275",
+      "question": "Which film whose director is younger, Dallas 362 or Revenge Of The Barbarians?",
+      "action_text": "Dallas 362",
+      "target": 0.7611,
+      "prediction": 0.2935,
+      "abs_error": 0.4676
+    },
+    {
+      "example_id": "fd7585c5-edf7-450d-8c38-41ecc9a98869:medium:4:1",
+      "module": "AG",
+      "question_id": "dev_275",
+      "question": "Which film whose director is younger, Dallas 362 or Revenge Of The Barbarians?",
+      "action_text": "Dallas 362",
+      "target": 0.7611,
+      "prediction": 0.2939,
+      "abs_error": 0.4672
+    },
+    {
+      "example_id": "fd7585c5-edf7-450d-8c38-41ecc9a98869:medium:4:2",
+      "module": "AG",
+      "question_id": "dev_275",
+      "question": "Which film whose director is younger, Dallas 362 or Revenge Of The Barbarians?",
+      "action_text": "Dallas 362",
+      "target": 0.7611,
+      "prediction": 0.2939,
+      "abs_error": 0.4672
+    },
+    {
+      "example_id": "9bd524e9-3ebd-4b65-aeae-744f611f8814:medium:1:0",
+      "module": "AG",
+      "question_id": "dev_290",
+      "question": "Are The Man Who Knew Too Much (1956 Film) and Man On Wire both from the same country?",
+      "action_text": "uncertain",
+      "target": -0.0093,
+      "prediction": -0.0426,
+      "abs_error": 0.0333
+    },
+    {
+      "example_id": "9bd524e9-3ebd-4b65-aeae-744f611f8814:medium:1:1",
+      "module": "AG",
+      "question_id": "dev_290",
+      "question": "Are The Man Who Knew Too Much (1956 Film) and Man On Wire both from the same country?",
+      "action_text": "uncertain",
+      "target": -0.0093,
+      "prediction": -0.0423,
+      "abs_error": 0.033
+    },
+    {
+      "example_id": "9bd524e9-3ebd-4b65-aeae-744f611f8814:medium:1:2",
+      "module": "AG",
+      "question_id": "dev_290",
+      "question": "Are The Man Who Knew Too Much (1956 Film) and Man On Wire both from the same country?",
+      "action_text": "uncertain",
+      "target": -0.0093,
+      "prediction": -0.0423,
+      "abs_error": 0.033
+    },
+    {
+      "example_id": "d2776080-2f4c-4694-bc80-3017fadcc381:medium:3:0",
+      "module": "AG",
+      "question_id": "dev_290",
+      "question": "Are The Man Who Knew Too Much (1956 Film) and Man On Wire both from the same country?",
+      "action_text": "uncertain",
+      "target": -0.0259,
+      "prediction": -0.0472,
+      "abs_error": 0.0213
+    },
+    {
+      "example_id": "d2776080-2f4c-4694-bc80-3017fadcc381:medium:3:1",
+      "module": "AG",
+      "question_id": "dev_290",
+      "question": "Are The Man Who Knew Too Much (1956 Film) and Man On Wire both from the same country?",
+      "action_text": "uncertain",
+      "target": -0.0259,
+      "prediction": -0.0468,
+      "abs_error": 0.0209
+    },
+    {
+      "example_id": "d2776080-2f4c-4694-bc80-3017fadcc381:medium:3:2",
+      "module": "AG",
+      "question_id": "dev_290",
+      "question": "Are The Man Who Knew Too Much (1956 Film) and Man On Wire both from the same country?",
+      "action_text": "uncertain",
+      "target": -0.0259,
+      "prediction": -0.0468,
+      "abs_error": 0.0209
+    },
+    {
+      "example_id": "69571516-6e62-4401-b42f-997eb2c8fafd:medium:3:0",
+      "module": "AG",
+      "question_id": "dev_290",
+      "question": "Are The Man Who Knew Too Much (1956 Film) and Man On Wire both from the same country?",
+      "action_text": "uncertain",
+      "target": -0.0097,
+      "prediction": -0.0538,
+      "abs_error": 0.0441
+    },
+    {
+      "example_id": "69571516-6e62-4401-b42f-997eb2c8fafd:medium:3:1",
+      "module": "AG",
+      "question_id": "dev_290",
+      "question": "Are The Man Who Knew Too Much (1956 Film) and Man On Wire both from the same country?",
+      "action_text": "uncertain",
+      "target": -0.0097,
+      "prediction": -0.0534,
+      "abs_error": 0.0437
+    },
+    {
+      "example_id": "69571516-6e62-4401-b42f-997eb2c8fafd:medium:3:2",
+      "module": "AG",
+      "question_id": "dev_290",
+      "question": "Are The Man Who Knew Too Much (1956 Film) and Man On Wire both from the same country?",
+      "action_text": "uncertain",
+      "target": -0.0097,
+      "prediction": -0.0534,
+      "abs_error": 0.0437
+    },
+    {
+      "example_id": "7159fb85-2295-41d5-a866-5589e5e40dc8:medium:4:0",
+      "module": "AG",
+      "question_id": "dev_290",
+      "question": "Are The Man Who Knew Too Much (1956 Film) and Man On Wire both from the same country?",
+      "action_text": "United Kingdom",
+      "target": -0.042,
+      "prediction": 0.0074,
+      "abs_error": 0.0494
+    },
+    {
+      "example_id": "7159fb85-2295-41d5-a866-5589e5e40dc8:medium:4:1",
+      "module": "AG",
+      "question_id": "dev_290",
+      "question": "Are The Man Who Knew Too Much (1956 Film) and Man On Wire both from the same country?",
+      "action_text": "United Kingdom",
+      "target": -0.042,
+      "prediction": 0.0078,
+      "abs_error": 0.0498
+    },
+    {
+      "example_id": "7159fb85-2295-41d5-a866-5589e5e40dc8:medium:4:2",
+      "module": "AG",
+      "question_id": "dev_290",
+      "question": "Are The Man Who Knew Too Much (1956 Film) and Man On Wire both from the same country?",
+      "action_text": "United Kingdom",
+      "target": -0.042,
+      "prediction": 0.0078,
+      "abs_error": 0.0498
+    },
+    {
+      "example_id": "dcb180b6-ac3a-47a4-9518-f1d1834be6d9:medium:1:0",
+      "module": "AG",
+      "question_id": "dev_333",
+      "question": "Which film has the director died earlier, John Jaffer Janardhanan or Kamakalawa?",
+      "action_text": "Kamakalawa",
+      "target": 0.7821,
+      "prediction": 0.2132,
+      "abs_error": 0.5689
+    },
+    {
+      "example_id": "dcb180b6-ac3a-47a4-9518-f1d1834be6d9:medium:1:1",
+      "module": "AG",
+      "question_id": "dev_333",
+      "question": "Which film has the director died earlier, John Jaffer Janardhanan or Kamakalawa?",
+      "action_text": "Kamakalawa",
+      "target": 0.7821,
+      "prediction": 0.2136,
+      "abs_error": 0.5685
+    },
+    {
+      "example_id": "dcb180b6-ac3a-47a4-9518-f1d1834be6d9:medium:1:2",
+      "module": "AG",
+      "question_id": "dev_333",
+      "question": "Which film has the director died earlier, John Jaffer Janardhanan or Kamakalawa?",
+      "action_text": "Kamakalawa",
+      "target": 0.7821,
+      "prediction": 0.2136,
+      "abs_error": 0.5685
+    },
+    {
+      "example_id": "bd59dd89-2996-4793-a15b-8643e02936aa:medium:3:0",
+      "module": "AG",
+      "question_id": "dev_333",
+      "question": "Which film has the director died earlier, John Jaffer Janardhanan or Kamakalawa?",
+      "action_text": "Kamakalawa",
+      "target": 0.7631,
+      "prediction": 0.1925,
+      "abs_error": 0.5706
+    },
+    {
+      "example_id": "bd59dd89-2996-4793-a15b-8643e02936aa:medium:3:1",
+      "module": "AG",
+      "question_id": "dev_333",
+      "question": "Which film has the director died earlier, John Jaffer Janardhanan or Kamakalawa?",
+      "action_text": "Kamakalawa",
+      "target": 0.7631,
+      "prediction": 0.1929,
+      "abs_error": 0.5702
+    },
+    {
+      "example_id": "bd59dd89-2996-4793-a15b-8643e02936aa:medium:3:2",
+      "module": "AG",
+      "question_id": "dev_333",
+      "question": "Which film has the director died earlier, John Jaffer Janardhanan or Kamakalawa?",
+      "action_text": "Kamakalawa",
+      "target": 0.7631,
+      "prediction": 0.1929,
+      "abs_error": 0.5702
+    },
+    {
+      "example_id": "43f6d58f-0103-4be1-b318-5792e29a1854:medium:3:0",
+      "module": "AG",
+      "question_id": "dev_333",
+      "question": "Which film has the director died earlier, John Jaffer Janardhanan or Kamakalawa?",
+      "action_text": "I couldn't find any information on the director of Kamakalawa",
+      "target": 0.0917,
+      "prediction": 0.3195,
+      "abs_error": 0.2278
+    },
+    {
+      "example_id": "43f6d58f-0103-4be1-b318-5792e29a1854:medium:3:1",
+      "module": "AG",
+      "question_id": "dev_333",
+      "question": "Which film has the director died earlier, John Jaffer Janardhanan or Kamakalawa?",
+      "action_text": "I couldn't find any information on the director of Kamakalawa",
+      "target": 0.0917,
+      "prediction": 0.3199,
+      "abs_error": 0.2282
+    },
+    {
+      "example_id": "43f6d58f-0103-4be1-b318-5792e29a1854:medium:3:2",
+      "module": "AG",
+      "question_id": "dev_333",
+      "question": "Which film has the director died earlier, John Jaffer Janardhanan or Kamakalawa?",
+      "action_text": "I couldn't find any information on the director of Kamakalawa",
+      "target": 0.0917,
+      "prediction": 0.3199,
+      "abs_error": 0.2282
+    },
+    {
+      "example_id": "adfd968d-6f73-4a2a-b55d-6f1f0e51411a:medium:4:0",
+      "module": "AG",
+      "question_id": "dev_333",
+      "question": "Which film has the director died earlier, John Jaffer Janardhanan or Kamakalawa?",
+      "action_text": "John Jaffer Janardhanan",
+      "target": -0.0057,
+      "prediction": 0.1716,
+      "abs_error": 0.1773
+    },
+    {
+      "example_id": "adfd968d-6f73-4a2a-b55d-6f1f0e51411a:medium:4:1",
+      "module": "AG",
+      "question_id": "dev_333",
+      "question": "Which film has the director died earlier, John Jaffer Janardhanan or Kamakalawa?",
+      "action_text": "John Jaffer Janardhanan",
+      "target": -0.0057,
+      "prediction": 0.172,
+      "abs_error": 0.1777
+    },
+    {
+      "example_id": "adfd968d-6f73-4a2a-b55d-6f1f0e51411a:medium:4:2",
+      "module": "AG",
+      "question_id": "dev_333",
+      "question": "Which film has the director died earlier, John Jaffer Janardhanan or Kamakalawa?",
+      "action_text": "John Jaffer Janardhanan",
+      "target": -0.0057,
+      "prediction": 0.172,
+      "abs_error": 0.1777
+    },
+    {
+      "example_id": "55eebc42-fde4-4ccb-83c6-13fb60dc4692:medium:1:0",
+      "module": "AG",
+      "question_id": "dev_116",
+      "question": "What is the place of birth of Remigius Of Rouen's father?",
+      "action_text": "uncertain",
+      "target": -0.0091,
+      "prediction": -0.0448,
+      "abs_error": 0.0357
+    },
+    {
+      "example_id": "55eebc42-fde4-4ccb-83c6-13fb60dc4692:medium:1:1",
+      "module": "AG",
+      "question_id": "dev_116",
+      "question": "What is the place of birth of Remigius Of Rouen's father?",
+      "action_text": "uncertain",
+      "target": -0.0091,
+      "prediction": -0.0444,
+      "abs_error": 0.0353
+    },
+    {
+      "example_id": "55eebc42-fde4-4ccb-83c6-13fb60dc4692:medium:1:2",
+      "module": "AG",
+      "question_id": "dev_116",
+      "question": "What is the place of birth of Remigius Of Rouen's father?",
+      "action_text": "uncertain",
+      "target": -0.0091,
+      "prediction": -0.0444,
+      "abs_error": 0.0353
+    },
+    {
+      "example_id": "510c6320-a923-4e59-bda7-6165ca1b982b:medium:3:0",
+      "module": "AG",
+      "question_id": "dev_116",
+      "question": "What is the place of birth of Remigius Of Rouen's father?",
+      "action_text": "uncertain",
+      "target": -0.0218,
+      "prediction": -0.0512,
+      "abs_error": 0.0294
+    },
+    {
+      "example_id": "510c6320-a923-4e59-bda7-6165ca1b982b:medium:3:1",
+      "module": "AG",
+      "question_id": "dev_116",
+      "question": "What is the place of birth of Remigius Of Rouen's father?",
+      "action_text": "uncertain",
+      "target": -0.0218,
+      "prediction": -0.0508,
+      "abs_error": 0.029
+    },
+    {
+      "example_id": "510c6320-a923-4e59-bda7-6165ca1b982b:medium:3:2",
+      "module": "AG",
+      "question_id": "dev_116",
+      "question": "What is the place of birth of Remigius Of Rouen's father?",
+      "action_text": "uncertain",
+      "target": -0.0218,
+      "prediction": -0.0508,
+      "abs_error": 0.029
+    },
+    {
+      "example_id": "6b6ea163-8910-4359-a42f-566c013dcfd5:medium:3:0",
+      "module": "AG",
+      "question_id": "dev_116",
+      "question": "What is the place of birth of Remigius Of Rouen's father?",
+      "action_text": "uncertain",
+      "target": -0.0241,
+      "prediction": -0.0395,
+      "abs_error": 0.0154
+    },
+    {
+      "example_id": "6b6ea163-8910-4359-a42f-566c013dcfd5:medium:3:1",
+      "module": "AG",
+      "question_id": "dev_116",
+      "question": "What is the place of birth of Remigius Of Rouen's father?",
+      "action_text": "uncertain",
+      "target": -0.0241,
+      "prediction": -0.0391,
+      "abs_error": 0.015
+    },
+    {
+      "example_id": "6b6ea163-8910-4359-a42f-566c013dcfd5:medium:3:2",
+      "module": "AG",
+      "question_id": "dev_116",
+      "question": "What is the place of birth of Remigius Of Rouen's father?",
+      "action_text": "uncertain",
+      "target": -0.0241,
+      "prediction": -0.0391,
+      "abs_error": 0.015
+    },
+    {
+      "example_id": "e7d8b918-5aed-4c76-b363-f24e11e4a294:medium:4:0",
+      "module": "AG",
+      "question_id": "dev_116",
+      "question": "What is the place of birth of Remigius Of Rouen's father?",
+      "action_text": "uncertain",
+      "target": -0.0174,
+      "prediction": -0.0567,
+      "abs_error": 0.0393
+    },
+    {
+      "example_id": "e7d8b918-5aed-4c76-b363-f24e11e4a294:medium:4:1",
+      "module": "AG",
+      "question_id": "dev_116",
+      "question": "What is the place of birth of Remigius Of Rouen's father?",
+      "action_text": "uncertain",
+      "target": -0.0174,
+      "prediction": -0.0564,
+      "abs_error": 0.039
+    },
+    {
+      "example_id": "e7d8b918-5aed-4c76-b363-f24e11e4a294:medium:4:2",
+      "module": "AG",
+      "question_id": "dev_116",
+      "question": "What is the place of birth of Remigius Of Rouen's father?",
+      "action_text": "uncertain",
+      "target": -0.0174,
+      "prediction": -0.0564,
+      "abs_error": 0.039
+    },
+    {
+      "example_id": "93fa2edb-8917-4704-b123-28fe5b1c7393:medium:1:0",
+      "module": "AG",
+      "question_id": "dev_313",
+      "question": "Who is younger, Bernard Chambaz or Tibor Pézsa?",
+      "action_text": "Tibor Pézsa",
+      "target": -0.0096,
+      "prediction": 0.2432,
+      "abs_error": 0.2528
+    },
+    {
+      "example_id": "93fa2edb-8917-4704-b123-28fe5b1c7393:medium:1:1",
+      "module": "AG",
+      "question_id": "dev_313",
+      "question": "Who is younger, Bernard Chambaz or Tibor Pézsa?",
+      "action_text": "Tibor Pézsa",
+      "target": -0.0096,
+      "prediction": 0.2435,
+      "abs_error": 0.2531
+    },
+    {
+      "example_id": "93fa2edb-8917-4704-b123-28fe5b1c7393:medium:1:2",
+      "module": "AG",
+      "question_id": "dev_313",
+      "question": "Who is younger, Bernard Chambaz or Tibor Pézsa?",
+      "action_text": "Tibor Pézsa",
+      "target": -0.0096,
+      "prediction": 0.2435,
+      "abs_error": 0.2531
+    },
+    {
+      "example_id": "cede6f39-fe6a-4b5e-a6ef-d66bde00e414:medium:3:0",
+      "module": "AG",
+      "question_id": "dev_313",
+      "question": "Who is younger, Bernard Chambaz or Tibor Pézsa?",
+      "action_text": "Tibor Pézsa",
+      "target": -0.0101,
+      "prediction": 0.2257,
+      "abs_error": 0.2358
+    },
+    {
+      "example_id": "cede6f39-fe6a-4b5e-a6ef-d66bde00e414:medium:3:1",
+      "module": "AG",
+      "question_id": "dev_313",
+      "question": "Who is younger, Bernard Chambaz or Tibor Pézsa?",
+      "action_text": "Tibor Pézsa",
+      "target": -0.0101,
+      "prediction": 0.2261,
+      "abs_error": 0.2362
+    },
+    {
+      "example_id": "cede6f39-fe6a-4b5e-a6ef-d66bde00e414:medium:3:2",
+      "module": "AG",
+      "question_id": "dev_313",
+      "question": "Who is younger, Bernard Chambaz or Tibor Pézsa?",
+      "action_text": "Tibor Pézsa",
+      "target": -0.0101,
+      "prediction": 0.2261,
+      "abs_error": 0.2362
+    },
+    {
+      "example_id": "c0f3a862-20e6-4dc0-bb36-dd7522687231:medium:3:0",
+      "module": "AG",
+      "question_id": "dev_313",
+      "question": "Who is younger, Bernard Chambaz or Tibor Pézsa?",
+      "action_text": "Dedi II",
+      "target": 0.009,
+      "prediction": 0.142,
+      "abs_error": 0.133
+    },
+    {
+      "example_id": "c0f3a862-20e6-4dc0-bb36-dd7522687231:medium:3:1",
+      "module": "AG",
+      "question_id": "dev_313",
+      "question": "Who is younger, Bernard Chambaz or Tibor Pézsa?",
+      "action_text": "Dedi II",
+      "target": 0.009,
+      "prediction": 0.1424,
+      "abs_error": 0.1334
+    },
+    {
+      "example_id": "c0f3a862-20e6-4dc0-bb36-dd7522687231:medium:3:2",
+      "module": "AG",
+      "question_id": "dev_313",
+      "question": "Who is younger, Bernard Chambaz or Tibor Pézsa?",
+      "action_text": "Dedi II",
+      "target": 0.009,
+      "prediction": 0.1424,
+      "abs_error": 0.1334
+    },
+    {
+      "example_id": "a9687338-8ba5-4c3a-b090-1bc868bf0fbd:medium:4:0",
+      "module": "AG",
+      "question_id": "dev_313",
+      "question": "Who is younger, Bernard Chambaz or Tibor Pézsa?",
+      "action_text": "uncertain",
+      "target": -0.0085,
+      "prediction": 0.0858,
+      "abs_error": 0.0943
+    },
+    {
+      "example_id": "a9687338-8ba5-4c3a-b090-1bc868bf0fbd:medium:4:1",
+      "module": "AG",
+      "question_id": "dev_313",
+      "question": "Who is younger, Bernard Chambaz or Tibor Pézsa?",
+      "action_text": "uncertain",
+      "target": -0.0085,
+      "prediction": 0.0862,
+      "abs_error": 0.0947
+    },
+    {
+      "example_id": "a9687338-8ba5-4c3a-b090-1bc868bf0fbd:medium:4:2",
+      "module": "AG",
+      "question_id": "dev_313",
+      "question": "Who is younger, Bernard Chambaz or Tibor Pézsa?",
+      "action_text": "uncertain",
+      "target": -0.0085,
+      "prediction": 0.0862,
+      "abs_error": 0.0947
+    },
+    {
+      "example_id": "88e5982f-4363-4c97-9fc6-88b80d066698:medium:1:0",
+      "module": "AG",
+      "question_id": "dev_160",
+      "question": "Where was the place of death of Prince Christopher Of Greece And Denmark's father?",
+      "action_text": "Mount Athos",
+      "target": -0.0096,
+      "prediction": 0.0845,
+      "abs_error": 0.0941
+    },
+    {
+      "example_id": "88e5982f-4363-4c97-9fc6-88b80d066698:medium:1:1",
+      "module": "AG",
+      "question_id": "dev_160",
+      "question": "Where was the place of death of Prince Christopher Of Greece And Denmark's father?",
+      "action_text": "Mount Athos",
+      "target": -0.0096,
+      "prediction": 0.0849,
+      "abs_error": 0.0945
+    },
+    {
+      "example_id": "88e5982f-4363-4c97-9fc6-88b80d066698:medium:1:2",
+      "module": "AG",
+      "question_id": "dev_160",
+      "question": "Where was the place of death of Prince Christopher Of Greece And Denmark's father?",
+      "action_text": "Mount Athos",
+      "target": -0.0096,
+      "prediction": 0.0849,
+      "abs_error": 0.0945
+    },
+    {
+      "example_id": "43d8a84d-9696-41a1-84fc-07f06cfe360b:medium:3:0",
+      "module": "AG",
+      "question_id": "dev_160",
+      "question": "Where was the place of death of Prince Christopher Of Greece And Denmark's father?",
+      "action_text": "Grand Duchess Olga Constantinovna of Russia",
+      "target": -0.0016,
+      "prediction": 0.0808,
+      "abs_error": 0.0824
+    },
+    {
+      "example_id": "43d8a84d-9696-41a1-84fc-07f06cfe360b:medium:3:1",
+      "module": "AG",
+      "question_id": "dev_160",
+      "question": "Where was the place of death of Prince Christopher Of Greece And Denmark's father?",
+      "action_text": "Grand Duchess Olga Constantinovna of Russia",
+      "target": -0.0016,
+      "prediction": 0.0811,
+      "abs_error": 0.0827
+    },
+    {
+      "example_id": "43d8a84d-9696-41a1-84fc-07f06cfe360b:medium:3:2",
+      "module": "AG",
+      "question_id": "dev_160",
+      "question": "Where was the place of death of Prince Christopher Of Greece And Denmark's father?",
+      "action_text": "Grand Duchess Olga Constantinovna of Russia",
+      "target": -0.0016,
+      "prediction": 0.0811,
+      "abs_error": 0.0827
+    },
+    {
+      "example_id": "3f076f9c-86a2-42c5-82b9-763474e6dbf9:medium:3:0",
+      "module": "AG",
+      "question_id": "dev_160",
+      "question": "Where was the place of death of Prince Christopher Of Greece And Denmark's father?",
+      "action_text": "Unknown",
+      "target": -0.0113,
+      "prediction": -0.0103,
+      "abs_error": 0.001
+    },
+    {
+      "example_id": "3f076f9c-86a2-42c5-82b9-763474e6dbf9:medium:3:1",
+      "module": "AG",
+      "question_id": "dev_160",
+      "question": "Where was the place of death of Prince Christopher Of Greece And Denmark's father?",
+      "action_text": "Unknown",
+      "target": -0.0113,
+      "prediction": -0.01,
+      "abs_error": 0.0013
+    },
+    {
+      "example_id": "3f076f9c-86a2-42c5-82b9-763474e6dbf9:medium:3:2",
+      "module": "AG",
+      "question_id": "dev_160",
+      "question": "Where was the place of death of Prince Christopher Of Greece And Denmark's father?",
+      "action_text": "Unknown",
+      "target": -0.0113,
+      "prediction": -0.01,
+      "abs_error": 0.0013
+    },
+    {
+      "example_id": "df76a234-7d1d-4866-ad40-41df821e6694:medium:4:0",
+      "module": "AG",
+      "question_id": "dev_160",
+      "question": "Where was the place of death of Prince Christopher Of Greece And Denmark's father?",
+      "action_text": "uncertain",
+      "target": -0.0111,
+      "prediction": -0.0723,
+      "abs_error": 0.0612
+    },
+    {
+      "example_id": "df76a234-7d1d-4866-ad40-41df821e6694:medium:4:1",
+      "module": "AG",
+      "question_id": "dev_160",
+      "question": "Where was the place of death of Prince Christopher Of Greece And Denmark's father?",
+      "action_text": "uncertain",
+      "target": -0.0111,
+      "prediction": -0.0719,
+      "abs_error": 0.0608
+    },
+    {
+      "example_id": "df76a234-7d1d-4866-ad40-41df821e6694:medium:4:2",
+      "module": "AG",
+      "question_id": "dev_160",
+      "question": "Where was the place of death of Prince Christopher Of Greece And Denmark's father?",
+      "action_text": "uncertain",
+      "target": -0.0111,
+      "prediction": -0.0719,
+      "abs_error": 0.0608
+    },
+    {
+      "example_id": "e970c9eb-c9e1-4236-be92-a44406ba881e:medium:1:0",
+      "module": "AG",
+      "question_id": "dev_511",
+      "question": "Which film has the director who was born first, En Kvinde Er Overflødig or Aakrosh (2010 Film)?",
+      "action_text": "Aakrosh (2010 Film)",
+      "target": -0.0098,
+      "prediction": 0.1159,
+      "abs_error": 0.1257
+    },
+    {
+      "example_id": "e970c9eb-c9e1-4236-be92-a44406ba881e:medium:1:1",
+      "module": "AG",
+      "question_id": "dev_511",
+      "question": "Which film has the director who was born first, En Kvinde Er Overflødig or Aakrosh (2010 Film)?",
+      "action_text": "Aakrosh (2010 Film)",
+      "target": -0.0098,
+      "prediction": 0.1163,
+      "abs_error": 0.1261
+    },
+    {
+      "example_id": "e970c9eb-c9e1-4236-be92-a44406ba881e:medium:1:2",
+      "module": "AG",
+      "question_id": "dev_511",
+      "question": "Which film has the director who was born first, En Kvinde Er Overflødig or Aakrosh (2010 Film)?",
+      "action_text": "Aakrosh (2010 Film)",
+      "target": -0.0098,
+      "prediction": 0.1163,
+      "abs_error": 0.1261
+    },
+    {
+      "example_id": "7a32459a-5d5b-46b3-8bd7-1f812b7d0f68:medium:3:0",
+      "module": "AG",
+      "question_id": "dev_511",
+      "question": "Which film has the director who was born first, En Kvinde Er Overflødig or Aakrosh (2010 Film)?",
+      "action_text": "Olav Aaraas",
+      "target": -0.0052,
+      "prediction": 0.2143,
+      "abs_error": 0.2195
+    },
+    {
+      "example_id": "7a32459a-5d5b-46b3-8bd7-1f812b7d0f68:medium:3:1",
+      "module": "AG",
+      "question_id": "dev_511",
+      "question": "Which film has the director who was born first, En Kvinde Er Overflødig or Aakrosh (2010 Film)?",
+      "action_text": "Olav Aaraas",
+      "target": -0.0052,
+      "prediction": 0.2147,
+      "abs_error": 0.2199
+    },
+    {
+      "example_id": "7a32459a-5d5b-46b3-8bd7-1f812b7d0f68:medium:3:2",
+      "module": "AG",
+      "question_id": "dev_511",
+      "question": "Which film has the director who was born first, En Kvinde Er Overflødig or Aakrosh (2010 Film)?",
+      "action_text": "Olav Aaraas",
+      "target": -0.0052,
+      "prediction": 0.2147,
+      "abs_error": 0.2199
+    },
+    {
+      "example_id": "a95acb53-332c-46f4-803b-1ffc5abcd6b6:medium:3:0",
+      "module": "AG",
+      "question_id": "dev_511",
+      "question": "Which film has the director who was born first, En Kvinde Er Overflødig or Aakrosh (2010 Film)?",
+      "action_text": "En kvinde er overflødig",
+      "target": 0.7913,
+      "prediction": 0.4035,
+      "abs_error": 0.3878
+    },
+    {
+      "example_id": "a95acb53-332c-46f4-803b-1ffc5abcd6b6:medium:3:1",
+      "module": "AG",
+      "question_id": "dev_511",
+      "question": "Which film has the director who was born first, En Kvinde Er Overflødig or Aakrosh (2010 Film)?",
+      "action_text": "En kvinde er overflødig",
+      "target": 0.7913,
+      "prediction": 0.4039,
+      "abs_error": 0.3874
+    },
+    {
+      "example_id": "a95acb53-332c-46f4-803b-1ffc5abcd6b6:medium:3:2",
+      "module": "AG",
+      "question_id": "dev_511",
+      "question": "Which film has the director who was born first, En Kvinde Er Overflødig or Aakrosh (2010 Film)?",
+      "action_text": "En kvinde er overflødig",
+      "target": 0.7913,
+      "prediction": 0.4039,
+      "abs_error": 0.3874
+    },
+    {
+      "example_id": "1908bb14-f4b7-4c76-85a6-06903ca9f00d:medium:4:0",
+      "module": "AG",
+      "question_id": "dev_511",
+      "question": "Which film has the director who was born first, En Kvinde Er Overflødig or Aakrosh (2010 Film)?",
+      "action_text": "Alice Washburn",
+      "target": -0.011,
+      "prediction": 0.1768,
+      "abs_error": 0.1878
+    },
+    {
+      "example_id": "1908bb14-f4b7-4c76-85a6-06903ca9f00d:medium:4:1",
+      "module": "AG",
+      "question_id": "dev_511",
+      "question": "Which film has the director who was born first, En Kvinde Er Overflødig or Aakrosh (2010 Film)?",
+      "action_text": "Alice Washburn",
+      "target": -0.011,
+      "prediction": 0.1772,
+      "abs_error": 0.1882
+    },
+    {
+      "example_id": "1908bb14-f4b7-4c76-85a6-06903ca9f00d:medium:4:2",
+      "module": "AG",
+      "question_id": "dev_511",
+      "question": "Which film has the director who was born first, En Kvinde Er Overflødig or Aakrosh (2010 Film)?",
+      "action_text": "Alice Washburn",
+      "target": -0.011,
+      "prediction": 0.1772,
+      "abs_error": 0.1882
+    },
+    {
+      "example_id": "ca60a572-7ef0-4514-ad22-82c297ef4773:medium:1:0",
+      "module": "AG",
+      "question_id": "dev_425",
+      "question": "Which film has the director born earlier, The Newest Pledge or Más Allá De La Aventura?",
+      "action_text": "Más Allá De La Aventura",
+      "target": 0.7798,
+      "prediction": 0.5293,
+      "abs_error": 0.2505
+    },
+    {
+      "example_id": "ca60a572-7ef0-4514-ad22-82c297ef4773:medium:1:1",
+      "module": "AG",
+      "question_id": "dev_425",
+      "question": "Which film has the director born earlier, The Newest Pledge or Más Allá De La Aventura?",
+      "action_text": "Más Allá De La Aventura",
+      "target": 0.7798,
+      "prediction": 0.5297,
+      "abs_error": 0.2501
+    },
+    {
+      "example_id": "ca60a572-7ef0-4514-ad22-82c297ef4773:medium:1:2",
+      "module": "AG",
+      "question_id": "dev_425",
+      "question": "Which film has the director born earlier, The Newest Pledge or Más Allá De La Aventura?",
+      "action_text": "Más Allá De La Aventura",
+      "target": 0.7798,
+      "prediction": 0.5297,
+      "abs_error": 0.2501
+    },
+    {
+      "example_id": "d5721029-45ee-4db0-9d74-5d6b7094e613:medium:3:0",
+      "module": "AG",
+      "question_id": "dev_425",
+      "question": "Which film has the director born earlier, The Newest Pledge or Más Allá De La Aventura?",
+      "action_text": "Oscar Barney Finn",
+      "target": -0.0052,
+      "prediction": 0.2817,
+      "abs_error": 0.2869
+    },
+    {
+      "example_id": "d5721029-45ee-4db0-9d74-5d6b7094e613:medium:3:1",
+      "module": "AG",
+      "question_id": "dev_425",
+      "question": "Which film has the director born earlier, The Newest Pledge or Más Allá De La Aventura?",
+      "action_text": "Oscar Barney Finn",
+      "target": -0.0052,
+      "prediction": 0.2821,
+      "abs_error": 0.2873
+    },
+    {
+      "example_id": "d5721029-45ee-4db0-9d74-5d6b7094e613:medium:3:2",
+      "module": "AG",
+      "question_id": "dev_425",
+      "question": "Which film has the director born earlier, The Newest Pledge or Más Allá De La Aventura?",
+      "action_text": "Oscar Barney Finn",
+      "target": -0.0052,
+      "prediction": 0.2821,
+      "abs_error": 0.2873
+    },
+    {
+      "example_id": "f6cd22d7-9f48-4c31-ab0e-c314dfa52b9e:medium:3:0",
+      "module": "AG",
+      "question_id": "dev_425",
+      "question": "Which film has the director born earlier, The Newest Pledge or Más Allá De La Aventura?",
+      "action_text": "Más allá de la aventura",
+      "target": 0.7813,
+      "prediction": 0.517,
+      "abs_error": 0.2643
+    },
+    {
+      "example_id": "f6cd22d7-9f48-4c31-ab0e-c314dfa52b9e:medium:3:1",
+      "module": "AG",
+      "question_id": "dev_425",
+      "question": "Which film has the director born earlier, The Newest Pledge or Más Allá De La Aventura?",
+      "action_text": "Más allá de la aventura",
+      "target": 0.7813,
+      "prediction": 0.5174,
+      "abs_error": 0.2639
+    },
+    {
+      "example_id": "f6cd22d7-9f48-4c31-ab0e-c314dfa52b9e:medium:3:2",
+      "module": "AG",
+      "question_id": "dev_425",
+      "question": "Which film has the director born earlier, The Newest Pledge or Más Allá De La Aventura?",
+      "action_text": "Más allá de la aventura",
+      "target": 0.7813,
+      "prediction": 0.5174,
+      "abs_error": 0.2639
+    },
+    {
+      "example_id": "4b8f6db6-cc81-49f6-b932-0be1eefb624e:medium:4:0",
+      "module": "AG",
+      "question_id": "dev_425",
+      "question": "Which film has the director born earlier, The Newest Pledge or Más Allá De La Aventura?",
+      "action_text": "Matilda of Frisia",
+      "target": -0.0118,
+      "prediction": 0.2147,
+      "abs_error": 0.2265
+    },
+    {
+      "example_id": "4b8f6db6-cc81-49f6-b932-0be1eefb624e:medium:4:1",
+      "module": "AG",
+      "question_id": "dev_425",
+      "question": "Which film has the director born earlier, The Newest Pledge or Más Allá De La Aventura?",
+      "action_text": "Matilda of Frisia",
+      "target": -0.0118,
+      "prediction": 0.2151,
+      "abs_error": 0.2269
+    },
+    {
+      "example_id": "4b8f6db6-cc81-49f6-b932-0be1eefb624e:medium:4:2",
+      "module": "AG",
+      "question_id": "dev_425",
+      "question": "Which film has the director born earlier, The Newest Pledge or Más Allá De La Aventura?",
+      "action_text": "Matilda of Frisia",
+      "target": -0.0118,
+      "prediction": 0.2151,
+      "abs_error": 0.2269
+    },
+    {
+      "example_id": "3af295dd-8ab3-4265-bda8-6f3e92ae296d:medium:1:0",
+      "module": "AG",
+      "question_id": "dev_463",
+      "question": "Where did the director of film Music In Darkness die?",
+      "action_text": "uncertain",
+      "target": -0.009,
+      "prediction": -0.0818,
+      "abs_error": 0.0728
+    },
+    {
+      "example_id": "3af295dd-8ab3-4265-bda8-6f3e92ae296d:medium:1:1",
+      "module": "AG",
+      "question_id": "dev_463",
+      "question": "Where did the director of film Music In Darkness die?",
+      "action_text": "uncertain",
+      "target": -0.009,
+      "prediction": -0.0814,
+      "abs_error": 0.0724
+    },
+    {
+      "example_id": "3af295dd-8ab3-4265-bda8-6f3e92ae296d:medium:1:2",
+      "module": "AG",
+      "question_id": "dev_463",
+      "question": "Where did the director of film Music In Darkness die?",
+      "action_text": "uncertain",
+      "target": -0.009,
+      "prediction": -0.0814,
+      "abs_error": 0.0724
+    },
+    {
+      "example_id": "0ecc3e0b-3ddf-4817-8eed-a6a3d3bdadea:medium:3:0",
+      "module": "AG",
+      "question_id": "dev_463",
+      "question": "Where did the director of film Music In Darkness die?",
+      "action_text": "uncertain",
+      "target": -0.0113,
+      "prediction": -0.0968,
+      "abs_error": 0.0855
+    },
+    {
+      "example_id": "0ecc3e0b-3ddf-4817-8eed-a6a3d3bdadea:medium:3:1",
+      "module": "AG",
+      "question_id": "dev_463",
+      "question": "Where did the director of film Music In Darkness die?",
+      "action_text": "uncertain",
+      "target": -0.0113,
+      "prediction": -0.0964,
+      "abs_error": 0.0851
+    },
+    {
+      "example_id": "0ecc3e0b-3ddf-4817-8eed-a6a3d3bdadea:medium:3:2",
+      "module": "AG",
+      "question_id": "dev_463",
+      "question": "Where did the director of film Music In Darkness die?",
+      "action_text": "uncertain",
+      "target": -0.0113,
+      "prediction": -0.0964,
+      "abs_error": 0.0851
+    },
+    {
+      "example_id": "a51c009f-f030-4539-9169-83bef8a3740b:medium:3:0",
+      "module": "AG",
+      "question_id": "dev_463",
+      "question": "Where did the director of film Music In Darkness die?",
+      "action_text": "Ingmar Bergman",
+      "target": -0.0075,
+      "prediction": 0.0462,
+      "abs_error": 0.0537
+    },
+    {
+      "example_id": "a51c009f-f030-4539-9169-83bef8a3740b:medium:3:1",
+      "module": "AG",
+      "question_id": "dev_463",
+      "question": "Where did the director of film Music In Darkness die?",
+      "action_text": "Ingmar Bergman",
+      "target": -0.0075,
+      "prediction": 0.0466,
+      "abs_error": 0.0541
+    },
+    {
+      "example_id": "a51c009f-f030-4539-9169-83bef8a3740b:medium:3:2",
+      "module": "AG",
+      "question_id": "dev_463",
+      "question": "Where did the director of film Music In Darkness die?",
+      "action_text": "Ingmar Bergman",
+      "target": -0.0075,
+      "prediction": 0.0466,
+      "abs_error": 0.0541
+    },
+    {
+      "example_id": "e213da5e-5ad9-462c-aa62-e6b2fb02b889:medium:4:0",
+      "module": "AG",
+      "question_id": "dev_463",
+      "question": "Where did the director of film Music In Darkness die?",
+      "action_text": "uncertain",
+      "target": -0.0163,
+      "prediction": -0.106,
+      "abs_error": 0.0897
+    },
+    {
+      "example_id": "e213da5e-5ad9-462c-aa62-e6b2fb02b889:medium:4:1",
+      "module": "AG",
+      "question_id": "dev_463",
+      "question": "Where did the director of film Music In Darkness die?",
+      "action_text": "uncertain",
+      "target": -0.0163,
+      "prediction": -0.1056,
+      "abs_error": 0.0893
+    },
+    {
+      "example_id": "e213da5e-5ad9-462c-aa62-e6b2fb02b889:medium:4:2",
+      "module": "AG",
+      "question_id": "dev_463",
+      "question": "Where did the director of film Music In Darkness die?",
+      "action_text": "uncertain",
+      "target": -0.0163,
+      "prediction": -0.1056,
+      "abs_error": 0.0893
+    },
+    {
+      "example_id": "3db06edd-0481-40aa-beb0-4ce8930c7d29:medium:1:0",
+      "module": "AG",
+      "question_id": "dev_276",
+      "question": "Which film has the director born earlier, Spring Storms or Fun In The Barracks?",
+      "action_text": "Spring Storms",
+      "target": -0.0091,
+      "prediction": 0.1894,
+      "abs_error": 0.1985
+    },
+    {
+      "example_id": "3db06edd-0481-40aa-beb0-4ce8930c7d29:medium:1:1",
+      "module": "AG",
+      "question_id": "dev_276",
+      "question": "Which film has the director born earlier, Spring Storms or Fun In The Barracks?",
+      "action_text": "Spring Storms",
+      "target": -0.0091,
+      "prediction": 0.1898,
+      "abs_error": 0.1989
+    },
+    {
+      "example_id": "3db06edd-0481-40aa-beb0-4ce8930c7d29:medium:1:2",
+      "module": "AG",
+      "question_id": "dev_276",
+      "question": "Which film has the director born earlier, Spring Storms or Fun In The Barracks?",
+      "action_text": "Spring Storms",
+      "target": -0.0091,
+      "prediction": 0.1898,
+      "abs_error": 0.1989
+    },
+    {
+      "example_id": "011943b4-1401-4c38-b4b7-020e4085e9f6:medium:3:0",
+      "module": "AG",
+      "question_id": "dev_276",
+      "question": "Which film has the director born earlier, Spring Storms or Fun In The Barracks?",
+      "action_text": "uncertain",
+      "target": -0.0005,
+      "prediction": 0.0436,
+      "abs_error": 0.0441
+    },
+    {
+      "example_id": "011943b4-1401-4c38-b4b7-020e4085e9f6:medium:3:1",
+      "module": "AG",
+      "question_id": "dev_276",
+      "question": "Which film has the director born earlier, Spring Storms or Fun In The Barracks?",
+      "action_text": "uncertain",
+      "target": -0.0005,
+      "prediction": 0.044,
+      "abs_error": 0.0445
+    },
+    {
+      "example_id": "011943b4-1401-4c38-b4b7-020e4085e9f6:medium:3:2",
+      "module": "AG",
+      "question_id": "dev_276",
+      "question": "Which film has the director born earlier, Spring Storms or Fun In The Barracks?",
+      "action_text": "uncertain",
+      "target": -0.0005,
+      "prediction": 0.044,
+      "abs_error": 0.0445
+    },
+    {
+      "example_id": "4921c65a-81af-4340-9ddb-41a73d50fd47:medium:3:0",
+      "module": "AG",
+      "question_id": "dev_276",
+      "question": "Which film has the director born earlier, Spring Storms or Fun In The Barracks?",
+      "action_text": "Spring Storms",
+      "target": 0.0037,
+      "prediction": 0.1766,
+      "abs_error": 0.1729
+    },
+    {
+      "example_id": "4921c65a-81af-4340-9ddb-41a73d50fd47:medium:3:1",
+      "module": "AG",
+      "question_id": "dev_276",
+      "question": "Which film has the director born earlier, Spring Storms or Fun In The Barracks?",
+      "action_text": "Spring Storms",
+      "target": 0.0037,
+      "prediction": 0.177,
+      "abs_error": 0.1733
+    },
+    {
+      "example_id": "4921c65a-81af-4340-9ddb-41a73d50fd47:medium:3:2",
+      "module": "AG",
+      "question_id": "dev_276",
+      "question": "Which film has the director born earlier, Spring Storms or Fun In The Barracks?",
+      "action_text": "Spring Storms",
+      "target": 0.0037,
+      "prediction": 0.177,
+      "abs_error": 0.1733
+    },
+    {
+      "example_id": "e619d18d-fcc7-4d18-9050-4aa4ad5d08a6:medium:4:0",
+      "module": "AG",
+      "question_id": "dev_276",
+      "question": "Which film has the director born earlier, Spring Storms or Fun In The Barracks?",
+      "action_text": "William Duncan",
+      "target": -0.0133,
+      "prediction": 0.1962,
+      "abs_error": 0.2095
+    },
+    {
+      "example_id": "e619d18d-fcc7-4d18-9050-4aa4ad5d08a6:medium:4:1",
+      "module": "AG",
+      "question_id": "dev_276",
+      "question": "Which film has the director born earlier, Spring Storms or Fun In The Barracks?",
+      "action_text": "William Duncan",
+      "target": -0.0133,
+      "prediction": 0.1966,
+      "abs_error": 0.2099
+    },
+    {
+      "example_id": "e619d18d-fcc7-4d18-9050-4aa4ad5d08a6:medium:4:2",
+      "module": "AG",
+      "question_id": "dev_276",
+      "question": "Which film has the director born earlier, Spring Storms or Fun In The Barracks?",
+      "action_text": "William Duncan",
+      "target": -0.0133,
+      "prediction": 0.1966,
+      "abs_error": 0.2099
+    },
+    {
+      "example_id": "1041b7c3-be16-4037-b2f3-cb193b92ff6d:medium:1:0",
+      "module": "AG",
+      "question_id": "dev_371",
+      "question": "Which film has the director died earlier, Dialogues Of Exiles or Rhythm And Weep?",
+      "action_text": "Dialogues Of Exiles",
+      "target": -0.0094,
+      "prediction": 0.1703,
+      "abs_error": 0.1797
+    },
+    {
+      "example_id": "1041b7c3-be16-4037-b2f3-cb193b92ff6d:medium:1:1",
+      "module": "AG",
+      "question_id": "dev_371",
+      "question": "Which film has the director died earlier, Dialogues Of Exiles or Rhythm And Weep?",
+      "action_text": "Dialogues Of Exiles",
+      "target": -0.0094,
+      "prediction": 0.1706,
+      "abs_error": 0.18
+    },
+    {
+      "example_id": "1041b7c3-be16-4037-b2f3-cb193b92ff6d:medium:1:2",
+      "module": "AG",
+      "question_id": "dev_371",
+      "question": "Which film has the director died earlier, Dialogues Of Exiles or Rhythm And Weep?",
+      "action_text": "Dialogues Of Exiles",
+      "target": -0.0094,
+      "prediction": 0.1706,
+      "abs_error": 0.18
+    },
+    {
+      "example_id": "5a08f82b-0d8f-42f3-9a81-744f62d6d6c1:medium:3:0",
+      "module": "AG",
+      "question_id": "dev_371",
+      "question": "Which film has the director died earlier, Dialogues Of Exiles or Rhythm And Weep?",
+      "action_text": "Jules White",
+      "target": -0.0069,
+      "prediction": 0.1891,
+      "abs_error": 0.196
+    },
+    {
+      "example_id": "5a08f82b-0d8f-42f3-9a81-744f62d6d6c1:medium:3:1",
+      "module": "AG",
+      "question_id": "dev_371",
+      "question": "Which film has the director died earlier, Dialogues Of Exiles or Rhythm And Weep?",
+      "action_text": "Jules White",
+      "target": -0.0069,
+      "prediction": 0.1895,
+      "abs_error": 0.1964
+    },
+    {
+      "example_id": "5a08f82b-0d8f-42f3-9a81-744f62d6d6c1:medium:3:2",
+      "module": "AG",
+      "question_id": "dev_371",
+      "question": "Which film has the director died earlier, Dialogues Of Exiles or Rhythm And Weep?",
+      "action_text": "Jules White",
+      "target": -0.0069,
+      "prediction": 0.1895,
+      "abs_error": 0.1964
+    },
+    {
+      "example_id": "017cde37-6a2a-4b1a-9299-e8961bf96f22:medium:3:0",
+      "module": "AG",
+      "question_id": "dev_371",
+      "question": "Which film has the director died earlier, Dialogues Of Exiles or Rhythm And Weep?",
+      "action_text": "Paweł Pawlikowski",
+      "target": -0.0051,
+      "prediction": 0.1235,
+      "abs_error": 0.1286
+    },
+    {
+      "example_id": "017cde37-6a2a-4b1a-9299-e8961bf96f22:medium:3:1",
+      "module": "AG",
+      "question_id": "dev_371",
+      "question": "Which film has the director died earlier, Dialogues Of Exiles or Rhythm And Weep?",
+      "action_text": "Paweł Pawlikowski",
+      "target": -0.0051,
+      "prediction": 0.1238,
+      "abs_error": 0.1289
+    },
+    {
+      "example_id": "017cde37-6a2a-4b1a-9299-e8961bf96f22:medium:3:2",
+      "module": "AG",
+      "question_id": "dev_371",
+      "question": "Which film has the director died earlier, Dialogues Of Exiles or Rhythm And Weep?",
+      "action_text": "Paweł Pawlikowski",
+      "target": -0.0051,
+      "prediction": 0.1238,
+      "abs_error": 0.1289
+    },
+    {
+      "example_id": "cf9843f3-f3c5-4812-a4a0-4b7b4ce7e2fd:medium:4:0",
+      "module": "AG",
+      "question_id": "dev_371",
+      "question": "Which film has the director died earlier, Dialogues Of Exiles or Rhythm And Weep?",
+      "action_text": "Charles Andrews",
+      "target": -0.0047,
+      "prediction": 0.2503,
+      "abs_error": 0.255
+    },
+    {
+      "example_id": "cf9843f3-f3c5-4812-a4a0-4b7b4ce7e2fd:medium:4:1",
+      "module": "AG",
+      "question_id": "dev_371",
+      "question": "Which film has the director died earlier, Dialogues Of Exiles or Rhythm And Weep?",
+      "action_text": "Charles Andrews",
+      "target": -0.0047,
+      "prediction": 0.2506,
+      "abs_error": 0.2553
+    },
+    {
+      "example_id": "cf9843f3-f3c5-4812-a4a0-4b7b4ce7e2fd:medium:4:2",
+      "module": "AG",
+      "question_id": "dev_371",
+      "question": "Which film has the director died earlier, Dialogues Of Exiles or Rhythm And Weep?",
+      "action_text": "Charles Andrews",
+      "target": -0.0047,
+      "prediction": 0.2506,
+      "abs_error": 0.2553
+    },
+    {
+      "example_id": "933c2d72-535f-4487-abed-34644bfc6d18:medium:1:0",
+      "module": "AG",
+      "question_id": "dev_103",
+      "question": "Who was born later, Joseph J. Magliocco or Viktoriya Zeynep Güneş?",
+      "action_text": "Viktoriya Zeynep Güneş",
+      "target": -0.0104,
+      "prediction": 0.3559,
+      "abs_error": 0.3663
+    },
+    {
+      "example_id": "933c2d72-535f-4487-abed-34644bfc6d18:medium:1:1",
+      "module": "AG",
+      "question_id": "dev_103",
+      "question": "Who was born later, Joseph J. Magliocco or Viktoriya Zeynep Güneş?",
+      "action_text": "Viktoriya Zeynep Güneş",
+      "target": -0.0104,
+      "prediction": 0.3563,
+      "abs_error": 0.3667
+    },
+    {
+      "example_id": "933c2d72-535f-4487-abed-34644bfc6d18:medium:1:2",
+      "module": "AG",
+      "question_id": "dev_103",
+      "question": "Who was born later, Joseph J. Magliocco or Viktoriya Zeynep Güneş?",
+      "action_text": "Viktoriya Zeynep Güneş",
+      "target": -0.0104,
+      "prediction": 0.3563,
+      "abs_error": 0.3667
+    },
+    {
+      "example_id": "0f4d606a-ead6-467d-a72d-23c28cac7173:medium:3:0",
+      "module": "AG",
+      "question_id": "dev_103",
+      "question": "Who was born later, Joseph J. Magliocco or Viktoriya Zeynep Güneş?",
+      "action_text": "Viktoria Solnceva",
+      "target": 0.7538,
+      "prediction": 0.3312,
+      "abs_error": 0.4226
+    },
+    {
+      "example_id": "0f4d606a-ead6-467d-a72d-23c28cac7173:medium:3:1",
+      "module": "AG",
+      "question_id": "dev_103",
+      "question": "Who was born later, Joseph J. Magliocco or Viktoriya Zeynep Güneş?",
+      "action_text": "Viktoria Solnceva",
+      "target": 0.7538,
+      "prediction": 0.3316,
+      "abs_error": 0.4222
+    },
+    {
+      "example_id": "0f4d606a-ead6-467d-a72d-23c28cac7173:medium:3:2",
+      "module": "AG",
+      "question_id": "dev_103",
+      "question": "Who was born later, Joseph J. Magliocco or Viktoriya Zeynep Güneş?",
+      "action_text": "Viktoria Solnceva",
+      "target": 0.7538,
+      "prediction": 0.3316,
+      "abs_error": 0.4222
+    },
+    {
+      "example_id": "39238550-05d6-49d0-9d83-6c2651e8c25e:medium:3:0",
+      "module": "AG",
+      "question_id": "dev_103",
+      "question": "Who was born later, Joseph J. Magliocco or Viktoriya Zeynep Güneş?",
+      "action_text": "Viktoria Solnceva",
+      "target": 0.7761,
+      "prediction": 0.3302,
+      "abs_error": 0.4459
+    },
+    {
+      "example_id": "39238550-05d6-49d0-9d83-6c2651e8c25e:medium:3:1",
+      "module": "AG",
+      "question_id": "dev_103",
+      "question": "Who was born later, Joseph J. Magliocco or Viktoriya Zeynep Güneş?",
+      "action_text": "Viktoria Solnceva",
+      "target": 0.7761,
+      "prediction": 0.3306,
+      "abs_error": 0.4455
+    },
+    {
+      "example_id": "39238550-05d6-49d0-9d83-6c2651e8c25e:medium:3:2",
+      "module": "AG",
+      "question_id": "dev_103",
+      "question": "Who was born later, Joseph J. Magliocco or Viktoriya Zeynep Güneş?",
+      "action_text": "Viktoria Solnceva",
+      "target": 0.7761,
+      "prediction": 0.3306,
+      "abs_error": 0.4455
+    },
+    {
+      "example_id": "cae2b4cf-3080-4d40-8d7f-82d26fec434e:medium:4:0",
+      "module": "AG",
+      "question_id": "dev_103",
+      "question": "Who was born later, Joseph J. Magliocco or Viktoriya Zeynep Güneş?",
+      "action_text": "Viktoria Solnceva",
+      "target": 0.7536,
+      "prediction": 0.3196,
+      "abs_error": 0.434
+    },
+    {
+      "example_id": "cae2b4cf-3080-4d40-8d7f-82d26fec434e:medium:4:1",
+      "module": "AG",
+      "question_id": "dev_103",
+      "question": "Who was born later, Joseph J. Magliocco or Viktoriya Zeynep Güneş?",
+      "action_text": "Viktoria Solnceva",
+      "target": 0.7536,
+      "prediction": 0.3199,
+      "abs_error": 0.4337
+    },
+    {
+      "example_id": "cae2b4cf-3080-4d40-8d7f-82d26fec434e:medium:4:2",
+      "module": "AG",
+      "question_id": "dev_103",
+      "question": "Who was born later, Joseph J. Magliocco or Viktoriya Zeynep Güneş?",
+      "action_text": "Viktoria Solnceva",
+      "target": 0.7536,
+      "prediction": 0.3199,
+      "abs_error": 0.4337
+    },
+    {
+      "example_id": "123a4b5e-0e32-4d36-8824-ec23f646771d:medium:1:0",
+      "module": "AG",
+      "question_id": "dev_158",
+      "question": "Which film was released first, The Beginning Or The End or Hold Back The Night?",
+      "action_text": "The End",
+      "target": 0.3689,
+      "prediction": 0.2629,
+      "abs_error": 0.106
+    },
+    {
+      "example_id": "123a4b5e-0e32-4d36-8824-ec23f646771d:medium:1:1",
+      "module": "AG",
+      "question_id": "dev_158",
+      "question": "Which film was released first, The Beginning Or The End or Hold Back The Night?",
+      "action_text": "The End",
+      "target": 0.3689,
+      "prediction": 0.2633,
+      "abs_error": 0.1056
+    },
+    {
+      "example_id": "123a4b5e-0e32-4d36-8824-ec23f646771d:medium:1:2",
+      "module": "AG",
+      "question_id": "dev_158",
+      "question": "Which film was released first, The Beginning Or The End or Hold Back The Night?",
+      "action_text": "The End",
+      "target": 0.3689,
+      "prediction": 0.2633,
+      "abs_error": 0.1056
+    },
+    {
+      "example_id": "5231e5f9-65cd-40f0-a93d-dbeba8924a5e:medium:3:0",
+      "module": "AG",
+      "question_id": "dev_158",
+      "question": "Which film was released first, The Beginning Or The End or Hold Back The Night?",
+      "action_text": "The End",
+      "target": 0.356,
+      "prediction": 0.2443,
+      "abs_error": 0.1117
+    },
+    {
+      "example_id": "5231e5f9-65cd-40f0-a93d-dbeba8924a5e:medium:3:1",
+      "module": "AG",
+      "question_id": "dev_158",
+      "question": "Which film was released first, The Beginning Or The End or Hold Back The Night?",
+      "action_text": "The End",
+      "target": 0.356,
+      "prediction": 0.2447,
+      "abs_error": 0.1113
+    },
+    {
+      "example_id": "5231e5f9-65cd-40f0-a93d-dbeba8924a5e:medium:3:2",
+      "module": "AG",
+      "question_id": "dev_158",
+      "question": "Which film was released first, The Beginning Or The End or Hold Back The Night?",
+      "action_text": "The End",
+      "target": 0.356,
+      "prediction": 0.2447,
+      "abs_error": 0.1113
+    },
+    {
+      "example_id": "31e21dd8-915e-4f64-8045-61fbeee119ac:medium:3:0",
+      "module": "AG",
+      "question_id": "dev_158",
+      "question": "Which film was released first, The Beginning Or The End or Hold Back The Night?",
+      "action_text": "The End",
+      "target": 0.361,
+      "prediction": 0.2457,
+      "abs_error": 0.1153
+    },
+    {
+      "example_id": "31e21dd8-915e-4f64-8045-61fbeee119ac:medium:3:1",
+      "module": "AG",
+      "question_id": "dev_158",
+      "question": "Which film was released first, The Beginning Or The End or Hold Back The Night?",
+      "action_text": "The End",
+      "target": 0.361,
+      "prediction": 0.246,
+      "abs_error": 0.115
+    }
+  ]
+}

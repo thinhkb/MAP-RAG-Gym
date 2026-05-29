@@ -1,0 +1,150 @@
+{
+  "source_policy_files": [
+    "outputs/2wikimultihopqa/policy_selection_low.json",
+    "outputs/2wikimultihopqa/policy_selection_medium.json",
+    "outputs/2wikimultihopqa/policy_selection_high.json"
+  ],
+  "source_eval_files": [
+    "outputs/2wikimultihopqa/router_eval_large_budget_low_val.json",
+    "outputs/2wikimultihopqa/router_eval_large_budget_medium_val.json",
+    "outputs/2wikimultihopqa/router_eval_large_budget_high_val.json"
+  ],
+  "budget_policies": {
+    "low": {
+      "recommended_method": "fixed_W1",
+      "constraints": {
+        "max_tokens": null,
+        "max_latency_ms": null,
+        "max_retrieval_calls": null
+      },
+      "router_settings": {},
+      "source_policy_file": "outputs/2wikimultihopqa/policy_selection_low.json",
+      "source_eval_file": "outputs/2wikimultihopqa/router_eval_large_budget_low_val.json",
+      "pareto_frontier": [
+        {
+          "method": "fixed_W1",
+          "num_runs": 90,
+          "avg_utility": 0.2374,
+          "avg_em": 0.1889,
+          "avg_f1_proxy": 0.2171,
+          "avg_process_score": 0.1353,
+          "avg_tokens": 38.5889,
+          "avg_retrieval_calls": 0.0,
+          "avg_latency_ms": 869.6611,
+          "workflow_counts": {
+            "W1": 90
+          }
+        },
+        {
+          "method": "learned_router",
+          "num_runs": 90,
+          "avg_utility": 0.2357,
+          "avg_em": 0.1778,
+          "avg_f1_proxy": 0.2175,
+          "avg_process_score": 0.138,
+          "avg_tokens": 43.9,
+          "avg_retrieval_calls": 0.0556,
+          "avg_latency_ms": 834.5091,
+          "workflow_counts": {
+            "W1": 85,
+            "W3": 5
+          }
+        }
+      ]
+    },
+    "medium": {
+      "recommended_method": "fixed_W1",
+      "constraints": {
+        "max_tokens": null,
+        "max_latency_ms": null,
+        "max_retrieval_calls": null
+      },
+      "router_settings": {},
+      "source_policy_file": "outputs/2wikimultihopqa/policy_selection_medium.json",
+      "source_eval_file": "outputs/2wikimultihopqa/router_eval_large_budget_medium_val.json",
+      "pareto_frontier": [
+        {
+          "method": "fixed_W1",
+          "num_runs": 90,
+          "avg_utility": 0.2589,
+          "avg_em": 0.1889,
+          "avg_f1_proxy": 0.2171,
+          "avg_process_score": 0.1353,
+          "avg_tokens": 38.5889,
+          "avg_retrieval_calls": 0.0,
+          "avg_latency_ms": 804.5097,
+          "workflow_counts": {
+            "W1": 90
+          }
+        }
+      ]
+    },
+    "high": {
+      "recommended_method": "fixed_W1",
+      "constraints": {
+        "max_tokens": null,
+        "max_latency_ms": null,
+        "max_retrieval_calls": null
+      },
+      "router_settings": {},
+      "source_policy_file": "outputs/2wikimultihopqa/policy_selection_high.json",
+      "source_eval_file": "outputs/2wikimultihopqa/router_eval_large_budget_high_val.json",
+      "pareto_frontier": [
+        {
+          "method": "fixed_W1",
+          "num_runs": 90,
+          "avg_utility": 0.2748,
+          "avg_em": 0.1889,
+          "avg_f1_proxy": 0.2171,
+          "avg_process_score": 0.1353,
+          "avg_tokens": 38.5889,
+          "avg_retrieval_calls": 0.0,
+          "avg_latency_ms": 784.6364,
+          "workflow_counts": {
+            "W1": 90
+          }
+        }
+      ]
+    }
+  },
+  "budget_modes": [
+    "high",
+    "low",
+    "medium"
+  ],
+  "policy_table": [
+    {
+      "budget_mode": "high",
+      "recommended_method": "fixed_W1",
+      "constraints": {
+        "max_tokens": null,
+        "max_latency_ms": null,
+        "max_retrieval_calls": null
+      },
+      "router_settings": {},
+      "source_eval_file": "outputs/2wikimultihopqa/router_eval_large_budget_high_val.json"
+    },
+    {
+      "budget_mode": "low",
+      "recommended_method": "fixed_W1",
+      "constraints": {
+        "max_tokens": null,
+        "max_latency_ms": null,
+        "max_retrieval_calls": null
+      },
+      "router_settings": {},
+      "source_eval_file": "outputs/2wikimultihopqa/router_eval_large_budget_low_val.json"
+    },
+    {
+      "budget_mode": "medium",
+      "recommended_method": "fixed_W1",
+      "constraints": {
+        "max_tokens": null,
+        "max_latency_ms": null,
+        "max_retrieval_calls": null
+      },
+      "router_settings": {},
+      "source_eval_file": "outputs/2wikimultihopqa/router_eval_large_budget_medium_val.json"
+    }
+  ]
+}

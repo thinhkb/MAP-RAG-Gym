@@ -1,13 +1,13 @@
 {
   "source_policy_files": [
-    "outputs\\2wikimultihopqa\\offline_full_system_rl_guarded\\budget_policy_high_offline_rl_candidate.json",
-    "outputs\\2wikimultihopqa\\offline_full_system_rl_guarded\\budget_policy_low_offline_rl_candidate.json",
-    "outputs\\2wikimultihopqa\\offline_full_system_rl_guarded\\budget_policy_medium_offline_rl_candidate.json"
+    "outputs\\offline_full_system_rl_guarded\\budget_policy_high_offline_rl_candidate.json",
+    "outputs\\offline_full_system_rl_guarded\\budget_policy_low_offline_rl_candidate.json",
+    "outputs\\offline_full_system_rl_guarded\\budget_policy_medium_offline_rl_candidate.json"
   ],
   "source_eval_files": [
-    "outputs/2wikimultihopqa/hotpotqa_large_train_rollouts_high_w2w3_det.json",
-    "outputs/2wikimultihopqa/hotpotqa_large_train_rollouts.json",
-    "outputs/2wikimultihopqa/hotpotqa_large_train_rollouts.json"
+    "outputs/hotpotqa_large_train_rollouts_high_w2w3_det.json",
+    "outputs/hotpotqa_large_train_rollouts.json",
+    "outputs/hotpotqa_large_train_rollouts.json"
   ],
   "budget_policies": {
     "high": {
@@ -18,9 +18,9 @@
         "max_latency_ms": null,
         "max_retrieval_calls": null
       },
-      "source_eval_file": "outputs/2wikimultihopqa/hotpotqa_large_train_rollouts_high_w2w3_det.json",
+      "source_eval_file": "outputs/hotpotqa_large_train_rollouts_high_w2w3_det.json",
       "router_settings": {
-        "bandit_router_model": "outputs\\2wikimultihopqa\\offline_full_system_rl_guarded\\macro_bandit_high.joblib"
+        "bandit_router_model": "outputs\\offline_full_system_rl_guarded\\macro_bandit_high.joblib"
       }
     },
     "low": {
@@ -31,9 +31,9 @@
         "max_latency_ms": 900.0,
         "max_retrieval_calls": null
       },
-      "source_eval_file": "outputs/2wikimultihopqa/hotpotqa_large_train_rollouts.json",
+      "source_eval_file": "outputs/hotpotqa_large_train_rollouts.json",
       "router_settings": {
-        "bandit_router_model": "outputs\\2wikimultihopqa\\offline_full_system_rl_guarded\\macro_bandit_low.joblib",
+        "bandit_router_model": "outputs\\offline_full_system_rl_guarded\\macro_bandit_low.joblib",
         "bandit_gate_baseline_workflow": "W3",
         "bandit_gate_min_advantage": 0.2,
         "bandit_gate_min_confidence": 0.65,
@@ -50,9 +50,9 @@
         "max_latency_ms": null,
         "max_retrieval_calls": null
       },
-      "source_eval_file": "outputs/2wikimultihopqa/hotpotqa_large_train_rollouts.json",
+      "source_eval_file": "outputs/hotpotqa_large_train_rollouts.json",
       "router_settings": {
-        "bandit_router_model": "outputs\\2wikimultihopqa\\offline_full_system_rl_guarded\\macro_bandit_medium.joblib"
+        "bandit_router_model": "outputs\\offline_full_system_rl_guarded\\macro_bandit_medium.joblib"
       }
     }
   },
@@ -71,9 +71,9 @@
         "max_retrieval_calls": null
       },
       "router_settings": {
-        "bandit_router_model": "outputs\\2wikimultihopqa\\offline_full_system_rl_guarded\\macro_bandit_high.joblib"
+        "bandit_router_model": "outputs\\offline_full_system_rl_guarded\\macro_bandit_high.joblib"
       },
-      "source_eval_file": "outputs/2wikimultihopqa/hotpotqa_large_train_rollouts_high_w2w3_det.json"
+      "source_eval_file": "outputs/hotpotqa_large_train_rollouts_high_w2w3_det.json"
     },
     {
       "budget_mode": "low",
@@ -84,7 +84,7 @@
         "max_retrieval_calls": null
       },
       "router_settings": {
-        "bandit_router_model": "outputs\\2wikimultihopqa\\offline_full_system_rl_guarded\\macro_bandit_low.joblib",
+        "bandit_router_model": "outputs\\offline_full_system_rl_guarded\\macro_bandit_low.joblib",
         "bandit_gate_baseline_workflow": "W3",
         "bandit_gate_min_advantage": 0.2,
         "bandit_gate_min_confidence": 0.65,
@@ -92,7 +92,7 @@
           "W1"
         ]
       },
-      "source_eval_file": "outputs/2wikimultihopqa/hotpotqa_large_train_rollouts.json"
+      "source_eval_file": "outputs/hotpotqa_large_train_rollouts.json"
     },
     {
       "budget_mode": "medium",
@@ -103,9 +103,9 @@
         "max_retrieval_calls": null
       },
       "router_settings": {
-        "bandit_router_model": "outputs\\2wikimultihopqa\\offline_full_system_rl_guarded\\macro_bandit_medium.joblib"
+        "bandit_router_model": "outputs\\offline_full_system_rl_guarded\\macro_bandit_medium.joblib"
       },
-      "source_eval_file": "outputs/2wikimultihopqa/hotpotqa_large_train_rollouts.json"
+      "source_eval_file": "outputs/hotpotqa_large_train_rollouts.json"
     }
   ]
 }

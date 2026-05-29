@@ -1,14 +1,14 @@
 {
   "manifest": {
     "script": "scripts/build_full_system_rl_package.py",
-    "generated_at_utc": "2026-05-18T19:21:23+00:00",
-    "git_commit": "4401b12d34eee72111646697c4d33a9b212ae42a",
+    "generated_at_utc": "2026-05-28T12:39:13+00:00",
+    "git_commit": "a54903934a1f91922edecee1faf49a9676388b39",
     "python_version": "3.12.13",
     "platform": "Windows-11-10.0.22621-SP0",
     "paths": {
-      "qa": "G:\\MAP-RAG-Gym\\outputs\\final_budget_policy_test_eval.json",
+      "qa": "G:\\MAP-RAG-Gym\\outputs\\2wikimultihopqa\\final_budget_policy_test_eval.json",
       "corpus": null,
-      "router_model": "G:\\MAP-RAG-Gym\\outputs\\final_budget_policy_bundle.json"
+      "router_model": "G:\\MAP-RAG-Gym\\outputs\\2wikimultihopqa\\final_budget_policy_bundle.json"
     },
     "dataset": {
       "name": "full_system_rl",
@@ -26,9 +26,9 @@
       "utility": null
     },
     "settings": {
-      "policy_bundle": "outputs/final_budget_policy_bundle.json",
-      "final_eval": "outputs/final_budget_policy_test_eval.json",
-      "final_report": "outputs/final_project_report.json",
+      "policy_bundle": "outputs/2wikimultihopqa/final_budget_policy_bundle.json",
+      "final_eval": "outputs/2wikimultihopqa/final_budget_policy_test_eval.json",
+      "final_report": "outputs/2wikimultihopqa/final_project_report.json",
       "reference_eval": null,
       "offline_reward_modules": [
         "QR",
@@ -41,19 +41,17 @@
   "stage": {
     "ready_for_offline_full_system_rl": false,
     "ready_for_online_full_system_rl": false,
-    "recommended_next_stage": "continue_offline_improvements",
-    "deployment_mode": "offline_reward_model_only",
+    "recommended_next_stage": "fix_offline_rl_blockers",
+    "deployment_mode": "online_rl_candidate",
     "offline_blockers": [
       "Final project report has not opened offline RL.",
       "Not every budget mode uses an adaptive macro policy.",
       "Micro critic reward models are missing or below quality thresholds."
     ],
-    "online_blockers": [
-      "High bandit regret (0.0419) exceeds threshold (0.04) or best_rate (0.7928) below threshold (0.7)."
-    ]
+    "online_blockers": []
   },
   "macro_layer": {
-    "policy_bundle": "outputs/final_budget_policy_bundle_rl_ready.json",
+    "policy_bundle": "outputs/2wikimultihopqa/final_budget_policy_bundle_rl_ready.json",
     "budget_policies": {
       "high": {
         "recommended_method": "bandit_router",
@@ -66,37 +64,7 @@
         "router_settings": {
           "bandit_router_model": "outputs\\2wikimultihopqa\\offline_full_system_rl_guarded\\macro_bandit_high.joblib"
         },
-        "source_eval_file": "outputs/router_eval_large_budget_high_val.json",
-        "improved_bandit": {
-          "config": {
-            "name": "gbt_n50_d2_lr001",
-            "type": "gbt",
-            "n_estimators": 50,
-            "max_depth": 2,
-            "learning_rate": 0.01,
-            "subsample": 0.8,
-            "cv_avg_regret": 0.0352,
-            "cv_std_regret": 0.0196,
-            "cv_avg_best_rate": 0.8047,
-            "cv_std_best_rate": 0.0382,
-            "per_fold_regret": [
-              0.0384,
-              0.016,
-              0.0174,
-              0.0638,
-              0.0403
-            ],
-            "per_fold_best_rate": [
-              0.8452,
-              0.8095,
-              0.7857,
-              0.75,
-              0.8333
-            ]
-          },
-          "regret": 0.0352,
-          "exact_best_rate": 0.8047
-        }
+        "source_eval_file": "outputs/2wikimultihopqa/router_eval_large_budget_high_val.json"
       },
       "low": {
         "recommended_method": "gated_bandit_router",
@@ -115,7 +83,7 @@
             "W1"
           ]
         },
-        "source_eval_file": "outputs/router_eval_large_budget_low_val.json"
+        "source_eval_file": "outputs/2wikimultihopqa/router_eval_large_budget_low_val.json"
       },
       "medium": {
         "recommended_method": "bandit_router",
@@ -128,12 +96,12 @@
         "router_settings": {
           "bandit_router_model": "outputs\\2wikimultihopqa\\offline_full_system_rl_guarded\\macro_bandit_medium.joblib"
         },
-        "source_eval_file": "outputs/router_eval_large_budget_medium_val.json"
+        "source_eval_file": "outputs/2wikimultihopqa/router_eval_large_budget_medium_val.json"
       }
     },
     "counterfactual_rollout_coverage": {
       "high": {
-        "path": "outputs/hotpotqa_large_train_rollouts_high_w2w3_det.json",
+        "path": "outputs/2wikimultihopqa/hotpotqa_large_train_rollouts_high_w2w3_det.json",
         "num_runs": 840,
         "num_questions": 420,
         "workflow_counts": {
@@ -146,13 +114,13 @@
         "manifest_budget_mode": "high",
         "n_candidates": 3,
         "workflow_avg_utility": {
-          "W2": 0.3666,
-          "W3": 0.3924
+          "W2": 0.213,
+          "W3": 0.189
         },
         "has_counterfactual_workflows": true
       },
       "low": {
-        "path": "outputs/hotpotqa_large_train_rollouts.json",
+        "path": "outputs/2wikimultihopqa/hotpotqa_large_train_rollouts.json",
         "num_runs": 1680,
         "num_questions": 420,
         "workflow_counts": {
@@ -167,15 +135,15 @@
         "manifest_budget_mode": "medium",
         "n_candidates": 3,
         "workflow_avg_utility": {
-          "W1": 0.2212,
-          "W2": 0.3056,
-          "W3": 0.3433,
-          "W6": 0.2547
+          "W1": 0.2227,
+          "W2": 0.1551,
+          "W3": 0.1468,
+          "W6": 0.1191
         },
         "has_counterfactual_workflows": true
       },
       "medium": {
-        "path": "outputs/hotpotqa_large_train_rollouts.json",
+        "path": "outputs/2wikimultihopqa/hotpotqa_large_train_rollouts.json",
         "num_runs": 1680,
         "num_questions": 420,
         "workflow_counts": {
@@ -190,10 +158,10 @@
         "manifest_budget_mode": "medium",
         "n_candidates": 3,
         "workflow_avg_utility": {
-          "W1": 0.2212,
-          "W2": 0.3056,
-          "W3": 0.3433,
-          "W6": 0.2547
+          "W1": 0.2227,
+          "W2": 0.1551,
+          "W3": 0.1468,
+          "W6": 0.1191
         },
         "has_counterfactual_workflows": true
       }
@@ -208,8 +176,8 @@
     "critic_models": {
       "QR": {
         "module": "QR",
-        "model_path": "outputs/process_critic_budget_qr_local.joblib",
-        "meta_path": "outputs/process_critic_budget_qr_local.joblib.meta.json",
+        "model_path": "outputs/2wikimultihopqa/process_critic_budget_qr_local.joblib",
+        "meta_path": "outputs/2wikimultihopqa/process_critic_budget_qr_local.joblib.meta.json",
         "target": "local_reward",
         "train_counts": {
           "num_examples": 1071,
@@ -231,10 +199,10 @@
         },
         "eval_metrics": {
           "count": 189,
-          "mae": 0.0955,
-          "rmse": 0.1202,
-          "pearson": 0.705,
-          "spearman": 0.6745
+          "mae": 0.0852,
+          "rmse": 0.1244,
+          "pearson": 0.633,
+          "spearman": 0.6671
         },
         "readiness_gate": {
           "min_eval_examples": 300,
@@ -244,16 +212,16 @@
       },
       "AG": {
         "module": "AG",
-        "model_path": "outputs/process_critic_budget_ag.joblib",
-        "meta_path": "outputs/process_critic_budget_ag.joblib.meta.json",
+        "model_path": "outputs/2wikimultihopqa/process_critic_budget_ag.joblib",
+        "meta_path": "outputs/2wikimultihopqa/process_critic_budget_ag.joblib.meta.json",
         "target": "blended_reward",
         "train_counts": {
-          "num_examples": 4283,
+          "num_examples": 4284,
           "modules": {
-            "AG": 4283
+            "AG": 4284
           },
           "budget_modes": {
-            "medium": 4283
+            "medium": 4284
           }
         },
         "eval_counts": {
@@ -267,15 +235,15 @@
         },
         "eval_metrics": {
           "count": 756,
-          "mae": 0.2203,
-          "rmse": 0.295,
-          "pearson": 0.2987,
-          "spearman": 0.2112
+          "mae": 0.148,
+          "rmse": 0.2133,
+          "pearson": 0.4899,
+          "spearman": 0.5243
         },
         "readiness_gate": {
           "min_eval_examples": 300,
           "min_spearman": 0.25,
-          "ready_as_offline_reward_model": false
+          "ready_as_offline_reward_model": true
         }
       }
     },

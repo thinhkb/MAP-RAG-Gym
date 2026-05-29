@@ -1,0 +1,18 @@
+{
+  "dataset": "2wikimultihopqa",
+  "source_dataset": "cmriat/2wikimultihopqa",
+  "source_split": "validation",
+  "seed": 13,
+  "limit": 600,
+  "exact_counts": {
+    "train": 420,
+    "val": 90,
+    "test": 90
+  },
+  "counts": {
+    "train": 420,
+    "val": 90,
+    "test": 90
+  },
+  "unused_count": 0
+}

@@ -21,6 +21,17 @@
       "source_eval_file": "outputs/2wikimultihopqa/hotpotqa_large_train_rollouts_high_w2w3_det.json",
       "router_settings": {
         "bandit_router_model": "outputs\\2wikimultihopqa\\offline_full_system_rl_guarded\\macro_bandit_high.joblib"
+      },
+      "offline_rl": {
+        "stage": "macro_candidate_policy",
+        "holdout_policy_eval": {
+          "avg_policy_utility": 0.1617,
+          "avg_oracle_utility": 0.1843,
+          "avg_regret": 0.0227,
+          "exact_best_rate": 0.7143,
+          "num_questions": 63
+        },
+        "promotion_required": "Evaluate on validation/test and promote only if non-regressive vs frozen bundle."
       }
     },
     "low": {
@@ -40,6 +51,17 @@
         "bandit_gate_allowed_workflows": [
           "W1"
         ]
+      },
+      "offline_rl": {
+        "stage": "macro_candidate_policy",
+        "holdout_policy_eval": {
+          "avg_policy_utility": 0.2671,
+          "avg_oracle_utility": 0.2742,
+          "avg_regret": 0.0071,
+          "exact_best_rate": 0.7937,
+          "num_questions": 63
+        },
+        "promotion_required": "Evaluate on validation/test and promote only if non-regressive vs frozen bundle."
       }
     },
     "medium": {
@@ -53,6 +75,17 @@
       "source_eval_file": "outputs/2wikimultihopqa/hotpotqa_large_train_rollouts.json",
       "router_settings": {
         "bandit_router_model": "outputs\\2wikimultihopqa\\offline_full_system_rl_guarded\\macro_bandit_medium.joblib"
+      },
+      "offline_rl": {
+        "stage": "macro_candidate_policy",
+        "holdout_policy_eval": {
+          "avg_policy_utility": 0.3682,
+          "avg_oracle_utility": 0.3707,
+          "avg_regret": 0.0025,
+          "exact_best_rate": 0.746,
+          "num_questions": 63
+        },
+        "promotion_required": "Evaluate on validation/test and promote only if non-regressive vs frozen bundle."
       }
     }
   },
@@ -107,5 +140,9 @@
       },
       "source_eval_file": "outputs/2wikimultihopqa/hotpotqa_large_train_rollouts.json"
     }
-  ]
+  ],
+  "offline_rl": {
+    "stage": "candidate_bundle",
+    "promotion_required": "Run eval_final_budget_bundle.py before replacing the frozen rl_ready bundle."
+  }
 }

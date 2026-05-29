@@ -1,14 +1,14 @@
 {
   "manifest": {
     "script": "scripts/promote_offline_rl_candidate.py",
-    "generated_at_utc": "2026-05-28T12:46:54+00:00",
+    "generated_at_utc": "2026-05-28T14:10:43+00:00",
     "git_commit": "a54903934a1f91922edecee1faf49a9676388b39",
     "python_version": "3.12.13",
     "platform": "Windows-11-10.0.22621-SP0",
     "paths": {
       "qa": "G:\\MAP-RAG-Gym\\outputs\\2wikimultihopqa\\offline_full_system_rl_guarded\\final_budget_policy_test_eval_offline_rl_candidate.json",
       "corpus": null,
-      "router_model": "G:\\MAP-RAG-Gym\\outputs\\final_budget_policy_bundle_rl_ready.json"
+      "router_model": "G:\\MAP-RAG-Gym\\outputs\\2wikimultihopqa\\final_budget_policy_bundle_rl_ready.json"
     },
     "dataset": {
       "name": "promotion",
@@ -28,8 +28,8 @@
     "settings": {
       "candidate_bundle": "outputs/2wikimultihopqa/offline_full_system_rl_guarded/final_budget_policy_bundle_offline_rl_candidate.json",
       "candidate_eval": "outputs/2wikimultihopqa/offline_full_system_rl_guarded/final_budget_policy_test_eval_offline_rl_candidate.json",
-      "frozen_bundle": "outputs/final_budget_policy_bundle_rl_ready.json",
-      "frozen_eval": "outputs/final_budget_policy_test_eval_rl_ready.json",
+      "frozen_bundle": "outputs/2wikimultihopqa/final_budget_policy_bundle_rl_ready.json",
+      "frozen_eval": "outputs/2wikimultihopqa/final_budget_policy_test_eval_rl_ready.json",
       "promotion_check": "outputs/2wikimultihopqa/offline_full_system_rl_guarded/promotion_check.json",
       "skip_gate_check": true
     }
@@ -37,53 +37,42 @@
   "promoted": true,
   "budget_comparison": {
     "high": {
-      "old_method": "bandit_router",
+      "old_method": null,
       "new_method": "bandit_router",
-      "old_utility": 0.4375,
+      "old_utility": 0.0,
       "new_utility": 0.2353,
-      "delta": -0.2022,
-      "old_tokens": 176.5333,
+      "delta": 0.2353,
+      "old_tokens": null,
       "new_tokens": 204.2444,
-      "old_workflow_counts": {
-        "W3": 53,
-        "W2": 37
-      },
+      "old_workflow_counts": {},
       "new_workflow_counts": {
         "W3": 32,
         "W2": 58
       }
     },
     "low": {
-      "old_method": "gated_bandit_router",
+      "old_method": null,
       "new_method": "gated_bandit_router",
-      "old_utility": 0.2776,
+      "old_utility": 0.0,
       "new_utility": 0.168,
-      "delta": -0.1096,
-      "old_tokens": 104.4556,
+      "delta": 0.168,
+      "old_tokens": null,
       "new_tokens": 90.0889,
-      "old_workflow_counts": {
-        "W1": 25,
-        "W3": 65
-      },
+      "old_workflow_counts": {},
       "new_workflow_counts": {
         "W3": 52,
         "W1": 38
       }
     },
     "medium": {
-      "old_method": "bandit_router",
+      "old_method": null,
       "new_method": "bandit_router",
-      "old_utility": 0.3613,
+      "old_utility": 0.0,
       "new_utility": 0.2161,
-      "delta": -0.1452,
-      "old_tokens": 116.4,
+      "delta": 0.2161,
+      "old_tokens": null,
       "new_tokens": 180.9667,
-      "old_workflow_counts": {
-        "W1": 36,
-        "W3": 43,
-        "W2": 6,
-        "W6": 5
-      },
+      "old_workflow_counts": {},
       "new_workflow_counts": {
         "W3": 20,
         "W6": 23,
@@ -93,14 +82,14 @@
     }
   },
   "backup_paths": {
-    "frozen_bundle": "outputs\\final_budget_policy_bundle_rl_ready_pre_promotion.json",
-    "frozen_eval": "outputs\\final_budget_policy_test_eval_rl_ready_pre_promotion.json",
+    "frozen_bundle": null,
+    "frozen_eval": null,
     "frozen_report": null
   },
   "promoted_paths": {
-    "frozen_bundle": "outputs/final_budget_policy_bundle_rl_ready.json",
-    "frozen_eval": "outputs/final_budget_policy_test_eval_rl_ready.json",
-    "frozen_report": "outputs/final_project_report_rl_ready.json"
+    "frozen_bundle": "outputs/2wikimultihopqa/final_budget_policy_bundle_rl_ready.json",
+    "frozen_eval": "outputs/2wikimultihopqa/final_budget_policy_test_eval_rl_ready.json",
+    "frozen_report": "outputs/2wikimultihopqa/final_project_report_rl_ready.json"
   },
   "summary": "Guarded offline RL candidate has been promoted to the new frozen bundle. The previous frozen bundle has been backed up."
 }

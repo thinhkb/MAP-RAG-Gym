@@ -1,0 +1,2017 @@
+{
+  "manifest": {
+    "script": "scripts/train_process_critic.py",
+    "generated_at_utc": "2026-05-28T11:45:06+00:00",
+    "git_commit": "a54903934a1f91922edecee1faf49a9676388b39",
+    "python_version": "3.12.13",
+    "platform": "Windows-11-10.0.22621-SP0",
+    "paths": {
+      "qa": "G:\\MAP-RAG-Gym\\outputs\\2wikimultihopqa\\hotpotqa_large_process_train_budget.json",
+      "corpus": null,
+      "router_model": "G:\\MAP-RAG-Gym\\outputs\\2wikimultihopqa\\process_critic_budget_qr_local.joblib"
+    },
+    "dataset": {
+      "name": "2wikimultihopqa",
+      "split": "train",
+      "limit": 13860,
+      "effective_questions": 357
+    },
+    "llm": {
+      "provider": null,
+      "model": null
+    },
+    "reproducibility": {
+      "seed": 13,
+      "prompt_version": "v1",
+      "utility": null
+    },
+    "settings": {
+      "target": "local_reward",
+      "holdout_ratio": 0.15,
+      "eval_input": null,
+      "modules": [
+        "QR"
+      ]
+    }
+  },
+  "source_process_manifest": {
+    "script": "scripts/build_process_dataset.py",
+    "generated_at_utc": "2026-05-28T11:44:54+00:00",
+    "git_commit": "a54903934a1f91922edecee1faf49a9676388b39",
+    "python_version": "3.12.13",
+    "platform": "Windows-11-10.0.22621-SP0",
+    "paths": {
+      "qa": "G:\\MAP-RAG-Gym\\outputs\\2wikimultihopqa\\hotpotqa_large_train_rollouts.json",
+      "corpus": "G:\\MAP-RAG-Gym\\data\\2wikimultihopqa\\corpus.json",
+      "router_model": null
+    },
+    "dataset": {
+      "name": "2wikimultihopqa",
+      "split": "train",
+      "limit": 420,
+      "effective_questions": 420
+    },
+    "llm": {
+      "provider": "ollama",
+      "model": "llama3.2"
+    },
+    "reproducibility": {
+      "seed": 42,
+      "prompt_version": "v1",
+      "utility": {
+        "medium": {
+          "reward_weights": {
+            "f1_proxy": 1.0,
+            "process_score": 0.35
+          },
+          "cost_weights": {
+            "tokens": 0.08,
+            "retrieval_calls": 0.1,
+            "latency_ms": 0.05
+          },
+          "cost_normalizers": {
+            "tokens": 2000.0,
+            "retrieval_calls": 4.0,
+            "latency_ms": 10000.0
+          }
+        }
+      }
+    },
+    "settings": {
+      "source_rollout_file": "outputs/2wikimultihopqa/hotpotqa_large_train_rollouts.json",
+      "reward_target": "blended_reward",
+      "reward_formula": "0.7 * local_reward + 0.3 * outcome_utility",
+      "budget_modes": [
+        "medium"
+      ]
+    }
+  },
+  "train_counts": {
+    "num_examples": 1071,
+    "modules": {
+      "QR": 1071
+    },
+    "budget_modes": {
+      "medium": 1071
+    }
+  },
+  "eval_counts": {
+    "num_examples": 189,
+    "modules": {
+      "QR": 189
+    },
+    "budget_modes": {
+      "medium": 189
+    }
+  },
+  "evaluation": {
+    "overall": {
+      "count": 189,
+      "mae": 0.0852,
+      "rmse": 0.1244,
+      "pearson": 0.633,
+      "spearman": 0.6671
+    },
+    "per_module": {
+      "QR": {
+        "count": 189,
+        "mae": 0.0852,
+        "rmse": 0.1244,
+        "pearson": 0.633,
+        "spearman": 0.6671
+      }
+    }
+  },
+  "predictions": [
+    {
+      "example_id": "8b8ff698-ed26-428b-babd-f2f14127dd58:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_476",
+      "question": "Who is the father of the director of film Plunkett & Macleane?",
+      "action_text": "director of Plunkett & Macleane father",
+      "target": 0.708,
+      "prediction": 0.5871,
+      "abs_error": 0.1209
+    },
+    {
+      "example_id": "8b8ff698-ed26-428b-babd-f2f14127dd58:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_476",
+      "question": "Who is the father of the director of film Plunkett & Macleane?",
+      "action_text": "director of Plunkett & Macleane father",
+      "target": 0.708,
+      "prediction": 0.5832,
+      "abs_error": 0.1248
+    },
+    {
+      "example_id": "8b8ff698-ed26-428b-babd-f2f14127dd58:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_476",
+      "question": "Who is the father of the director of film Plunkett & Macleane?",
+      "action_text": "director of Plunkett & Macleane father",
+      "target": 0.708,
+      "prediction": 0.5832,
+      "abs_error": 0.1248
+    },
+    {
+      "example_id": "7cd92dc0-3fd1-4aa7-9851-f4e92f9eba39:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_336",
+      "question": "Who is Frederick Of Luxembourg's paternal grandfather?",
+      "action_text": "Frederick Of Luxembourg paternal grandfather",
+      "target": 0.4931,
+      "prediction": 0.7253,
+      "abs_error": 0.2322
+    },
+    {
+      "example_id": "7cd92dc0-3fd1-4aa7-9851-f4e92f9eba39:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_336",
+      "question": "Who is Frederick Of Luxembourg's paternal grandfather?",
+      "action_text": "Frederick Of Luxembourg paternal grandfather",
+      "target": 0.4931,
+      "prediction": 0.7214,
+      "abs_error": 0.2283
+    },
+    {
+      "example_id": "7cd92dc0-3fd1-4aa7-9851-f4e92f9eba39:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_336",
+      "question": "Who is Frederick Of Luxembourg's paternal grandfather?",
+      "action_text": "Frederick Of Luxembourg paternal grandfather",
+      "target": 0.4931,
+      "prediction": 0.7214,
+      "abs_error": 0.2283
+    },
+    {
+      "example_id": "b3b1656e-d359-4a7a-b965-a925c564ff1e:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_50",
+      "question": "Who lived longer, Giuseppe Cesari or Nicos Poulantzas?",
+      "action_text": "Giuseppe Cesari vs Nicos Poulantzas lifespan",
+      "target": 0.4364,
+      "prediction": 0.3908,
+      "abs_error": 0.0456
+    },
+    {
+      "example_id": "b3b1656e-d359-4a7a-b965-a925c564ff1e:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_50",
+      "question": "Who lived longer, Giuseppe Cesari or Nicos Poulantzas?",
+      "action_text": "Giuseppe Cesari vs Nicos Poulantzas lifespan",
+      "target": 0.4364,
+      "prediction": 0.3869,
+      "abs_error": 0.0495
+    },
+    {
+      "example_id": "b3b1656e-d359-4a7a-b965-a925c564ff1e:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_50",
+      "question": "Who lived longer, Giuseppe Cesari or Nicos Poulantzas?",
+      "action_text": "Giuseppe Cesari vs Nicos Poulantzas lifespan",
+      "target": 0.4364,
+      "prediction": 0.3869,
+      "abs_error": 0.0495
+    },
+    {
+      "example_id": "4fd008f9-d349-47fc-ae92-455e1aa8869b:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_67",
+      "question": "Where was the place of death of Lambert I, Count Of Louvain's father?",
+      "action_text": "Lambert I Count Of Louvain father death location",
+      "target": 0.4917,
+      "prediction": 0.4931,
+      "abs_error": 0.0014
+    },
+    {
+      "example_id": "4fd008f9-d349-47fc-ae92-455e1aa8869b:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_67",
+      "question": "Where was the place of death of Lambert I, Count Of Louvain's father?",
+      "action_text": "Lambert I Count Of Louvain father death location",
+      "target": 0.4917,
+      "prediction": 0.4892,
+      "abs_error": 0.0025
+    },
+    {
+      "example_id": "4fd008f9-d349-47fc-ae92-455e1aa8869b:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_67",
+      "question": "Where was the place of death of Lambert I, Count Of Louvain's father?",
+      "action_text": "Lambert I Count Of Louvain father death location",
+      "target": 0.4917,
+      "prediction": 0.4892,
+      "abs_error": 0.0025
+    },
+    {
+      "example_id": "73fde527-243e-4943-8d79-e14380191cec:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_275",
+      "question": "Which film whose director is younger, Dallas 362 or Revenge Of The Barbarians?",
+      "action_text": "film director age younger Dallas 362 Revenge Of The Barbarians",
+      "target": 0.6924,
+      "prediction": 0.5541,
+      "abs_error": 0.1383
+    },
+    {
+      "example_id": "73fde527-243e-4943-8d79-e14380191cec:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_275",
+      "question": "Which film whose director is younger, Dallas 362 or Revenge Of The Barbarians?",
+      "action_text": "film director age younger Dallas 362 Revenge Of The Barbarians",
+      "target": 0.6924,
+      "prediction": 0.5502,
+      "abs_error": 0.1422
+    },
+    {
+      "example_id": "73fde527-243e-4943-8d79-e14380191cec:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_275",
+      "question": "Which film whose director is younger, Dallas 362 or Revenge Of The Barbarians?",
+      "action_text": "film director age younger Dallas 362 Revenge Of The Barbarians",
+      "target": 0.6924,
+      "prediction": 0.5502,
+      "abs_error": 0.1422
+    },
+    {
+      "example_id": "d2776080-2f4c-4694-bc80-3017fadcc381:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_290",
+      "question": "Are The Man Who Knew Too Much (1956 Film) and Man On Wire both from the same country?",
+      "action_text": "film from France or Belgium",
+      "target": 0.0532,
+      "prediction": 0.2837,
+      "abs_error": 0.2305
+    },
+    {
+      "example_id": "d2776080-2f4c-4694-bc80-3017fadcc381:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_290",
+      "question": "Are The Man Who Knew Too Much (1956 Film) and Man On Wire both from the same country?",
+      "action_text": "film from France or Belgium",
+      "target": 0.0532,
+      "prediction": 0.2798,
+      "abs_error": 0.2266
+    },
+    {
+      "example_id": "d2776080-2f4c-4694-bc80-3017fadcc381:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_290",
+      "question": "Are The Man Who Knew Too Much (1956 Film) and Man On Wire both from the same country?",
+      "action_text": "film from France or Belgium",
+      "target": 0.0532,
+      "prediction": 0.2798,
+      "abs_error": 0.2266
+    },
+    {
+      "example_id": "bd59dd89-2996-4793-a15b-8643e02936aa:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_333",
+      "question": "Which film has the director died earlier, John Jaffer Janardhanan or Kamakalawa?",
+      "action_text": "film director death timeline John Jaffer Janardhanan vs Kamakalawa",
+      "target": 0.4532,
+      "prediction": 0.3786,
+      "abs_error": 0.0746
+    },
+    {
+      "example_id": "bd59dd89-2996-4793-a15b-8643e02936aa:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_333",
+      "question": "Which film has the director died earlier, John Jaffer Janardhanan or Kamakalawa?",
+      "action_text": "film director death timeline John Jaffer Janardhanan vs Kamakalawa",
+      "target": 0.4532,
+      "prediction": 0.3747,
+      "abs_error": 0.0785
+    },
+    {
+      "example_id": "bd59dd89-2996-4793-a15b-8643e02936aa:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_333",
+      "question": "Which film has the director died earlier, John Jaffer Janardhanan or Kamakalawa?",
+      "action_text": "film director death timeline John Jaffer Janardhanan vs Kamakalawa",
+      "target": 0.4532,
+      "prediction": 0.3747,
+      "abs_error": 0.0785
+    },
+    {
+      "example_id": "510c6320-a923-4e59-bda7-6165ca1b982b:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_116",
+      "question": "What is the place of birth of Remigius Of Rouen's father?",
+      "action_text": "Remigius Of Rouen father birthplace",
+      "target": 0.2427,
+      "prediction": 0.2938,
+      "abs_error": 0.0511
+    },
+    {
+      "example_id": "510c6320-a923-4e59-bda7-6165ca1b982b:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_116",
+      "question": "What is the place of birth of Remigius Of Rouen's father?",
+      "action_text": "Remigius Of Rouen father birthplace",
+      "target": 0.2427,
+      "prediction": 0.2899,
+      "abs_error": 0.0472
+    },
+    {
+      "example_id": "510c6320-a923-4e59-bda7-6165ca1b982b:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_116",
+      "question": "What is the place of birth of Remigius Of Rouen's father?",
+      "action_text": "Remigius Of Rouen father birthplace",
+      "target": 0.2427,
+      "prediction": 0.2899,
+      "abs_error": 0.0472
+    },
+    {
+      "example_id": "cede6f39-fe6a-4b5e-a6ef-d66bde00e414:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_313",
+      "question": "Who is younger, Bernard Chambaz or Tibor Pézsa?",
+      "action_text": "Bernard Chambaz vs Tibor Peöza age",
+      "target": 0.3255,
+      "prediction": 0.431,
+      "abs_error": 0.1055
+    },
+    {
+      "example_id": "cede6f39-fe6a-4b5e-a6ef-d66bde00e414:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_313",
+      "question": "Who is younger, Bernard Chambaz or Tibor Pézsa?",
+      "action_text": "Bernard Chambaz vs Tibor Peöza age",
+      "target": 0.3255,
+      "prediction": 0.4271,
+      "abs_error": 0.1016
+    },
+    {
+      "example_id": "cede6f39-fe6a-4b5e-a6ef-d66bde00e414:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_313",
+      "question": "Who is younger, Bernard Chambaz or Tibor Pézsa?",
+      "action_text": "Bernard Chambaz vs Tibor Peöza age",
+      "target": 0.3255,
+      "prediction": 0.4271,
+      "abs_error": 0.1016
+    },
+    {
+      "example_id": "43d8a84d-9696-41a1-84fc-07f06cfe360b:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_160",
+      "question": "Where was the place of death of Prince Christopher Of Greece And Denmark's father?",
+      "action_text": "Prince Christopher Of Greece And Denmark father death location",
+      "target": 0.492,
+      "prediction": 0.505,
+      "abs_error": 0.013
+    },
+    {
+      "example_id": "43d8a84d-9696-41a1-84fc-07f06cfe360b:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_160",
+      "question": "Where was the place of death of Prince Christopher Of Greece And Denmark's father?",
+      "action_text": "Prince Christopher Of Greece And Denmark father death location",
+      "target": 0.492,
+      "prediction": 0.5012,
+      "abs_error": 0.0092
+    },
+    {
+      "example_id": "43d8a84d-9696-41a1-84fc-07f06cfe360b:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_160",
+      "question": "Where was the place of death of Prince Christopher Of Greece And Denmark's father?",
+      "action_text": "Prince Christopher Of Greece And Denmark father death location",
+      "target": 0.492,
+      "prediction": 0.5012,
+      "abs_error": 0.0092
+    },
+    {
+      "example_id": "7a32459a-5d5b-46b3-8bd7-1f812b7d0f68:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_511",
+      "question": "Which film has the director who was born first, En Kvinde Er Overflødig or Aakrosh (2010 Film)?",
+      "action_text": "director born first En Kvinde Er Overflødig vs Aakrosh 2010",
+      "target": 0.4916,
+      "prediction": 0.5788,
+      "abs_error": 0.0872
+    },
+    {
+      "example_id": "7a32459a-5d5b-46b3-8bd7-1f812b7d0f68:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_511",
+      "question": "Which film has the director who was born first, En Kvinde Er Overflødig or Aakrosh (2010 Film)?",
+      "action_text": "director born first En Kvinde Er Overflødig vs Aakrosh 2010",
+      "target": 0.4916,
+      "prediction": 0.575,
+      "abs_error": 0.0834
+    },
+    {
+      "example_id": "7a32459a-5d5b-46b3-8bd7-1f812b7d0f68:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_511",
+      "question": "Which film has the director who was born first, En Kvinde Er Overflødig or Aakrosh (2010 Film)?",
+      "action_text": "director born first En Kvinde Er Overflødig vs Aakrosh 2010",
+      "target": 0.4916,
+      "prediction": 0.575,
+      "abs_error": 0.0834
+    },
+    {
+      "example_id": "d5721029-45ee-4db0-9d74-5d6b7094e613:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_425",
+      "question": "Which film has the director born earlier, The Newest Pledge or Más Allá De La Aventura?",
+      "action_text": "director birthdate The Newest Pledge vs Mas alla de la aventura",
+      "target": 0.3457,
+      "prediction": 0.5145,
+      "abs_error": 0.1688
+    },
+    {
+      "example_id": "d5721029-45ee-4db0-9d74-5d6b7094e613:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_425",
+      "question": "Which film has the director born earlier, The Newest Pledge or Más Allá De La Aventura?",
+      "action_text": "director birthdate The Newest Pledge vs Mas alla de la aventura",
+      "target": 0.3457,
+      "prediction": 0.5107,
+      "abs_error": 0.165
+    },
+    {
+      "example_id": "d5721029-45ee-4db0-9d74-5d6b7094e613:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_425",
+      "question": "Which film has the director born earlier, The Newest Pledge or Más Allá De La Aventura?",
+      "action_text": "director birthdate The Newest Pledge vs Mas alla de la aventura",
+      "target": 0.3457,
+      "prediction": 0.5107,
+      "abs_error": 0.165
+    },
+    {
+      "example_id": "0ecc3e0b-3ddf-4817-8eed-a6a3d3bdadea:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_463",
+      "question": "Where did the director of film Music In Darkness die?",
+      "action_text": "Music In Darkness director death",
+      "target": 0.3698,
+      "prediction": 0.249,
+      "abs_error": 0.1208
+    },
+    {
+      "example_id": "0ecc3e0b-3ddf-4817-8eed-a6a3d3bdadea:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_463",
+      "question": "Where did the director of film Music In Darkness die?",
+      "action_text": "Music In Darkness director death",
+      "target": 0.3698,
+      "prediction": 0.2452,
+      "abs_error": 0.1246
+    },
+    {
+      "example_id": "0ecc3e0b-3ddf-4817-8eed-a6a3d3bdadea:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_463",
+      "question": "Where did the director of film Music In Darkness die?",
+      "action_text": "Music In Darkness director death",
+      "target": 0.3698,
+      "prediction": 0.2452,
+      "abs_error": 0.1246
+    },
+    {
+      "example_id": "011943b4-1401-4c38-b4b7-020e4085e9f6:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_276",
+      "question": "Which film has the director born earlier, Spring Storms or Fun In The Barracks?",
+      "action_text": "director born earlier Spring Storms or Fun In The Barracks",
+      "target": 0.6931,
+      "prediction": 0.6503,
+      "abs_error": 0.0428
+    },
+    {
+      "example_id": "011943b4-1401-4c38-b4b7-020e4085e9f6:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_276",
+      "question": "Which film has the director born earlier, Spring Storms or Fun In The Barracks?",
+      "action_text": "director born earlier Spring Storms or Fun In The Barracks",
+      "target": 0.6931,
+      "prediction": 0.6464,
+      "abs_error": 0.0467
+    },
+    {
+      "example_id": "011943b4-1401-4c38-b4b7-020e4085e9f6:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_276",
+      "question": "Which film has the director born earlier, Spring Storms or Fun In The Barracks?",
+      "action_text": "director born earlier Spring Storms or Fun In The Barracks",
+      "target": 0.6931,
+      "prediction": 0.6464,
+      "abs_error": 0.0467
+    },
+    {
+      "example_id": "5a08f82b-0d8f-42f3-9a81-744f62d6d6c1:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_371",
+      "question": "Which film has the director died earlier, Dialogues Of Exiles or Rhythm And Weep?",
+      "action_text": "director death Dialogues Of Exiles vs Rhythm And Weep",
+      "target": 0.4096,
+      "prediction": 0.3847,
+      "abs_error": 0.0249
+    },
+    {
+      "example_id": "5a08f82b-0d8f-42f3-9a81-744f62d6d6c1:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_371",
+      "question": "Which film has the director died earlier, Dialogues Of Exiles or Rhythm And Weep?",
+      "action_text": "director death Dialogues Of Exiles vs Rhythm And Weep",
+      "target": 0.4096,
+      "prediction": 0.3809,
+      "abs_error": 0.0287
+    },
+    {
+      "example_id": "5a08f82b-0d8f-42f3-9a81-744f62d6d6c1:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_371",
+      "question": "Which film has the director died earlier, Dialogues Of Exiles or Rhythm And Weep?",
+      "action_text": "director death Dialogues Of Exiles vs Rhythm And Weep",
+      "target": 0.4096,
+      "prediction": 0.3809,
+      "abs_error": 0.0287
+    },
+    {
+      "example_id": "0f4d606a-ead6-467d-a72d-23c28cac7173:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_103",
+      "question": "Who was born later, Joseph J. Magliocco or Viktoriya Zeynep Güneş?",
+      "action_text": "Joseph J Magliocco vs Viktoriya Zeynep Guenes birthdate",
+      "target": 0.4085,
+      "prediction": 0.3796,
+      "abs_error": 0.0289
+    },
+    {
+      "example_id": "0f4d606a-ead6-467d-a72d-23c28cac7173:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_103",
+      "question": "Who was born later, Joseph J. Magliocco or Viktoriya Zeynep Güneş?",
+      "action_text": "Joseph J Magliocco vs Viktoriya Zeynep Guenes birthdate",
+      "target": 0.4085,
+      "prediction": 0.3757,
+      "abs_error": 0.0328
+    },
+    {
+      "example_id": "0f4d606a-ead6-467d-a72d-23c28cac7173:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_103",
+      "question": "Who was born later, Joseph J. Magliocco or Viktoriya Zeynep Güneş?",
+      "action_text": "Joseph J Magliocco vs Viktoriya Zeynep Guenes birthdate",
+      "target": 0.4085,
+      "prediction": 0.3757,
+      "abs_error": 0.0328
+    },
+    {
+      "example_id": "5231e5f9-65cd-40f0-a93d-dbeba8924a5e:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_158",
+      "question": "Which film was released first, The Beginning Or The End or Hold Back The Night?",
+      "action_text": "The Beginning vs The End vs Hold Back The Night release order",
+      "target": 0.4089,
+      "prediction": 0.409,
+      "abs_error": 0.0001
+    },
+    {
+      "example_id": "5231e5f9-65cd-40f0-a93d-dbeba8924a5e:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_158",
+      "question": "Which film was released first, The Beginning Or The End or Hold Back The Night?",
+      "action_text": "The Beginning vs The End vs Hold Back The Night release order",
+      "target": 0.4089,
+      "prediction": 0.4051,
+      "abs_error": 0.0038
+    },
+    {
+      "example_id": "5231e5f9-65cd-40f0-a93d-dbeba8924a5e:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_158",
+      "question": "Which film was released first, The Beginning Or The End or Hold Back The Night?",
+      "action_text": "The Beginning vs The End vs Hold Back The Night release order",
+      "target": 0.4089,
+      "prediction": 0.4051,
+      "abs_error": 0.0038
+    },
+    {
+      "example_id": "6a3b1aaf-992a-411b-860e-2dcc35968031:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_248",
+      "question": "Are both Țerova and Slava (River) located in the same country?",
+      "action_text": "Țerova River Slava River same country",
+      "target": 0.4385,
+      "prediction": 0.6121,
+      "abs_error": 0.1736
+    },
+    {
+      "example_id": "6a3b1aaf-992a-411b-860e-2dcc35968031:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_248",
+      "question": "Are both Țerova and Slava (River) located in the same country?",
+      "action_text": "Țerova River Slava River same country",
+      "target": 0.4385,
+      "prediction": 0.6082,
+      "abs_error": 0.1697
+    },
+    {
+      "example_id": "6a3b1aaf-992a-411b-860e-2dcc35968031:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_248",
+      "question": "Are both Țerova and Slava (River) located in the same country?",
+      "action_text": "Țerova River Slava River same country",
+      "target": 0.4385,
+      "prediction": 0.6082,
+      "abs_error": 0.1697
+    },
+    {
+      "example_id": "585d2d31-c1e8-4428-979e-19caf59713b1:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_506",
+      "question": "Where was the mother of Emilie Hegh Arntzen born?",
+      "action_text": "Emilie Hegh Arntzen mother birthplace",
+      "target": 0.5643,
+      "prediction": 0.5019,
+      "abs_error": 0.0624
+    },
+    {
+      "example_id": "585d2d31-c1e8-4428-979e-19caf59713b1:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_506",
+      "question": "Where was the mother of Emilie Hegh Arntzen born?",
+      "action_text": "Emilie Hegh Arntzen mother birthplace",
+      "target": 0.5643,
+      "prediction": 0.498,
+      "abs_error": 0.0663
+    },
+    {
+      "example_id": "585d2d31-c1e8-4428-979e-19caf59713b1:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_506",
+      "question": "Where was the mother of Emilie Hegh Arntzen born?",
+      "action_text": "Emilie Hegh Arntzen mother birthplace",
+      "target": 0.5643,
+      "prediction": 0.498,
+      "abs_error": 0.0663
+    },
+    {
+      "example_id": "092229db-3695-4d44-a8cc-ed908d94c777:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_193",
+      "question": "What is the place of birth of Eiludd Powys's father?",
+      "action_text": "Eiludd Powys father birthplace",
+      "target": 0.243,
+      "prediction": 0.2325,
+      "abs_error": 0.0105
+    },
+    {
+      "example_id": "092229db-3695-4d44-a8cc-ed908d94c777:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_193",
+      "question": "What is the place of birth of Eiludd Powys's father?",
+      "action_text": "Eiludd Powys father birthplace",
+      "target": 0.243,
+      "prediction": 0.2286,
+      "abs_error": 0.0144
+    },
+    {
+      "example_id": "092229db-3695-4d44-a8cc-ed908d94c777:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_193",
+      "question": "What is the place of birth of Eiludd Powys's father?",
+      "action_text": "Eiludd Powys father birthplace",
+      "target": 0.243,
+      "prediction": 0.2286,
+      "abs_error": 0.0144
+    },
+    {
+      "example_id": "c5189552-a508-4c5b-8866-2dd87a08da42:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_368",
+      "question": "Where did George Lane-Fox (Mp)'s father study?",
+      "action_text": "George Lane-Fox Mp father education",
+      "target": 0.3263,
+      "prediction": 0.3238,
+      "abs_error": 0.0025
+    },
+    {
+      "example_id": "c5189552-a508-4c5b-8866-2dd87a08da42:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_368",
+      "question": "Where did George Lane-Fox (Mp)'s father study?",
+      "action_text": "George Lane-Fox Mp father education",
+      "target": 0.3263,
+      "prediction": 0.3199,
+      "abs_error": 0.0064
+    },
+    {
+      "example_id": "c5189552-a508-4c5b-8866-2dd87a08da42:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_368",
+      "question": "Where did George Lane-Fox (Mp)'s father study?",
+      "action_text": "George Lane-Fox Mp father education",
+      "target": 0.3263,
+      "prediction": 0.3199,
+      "abs_error": 0.0064
+    },
+    {
+      "example_id": "6e739e90-307f-4205-9ca8-6a7569b0030b:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_490",
+      "question": "Which film has the director who died first, The Boss And The Worker or Claire'S Knee?",
+      "action_text": "film with director who died first",
+      "target": 0.4098,
+      "prediction": 0.438,
+      "abs_error": 0.0282
+    },
+    {
+      "example_id": "6e739e90-307f-4205-9ca8-6a7569b0030b:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_490",
+      "question": "Which film has the director who died first, The Boss And The Worker or Claire'S Knee?",
+      "action_text": "film with director who died first",
+      "target": 0.4098,
+      "prediction": 0.4341,
+      "abs_error": 0.0243
+    },
+    {
+      "example_id": "6e739e90-307f-4205-9ca8-6a7569b0030b:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_490",
+      "question": "Which film has the director who died first, The Boss And The Worker or Claire'S Knee?",
+      "action_text": "film with director who died first",
+      "target": 0.4098,
+      "prediction": 0.4341,
+      "abs_error": 0.0243
+    },
+    {
+      "example_id": "f87b2fea-0c6c-46fd-bb86-0175ab777fed:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_513",
+      "question": "Where was the director of film The 3 Rooms Of Melancholia born?",
+      "action_text": "director of The 3 Rooms Of Melancholia birthplace",
+      "target": 0.4917,
+      "prediction": 0.5128,
+      "abs_error": 0.0211
+    },
+    {
+      "example_id": "f87b2fea-0c6c-46fd-bb86-0175ab777fed:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_513",
+      "question": "Where was the director of film The 3 Rooms Of Melancholia born?",
+      "action_text": "director of The 3 Rooms Of Melancholia birthplace",
+      "target": 0.4917,
+      "prediction": 0.509,
+      "abs_error": 0.0173
+    },
+    {
+      "example_id": "f87b2fea-0c6c-46fd-bb86-0175ab777fed:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_513",
+      "question": "Where was the director of film The 3 Rooms Of Melancholia born?",
+      "action_text": "director of The 3 Rooms Of Melancholia birthplace",
+      "target": 0.4917,
+      "prediction": 0.509,
+      "abs_error": 0.0173
+    },
+    {
+      "example_id": "8a1f7674-4a49-463c-b77c-a4561e34c17f:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_4",
+      "question": "Where was the director of film Ronnie Rocket born?",
+      "action_text": "Ronnie Rocket film director birthplace",
+      "target": 0.564,
+      "prediction": 0.4596,
+      "abs_error": 0.1044
+    },
+    {
+      "example_id": "8a1f7674-4a49-463c-b77c-a4561e34c17f:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_4",
+      "question": "Where was the director of film Ronnie Rocket born?",
+      "action_text": "Ronnie Rocket film director birthplace",
+      "target": 0.564,
+      "prediction": 0.4557,
+      "abs_error": 0.1083
+    },
+    {
+      "example_id": "8a1f7674-4a49-463c-b77c-a4561e34c17f:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_4",
+      "question": "Where was the director of film Ronnie Rocket born?",
+      "action_text": "Ronnie Rocket film director birthplace",
+      "target": 0.564,
+      "prediction": 0.4557,
+      "abs_error": 0.1083
+    },
+    {
+      "example_id": "b2091c8d-a025-4baf-ba52-6c52173f078c:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_598",
+      "question": "What is the date of birth of Francis Otto, Duke Of Brunswick-Lüneburg's father?",
+      "action_text": "Francis Otto Duke Of Brunswick-Lüneburg father birthdate",
+      "target": 0.3917,
+      "prediction": 0.5065,
+      "abs_error": 0.1148
+    },
+    {
+      "example_id": "b2091c8d-a025-4baf-ba52-6c52173f078c:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_598",
+      "question": "What is the date of birth of Francis Otto, Duke Of Brunswick-Lüneburg's father?",
+      "action_text": "Francis Otto Duke Of Brunswick-Lüneburg father birthdate",
+      "target": 0.3917,
+      "prediction": 0.5027,
+      "abs_error": 0.111
+    },
+    {
+      "example_id": "b2091c8d-a025-4baf-ba52-6c52173f078c:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_598",
+      "question": "What is the date of birth of Francis Otto, Duke Of Brunswick-Lüneburg's father?",
+      "action_text": "Francis Otto Duke Of Brunswick-Lüneburg father birthdate",
+      "target": 0.3917,
+      "prediction": 0.5027,
+      "abs_error": 0.111
+    },
+    {
+      "example_id": "c134e074-93fb-4561-85fb-0dde5263a0b1:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_214",
+      "question": "Which film whose director was born first, The Great Flamarion or The Hollars?",
+      "action_text": "film director born first",
+      "target": 0.4381,
+      "prediction": 0.4013,
+      "abs_error": 0.0368
+    },
+    {
+      "example_id": "c134e074-93fb-4561-85fb-0dde5263a0b1:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_214",
+      "question": "Which film whose director was born first, The Great Flamarion or The Hollars?",
+      "action_text": "film director born first",
+      "target": 0.4381,
+      "prediction": 0.3974,
+      "abs_error": 0.0407
+    },
+    {
+      "example_id": "c134e074-93fb-4561-85fb-0dde5263a0b1:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_214",
+      "question": "Which film whose director was born first, The Great Flamarion or The Hollars?",
+      "action_text": "film director born first",
+      "target": 0.4381,
+      "prediction": 0.3974,
+      "abs_error": 0.0407
+    },
+    {
+      "example_id": "4057d53a-ca67-4ab2-b40e-529d552b2008:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_519",
+      "question": "Where was the mother of Elizabeth Of Denmark, Electress Of Brandenburg born?",
+      "action_text": "birthplace of Elizabeth Of Denmark, Electress Of Brandenburg",
+      "target": 0.4926,
+      "prediction": 0.5399,
+      "abs_error": 0.0473
+    },
+    {
+      "example_id": "4057d53a-ca67-4ab2-b40e-529d552b2008:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_519",
+      "question": "Where was the mother of Elizabeth Of Denmark, Electress Of Brandenburg born?",
+      "action_text": "birthplace of Elizabeth Of Denmark, Electress Of Brandenburg",
+      "target": 0.4926,
+      "prediction": 0.5361,
+      "abs_error": 0.0435
+    },
+    {
+      "example_id": "4057d53a-ca67-4ab2-b40e-529d552b2008:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_519",
+      "question": "Where was the mother of Elizabeth Of Denmark, Electress Of Brandenburg born?",
+      "action_text": "birthplace of Elizabeth Of Denmark, Electress Of Brandenburg",
+      "target": 0.4926,
+      "prediction": 0.5361,
+      "abs_error": 0.0435
+    },
+    {
+      "example_id": "76cf823d-1b5a-4617-98ae-b53e97485fd5:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_136",
+      "question": "Which film has the director who was born earlier, Adam'S Rib or Thendral Veesum?",
+      "action_text": "film director born earlier Adam\\u2019s Rib vs Thendral Veesum",
+      "target": 0.5306,
+      "prediction": 0.5154,
+      "abs_error": 0.0152
+    },
+    {
+      "example_id": "76cf823d-1b5a-4617-98ae-b53e97485fd5:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_136",
+      "question": "Which film has the director who was born earlier, Adam'S Rib or Thendral Veesum?",
+      "action_text": "film director born earlier Adam\\u2019s Rib vs Thendral Veesum",
+      "target": 0.5306,
+      "prediction": 0.5115,
+      "abs_error": 0.0191
+    },
+    {
+      "example_id": "76cf823d-1b5a-4617-98ae-b53e97485fd5:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_136",
+      "question": "Which film has the director who was born earlier, Adam'S Rib or Thendral Veesum?",
+      "action_text": "film director born earlier Adam\\u2019s Rib vs Thendral Veesum",
+      "target": 0.5306,
+      "prediction": 0.5115,
+      "abs_error": 0.0191
+    },
+    {
+      "example_id": "221dd320-fb2a-4c4d-ac77-7ed79a92902f:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_326",
+      "question": "Which film was released more recently, Circus Of Love or The Kiss Of Evil?",
+      "action_text": "Circus Of Love vs The Kiss Of Evil release date",
+      "target": 0.3253,
+      "prediction": 0.3614,
+      "abs_error": 0.0361
+    },
+    {
+      "example_id": "221dd320-fb2a-4c4d-ac77-7ed79a92902f:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_326",
+      "question": "Which film was released more recently, Circus Of Love or The Kiss Of Evil?",
+      "action_text": "Circus Of Love vs The Kiss Of Evil release date",
+      "target": 0.3253,
+      "prediction": 0.3575,
+      "abs_error": 0.0322
+    },
+    {
+      "example_id": "221dd320-fb2a-4c4d-ac77-7ed79a92902f:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_326",
+      "question": "Which film was released more recently, Circus Of Love or The Kiss Of Evil?",
+      "action_text": "Circus Of Love vs The Kiss Of Evil release date",
+      "target": 0.3253,
+      "prediction": 0.3575,
+      "abs_error": 0.0322
+    },
+    {
+      "example_id": "c7ba5433-9a8a-4968-8184-b4fc9ebee327:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_83",
+      "question": "Which film has the director who died earlier, Captain Kidd And The Slave Girl or Relax Freddie?",
+      "action_text": "Captain Kidd And The Slave Girl director death",
+      "target": 0.3497,
+      "prediction": 0.4125,
+      "abs_error": 0.0628
+    },
+    {
+      "example_id": "c7ba5433-9a8a-4968-8184-b4fc9ebee327:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_83",
+      "question": "Which film has the director who died earlier, Captain Kidd And The Slave Girl or Relax Freddie?",
+      "action_text": "Captain Kidd And The Slave Girl director death",
+      "target": 0.3497,
+      "prediction": 0.4087,
+      "abs_error": 0.059
+    },
+    {
+      "example_id": "c7ba5433-9a8a-4968-8184-b4fc9ebee327:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_83",
+      "question": "Which film has the director who died earlier, Captain Kidd And The Slave Girl or Relax Freddie?",
+      "action_text": "Captain Kidd And The Slave Girl director death",
+      "target": 0.3497,
+      "prediction": 0.4087,
+      "abs_error": 0.059
+    },
+    {
+      "example_id": "88227c0b-0910-4902-8943-456811e37b32:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_409",
+      "question": "Who is Wisigard's father-in-law?",
+      "action_text": "Wisigard's father-in-law",
+      "target": 0.6599,
+      "prediction": 0.0659,
+      "abs_error": 0.594
+    },
+    {
+      "example_id": "88227c0b-0910-4902-8943-456811e37b32:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_409",
+      "question": "Who is Wisigard's father-in-law?",
+      "action_text": "Wisigard's father-in-law",
+      "target": 0.6599,
+      "prediction": 0.062,
+      "abs_error": 0.5979
+    },
+    {
+      "example_id": "88227c0b-0910-4902-8943-456811e37b32:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_409",
+      "question": "Who is Wisigard's father-in-law?",
+      "action_text": "Wisigard's father-in-law",
+      "target": 0.6599,
+      "prediction": 0.062,
+      "abs_error": 0.5979
+    },
+    {
+      "example_id": "d7710527-7052-4842-85a3-8f9626c14158:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_465",
+      "question": "Who is Archibald Acheson, 4Th Earl Of Gosford's paternal grandfather?",
+      "action_text": "Archibald Acheson 4th Earl of Gosford paternal grandfather",
+      "target": 0.6588,
+      "prediction": 0.742,
+      "abs_error": 0.0832
+    },
+    {
+      "example_id": "d7710527-7052-4842-85a3-8f9626c14158:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_465",
+      "question": "Who is Archibald Acheson, 4Th Earl Of Gosford's paternal grandfather?",
+      "action_text": "Archibald Acheson 4th Earl of Gosford paternal grandfather",
+      "target": 0.6588,
+      "prediction": 0.7382,
+      "abs_error": 0.0794
+    },
+    {
+      "example_id": "d7710527-7052-4842-85a3-8f9626c14158:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_465",
+      "question": "Who is Archibald Acheson, 4Th Earl Of Gosford's paternal grandfather?",
+      "action_text": "Archibald Acheson 4th Earl of Gosford paternal grandfather",
+      "target": 0.6588,
+      "prediction": 0.7382,
+      "abs_error": 0.0794
+    },
+    {
+      "example_id": "f0cb702d-1600-4b6d-bfa9-40de9d05e9d8:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_6",
+      "question": "Where was the father of Ștefan I. Nenițescu born?",
+      "action_text": "birthplace of Ștefan I. Nenițescu",
+      "target": 0.4213,
+      "prediction": 0.3275,
+      "abs_error": 0.0938
+    },
+    {
+      "example_id": "f0cb702d-1600-4b6d-bfa9-40de9d05e9d8:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_6",
+      "question": "Where was the father of Ștefan I. Nenițescu born?",
+      "action_text": "birthplace of Ștefan I. Nenițescu",
+      "target": 0.4213,
+      "prediction": 0.3236,
+      "abs_error": 0.0977
+    },
+    {
+      "example_id": "f0cb702d-1600-4b6d-bfa9-40de9d05e9d8:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_6",
+      "question": "Where was the father of Ștefan I. Nenițescu born?",
+      "action_text": "birthplace of Ștefan I. Nenițescu",
+      "target": 0.4213,
+      "prediction": 0.3236,
+      "abs_error": 0.0977
+    },
+    {
+      "example_id": "0e54316a-3909-4596-9eed-7adb0312aab4:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_344",
+      "question": "Where did the composer of film The Merry Monahans die?",
+      "action_text": "composer of The Merry Monahans death",
+      "target": 0.3676,
+      "prediction": 0.3632,
+      "abs_error": 0.0044
+    },
+    {
+      "example_id": "0e54316a-3909-4596-9eed-7adb0312aab4:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_344",
+      "question": "Where did the composer of film The Merry Monahans die?",
+      "action_text": "composer of The Merry Monahans death",
+      "target": 0.3676,
+      "prediction": 0.3594,
+      "abs_error": 0.0082
+    },
+    {
+      "example_id": "0e54316a-3909-4596-9eed-7adb0312aab4:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_344",
+      "question": "Where did the composer of film The Merry Monahans die?",
+      "action_text": "composer of The Merry Monahans death",
+      "target": 0.3676,
+      "prediction": 0.3594,
+      "abs_error": 0.0082
+    },
+    {
+      "example_id": "2498bb67-8725-4836-a869-b4ebcd014f2e:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_369",
+      "question": "Which film has the director born first, Stella'S Oorlog or Don Juan In A Girls' School?",
+      "action_text": "director born first Stella'S Oorlog vs Don Juan In A Girls' School",
+      "target": 0.6848,
+      "prediction": 0.6562,
+      "abs_error": 0.0286
+    },
+    {
+      "example_id": "2498bb67-8725-4836-a869-b4ebcd014f2e:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_369",
+      "question": "Which film has the director born first, Stella'S Oorlog or Don Juan In A Girls' School?",
+      "action_text": "director born first Stella'S Oorlog vs Don Juan In A Girls' School",
+      "target": 0.6848,
+      "prediction": 0.6523,
+      "abs_error": 0.0325
+    },
+    {
+      "example_id": "2498bb67-8725-4836-a869-b4ebcd014f2e:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_369",
+      "question": "Which film has the director born first, Stella'S Oorlog or Don Juan In A Girls' School?",
+      "action_text": "director born first Stella'S Oorlog vs Don Juan In A Girls' School",
+      "target": 0.6848,
+      "prediction": 0.6523,
+      "abs_error": 0.0325
+    },
+    {
+      "example_id": "d17deaf4-43d1-4d8d-811c-214e0fc50893:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_32",
+      "question": "Which film has the director born later, Bhoomiyude Avakashikal or The Majesty Of The Law?",
+      "action_text": "director born later Bhoomiyude Avakashikal vs The Majesty Of The Law",
+      "target": 0.6286,
+      "prediction": 0.5791,
+      "abs_error": 0.0495
+    },
+    {
+      "example_id": "d17deaf4-43d1-4d8d-811c-214e0fc50893:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_32",
+      "question": "Which film has the director born later, Bhoomiyude Avakashikal or The Majesty Of The Law?",
+      "action_text": "director born later Bhoomiyude Avakashikal vs The Majesty Of The Law",
+      "target": 0.6286,
+      "prediction": 0.5752,
+      "abs_error": 0.0534
+    },
+    {
+      "example_id": "d17deaf4-43d1-4d8d-811c-214e0fc50893:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_32",
+      "question": "Which film has the director born later, Bhoomiyude Avakashikal or The Majesty Of The Law?",
+      "action_text": "director born later Bhoomiyude Avakashikal vs The Majesty Of The Law",
+      "target": 0.6286,
+      "prediction": 0.5752,
+      "abs_error": 0.0534
+    },
+    {
+      "example_id": "5c35a611-12b2-4458-887e-d9f79a16c581:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_387",
+      "question": "Where was the place of death of James Adam (Architect)'s father?",
+      "action_text": "James Adam Architect father death location",
+      "target": 0.4377,
+      "prediction": 0.4218,
+      "abs_error": 0.0159
+    },
+    {
+      "example_id": "5c35a611-12b2-4458-887e-d9f79a16c581:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_387",
+      "question": "Where was the place of death of James Adam (Architect)'s father?",
+      "action_text": "James Adam Architect father death location",
+      "target": 0.4377,
+      "prediction": 0.4179,
+      "abs_error": 0.0198
+    },
+    {
+      "example_id": "5c35a611-12b2-4458-887e-d9f79a16c581:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_387",
+      "question": "Where was the place of death of James Adam (Architect)'s father?",
+      "action_text": "James Adam Architect father death location",
+      "target": 0.4377,
+      "prediction": 0.4179,
+      "abs_error": 0.0198
+    },
+    {
+      "example_id": "10393a9a-18aa-48ee-81b8-c79f3c4aac8e:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_58",
+      "question": "Which country the director of film Daadagiri is from?",
+      "action_text": "Daadagiri director country",
+      "target": 0.4933,
+      "prediction": 0.4658,
+      "abs_error": 0.0275
+    },
+    {
+      "example_id": "10393a9a-18aa-48ee-81b8-c79f3c4aac8e:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_58",
+      "question": "Which country the director of film Daadagiri is from?",
+      "action_text": "Daadagiri director country",
+      "target": 0.4933,
+      "prediction": 0.4619,
+      "abs_error": 0.0314
+    },
+    {
+      "example_id": "10393a9a-18aa-48ee-81b8-c79f3c4aac8e:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_58",
+      "question": "Which country the director of film Daadagiri is from?",
+      "action_text": "Daadagiri director country",
+      "target": 0.4933,
+      "prediction": 0.4619,
+      "abs_error": 0.0314
+    },
+    {
+      "example_id": "56866de3-433b-42e6-a872-14abc048c18b:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_174",
+      "question": "Which film has the director who died later, His Last Haul or The Falcon In San Francisco?",
+      "action_text": "film directed by person who died later",
+      "target": 0.2588,
+      "prediction": 0.3479,
+      "abs_error": 0.0891
+    },
+    {
+      "example_id": "56866de3-433b-42e6-a872-14abc048c18b:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_174",
+      "question": "Which film has the director who died later, His Last Haul or The Falcon In San Francisco?",
+      "action_text": "film directed by person who died later",
+      "target": 0.2588,
+      "prediction": 0.344,
+      "abs_error": 0.0852
+    },
+    {
+      "example_id": "56866de3-433b-42e6-a872-14abc048c18b:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_174",
+      "question": "Which film has the director who died later, His Last Haul or The Falcon In San Francisco?",
+      "action_text": "film directed by person who died later",
+      "target": 0.2588,
+      "prediction": 0.344,
+      "abs_error": 0.0852
+    },
+    {
+      "example_id": "b0d0ef29-c91a-4255-a436-517e5cce5f58:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_3",
+      "question": "What is the award that the director of film Wearing Velvet Slippers Under A Golden Umbrella won?",
+      "action_text": "award won by director of film Wearing Velvet Slippers Under A Golden Umbrella",
+      "target": 0.8253,
+      "prediction": 0.7221,
+      "abs_error": 0.1032
+    },
+    {
+      "example_id": "b0d0ef29-c91a-4255-a436-517e5cce5f58:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_3",
+      "question": "What is the award that the director of film Wearing Velvet Slippers Under A Golden Umbrella won?",
+      "action_text": "award won by director of film Wearing Velvet Slippers Under A Golden Umbrella",
+      "target": 0.8253,
+      "prediction": 0.7182,
+      "abs_error": 0.1071
+    },
+    {
+      "example_id": "b0d0ef29-c91a-4255-a436-517e5cce5f58:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_3",
+      "question": "What is the award that the director of film Wearing Velvet Slippers Under A Golden Umbrella won?",
+      "action_text": "award won by director of film Wearing Velvet Slippers Under A Golden Umbrella",
+      "target": 0.8253,
+      "prediction": 0.7182,
+      "abs_error": 0.1071
+    },
+    {
+      "example_id": "f839fdda-a681-45c4-a4eb-14f444646451:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_60",
+      "question": "What is the place of birth of the performer of song Who...?",
+      "action_text": "song performer birthplace",
+      "target": 0.2794,
+      "prediction": 0.3743,
+      "abs_error": 0.0949
+    },
+    {
+      "example_id": "f839fdda-a681-45c4-a4eb-14f444646451:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_60",
+      "question": "What is the place of birth of the performer of song Who...?",
+      "action_text": "song performer birthplace",
+      "target": 0.2794,
+      "prediction": 0.3705,
+      "abs_error": 0.0911
+    },
+    {
+      "example_id": "f839fdda-a681-45c4-a4eb-14f444646451:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_60",
+      "question": "What is the place of birth of the performer of song Who...?",
+      "action_text": "song performer birthplace",
+      "target": 0.2794,
+      "prediction": 0.3705,
+      "abs_error": 0.0911
+    },
+    {
+      "example_id": "e4b98f71-e4d9-4b89-97dd-b3fb218ab384:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_382",
+      "question": "Are Doboy Railway Station and Adamstown Railway Station, New South Wales located in the same country?",
+      "action_text": "Doboy Railway Station and Adamstown Railway Station in New South Wales",
+      "target": 0.6299,
+      "prediction": 0.6392,
+      "abs_error": 0.0093
+    },
+    {
+      "example_id": "e4b98f71-e4d9-4b89-97dd-b3fb218ab384:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_382",
+      "question": "Are Doboy Railway Station and Adamstown Railway Station, New South Wales located in the same country?",
+      "action_text": "Doboy Railway Station and Adamstown Railway Station in New South Wales",
+      "target": 0.6299,
+      "prediction": 0.6353,
+      "abs_error": 0.0054
+    },
+    {
+      "example_id": "e4b98f71-e4d9-4b89-97dd-b3fb218ab384:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_382",
+      "question": "Are Doboy Railway Station and Adamstown Railway Station, New South Wales located in the same country?",
+      "action_text": "Doboy Railway Station and Adamstown Railway Station in New South Wales",
+      "target": 0.6299,
+      "prediction": 0.6353,
+      "abs_error": 0.0054
+    },
+    {
+      "example_id": "5efd2ad5-658c-438e-a707-0de04f04320f:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_167",
+      "question": "Which film came out earlier, Dis-Moi Qui Tuer or Under The Hawthorn Tree (Film)?",
+      "action_text": "Dis-Moi Qui Tuer vs Under The Hawthorn Tree Film release order",
+      "target": 0.4592,
+      "prediction": 0.2828,
+      "abs_error": 0.1764
+    },
+    {
+      "example_id": "5efd2ad5-658c-438e-a707-0de04f04320f:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_167",
+      "question": "Which film came out earlier, Dis-Moi Qui Tuer or Under The Hawthorn Tree (Film)?",
+      "action_text": "Dis-Moi Qui Tuer vs Under The Hawthorn Tree Film release order",
+      "target": 0.4592,
+      "prediction": 0.2789,
+      "abs_error": 0.1803
+    },
+    {
+      "example_id": "5efd2ad5-658c-438e-a707-0de04f04320f:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_167",
+      "question": "Which film came out earlier, Dis-Moi Qui Tuer or Under The Hawthorn Tree (Film)?",
+      "action_text": "Dis-Moi Qui Tuer vs Under The Hawthorn Tree Film release order",
+      "target": 0.4592,
+      "prediction": 0.2789,
+      "abs_error": 0.1803
+    },
+    {
+      "example_id": "bd5f39ea-b293-4faa-a8a2-02b40108b6f9:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_161",
+      "question": "What is the place of birth of the director of film Guilty Of Treason?",
+      "action_text": "Guilty Of Treason director birthplace",
+      "target": 0.367,
+      "prediction": 0.3281,
+      "abs_error": 0.0389
+    },
+    {
+      "example_id": "bd5f39ea-b293-4faa-a8a2-02b40108b6f9:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_161",
+      "question": "What is the place of birth of the director of film Guilty Of Treason?",
+      "action_text": "Guilty Of Treason director birthplace",
+      "target": 0.367,
+      "prediction": 0.3242,
+      "abs_error": 0.0428
+    },
+    {
+      "example_id": "bd5f39ea-b293-4faa-a8a2-02b40108b6f9:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_161",
+      "question": "What is the place of birth of the director of film Guilty Of Treason?",
+      "action_text": "Guilty Of Treason director birthplace",
+      "target": 0.367,
+      "prediction": 0.3242,
+      "abs_error": 0.0428
+    },
+    {
+      "example_id": "fc6c9234-c176-40f3-b139-7e1e6f23cefe:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_13",
+      "question": "Where was the director of film Thomas Jefferson (Film) born?",
+      "action_text": "Thomas Jefferson film director birthplace",
+      "target": 0.4928,
+      "prediction": 0.445,
+      "abs_error": 0.0478
+    },
+    {
+      "example_id": "fc6c9234-c176-40f3-b139-7e1e6f23cefe:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_13",
+      "question": "Where was the director of film Thomas Jefferson (Film) born?",
+      "action_text": "Thomas Jefferson film director birthplace",
+      "target": 0.4928,
+      "prediction": 0.4411,
+      "abs_error": 0.0517
+    },
+    {
+      "example_id": "fc6c9234-c176-40f3-b139-7e1e6f23cefe:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_13",
+      "question": "Where was the director of film Thomas Jefferson (Film) born?",
+      "action_text": "Thomas Jefferson film director birthplace",
+      "target": 0.4928,
+      "prediction": 0.4411,
+      "abs_error": 0.0517
+    },
+    {
+      "example_id": "e493dbb6-e1d5-4ace-a68e-0f4bb3d9938f:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_433",
+      "question": "Who is the spouse of the director of film Noc Nevěsty?",
+      "action_text": "director of Noc Nevéstě spouse",
+      "target": 0.4211,
+      "prediction": 0.7077,
+      "abs_error": 0.2866
+    },
+    {
+      "example_id": "e493dbb6-e1d5-4ace-a68e-0f4bb3d9938f:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_433",
+      "question": "Who is the spouse of the director of film Noc Nevěsty?",
+      "action_text": "director of Noc Nevéstě spouse",
+      "target": 0.4211,
+      "prediction": 0.7038,
+      "abs_error": 0.2827
+    },
+    {
+      "example_id": "e493dbb6-e1d5-4ace-a68e-0f4bb3d9938f:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_433",
+      "question": "Who is the spouse of the director of film Noc Nevěsty?",
+      "action_text": "director of Noc Nevéstě spouse",
+      "target": 0.4211,
+      "prediction": 0.7038,
+      "abs_error": 0.2827
+    },
+    {
+      "example_id": "31fe2f44-b2ce-463c-87dd-f133a585bbf9:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_28",
+      "question": "Where was the place of death of Anastasia Of Serbia's husband?",
+      "action_text": "Anastasia Of Serbia husband death location",
+      "target": 0.3691,
+      "prediction": 0.4492,
+      "abs_error": 0.0801
+    },
+    {
+      "example_id": "31fe2f44-b2ce-463c-87dd-f133a585bbf9:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_28",
+      "question": "Where was the place of death of Anastasia Of Serbia's husband?",
+      "action_text": "Anastasia Of Serbia husband death location",
+      "target": 0.3691,
+      "prediction": 0.4453,
+      "abs_error": 0.0762
+    },
+    {
+      "example_id": "31fe2f44-b2ce-463c-87dd-f133a585bbf9:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_28",
+      "question": "Where was the place of death of Anastasia Of Serbia's husband?",
+      "action_text": "Anastasia Of Serbia husband death location",
+      "target": 0.3691,
+      "prediction": 0.4453,
+      "abs_error": 0.0762
+    },
+    {
+      "example_id": "843334c9-0475-4914-906d-fd35c654eb71:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_358",
+      "question": "Which film has the director born later, Monsieur Taxi or A Yiddish World Remembered?",
+      "action_text": "film director born later",
+      "target": 0.3565,
+      "prediction": 0.4573,
+      "abs_error": 0.1008
+    },
+    {
+      "example_id": "843334c9-0475-4914-906d-fd35c654eb71:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_358",
+      "question": "Which film has the director born later, Monsieur Taxi or A Yiddish World Remembered?",
+      "action_text": "film director born later",
+      "target": 0.3565,
+      "prediction": 0.4534,
+      "abs_error": 0.0969
+    },
+    {
+      "example_id": "843334c9-0475-4914-906d-fd35c654eb71:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_358",
+      "question": "Which film has the director born later, Monsieur Taxi or A Yiddish World Remembered?",
+      "action_text": "film director born later",
+      "target": 0.3565,
+      "prediction": 0.4534,
+      "abs_error": 0.0969
+    },
+    {
+      "example_id": "fc912386-19eb-4d3e-98fd-43fdc3614599:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_573",
+      "question": "Which film came out earlier, The Champion Of Pontresina or The Bulleteers?",
+      "action_text": "The Champion Of Pontresina vs The Bulleteers release order",
+      "target": 0.2646,
+      "prediction": 0.2496,
+      "abs_error": 0.015
+    },
+    {
+      "example_id": "fc912386-19eb-4d3e-98fd-43fdc3614599:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_573",
+      "question": "Which film came out earlier, The Champion Of Pontresina or The Bulleteers?",
+      "action_text": "The Champion Of Pontresina vs The Bulleteers release order",
+      "target": 0.2646,
+      "prediction": 0.2458,
+      "abs_error": 0.0188
+    },
+    {
+      "example_id": "fc912386-19eb-4d3e-98fd-43fdc3614599:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_573",
+      "question": "Which film came out earlier, The Champion Of Pontresina or The Bulleteers?",
+      "action_text": "The Champion Of Pontresina vs The Bulleteers release order",
+      "target": 0.2646,
+      "prediction": 0.2458,
+      "abs_error": 0.0188
+    },
+    {
+      "example_id": "d94c8c9d-c09b-4785-887f-22a84060e77c:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_393",
+      "question": "Are the directors of films Scuola Di Ladri and Pensione Paura both from the same country?",
+      "action_text": "directors Scuola Di Ladri Pensione Paura same country",
+      "target": 0.6597,
+      "prediction": 0.5466,
+      "abs_error": 0.1131
+    },
+    {
+      "example_id": "d94c8c9d-c09b-4785-887f-22a84060e77c:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_393",
+      "question": "Are the directors of films Scuola Di Ladri and Pensione Paura both from the same country?",
+      "action_text": "Scuola Di Ladri director country Pensione Paura director country",
+      "target": 0.4545,
+      "prediction": 0.5015,
+      "abs_error": 0.047
+    },
+    {
+      "example_id": "d94c8c9d-c09b-4785-887f-22a84060e77c:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_393",
+      "question": "Are the directors of films Scuola Di Ladri and Pensione Paura both from the same country?",
+      "action_text": "Scuola Di Ladri director country Pensione Paura director country",
+      "target": 0.4545,
+      "prediction": 0.5015,
+      "abs_error": 0.047
+    },
+    {
+      "example_id": "a3b8a16f-7f51-45c4-a878-8506ed5fbd58:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_169",
+      "question": "Where did the director of film Old Man Drinking A Glass Of Beer die?",
+      "action_text": "director of old man drinking a glass of beer death",
+      "target": 0.5387,
+      "prediction": 0.5071,
+      "abs_error": 0.0316
+    },
+    {
+      "example_id": "a3b8a16f-7f51-45c4-a878-8506ed5fbd58:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_169",
+      "question": "Where did the director of film Old Man Drinking A Glass Of Beer die?",
+      "action_text": "director of old man drinking a glass of beer death",
+      "target": 0.5387,
+      "prediction": 0.5032,
+      "abs_error": 0.0355
+    },
+    {
+      "example_id": "a3b8a16f-7f51-45c4-a878-8506ed5fbd58:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_169",
+      "question": "Where did the director of film Old Man Drinking A Glass Of Beer die?",
+      "action_text": "director of old man drinking a glass of beer death",
+      "target": 0.5387,
+      "prediction": 0.5032,
+      "abs_error": 0.0355
+    },
+    {
+      "example_id": "494bca50-e825-4094-a40c-34e404d3c731:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_442",
+      "question": "Where did the director of film The Boy Who Cried Werewolf (1973 Film) die?",
+      "action_text": "director of 1973 werewolf film death",
+      "target": 0.2216,
+      "prediction": 0.2988,
+      "abs_error": 0.0772
+    },
+    {
+      "example_id": "494bca50-e825-4094-a40c-34e404d3c731:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_442",
+      "question": "Where did the director of film The Boy Who Cried Werewolf (1973 Film) die?",
+      "action_text": "director of 1973 werewolf film death",
+      "target": 0.2216,
+      "prediction": 0.2949,
+      "abs_error": 0.0733
+    },
+    {
+      "example_id": "494bca50-e825-4094-a40c-34e404d3c731:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_442",
+      "question": "Where did the director of film The Boy Who Cried Werewolf (1973 Film) die?",
+      "action_text": "director of 1973 werewolf film death",
+      "target": 0.2216,
+      "prediction": 0.2949,
+      "abs_error": 0.0733
+    },
+    {
+      "example_id": "8acf84dc-6d4c-4b17-9b5b-20f069a2a775:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_584",
+      "question": "Where was the place of death of Salin Mibaya's husband?",
+      "action_text": "Salin Mibaya husband death location",
+      "target": 0.368,
+      "prediction": 0.416,
+      "abs_error": 0.048
+    },
+    {
+      "example_id": "8acf84dc-6d4c-4b17-9b5b-20f069a2a775:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_584",
+      "question": "Where was the place of death of Salin Mibaya's husband?",
+      "action_text": "Salin Mibaya husband death location",
+      "target": 0.368,
+      "prediction": 0.4121,
+      "abs_error": 0.0441
+    },
+    {
+      "example_id": "8acf84dc-6d4c-4b17-9b5b-20f069a2a775:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_584",
+      "question": "Where was the place of death of Salin Mibaya's husband?",
+      "action_text": "Salin Mibaya husband death location",
+      "target": 0.368,
+      "prediction": 0.4121,
+      "abs_error": 0.0441
+    },
+    {
+      "example_id": "1ecc0fab-5463-436e-b152-20d1d6ed4843:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_414",
+      "question": "What is the cause of death of performer of song Voi Voi?",
+      "action_text": "cause of death of performer of song Voi Voi",
+      "target": 0.8252,
+      "prediction": 0.6707,
+      "abs_error": 0.1545
+    },
+    {
+      "example_id": "1ecc0fab-5463-436e-b152-20d1d6ed4843:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_414",
+      "question": "What is the cause of death of performer of song Voi Voi?",
+      "action_text": "cause of death of performer of song Voi Voi",
+      "target": 0.8252,
+      "prediction": 0.6668,
+      "abs_error": 0.1584
+    },
+    {
+      "example_id": "1ecc0fab-5463-436e-b152-20d1d6ed4843:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_414",
+      "question": "What is the cause of death of performer of song Voi Voi?",
+      "action_text": "cause of death of performer of song Voi Voi",
+      "target": 0.8252,
+      "prediction": 0.6668,
+      "abs_error": 0.1584
+    },
+    {
+      "example_id": "9c3784d0-ab02-47c9-bf1c-2db29ae69af6:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_360",
+      "question": "Which film has the director born first, Trouble With Jolanthe or Children Of Fortune?",
+      "action_text": "Trouble With Jolanthe director vs Children Of Fortune director",
+      "target": 0.4923,
+      "prediction": 0.4788,
+      "abs_error": 0.0135
+    },
+    {
+      "example_id": "9c3784d0-ab02-47c9-bf1c-2db29ae69af6:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_360",
+      "question": "Which film has the director born first, Trouble With Jolanthe or Children Of Fortune?",
+      "action_text": "Trouble With Jolanthe director vs Children Of Fortune director",
+      "target": 0.4923,
+      "prediction": 0.4749,
+      "abs_error": 0.0174
+    },
+    {
+      "example_id": "9c3784d0-ab02-47c9-bf1c-2db29ae69af6:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_360",
+      "question": "Which film has the director born first, Trouble With Jolanthe or Children Of Fortune?",
+      "action_text": "Trouble With Jolanthe director vs Children Of Fortune director",
+      "target": 0.4923,
+      "prediction": 0.4749,
+      "abs_error": 0.0174
+    },
+    {
+      "example_id": "61ab025f-1cbc-4ad0-8e54-4ee623e96900:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_424",
+      "question": "Which film has the director who died later, Cooee And The Echo or Sweepings?",
+      "action_text": "film director who died later Cooee And The Echo Sweepings",
+      "target": 0.7911,
+      "prediction": 0.6277,
+      "abs_error": 0.1634
+    },
+    {
+      "example_id": "61ab025f-1cbc-4ad0-8e54-4ee623e96900:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_424",
+      "question": "Which film has the director who died later, Cooee And The Echo or Sweepings?",
+      "action_text": "film director who died later Cooee And The Echo vs Sweepings",
+      "target": 0.7184,
+      "prediction": 0.6439,
+      "abs_error": 0.0745
+    },
+    {
+      "example_id": "61ab025f-1cbc-4ad0-8e54-4ee623e96900:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_424",
+      "question": "Which film has the director who died later, Cooee And The Echo or Sweepings?",
+      "action_text": "film director who died later Cooee And The Echo vs Sweepings",
+      "target": 0.7184,
+      "prediction": 0.6439,
+      "abs_error": 0.0745
+    },
+    {
+      "example_id": "0fd3cc64-4748-453b-8802-12ab3877e789:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_45",
+      "question": "Which film has the director who was born later, A Quiet Place In The Country or When Were You Born?",
+      "action_text": "film director born later A Quiet Place In The Country or When Were You Born",
+      "target": 0.7424,
+      "prediction": 0.7099,
+      "abs_error": 0.0325
+    },
+    {
+      "example_id": "0fd3cc64-4748-453b-8802-12ab3877e789:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_45",
+      "question": "Which film has the director who was born later, A Quiet Place In The Country or When Were You Born?",
+      "action_text": "film director born later A Quiet Place In The Country vs When Were You Born",
+      "target": 0.6847,
+      "prediction": 0.6854,
+      "abs_error": 0.0007
+    },
+    {
+      "example_id": "0fd3cc64-4748-453b-8802-12ab3877e789:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_45",
+      "question": "Which film has the director who was born later, A Quiet Place In The Country or When Were You Born?",
+      "action_text": "film director born later A Quiet Place In The Country vs When Were You Born",
+      "target": 0.6847,
+      "prediction": 0.6854,
+      "abs_error": 0.0007
+    },
+    {
+      "example_id": "646a508a-ed94-49e2-a6ba-71bee279cfe5:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_348",
+      "question": "Are Blurt (Magazine) and Maui Nō Ka ʻOi Magazine from the same country?",
+      "action_text": "Blurt Magazine vs Maui N’o Ka ‗Oi Magazine country of origin",
+      "target": 0.3254,
+      "prediction": 0.5295,
+      "abs_error": 0.2041
+    },
+    {
+      "example_id": "646a508a-ed94-49e2-a6ba-71bee279cfe5:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_348",
+      "question": "Are Blurt (Magazine) and Maui Nō Ka ʻOi Magazine from the same country?",
+      "action_text": "Blurt Magazine vs Maui N’o Ka ‗Oi Magazine country of origin",
+      "target": 0.3254,
+      "prediction": 0.5256,
+      "abs_error": 0.2002
+    },
+    {
+      "example_id": "646a508a-ed94-49e2-a6ba-71bee279cfe5:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_348",
+      "question": "Are Blurt (Magazine) and Maui Nō Ka ʻOi Magazine from the same country?",
+      "action_text": "Blurt Magazine vs Maui N’o Ka ‗Oi Magazine country of origin",
+      "target": 0.3254,
+      "prediction": 0.5256,
+      "abs_error": 0.2002
+    },
+    {
+      "example_id": "636b5283-e6f0-4303-9b63-d7c620455e3a:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_430",
+      "question": "What nationality is Florent Of Hainaut's mother?",
+      "action_text": "Florent Of Hainaut mother nationality",
+      "target": 0.4927,
+      "prediction": 0.6338,
+      "abs_error": 0.1411
+    },
+    {
+      "example_id": "636b5283-e6f0-4303-9b63-d7c620455e3a:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_430",
+      "question": "What nationality is Florent Of Hainaut's mother?",
+      "action_text": "Florent Of Hainaut mother nationality",
+      "target": 0.4927,
+      "prediction": 0.6299,
+      "abs_error": 0.1372
+    },
+    {
+      "example_id": "636b5283-e6f0-4303-9b63-d7c620455e3a:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_430",
+      "question": "What nationality is Florent Of Hainaut's mother?",
+      "action_text": "Florent Of Hainaut mother nationality",
+      "target": 0.4927,
+      "prediction": 0.6299,
+      "abs_error": 0.1372
+    },
+    {
+      "example_id": "39dad64f-84ed-4ce1-862f-daf539cf7729:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_22",
+      "question": "Which film has the director died earlier, Poker In Bed or The Machine To Kill Bad People?",
+      "action_text": "director death Poker In Bed vs The Machine To Kill Bad People",
+      "target": 0.4927,
+      "prediction": 0.4219,
+      "abs_error": 0.0708
+    },
+    {
+      "example_id": "39dad64f-84ed-4ce1-862f-daf539cf7729:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_22",
+      "question": "Which film has the director died earlier, Poker In Bed or The Machine To Kill Bad People?",
+      "action_text": "director death Poker In Bed vs The Machine To Kill Bad People",
+      "target": 0.4927,
+      "prediction": 0.418,
+      "abs_error": 0.0747
+    },
+    {
+      "example_id": "39dad64f-84ed-4ce1-862f-daf539cf7729:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_22",
+      "question": "Which film has the director died earlier, Poker In Bed or The Machine To Kill Bad People?",
+      "action_text": "director death Poker In Bed vs The Machine To Kill Bad People",
+      "target": 0.4927,
+      "prediction": 0.418,
+      "abs_error": 0.0747
+    },
+    {
+      "example_id": "bf5fa4ec-8921-4cbf-a7e8-893a228053db:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_65",
+      "question": "Where was the director of film The Half-Way Girl born?",
+      "action_text": "director of The Half-Way Girl birthplace",
+      "target": 0.4213,
+      "prediction": 0.4591,
+      "abs_error": 0.0378
+    },
+    {
+      "example_id": "bf5fa4ec-8921-4cbf-a7e8-893a228053db:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_65",
+      "question": "Where was the director of film The Half-Way Girl born?",
+      "action_text": "director of The Half-Way Girl birthplace",
+      "target": 0.4213,
+      "prediction": 0.4552,
+      "abs_error": 0.0339
+    },
+    {
+      "example_id": "bf5fa4ec-8921-4cbf-a7e8-893a228053db:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_65",
+      "question": "Where was the director of film The Half-Way Girl born?",
+      "action_text": "director of The Half-Way Girl birthplace",
+      "target": 0.4213,
+      "prediction": 0.4552,
+      "abs_error": 0.0339
+    },
+    {
+      "example_id": "fd25e473-436e-42e9-9286-c6ab33013c0f:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_177",
+      "question": "Which film has the director born earlier, Jayam Manade or Bulldog Drummond'S Revenge?",
+      "action_text": "Jayam Manade director vs Bulldog Drummond'S Revenge director",
+      "target": 0.4923,
+      "prediction": 0.425,
+      "abs_error": 0.0673
+    },
+    {
+      "example_id": "fd25e473-436e-42e9-9286-c6ab33013c0f:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_177",
+      "question": "Which film has the director born earlier, Jayam Manade or Bulldog Drummond'S Revenge?",
+      "action_text": "Jayam Manade director vs Bulldog Drummond'S Revenge director",
+      "target": 0.4923,
+      "prediction": 0.4211,
+      "abs_error": 0.0712
+    },
+    {
+      "example_id": "fd25e473-436e-42e9-9286-c6ab33013c0f:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_177",
+      "question": "Which film has the director born earlier, Jayam Manade or Bulldog Drummond'S Revenge?",
+      "action_text": "Jayam Manade director vs Bulldog Drummond'S Revenge director",
+      "target": 0.4923,
+      "prediction": 0.4211,
+      "abs_error": 0.0712
+    },
+    {
+      "example_id": "fa1bf0ea-7e5e-47e2-b694-96a830c0f64f:medium:1:0",
+      "module": "QR",
+      "question_id": "dev_246",
+      "question": "Which film was released earlier, Premium (Film) or Week-End With Father?",
+      "action_text": "earlier release date Premium Film or Week-End With Father",
+      "target": 0.5376,
+      "prediction": 0.361,
+      "abs_error": 0.1766
+    },
+    {
+      "example_id": "fa1bf0ea-7e5e-47e2-b694-96a830c0f64f:medium:1:1",
+      "module": "QR",
+      "question_id": "dev_246",
+      "question": "Which film was released earlier, Premium (Film) or Week-End With Father?",
+      "action_text": "earlier release date Premium Film or Week-End With Father",
+      "target": 0.5376,
+      "prediction": 0.3571,
+      "abs_error": 0.1805
+    },
+    {
+      "example_id": "fa1bf0ea-7e5e-47e2-b694-96a830c0f64f:medium:1:2",
+      "module": "QR",
+      "question_id": "dev_246",
+      "question": "Which film was released earlier, Premium (Film) or Week-End With Father?",
+      "action_text": "earlier release date Premium Film or Week-End With Father",
+      "target": 0.5376,
+      "prediction": 0.3571,
+      "abs_error": 0.1805
+    }
+  ]
+}
