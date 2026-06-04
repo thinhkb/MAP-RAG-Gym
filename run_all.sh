@@ -36,7 +36,6 @@ START_TOTAL=$SECONDS
 
 mkdir -p ${OUT_DIR}/offline_full_system_rl_guarded ${OUT_DIR}/metrics
 
-# â”€â”€ Helper â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 log() {
     local ts; ts=$(date "+%H:%M:%S")
     local line="[$ts] $*"
@@ -321,11 +320,6 @@ step "Promote RL candidate thanh frozen bundle" \
     --candidate_bundle ${OUT_DIR}/offline_full_system_rl_guarded/final_budget_policy_bundle_offline_rl_candidate.json \
     --candidate_eval ${OUT_DIR}/offline_full_system_rl_guarded/final_budget_policy_test_eval_offline_rl_candidate.json \
     --promotion_check ${OUT_DIR}/offline_full_system_rl_guarded/promotion_check.json \
-    --frozen_bundle ${OUT_DIR}/final_budget_policy_bundle_rl_ready.json \
-    --frozen_eval ${OUT_DIR}/final_budget_policy_test_eval_rl_ready.json \
-    --frozen_report ${OUT_DIR}/final_project_report_rl_ready.json \
-    --rl_package ${OUT_DIR}/full_system_rl_package.json \
-    --out ${OUT_DIR}/promotion_report.json \
     --skip_gate_check
 
 step "Eval promoted bundle (final RL-ready)" \
