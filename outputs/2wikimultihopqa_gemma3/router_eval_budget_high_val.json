@@ -1,0 +1,4150 @@
+{
+  "manifest": {
+    "script": "scripts/eval_phase4_router.py",
+    "generated_at_utc": "2026-06-04T05:09:09+00:00",
+    "git_commit": "468c42fc389c5c340c9053380d6bcce97aac4114",
+    "python_version": "3.12.13",
+    "platform": "Windows-11-10.0.22621-SP0",
+    "paths": {
+      "qa": "G:\\MAP-RAG-Gym\\data\\2wikimultihopqa\\splits\\val.json",
+      "corpus": "G:\\MAP-RAG-Gym\\data\\2wikimultihopqa\\corpus.json",
+      "router_model": "G:\\MAP-RAG-Gym\\outputs\\2wikimultihopqa_gemma3\\router_phase4.joblib"
+    },
+    "dataset": {
+      "name": "2wikimultihopqa",
+      "split": "val",
+      "limit": 90,
+      "effective_questions": 90
+    },
+    "llm": {
+      "provider": "ollama",
+      "model": "gemma3"
+    },
+    "reproducibility": {
+      "seed": 13,
+      "prompt_version": "v1",
+      "utility": {
+        "reward_weights": {
+          "f1_proxy": 1.0,
+          "process_score": 0.45
+        },
+        "cost_weights": {
+          "tokens": 0.04,
+          "retrieval_calls": 0.06,
+          "latency_ms": 0.03
+        },
+        "cost_normalizers": {
+          "tokens": 2000.0,
+          "retrieval_calls": 4.0,
+          "latency_ms": 10000.0
+        }
+      }
+    },
+    "settings": {
+      "fixed_workflows": [
+        "W1",
+        "W2",
+        "W3",
+        "W6"
+      ],
+      "methods": [],
+      "budget_mode": "high",
+      "n_candidates": 1,
+      "critic_n_candidates": 3,
+      "retriever_type": "bm25",
+      "retriever_bm25_weight": 0.5,
+      "workflow_retriever_overrides": {},
+      "critic_model": null,
+      "critic_modules": [],
+      "critic_model_overrides": {},
+      "hybrid_min_confidence": null,
+      "hybrid_low_cost_confidence": null,
+      "hybrid_low_cost_workflows": [],
+      "bandit_router_model": null,
+      "bandit_gate_baseline_workflow": "W3",
+      "bandit_gate_min_advantage": 0.0,
+      "bandit_gate_min_confidence": 0.0,
+      "bandit_gate_allowed_workflows": [],
+      "meta_router_model": null
+    }
+  },
+  "settings": {
+    "limit": 90,
+    "llm_provider": "ollama",
+    "llm_model": "gemma3",
+    "n_candidates": 1,
+    "critic_n_candidates": 3,
+    "seed": 13,
+    "retriever_type": "bm25",
+    "retriever_bm25_weight": 0.5,
+    "workflow_retriever_overrides": {},
+    "fixed_workflows": [
+      "W1",
+      "W2",
+      "W3",
+      "W6"
+    ],
+    "methods": [],
+    "budget_mode": "high",
+    "router_model": "outputs/2wikimultihopqa_gemma3/router_phase4.joblib",
+    "critic_model": null,
+    "critic_modules": [],
+    "critic_model_overrides": {},
+    "hybrid_min_confidence": null,
+    "hybrid_low_cost_confidence": null,
+    "hybrid_low_cost_workflows": [],
+    "bandit_router_model": null,
+    "bandit_gate_baseline_workflow": "W3",
+    "bandit_gate_min_advantage": 0.0,
+    "bandit_gate_min_confidence": 0.0,
+    "bandit_gate_allowed_workflows": [],
+    "meta_router_model": null
+  },
+  "summary": {
+    "fixed_W1": {
+      "num_runs": 90,
+      "avg_utility": 0.1584,
+      "avg_em": 0.0889,
+      "avg_f1_proxy": 0.1287,
+      "avg_process_score": 0.0725,
+      "avg_tokens": 38.5889,
+      "avg_retrieval_calls": 0.0,
+      "avg_latency_ms": 722.8863,
+      "workflow_counts": {
+        "W1": 90
+      }
+    },
+    "fixed_W2": {
+      "num_runs": 90,
+      "avg_utility": 0.2288,
+      "avg_em": 0.0889,
+      "avg_f1_proxy": 0.1568,
+      "avg_process_score": 0.2143,
+      "avg_tokens": 224.4778,
+      "avg_retrieval_calls": 1.0,
+      "avg_latency_ms": 1652.1808,
+      "workflow_counts": {
+        "W2": 90
+      }
+    },
+    "fixed_W3": {
+      "num_runs": 90,
+      "avg_utility": 0.2297,
+      "avg_em": 0.1111,
+      "avg_f1_proxy": 0.1639,
+      "avg_process_score": 0.1909,
+      "avg_tokens": 135.7556,
+      "avg_retrieval_calls": 1.0,
+      "avg_latency_ms": 811.7954,
+      "workflow_counts": {
+        "W3": 90
+      }
+    },
+    "fixed_W6": {
+      "num_runs": 90,
+      "avg_utility": 0.171,
+      "avg_em": 0.0778,
+      "avg_f1_proxy": 0.1252,
+      "avg_process_score": 0.1661,
+      "avg_tokens": 293.6667,
+      "avg_retrieval_calls": 1.0,
+      "avg_latency_ms": 2686.4589,
+      "workflow_counts": {
+        "W6": 90
+      }
+    },
+    "rule_based": {
+      "num_runs": 90,
+      "avg_utility": 0.1683,
+      "avg_em": 0.0778,
+      "avg_f1_proxy": 0.1213,
+      "avg_process_score": 0.1599,
+      "avg_tokens": 215.7556,
+      "avg_retrieval_calls": 1.0444,
+      "avg_latency_ms": 1637.4663,
+      "workflow_counts": {
+        "W6": 37,
+        "W3": 49,
+        "W2": 2,
+        "W4": 2
+      }
+    },
+    "learned_router": {
+      "num_runs": 90,
+      "avg_utility": 0.2218,
+      "avg_em": 0.0889,
+      "avg_f1_proxy": 0.1547,
+      "avg_process_score": 0.2032,
+      "avg_tokens": 224.1556,
+      "avg_retrieval_calls": 1.0,
+      "avg_latency_ms": 1641.3334,
+      "workflow_counts": {
+        "W3": 22,
+        "W6": 21,
+        "W2": 47
+      }
+    }
+  },
+  "per_question": [
+    {
+      "question_id": "dev_307",
+      "question": "Are both director of film Germany, Year Zero and director of film Cross Shot from the same country?",
+      "gold_answer": "yes",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0096,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0544,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0174,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0209,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.0212,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W3",
+          "confidence": 0.3791,
+          "utility_total": 0.0172,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_23",
+      "question": "Which film whose director is younger, Heads I Win, Tails You Lose or The Incredible Sarah?",
+      "gold_answer": "Testa o croce",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0029,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0515,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0219,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0013,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.0014,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W6",
+          "confidence": 0.5559,
+          "utility_total": 0.0014,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_388",
+      "question": "Where did Edmund Tudor, 1St Earl Of Richmond's wife graduate from?",
+      "gold_answer": "St Johns College",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0026,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.019,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0189,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": -0.0076,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0189,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W3",
+          "confidence": 0.5039,
+          "utility_total": 0.0192,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_503",
+      "question": "Which film has the director who was born later, Garde À Vue or Ivide Thudangunnu?",
+      "gold_answer": "Garde à vue",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0028,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.3188,
+          "em": 0.0,
+          "f1_proxy": 0.2143
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.1098,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0052,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.0057,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W6",
+          "confidence": 0.3854,
+          "utility_total": 0.0058,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_534",
+      "question": "Where was the place of death of Princess Louise Auguste Of Denmark's mother?",
+      "gold_answer": "Celle",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0028,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.056,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0184,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0092,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0182,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.386,
+          "utility_total": 0.056,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_235",
+      "question": "What is the place of birth of the performer of song Hunter (Björk Song)?",
+      "gold_answer": "Reykjavik",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0031,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": -0.0104,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0128,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": -0.0131,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0127,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.5359,
+          "utility_total": -0.0097,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_203",
+      "question": "Who is the father of Beltrán Vélez De Guevara, Marquis Of Campo Real?",
+      "gold_answer": "Íñigo Vélez de Guevara, 7th Count of Oñate",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": 0.212,
+          "em": 0.0,
+          "f1_proxy": 0.1875
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.5256,
+          "em": 0.0,
+          "f1_proxy": 0.375
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.4437,
+          "em": 0.0,
+          "f1_proxy": 0.3
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.3577,
+          "em": 0.0,
+          "f1_proxy": 0.3
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.4135,
+          "em": 0.0,
+          "f1_proxy": 0.2727
+        },
+        "learned_router": {
+          "workflow_id": "W6",
+          "confidence": 0.4022,
+          "utility_total": 0.2833,
+          "em": 0.0,
+          "f1_proxy": 0.2308
+        }
+      }
+    },
+    {
+      "question_id": "dev_162",
+      "question": "Where did Charles Stewart, 3Rd Duke Of Richmond's father graduate from?",
+      "gold_answer": "University of Paris",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0027,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": -0.008,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0134,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0089,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0141,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W3",
+          "confidence": 0.4608,
+          "utility_total": 0.0144,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_495",
+      "question": "Do both films Fig Leaves and Boogeyman (Film) have the directors that share the same nationality?",
+      "gold_answer": "no",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0032,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0708,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 1.2893,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 1.1969,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "rule_based": {
+          "workflow_id": "W2",
+          "utility_total": 0.0708,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W3",
+          "confidence": 0.4221,
+          "utility_total": 1.2894,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_586",
+      "question": "Which film has the director died first, Let'S Live Again or Kummatty?",
+      "gold_answer": "Let'S Live Again",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": 0.5722,
+          "em": 0.0,
+          "f1_proxy": 0.5
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0076,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.1102,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0619,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.0621,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W6",
+          "confidence": 0.4782,
+          "utility_total": 0.0621,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_179",
+      "question": "Where was the place of death of Alessandro Vitelli's father?",
+      "gold_answer": "Fiuränza",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0026,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.038,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0115,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0081,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.012,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.4268,
+          "utility_total": 0.038,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_328",
+      "question": "Who is the maternal grandfather of Adam Coleman Howard?",
+      "gold_answer": "Jules Lederer",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0026,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0737,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0198,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0421,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0198,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W6",
+          "confidence": 0.5831,
+          "utility_total": 0.0425,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_104",
+      "question": "When is the lead guitarist of List Of The Dillinger Escape Plan Band Members's birthday?",
+      "gold_answer": "August 8, 1975",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0027,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0498,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0281,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0427,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0281,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W6",
+          "confidence": 0.533,
+          "utility_total": 0.0429,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_546",
+      "question": "Where does Kitty Dukakis's husband work at?",
+      "gold_answer": "University of California, Los Angeles",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0026,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0135,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0376,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": -0.007,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0375,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W3",
+          "confidence": 0.3881,
+          "utility_total": 0.0377,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_147",
+      "question": "Which country Mohammed Al-Modiahki's wife is from?",
+      "gold_answer": "CHN",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0025,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0166,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0178,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0133,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0178,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.6019,
+          "utility_total": 0.017,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_303",
+      "question": "Who is Charles D'Orléans, Duke Of Penthièvre's paternal grandfather?",
+      "gold_answer": "Louis Philippe Joseph, duc d'Orléans",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0026,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.1141,
+          "em": 0.0,
+          "f1_proxy": 0.0588
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.02,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0063,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0199,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.6349,
+          "utility_total": 0.1145,
+          "em": 0.0,
+          "f1_proxy": 0.0588
+        }
+      }
+    },
+    {
+      "question_id": "dev_125",
+      "question": "Are Tomskoye, Amur Oblast and Pleshkovo located in the same country?",
+      "gold_answer": "yes",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": 1.2974,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 1.2357,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 1.2006,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 1.183,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 1.1817,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "learned_router": {
+          "workflow_id": "W3",
+          "confidence": 0.315,
+          "utility_total": 1.199,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_395",
+      "question": "Where was the husband of Jeanne Raunay born?",
+      "gold_answer": "Évreux",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0035,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0189,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0185,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0274,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0185,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W3",
+          "confidence": 0.4317,
+          "utility_total": 0.0184,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_182",
+      "question": "Where was the mother of Francis Ii Of France born?",
+      "gold_answer": "Fiuränza",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0039,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": -0.011,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0195,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": -0.0101,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0208,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W6",
+          "confidence": 0.3625,
+          "utility_total": -0.0095,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_567",
+      "question": "Which film has the director died earlier, Black Belly Of The Tarantula or Devil On Deck?",
+      "gold_answer": "Devil On Deck",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.003,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.219,
+          "em": 0.0,
+          "f1_proxy": 0.125
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0906,
+          "em": 0.0,
+          "f1_proxy": 0.0556
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0739,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.0736,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W6",
+          "confidence": 0.4734,
+          "utility_total": 0.0732,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_588",
+      "question": "Who is Tekle Haymanot Ii's paternal grandfather?",
+      "gold_answer": "Iyasu the Great",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0038,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0823,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.105,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0414,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.1044,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.6985,
+          "utility_total": 0.0821,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_578",
+      "question": "Where was the wife of Pierre-Marie Gault De Saint-Germain born?",
+      "gold_answer": "Warszawa",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0041,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0334,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0255,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0041,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0236,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W3",
+          "confidence": 0.5196,
+          "utility_total": 0.024,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_448",
+      "question": "Where was the place of death of Ginevra D'Este's husband?",
+      "gold_answer": "Rimini",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0036,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0259,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0115,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0046,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0118,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.3952,
+          "utility_total": 0.026,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_110",
+      "question": "Which country Jan Baptist Van Rensselaer's father is from?",
+      "gold_answer": "Holland",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0037,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0225,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0209,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0069,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0214,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.4701,
+          "utility_total": 0.0233,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_555",
+      "question": "Who is the paternal grandmother of Prince Robert, Duke Of Chartres?",
+      "gold_answer": "Queen Marie Amélie de Bourbon",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0035,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0744,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0186,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0372,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0186,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.8409,
+          "utility_total": 0.0742,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_421",
+      "question": "Which film has the director who died later, Emanuelle And The Last Cannibals or Hostile Country?",
+      "gold_answer": "Emanuelle e gli ultimi cannibali",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": 0.1602,
+          "em": 0.0,
+          "f1_proxy": 0.1429
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0886,
+          "em": 0.0,
+          "f1_proxy": 0.0435
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.1084,
+          "em": 0.0,
+          "f1_proxy": 0.0769
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0836,
+          "em": 0.0,
+          "f1_proxy": 0.0435
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.0835,
+          "em": 0.0,
+          "f1_proxy": 0.0435
+        },
+        "learned_router": {
+          "workflow_id": "W3",
+          "confidence": 0.3378,
+          "utility_total": 0.1096,
+          "em": 0.0,
+          "f1_proxy": 0.0769
+        }
+      }
+    },
+    {
+      "question_id": "dev_531",
+      "question": "Do both films A Trial In Prague and Three Strangers have the directors that share the same nationality?",
+      "gold_answer": "yes",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0027,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0257,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.016,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0096,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W2",
+          "utility_total": 0.0258,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W3",
+          "confidence": 0.4909,
+          "utility_total": 0.0163,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_217",
+      "question": "Where was the place of death of the director of film Kathputli (1971 Film)?",
+      "gold_answer": "Bombay",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0027,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0345,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0127,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0064,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0132,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.3615,
+          "utility_total": 0.0343,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_132",
+      "question": "What is the place of birth of James Douglas, 3Rd Earl Of Angus's father?",
+      "gold_answer": "Tantallon Castle",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0027,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.2645,
+          "em": 0.0,
+          "f1_proxy": 0.1667
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0221,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0157,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0223,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.5344,
+          "utility_total": 0.2649,
+          "em": 0.0,
+          "f1_proxy": 0.1667
+        }
+      }
+    },
+    {
+      "question_id": "dev_74",
+      "question": "Are both businesses, Telus and Ztr Control Systems, located in the same country?",
+      "gold_answer": "yes",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0028,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 1.2195,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 1.1993,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 1.175,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 1.1756,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "learned_router": {
+          "workflow_id": "W3",
+          "confidence": 0.3502,
+          "utility_total": 1.1995,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_378",
+      "question": "What is the place of birth of the director of film Operation Secret?",
+      "gold_answer": "the five boroughs",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0033,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0338,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.013,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": -0.0057,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0134,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.6217,
+          "utility_total": 0.0337,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_80",
+      "question": "What is the place of birth of the director of film Letter To The King?",
+      "gold_answer": "Kurdistan",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0033,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0346,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.013,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0245,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0134,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.4879,
+          "utility_total": 0.0345,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_365",
+      "question": "What nationality is Beatrice I, Countess Of Burgundy's husband?",
+      "gold_answer": "FRG",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0026,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": -0.0002,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0258,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.001,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0277,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.6938,
+          "utility_total": 0.0003,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_256",
+      "question": "Who is George Fitzroy, 1St Duke Of Northumberland's stepmother?",
+      "gold_answer": "Catherine of Braganza",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0038,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.1592,
+          "em": 0.0,
+          "f1_proxy": 0.1
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0183,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.1427,
+          "em": 0.0,
+          "f1_proxy": 0.1
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0185,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.6991,
+          "utility_total": 0.1597,
+          "em": 0.0,
+          "f1_proxy": 0.1
+        }
+      }
+    },
+    {
+      "question_id": "dev_192",
+      "question": "When was the director of film Reykjavík-Rotterdam born?",
+      "gold_answer": "30 June 1963",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0027,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.5213,
+          "em": 0.0,
+          "f1_proxy": 0.4286
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0202,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": -0.0072,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0202,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W3",
+          "confidence": 0.3345,
+          "utility_total": 0.0203,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_16",
+      "question": "Who died first, Fleetwood Sheppard or George William Whitaker?",
+      "gold_answer": "Fleetwood Sheppard",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0027,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.6205,
+          "em": 0.0,
+          "f1_proxy": 0.5
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.101,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.1944,
+          "em": 0.0,
+          "f1_proxy": 0.1053
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.1618,
+          "em": 0.0,
+          "f1_proxy": 0.0741
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.4652,
+          "utility_total": 0.621,
+          "em": 0.0,
+          "f1_proxy": 0.5
+        }
+      }
+    },
+    {
+      "question_id": "dev_408",
+      "question": "Where was the place of burial of Meritites I's husband?",
+      "gold_answer": "Pyramid of Cheops",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0028,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.1701,
+          "em": 0.0,
+          "f1_proxy": 0.1111
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.1293,
+          "em": 0.0,
+          "f1_proxy": 0.1
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.158,
+          "em": 0.0,
+          "f1_proxy": 0.1111
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.1296,
+          "em": 0.0,
+          "f1_proxy": 0.1
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.4304,
+          "utility_total": 0.1701,
+          "em": 0.0,
+          "f1_proxy": 0.1111
+        }
+      }
+    },
+    {
+      "question_id": "dev_151",
+      "question": "Which film has the director who died first, The Crime Doctor'S Courage or Vasantha Sena (1967 Film)?",
+      "gold_answer": "Crime Doctor's Courage",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": 0.5721,
+          "em": 0.0,
+          "f1_proxy": 0.5
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.2972,
+          "em": 0.0,
+          "f1_proxy": 0.2
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 1.2073,
+          "em": 0.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.3037,
+          "em": 0.0,
+          "f1_proxy": 0.1818
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.3036,
+          "em": 0.0,
+          "f1_proxy": 0.1818
+        },
+        "learned_router": {
+          "workflow_id": "W3",
+          "confidence": 0.3563,
+          "utility_total": 1.2074,
+          "em": 0.0,
+          "f1_proxy": 1.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_106",
+      "question": "Are the movies About A Wife, A Dream And Another... and The Doolins Of Oklahoma, from the same country?",
+      "gold_answer": "no",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0026,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 1.2752,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 1.2918,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0637,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.064,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W6",
+          "confidence": 0.3709,
+          "utility_total": 0.064,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_342",
+      "question": "Who lived longer, Antonio Caggiano or Hardyal Singh?",
+      "gold_answer": "Antonio Cardinal Caggiano",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": 0.2845,
+          "em": 0.0,
+          "f1_proxy": 0.25
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.314,
+          "em": 0.0,
+          "f1_proxy": 0.25
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.3013,
+          "em": 0.0,
+          "f1_proxy": 0.25
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.3024,
+          "em": 0.0,
+          "f1_proxy": 0.25
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.3025,
+          "em": 0.0,
+          "f1_proxy": 0.25
+        },
+        "learned_router": {
+          "workflow_id": "W6",
+          "confidence": 0.4747,
+          "utility_total": 0.3026,
+          "em": 0.0,
+          "f1_proxy": 0.25
+        }
+      }
+    },
+    {
+      "question_id": "dev_114",
+      "question": "Which film was released earlier, Xenoa or Divorce Invitation?",
+      "gold_answer": "Xenoa",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": 0.1889,
+          "em": 0.0,
+          "f1_proxy": 0.1667
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0267,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 1.2897,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0035,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.0035,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.6181,
+          "utility_total": 0.0267,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_242",
+      "question": "Who was born earlier, Raúl Osorio or James B. Harris?",
+      "gold_answer": "James B. Harris",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": 0.4284,
+          "em": 0.0,
+          "f1_proxy": 0.375
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.3673,
+          "em": 0.0,
+          "f1_proxy": 0.3
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.4345,
+          "em": 0.0,
+          "f1_proxy": 0.375
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.4995,
+          "em": 0.0,
+          "f1_proxy": 0.375
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.4997,
+          "em": 0.0,
+          "f1_proxy": 0.375
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.4582,
+          "utility_total": 0.3673,
+          "em": 0.0,
+          "f1_proxy": 0.3
+        }
+      }
+    },
+    {
+      "question_id": "dev_493",
+      "question": "Who is the maternal grandfather of Prince Dmitri Alexandrovich Of Russia?",
+      "gold_answer": "Alexander Alexandrovich",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0026,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0739,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0217,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": -0.0081,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0213,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.4749,
+          "utility_total": 0.0739,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_264",
+      "question": "Who is the mother of Edward I Of England?",
+      "gold_answer": "Eleanor of Provence",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0025,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.1175,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0255,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0318,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0255,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.6063,
+          "utility_total": 0.1177,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_272",
+      "question": "Where did Davey Boy Smith Jr.'s mother study?",
+      "gold_answer": "Stampede Wrestling",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0026,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0456,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0243,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0338,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0244,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W3",
+          "confidence": 0.392,
+          "utility_total": 0.0244,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_549",
+      "question": "Which film has the director born earlier, To Walk With Lions or The Grizzlies?",
+      "gold_answer": "To Walk with Lions",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": 1.2972,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 1.2596,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 1.2917,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0077,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.0079,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W3",
+          "confidence": 0.3647,
+          "utility_total": 1.2915,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_254",
+      "question": "Which film has the director who is older, The Woman In The Fifth or End Of Winter?",
+      "gold_answer": "The Woman In The Fifth",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": 1.2972,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0362,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0196,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 1.1493,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 1.1495,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.3851,
+          "utility_total": 0.0364,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_79",
+      "question": "Which country Audofleda's husband is from?",
+      "gold_answer": "Ostrogothic Kingdom",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0026,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.008,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0192,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0068,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0193,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.5523,
+          "utility_total": 0.0081,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_171",
+      "question": "Who is younger, Justin Paul or Helly Shah?",
+      "gold_answer": "Helly Shah",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0026,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.8163,
+          "em": 0.0,
+          "f1_proxy": 0.6667
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.3877,
+          "em": 0.0,
+          "f1_proxy": 0.3333
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.4483,
+          "em": 0.0,
+          "f1_proxy": 0.3333
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.4485,
+          "em": 0.0,
+          "f1_proxy": 0.3333
+        },
+        "learned_router": {
+          "workflow_id": "W6",
+          "confidence": 0.6292,
+          "utility_total": 0.4485,
+          "em": 0.0,
+          "f1_proxy": 0.3333
+        }
+      }
+    },
+    {
+      "question_id": "dev_528",
+      "question": "Which film was released earlier, Nesmrtelná Teta or Illang: The Wolf Brigade?",
+      "gold_answer": "Nesmrtelna teta",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": 0.3805,
+          "em": 0.0,
+          "f1_proxy": 0.3333
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.4057,
+          "em": 0.0,
+          "f1_proxy": 0.3333
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.3968,
+          "em": 0.0,
+          "f1_proxy": 0.3333
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.3735,
+          "em": 0.0,
+          "f1_proxy": 0.3333
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.3736,
+          "em": 0.0,
+          "f1_proxy": 0.3333
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.5382,
+          "utility_total": 0.4056,
+          "em": 0.0,
+          "f1_proxy": 0.3333
+        }
+      }
+    },
+    {
+      "question_id": "dev_536",
+      "question": "Which film has the director died later, Marriage In Name Only or Mille Chilometri Al Minuto!?",
+      "gold_answer": "Marriage In Name Only",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0026,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0902,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0793,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.2738,
+          "em": 0.0,
+          "f1_proxy": 0.1875
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.2622,
+          "em": 0.0,
+          "f1_proxy": 0.1765
+        },
+        "learned_router": {
+          "workflow_id": "W6",
+          "confidence": 0.564,
+          "utility_total": 0.2622,
+          "em": 0.0,
+          "f1_proxy": 0.1765
+        }
+      }
+    },
+    {
+      "question_id": "dev_18",
+      "question": "When did Jean Martin (Singer)'s husband die?",
+      "gold_answer": "1983",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0026,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0325,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.025,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0207,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0251,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W3",
+          "confidence": 0.4173,
+          "utility_total": 0.0251,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_427",
+      "question": "Which film has the director who was born first, I Come With The Rain or A Question Of Attribution?",
+      "gold_answer": "Question of Attribution",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0028,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0843,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0218,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0314,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.0316,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W3",
+          "confidence": 0.4848,
+          "utility_total": 0.0219,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_436",
+      "question": "Where did the composer of film Henry V (1944 Film) die?",
+      "gold_answer": "Ischia",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0028,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": -0.0001,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0245,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": -0.0088,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0246,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W3",
+          "confidence": 0.4018,
+          "utility_total": 0.0248,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_187",
+      "question": "Which song was released earlier, 1990-Sick (Get 'Em All) or Who'S Laughing Now (Song)?",
+      "gold_answer": "1990-Sick (Get 'Em All)",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": 1.297,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 1.2096,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.7473,
+          "em": 0.0,
+          "f1_proxy": 0.6667
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 1.17,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 1.1698,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.3279,
+          "utility_total": 1.2095,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_267",
+      "question": "Who is Sancho Ramírez's maternal grandfather?",
+      "gold_answer": "Bernard-Roger, Count of Bigorre",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0026,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.226,
+          "em": 0.0,
+          "f1_proxy": 0.1667
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0186,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0083,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0187,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W6",
+          "confidence": 0.5537,
+          "utility_total": 0.0088,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_240",
+      "question": "Who is the mother-in-law of Lollia Paulina?",
+      "gold_answer": "Agrippina the Elder",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0025,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.068,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0207,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0275,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0207,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.8176,
+          "utility_total": 0.0711,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_517",
+      "question": "When did Prince Gustav Of Thurn And Taxis (1848–1914)'s father die?",
+      "gold_answer": "10 November 1871",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0026,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.3941,
+          "em": 0.0,
+          "f1_proxy": 0.3
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0301,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.3389,
+          "em": 0.0,
+          "f1_proxy": 0.2727
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.3393,
+          "em": 0.0,
+          "f1_proxy": 0.2727
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.3831,
+          "utility_total": 0.3942,
+          "em": 0.0,
+          "f1_proxy": 0.3
+        }
+      }
+    },
+    {
+      "question_id": "dev_357",
+      "question": "Which film has the director who died earlier, Gold For The Caesars or Heinz In The Moon?",
+      "gold_answer": "Heinz in the Moon",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0028,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0197,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.066,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.1948,
+          "em": 0.0,
+          "f1_proxy": 0.125
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.0594,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W6",
+          "confidence": 0.4157,
+          "utility_total": 0.0594,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_305",
+      "question": "What nationality is Ferdinand Of Portugal, Duke Of Guarda's mother?",
+      "gold_answer": "España",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0027,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0526,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0226,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0392,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0226,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.5472,
+          "utility_total": 0.0528,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_289",
+      "question": "Are the directors of films The Swordsman (Upcoming Film) and Shopworn both from the same country?",
+      "gold_answer": "no",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0028,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0118,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.1094,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0526,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.0528,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.4195,
+          "utility_total": 0.0116,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_137",
+      "question": "Which country the composer of film Continental, A Film Without Guns is from?",
+      "gold_answer": "Republic of France",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": 0.1409,
+          "em": 0.0,
+          "f1_proxy": 0.125
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0483,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.029,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0429,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0264,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.5978,
+          "utility_total": 0.0531,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_464",
+      "question": "Which country Aleksander Koniecpolski (1620–1659)'s father is from?",
+      "gold_answer": "Poland-Lithuania",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0026,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0067,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0202,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0117,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0204,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.4971,
+          "utility_total": 0.0069,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_154",
+      "question": "Do Alice Mary Dowd and Richard N. Palmer have the same nationality?",
+      "gold_answer": "yes",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0027,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0592,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0206,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0239,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.024,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W3",
+          "confidence": 0.4355,
+          "utility_total": 0.0206,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_208",
+      "question": "Which film came out earlier, Niyoti or Angali Pangali?",
+      "gold_answer": "Niyoti",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0026,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.2212,
+          "em": 0.0,
+          "f1_proxy": 0.1429
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.034,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.2089,
+          "em": 0.0,
+          "f1_proxy": 0.1429
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.2092,
+          "em": 0.0,
+          "f1_proxy": 0.1429
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.4254,
+          "utility_total": 0.2215,
+          "em": 0.0,
+          "f1_proxy": 0.1429
+        }
+      }
+    },
+    {
+      "question_id": "dev_62",
+      "question": "Where was the father of Alexandre Gaydamak born?",
+      "gold_answer": "Moscow, Russian Federation",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0035,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0202,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0183,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0289,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0178,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W6",
+          "confidence": 0.4033,
+          "utility_total": 0.0294,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_159",
+      "question": "Who is younger, Aneta Hladíková or René Poupardin?",
+      "gold_answer": "Aneta Hladíková",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": 0.3803,
+          "em": 0.0,
+          "f1_proxy": 0.3333
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0459,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0678,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.2898,
+          "em": 0.0,
+          "f1_proxy": 0.2222
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.2899,
+          "em": 0.0,
+          "f1_proxy": 0.2222
+        },
+        "learned_router": {
+          "workflow_id": "W6",
+          "confidence": 0.56,
+          "utility_total": 0.2899,
+          "em": 0.0,
+          "f1_proxy": 0.2222
+        }
+      }
+    },
+    {
+      "question_id": "dev_64",
+      "question": "Who is Gaston, Duke Of Orléans's paternal grandmother?",
+      "gold_answer": "Jeanne III",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0026,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0025,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0244,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0138,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0246,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.7937,
+          "utility_total": 0.003,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_1",
+      "question": "Which film came out first, Blind Shaft or The Mask Of Fu Manchu?",
+      "gold_answer": "The Mask Of Fu Manchu",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": 0.572,
+          "em": 0.0,
+          "f1_proxy": 0.5
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.4849,
+          "em": 0.0,
+          "f1_proxy": 0.375
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.5222,
+          "em": 0.0,
+          "f1_proxy": 0.375
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0114,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.0117,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.3445,
+          "utility_total": 0.4853,
+          "em": 0.0,
+          "f1_proxy": 0.375
+        }
+      }
+    },
+    {
+      "question_id": "dev_565",
+      "question": "Who is the mother of the director of film Atomised (Film)?",
+      "gold_answer": "Gisela Elsner",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0026,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0594,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0187,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0385,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0187,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.5193,
+          "utility_total": 0.0596,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_47",
+      "question": "Which film has the director born earlier, The House By The Cemetery or Charlie Chan In Honolulu?",
+      "gold_answer": "Charlie Chan in Honolulu",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0028,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 1.2673,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.3872,
+          "em": 0.0,
+          "f1_proxy": 0.3333
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.2931,
+          "em": 0.0,
+          "f1_proxy": 0.2727
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.2932,
+          "em": 0.0,
+          "f1_proxy": 0.2727
+        },
+        "learned_router": {
+          "workflow_id": "W6",
+          "confidence": 0.355,
+          "utility_total": 0.2933,
+          "em": 0.0,
+          "f1_proxy": 0.2727
+        }
+      }
+    },
+    {
+      "question_id": "dev_330",
+      "question": "Which film has the director who was born first, Slim Carter or Thendral Veesum?",
+      "gold_answer": "Thendral Veesum",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0027,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0684,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0219,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0676,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.0675,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.4833,
+          "utility_total": 0.0685,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_175",
+      "question": "Who is Edward De Vere, 17Th Earl Of Oxford's paternal grandfather?",
+      "gold_answer": "John de Vere, 15th Earl of Oxford",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0026,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.3767,
+          "em": 0.0,
+          "f1_proxy": 0.3077
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.3285,
+          "em": 0.0,
+          "f1_proxy": 0.2632
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.3915,
+          "em": 0.0,
+          "f1_proxy": 0.2857
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.3331,
+          "em": 0.0,
+          "f1_proxy": 0.2667
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.5243,
+          "utility_total": 0.3773,
+          "em": 0.0,
+          "f1_proxy": 0.3077
+        }
+      }
+    },
+    {
+      "question_id": "dev_422",
+      "question": "Which film has the director died later, Just Like A Woman (1939 Film) or Madigan'S Millions?",
+      "gold_answer": "Madigan's Millions",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0029,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0317,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0223,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.071,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.0712,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W6",
+          "confidence": 0.5484,
+          "utility_total": 0.0712,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_225",
+      "question": "Which film was released more recently, Toolbox Murders or I Met You In Naples?",
+      "gold_answer": "Toolbox Murders",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": 1.2973,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 1.2635,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 1.2937,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.2643,
+          "em": 0.0,
+          "f1_proxy": 0.2
+        },
+        "rule_based": {
+          "workflow_id": "W4",
+          "utility_total": 1.0828,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.4384,
+          "utility_total": 1.2636,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_19",
+      "question": "Which film has the director who died earlier, Tangled Destinies or The Daltons' Women?",
+      "gold_answer": "Tangled Destinies",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": 1.2973,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 1.255,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 1.2995,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.1728,
+          "em": 0.0,
+          "f1_proxy": 0.0952
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.1729,
+          "em": 0.0,
+          "f1_proxy": 0.0952
+        },
+        "learned_router": {
+          "workflow_id": "W3",
+          "confidence": 0.4337,
+          "utility_total": 1.2994,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_355",
+      "question": "Who is the paternal grandfather of Guy Le Strange?",
+      "gold_answer": "Henry Styleman",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0025,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0727,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0198,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0312,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0201,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.7976,
+          "utility_total": 0.0723,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_278",
+      "question": "Which film was released earlier, Anna-Liisa or Children Underground?",
+      "gold_answer": "Anna-Liisa",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": 0.1889,
+          "em": 0.0,
+          "f1_proxy": 0.1667
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0235,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.2026,
+          "em": 0.0,
+          "f1_proxy": 0.1667
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0034,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.0034,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.5388,
+          "utility_total": 0.0234,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_413",
+      "question": "What is the cause of death of Eleanor De Clare's husband?",
+      "gold_answer": "drawn and quartered",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0026,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0538,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0181,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0149,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0181,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.5142,
+          "utility_total": 0.0542,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_520",
+      "question": "Where was the director of film Aylwin (Film) born?",
+      "gold_answer": "Weston-super-Mare, Somerset",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0026,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0139,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0252,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0141,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0255,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W3",
+          "confidence": 0.3557,
+          "utility_total": 0.0257,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_304",
+      "question": "Which film has the director who is older than the other, Judy Berlin or Tonight At Twelve?",
+      "gold_answer": "Tonight At Twelve",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0028,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.2695,
+          "em": 0.0,
+          "f1_proxy": 0.1667
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.2697,
+          "em": 0.0,
+          "f1_proxy": 0.125
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0788,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W4",
+          "utility_total": 0.2473,
+          "em": 0.0,
+          "f1_proxy": 0.25
+        },
+        "learned_router": {
+          "workflow_id": "W6",
+          "confidence": 0.508,
+          "utility_total": 0.0793,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_329",
+      "question": "Which film has the director born later, Under The Lantern or Darling Of The Gods?",
+      "gold_answer": "Under the Lantern",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": 1.2973,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0326,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0209,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 1.1678,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 1.1682,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "learned_router": {
+          "workflow_id": "W6",
+          "confidence": 0.3539,
+          "utility_total": 1.1682,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_589",
+      "question": "Where was the place of burial of the director of film Broadway Bad?",
+      "gold_answer": "Pierce Brothers Westwood Village Memorial Park & Mortuary",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0027,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0683,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0133,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0254,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0137,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.3684,
+          "utility_total": 0.0683,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_35",
+      "question": "Who is the paternal grandfather of Taj Al-Dawla?",
+      "gold_answer": "Rukn al-Dawla",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0026,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.2917,
+          "em": 0.0,
+          "f1_proxy": 0.1667
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0236,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.2667,
+          "em": 0.0,
+          "f1_proxy": 0.2
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0236,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.8705,
+          "utility_total": 0.2922,
+          "em": 0.0,
+          "f1_proxy": 0.1667
+        }
+      }
+    },
+    {
+      "question_id": "dev_85",
+      "question": "Which film has the director who died later, The Fatal Mistake or The Devil'S Hairpin?",
+      "gold_answer": "The Devil'S Hairpin",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0028,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.201,
+          "em": 0.0,
+          "f1_proxy": 0.1111
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.071,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.2161,
+          "em": 0.0,
+          "f1_proxy": 0.1333
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.3392,
+          "em": 0.0,
+          "f1_proxy": 0.25
+        },
+        "learned_router": {
+          "workflow_id": "W3",
+          "confidence": 0.4095,
+          "utility_total": 0.0711,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_115",
+      "question": "What is the cause of death of Alex Matthiessen's father?",
+      "gold_answer": "Leukemia",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0026,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0502,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0163,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0432,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0165,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.5734,
+          "utility_total": 0.0504,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_579",
+      "question": "Who is Henri Ii, Duke Of Nemours's paternal grandfather?",
+      "gold_answer": "Jacques",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0026,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0685,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.1092,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0594,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.1094,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.6163,
+          "utility_total": 0.0685,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_57",
+      "question": "Where was the father of Lord Patrick Crichton-Stuart born?",
+      "gold_answer": "London, England",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0033,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0286,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0208,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0103,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0212,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W6",
+          "confidence": 0.5495,
+          "utility_total": 0.0107,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_284",
+      "question": "Which film has the director born later, My Own Private Idaho or Lucignolo?",
+      "gold_answer": "Lucignolo",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": 1.2973,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0798,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 1.1993,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 1.1432,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 1.1439,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.3501,
+          "utility_total": 0.0799,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "dev_350",
+      "question": "Which film came out first, Ami Neta Hobo or Hood Of The Living Dead?",
+      "gold_answer": "Hood Of The Living Dead",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.003,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.6287,
+          "em": 0.0,
+          "f1_proxy": 0.5
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 1.2982,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.1116,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.1117,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.3946,
+          "utility_total": 0.6288,
+          "em": 0.0,
+          "f1_proxy": 0.5
+        }
+      }
+    }
+  ]
+}

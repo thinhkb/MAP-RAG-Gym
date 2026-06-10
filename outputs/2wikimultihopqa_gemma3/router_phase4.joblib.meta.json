@@ -1,0 +1,4854 @@
+{
+  "manifest": {
+    "script": "scripts/train_phase4_router.py",
+    "generated_at_utc": "2026-06-04T04:44:12+00:00",
+    "git_commit": "468c42fc389c5c340c9053380d6bcce97aac4114",
+    "python_version": "3.12.13",
+    "platform": "Windows-11-10.0.22621-SP0",
+    "paths": {
+      "qa": "G:\\MAP-RAG-Gym\\outputs\\2wikimultihopqa_gemma3\\train_rollouts.json",
+      "corpus": null,
+      "router_model": "G:\\MAP-RAG-Gym\\outputs\\2wikimultihopqa_gemma3\\router_phase4.joblib"
+    },
+    "dataset": {
+      "name": "2wikimultihopqa",
+      "split": "train",
+      "limit": 420,
+      "effective_questions": 1260
+    },
+    "llm": {
+      "provider": null,
+      "model": null
+    },
+    "reproducibility": {
+      "seed": 13,
+      "prompt_version": "v1",
+      "utility": null
+    },
+    "settings": {
+      "input_rollout_file": "outputs/2wikimultihopqa_gemma3/train_rollouts.json",
+      "output_model": "outputs/2wikimultihopqa_gemma3/router_phase4.joblib",
+      "allowed_workflows": [
+        "W1",
+        "W2",
+        "W3",
+        "W6"
+      ],
+      "min_samples_per_label": 2,
+      "budget_modes": [
+        "low",
+        "medium",
+        "high"
+      ],
+      "utility_profiles": {
+        "low": {
+          "reward_weights": {
+            "f1_proxy": 1.0,
+            "process_score": 0.25
+          },
+          "cost_weights": {
+            "tokens": 0.16,
+            "retrieval_calls": 0.2,
+            "latency_ms": 0.12
+          },
+          "cost_normalizers": {
+            "tokens": 2000.0,
+            "retrieval_calls": 4.0,
+            "latency_ms": 10000.0
+          }
+        },
+        "medium": {
+          "reward_weights": {
+            "f1_proxy": 1.0,
+            "process_score": 0.35
+          },
+          "cost_weights": {
+            "tokens": 0.08,
+            "retrieval_calls": 0.1,
+            "latency_ms": 0.05
+          },
+          "cost_normalizers": {
+            "tokens": 2000.0,
+            "retrieval_calls": 4.0,
+            "latency_ms": 10000.0
+          }
+        },
+        "high": {
+          "reward_weights": {
+            "f1_proxy": 1.0,
+            "process_score": 0.45
+          },
+          "cost_weights": {
+            "tokens": 0.04,
+            "retrieval_calls": 0.06,
+            "latency_ms": 0.03
+          },
+          "cost_normalizers": {
+            "tokens": 2000.0,
+            "retrieval_calls": 4.0,
+            "latency_ms": 10000.0
+          }
+        }
+      },
+      "budget_margin_overrides": {},
+      "budget_preferred_workflows": {}
+    }
+  },
+  "source_rollout_manifest": {
+    "script": "scripts/batch_rollout.py",
+    "generated_at_utc": "2026-06-04T02:28:26+00:00",
+    "git_commit": "ffd7126ed08e7eb42d1222d0c2a4ef7b008ec43b",
+    "python_version": "3.12.13",
+    "platform": "Windows-11-10.0.22621-SP0",
+    "paths": {
+      "qa": "G:\\MAP-RAG-Gym\\data\\2wikimultihopqa\\splits\\train.json",
+      "corpus": "G:\\MAP-RAG-Gym\\data\\2wikimultihopqa\\corpus.json",
+      "router_model": null
+    },
+    "dataset": {
+      "name": "2wikimultihopqa",
+      "split": "train",
+      "limit": 420,
+      "effective_questions": 420
+    },
+    "llm": {
+      "provider": "ollama",
+      "model": "gemma3"
+    },
+    "reproducibility": {
+      "seed": 42,
+      "prompt_version": "v1",
+      "utility": {
+        "reward_weights": {
+          "f1_proxy": 1.0,
+          "process_score": 0.35
+        },
+        "cost_weights": {
+          "tokens": 0.08,
+          "retrieval_calls": 0.1,
+          "latency_ms": 0.05
+        },
+        "cost_normalizers": {
+          "tokens": 2000.0,
+          "retrieval_calls": 4.0,
+          "latency_ms": 10000.0
+        }
+      }
+    },
+    "settings": {
+      "workflow_ids": [
+        "W1",
+        "W2",
+        "W3",
+        "W6"
+      ],
+      "n_candidates": 3,
+      "budget_mode": "medium",
+      "retriever_type": "bm25",
+      "retriever_bm25_weight": 0.5,
+      "workflow_retriever_overrides": {},
+      "resume": true
+    }
+  },
+  "label_counts_before_min_filter": {
+    "W3": 345,
+    "W1": 543,
+    "W2": 251,
+    "W6": 121
+  },
+  "label_counts_used": {
+    "W3": 345,
+    "W1": 543,
+    "W2": 251,
+    "W6": 121
+  },
+  "label_counts_by_budget_used": {
+    "low": {
+      "W3": 86,
+      "W1": 334
+    },
+    "medium": {
+      "W3": 123,
+      "W1": 154,
+      "W2": 94,
+      "W6": 49
+    },
+    "high": {
+      "W3": 136,
+      "W1": 55,
+      "W2": 157,
+      "W6": 72
+    }
+  },
+  "num_labels_total": 1260,
+  "num_labels_after_allowed_filter": 1260,
+  "num_labels_used": 1260,
+  "dropped_below_min_samples": 0,
+  "calibration_counts": {},
+  "diagnostics_preview": [
+    {
+      "question_id": "dev_476",
+      "question": "Who is the father of the director of film Plunkett & Macleane?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 1.079
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0965
+        }
+      ]
+    },
+    {
+      "question_id": "dev_476",
+      "question": "Who is the father of the director of film Plunkett & Macleane?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 1.1977
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.3386
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.0632
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.041
+        }
+      ]
+    },
+    {
+      "question_id": "dev_476",
+      "question": "Who is the father of the director of film Plunkett & Macleane?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 1.2867
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.4044
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.1126
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0241
+        }
+      ]
+    },
+    {
+      "question_id": "dev_452",
+      "question": "Who died later, Stephen De Staebler or Samuel Arthur Saunder?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 0.0725
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0256
+        }
+      ]
+    },
+    {
+      "question_id": "dev_452",
+      "question": "Who died later, Stephen De Staebler or Samuel Arthur Saunder?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 0.096
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.0627
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.0502
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0451
+        }
+      ]
+    },
+    {
+      "question_id": "dev_452",
+      "question": "Who died later, Stephen De Staebler or Samuel Arthur Saunder?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 0.106
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.1048
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.095
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0784
+        }
+      ]
+    },
+    {
+      "question_id": "dev_336",
+      "question": "Who is Frederick Of Luxembourg's paternal grandfather?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.029
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0798
+        }
+      ]
+    },
+    {
+      "question_id": "dev_336",
+      "question": "Who is Frederick Of Luxembourg's paternal grandfather?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0128
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0162
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0171
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0369
+        }
+      ]
+    },
+    {
+      "question_id": "dev_336",
+      "question": "Who is Frederick Of Luxembourg's paternal grandfather?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 0.028
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0142
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.0004
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0072
+        }
+      ]
+    },
+    {
+      "question_id": "dev_469",
+      "question": "Do director of film Coteau Rouge and director of film Hochelaga, Land Of Souls share the same nationality?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0312
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0861
+        }
+      ]
+    },
+    {
+      "question_id": "dev_469",
+      "question": "Do director of film Coteau Rouge and director of film Hochelaga, Land Of Souls share the same nationality?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0138
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0218
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.036
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0492
+        }
+      ]
+    },
+    {
+      "question_id": "dev_469",
+      "question": "Do director of film Coteau Rouge and director of film Hochelaga, Land Of Souls share the same nationality?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 0.0236
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0092
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0078
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0157
+        }
+      ]
+    },
+    {
+      "question_id": "dev_574",
+      "question": "Where was the place of burial of Kunigunde Of Poland's father?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0303
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0653
+        }
+      ]
+    },
+    {
+      "question_id": "dev_574",
+      "question": "Where was the place of burial of Kunigunde Of Poland's father?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 0.0126
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0111
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0134
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0495
+        }
+      ]
+    },
+    {
+      "question_id": "dev_574",
+      "question": "Where was the place of burial of Kunigunde Of Poland's father?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 0.0594
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0151
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0076
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0095
+        }
+      ]
+    },
+    {
+      "question_id": "dev_559",
+      "question": "Who is Princess Florestine Of Monaco's paternal grandmother?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0294
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0821
+        }
+      ]
+    },
+    {
+      "question_id": "dev_559",
+      "question": "Who is Princess Florestine Of Monaco's paternal grandmother?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.013
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0153
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0159
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0331
+        }
+      ]
+    },
+    {
+      "question_id": "dev_559",
+      "question": "Who is Princess Florestine Of Monaco's paternal grandmother?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 0.0347
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0162
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.0059
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0073
+        }
+      ]
+    },
+    {
+      "question_id": "dev_205",
+      "question": "Where was the mother of Antonio Flores born?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.03
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0716
+        }
+      ]
+    },
+    {
+      "question_id": "dev_205",
+      "question": "Where was the mother of Antonio Flores born?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W6",
+          "utility": 0.0685
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0132
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0151
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0307
+        }
+      ]
+    },
+    {
+      "question_id": "dev_205",
+      "question": "Where was the mother of Antonio Flores born?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W6",
+          "utility": 0.1065
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0121
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.0078
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0075
+        }
+      ]
+    },
+    {
+      "question_id": "dev_84",
+      "question": "Which song was released more recently, Go Ahead And Break My Heart or Knee Deep In My Heart?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.1339
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.245
+        }
+      ]
+    },
+    {
+      "question_id": "dev_84",
+      "question": "Which song was released more recently, Go Ahead And Break My Heart or Knee Deep In My Heart?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.2188
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 1.1447
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.4825
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.3253
+        }
+      ]
+    },
+    {
+      "question_id": "dev_84",
+      "question": "Which song was released more recently, Go Ahead And Break My Heart or Knee Deep In My Heart?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.2918
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 1.2479
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.5553
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.3724
+        }
+      ]
+    },
+    {
+      "question_id": "dev_532",
+      "question": "Are Bilthoven and Herveld both located in the same country?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.136
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 1.0081
+        }
+      ]
+    },
+    {
+      "question_id": "dev_532",
+      "question": "Are Bilthoven and Herveld both located in the same country?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.2198
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 1.115
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 1.1065
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 1.096
+        }
+      ]
+    },
+    {
+      "question_id": "dev_532",
+      "question": "Are Bilthoven and Herveld both located in the same country?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.2924
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 1.1937
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 1.1871
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 1.17
+        }
+      ]
+    },
+    {
+      "question_id": "dev_49",
+      "question": "Who is Blanche Of Portugal (1259–1321)'s paternal grandmother?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.1534
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0297
+        }
+      ]
+    },
+    {
+      "question_id": "dev_49",
+      "question": "Who is Blanche Of Portugal (1259–1321)'s paternal grandmother?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.2211
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.0745
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0084
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0131
+        }
+      ]
+    },
+    {
+      "question_id": "dev_49",
+      "question": "Who is Blanche Of Portugal (1259–1321)'s paternal grandmother?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.2555
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.1082
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.0423
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0074
+        }
+      ]
+    },
+    {
+      "question_id": "dev_294",
+      "question": "Which country the director of film One Night At Mccool'S is from?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0353
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0785
+        }
+      ]
+    },
+    {
+      "question_id": "dev_294",
+      "question": "Which country the director of film One Night At Mccool'S is from?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": -0.0143
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0155
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0241
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0447
+        }
+      ]
+    },
+    {
+      "question_id": "dev_294",
+      "question": "Which country the director of film One Night At Mccool'S is from?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 0.0184
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0166
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.0143
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0088
+        }
+      ]
+    },
+    {
+      "question_id": "dev_471",
+      "question": "Where was the performer of song I See You (Theme From Avatar) born?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.045
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0323
+        }
+      ]
+    },
+    {
+      "question_id": "dev_471",
+      "question": "Where was the performer of song I See You (Theme From Avatar) born?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.1246
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0142
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0442
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0442
+        }
+      ]
+    },
+    {
+      "question_id": "dev_471",
+      "question": "Where was the performer of song I See You (Theme From Avatar) born?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.164
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0081
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0116
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0145
+        }
+      ]
+    },
+    {
+      "question_id": "dev_384",
+      "question": "Who is the mother of the performer of song Feel Good (Robin Thicke Song)?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0342
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0802
+        }
+      ]
+    },
+    {
+      "question_id": "dev_384",
+      "question": "Who is the mother of the performer of song Feel Good (Robin Thicke Song)?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W6",
+          "utility": -0.0139
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0151
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0185
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0434
+        }
+      ]
+    },
+    {
+      "question_id": "dev_384",
+      "question": "Who is the mother of the performer of song Feel Good (Robin Thicke Song)?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W6",
+          "utility": 0.0313
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0116
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0086
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0106
+        }
+      ]
+    },
+    {
+      "question_id": "dev_530",
+      "question": "Who was born later, Bradley Tyler Johnson or Bernardo Freitas?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0309
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.07
+        }
+      ]
+    },
+    {
+      "question_id": "dev_530",
+      "question": "Who was born later, Bradley Tyler Johnson or Bernardo Freitas?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 0.2558
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.0032
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0109
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0136
+        }
+      ]
+    },
+    {
+      "question_id": "dev_530",
+      "question": "Who was born later, Bradley Tyler Johnson or Bernardo Freitas?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 0.3041
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.0474
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0181
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0077
+        }
+      ]
+    },
+    {
+      "question_id": "dev_92",
+      "question": "Where was the director of film Lettre Ouverte born?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 0.4
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0674
+        }
+      ]
+    },
+    {
+      "question_id": "dev_92",
+      "question": "Where was the director of film Lettre Ouverte born?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 0.432
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0054
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0518
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0662
+        }
+      ]
+    },
+    {
+      "question_id": "dev_92",
+      "question": "Where was the director of film Lettre Ouverte born?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 0.4517
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0252
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.0027
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0261
+        }
+      ]
+    },
+    {
+      "question_id": "dev_484",
+      "question": "Who is Colgú Mac Faílbe Flaind's uncle?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.0201
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0294
+        }
+      ]
+    },
+    {
+      "question_id": "dev_484",
+      "question": "Who is Colgú Mac Faílbe Flaind's uncle?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 0.1097
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0999
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.0884
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.013
+        }
+      ]
+    },
+    {
+      "question_id": "dev_484",
+      "question": "Who is Colgú Mac Faílbe Flaind's uncle?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 0.1726
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.1446
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.1427
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0074
+        }
+      ]
+    },
+    {
+      "question_id": "dev_564",
+      "question": "Which film whose director was born first, Weird Woman or Secret Strings?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.032
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0792
+        }
+      ]
+    },
+    {
+      "question_id": "dev_564",
+      "question": "Which film whose director was born first, Weird Woman or Secret Strings?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 0.1817
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.0023
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0141
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.016
+        }
+      ]
+    },
+    {
+      "question_id": "dev_564",
+      "question": "Which film whose director was born first, Weird Woman or Secret Strings?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 0.2388
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.0553
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0141
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.008
+        }
+      ]
+    },
+    {
+      "question_id": "dev_324",
+      "question": "What is the place of birth of the director of film Stopp! Tänk På Något Annat?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0557
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.1472
+        }
+      ]
+    },
+    {
+      "question_id": "dev_324",
+      "question": "What is the place of birth of the director of film Stopp! Tänk På Något Annat?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.024
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0472
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0489
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0882
+        }
+      ]
+    },
+    {
+      "question_id": "dev_324",
+      "question": "What is the place of birth of the director of film Stopp! Tänk På Något Annat?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": -0.0037
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.012
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0139
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0385
+        }
+      ]
+    },
+    {
+      "question_id": "dev_50",
+      "question": "Who lived longer, Giuseppe Cesari or Nicos Poulantzas?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 0.1017
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0484
+        }
+      ]
+    },
+    {
+      "question_id": "dev_50",
+      "question": "Who lived longer, Giuseppe Cesari or Nicos Poulantzas?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 0.1248
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.1147
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.1073
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.1038
+        }
+      ]
+    },
+    {
+      "question_id": "dev_50",
+      "question": "Who lived longer, Giuseppe Cesari or Nicos Poulantzas?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 0.1538
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.1491
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.1477
+        },
+        {
+          "workflow_id": "W1",
+          "utility": 0.1353
+        }
+      ]
+    },
+    {
+      "question_id": "dev_108",
+      "question": "Where did Giacomo Feo's wife die?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0318
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0674
+        }
+      ]
+    },
+    {
+      "question_id": "dev_108",
+      "question": "Where did Giacomo Feo's wife die?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": -0.011
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0139
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0242
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0273
+        }
+      ]
+    },
+    {
+      "question_id": "dev_108",
+      "question": "Where did Giacomo Feo's wife die?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.0161
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.0123
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.0072
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0079
+        }
+      ]
+    },
+    {
+      "question_id": "dev_538",
+      "question": "Who is the paternal grandfather of Sir Thomas Lawley, 3Rd Baronet?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0294
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0549
+        }
+      ]
+    },
+    {
+      "question_id": "dev_538",
+      "question": "Who is the paternal grandfather of Sir Thomas Lawley, 3Rd Baronet?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 0.4216
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.3919
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0168
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.013
+        }
+      ]
+    },
+    {
+      "question_id": "dev_538",
+      "question": "Who is the paternal grandfather of Sir Thomas Lawley, 3Rd Baronet?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 0.4981
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.4572
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0568
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0074
+        }
+      ]
+    },
+    {
+      "question_id": "dev_309",
+      "question": "What is the place of birth of Consort Liang's husband?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0305
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.129
+        }
+      ]
+    },
+    {
+      "question_id": "dev_309",
+      "question": "What is the place of birth of Consort Liang's husband?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0134
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0348
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0443
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0469
+        }
+      ]
+    },
+    {
+      "question_id": "dev_309",
+      "question": "What is the place of birth of Consort Liang's husband?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W6",
+          "utility": 0.0046
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0033
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0076
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0077
+        }
+      ]
+    },
+    {
+      "question_id": "dev_93",
+      "question": "Who is William Ii, Count Of Flanders's paternal grandmother?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.03
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0665
+        }
+      ]
+    },
+    {
+      "question_id": "dev_93",
+      "question": "Who is William Ii, Count Of Flanders's paternal grandmother?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": -0.0088
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0117
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0125
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0132
+        }
+      ]
+    },
+    {
+      "question_id": "dev_93",
+      "question": "Who is William Ii, Count Of Flanders's paternal grandmother?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 0.0501
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.0275
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0148
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0075
+        }
+      ]
+    },
+    {
+      "question_id": "dev_67",
+      "question": "Where was the place of death of Lambert I, Count Of Louvain's father?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0305
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.105
+        }
+      ]
+    },
+    {
+      "question_id": "dev_67",
+      "question": "Where was the place of death of Lambert I, Count Of Louvain's father?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0135
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.02
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0251
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0284
+        }
+      ]
+    },
+    {
+      "question_id": "dev_67",
+      "question": "Where was the place of death of Lambert I, Count Of Louvain's father?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 0.028
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.0241
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0084
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0076
+        }
+      ]
+    },
+    {
+      "question_id": "dev_501",
+      "question": "Which film has the director who was born later, Playing It Wild or I'Ll Be Going Now?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 1.079
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0326
+        }
+      ]
+    },
+    {
+      "question_id": "dev_501",
+      "question": "Which film has the director who was born later, Playing It Wild or I'Ll Be Going Now?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 1.2
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 1.086
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.2134
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0144
+        }
+      ]
+    },
+    {
+      "question_id": "dev_501",
+      "question": "Which film has the director who was born later, Playing It Wild or I'Ll Be Going Now?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 1.2902
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 1.1583
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.2741
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0081
+        }
+      ]
+    },
+    {
+      "question_id": "dev_275",
+      "question": "Which film whose director is younger, Dallas 362 or Revenge Of The Barbarians?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.1343
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0212
+        }
+      ]
+    },
+    {
+      "question_id": "dev_275",
+      "question": "Which film whose director is younger, Dallas 362 or Revenge Of The Barbarians?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.2191
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 1.1604
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 1.0999
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0575
+        }
+      ]
+    },
+    {
+      "question_id": "dev_275",
+      "question": "Which film whose director is younger, Dallas 362 or Revenge Of The Barbarians?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.2919
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 1.2522
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 1.1803
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.1059
+        }
+      ]
+    },
+    {
+      "question_id": "dev_101",
+      "question": "What is the place of birth of the performer of song Heaven (Namie Amuro Song)?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0316
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.1337
+        }
+      ]
+    },
+    {
+      "question_id": "dev_101",
+      "question": "What is the place of birth of the performer of song Heaven (Namie Amuro Song)?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 0.3164
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.3069
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.014
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.045
+        }
+      ]
+    },
+    {
+      "question_id": "dev_101",
+      "question": "What is the place of birth of the performer of song Heaven (Namie Amuro Song)?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 0.3828
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.3679
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0024
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0079
+        }
+      ]
+    },
+    {
+      "question_id": "dev_587",
+      "question": "Which film has the director who was born earlier, Thalapathi or Pour La Peau D'Un Flic?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": -0.0223
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0333
+        }
+      ]
+    },
+    {
+      "question_id": "dev_587",
+      "question": "Which film has the director who was born earlier, Thalapathi or Pour La Peau D'Un Flic?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.0569
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.001
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0147
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.039
+        }
+      ]
+    },
+    {
+      "question_id": "dev_587",
+      "question": "Which film has the director who was born earlier, Thalapathi or Pour La Peau D'Un Flic?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.1057
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.0573
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0063
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0083
+        }
+      ]
+    },
+    {
+      "question_id": "dev_81",
+      "question": "Are both bands, Snowman (Band) and Jessamine (Band), from the same country?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": -0.0121
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0312
+        }
+      ]
+    },
+    {
+      "question_id": "dev_81",
+      "question": "Are both bands, Snowman (Band) and Jessamine (Band), from the same country?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W6",
+          "utility": 0.1375
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.1177
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0693
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0138
+        }
+      ]
+    },
+    {
+      "question_id": "dev_81",
+      "question": "Are both bands, Snowman (Band) and Jessamine (Band), from the same country?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W6",
+          "utility": 0.1882
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.1727
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.1203
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0078
+        }
+      ]
+    },
+    {
+      "question_id": "dev_287",
+      "question": "Who is the paternal grandmother of Ingegerd Olofsdotter Of Sweden?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0296
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0867
+        }
+      ]
+    },
+    {
+      "question_id": "dev_287",
+      "question": "Who is the paternal grandmother of Ingegerd Olofsdotter Of Sweden?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": -0.0017
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0131
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0208
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0436
+        }
+      ]
+    },
+    {
+      "question_id": "dev_287",
+      "question": "Who is the paternal grandmother of Ingegerd Olofsdotter Of Sweden?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 0.0552
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0105
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.003
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0074
+        }
+      ]
+    },
+    {
+      "question_id": "dev_233",
+      "question": "Who is the father-in-law of Tsandzile Ndwandwe?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0297
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0677
+        }
+      ]
+    },
+    {
+      "question_id": "dev_233",
+      "question": "Who is the father-in-law of Tsandzile Ndwandwe?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 0.0411
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0075
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0096
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0131
+        }
+      ]
+    },
+    {
+      "question_id": "dev_233",
+      "question": "Who is the father-in-law of Tsandzile Ndwandwe?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 0.0979
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.0437
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0189
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0074
+        }
+      ]
+    },
+    {
+      "question_id": "dev_362",
+      "question": "Which film whose director is younger, Roland The Mighty or Graves Without A Name?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.1337
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 1.0805
+        }
+      ]
+    },
+    {
+      "question_id": "dev_362",
+      "question": "Which film whose director is younger, Roland The Mighty or Graves Without A Name?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.2188
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 1.2
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.0173
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0435
+        }
+      ]
+    },
+    {
+      "question_id": "dev_362",
+      "question": "Which film whose director is younger, Roland The Mighty or Graves Without A Name?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.2918
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 1.2894
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.0719
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0066
+        }
+      ]
+    },
+    {
+      "question_id": "dev_337",
+      "question": "Who is the father of the director of film Mirage (1972 Film)?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0306
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0629
+        }
+      ]
+    },
+    {
+      "question_id": "dev_337",
+      "question": "Who is the father of the director of film Mirage (1972 Film)?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": -0.0062
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0135
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0142
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0246
+        }
+      ]
+    },
+    {
+      "question_id": "dev_337",
+      "question": "Who is the father of the director of film Mirage (1972 Film)?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W6",
+          "utility": 0.0321
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0219
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.0169
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0077
+        }
+      ]
+    },
+    {
+      "question_id": "dev_512",
+      "question": "Who is Isma'Il Ibn Ja'Far's paternal grandmother?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0296
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0732
+        }
+      ]
+    },
+    {
+      "question_id": "dev_512",
+      "question": "Who is Isma'Il Ibn Ja'Far's paternal grandmother?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0131
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0155
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0273
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0294
+        }
+      ]
+    },
+    {
+      "question_id": "dev_512",
+      "question": "Who is Isma'Il Ibn Ja'Far's paternal grandmother?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 0.016
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0124
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.0106
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0074
+        }
+      ]
+    },
+    {
+      "question_id": "dev_210",
+      "question": "Which country Tivala's father is from?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0307
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0783
+        }
+      ]
+    },
+    {
+      "question_id": "dev_210",
+      "question": "Which country Tivala's father is from?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0135
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0185
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.048
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0545
+        }
+      ]
+    },
+    {
+      "question_id": "dev_210",
+      "question": "Which country Tivala's father is from?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.0104
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0077
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0086
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0199
+        }
+      ]
+    },
+    {
+      "question_id": "dev_112",
+      "question": "Where did Gigi Causey's husband graduate from?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 0.0372
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0679
+        }
+      ]
+    },
+    {
+      "question_id": "dev_112",
+      "question": "Where did Gigi Causey's husband graduate from?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 0.0591
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.013
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0408
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.041
+        }
+      ]
+    },
+    {
+      "question_id": "dev_112",
+      "question": "Where did Gigi Causey's husband graduate from?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 0.0679
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0135
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0016
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0029
+        }
+      ]
+    },
+    {
+      "question_id": "dev_332",
+      "question": "Where did the director of film Vestire Gli Ignudi die?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0376
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0696
+        }
+      ]
+    },
+    {
+      "question_id": "dev_332",
+      "question": "Where did the director of film Vestire Gli Ignudi die?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": -0.0127
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0164
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0455
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0538
+        }
+      ]
+    },
+    {
+      "question_id": "dev_332",
+      "question": "Where did the director of film Vestire Gli Ignudi die?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.015
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0094
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0123
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0182
+        }
+      ]
+    },
+    {
+      "question_id": "dev_128",
+      "question": "Who is the father of the director of film Red 2 (Film)?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0297
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0685
+        }
+      ]
+    },
+    {
+      "question_id": "dev_128",
+      "question": "Who is the father of the director of film Red 2 (Film)?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W6",
+          "utility": 0.1368
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0044
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0084
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0131
+        }
+      ]
+    },
+    {
+      "question_id": "dev_128",
+      "question": "Who is the father of the director of film Red 2 (Film)?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W6",
+          "utility": 0.1831
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.0374
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0209
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0074
+        }
+      ]
+    },
+    {
+      "question_id": "dev_290",
+      "question": "Are The Man Who Knew Too Much (1956 Film) and Man On Wire both from the same country?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0315
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0697
+        }
+      ]
+    },
+    {
+      "question_id": "dev_290",
+      "question": "Are The Man Who Knew Too Much (1956 Film) and Man On Wire both from the same country?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": -0.0127
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.014
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0145
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.062
+        }
+      ]
+    },
+    {
+      "question_id": "dev_290",
+      "question": "Are The Man Who Knew Too Much (1956 Film) and Man On Wire both from the same country?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 0.0329
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.015
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0069
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0079
+        }
+      ]
+    },
+    {
+      "question_id": "dev_166",
+      "question": "Which film has the director who died earlier, The Love Charm or The Constant Woman?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0328
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0656
+        }
+      ]
+    },
+    {
+      "question_id": "dev_166",
+      "question": "Which film has the director who died earlier, The Love Charm or The Constant Woman?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": -0.0077
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0145
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.024
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0253
+        }
+      ]
+    },
+    {
+      "question_id": "dev_166",
+      "question": "Which film has the director who died earlier, The Love Charm or The Constant Woman?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.021
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.0182
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.0169
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0082
+        }
+      ]
+    },
+    {
+      "question_id": "dev_238",
+      "question": "Which film has the director born later, Diary Of A Maniac or Return Of The Hero?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.1343
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 1.0276
+        }
+      ]
+    },
+    {
+      "question_id": "dev_238",
+      "question": "Which film has the director born later, Diary Of A Maniac or Return Of The Hero?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.219
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 1.1264
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.1281
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0328
+        }
+      ]
+    },
+    {
+      "question_id": "dev_238",
+      "question": "Which film has the director born later, Diary Of A Maniac or Return Of The Hero?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.2919
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 1.195
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.1759
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.0076
+        }
+      ]
+    },
+    {
+      "question_id": "dev_518",
+      "question": "Which film was released more recently, A Scream From Silence or Das Spielzeug Von Paris?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.0511
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 1.0034
+        }
+      ]
+    },
+    {
+      "question_id": "dev_518",
+      "question": "Which film was released more recently, A Scream From Silence or Das Spielzeug Von Paris?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.1024
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 1.0919
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 1.0675
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.0197
+        }
+      ]
+    },
+    {
+      "question_id": "dev_518",
+      "question": "Which film was released more recently, A Scream From Silence or Das Spielzeug Von Paris?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 1.1501
+        },
+        {
+          "workflow_id": "W1",
+          "utility": 1.1419
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 1.1307
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.0732
+        }
+      ]
+    },
+    {
+      "question_id": "dev_473",
+      "question": "Which film was released more recently, Royal Treasure or When Love Begins?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.1357
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 1.081
+        }
+      ]
+    },
+    {
+      "question_id": "dev_473",
+      "question": "Which film was released more recently, Royal Treasure or When Love Begins?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.2196
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 1.1983
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 1.1554
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 1.1141
+        }
+      ]
+    },
+    {
+      "question_id": "dev_473",
+      "question": "Which film was released more recently, Royal Treasure or When Love Begins?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.2923
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 1.2867
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 1.2452
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 1.1901
+        }
+      ]
+    },
+    {
+      "question_id": "dev_514",
+      "question": "What is the place of birth of the director of film My Country'S Wings?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.033
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.1292
+        }
+      ]
+    },
+    {
+      "question_id": "dev_514",
+      "question": "What is the place of birth of the director of film My Country'S Wings?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0145
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0211
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0442
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0603
+        }
+      ]
+    },
+    {
+      "question_id": "dev_514",
+      "question": "What is the place of birth of the director of film My Country'S Wings?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 0.021
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.003
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0082
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0238
+        }
+      ]
+    },
+    {
+      "question_id": "dev_377",
+      "question": "Who is the father of the composer of song I Miss You (Miley Cyrus Song)?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": -0.0207
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0299
+        }
+      ]
+    },
+    {
+      "question_id": "dev_377",
+      "question": "Who is the father of the composer of song I Miss You (Miley Cyrus Song)?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W6",
+          "utility": 0.2326
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0535
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0133
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0221
+        }
+      ]
+    },
+    {
+      "question_id": "dev_377",
+      "question": "Who is the father of the composer of song I Miss You (Miley Cyrus Song)?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W6",
+          "utility": 0.2962
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0899
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.0178
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0075
+        }
+      ]
+    },
+    {
+      "question_id": "dev_102",
+      "question": "What nationality is Philip Of Ibelin (1180–1227)'s mother?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0348
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0757
+        }
+      ]
+    },
+    {
+      "question_id": "dev_102",
+      "question": "What nationality is Philip Of Ibelin (1180–1227)'s mother?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": -0.0098
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0152
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0166
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0383
+        }
+      ]
+    },
+    {
+      "question_id": "dev_102",
+      "question": "What nationality is Philip Of Ibelin (1180–1227)'s mother?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 0.0397
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0124
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.0024
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0087
+        }
+      ]
+    },
+    {
+      "question_id": "dev_277",
+      "question": "Where was the father of Andrew Balding born?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0339
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0853
+        }
+      ]
+    },
+    {
+      "question_id": "dev_277",
+      "question": "Where was the father of Andrew Balding born?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0149
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0213
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.025
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0314
+        }
+      ]
+    },
+    {
+      "question_id": "dev_277",
+      "question": "Where was the father of Andrew Balding born?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W6",
+          "utility": 0.0185
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.0103
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0095
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0085
+        }
+      ]
+    },
+    {
+      "question_id": "dev_390",
+      "question": "Who is Busba Kitiyakara's paternal grandfather?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0293
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0698
+        }
+      ]
+    },
+    {
+      "question_id": "dev_390",
+      "question": "Who is Busba Kitiyakara's paternal grandfather?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 0.0988
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0098
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0129
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0182
+        }
+      ]
+    },
+    {
+      "question_id": "dev_390",
+      "question": "Who is Busba Kitiyakara's paternal grandfather?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 0.1603
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.0311
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0197
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0073
+        }
+      ]
+    },
+    {
+      "question_id": "dev_526",
+      "question": "Who was born first, Emmanuel Goffi or Mariano Pasini?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.09
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0328
+        }
+      ]
+    },
+    {
+      "question_id": "dev_526",
+      "question": "Who was born first, Emmanuel Goffi or Mariano Pasini?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.1924
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.1816
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.0009
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0144
+        }
+      ]
+    },
+    {
+      "question_id": "dev_526",
+      "question": "Who was born first, Emmanuel Goffi or Mariano Pasini?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.2526
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.2448
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.0609
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0082
+        }
+      ]
+    },
+    {
+      "question_id": "dev_21",
+      "question": "What nationality is the director of film World And Time Enough?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0372
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.1069
+        }
+      ]
+    },
+    {
+      "question_id": "dev_21",
+      "question": "What nationality is the director of film World And Time Enough?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": -0.0043
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0162
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0324
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0585
+        }
+      ]
+    },
+    {
+      "question_id": "dev_21",
+      "question": "What nationality is the director of film World And Time Enough?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 0.0458
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0035
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0093
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0112
+        }
+      ]
+    },
+    {
+      "question_id": "dev_218",
+      "question": "Where did the director of film Ręce Do Góry study?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0315
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0841
+        }
+      ]
+    },
+    {
+      "question_id": "dev_218",
+      "question": "Where did the director of film Ręce Do Góry study?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W6",
+          "utility": 0.0366
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0139
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0198
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0417
+        }
+      ]
+    },
+    {
+      "question_id": "dev_218",
+      "question": "Where did the director of film Ręce Do Góry study?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W6",
+          "utility": 0.07
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0109
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.0106
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0079
+        }
+      ]
+    },
+    {
+      "question_id": "dev_333",
+      "question": "Which film has the director died earlier, John Jaffer Janardhanan or Kamakalawa?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0329
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0872
+        }
+      ]
+    },
+    {
+      "question_id": "dev_333",
+      "question": "Which film has the director died earlier, John Jaffer Janardhanan or Kamakalawa?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W6",
+          "utility": 1.0979
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.0862
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0145
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0213
+        }
+      ]
+    },
+    {
+      "question_id": "dev_333",
+      "question": "Which film has the director died earlier, John Jaffer Janardhanan or Kamakalawa?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W6",
+          "utility": 1.167
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.143
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0105
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0082
+        }
+      ]
+    },
+    {
+      "question_id": "dev_325",
+      "question": "Who is the child of the director of film Lo Que Le Pasó A Reynoso?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0368
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0756
+        }
+      ]
+    },
+    {
+      "question_id": "dev_325",
+      "question": "Who is the child of the director of film Lo Que Le Pasó A Reynoso?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 0.0987
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0106
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0161
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0442
+        }
+      ]
+    },
+    {
+      "question_id": "dev_325",
+      "question": "Who is the child of the director of film Lo Que Le Pasó A Reynoso?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 0.1534
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0217
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0092
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0133
+        }
+      ]
+    },
+    {
+      "question_id": "dev_116",
+      "question": "What is the place of birth of Remigius Of Rouen's father?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0297
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.1298
+        }
+      ]
+    },
+    {
+      "question_id": "dev_116",
+      "question": "What is the place of birth of Remigius Of Rouen's father?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0131
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0392
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0445
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0475
+        }
+      ]
+    },
+    {
+      "question_id": "dev_116",
+      "question": "What is the place of birth of Remigius Of Rouen's father?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 0.0009
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0034
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0074
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0101
+        }
+      ]
+    },
+    {
+      "question_id": "dev_392",
+      "question": "Who was born first out of Ramsay Anderson and Fernand Fédronic?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.1355
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0209
+        }
+      ]
+    },
+    {
+      "question_id": "dev_392",
+      "question": "Who was born first out of Ramsay Anderson and Fernand Fédronic?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.2196
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0555
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.0145
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.0139
+        }
+      ]
+    },
+    {
+      "question_id": "dev_392",
+      "question": "Who was born first out of Ramsay Anderson and Fernand Fédronic?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 1.2922
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.1027
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.0652
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.0645
+        }
+      ]
+    },
+    {
+      "question_id": "dev_9",
+      "question": "Who is the maternal grandfather of Antiochus X Eusebes?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0292
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.1185
+        }
+      ]
+    },
+    {
+      "question_id": "dev_9",
+      "question": "Who is the maternal grandfather of Antiochus X Eusebes?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W6",
+          "utility": 0.016
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0129
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0138
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0374
+        }
+      ]
+    },
+    {
+      "question_id": "dev_9",
+      "question": "Who is the maternal grandfather of Antiochus X Eusebes?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W6",
+          "utility": 0.0656
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.046
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0014
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0073
+        }
+      ]
+    },
+    {
+      "question_id": "dev_571",
+      "question": "Which film has the director who died later, The Olsen Gang In Jutland or Pathala Bhairavi?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0338
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0668
+        }
+      ]
+    },
+    {
+      "question_id": "dev_571",
+      "question": "Which film has the director who died later, The Olsen Gang In Jutland or Pathala Bhairavi?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": -0.0064
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0149
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0155
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0171
+        }
+      ]
+    },
+    {
+      "question_id": "dev_571",
+      "question": "Which film has the director who died later, The Olsen Gang In Jutland or Pathala Bhairavi?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 0.0276
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0238
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.0229
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0084
+        }
+      ]
+    },
+    {
+      "question_id": "dev_220",
+      "question": "What nationality is the director of film Name The Man?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0305
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.1049
+        }
+      ]
+    },
+    {
+      "question_id": "dev_220",
+      "question": "What nationality is the director of film Name The Man?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.0129
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0016
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0109
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0135
+        }
+      ]
+    },
+    {
+      "question_id": "dev_220",
+      "question": "What nationality is the director of film Name The Man?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.0803
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.0704
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 0.0589
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0076
+        }
+      ]
+    },
+    {
+      "question_id": "dev_8",
+      "question": "Which film has the director who was born later, El Extraño Viaje or Love In Pawn?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 1.081
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0329
+        }
+      ]
+    },
+    {
+      "question_id": "dev_8",
+      "question": "Which film has the director who was born later, El Extraño Viaje or Love In Pawn?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 1.2002
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 1.1535
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 1.1231
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0145
+        }
+      ]
+    },
+    {
+      "question_id": "dev_8",
+      "question": "Which film has the director who was born later, El Extraño Viaje or Love In Pawn?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 1.2894
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 1.2432
+        },
+        {
+          "workflow_id": "W6",
+          "utility": 1.2032
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0082
+        }
+      ]
+    },
+    {
+      "question_id": "dev_313",
+      "question": "Who is younger, Bernard Chambaz or Tibor Pézsa?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": 0.3298
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0591
+        }
+      ]
+    },
+    {
+      "question_id": "dev_313",
+      "question": "Who is younger, Bernard Chambaz or Tibor Pézsa?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W6",
+          "utility": 0.3797
+        },
+        {
+          "workflow_id": "W1",
+          "utility": 0.3584
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0051
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0109
+        }
+      ]
+    },
+    {
+      "question_id": "dev_313",
+      "question": "Who is younger, Bernard Chambaz or Tibor Pézsa?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W6",
+          "utility": 0.4361
+        },
+        {
+          "workflow_id": "W1",
+          "utility": 0.3755
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.038
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.0317
+        }
+      ]
+    },
+    {
+      "question_id": "dev_577",
+      "question": "Who is the maternal grandfather of Conan Ii, Duke Of Brittany?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.2679
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0304
+        }
+      ]
+    },
+    {
+      "question_id": "dev_577",
+      "question": "Who is the maternal grandfather of Conan Ii, Duke Of Brittany?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W6",
+          "utility": 0.4201
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.3395
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.184
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0134
+        }
+      ]
+    },
+    {
+      "question_id": "dev_577",
+      "question": "Who is the maternal grandfather of Conan Ii, Duke Of Brittany?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W6",
+          "utility": 0.4763
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.3778
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.2405
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0076
+        }
+      ]
+    },
+    {
+      "question_id": "dev_204",
+      "question": "Which film whose director is younger, Jeedar or The Rebel Set?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0305
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.068
+        }
+      ]
+    },
+    {
+      "question_id": "dev_204",
+      "question": "Which film whose director is younger, Jeedar or The Rebel Set?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W6",
+          "utility": 0.0182
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0114
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0135
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0228
+        }
+      ]
+    },
+    {
+      "question_id": "dev_204",
+      "question": "Which film whose director is younger, Jeedar or The Rebel Set?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W6",
+          "utility": 0.0679
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.0184
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0159
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0076
+        }
+      ]
+    },
+    {
+      "question_id": "dev_472",
+      "question": "Who is the maternal grandmother of Archduchess Elisabeth Of Austria (1922–1993)?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0306
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0705
+        }
+      ]
+    },
+    {
+      "question_id": "dev_472",
+      "question": "Who is the maternal grandmother of Archduchess Elisabeth Of Austria (1922–1993)?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 0.0032
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0133
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0135
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0389
+        }
+      ]
+    },
+    {
+      "question_id": "dev_472",
+      "question": "Who is the maternal grandmother of Archduchess Elisabeth Of Austria (1922–1993)?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W2",
+          "utility": 0.0524
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0146
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.004
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0077
+        }
+      ]
+    },
+    {
+      "question_id": "dev_599",
+      "question": "Where was the director of film The Naked Angel born?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0307
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0856
+        }
+      ]
+    },
+    {
+      "question_id": "dev_599",
+      "question": "Where was the director of film The Naked Angel born?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0136
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0185
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0391
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0557
+        }
+      ]
+    },
+    {
+      "question_id": "dev_599",
+      "question": "Where was the director of film The Naked Angel born?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.0137
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.0001
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0077
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0109
+        }
+      ]
+    },
+    {
+      "question_id": "dev_200",
+      "question": "Which film has the director died first, Two For Tonight or Light Over Russia?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": -0.0162
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0307
+        }
+      ]
+    },
+    {
+      "question_id": "dev_200",
+      "question": "Which film has the director died first, Two For Tonight or Light Over Russia?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W6",
+          "utility": 0.3505
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.0616
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0136
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.016
+        }
+      ]
+    },
+    {
+      "question_id": "dev_200",
+      "question": "Which film has the director died first, Two For Tonight or Light Over Russia?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W6",
+          "utility": 0.413
+        },
+        {
+          "workflow_id": "W3",
+          "utility": 0.1102
+        },
+        {
+          "workflow_id": "W2",
+          "utility": 0.022
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0077
+        }
+      ]
+    },
+    {
+      "question_id": "dev_417",
+      "question": "Are both directors of films Breslin And Hamill: Deadline Artists and Jean The Tenant from the same country?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0318
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0706
+        }
+      ]
+    },
+    {
+      "question_id": "dev_417",
+      "question": "Are both directors of films Breslin And Hamill: Deadline Artists and Jean The Tenant from the same country?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": -0.0136
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0141
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0445
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0458
+        }
+      ]
+    },
+    {
+      "question_id": "dev_417",
+      "question": "Are both directors of films Breslin And Hamill: Deadline Artists and Jean The Tenant from the same country?",
+      "budget_mode": "high",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W3",
+          "utility": 0.0143
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.0075
+        },
+        {
+          "workflow_id": "W1",
+          "utility": -0.0079
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0121
+        }
+      ]
+    },
+    {
+      "question_id": "dev_402",
+      "question": "What is the cause of death of composer of song Look At Me (Xxxtentacion Song)?",
+      "budget_mode": "low",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0309
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0952
+        }
+      ]
+    },
+    {
+      "question_id": "dev_402",
+      "question": "What is the cause of death of composer of song Look At Me (Xxxtentacion Song)?",
+      "budget_mode": "medium",
+      "selected_by_calibration": false,
+      "preferred_workflows": [],
+      "margin_override": 0.0,
+      "ranked_workflows": [
+        {
+          "workflow_id": "W1",
+          "utility": -0.0137
+        },
+        {
+          "workflow_id": "W3",
+          "utility": -0.0266
+        },
+        {
+          "workflow_id": "W2",
+          "utility": -0.052
+        },
+        {
+          "workflow_id": "W6",
+          "utility": -0.0534
+        }
+      ]
+    }
+  ]
+}

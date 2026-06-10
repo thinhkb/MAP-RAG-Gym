@@ -1,8 +1,8 @@
 {
   "manifest": {
     "script": "scripts/regate_online_rl.py",
-    "generated_at_utc": "2026-05-28T16:35:48+00:00",
-    "git_commit": "a54903934a1f91922edecee1faf49a9676388b39",
+    "generated_at_utc": "2026-06-04T14:21:13+00:00",
+    "git_commit": "468c42fc389c5c340c9053380d6bcce97aac4114",
     "python_version": "3.12.13",
     "platform": "Windows-11-10.0.22621-SP0",
     "paths": {
@@ -32,43 +32,43 @@
       "max_critic_utility_loss": 0.001
     }
   },
-  "ready_for_online_rl": false,
-  "online_blockers": [
-    "High bandit regret (0.0419) exceeds threshold (0.04) or best_rate (0.7928) below threshold (0.7)."
-  ],
+  "ready_for_online_rl": true,
+  "online_blockers": [],
   "bandit_check": {
     "improved_model": "outputs/improved_high_bandit.joblib",
     "best_config": {
-      "name": "gbt_n50_d2_lr003",
-      "type": "gbt",
-      "n_estimators": 50,
-      "max_depth": 2,
-      "learning_rate": 0.03,
-      "subsample": 0.8,
-      "cv_avg_regret": 0.0419,
-      "cv_std_regret": 0.0231,
-      "cv_avg_best_rate": 0.7928,
-      "cv_std_best_rate": 0.0382,
+      "name": "ens_ra10.0_n150_d4_lr005_b0.4",
+      "type": "ensemble",
+      "ridge_alpha": 10.0,
+      "gbt_n_estimators": 150,
+      "gbt_max_depth": 4,
+      "gbt_learning_rate": 0.05,
+      "gbt_subsample": 0.8,
+      "blend": 0.4,
+      "cv_avg_regret": 0.0193,
+      "cv_std_regret": 0.0103,
+      "cv_avg_best_rate": 0.8333,
+      "cv_std_best_rate": 0.0404,
       "per_fold_regret": [
-        0.0308,
-        0.0301,
-        0.0478,
-        0.0795,
-        0.0215
+        0.0212,
+        0.019,
+        0.0062,
+        0.0155,
+        0.0347
       ],
       "per_fold_best_rate": [
+        0.7857,
+        0.8095,
         0.8214,
-        0.8452,
-        0.7738,
-        0.7619,
-        0.7619
+        0.881,
+        0.869
       ]
     },
-    "avg_regret": 0.0419,
-    "exact_best_rate": 0.7928,
+    "avg_regret": 0.0193,
+    "exact_best_rate": 0.8333,
     "max_regret_threshold": 0.04,
     "min_best_rate_threshold": 0.7,
-    "meets_online_threshold": false
+    "meets_online_threshold": true
   },
   "critic_check": {
     "strategy": "confidence_gate=1.0",
@@ -79,5 +79,5 @@
     "meets_online_threshold": true,
     "verified_on_holdout": true
   },
-  "deployment_recommendation": "Continue offline improvements. High bandit regret (0.0419) exceeds threshold (0.04) or best_rate (0.7928) below threshold (0.7)."
+  "deployment_recommendation": "Online RL with selective critic is ready."
 }

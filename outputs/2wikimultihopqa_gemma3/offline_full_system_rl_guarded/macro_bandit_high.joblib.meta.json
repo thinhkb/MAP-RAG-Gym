@@ -1,0 +1,4123 @@
+{
+  "manifest": {
+    "script": "scripts/train_bandit_router.py",
+    "generated_at_utc": "2026-06-04T05:26:24+00:00",
+    "git_commit": "468c42fc389c5c340c9053380d6bcce97aac4114",
+    "python_version": "3.12.13",
+    "platform": "Windows-11-10.0.22621-SP0",
+    "paths": {
+      "qa": "G:\\MAP-RAG-Gym\\outputs\\2wikimultihopqa_gemma3\\train_rollouts_high_w2w3_det.json",
+      "corpus": null,
+      "router_model": "G:\\MAP-RAG-Gym\\outputs\\2wikimultihopqa_gemma3\\offline_full_system_rl_guarded\\macro_bandit_high.joblib"
+    },
+    "dataset": {
+      "name": "2wikimultihopqa",
+      "split": "train",
+      "limit": 420,
+      "effective_questions": 357
+    },
+    "llm": {
+      "provider": null,
+      "model": null
+    },
+    "reproducibility": {
+      "seed": 13,
+      "prompt_version": "v1",
+      "utility": null
+    },
+    "settings": {
+      "input_rollout_file": "outputs/2wikimultihopqa_gemma3/train_rollouts_high_w2w3_det.json",
+      "budget_mode": "high",
+      "allowed_workflows": [
+        "W2",
+        "W3"
+      ],
+      "holdout_ratio": 0.15,
+      "alpha": 1.0,
+      "preference_margin": 0.0,
+      "preferred_workflows": [],
+      "base_router_model": "outputs/2wikimultihopqa_gemma3/router_phase4.joblib",
+      "probe_corpus": "data/2wikimultihopqa/corpus.json",
+      "utility_profile": {
+        "reward_weights": {
+          "f1_proxy": 1.0,
+          "process_score": 0.45
+        },
+        "cost_weights": {
+          "tokens": 0.04,
+          "retrieval_calls": 0.06,
+          "latency_ms": 0.03
+        },
+        "cost_normalizers": {
+          "tokens": 2000.0,
+          "retrieval_calls": 4.0,
+          "latency_ms": 10000.0
+        }
+      }
+    }
+  },
+  "source_rollout_manifest": {
+    "script": "scripts/batch_rollout.py",
+    "generated_at_utc": "2026-06-04T03:57:07+00:00",
+    "git_commit": "ffd7126ed08e7eb42d1222d0c2a4ef7b008ec43b",
+    "python_version": "3.12.13",
+    "platform": "Windows-11-10.0.22621-SP0",
+    "paths": {
+      "qa": "G:\\MAP-RAG-Gym\\data\\2wikimultihopqa\\splits\\train.json",
+      "corpus": "G:\\MAP-RAG-Gym\\data\\2wikimultihopqa\\corpus.json",
+      "router_model": null
+    },
+    "dataset": {
+      "name": "2wikimultihopqa",
+      "split": "train",
+      "limit": 420,
+      "effective_questions": 420
+    },
+    "llm": {
+      "provider": "ollama",
+      "model": "gemma3"
+    },
+    "reproducibility": {
+      "seed": 42,
+      "prompt_version": "v1",
+      "utility": {
+        "reward_weights": {
+          "f1_proxy": 1.0,
+          "process_score": 0.45
+        },
+        "cost_weights": {
+          "tokens": 0.04,
+          "retrieval_calls": 0.06,
+          "latency_ms": 0.03
+        },
+        "cost_normalizers": {
+          "tokens": 2000.0,
+          "retrieval_calls": 4.0,
+          "latency_ms": 10000.0
+        }
+      }
+    },
+    "settings": {
+      "workflow_ids": [
+        "W2",
+        "W3"
+      ],
+      "n_candidates": 3,
+      "budget_mode": "high",
+      "retriever_type": "bm25",
+      "retriever_bm25_weight": 0.5,
+      "workflow_retriever_overrides": {},
+      "resume": true
+    }
+  },
+  "num_questions_total": 420,
+  "num_questions_train": 357,
+  "num_questions_holdout": 63,
+  "num_train_rows": 714,
+  "num_holdout_rows": 126,
+  "allowed_workflows": [
+    "W2",
+    "W3"
+  ],
+  "budget_mode": "high",
+  "base_router_model": "outputs/2wikimultihopqa_gemma3/router_phase4.joblib",
+  "probe_corpus": "data/2wikimultihopqa/corpus.json",
+  "row_counts_by_workflow": {
+    "W2": 357,
+    "W3": 357
+  },
+  "reward_metrics": {
+    "train_mae": 0.2271,
+    "train_rmse": 0.2928,
+    "holdout_mae": 0.2914,
+    "holdout_rmse": 0.3688
+  },
+  "holdout_policy_eval": {
+    "num_questions": 63,
+    "avg_policy_utility": 0.2751,
+    "avg_oracle_utility": 0.3185,
+    "avg_regret": 0.0434,
+    "exact_best_rate": 0.7619,
+    "preview": [
+      {
+        "question": "Which film has the director who was born later, All The Gold In The World or The Crowning Touch?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.6414,
+        "predicted_scores": {
+          "W2": 0.2228,
+          "W3": 0.3682
+        },
+        "oracle_workflow": "W3",
+        "oracle_reward": 0.0103,
+        "chosen_reward": 0.0103,
+        "regret": 0.0
+      },
+      {
+        "question": "Who is the father of the composer of song I Miss You (Miley Cyrus Song)?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.6314,
+        "predicted_scores": {
+          "W2": 0.0482,
+          "W3": 0.1828
+        },
+        "oracle_workflow": "W3",
+        "oracle_reward": 0.0965,
+        "chosen_reward": 0.0965,
+        "regret": 0.0
+      },
+      {
+        "question": "Who is Wisigard's father-in-law?",
+        "predicted_workflow": "W2",
+        "predicted_confidence": 0.8553,
+        "predicted_scores": {
+          "W2": 0.353,
+          "W3": -0.0911
+        },
+        "oracle_workflow": "W2",
+        "oracle_reward": 0.3657,
+        "chosen_reward": 0.3657,
+        "regret": 0.0
+      },
+      {
+        "question": "Where was the director of film Lettre Ouverte born?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.68,
+        "predicted_scores": {
+          "W2": 0.0657,
+          "W3": 0.2541
+        },
+        "oracle_workflow": "W3",
+        "oracle_reward": 0.025,
+        "chosen_reward": 0.025,
+        "regret": 0.0
+      },
+      {
+        "question": "Which film has the director born later, Jesse James' Women or Ride Lonesome?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.6091,
+        "predicted_scores": {
+          "W2": 0.5314,
+          "W3": 0.6422
+        },
+        "oracle_workflow": "W2",
+        "oracle_reward": 1.2408,
+        "chosen_reward": 0.0147,
+        "regret": 1.2261
+      },
+      {
+        "question": "Which film was released earlier, Amelie Or The Time To Love or Beginners?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.6716,
+        "predicted_scores": {
+          "W2": 0.5233,
+          "W3": 0.7022
+        },
+        "oracle_workflow": "W3",
+        "oracle_reward": 0.0241,
+        "chosen_reward": 0.0241,
+        "regret": 0.0
+      },
+      {
+        "question": "Which film has the director who was born later, El Extraño Viaje or Love In Pawn?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.9103,
+        "predicted_scores": {
+          "W2": 0.2491,
+          "W3": 0.8285
+        },
+        "oracle_workflow": "W3",
+        "oracle_reward": 1.2894,
+        "chosen_reward": 1.2894,
+        "regret": 0.0
+      },
+      {
+        "question": "Which film has the director who died earlier, Guns And Guitars or To The Victor?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.882,
+        "predicted_scores": {
+          "W2": 0.2553,
+          "W3": 0.7581
+        },
+        "oracle_workflow": "W3",
+        "oracle_reward": 1.2828,
+        "chosen_reward": 1.2828,
+        "regret": 0.0
+      },
+      {
+        "question": "Which film has the director died earlier, Poker In Bed or The Machine To Kill Bad People?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.8027,
+        "predicted_scores": {
+          "W2": 0.3628,
+          "W3": 0.7136
+        },
+        "oracle_workflow": "W3",
+        "oracle_reward": 0.1018,
+        "chosen_reward": 0.1018,
+        "regret": 0.0
+      },
+      {
+        "question": "What is the place of birth of the director of film The Last Horror Movie?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.8235,
+        "predicted_scores": {
+          "W2": -0.3783,
+          "W3": 0.0069
+        },
+        "oracle_workflow": "W2",
+        "oracle_reward": 0.0226,
+        "chosen_reward": -0.0032,
+        "regret": 0.0258
+      },
+      {
+        "question": "What is the place of birth of the performer of song Heaven (Namie Amuro Song)?",
+        "predicted_workflow": "W2",
+        "predicted_confidence": 0.7666,
+        "predicted_scores": {
+          "W2": 0.246,
+          "W3": -0.0513
+        },
+        "oracle_workflow": "W2",
+        "oracle_reward": 0.3828,
+        "chosen_reward": 0.3828,
+        "regret": 0.0
+      },
+      {
+        "question": "Who is Prince Harald Of Schaumburg-Lippe's maternal grandfather?",
+        "predicted_workflow": "W2",
+        "predicted_confidence": 0.8106,
+        "predicted_scores": {
+          "W2": 0.4354,
+          "W3": 0.072
+        },
+        "oracle_workflow": "W2",
+        "oracle_reward": 0.4422,
+        "chosen_reward": 0.4422,
+        "regret": 0.0
+      },
+      {
+        "question": "Which film has the director who was born earlier, Adam'S Rib or Thendral Veesum?",
+        "predicted_workflow": "W2",
+        "predicted_confidence": 0.6614,
+        "predicted_scores": {
+          "W2": 0.5922,
+          "W3": 0.4248
+        },
+        "oracle_workflow": "W3",
+        "oracle_reward": 1.284,
+        "chosen_reward": 1.2324,
+        "regret": 0.0516
+      },
+      {
+        "question": "Where was the director of film The Half-Way Girl born?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.7181,
+        "predicted_scores": {
+          "W2": -0.2459,
+          "W3": -0.0121
+        },
+        "oracle_workflow": "W3",
+        "oracle_reward": 0.0244,
+        "chosen_reward": 0.0244,
+        "regret": 0.0
+      },
+      {
+        "question": "Who is Princess Florestine Of Monaco's paternal grandmother?",
+        "predicted_workflow": "W2",
+        "predicted_confidence": 0.7753,
+        "predicted_scores": {
+          "W2": 0.3461,
+          "W3": 0.0365
+        },
+        "oracle_workflow": "W2",
+        "oracle_reward": 0.0341,
+        "chosen_reward": 0.0341,
+        "regret": 0.0
+      },
+      {
+        "question": "Where did the director of film Até Que A Sorte Nos Separe 2 study?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.6075,
+        "predicted_scores": {
+          "W2": 0.3669,
+          "W3": 0.4761
+        },
+        "oracle_workflow": "W3",
+        "oracle_reward": 0.1079,
+        "chosen_reward": 0.1079,
+        "regret": 0.0
+      },
+      {
+        "question": "Are both directors of films Breslin And Hamill: Deadline Artists and Jean The Tenant from the same country?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.7638,
+        "predicted_scores": {
+          "W2": 0.2883,
+          "W3": 0.5817
+        },
+        "oracle_workflow": "W3",
+        "oracle_reward": 0.0142,
+        "chosen_reward": 0.0142,
+        "regret": 0.0
+      },
+      {
+        "question": "Who is older, Dyson Parody or Gene Watson?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.5163,
+        "predicted_scores": {
+          "W2": 0.1858,
+          "W3": 0.2021
+        },
+        "oracle_workflow": "W2",
+        "oracle_reward": 0.3978,
+        "chosen_reward": 0.1106,
+        "regret": 0.2872
+      },
+      {
+        "question": "Where does Chris Warren (Rugby League)'s father work at?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.5691,
+        "predicted_scores": {
+          "W2": 0.2213,
+          "W3": 0.2908
+        },
+        "oracle_workflow": "W3",
+        "oracle_reward": 0.0216,
+        "chosen_reward": 0.0216,
+        "regret": 0.0
+      },
+      {
+        "question": "What nationality is Philip Of Ibelin (1180–1227)'s mother?",
+        "predicted_workflow": "W2",
+        "predicted_confidence": 0.8409,
+        "predicted_scores": {
+          "W2": 0.3124,
+          "W3": -0.1037
+        },
+        "oracle_workflow": "W2",
+        "oracle_reward": 0.0389,
+        "chosen_reward": 0.0389,
+        "regret": 0.0
+      },
+      {
+        "question": "Where was the director of film The Pride Of Jennico (Film) born?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.6868,
+        "predicted_scores": {
+          "W2": 0.1335,
+          "W3": 0.3298
+        },
+        "oracle_workflow": "W3",
+        "oracle_reward": 0.1052,
+        "chosen_reward": 0.1052,
+        "regret": 0.0
+      },
+      {
+        "question": "Which country Natalie Portman's husband is from?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.9107,
+        "predicted_scores": {
+          "W2": 0.0241,
+          "W3": 0.6046
+        },
+        "oracle_workflow": "W3",
+        "oracle_reward": 0.0162,
+        "chosen_reward": 0.0162,
+        "regret": 0.0
+      },
+      {
+        "question": "Which country the director of film I See You (2006 Film) is from?",
+        "predicted_workflow": "W2",
+        "predicted_confidence": 0.6604,
+        "predicted_scores": {
+          "W2": 0.3682,
+          "W3": 0.202
+        },
+        "oracle_workflow": "W2",
+        "oracle_reward": 0.0224,
+        "chosen_reward": 0.0224,
+        "regret": 0.0
+      },
+      {
+        "question": "Who is the mother of Olaf (Ii) Haraldsen?",
+        "predicted_workflow": "W2",
+        "predicted_confidence": 0.6876,
+        "predicted_scores": {
+          "W2": 0.3449,
+          "W3": 0.1477
+        },
+        "oracle_workflow": "W2",
+        "oracle_reward": 0.0324,
+        "chosen_reward": 0.0324,
+        "regret": 0.0
+      },
+      {
+        "question": "Which film has the director died earlier, Dialogues Of Exiles or Rhythm And Weep?",
+        "predicted_workflow": "W2",
+        "predicted_confidence": 0.7419,
+        "predicted_scores": {
+          "W2": 0.5367,
+          "W3": 0.2727
+        },
+        "oracle_workflow": "W2",
+        "oracle_reward": 0.2773,
+        "chosen_reward": 0.2773,
+        "regret": 0.0
+      },
+      {
+        "question": "Which film has the director who is older than the other, One Down, Two To Go or Andrei Svislotskiy?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.8438,
+        "predicted_scores": {
+          "W2": 0.3897,
+          "W3": 0.8114
+        },
+        "oracle_workflow": "W3",
+        "oracle_reward": 0.1035,
+        "chosen_reward": 0.1035,
+        "regret": 0.0
+      },
+      {
+        "question": "Where did the director of film Ręce Do Góry study?",
+        "predicted_workflow": "W2",
+        "predicted_confidence": 0.5288,
+        "predicted_scores": {
+          "W2": -0.0489,
+          "W3": -0.0778
+        },
+        "oracle_workflow": "W3",
+        "oracle_reward": 0.0108,
+        "chosen_reward": 0.0103,
+        "regret": 0.0005
+      },
+      {
+        "question": "Where was the director of film At The End Of The Tunnel born?",
+        "predicted_workflow": "W2",
+        "predicted_confidence": 0.7254,
+        "predicted_scores": {
+          "W2": 0.2683,
+          "W3": 0.0255
+        },
+        "oracle_workflow": "W2",
+        "oracle_reward": 0.0088,
+        "chosen_reward": 0.0088,
+        "regret": 0.0
+      },
+      {
+        "question": "Which film has the director who died earlier, Toen 'T Licht Verdween or Boum Sur Paris?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.816,
+        "predicted_scores": {
+          "W2": 0.3934,
+          "W3": 0.7658
+        },
+        "oracle_workflow": "W3",
+        "oracle_reward": 1.309,
+        "chosen_reward": 1.309,
+        "regret": 0.0
+      },
+      {
+        "question": "Which film has the director who was born earlier, It'S A Joke, Son! or The Thirty Nine Steps (1978 Film)?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.825,
+        "predicted_scores": {
+          "W2": 0.3373,
+          "W3": 0.725
+        },
+        "oracle_workflow": "W2",
+        "oracle_reward": 1.1704,
+        "chosen_reward": 0.2905,
+        "regret": 0.8799
+      },
+      {
+        "question": "Who is Joan Of Valois, Duchess Of Alençon's maternal grandfather?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.6417,
+        "predicted_scores": {
+          "W2": 0.0726,
+          "W3": 0.2182
+        },
+        "oracle_workflow": "W2",
+        "oracle_reward": 0.035,
+        "chosen_reward": 0.0124,
+        "regret": 0.0226
+      },
+      {
+        "question": "Which film has the director who died later, The Olsen Gang In Jutland or Pathala Bhairavi?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.6845,
+        "predicted_scores": {
+          "W2": 0.3524,
+          "W3": 0.546
+        },
+        "oracle_workflow": "W2",
+        "oracle_reward": 0.0274,
+        "chosen_reward": 0.0238,
+        "regret": 0.0036
+      },
+      {
+        "question": "Which film has the director who is older, The Boy Turns Man or A Strange Adventure?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.5128,
+        "predicted_scores": {
+          "W2": 0.3015,
+          "W3": 0.3143
+        },
+        "oracle_workflow": "W2",
+        "oracle_reward": 0.0696,
+        "chosen_reward": 0.0197,
+        "regret": 0.0499
+      },
+      {
+        "question": "Are Bal Vidyalaya (Kota) and Loreto House both located in the same country?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.7178,
+        "predicted_scores": {
+          "W2": 0.42,
+          "W3": 0.6534
+        },
+        "oracle_workflow": "W3",
+        "oracle_reward": 1.191,
+        "chosen_reward": 1.191,
+        "regret": 0.0
+      },
+      {
+        "question": "Who is the father-in-law of Tsandzile Ndwandwe?",
+        "predicted_workflow": "W2",
+        "predicted_confidence": 0.8486,
+        "predicted_scores": {
+          "W2": 0.3622,
+          "W3": -0.0687
+        },
+        "oracle_workflow": "W2",
+        "oracle_reward": 0.0984,
+        "chosen_reward": 0.0984,
+        "regret": 0.0
+      },
+      {
+        "question": "What is the award that the director of film Wearing Velvet Slippers Under A Golden Umbrella won?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.9266,
+        "predicted_scores": {
+          "W2": -0.3159,
+          "W3": 0.318
+        },
+        "oracle_workflow": "W2",
+        "oracle_reward": 0.0308,
+        "chosen_reward": 0.0236,
+        "regret": 0.0072
+      },
+      {
+        "question": "Did the movies Passer L'Hiver and In My Skin, originate from the same country?",
+        "predicted_workflow": "W2",
+        "predicted_confidence": 0.5537,
+        "predicted_scores": {
+          "W2": 0.2218,
+          "W3": 0.1679
+        },
+        "oracle_workflow": "W3",
+        "oracle_reward": 0.0136,
+        "chosen_reward": 0.0075,
+        "regret": 0.0061
+      },
+      {
+        "question": "Which film has the director born later, Song Of The Open Road or Campaign Of Hate: Russia And Gay Propaganda?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.8985,
+        "predicted_scores": {
+          "W2": 0.3156,
+          "W3": 0.8607
+        },
+        "oracle_workflow": "W3",
+        "oracle_reward": 1.2706,
+        "chosen_reward": 1.2706,
+        "regret": 0.0
+      },
+      {
+        "question": "Why did John Middleton Murry's wife die?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.8695,
+        "predicted_scores": {
+          "W2": 0.0103,
+          "W3": 0.4846
+        },
+        "oracle_workflow": "W3",
+        "oracle_reward": 0.0116,
+        "chosen_reward": 0.0116,
+        "regret": 0.0
+      },
+      {
+        "question": "Which film came out earlier, Aanaval Mothiram or Heroes Of The Street?",
+        "predicted_workflow": "W2",
+        "predicted_confidence": 0.8635,
+        "predicted_scores": {
+          "W2": 0.7781,
+          "W3": 0.3169
+        },
+        "oracle_workflow": "W2",
+        "oracle_reward": 0.4954,
+        "chosen_reward": 0.4954,
+        "regret": 0.0
+      },
+      {
+        "question": "Where was the father of Andrew Balding born?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.6117,
+        "predicted_scores": {
+          "W2": -0.0802,
+          "W3": 0.0334
+        },
+        "oracle_workflow": "W2",
+        "oracle_reward": 0.0101,
+        "chosen_reward": 0.0095,
+        "regret": 0.0006
+      },
+      {
+        "question": "Who was born first out of Alexey Volkonsky and Wanderley Oliveira?",
+        "predicted_workflow": "W2",
+        "predicted_confidence": 0.7375,
+        "predicted_scores": {
+          "W2": 0.3446,
+          "W3": 0.0864
+        },
+        "oracle_workflow": "W2",
+        "oracle_reward": 0.0593,
+        "chosen_reward": 0.0593,
+        "regret": 0.0
+      },
+      {
+        "question": "What is the place of birth of the director of film Guilty Of Treason?",
+        "predicted_workflow": "W2",
+        "predicted_confidence": 0.6815,
+        "predicted_scores": {
+          "W2": 0.2385,
+          "W3": 0.0483
+        },
+        "oracle_workflow": "W2",
+        "oracle_reward": 0.009,
+        "chosen_reward": 0.009,
+        "regret": 0.0
+      },
+      {
+        "question": "Do both films Payment On Demand and My Cousin From Warsaw have the directors from the same country?",
+        "predicted_workflow": "W2",
+        "predicted_confidence": 0.7476,
+        "predicted_scores": {
+          "W2": 0.4638,
+          "W3": 0.1924
+        },
+        "oracle_workflow": "W2",
+        "oracle_reward": 0.0263,
+        "chosen_reward": 0.0263,
+        "regret": 0.0
+      },
+      {
+        "question": "Where was the keyboardist of Xyz (English Band) born?",
+        "predicted_workflow": "W2",
+        "predicted_confidence": 0.5132,
+        "predicted_scores": {
+          "W2": 0.0348,
+          "W3": 0.0216
+        },
+        "oracle_workflow": "W3",
+        "oracle_reward": 0.0197,
+        "chosen_reward": -0.0184,
+        "regret": 0.0381
+      },
+      {
+        "question": "Which country the performer of song I Might Have Been Queen is from?",
+        "predicted_workflow": "W2",
+        "predicted_confidence": 0.7947,
+        "predicted_scores": {
+          "W2": 0.4549,
+          "W3": 0.1165
+        },
+        "oracle_workflow": "W2",
+        "oracle_reward": 0.0345,
+        "chosen_reward": 0.0345,
+        "regret": 0.0
+      },
+      {
+        "question": "What is the place of birth of Princess Margaretha Of Saxony's mother?",
+        "predicted_workflow": "W2",
+        "predicted_confidence": 0.7632,
+        "predicted_scores": {
+          "W2": 0.3178,
+          "W3": 0.0252
+        },
+        "oracle_workflow": "W2",
+        "oracle_reward": 0.0135,
+        "chosen_reward": 0.0135,
+        "regret": 0.0
+      },
+      {
+        "question": "When did Prince John Konstantinovich Of Russia's mother die?",
+        "predicted_workflow": "W2",
+        "predicted_confidence": 0.9241,
+        "predicted_scores": {
+          "W2": 0.4801,
+          "W3": -0.1447
+        },
+        "oracle_workflow": "W2",
+        "oracle_reward": 0.0568,
+        "chosen_reward": 0.0568,
+        "regret": 0.0
+      },
+      {
+        "question": "Who did Joan Ramon Ii, Count Of Cardona marry?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.903,
+        "predicted_scores": {
+          "W2": 0.1637,
+          "W3": 0.7216
+        },
+        "oracle_workflow": "W3",
+        "oracle_reward": 0.2293,
+        "chosen_reward": 0.2293,
+        "regret": 0.0
+      },
+      {
+        "question": "Which country Prince Nikolaus Wilhelm Of Nassau's mother is from?",
+        "predicted_workflow": "W2",
+        "predicted_confidence": 0.7898,
+        "predicted_scores": {
+          "W2": 0.4844,
+          "W3": 0.1534
+        },
+        "oracle_workflow": "W2",
+        "oracle_reward": 0.0342,
+        "chosen_reward": 0.0342,
+        "regret": 0.0
+      },
+      {
+        "question": "Which film has the director born first, Stella'S Oorlog or Don Juan In A Girls' School?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.9117,
+        "predicted_scores": {
+          "W2": 0.3461,
+          "W3": 0.9296
+        },
+        "oracle_workflow": "W3",
+        "oracle_reward": 0.7602,
+        "chosen_reward": 0.7602,
+        "regret": 0.0
+      },
+      {
+        "question": "Are Graduate University Of Advanced Technology and Fruita Schoolhouse located in the same country?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.7668,
+        "predicted_scores": {
+          "W2": 0.4041,
+          "W3": 0.7017
+        },
+        "oracle_workflow": "W3",
+        "oracle_reward": 0.1052,
+        "chosen_reward": 0.1052,
+        "regret": 0.0
+      },
+      {
+        "question": "Where was the place of burial of Albert Frederick, Duke Of Prussia's mother?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.6063,
+        "predicted_scores": {
+          "W2": 0.1907,
+          "W3": 0.2986
+        },
+        "oracle_workflow": "W3",
+        "oracle_reward": 0.0154,
+        "chosen_reward": 0.0154,
+        "regret": 0.0
+      },
+      {
+        "question": "What nationality is Imperial Noble Consort Chunhui's husband?",
+        "predicted_workflow": "W2",
+        "predicted_confidence": 0.7887,
+        "predicted_scores": {
+          "W2": 0.1548,
+          "W3": -0.1746
+        },
+        "oracle_workflow": "W2",
+        "oracle_reward": 0.0409,
+        "chosen_reward": 0.0409,
+        "regret": 0.0
+      },
+      {
+        "question": "Which film has the director who died later, Say It With Flowers or Boot Hill Bandits?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.9674,
+        "predicted_scores": {
+          "W2": 0.2071,
+          "W3": 1.0547
+        },
+        "oracle_workflow": "W3",
+        "oracle_reward": 1.2893,
+        "chosen_reward": 1.2893,
+        "regret": 0.0
+      },
+      {
+        "question": "Which film has the director born later, Feel My Pulse or Panique?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.7403,
+        "predicted_scores": {
+          "W2": 0.4076,
+          "W3": 0.6695
+        },
+        "oracle_workflow": "W2",
+        "oracle_reward": 1.1951,
+        "chosen_reward": 1.1945,
+        "regret": 0.0006
+      },
+      {
+        "question": "Which album came out earlier, Was I The Wave? or Kingdom Of Rock?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.8339,
+        "predicted_scores": {
+          "W2": 0.4017,
+          "W3": 0.805
+        },
+        "oracle_workflow": "W3",
+        "oracle_reward": 0.383,
+        "chosen_reward": 0.383,
+        "regret": 0.0
+      },
+      {
+        "question": "Where was the director of film Gently My Songs Entreat born?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.7064,
+        "predicted_scores": {
+          "W2": -0.0269,
+          "W3": 0.1926
+        },
+        "oracle_workflow": "W3",
+        "oracle_reward": 0.1011,
+        "chosen_reward": 0.1011,
+        "regret": 0.0
+      },
+      {
+        "question": "Who is Thomas Stafford, 3Rd Earl Of Stafford's father?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.9034,
+        "predicted_scores": {
+          "W2": 0.1575,
+          "W3": 0.7164
+        },
+        "oracle_workflow": "W3",
+        "oracle_reward": 0.6466,
+        "chosen_reward": 0.6466,
+        "regret": 0.0
+      },
+      {
+        "question": "Which film has the director died earlier, John Jaffer Janardhanan or Kamakalawa?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.7429,
+        "predicted_scores": {
+          "W2": 0.1198,
+          "W3": 0.3851
+        },
+        "oracle_workflow": "W2",
+        "oracle_reward": 0.1429,
+        "chosen_reward": 0.0104,
+        "regret": 0.1325
+      },
+      {
+        "question": "Which film has the director born first, Antonieta or Dodging The Dole?",
+        "predicted_workflow": "W2",
+        "predicted_confidence": 0.6815,
+        "predicted_scores": {
+          "W2": 0.6019,
+          "W3": 0.4117
+        },
+        "oracle_workflow": "W2",
+        "oracle_reward": 0.0597,
+        "chosen_reward": 0.0597,
+        "regret": 0.0
+      },
+      {
+        "question": "Who is Constantine Palaiologos (Son Of Andronikos Ii)'s maternal grandmother?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.6939,
+        "predicted_scores": {
+          "W2": 0.1281,
+          "W3": 0.3327
+        },
+        "oracle_workflow": "W3",
+        "oracle_reward": 0.0525,
+        "chosen_reward": 0.0525,
+        "regret": 0.0
+      },
+      {
+        "question": "Which album was released more recently, The Arockalypse or Because The Internet?",
+        "predicted_workflow": "W3",
+        "predicted_confidence": 0.9357,
+        "predicted_scores": {
+          "W2": 0.3441,
+          "W3": 1.0135
+        },
+        "oracle_workflow": "W3",
+        "oracle_reward": 1.275,
+        "chosen_reward": 1.275,
+        "regret": 0.0
+      }
+    ]
+  },
+  "train_diagnostics_preview": [
+    {
+      "question": "Which film has the director died first, Two For Tonight or Light Over Russia?",
+      "best_workflow": "W3",
+      "best_reward": 0.1102,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0219,
+      "reward_span": 0.0883,
+      "reward_by_workflow": {
+        "W3": 0.1102,
+        "W2": 0.0219
+      }
+    },
+    {
+      "question": "Which film has the director who is older, The Girl King or Happy As The Grass Was Green?",
+      "best_workflow": "W3",
+      "best_reward": 0.4408,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.2353,
+      "reward_span": 0.2055,
+      "reward_by_workflow": {
+        "W3": 0.4408,
+        "W2": 0.2353
+      }
+    },
+    {
+      "question": "Are the directors of both films Der Blindgänger and Hotel Desire from the same country?",
+      "best_workflow": "W2",
+      "best_reward": 0.0222,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0148,
+      "reward_span": 0.0074,
+      "reward_by_workflow": {
+        "W2": 0.0222,
+        "W3": 0.0148
+      }
+    },
+    {
+      "question": "What nationality is Julia Parker (Astrologer)'s husband?",
+      "best_workflow": "W2",
+      "best_reward": 0.0441,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0157,
+      "reward_span": 0.0284,
+      "reward_by_workflow": {
+        "W2": 0.0441,
+        "W3": 0.0157
+      }
+    },
+    {
+      "question": "What is the place of birth of the director of film A Woman'S Face (1938 Film)?",
+      "best_workflow": "W2",
+      "best_reward": 0.0098,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0032,
+      "reward_span": 0.013,
+      "reward_by_workflow": {
+        "W2": 0.0098,
+        "W3": -0.0032
+      }
+    },
+    {
+      "question": "Which film has the director who died earlier, Deuce High or The King Is The Best Mayor?",
+      "best_workflow": "W3",
+      "best_reward": 0.0179,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0017,
+      "reward_span": 0.0162,
+      "reward_by_workflow": {
+        "W3": 0.0179,
+        "W2": 0.0017
+      }
+    },
+    {
+      "question": "Which film came out first, Poznań '56 or The Last Day Of School Before Christmas?",
+      "best_workflow": "W3",
+      "best_reward": 0.0364,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0267,
+      "reward_span": 0.0097,
+      "reward_by_workflow": {
+        "W3": 0.0364,
+        "W2": 0.0267
+      }
+    },
+    {
+      "question": "Who is Germaine Of Foix's paternal grandfather?",
+      "best_workflow": "W2",
+      "best_reward": 0.0231,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0094,
+      "reward_span": 0.0137,
+      "reward_by_workflow": {
+        "W2": 0.0231,
+        "W3": 0.0094
+      }
+    },
+    {
+      "question": "Who is the father of the director of film Mirage (1972 Film)?",
+      "best_workflow": "W3",
+      "best_reward": 0.0218,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0192,
+      "reward_span": 0.0026,
+      "reward_by_workflow": {
+        "W3": 0.0218,
+        "W2": 0.0192
+      }
+    },
+    {
+      "question": "What is the date of death of Gero Ii, Margrave Of The Saxon Ostmark's father?",
+      "best_workflow": "W2",
+      "best_reward": 0.0111,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0123,
+      "reward_span": 0.0234,
+      "reward_by_workflow": {
+        "W2": 0.0111,
+        "W3": -0.0123
+      }
+    },
+    {
+      "question": "Who is the uncle of Catherine Allégret?",
+      "best_workflow": "W3",
+      "best_reward": 0.0316,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0283,
+      "reward_span": 0.0033,
+      "reward_by_workflow": {
+        "W3": 0.0316,
+        "W2": 0.0283
+      }
+    },
+    {
+      "question": "Which film has the director who was born first, En Kvinde Er Overflødig or Aakrosh (2010 Film)?",
+      "best_workflow": "W3",
+      "best_reward": 1.2916,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 1.2492,
+      "reward_span": 0.0424,
+      "reward_by_workflow": {
+        "W3": 1.2916,
+        "W2": 1.2492
+      }
+    },
+    {
+      "question": "Which film has the director who was born first, Ghost-Town Gold or The Musician Killer?",
+      "best_workflow": "W2",
+      "best_reward": 0.3329,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.1044,
+      "reward_span": 0.2285,
+      "reward_by_workflow": {
+        "W2": 0.3329,
+        "W3": 0.1044
+      }
+    },
+    {
+      "question": "Where was the director of film Los Motivos De Luz born?",
+      "best_workflow": "W2",
+      "best_reward": 0.0337,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0176,
+      "reward_span": 0.0161,
+      "reward_by_workflow": {
+        "W2": 0.0337,
+        "W3": 0.0176
+      }
+    },
+    {
+      "question": "Are Simonds Catholic College and Saginaw High School (Texas) both located in the same country?",
+      "best_workflow": "W3",
+      "best_reward": 0.0966,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0706,
+      "reward_span": 0.026,
+      "reward_by_workflow": {
+        "W3": 0.0966,
+        "W2": 0.0706
+      }
+    },
+    {
+      "question": "Who was born earlier, Ela Gandhi or Sebastián Borensztein?",
+      "best_workflow": "W2",
+      "best_reward": 0.2631,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.198,
+      "reward_span": 0.0651,
+      "reward_by_workflow": {
+        "W2": 0.2631,
+        "W3": 0.198
+      }
+    },
+    {
+      "question": "Which film has the director who died later, His Last Haul or The Falcon In San Francisco?",
+      "best_workflow": "W3",
+      "best_reward": 0.1036,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0652,
+      "reward_span": 0.0384,
+      "reward_by_workflow": {
+        "W3": 0.1036,
+        "W2": 0.0652
+      }
+    },
+    {
+      "question": "Who is the paternal grandfather of George Lyon, 5Th Lord Glamis?",
+      "best_workflow": "W2",
+      "best_reward": 0.8469,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0634,
+      "reward_span": 0.7835,
+      "reward_by_workflow": {
+        "W2": 0.8469,
+        "W3": 0.0634
+      }
+    },
+    {
+      "question": "Who is Iynefer Ii's mother-in-law?",
+      "best_workflow": "W3",
+      "best_reward": 0.0989,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0604,
+      "reward_span": 0.0385,
+      "reward_by_workflow": {
+        "W3": 0.0989,
+        "W2": 0.0604
+      }
+    },
+    {
+      "question": "What is the place of birth of Gwilym Lloyd George's father?",
+      "best_workflow": "W2",
+      "best_reward": -0.0115,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0139,
+      "reward_span": 0.0024,
+      "reward_by_workflow": {
+        "W2": -0.0115,
+        "W3": -0.0139
+      }
+    },
+    {
+      "question": "Where was the mother of Elizabeth Of Denmark, Electress Of Brandenburg born?",
+      "best_workflow": "W3",
+      "best_reward": 0.0146,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": -0.0081,
+      "reward_span": 0.0227,
+      "reward_by_workflow": {
+        "W3": 0.0146,
+        "W2": -0.0081
+      }
+    },
+    {
+      "question": "What is the place of birth of the director of film Marianela (1940 Film)?",
+      "best_workflow": "W2",
+      "best_reward": -0.002,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0035,
+      "reward_span": 0.0015,
+      "reward_by_workflow": {
+        "W2": -0.002,
+        "W3": -0.0035
+      }
+    },
+    {
+      "question": "Who is the paternal grandfather of Eochaid Ailtlethan?",
+      "best_workflow": "W2",
+      "best_reward": 0.0496,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0187,
+      "reward_span": 0.0309,
+      "reward_by_workflow": {
+        "W2": 0.0496,
+        "W3": 0.0187
+      }
+    },
+    {
+      "question": "Where did the director of film Old Man Drinking A Glass Of Beer die?",
+      "best_workflow": "W2",
+      "best_reward": 0.0228,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0117,
+      "reward_span": 0.0111,
+      "reward_by_workflow": {
+        "W2": 0.0228,
+        "W3": 0.0117
+      }
+    },
+    {
+      "question": "Where does Karin Stoltenberg's husband work at?",
+      "best_workflow": "W3",
+      "best_reward": 0.0145,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": -0.0022,
+      "reward_span": 0.0167,
+      "reward_by_workflow": {
+        "W3": 0.0145,
+        "W2": -0.0022
+      }
+    },
+    {
+      "question": "Which film was released first, Taxi Zum Klo or Saajan Bina Suhagan?",
+      "best_workflow": "W3",
+      "best_reward": 0.1013,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0633,
+      "reward_span": 0.038,
+      "reward_by_workflow": {
+        "W3": 0.1013,
+        "W2": 0.0633
+      }
+    },
+    {
+      "question": "Where was the director of film En Aasai Rasave born?",
+      "best_workflow": "W3",
+      "best_reward": 0.0175,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": -0.0025,
+      "reward_span": 0.02,
+      "reward_by_workflow": {
+        "W3": 0.0175,
+        "W2": -0.0025
+      }
+    },
+    {
+      "question": "Are The Man Who Knew Too Much (1956 Film) and Man On Wire both from the same country?",
+      "best_workflow": "W2",
+      "best_reward": 0.033,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.015,
+      "reward_span": 0.018,
+      "reward_by_workflow": {
+        "W2": 0.033,
+        "W3": 0.015
+      }
+    },
+    {
+      "question": "Who is the spouse of the director of film Eden And After?",
+      "best_workflow": "W2",
+      "best_reward": 0.0433,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0219,
+      "reward_span": 0.0214,
+      "reward_by_workflow": {
+        "W2": 0.0433,
+        "W3": 0.0219
+      }
+    },
+    {
+      "question": "Who died later, Stephen De Staebler or Samuel Arthur Saunder?",
+      "best_workflow": "W2",
+      "best_reward": 0.0944,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0808,
+      "reward_span": 0.0136,
+      "reward_by_workflow": {
+        "W2": 0.0944,
+        "W3": 0.0808
+      }
+    },
+    {
+      "question": "Which film has the director who was born first, The Ballad Of Gregorio Cortez or Naiyya?",
+      "best_workflow": "W3",
+      "best_reward": 0.435,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0528,
+      "reward_span": 0.3822,
+      "reward_by_workflow": {
+        "W3": 0.435,
+        "W2": 0.0528
+      }
+    },
+    {
+      "question": "What nationality is Anne Of Burgundy's father?",
+      "best_workflow": "W2",
+      "best_reward": 0.0311,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.005,
+      "reward_span": 0.0261,
+      "reward_by_workflow": {
+        "W2": 0.0311,
+        "W3": 0.005
+      }
+    },
+    {
+      "question": "Where was the director of film Slingshot (Film) born?",
+      "best_workflow": "W3",
+      "best_reward": 0.0057,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": -0.0327,
+      "reward_span": 0.0384,
+      "reward_by_workflow": {
+        "W3": 0.0057,
+        "W2": -0.0327
+      }
+    },
+    {
+      "question": "Do both directors of films Dangerous To Know and Les Côtelettes have the same nationality?",
+      "best_workflow": "W3",
+      "best_reward": 0.1194,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0222,
+      "reward_span": 0.0972,
+      "reward_by_workflow": {
+        "W3": 0.1194,
+        "W2": 0.0222
+      }
+    },
+    {
+      "question": "Which one was established first, Noerr or Korn Ferry?",
+      "best_workflow": "W3",
+      "best_reward": 0.0143,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0076,
+      "reward_span": 0.0067,
+      "reward_by_workflow": {
+        "W3": 0.0143,
+        "W2": 0.0076
+      }
+    },
+    {
+      "question": "Where did the presenter of Tim Russert (Talk Show) die?",
+      "best_workflow": "W3",
+      "best_reward": 0.0106,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": -0.0044,
+      "reward_span": 0.015,
+      "reward_by_workflow": {
+        "W3": 0.0106,
+        "W2": -0.0044
+      }
+    },
+    {
+      "question": "Who lived longer, Huchtenburg or Benjamin Nottingham Webster?",
+      "best_workflow": "W2",
+      "best_reward": 0.0318,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0241,
+      "reward_span": 0.0077,
+      "reward_by_workflow": {
+        "W2": 0.0318,
+        "W3": 0.0241
+      }
+    },
+    {
+      "question": "Which film was released first, Heaven Help Us or Ghar Ki Rani?",
+      "best_workflow": "W2",
+      "best_reward": 0.7298,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.2933,
+      "reward_span": 0.4365,
+      "reward_by_workflow": {
+        "W2": 0.7298,
+        "W3": 0.2933
+      }
+    },
+    {
+      "question": "Where was the place of burial of the director of film The Last Company?",
+      "best_workflow": "W2",
+      "best_reward": 0.0296,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0024,
+      "reward_span": 0.032,
+      "reward_by_workflow": {
+        "W2": 0.0296,
+        "W3": -0.0024
+      }
+    },
+    {
+      "question": "Do Kreesha Turner and Samantha Jo share the same nationality?",
+      "best_workflow": "W3",
+      "best_reward": 1.1747,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0217,
+      "reward_span": 1.153,
+      "reward_by_workflow": {
+        "W3": 1.1747,
+        "W2": 0.0217
+      }
+    },
+    {
+      "question": "Which film has the director who was born earlier, Invasion 1897 or Nene Raju Nene Mantri?",
+      "best_workflow": "W3",
+      "best_reward": 0.3915,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0395,
+      "reward_span": 0.352,
+      "reward_by_workflow": {
+        "W3": 0.3915,
+        "W2": 0.0395
+      }
+    },
+    {
+      "question": "Which country the director of film Daadagiri is from?",
+      "best_workflow": "W2",
+      "best_reward": 0.0313,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0123,
+      "reward_span": 0.019,
+      "reward_by_workflow": {
+        "W2": 0.0313,
+        "W3": 0.0123
+      }
+    },
+    {
+      "question": "Which film came out earlier, Emmy Of Stork'S Nest or Indira Vizha?",
+      "best_workflow": "W3",
+      "best_reward": 1.3006,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 1.2456,
+      "reward_span": 0.055,
+      "reward_by_workflow": {
+        "W3": 1.3006,
+        "W2": 1.2456
+      }
+    },
+    {
+      "question": "Are the directors of both films The Fall Of A Saint and Fighting Through from the same country?",
+      "best_workflow": "W3",
+      "best_reward": 0.0936,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0589,
+      "reward_span": 0.0347,
+      "reward_by_workflow": {
+        "W3": 0.0936,
+        "W2": 0.0589
+      }
+    },
+    {
+      "question": "Which film has the director died first, Resan Till Dej or Rocking Moon?",
+      "best_workflow": "W2",
+      "best_reward": 0.3865,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0187,
+      "reward_span": 0.3678,
+      "reward_by_workflow": {
+        "W2": 0.3865,
+        "W3": 0.0187
+      }
+    },
+    {
+      "question": "Where does the director of film Man At Bath work at?",
+      "best_workflow": "W2",
+      "best_reward": 0.0175,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0157,
+      "reward_span": 0.0018,
+      "reward_by_workflow": {
+        "W2": 0.0175,
+        "W3": 0.0157
+      }
+    },
+    {
+      "question": "What is the award that the performer of song Sunday Papers earned?",
+      "best_workflow": "W2",
+      "best_reward": 0.1229,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0834,
+      "reward_span": 0.0395,
+      "reward_by_workflow": {
+        "W2": 0.1229,
+        "W3": 0.0834
+      }
+    },
+    {
+      "question": "What nationality is the performer of song Adore You (Jessie Ware Song)?",
+      "best_workflow": "W3",
+      "best_reward": 0.0589,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0433,
+      "reward_span": 0.0156,
+      "reward_by_workflow": {
+        "W3": 0.0589,
+        "W2": 0.0433
+      }
+    },
+    {
+      "question": "Where was the place of death of the director of film The Stone Rider?",
+      "best_workflow": "W2",
+      "best_reward": 0.014,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0115,
+      "reward_span": 0.0255,
+      "reward_by_workflow": {
+        "W2": 0.014,
+        "W3": -0.0115
+      }
+    },
+    {
+      "question": "Where did Gigi Causey's husband graduate from?",
+      "best_workflow": "W3",
+      "best_reward": 0.0134,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": -0.0017,
+      "reward_span": 0.0151,
+      "reward_by_workflow": {
+        "W3": 0.0134,
+        "W2": -0.0017
+      }
+    },
+    {
+      "question": "Which film was released more recently, Royal Treasure or When Love Begins?",
+      "best_workflow": "W3",
+      "best_reward": 1.2867,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 1.2451,
+      "reward_span": 0.0416,
+      "reward_by_workflow": {
+        "W3": 1.2867,
+        "W2": 1.2451
+      }
+    },
+    {
+      "question": "Which country the director of film Ulzhan is from?",
+      "best_workflow": "W3",
+      "best_reward": 0.012,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": -0.0198,
+      "reward_span": 0.0318,
+      "reward_by_workflow": {
+        "W3": 0.012,
+        "W2": -0.0198
+      }
+    },
+    {
+      "question": "What is the place of birth of the performer of song Damage (Pharoahe Monch Song)?",
+      "best_workflow": "W3",
+      "best_reward": -0.004,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": -0.0257,
+      "reward_span": 0.0217,
+      "reward_by_workflow": {
+        "W3": -0.004,
+        "W2": -0.0257
+      }
+    },
+    {
+      "question": "Which film was released earlier, Tiger Of The Seven Seas or My Wife'S Lodger?",
+      "best_workflow": "W2",
+      "best_reward": 1.2537,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0771,
+      "reward_span": 1.1766,
+      "reward_by_workflow": {
+        "W2": 1.2537,
+        "W3": 0.0771
+      }
+    },
+    {
+      "question": "Where did Sultan Walad's father die?",
+      "best_workflow": "W3",
+      "best_reward": 0.0199,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0115,
+      "reward_span": 0.0084,
+      "reward_by_workflow": {
+        "W3": 0.0199,
+        "W2": 0.0115
+      }
+    },
+    {
+      "question": "Who is younger, Bernard Chambaz or Tibor Pézsa?",
+      "best_workflow": "W2",
+      "best_reward": 0.0317,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0267,
+      "reward_span": 0.005,
+      "reward_by_workflow": {
+        "W2": 0.0317,
+        "W3": 0.0267
+      }
+    },
+    {
+      "question": "Who is the father of the director of film Red 2 (Film)?",
+      "best_workflow": "W2",
+      "best_reward": 0.0375,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0207,
+      "reward_span": 0.0168,
+      "reward_by_workflow": {
+        "W2": 0.0375,
+        "W3": 0.0207
+      }
+    },
+    {
+      "question": "Which film was released earlier, Moment Of Danger or The Ballad Of Josie?",
+      "best_workflow": "W3",
+      "best_reward": 0.0178,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0168,
+      "reward_span": 0.001,
+      "reward_by_workflow": {
+        "W3": 0.0178,
+        "W2": 0.0168
+      }
+    },
+    {
+      "question": "Which film has the director who is older than the other, The Enchanted Desna or Neal Of The Navy?",
+      "best_workflow": "W3",
+      "best_reward": 0.1072,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0546,
+      "reward_span": 0.0526,
+      "reward_by_workflow": {
+        "W3": 0.1072,
+        "W2": 0.0546
+      }
+    },
+    {
+      "question": "Which album came out first, Issa Album or 3.2.1.?",
+      "best_workflow": "W3",
+      "best_reward": 0.0223,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0162,
+      "reward_span": 0.0061,
+      "reward_by_workflow": {
+        "W3": 0.0223,
+        "W2": 0.0162
+      }
+    },
+    {
+      "question": "Who lived longer, Giuseppe Cesari or Nicos Poulantzas?",
+      "best_workflow": "W2",
+      "best_reward": 0.1537,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.148,
+      "reward_span": 0.0057,
+      "reward_by_workflow": {
+        "W2": 0.1537,
+        "W3": 0.148
+      }
+    },
+    {
+      "question": "What is the place of birth of the director of film Aurora (2018 Film)?",
+      "best_workflow": "W2",
+      "best_reward": -0.002,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0033,
+      "reward_span": 0.0013,
+      "reward_by_workflow": {
+        "W2": -0.002,
+        "W3": -0.0033
+      }
+    },
+    {
+      "question": "Where was the mother of Emilie Hegh Arntzen born?",
+      "best_workflow": "W2",
+      "best_reward": 0.2865,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0159,
+      "reward_span": 0.2706,
+      "reward_by_workflow": {
+        "W2": 0.2865,
+        "W3": 0.0159
+      }
+    },
+    {
+      "question": "Who is the paternal grandmother of Ingegerd Olofsdotter Of Sweden?",
+      "best_workflow": "W2",
+      "best_reward": 0.0551,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0105,
+      "reward_span": 0.0446,
+      "reward_by_workflow": {
+        "W2": 0.0551,
+        "W3": 0.0105
+      }
+    },
+    {
+      "question": "Who is the maternal grandmother of Archduchess Elisabeth Of Austria (1922–1993)?",
+      "best_workflow": "W2",
+      "best_reward": 0.0523,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0146,
+      "reward_span": 0.0377,
+      "reward_by_workflow": {
+        "W2": 0.0523,
+        "W3": 0.0146
+      }
+    },
+    {
+      "question": "Which film was released more recently, Pirates Of The Prairie or Alien Origin?",
+      "best_workflow": "W2",
+      "best_reward": 0.4961,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0672,
+      "reward_span": 0.4289,
+      "reward_by_workflow": {
+        "W2": 0.4961,
+        "W3": 0.0672
+      }
+    },
+    {
+      "question": "What nationality is Cecilia Renata Of Austria's husband?",
+      "best_workflow": "W2",
+      "best_reward": 0.0219,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0154,
+      "reward_span": 0.0065,
+      "reward_by_workflow": {
+        "W2": 0.0219,
+        "W3": 0.0154
+      }
+    },
+    {
+      "question": "Who is the paternal grandmother of Jeanne Of Bar, Countess Of Marle And Soissons?",
+      "best_workflow": "W3",
+      "best_reward": 0.148,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0672,
+      "reward_span": 0.0808,
+      "reward_by_workflow": {
+        "W3": 0.148,
+        "W2": 0.0672
+      }
+    },
+    {
+      "question": "Where did the director of film Barracuda (1978 Film) study?",
+      "best_workflow": "W2",
+      "best_reward": 0.0192,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0134,
+      "reward_span": 0.0058,
+      "reward_by_workflow": {
+        "W2": 0.0192,
+        "W3": 0.0134
+      }
+    },
+    {
+      "question": "Which film whose director is younger, Jeedar or The Rebel Set?",
+      "best_workflow": "W2",
+      "best_reward": 0.0183,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0159,
+      "reward_span": 0.0024,
+      "reward_by_workflow": {
+        "W2": 0.0183,
+        "W3": 0.0159
+      }
+    },
+    {
+      "question": "Where was the place of death of Anastasia Of Serbia's husband?",
+      "best_workflow": "W3",
+      "best_reward": -0.0032,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": -0.0102,
+      "reward_span": 0.007,
+      "reward_by_workflow": {
+        "W3": -0.0032,
+        "W2": -0.0102
+      }
+    },
+    {
+      "question": "What nationality is the director of film Madeleine (1950 Film)?",
+      "best_workflow": "W3",
+      "best_reward": 0.05,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0479,
+      "reward_span": 0.0021,
+      "reward_by_workflow": {
+        "W3": 0.05,
+        "W2": 0.0479
+      }
+    },
+    {
+      "question": "Which film has the director who died earlier, 11 Harrowhouse or A Little Sister Of Everybody?",
+      "best_workflow": "W3",
+      "best_reward": 0.3287,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0482,
+      "reward_span": 0.2805,
+      "reward_by_workflow": {
+        "W3": 0.3287,
+        "W2": 0.0482
+      }
+    },
+    {
+      "question": "Which film was released more recently, How To Make Love To A Negro Without Getting Tired or Frisco Kid?",
+      "best_workflow": "W2",
+      "best_reward": 0.0336,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0194,
+      "reward_span": 0.0142,
+      "reward_by_workflow": {
+        "W2": 0.0336,
+        "W3": 0.0194
+      }
+    },
+    {
+      "question": "Which film has the director born later, Christ Walking On The Water or 45 Fathers?",
+      "best_workflow": "W2",
+      "best_reward": 1.2504,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 1.1947,
+      "reward_span": 0.0557,
+      "reward_by_workflow": {
+        "W2": 1.2504,
+        "W3": 1.1947
+      }
+    },
+    {
+      "question": "Where was the director of film Ronnie Rocket born?",
+      "best_workflow": "W3",
+      "best_reward": 0.0092,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": -0.0121,
+      "reward_span": 0.0213,
+      "reward_by_workflow": {
+        "W3": 0.0092,
+        "W2": -0.0121
+      }
+    },
+    {
+      "question": "Who is the maternal grandfather of Amadeus Vii, Count Of Savoy?",
+      "best_workflow": "W2",
+      "best_reward": 0.0531,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0112,
+      "reward_span": 0.0419,
+      "reward_by_workflow": {
+        "W2": 0.0531,
+        "W3": 0.0112
+      }
+    },
+    {
+      "question": "Which film has the director born earlier, Main Tera Hero or Betrayed Women?",
+      "best_workflow": "W2",
+      "best_reward": 1.2443,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.1809,
+      "reward_span": 1.0634,
+      "reward_by_workflow": {
+        "W2": 1.2443,
+        "W3": 0.1809
+      }
+    },
+    {
+      "question": "Where did the director of film Music In Darkness die?",
+      "best_workflow": "W3",
+      "best_reward": 0.0133,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": -0.035,
+      "reward_span": 0.0483,
+      "reward_by_workflow": {
+        "W3": 0.0133,
+        "W2": -0.035
+      }
+    },
+    {
+      "question": "What is the place of birth of the director of film Double Or Nothing (1940 Film)?",
+      "best_workflow": "W2",
+      "best_reward": 0.0084,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.003,
+      "reward_span": 0.0114,
+      "reward_by_workflow": {
+        "W2": 0.0084,
+        "W3": -0.003
+      }
+    },
+    {
+      "question": "Where was the place of burial of Ælfgar, Earl Of Mercia's mother?",
+      "best_workflow": "W2",
+      "best_reward": 0.0316,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0129,
+      "reward_span": 0.0187,
+      "reward_by_workflow": {
+        "W2": 0.0316,
+        "W3": 0.0129
+      }
+    },
+    {
+      "question": "Are both directors of films The Slayer (Film) and Moscow Heat from the same country?",
+      "best_workflow": "W3",
+      "best_reward": 1.185,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0085,
+      "reward_span": 1.1765,
+      "reward_by_workflow": {
+        "W3": 1.185,
+        "W2": 0.0085
+      }
+    },
+    {
+      "question": "Which one was established first, Besix or Circus Herman Renz?",
+      "best_workflow": "W2",
+      "best_reward": 0.0153,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0104,
+      "reward_span": 0.0049,
+      "reward_by_workflow": {
+        "W2": 0.0153,
+        "W3": 0.0104
+      }
+    },
+    {
+      "question": "Which film whose director was born first, 45 Fathers or The Intended?",
+      "best_workflow": "W3",
+      "best_reward": 1.2866,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": -0.0056,
+      "reward_span": 1.2922,
+      "reward_by_workflow": {
+        "W3": 1.2866,
+        "W2": -0.0056
+      }
+    },
+    {
+      "question": "Are Doboy Railway Station and Adamstown Railway Station, New South Wales located in the same country?",
+      "best_workflow": "W2",
+      "best_reward": 1.202,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 1.1938,
+      "reward_span": 0.0082,
+      "reward_by_workflow": {
+        "W2": 1.202,
+        "W3": 1.1938
+      }
+    },
+    {
+      "question": "What nationality is Geodeung Of Geumgwan Gaya's mother?",
+      "best_workflow": "W3",
+      "best_reward": 0.1071,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0655,
+      "reward_span": 0.0416,
+      "reward_by_workflow": {
+        "W3": 0.1071,
+        "W2": 0.0655
+      }
+    },
+    {
+      "question": "Who is Marcus Aemilius Lepidus (Executed 39)'s father-in-law?",
+      "best_workflow": "W2",
+      "best_reward": 0.0209,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0149,
+      "reward_span": 0.006,
+      "reward_by_workflow": {
+        "W2": 0.0209,
+        "W3": 0.0149
+      }
+    },
+    {
+      "question": "Are Les Misérables (1917 Film) and The Better 'Ole (1926 Film) both from the same country?",
+      "best_workflow": "W3",
+      "best_reward": 0.0172,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": -0.0049,
+      "reward_span": 0.0221,
+      "reward_by_workflow": {
+        "W3": 0.0172,
+        "W2": -0.0049
+      }
+    },
+    {
+      "question": "Which film has the director who died first, A Dream Or Two Ago or Why Leave Home??",
+      "best_workflow": "W3",
+      "best_reward": 1.2903,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.4318,
+      "reward_span": 0.8585,
+      "reward_by_workflow": {
+        "W3": 1.2903,
+        "W2": 0.4318
+      }
+    },
+    {
+      "question": "What nationality is the director of film Rise Above: The Tribe 8 Documentary?",
+      "best_workflow": "W2",
+      "best_reward": 0.0411,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0075,
+      "reward_span": 0.0336,
+      "reward_by_workflow": {
+        "W2": 0.0411,
+        "W3": 0.0075
+      }
+    },
+    {
+      "question": "Where was the wife of Douglas Leiterman born?",
+      "best_workflow": "W3",
+      "best_reward": 0.0172,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": -0.0048,
+      "reward_span": 0.022,
+      "reward_by_workflow": {
+        "W3": 0.0172,
+        "W2": -0.0048
+      }
+    },
+    {
+      "question": "Which film has the director died later, Excursion Train or Bad Day At Black Rock?",
+      "best_workflow": "W3",
+      "best_reward": 0.2742,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0779,
+      "reward_span": 0.1963,
+      "reward_by_workflow": {
+        "W3": 0.2742,
+        "W2": 0.0779
+      }
+    },
+    {
+      "question": "Which film has the director who is older, Johnny Concho or One Minute To Twelve?",
+      "best_workflow": "W2",
+      "best_reward": 0.2704,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0595,
+      "reward_span": 0.2109,
+      "reward_by_workflow": {
+        "W2": 0.2704,
+        "W3": 0.0595
+      }
+    },
+    {
+      "question": "Where was the husband of Esperanza Osmeña born?",
+      "best_workflow": "W3",
+      "best_reward": 0.0085,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0016,
+      "reward_span": 0.0069,
+      "reward_by_workflow": {
+        "W3": 0.0085,
+        "W2": 0.0016
+      }
+    },
+    {
+      "question": "Which film has the director who died later, September Affair or A Gathering Of Eagles?",
+      "best_workflow": "W2",
+      "best_reward": 0.0644,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0157,
+      "reward_span": 0.0487,
+      "reward_by_workflow": {
+        "W2": 0.0644,
+        "W3": 0.0157
+      }
+    },
+    {
+      "question": "Do both films Happiness Of Three Women and Percy (1925 Film) have the directors from the same country?",
+      "best_workflow": "W2",
+      "best_reward": 0.0212,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0117,
+      "reward_span": 0.0095,
+      "reward_by_workflow": {
+        "W2": 0.0212,
+        "W3": 0.0117
+      }
+    },
+    {
+      "question": "Are Xavier Catholic College, Llandilo and Toowoomba Anglican School located in the same country?",
+      "best_workflow": "W2",
+      "best_reward": 1.2264,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 1.192,
+      "reward_span": 0.0344,
+      "reward_by_workflow": {
+        "W2": 1.2264,
+        "W3": 1.192
+      }
+    },
+    {
+      "question": "Which film has the director died earlier, Condemned Women or Faces In The Dark?",
+      "best_workflow": "W3",
+      "best_reward": 0.1086,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0653,
+      "reward_span": 0.0433,
+      "reward_by_workflow": {
+        "W3": 0.1086,
+        "W2": 0.0653
+      }
+    },
+    {
+      "question": "Who is the father of the director of film Ae Dil Hai Mushkil?",
+      "best_workflow": "W3",
+      "best_reward": 0.0826,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0409,
+      "reward_span": 0.0417,
+      "reward_by_workflow": {
+        "W3": 0.0826,
+        "W2": 0.0409
+      }
+    },
+    {
+      "question": "Who is Cornelia (Wife Of Caesar)'s child-in-law?",
+      "best_workflow": "W2",
+      "best_reward": 1.0865,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0177,
+      "reward_span": 1.0688,
+      "reward_by_workflow": {
+        "W2": 1.0865,
+        "W3": 0.0177
+      }
+    },
+    {
+      "question": "Who is Charles Gordon, 2Nd Earl Of Aboyne's paternal grandmother?",
+      "best_workflow": "W3",
+      "best_reward": 0.091,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0794,
+      "reward_span": 0.0116,
+      "reward_by_workflow": {
+        "W3": 0.091,
+        "W2": 0.0794
+      }
+    },
+    {
+      "question": "What is the place of birth of the director of film Peter'S Friends?",
+      "best_workflow": "W2",
+      "best_reward": 0.0158,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0032,
+      "reward_span": 0.019,
+      "reward_by_workflow": {
+        "W2": 0.0158,
+        "W3": -0.0032
+      }
+    },
+    {
+      "question": "Are both stations, Muzaffargarh Railway Station and Raisan Railway Station, located in the same country?",
+      "best_workflow": "W2",
+      "best_reward": 1.2128,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 1.2028,
+      "reward_span": 0.01,
+      "reward_by_workflow": {
+        "W2": 1.2128,
+        "W3": 1.2028
+      }
+    },
+    {
+      "question": "What is the place of birth of Jo Planckaert's father?",
+      "best_workflow": "W2",
+      "best_reward": 0.0196,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0035,
+      "reward_span": 0.0231,
+      "reward_by_workflow": {
+        "W2": 0.0196,
+        "W3": -0.0035
+      }
+    },
+    {
+      "question": "What is the place of birth of the performer of song Down Ass Bitch?",
+      "best_workflow": "W2",
+      "best_reward": 0.0212,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0033,
+      "reward_span": 0.0245,
+      "reward_by_workflow": {
+        "W2": 0.0212,
+        "W3": -0.0033
+      }
+    },
+    {
+      "question": "Are director of film Nights On The Road and director of film Swann In Love (Film) from the same country?",
+      "best_workflow": "W2",
+      "best_reward": 0.0153,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0119,
+      "reward_span": 0.0034,
+      "reward_by_workflow": {
+        "W2": 0.0153,
+        "W3": 0.0119
+      }
+    },
+    {
+      "question": "Are Flora Lake and Rostoul Lake located in the same country?",
+      "best_workflow": "W3",
+      "best_reward": 0.102,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0792,
+      "reward_span": 0.0228,
+      "reward_by_workflow": {
+        "W3": 0.102,
+        "W2": 0.0792
+      }
+    },
+    {
+      "question": "Who is Albert G. Simms's father-in-law?",
+      "best_workflow": "W2",
+      "best_reward": 0.0338,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0152,
+      "reward_span": 0.0186,
+      "reward_by_workflow": {
+        "W2": 0.0338,
+        "W3": 0.0152
+      }
+    },
+    {
+      "question": "What is the place of birth of Eiludd Powys's father?",
+      "best_workflow": "W2",
+      "best_reward": 0.0409,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0036,
+      "reward_span": 0.0445,
+      "reward_by_workflow": {
+        "W2": 0.0409,
+        "W3": -0.0036
+      }
+    },
+    {
+      "question": "Which film whose director is younger, Torments Of The Night or Dirty Dancing?",
+      "best_workflow": "W3",
+      "best_reward": 1.2812,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0678,
+      "reward_span": 1.2134,
+      "reward_by_workflow": {
+        "W3": 1.2812,
+        "W2": 0.0678
+      }
+    },
+    {
+      "question": "Where did Prince Gustav Of Thurn And Taxis (1848–1914)'s mother die?",
+      "best_workflow": "W2",
+      "best_reward": 0.0241,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0134,
+      "reward_span": 0.0107,
+      "reward_by_workflow": {
+        "W2": 0.0241,
+        "W3": 0.0134
+      }
+    },
+    {
+      "question": "Where was the father of Ștefan I. Nenițescu born?",
+      "best_workflow": "W2",
+      "best_reward": 0.0078,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0012,
+      "reward_span": 0.009,
+      "reward_by_workflow": {
+        "W2": 0.0078,
+        "W3": -0.0012
+      }
+    },
+    {
+      "question": "Where was the place of death of the composer of song How Long Has This Been Going On??",
+      "best_workflow": "W3",
+      "best_reward": 0.0152,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": -0.011,
+      "reward_span": 0.0262,
+      "reward_by_workflow": {
+        "W3": 0.0152,
+        "W2": -0.011
+      }
+    },
+    {
+      "question": "Which film came out earlier, Out Of The Rain or Les Résultats Du Féminisme?",
+      "best_workflow": "W3",
+      "best_reward": 0.9424,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.073,
+      "reward_span": 0.8694,
+      "reward_by_workflow": {
+        "W3": 0.9424,
+        "W2": 0.073
+      }
+    },
+    {
+      "question": "Where was the composer of film Terror In The Aisles born?",
+      "best_workflow": "W3",
+      "best_reward": 0.0122,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": -0.0151,
+      "reward_span": 0.0273,
+      "reward_by_workflow": {
+        "W3": 0.0122,
+        "W2": -0.0151
+      }
+    },
+    {
+      "question": "Which film was released first, Ekam – Son Of Soil or Farber'S Nerve?",
+      "best_workflow": "W2",
+      "best_reward": 0.0543,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0538,
+      "reward_span": 0.0005,
+      "reward_by_workflow": {
+        "W2": 0.0543,
+        "W3": 0.0538
+      }
+    },
+    {
+      "question": "What is the place of birth of the director of film I Love, You Love?",
+      "best_workflow": "W2",
+      "best_reward": 0.0426,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0033,
+      "reward_span": 0.0459,
+      "reward_by_workflow": {
+        "W2": 0.0426,
+        "W3": -0.0033
+      }
+    },
+    {
+      "question": "Who is the paternal grandmother of King Kang Of Zhou?",
+      "best_workflow": "W2",
+      "best_reward": 0.0542,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0165,
+      "reward_span": 0.0377,
+      "reward_by_workflow": {
+        "W2": 0.0542,
+        "W3": 0.0165
+      }
+    },
+    {
+      "question": "What nationality is the director of film Name The Man?",
+      "best_workflow": "W3",
+      "best_reward": 0.0803,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0702,
+      "reward_span": 0.0101,
+      "reward_by_workflow": {
+        "W3": 0.0803,
+        "W2": 0.0702
+      }
+    },
+    {
+      "question": "Which film has the director died later, Sailor'S Luck or Lutaru Lalna?",
+      "best_workflow": "W2",
+      "best_reward": 0.2509,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.1045,
+      "reward_span": 0.1464,
+      "reward_by_workflow": {
+        "W2": 0.2509,
+        "W3": 0.1045
+      }
+    },
+    {
+      "question": "What nationality is Florent Of Hainaut's mother?",
+      "best_workflow": "W2",
+      "best_reward": 0.0115,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0051,
+      "reward_span": 0.0064,
+      "reward_by_workflow": {
+        "W2": 0.0115,
+        "W3": 0.0051
+      }
+    },
+    {
+      "question": "Who is the paternal grandmother of Princess Augusta Of Waldeck-Pyrmont?",
+      "best_workflow": "W2",
+      "best_reward": 0.3274,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0171,
+      "reward_span": 0.3103,
+      "reward_by_workflow": {
+        "W2": 0.3274,
+        "W3": 0.0171
+      }
+    },
+    {
+      "question": "Which song was released more recently, Go Ahead And Break My Heart or Knee Deep In My Heart?",
+      "best_workflow": "W2",
+      "best_reward": 0.5481,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.372,
+      "reward_span": 0.1761,
+      "reward_by_workflow": {
+        "W2": 0.5481,
+        "W3": 0.372
+      }
+    },
+    {
+      "question": "Which film has the director who was born earlier, Buffet Froid or Lost In Africa?",
+      "best_workflow": "W3",
+      "best_reward": 1.2845,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.2343,
+      "reward_span": 1.0502,
+      "reward_by_workflow": {
+        "W3": 1.2845,
+        "W2": 0.2343
+      }
+    },
+    {
+      "question": "When did Engelbert, Count Of Nevers's mother die?",
+      "best_workflow": "W2",
+      "best_reward": 0.5953,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0101,
+      "reward_span": 0.5852,
+      "reward_by_workflow": {
+        "W2": 0.5953,
+        "W3": 0.0101
+      }
+    },
+    {
+      "question": "Which film whose director is younger, Kalippava or A Couch In New York?",
+      "best_workflow": "W3",
+      "best_reward": 0.1043,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0683,
+      "reward_span": 0.036,
+      "reward_by_workflow": {
+        "W3": 0.1043,
+        "W2": 0.0683
+      }
+    },
+    {
+      "question": "What is the cause of death of performer of song Oh Boy, Oh Boy, Oh Boy!?",
+      "best_workflow": "W3",
+      "best_reward": 0.0107,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": -0.0006,
+      "reward_span": 0.0113,
+      "reward_by_workflow": {
+        "W3": 0.0107,
+        "W2": -0.0006
+      }
+    },
+    {
+      "question": "Which country Aleksandra Marianna Wiesiołowska's father is from?",
+      "best_workflow": "W3",
+      "best_reward": 0.0145,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": -0.0029,
+      "reward_span": 0.0174,
+      "reward_by_workflow": {
+        "W3": 0.0145,
+        "W2": -0.0029
+      }
+    },
+    {
+      "question": "What is the date of birth of Mohammed Bin Nawwaf Bin Abdulaziz's father?",
+      "best_workflow": "W2",
+      "best_reward": 0.0604,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0149,
+      "reward_span": 0.0455,
+      "reward_by_workflow": {
+        "W2": 0.0604,
+        "W3": 0.0149
+      }
+    },
+    {
+      "question": "Who is the paternal grandfather of Sir Thomas Lawley, 3Rd Baronet?",
+      "best_workflow": "W2",
+      "best_reward": 0.4982,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.4104,
+      "reward_span": 0.0878,
+      "reward_by_workflow": {
+        "W2": 0.4982,
+        "W3": 0.4104
+      }
+    },
+    {
+      "question": "Who is Frederick Of Luxembourg's paternal grandfather?",
+      "best_workflow": "W2",
+      "best_reward": 0.0221,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0143,
+      "reward_span": 0.0078,
+      "reward_by_workflow": {
+        "W2": 0.0221,
+        "W3": 0.0143
+      }
+    },
+    {
+      "question": "Who is William Ii, Count Of Flanders's paternal grandmother?",
+      "best_workflow": "W2",
+      "best_reward": 0.0496,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0147,
+      "reward_span": 0.0349,
+      "reward_by_workflow": {
+        "W2": 0.0496,
+        "W3": 0.0147
+      }
+    },
+    {
+      "question": "When is Prince Napoléon Bonaparte's father's birthday?",
+      "best_workflow": "W3",
+      "best_reward": 0.0145,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": -0.0029,
+      "reward_span": 0.0174,
+      "reward_by_workflow": {
+        "W3": 0.0145,
+        "W2": -0.0029
+      }
+    },
+    {
+      "question": "Do John Amyas Alexander and Albert Seward share the same nationality?",
+      "best_workflow": "W2",
+      "best_reward": 0.043,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0156,
+      "reward_span": 0.0274,
+      "reward_by_workflow": {
+        "W2": 0.043,
+        "W3": 0.0156
+      }
+    },
+    {
+      "question": "Who is the child of the director of film Lo Que Le Pasó A Reynoso?",
+      "best_workflow": "W2",
+      "best_reward": 0.1534,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0198,
+      "reward_span": 0.1336,
+      "reward_by_workflow": {
+        "W2": 0.1534,
+        "W3": 0.0198
+      }
+    },
+    {
+      "question": "Which film came out earlier, Dis-Moi Qui Tuer or Under The Hawthorn Tree (Film)?",
+      "best_workflow": "W3",
+      "best_reward": 0.0234,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0217,
+      "reward_span": 0.0017,
+      "reward_by_workflow": {
+        "W3": 0.0234,
+        "W2": 0.0217
+      }
+    },
+    {
+      "question": "Who is the father of the director of film Plunkett & Macleane?",
+      "best_workflow": "W3",
+      "best_reward": 1.2867,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.3979,
+      "reward_span": 0.8888,
+      "reward_by_workflow": {
+        "W3": 1.2867,
+        "W2": 0.3979
+      }
+    },
+    {
+      "question": "Who is Colgú Mac Faílbe Flaind's uncle?",
+      "best_workflow": "W2",
+      "best_reward": 0.1728,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.1443,
+      "reward_span": 0.0285,
+      "reward_by_workflow": {
+        "W2": 0.1728,
+        "W3": 0.1443
+      }
+    },
+    {
+      "question": "Are Bilthoven and Herveld both located in the same country?",
+      "best_workflow": "W3",
+      "best_reward": 1.1873,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.1708,
+      "reward_span": 1.0165,
+      "reward_by_workflow": {
+        "W3": 1.1873,
+        "W2": 0.1708
+      }
+    },
+    {
+      "question": "Do both films: Gammat Jammat and Ready (2011 Film) have the directors from the same country?",
+      "best_workflow": "W2",
+      "best_reward": 0.0202,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0072,
+      "reward_span": 0.013,
+      "reward_by_workflow": {
+        "W2": 0.0202,
+        "W3": 0.0072
+      }
+    },
+    {
+      "question": "Which film was released first, The Cemetery Club or Uzhaikkum Karangal?",
+      "best_workflow": "W3",
+      "best_reward": 0.0065,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": -0.0006,
+      "reward_span": 0.0071,
+      "reward_by_workflow": {
+        "W3": 0.0065,
+        "W2": -0.0006
+      }
+    },
+    {
+      "question": "Are both directors of films 16 To Life and Saved By The Belles from the same country?",
+      "best_workflow": "W2",
+      "best_reward": 1.2089,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0091,
+      "reward_span": 1.1998,
+      "reward_by_workflow": {
+        "W2": 1.2089,
+        "W3": 0.0091
+      }
+    },
+    {
+      "question": "Who is Archibald Acheson, 4Th Earl Of Gosford's paternal grandfather?",
+      "best_workflow": "W3",
+      "best_reward": 0.6488,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.5412,
+      "reward_span": 0.1076,
+      "reward_by_workflow": {
+        "W3": 0.6488,
+        "W2": 0.5412
+      }
+    },
+    {
+      "question": "Which film came out first, Repeated Absences or She Wore A Yellow Ribbon?",
+      "best_workflow": "W3",
+      "best_reward": 0.1012,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0607,
+      "reward_span": 0.0405,
+      "reward_by_workflow": {
+        "W3": 0.1012,
+        "W2": 0.0607
+      }
+    },
+    {
+      "question": "Who is the maternal grandfather of Antiochus X Eusebes?",
+      "best_workflow": "W2",
+      "best_reward": 0.0458,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0017,
+      "reward_span": 0.0441,
+      "reward_by_workflow": {
+        "W2": 0.0458,
+        "W3": 0.0017
+      }
+    },
+    {
+      "question": "Who was born first out of Overill Dwyer-Brown and Dragan Načevski?",
+      "best_workflow": "W2",
+      "best_reward": 0.2296,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0095,
+      "reward_span": 0.2201,
+      "reward_by_workflow": {
+        "W2": 0.2296,
+        "W3": 0.0095
+      }
+    },
+    {
+      "question": "Which film has the director born later, Befikre or American Sniper?",
+      "best_workflow": "W3",
+      "best_reward": 1.2834,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 1.1899,
+      "reward_span": 0.0935,
+      "reward_by_workflow": {
+        "W3": 1.2834,
+        "W2": 1.1899
+      }
+    },
+    {
+      "question": "What is the place of birth of the director of film And The Spring Comes?",
+      "best_workflow": "W2",
+      "best_reward": 0.0188,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0034,
+      "reward_span": 0.0222,
+      "reward_by_workflow": {
+        "W2": 0.0188,
+        "W3": -0.0034
+      }
+    },
+    {
+      "question": "Which film has the director born first, La Mazurka Del Barone, Della Santa E Del Fico Fiorone or Safe (2012 Film)?",
+      "best_workflow": "W2",
+      "best_reward": 0.5354,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.3524,
+      "reward_span": 0.183,
+      "reward_by_workflow": {
+        "W2": 0.5354,
+        "W3": 0.3524
+      }
+    },
+    {
+      "question": "What is the place of birth of the performer of song Who...?",
+      "best_workflow": "W3",
+      "best_reward": -0.0034,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": -0.0102,
+      "reward_span": 0.0068,
+      "reward_by_workflow": {
+        "W3": -0.0034,
+        "W2": -0.0102
+      }
+    },
+    {
+      "question": "Are Arnold Palmer Regional Airport and Luis Muñoz Marín International Airport located in the same country?",
+      "best_workflow": "W2",
+      "best_reward": 0.1129,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.081,
+      "reward_span": 0.0319,
+      "reward_by_workflow": {
+        "W2": 0.1129,
+        "W3": 0.081
+      }
+    },
+    {
+      "question": "Which film has the director born first, The Raven'S Dance or Keïta! L'Héritage Du Griot?",
+      "best_workflow": "W3",
+      "best_reward": 0.1147,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0652,
+      "reward_span": 0.0495,
+      "reward_by_workflow": {
+        "W3": 0.1147,
+        "W2": 0.0652
+      }
+    },
+    {
+      "question": "Are Fire In Hell and The Tiger: An Old Hunter'S Tale from the same country?",
+      "best_workflow": "W2",
+      "best_reward": 0.045,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0138,
+      "reward_span": 0.0312,
+      "reward_by_workflow": {
+        "W2": 0.045,
+        "W3": 0.0138
+      }
+    },
+    {
+      "question": "What is the award that the director of film The Last Night Of The Barbary Coast got?",
+      "best_workflow": "W2",
+      "best_reward": 0.1183,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.1105,
+      "reward_span": 0.0078,
+      "reward_by_workflow": {
+        "W2": 0.1183,
+        "W3": 0.1105
+      }
+    },
+    {
+      "question": "Where was the mother of Antonio Flores born?",
+      "best_workflow": "W3",
+      "best_reward": 0.0089,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.001,
+      "reward_span": 0.0079,
+      "reward_by_workflow": {
+        "W3": 0.0089,
+        "W2": 0.001
+      }
+    },
+    {
+      "question": "When did Guglielma Pallavicini's mother die?",
+      "best_workflow": "W3",
+      "best_reward": 0.224,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.1681,
+      "reward_span": 0.0559,
+      "reward_by_workflow": {
+        "W3": 0.224,
+        "W2": 0.1681
+      }
+    },
+    {
+      "question": "Which film has the director who was born later, Playing It Wild or I'Ll Be Going Now?",
+      "best_workflow": "W3",
+      "best_reward": 1.2902,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.2741,
+      "reward_span": 1.0161,
+      "reward_by_workflow": {
+        "W3": 1.2902,
+        "W2": 0.2741
+      }
+    },
+    {
+      "question": "Which film has the director who is older, The Gamecock (Film) or Monster A Go-Go?",
+      "best_workflow": "W2",
+      "best_reward": 1.1912,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0127,
+      "reward_span": 1.1785,
+      "reward_by_workflow": {
+        "W2": 1.1912,
+        "W3": 0.0127
+      }
+    },
+    {
+      "question": "Where was the place of death of Duchess Maria Dorothea Of Württemberg's father?",
+      "best_workflow": "W2",
+      "best_reward": 1.2228,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0104,
+      "reward_span": 1.2124,
+      "reward_by_workflow": {
+        "W2": 1.2228,
+        "W3": 0.0104
+      }
+    },
+    {
+      "question": "Who was born later, Bradley Tyler Johnson or Bernardo Freitas?",
+      "best_workflow": "W2",
+      "best_reward": 0.032,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0185,
+      "reward_span": 0.0135,
+      "reward_by_workflow": {
+        "W2": 0.032,
+        "W3": 0.0185
+      }
+    },
+    {
+      "question": "Where was the director of film The Naked Angel born?",
+      "best_workflow": "W3",
+      "best_reward": 0.0138,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": -0.0001,
+      "reward_span": 0.0139,
+      "reward_by_workflow": {
+        "W3": 0.0138,
+        "W2": -0.0001
+      }
+    },
+    {
+      "question": "Where did Giacomo Feo's wife die?",
+      "best_workflow": "W3",
+      "best_reward": 0.0158,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0121,
+      "reward_span": 0.0037,
+      "reward_by_workflow": {
+        "W3": 0.0158,
+        "W2": 0.0121
+      }
+    },
+    {
+      "question": "Which film whose director was born first, Weird Woman or Secret Strings?",
+      "best_workflow": "W2",
+      "best_reward": 0.5038,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0144,
+      "reward_span": 0.4894,
+      "reward_by_workflow": {
+        "W2": 0.5038,
+        "W3": 0.0144
+      }
+    },
+    {
+      "question": "Where was the director of film The 3 Rooms Of Melancholia born?",
+      "best_workflow": "W3",
+      "best_reward": 0.0155,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": -0.0327,
+      "reward_span": 0.0482,
+      "reward_by_workflow": {
+        "W3": 0.0155,
+        "W2": -0.0327
+      }
+    },
+    {
+      "question": "When did Richard Annesley, 2Nd Earl Annesley's father die?",
+      "best_workflow": "W3",
+      "best_reward": 0.0185,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": -0.0032,
+      "reward_span": 0.0217,
+      "reward_by_workflow": {
+        "W3": 0.0185,
+        "W2": -0.0032
+      }
+    },
+    {
+      "question": "Who is the paternal grandmother of John Iii, Duke Of Cleves?",
+      "best_workflow": "W2",
+      "best_reward": 0.2668,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0102,
+      "reward_span": 0.2566,
+      "reward_by_workflow": {
+        "W2": 0.2668,
+        "W3": 0.0102
+      }
+    },
+    {
+      "question": "Where was the husband of Lou Henry Hoover born?",
+      "best_workflow": "W2",
+      "best_reward": 0.3392,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0603,
+      "reward_span": 0.2789,
+      "reward_by_workflow": {
+        "W2": 0.3392,
+        "W3": 0.0603
+      }
+    },
+    {
+      "question": "Are both bands, Snowman (Band) and Jessamine (Band), from the same country?",
+      "best_workflow": "W2",
+      "best_reward": 0.1726,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.1203,
+      "reward_span": 0.0523,
+      "reward_by_workflow": {
+        "W2": 0.1726,
+        "W3": 0.1203
+      }
+    },
+    {
+      "question": "Where was the performer of song Step Into The Light (Myra Song) born?",
+      "best_workflow": "W3",
+      "best_reward": 0.0116,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": -0.028,
+      "reward_span": 0.0396,
+      "reward_by_workflow": {
+        "W3": 0.0116,
+        "W2": -0.028
+      }
+    },
+    {
+      "question": "Who was born first out of Ramsay Anderson and Fernand Fédronic?",
+      "best_workflow": "W2",
+      "best_reward": 0.1979,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.1025,
+      "reward_span": 0.0954,
+      "reward_by_workflow": {
+        "W2": 0.1979,
+        "W3": 0.1025
+      }
+    },
+    {
+      "question": "Are the directors of films The Edifying And Joyous Story Of Colinot and Cold Moon both from the same country?",
+      "best_workflow": "W3",
+      "best_reward": 0.0118,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0086,
+      "reward_span": 0.0032,
+      "reward_by_workflow": {
+        "W3": 0.0118,
+        "W2": 0.0086
+      }
+    },
+    {
+      "question": "When was the director of film Jinpa born?",
+      "best_workflow": "W3",
+      "best_reward": 0.0155,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": -0.0039,
+      "reward_span": 0.0194,
+      "reward_by_workflow": {
+        "W3": 0.0155,
+        "W2": -0.0039
+      }
+    },
+    {
+      "question": "Who was born first, John Beach or Gordon Persons?",
+      "best_workflow": "W3",
+      "best_reward": 0.1076,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0603,
+      "reward_span": 0.0473,
+      "reward_by_workflow": {
+        "W3": 0.1076,
+        "W2": 0.0603
+      }
+    },
+    {
+      "question": "Are Elsah, Illinois and Chah-E Puzeh, Tabas both located in the same country?",
+      "best_workflow": "W2",
+      "best_reward": 0.0678,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0577,
+      "reward_span": 0.0101,
+      "reward_by_workflow": {
+        "W2": 0.0678,
+        "W3": 0.0577
+      }
+    },
+    {
+      "question": "Which film has the director who is older, Villa!! or Sons Of Ingmar?",
+      "best_workflow": "W3",
+      "best_reward": 0.0121,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": -0.0027,
+      "reward_span": 0.0148,
+      "reward_by_workflow": {
+        "W3": 0.0121,
+        "W2": -0.0027
+      }
+    },
+    {
+      "question": "Who is the paternal grandfather of Yi Hong?",
+      "best_workflow": "W2",
+      "best_reward": 0.2758,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.189,
+      "reward_span": 0.0868,
+      "reward_by_workflow": {
+        "W2": 0.2758,
+        "W3": 0.189
+      }
+    },
+    {
+      "question": "Where does the director of film The Marquise Of O (Film) work at?",
+      "best_workflow": "W2",
+      "best_reward": 0.0245,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0201,
+      "reward_span": 0.0044,
+      "reward_by_workflow": {
+        "W2": 0.0245,
+        "W3": 0.0201
+      }
+    },
+    {
+      "question": "Where did Meritaten's father die?",
+      "best_workflow": "W3",
+      "best_reward": 0.0201,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": -0.0116,
+      "reward_span": 0.0317,
+      "reward_by_workflow": {
+        "W3": 0.0201,
+        "W2": -0.0116
+      }
+    },
+    {
+      "question": "What nationality is Isabella Of England's mother?",
+      "best_workflow": "W2",
+      "best_reward": 0.0281,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.005,
+      "reward_span": 0.0231,
+      "reward_by_workflow": {
+        "W2": 0.0281,
+        "W3": 0.005
+      }
+    },
+    {
+      "question": "What is the place of birth of the director of film Stopp! Tänk På Något Annat?",
+      "best_workflow": "W3",
+      "best_reward": 0.0004,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": -0.031,
+      "reward_span": 0.0314,
+      "reward_by_workflow": {
+        "W3": 0.0004,
+        "W2": -0.031
+      }
+    },
+    {
+      "question": "Where was the place of death of Juan Carlos Gumucio's wife?",
+      "best_workflow": "W2",
+      "best_reward": 0.0169,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0087,
+      "reward_span": 0.0256,
+      "reward_by_workflow": {
+        "W2": 0.0169,
+        "W3": -0.0087
+      }
+    },
+    {
+      "question": "Where was the place of death of Prince Christopher Of Greece And Denmark's father?",
+      "best_workflow": "W2",
+      "best_reward": 0.0165,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0113,
+      "reward_span": 0.0052,
+      "reward_by_workflow": {
+        "W2": 0.0165,
+        "W3": 0.0113
+      }
+    },
+    {
+      "question": "Where did the director of film Desolation Angels (1995 Film) graduate from?",
+      "best_workflow": "W3",
+      "best_reward": 0.0311,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0113,
+      "reward_span": 0.0198,
+      "reward_by_workflow": {
+        "W3": 0.0311,
+        "W2": 0.0113
+      }
+    },
+    {
+      "question": "Where was the performer of song Égérie (Song) born?",
+      "best_workflow": "W3",
+      "best_reward": 0.0107,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": -0.0233,
+      "reward_span": 0.034,
+      "reward_by_workflow": {
+        "W3": 0.0107,
+        "W2": -0.0233
+      }
+    },
+    {
+      "question": "Are Little Sachigo Lake and Holden Lake located in the same country?",
+      "best_workflow": "W2",
+      "best_reward": 1.2031,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 1.1928,
+      "reward_span": 0.0103,
+      "reward_by_workflow": {
+        "W2": 1.2031,
+        "W3": 1.1928
+      }
+    },
+    {
+      "question": "Are both Kaufland and Otrag located in the same country?",
+      "best_workflow": "W2",
+      "best_reward": 0.0191,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0136,
+      "reward_span": 0.0055,
+      "reward_by_workflow": {
+        "W2": 0.0191,
+        "W3": 0.0136
+      }
+    },
+    {
+      "question": "Which film was released earlier, Premium (Film) or Week-End With Father?",
+      "best_workflow": "W2",
+      "best_reward": 0.296,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0198,
+      "reward_span": 0.2762,
+      "reward_by_workflow": {
+        "W2": 0.296,
+        "W3": 0.0198
+      }
+    },
+    {
+      "question": "Where did Muza Niyazova's husband die?",
+      "best_workflow": "W3",
+      "best_reward": 0.0173,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": -0.0021,
+      "reward_span": 0.0194,
+      "reward_by_workflow": {
+        "W3": 0.0173,
+        "W2": -0.0021
+      }
+    },
+    {
+      "question": "Do director of film Coteau Rouge and director of film Hochelaga, Land Of Souls share the same nationality?",
+      "best_workflow": "W2",
+      "best_reward": 0.0235,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0092,
+      "reward_span": 0.0143,
+      "reward_by_workflow": {
+        "W2": 0.0235,
+        "W3": 0.0092
+      }
+    },
+    {
+      "question": "Where was the place of death of James Adam (Architect)'s father?",
+      "best_workflow": "W2",
+      "best_reward": 0.03,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0028,
+      "reward_span": 0.0328,
+      "reward_by_workflow": {
+        "W2": 0.03,
+        "W3": -0.0028
+      }
+    },
+    {
+      "question": "Who is the paternal grandfather of Beatrice I, Abbess Of Quedlinburg?",
+      "best_workflow": "W2",
+      "best_reward": 0.0448,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0138,
+      "reward_span": 0.031,
+      "reward_by_workflow": {
+        "W2": 0.0448,
+        "W3": 0.0138
+      }
+    },
+    {
+      "question": "Which film whose director is younger, Roland The Mighty or Graves Without A Name?",
+      "best_workflow": "W3",
+      "best_reward": 1.2895,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0719,
+      "reward_span": 1.2176,
+      "reward_by_workflow": {
+        "W3": 1.2895,
+        "W2": 0.0719
+      }
+    },
+    {
+      "question": "Who is the mother of the director of film Brenda Brave?",
+      "best_workflow": "W2",
+      "best_reward": 0.0453,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0113,
+      "reward_span": 0.034,
+      "reward_by_workflow": {
+        "W2": 0.0453,
+        "W3": 0.0113
+      }
+    },
+    {
+      "question": "Which film has the director who was born earlier, Retalhos Da Vida De Um Médico or The Shooting?",
+      "best_workflow": "W3",
+      "best_reward": 1.2702,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 1.2394,
+      "reward_span": 0.0308,
+      "reward_by_workflow": {
+        "W3": 1.2702,
+        "W2": 1.2394
+      }
+    },
+    {
+      "question": "What is the place of birth of Remigius Of Rouen's father?",
+      "best_workflow": "W2",
+      "best_reward": 0.0022,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0034,
+      "reward_span": 0.0056,
+      "reward_by_workflow": {
+        "W2": 0.0022,
+        "W3": -0.0034
+      }
+    },
+    {
+      "question": "Which film has the director born first, Trouble With Jolanthe or Children Of Fortune?",
+      "best_workflow": "W2",
+      "best_reward": 0.0683,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0441,
+      "reward_span": 0.0242,
+      "reward_by_workflow": {
+        "W2": 0.0683,
+        "W3": 0.0441
+      }
+    },
+    {
+      "question": "Which film was released more recently, A Scream From Silence or Das Spielzeug Von Paris?",
+      "best_workflow": "W3",
+      "best_reward": 1.1501,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.073,
+      "reward_span": 1.0771,
+      "reward_by_workflow": {
+        "W3": 1.1501,
+        "W2": 0.073
+      }
+    },
+    {
+      "question": "Where was the composer of film Love Story 1999 born?",
+      "best_workflow": "W3",
+      "best_reward": 0.0192,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": -0.0232,
+      "reward_span": 0.0424,
+      "reward_by_workflow": {
+        "W3": 0.0192,
+        "W2": -0.0232
+      }
+    },
+    {
+      "question": "Are Paris Sewer Museum and Musée National Des Douanes located in the same country?",
+      "best_workflow": "W2",
+      "best_reward": 0.0406,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0156,
+      "reward_span": 0.025,
+      "reward_by_workflow": {
+        "W2": 0.0406,
+        "W3": 0.0156
+      }
+    },
+    {
+      "question": "What is the place of birth of the director of film Tři Chlapi V Chalupě?",
+      "best_workflow": "W3",
+      "best_reward": -0.0017,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": -0.0333,
+      "reward_span": 0.0316,
+      "reward_by_workflow": {
+        "W3": -0.0017,
+        "W2": -0.0333
+      }
+    }
+  ],
+  "holdout_diagnostics_preview": [
+    {
+      "question": "Which film has the director who was born later, All The Gold In The World or The Crowning Touch?",
+      "best_workflow": "W3",
+      "best_reward": 0.0103,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": -0.0008,
+      "reward_span": 0.0111,
+      "reward_by_workflow": {
+        "W3": 0.0103,
+        "W2": -0.0008
+      }
+    },
+    {
+      "question": "Who is the father of the composer of song I Miss You (Miley Cyrus Song)?",
+      "best_workflow": "W3",
+      "best_reward": 0.0965,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0176,
+      "reward_span": 0.0789,
+      "reward_by_workflow": {
+        "W3": 0.0965,
+        "W2": 0.0176
+      }
+    },
+    {
+      "question": "Who is Wisigard's father-in-law?",
+      "best_workflow": "W2",
+      "best_reward": 0.3657,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0115,
+      "reward_span": 0.3542,
+      "reward_by_workflow": {
+        "W2": 0.3657,
+        "W3": 0.0115
+      }
+    },
+    {
+      "question": "Where was the director of film Lettre Ouverte born?",
+      "best_workflow": "W3",
+      "best_reward": 0.025,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0025,
+      "reward_span": 0.0225,
+      "reward_by_workflow": {
+        "W3": 0.025,
+        "W2": 0.0025
+      }
+    },
+    {
+      "question": "Which film has the director born later, Jesse James' Women or Ride Lonesome?",
+      "best_workflow": "W2",
+      "best_reward": 1.2408,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0147,
+      "reward_span": 1.2261,
+      "reward_by_workflow": {
+        "W2": 1.2408,
+        "W3": 0.0147
+      }
+    },
+    {
+      "question": "Which film was released earlier, Amelie Or The Time To Love or Beginners?",
+      "best_workflow": "W3",
+      "best_reward": 0.0241,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0202,
+      "reward_span": 0.0039,
+      "reward_by_workflow": {
+        "W3": 0.0241,
+        "W2": 0.0202
+      }
+    },
+    {
+      "question": "Which film has the director who was born later, El Extraño Viaje or Love In Pawn?",
+      "best_workflow": "W3",
+      "best_reward": 1.2894,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 1.2429,
+      "reward_span": 0.0465,
+      "reward_by_workflow": {
+        "W3": 1.2894,
+        "W2": 1.2429
+      }
+    },
+    {
+      "question": "Which film has the director who died earlier, Guns And Guitars or To The Victor?",
+      "best_workflow": "W3",
+      "best_reward": 1.2828,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.3261,
+      "reward_span": 0.9567,
+      "reward_by_workflow": {
+        "W3": 1.2828,
+        "W2": 0.3261
+      }
+    },
+    {
+      "question": "Which film has the director died earlier, Poker In Bed or The Machine To Kill Bad People?",
+      "best_workflow": "W3",
+      "best_reward": 0.1018,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0655,
+      "reward_span": 0.0363,
+      "reward_by_workflow": {
+        "W3": 0.1018,
+        "W2": 0.0655
+      }
+    },
+    {
+      "question": "What is the place of birth of the director of film The Last Horror Movie?",
+      "best_workflow": "W2",
+      "best_reward": 0.0226,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0032,
+      "reward_span": 0.0258,
+      "reward_by_workflow": {
+        "W2": 0.0226,
+        "W3": -0.0032
+      }
+    },
+    {
+      "question": "What is the place of birth of the performer of song Heaven (Namie Amuro Song)?",
+      "best_workflow": "W2",
+      "best_reward": 0.3828,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0024,
+      "reward_span": 0.3852,
+      "reward_by_workflow": {
+        "W2": 0.3828,
+        "W3": -0.0024
+      }
+    },
+    {
+      "question": "Who is Prince Harald Of Schaumburg-Lippe's maternal grandfather?",
+      "best_workflow": "W2",
+      "best_reward": 0.4422,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0567,
+      "reward_span": 0.3855,
+      "reward_by_workflow": {
+        "W2": 0.4422,
+        "W3": 0.0567
+      }
+    },
+    {
+      "question": "Which film has the director who was born earlier, Adam'S Rib or Thendral Veesum?",
+      "best_workflow": "W3",
+      "best_reward": 1.284,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 1.2324,
+      "reward_span": 0.0516,
+      "reward_by_workflow": {
+        "W3": 1.284,
+        "W2": 1.2324
+      }
+    },
+    {
+      "question": "Where was the director of film The Half-Way Girl born?",
+      "best_workflow": "W3",
+      "best_reward": 0.0244,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.021,
+      "reward_span": 0.0034,
+      "reward_by_workflow": {
+        "W3": 0.0244,
+        "W2": 0.021
+      }
+    },
+    {
+      "question": "Who is Princess Florestine Of Monaco's paternal grandmother?",
+      "best_workflow": "W2",
+      "best_reward": 0.0341,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0158,
+      "reward_span": 0.0183,
+      "reward_by_workflow": {
+        "W2": 0.0341,
+        "W3": 0.0158
+      }
+    },
+    {
+      "question": "Where did the director of film Até Que A Sorte Nos Separe 2 study?",
+      "best_workflow": "W3",
+      "best_reward": 0.1079,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0825,
+      "reward_span": 0.0254,
+      "reward_by_workflow": {
+        "W3": 0.1079,
+        "W2": 0.0825
+      }
+    },
+    {
+      "question": "Are both directors of films Breslin And Hamill: Deadline Artists and Jean The Tenant from the same country?",
+      "best_workflow": "W3",
+      "best_reward": 0.0142,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": -0.0076,
+      "reward_span": 0.0218,
+      "reward_by_workflow": {
+        "W3": 0.0142,
+        "W2": -0.0076
+      }
+    },
+    {
+      "question": "Who is older, Dyson Parody or Gene Watson?",
+      "best_workflow": "W2",
+      "best_reward": 0.3978,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.1106,
+      "reward_span": 0.2872,
+      "reward_by_workflow": {
+        "W2": 0.3978,
+        "W3": 0.1106
+      }
+    },
+    {
+      "question": "Where does Chris Warren (Rugby League)'s father work at?",
+      "best_workflow": "W3",
+      "best_reward": 0.0216,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": -0.0034,
+      "reward_span": 0.025,
+      "reward_by_workflow": {
+        "W3": 0.0216,
+        "W2": -0.0034
+      }
+    },
+    {
+      "question": "What nationality is Philip Of Ibelin (1180–1227)'s mother?",
+      "best_workflow": "W2",
+      "best_reward": 0.0389,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0124,
+      "reward_span": 0.0265,
+      "reward_by_workflow": {
+        "W2": 0.0389,
+        "W3": 0.0124
+      }
+    },
+    {
+      "question": "Where was the director of film The Pride Of Jennico (Film) born?",
+      "best_workflow": "W3",
+      "best_reward": 0.1052,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0241,
+      "reward_span": 0.0811,
+      "reward_by_workflow": {
+        "W3": 0.1052,
+        "W2": 0.0241
+      }
+    },
+    {
+      "question": "Which country Natalie Portman's husband is from?",
+      "best_workflow": "W3",
+      "best_reward": 0.0162,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": -0.0103,
+      "reward_span": 0.0265,
+      "reward_by_workflow": {
+        "W3": 0.0162,
+        "W2": -0.0103
+      }
+    },
+    {
+      "question": "Which country the director of film I See You (2006 Film) is from?",
+      "best_workflow": "W2",
+      "best_reward": 0.0224,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0113,
+      "reward_span": 0.0111,
+      "reward_by_workflow": {
+        "W2": 0.0224,
+        "W3": 0.0113
+      }
+    },
+    {
+      "question": "Who is the mother of Olaf (Ii) Haraldsen?",
+      "best_workflow": "W2",
+      "best_reward": 0.0324,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0097,
+      "reward_span": 0.0227,
+      "reward_by_workflow": {
+        "W2": 0.0324,
+        "W3": 0.0097
+      }
+    },
+    {
+      "question": "Which film has the director died earlier, Dialogues Of Exiles or Rhythm And Weep?",
+      "best_workflow": "W2",
+      "best_reward": 0.2773,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0159,
+      "reward_span": 0.2614,
+      "reward_by_workflow": {
+        "W2": 0.2773,
+        "W3": 0.0159
+      }
+    },
+    {
+      "question": "Which film has the director who is older than the other, One Down, Two To Go or Andrei Svislotskiy?",
+      "best_workflow": "W3",
+      "best_reward": 0.1035,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0476,
+      "reward_span": 0.0559,
+      "reward_by_workflow": {
+        "W3": 0.1035,
+        "W2": 0.0476
+      }
+    },
+    {
+      "question": "Where did the director of film Ręce Do Góry study?",
+      "best_workflow": "W3",
+      "best_reward": 0.0108,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0103,
+      "reward_span": 0.0005,
+      "reward_by_workflow": {
+        "W3": 0.0108,
+        "W2": 0.0103
+      }
+    },
+    {
+      "question": "Where was the director of film At The End Of The Tunnel born?",
+      "best_workflow": "W2",
+      "best_reward": 0.0088,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0075,
+      "reward_span": 0.0013,
+      "reward_by_workflow": {
+        "W2": 0.0088,
+        "W3": 0.0075
+      }
+    },
+    {
+      "question": "Which film has the director who died earlier, Toen 'T Licht Verdween or Boum Sur Paris?",
+      "best_workflow": "W3",
+      "best_reward": 1.309,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 1.2524,
+      "reward_span": 0.0566,
+      "reward_by_workflow": {
+        "W3": 1.309,
+        "W2": 1.2524
+      }
+    },
+    {
+      "question": "Which film has the director who was born earlier, It'S A Joke, Son! or The Thirty Nine Steps (1978 Film)?",
+      "best_workflow": "W2",
+      "best_reward": 1.1704,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.2905,
+      "reward_span": 0.8799,
+      "reward_by_workflow": {
+        "W2": 1.1704,
+        "W3": 0.2905
+      }
+    },
+    {
+      "question": "Who is Joan Of Valois, Duchess Of Alençon's maternal grandfather?",
+      "best_workflow": "W2",
+      "best_reward": 0.035,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0124,
+      "reward_span": 0.0226,
+      "reward_by_workflow": {
+        "W2": 0.035,
+        "W3": 0.0124
+      }
+    },
+    {
+      "question": "Which film has the director who died later, The Olsen Gang In Jutland or Pathala Bhairavi?",
+      "best_workflow": "W2",
+      "best_reward": 0.0274,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0238,
+      "reward_span": 0.0036,
+      "reward_by_workflow": {
+        "W2": 0.0274,
+        "W3": 0.0238
+      }
+    },
+    {
+      "question": "Which film has the director who is older, The Boy Turns Man or A Strange Adventure?",
+      "best_workflow": "W2",
+      "best_reward": 0.0696,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0197,
+      "reward_span": 0.0499,
+      "reward_by_workflow": {
+        "W2": 0.0696,
+        "W3": 0.0197
+      }
+    },
+    {
+      "question": "Are Bal Vidyalaya (Kota) and Loreto House both located in the same country?",
+      "best_workflow": "W3",
+      "best_reward": 1.191,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0207,
+      "reward_span": 1.1703,
+      "reward_by_workflow": {
+        "W3": 1.191,
+        "W2": 0.0207
+      }
+    },
+    {
+      "question": "Who is the father-in-law of Tsandzile Ndwandwe?",
+      "best_workflow": "W2",
+      "best_reward": 0.0984,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0191,
+      "reward_span": 0.0793,
+      "reward_by_workflow": {
+        "W2": 0.0984,
+        "W3": 0.0191
+      }
+    },
+    {
+      "question": "What is the award that the director of film Wearing Velvet Slippers Under A Golden Umbrella won?",
+      "best_workflow": "W2",
+      "best_reward": 0.0308,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0236,
+      "reward_span": 0.0072,
+      "reward_by_workflow": {
+        "W2": 0.0308,
+        "W3": 0.0236
+      }
+    },
+    {
+      "question": "Did the movies Passer L'Hiver and In My Skin, originate from the same country?",
+      "best_workflow": "W3",
+      "best_reward": 0.0136,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0075,
+      "reward_span": 0.0061,
+      "reward_by_workflow": {
+        "W3": 0.0136,
+        "W2": 0.0075
+      }
+    },
+    {
+      "question": "Which film has the director born later, Song Of The Open Road or Campaign Of Hate: Russia And Gay Propaganda?",
+      "best_workflow": "W3",
+      "best_reward": 1.2706,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0063,
+      "reward_span": 1.2643,
+      "reward_by_workflow": {
+        "W3": 1.2706,
+        "W2": 0.0063
+      }
+    },
+    {
+      "question": "Why did John Middleton Murry's wife die?",
+      "best_workflow": "W3",
+      "best_reward": 0.0116,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0073,
+      "reward_span": 0.0043,
+      "reward_by_workflow": {
+        "W3": 0.0116,
+        "W2": 0.0073
+      }
+    },
+    {
+      "question": "Which film came out earlier, Aanaval Mothiram or Heroes Of The Street?",
+      "best_workflow": "W2",
+      "best_reward": 0.4954,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0181,
+      "reward_span": 0.4773,
+      "reward_by_workflow": {
+        "W2": 0.4954,
+        "W3": 0.0181
+      }
+    },
+    {
+      "question": "Where was the father of Andrew Balding born?",
+      "best_workflow": "W2",
+      "best_reward": 0.0101,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0095,
+      "reward_span": 0.0006,
+      "reward_by_workflow": {
+        "W2": 0.0101,
+        "W3": 0.0095
+      }
+    },
+    {
+      "question": "Who was born first out of Alexey Volkonsky and Wanderley Oliveira?",
+      "best_workflow": "W2",
+      "best_reward": 0.0593,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0094,
+      "reward_span": 0.0499,
+      "reward_by_workflow": {
+        "W2": 0.0593,
+        "W3": 0.0094
+      }
+    },
+    {
+      "question": "What is the place of birth of the director of film Guilty Of Treason?",
+      "best_workflow": "W2",
+      "best_reward": 0.009,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0033,
+      "reward_span": 0.0123,
+      "reward_by_workflow": {
+        "W2": 0.009,
+        "W3": -0.0033
+      }
+    },
+    {
+      "question": "Do both films Payment On Demand and My Cousin From Warsaw have the directors from the same country?",
+      "best_workflow": "W2",
+      "best_reward": 0.0263,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0146,
+      "reward_span": 0.0117,
+      "reward_by_workflow": {
+        "W2": 0.0263,
+        "W3": 0.0146
+      }
+    },
+    {
+      "question": "Where was the keyboardist of Xyz (English Band) born?",
+      "best_workflow": "W3",
+      "best_reward": 0.0197,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": -0.0184,
+      "reward_span": 0.0381,
+      "reward_by_workflow": {
+        "W3": 0.0197,
+        "W2": -0.0184
+      }
+    },
+    {
+      "question": "Which country the performer of song I Might Have Been Queen is from?",
+      "best_workflow": "W2",
+      "best_reward": 0.0345,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0122,
+      "reward_span": 0.0223,
+      "reward_by_workflow": {
+        "W2": 0.0345,
+        "W3": 0.0122
+      }
+    },
+    {
+      "question": "What is the place of birth of Princess Margaretha Of Saxony's mother?",
+      "best_workflow": "W2",
+      "best_reward": 0.0135,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": -0.0035,
+      "reward_span": 0.017,
+      "reward_by_workflow": {
+        "W2": 0.0135,
+        "W3": -0.0035
+      }
+    },
+    {
+      "question": "When did Prince John Konstantinovich Of Russia's mother die?",
+      "best_workflow": "W2",
+      "best_reward": 0.0568,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0121,
+      "reward_span": 0.0447,
+      "reward_by_workflow": {
+        "W2": 0.0568,
+        "W3": 0.0121
+      }
+    },
+    {
+      "question": "Who did Joan Ramon Ii, Count Of Cardona marry?",
+      "best_workflow": "W3",
+      "best_reward": 0.2293,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0535,
+      "reward_span": 0.1758,
+      "reward_by_workflow": {
+        "W3": 0.2293,
+        "W2": 0.0535
+      }
+    },
+    {
+      "question": "Which country Prince Nikolaus Wilhelm Of Nassau's mother is from?",
+      "best_workflow": "W2",
+      "best_reward": 0.0342,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0165,
+      "reward_span": 0.0177,
+      "reward_by_workflow": {
+        "W2": 0.0342,
+        "W3": 0.0165
+      }
+    },
+    {
+      "question": "Which film has the director born first, Stella'S Oorlog or Don Juan In A Girls' School?",
+      "best_workflow": "W3",
+      "best_reward": 0.7602,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.6943,
+      "reward_span": 0.0659,
+      "reward_by_workflow": {
+        "W3": 0.7602,
+        "W2": 0.6943
+      }
+    },
+    {
+      "question": "Are Graduate University Of Advanced Technology and Fruita Schoolhouse located in the same country?",
+      "best_workflow": "W3",
+      "best_reward": 0.1052,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0872,
+      "reward_span": 0.018,
+      "reward_by_workflow": {
+        "W3": 0.1052,
+        "W2": 0.0872
+      }
+    },
+    {
+      "question": "Where was the place of burial of Albert Frederick, Duke Of Prussia's mother?",
+      "best_workflow": "W3",
+      "best_reward": 0.0154,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": -0.0114,
+      "reward_span": 0.0268,
+      "reward_by_workflow": {
+        "W3": 0.0154,
+        "W2": -0.0114
+      }
+    },
+    {
+      "question": "What nationality is Imperial Noble Consort Chunhui's husband?",
+      "best_workflow": "W2",
+      "best_reward": 0.0409,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0159,
+      "reward_span": 0.025,
+      "reward_by_workflow": {
+        "W2": 0.0409,
+        "W3": 0.0159
+      }
+    },
+    {
+      "question": "Which film has the director who died later, Say It With Flowers or Boot Hill Bandits?",
+      "best_workflow": "W3",
+      "best_reward": 1.2893,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 1.2565,
+      "reward_span": 0.0328,
+      "reward_by_workflow": {
+        "W3": 1.2893,
+        "W2": 1.2565
+      }
+    },
+    {
+      "question": "Which film has the director born later, Feel My Pulse or Panique?",
+      "best_workflow": "W2",
+      "best_reward": 1.1951,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 1.1945,
+      "reward_span": 0.0006,
+      "reward_by_workflow": {
+        "W2": 1.1951,
+        "W3": 1.1945
+      }
+    },
+    {
+      "question": "Which album came out earlier, Was I The Wave? or Kingdom Of Rock?",
+      "best_workflow": "W3",
+      "best_reward": 0.383,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0183,
+      "reward_span": 0.3647,
+      "reward_by_workflow": {
+        "W3": 0.383,
+        "W2": 0.0183
+      }
+    },
+    {
+      "question": "Where was the director of film Gently My Songs Entreat born?",
+      "best_workflow": "W3",
+      "best_reward": 0.1011,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0438,
+      "reward_span": 0.0573,
+      "reward_by_workflow": {
+        "W3": 0.1011,
+        "W2": 0.0438
+      }
+    },
+    {
+      "question": "Who is Thomas Stafford, 3Rd Earl Of Stafford's father?",
+      "best_workflow": "W3",
+      "best_reward": 0.6466,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.6338,
+      "reward_span": 0.0128,
+      "reward_by_workflow": {
+        "W3": 0.6466,
+        "W2": 0.6338
+      }
+    },
+    {
+      "question": "Which film has the director died earlier, John Jaffer Janardhanan or Kamakalawa?",
+      "best_workflow": "W2",
+      "best_reward": 0.1429,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0104,
+      "reward_span": 0.1325,
+      "reward_by_workflow": {
+        "W2": 0.1429,
+        "W3": 0.0104
+      }
+    },
+    {
+      "question": "Which film has the director born first, Antonieta or Dodging The Dole?",
+      "best_workflow": "W2",
+      "best_reward": 0.0597,
+      "runner_up_workflow": "W3",
+      "runner_up_reward": 0.0162,
+      "reward_span": 0.0435,
+      "reward_by_workflow": {
+        "W2": 0.0597,
+        "W3": 0.0162
+      }
+    },
+    {
+      "question": "Who is Constantine Palaiologos (Son Of Andronikos Ii)'s maternal grandmother?",
+      "best_workflow": "W3",
+      "best_reward": 0.0525,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.0205,
+      "reward_span": 0.032,
+      "reward_by_workflow": {
+        "W3": 0.0525,
+        "W2": 0.0205
+      }
+    },
+    {
+      "question": "Which album was released more recently, The Arockalypse or Because The Internet?",
+      "best_workflow": "W3",
+      "best_reward": 1.275,
+      "runner_up_workflow": "W2",
+      "runner_up_reward": 0.3485,
+      "reward_span": 0.9265,
+      "reward_by_workflow": {
+        "W3": 1.275,
+        "W2": 0.3485
+      }
+    }
+  ]
+}

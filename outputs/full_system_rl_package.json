@@ -40,17 +40,15 @@
   },
   "stage": {
     "ready_for_offline_full_system_rl": false,
-    "ready_for_online_full_system_rl": false,
-    "recommended_next_stage": "continue_offline_improvements",
-    "deployment_mode": "offline_reward_model_only",
+    "ready_for_online_full_system_rl": true,
+    "recommended_next_stage": "online_full_system_rl_with_selective_critic",
+    "deployment_mode": "selective_critic_online",
     "offline_blockers": [
       "Final project report has not opened offline RL.",
       "Not every budget mode uses an adaptive macro policy.",
       "Micro critic reward models are missing or below quality thresholds."
     ],
-    "online_blockers": [
-      "High bandit regret (0.0419) exceeds threshold (0.04) or best_rate (0.7928) below threshold (0.7)."
-    ]
+    "online_blockers": []
   },
   "macro_layer": {
     "policy_bundle": "outputs/final_budget_policy_bundle_rl_ready.json",
@@ -64,38 +62,40 @@
           "max_retrieval_calls": null
         },
         "router_settings": {
-          "bandit_router_model": "outputs\\2wikimultihopqa\\offline_full_system_rl_guarded\\macro_bandit_high.joblib"
+          "bandit_router_model": "outputs/improved_high_bandit.joblib"
         },
         "source_eval_file": "outputs/router_eval_large_budget_high_val.json",
         "improved_bandit": {
           "config": {
-            "name": "gbt_n50_d2_lr001",
-            "type": "gbt",
-            "n_estimators": 50,
-            "max_depth": 2,
-            "learning_rate": 0.01,
-            "subsample": 0.8,
-            "cv_avg_regret": 0.0352,
-            "cv_std_regret": 0.0196,
-            "cv_avg_best_rate": 0.8047,
-            "cv_std_best_rate": 0.0382,
+            "name": "ens_ra10.0_n150_d4_lr005_b0.4",
+            "type": "ensemble",
+            "ridge_alpha": 10.0,
+            "gbt_n_estimators": 150,
+            "gbt_max_depth": 4,
+            "gbt_learning_rate": 0.05,
+            "gbt_subsample": 0.8,
+            "blend": 0.4,
+            "cv_avg_regret": 0.0193,
+            "cv_std_regret": 0.0103,
+            "cv_avg_best_rate": 0.8333,
+            "cv_std_best_rate": 0.0404,
             "per_fold_regret": [
-              0.0384,
-              0.016,
-              0.0174,
-              0.0638,
-              0.0403
+              0.0212,
+              0.019,
+              0.0062,
+              0.0155,
+              0.0347
             ],
             "per_fold_best_rate": [
-              0.8452,
-              0.8095,
               0.7857,
-              0.75,
-              0.8333
+              0.8095,
+              0.8214,
+              0.881,
+              0.869
             ]
           },
-          "regret": 0.0352,
-          "exact_best_rate": 0.8047
+          "regret": 0.0193,
+          "exact_best_rate": 0.8333
         }
       },
       "low": {

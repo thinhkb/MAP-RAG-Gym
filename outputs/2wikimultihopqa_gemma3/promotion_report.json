@@ -1,0 +1,95 @@
+{
+  "manifest": {
+    "script": "scripts/promote_offline_rl_candidate.py",
+    "generated_at_utc": "2026-06-04T05:31:26+00:00",
+    "git_commit": "468c42fc389c5c340c9053380d6bcce97aac4114",
+    "python_version": "3.12.13",
+    "platform": "Windows-11-10.0.22621-SP0",
+    "paths": {
+      "qa": "G:\\MAP-RAG-Gym\\outputs\\2wikimultihopqa_gemma3\\offline_full_system_rl_guarded\\final_budget_policy_test_eval_offline_rl_candidate.json",
+      "corpus": null,
+      "router_model": "G:\\MAP-RAG-Gym\\outputs\\2wikimultihopqa_gemma3\\final_budget_policy_bundle_rl_ready.json"
+    },
+    "dataset": {
+      "name": "promotion",
+      "split": "promote",
+      "limit": null,
+      "effective_questions": 270
+    },
+    "llm": {
+      "provider": null,
+      "model": null
+    },
+    "reproducibility": {
+      "seed": null,
+      "prompt_version": "v1",
+      "utility": null
+    },
+    "settings": {
+      "candidate_bundle": "outputs/2wikimultihopqa_gemma3/offline_full_system_rl_guarded/final_budget_policy_bundle_offline_rl_candidate.json",
+      "candidate_eval": "outputs/2wikimultihopqa_gemma3/offline_full_system_rl_guarded/final_budget_policy_test_eval_offline_rl_candidate.json",
+      "frozen_bundle": "outputs/2wikimultihopqa_gemma3/final_budget_policy_bundle_rl_ready.json",
+      "frozen_eval": "outputs/2wikimultihopqa_gemma3/final_budget_policy_test_eval_rl_ready.json",
+      "promotion_check": "outputs/2wikimultihopqa_gemma3/offline_full_system_rl_guarded/promotion_check.json",
+      "skip_gate_check": true
+    }
+  },
+  "promoted": true,
+  "budget_comparison": {
+    "high": {
+      "old_method": null,
+      "new_method": "bandit_router",
+      "old_utility": 0.0,
+      "new_utility": 0.1901,
+      "delta": 0.1901,
+      "old_tokens": null,
+      "new_tokens": 163.0444,
+      "old_workflow_counts": {},
+      "new_workflow_counts": {
+        "W3": 50,
+        "W2": 40
+      }
+    },
+    "low": {
+      "old_method": null,
+      "new_method": "gated_bandit_router",
+      "old_utility": 0.0,
+      "new_utility": 0.1456,
+      "delta": 0.1456,
+      "old_tokens": null,
+      "new_tokens": 114.2556,
+      "old_workflow_counts": {},
+      "new_workflow_counts": {
+        "W3": 71,
+        "W1": 19
+      }
+    },
+    "medium": {
+      "old_method": null,
+      "new_method": "bandit_router",
+      "old_utility": 0.0,
+      "new_utility": 0.1647,
+      "delta": 0.1647,
+      "old_tokens": null,
+      "new_tokens": 142.6444,
+      "old_workflow_counts": {},
+      "new_workflow_counts": {
+        "W3": 22,
+        "W1": 32,
+        "W2": 25,
+        "W6": 11
+      }
+    }
+  },
+  "backup_paths": {
+    "frozen_bundle": null,
+    "frozen_eval": null,
+    "frozen_report": null
+  },
+  "promoted_paths": {
+    "frozen_bundle": "outputs/2wikimultihopqa_gemma3/final_budget_policy_bundle_rl_ready.json",
+    "frozen_eval": "outputs/2wikimultihopqa_gemma3/final_budget_policy_test_eval_rl_ready.json",
+    "frozen_report": "outputs/2wikimultihopqa_gemma3/final_project_report_rl_ready.json"
+  },
+  "summary": "Guarded offline RL candidate has been promoted to the new frozen bundle. The previous frozen bundle has been backed up."
+}

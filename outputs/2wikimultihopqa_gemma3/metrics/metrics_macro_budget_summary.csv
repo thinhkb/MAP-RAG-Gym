@@ -1,0 +1,4 @@
+﻿budget_mode,recommended_method,num_runs,avg_utility,avg_em,avg_f1_proxy,avg_process_score,avg_tokens,avg_retrieval_calls,avg_latency_ms,workflow_distribution,utility_std,em_rate,zero_utility_rate
+low,gated_bandit_router,90,0.168,0.1444,0.1726,0.1687,90.09,0.58,887.52,"{'W3': 52, 'W1': 38}",0.4154,0.1444,0.7667
+medium,bandit_router,90,0.2161,0.1444,0.1748,0.2225,180.97,0.79,1923.32,"{'W3': 20, 'W6': 23, 'W2': 28, 'W1': 19}",0.4319,0.1444,0.3889
+high,bandit_router,90,0.2353,0.1333,0.1567,0.2285,204.24,1.0,1722.43,"{'W3': 32, 'W2': 58}",0.4226,0.1333,0.0

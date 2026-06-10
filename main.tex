@@ -1,0 +1,594 @@
+% =====================================================================
+% FINAL REPORT TEMPLATE FOR YOUR TOPIC
+% Mau bao cao cuoi ky - bien dich bang pdfLaTeX
+% Luu y: De tuong thich pdfLaTeX, file nay su dung tieng Viet khong dau trong ma lenh,
+% nhung noi dung hien thi co the viet tieng Viet co dau nho goi babel vietnamese.
+% =====================================================================
+
+\documentclass[12pt,a4paper]{article}
+
+% -------------------- Vietnamese and Font Support for pdfLaTeX --------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T5]{fontenc}
+\usepackage[vietnamese,english]{babel}
+\usepackage{times}
+
+% -------------------- Page Layout --------------------
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\setstretch{1.15}
+\setlength{\parskip}{5pt}
+\setlength{\parindent}{1.2cm}
+
+% -------------------- Packages --------------------
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{microtype}
+\usepackage{url}
+\usepackage{longtable}
+\usepackage[numbers,sort&compress]{natbib}
+
+% -------------------- Colors --------------------
+\definecolor{mainblue}{RGB}{0,71,140}
+\definecolor{guideblue}{RGB}{0,83,166}
+\definecolor{warningred}{RGB}{180,0,0}
+
+% -------------------- Hyperlinks --------------------
+\hypersetup{
+    colorlinks=true,
+    linkcolor=mainblue,
+    citecolor=mainblue,
+    urlcolor=mainblue
+}
+
+% -------------------- Section Style --------------------
+\titleformat{\section}
+  {\large\bfseries\color{black}}
+  {\thesection.}{0.5em}{}
+\titleformat{\subsection}
+  {\normalsize\bfseries\color{black}}
+  {\thesubsection.}{0.5em}{}
+\titleformat{\subsubsection}
+  {\normalsize\itshape\bfseries\color{black}}
+  {\thesubsubsection.}{0.5em}{}
+
+% -------------------- Header and Footer --------------------
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Báo cáo cuối kỳ -- Chủ đề của nhóm}
+\rhead{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\setlength{\headheight}{15pt}
+
+% -------------------- Custom Commands --------------------
+% Text mau den: noi dung vi du.
+% Text mau xanh: huong dan viet va ghi chu cham diem.
+% Text mau do: canh bao quan trong hoac loi nghiem trong.
+% Robust color commands for long text, math symbols, and Vietnamese content.
+% These definitions are safer than wrapping long content inside \textcolor{...}{...}.
+\newcommand{\guide}[1]{{\color{guideblue}\itshape #1}}
+\newcommand{\warning}[1]{{\color{warningred}\bfseries #1}}
+\newcommand{\example}[1]{{\color{black}#1}}
+\newcommand{\todo}[1]{{\color{black}\itshape #1}}
+
+% =====================================================================
+%                           DOCUMENT INFORMATION
+% =====================================================================
+
+\begin{document}
+
+% =====================================================================
+%                           COVER PAGE
+% =====================================================================
+\begin{titlepage}
+    \centering
+    \vspace*{0.5cm}
+    {\Large \textbf{UNIVERSITY / FACULTY / DEPARTMENT NAME}}\\[0.3cm]
+    {\large \textbf{COURSE NAME}}\\[1.5cm]
+
+    {\Huge \textbf{FINAL REPORT}}\\[0.7cm]
+    {\LARGE \textbf{Report Title}}\\[0.5cm]
+    {\large \textit{Example: A Comparative Study of Lightweight Models for Real-Time Object Detection in Industrial Inspection}}\\[1.5cm]
+
+    \begin{tabular}{rl}
+        \textbf{Instructor:} & \todo{Instructor full name} \\
+        \textbf{Course section:} & \todo{Class name / Course code} \\
+        \textbf{Group:} & \todo{Group name or group number} \\
+        \textbf{Submission date:} & \todo{dd/mm/yyyy} \\
+    \end{tabular}
+
+    \vfill
+    {\large \textbf{Hanoi, \the\year}}
+\end{titlepage}
+
+% =====================================================================
+%                           MEMBER CONTRIBUTION PAGE
+% =====================================================================
+\section*{Group Members and Contribution Statement}
+\addcontentsline{toc}{section}{Group Members and Contribution Statement}
+
+\guide{Hướng dẫn: Nếu làm theo nhóm, cần liệt kê đầy đủ họ tên, mã số sinh viên, công việc tham gia và tỉ lệ đóng góp của từng thành viên. Tổng tỉ lệ đóng góp nên bằng 100\%. Mô tả công việc cần cụ thể, ví dụ: thu thập dữ liệu, gán nhãn, lập trình huấn luyện mô hình, viết báo cáo, vẽ kiến trúc mô hình, phân tích kết quả, chuẩn bị slide. Không nên ghi chung chung như ``làm báo cáo'' hoặc ``hỗ trợ nhóm''.}
+
+\begin{table}[H]
+\centering
+\small
+\caption{Group members and contribution percentages.}
+\label{tab:member_contribution}
+\begin{tabular}{p{0.02\linewidth}p{0.2\linewidth}p{0.15\linewidth}p{0.30\linewidth}p{0.10\linewidth}}
+\toprule
+\textbf{No.} & \textbf{Full Name} & \textbf{Student ID} & \textbf{Assigned Tasks} & \textbf{Contribution} \\
+\midrule
+1 & \todo{Nguyen Van A} & \todo{23000001} & \todo{Data collection, preprocessing, training Model 1, writing the Methods section} & \todo{35\%} \\
+2 & \todo{Tran Thi B} & \todo{23000002} & \todo{Data annotation, training Model 2, analyzing quantitative results} & \todo{35\%} \\
+3 & \todo{Le Van C} & \todo{23000003} & \todo{Drawing the model architecture, preparing qualitative results, writing Discussion and Conclusion} & \todo{30\%} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\warning{Lưu ý: Tỉ lệ đóng góp cần phản ánh đúng mức độ tham gia thực tế. Thành viên không tham gia hoặc đóng góp rất ít có thể bị xem xét điểm cá nhân khác với điểm nhóm.}
+
+\newpage
+
+% =====================================================================
+%                           ACKNOWLEDGEMENT
+% =====================================================================
+\section*{Acknowledgements}
+\addcontentsline{toc}{section}{Acknowledgements}
+
+\example{\textbf{Example:} The authors would like to express their sincere gratitude to the course instructor for the guidance, feedback, and support provided throughout the completion of this final report. The knowledge and practical experience gained from the course helped the group better understand the process of conducting an experimental study, including problem formulation, data preparation, model selection, experimental evaluation, result analysis, and scientific report writing.}
+
+\example{\textbf{Example:} The authors also acknowledge the datasets, open-source libraries, software tools, and reference materials used during the implementation of this project. All external resources, source codes, datasets, and references used in this report are cited or acknowledged appropriately.}
+
+\guide{Hướng dẫn: Lời cảm ơn nên ngắn gọn, trang trọng và phù hợp với báo cáo học thuật. Có thể cảm ơn giảng viên, nhóm hỗ trợ, nguồn dữ liệu, thư viện mã nguồn mở hoặc đơn vị cung cấp tài nguyên tính toán. Không viết quá dài hoặc quá cảm tính.}
+
+\newpage
+
+% =====================================================================
+%                           TABLE OF CONTENTS
+% =====================================================================
+\tableofcontents
+\newpage
+
+% =====================================================================
+%                           ABSTRACT / SUMMARY
+% =====================================================================
+\section*{Abstract}
+\addcontentsline{toc}{section}{Abstract}
+
+\example{\textbf{Example:} This report investigates the problem of real-time object detection in a specific application scenario. The objective of the study is to evaluate the trade-off between predictive accuracy and computational efficiency among lightweight deep learning models. Experiments are conducted on an image dataset divided into training, validation, and testing subsets. Several models are compared using both performance-oriented and efficiency-oriented metrics, including mAP, precision, recall, number of parameters, FLOPs, FPS, and inference time. The experimental results show that the selected model achieves competitive detection accuracy while maintaining faster inference speed than several larger models. These findings indicate that lightweight architectures can be suitable for practical systems where both recognition performance and real-time processing capability are required.}
+
+\vspace{4pt}
+\noindent
+\guide{Hướng dẫn: Viết khoảng 150--250 từ. Phần Abstract cần nêu bối cảnh, bài toán, mục tiêu, dữ liệu, phương pháp, kết quả định lượng chính và kết luận. Nên có số liệu cụ thể như Accuracy/mAP/IoU, Params, FPS hoặc thời gian suy luận nếu có.}
+
+\vspace{6pt}
+\noindent\textbf{Keywords:} \example{deep learning; object detection; real-time inference; lightweight model; visual inspection}
+
+\vspace{6pt}
+\noindent\warning{Báo cáo có chất lượng, độ hoàn thiện, tính tái lập, chiều sâu thực nghiệm và cách trình bày đạt mức có thể phát triển thành bài báo gửi tạp chí/hội thảo ISI/Scopus có thể đạt 10 điểm.}
+
+\newpage
+
+% =====================================================================
+\section{Introduction}
+% =====================================================================
+
+\noindent\guide{Hướng dẫn viết: Phần Introduction cần trình bày rõ bối cảnh nghiên cứu, vấn đề cần giải quyết, lý do đề tài quan trọng, các nghiên cứu/phương pháp liên quan, khoảng trống nghiên cứu, mục tiêu và đóng góp chính của báo cáo. Sinh viên cần trích dẫn các tài liệu tham khảo phù hợp để làm rõ bối cảnh, chứng minh tính cấp thiết của bài toán và chỉ ra hạn chế của các phương pháp hiện có. Báo cáo sử dụng nhiều tài liệu tham khảo có thật, cập nhật, liên quan trực tiếp và được phân tích hợp lý sẽ được cộng điểm.}
+
+\noindent\warning{Tài liệu tham khảo không tồn tại, trích dẫn bịa đặt, trích dẫn sai nội dung hoặc tài liệu không liên quan đến chủ đề sẽ không được tính điểm cho phần tài liệu tham khảo/liên quan.}
+
+\example{\textbf{Example:} Automated visual inspection has become an important research direction because it can reduce manual labor, improve inspection consistency, and support real-time decision-making in practical environments. In many real-world applications, target objects may appear under different lighting conditions, scales, viewpoints, occlusion levels, and background complexities. These factors make accurate and efficient recognition challenging, especially when the system is expected to operate under real-time or resource-constrained conditions.}
+
+\example{\textbf{Example:} Recent studies have investigated learning-based approaches, including convolutional neural networks, Transformer-based models, and one-stage detection frameworks. These methods have substantially improved recognition performance in many visual analysis tasks. However, many high-performing models are computationally expensive, require large amounts of annotated data, or are difficult to deploy on low-resource devices. Therefore, it is necessary to evaluate not only predictive performance but also computational efficiency, robustness, and practical deployment feasibility.}
+
+\example{\textbf{Example:} Despite recent progress, several research gaps remain. First, many studies report only accuracy-related metrics while ignoring computational indicators such as the number of parameters, FLOPs, FPS, and inference time. Second, some studies evaluate only one model, making it difficult to understand the relative advantages and limitations of different approaches. Third, qualitative analysis and failure-case discussion are often insufficient, especially under challenging conditions such as low illumination, occlusion, small objects, noisy inputs, or complex backgrounds.}
+
+\example{\textbf{Example:} This report aims to compare multiple models for the selected topic and identify a model that provides a reasonable trade-off between accuracy, computational cost, and practical applicability. The main contributions of this report are summarized as follows:}
+
+\begin{enumerate}[label=(\arabic*), leftmargin=*]
+    \item \example{We formulate the selected problem as a supervised learning or visual recognition task with a clear input-output definition.}
+    \item \example{We prepare and describe the dataset, preprocessing steps, data split, and experimental protocol.}
+    \item \example{We compare at least two models using the same evaluation setting and report both predictive-performance and computational-efficiency metrics.}
+    \item \example{We analyze quantitative results, computational complexity, qualitative examples, and failure cases to provide a more complete evaluation.}
+\end{enumerate}
+
+\noindent\guide{Gợi ý để đạt điểm cao: Không chỉ viết nền tảng chung chung. Introduction cần có khoảng trống nghiên cứu rõ ràng, ví dụ: phương pháp hiện có chính xác nhưng chậm; mô hình nhẹ nhanh nhưng độ chính xác thấp; ít nghiên cứu so sánh nhiều mô hình trên cùng một bộ dữ liệu; thiếu đánh giá Params/FLOPs/FPS; hoặc chưa phân tích lỗi trong các bối cảnh khó. Sinh viên nên trích dẫn và phân tích nhiều tài liệu tham khảo phù hợp để chứng minh các nhận định này. Việc sử dụng nhiều tài liệu tham khảo đúng, có liên quan trực tiếp và được diễn giải hợp lý sẽ được cộng điểm.}
+
+% =====================================================================
+\section{Materials and Methods}
+% =====================================================================
+
+\noindent\guide{Hướng dẫn viết: Đây là phần quan trọng nhất của báo cáo. Cần mô tả đủ chi tiết để người khác có thể tái lập thí nghiệm: dữ liệu, tiền xử lý, kiến trúc mô hình, thiết lập huấn luyện, phần mềm, phần cứng và chỉ số đánh giá.}
+
+\subsection{Dataset and Materials}
+
+\example{The experiments are conducted on a dataset containing images collected from the selected application domain. The dataset consists of several classes representing the objects or categories of interest. Each image is annotated using bounding boxes and class labels. The dataset is divided into training, validation, and testing subsets to ensure that the final evaluation is performed on unseen data.}
+
+\begin{table}[H]
+\centering
+\caption{Summary of the dataset used in this study.}
+\label{tab:dataset_summary}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Subset} & \textbf{Number of Images/Samples} & \textbf{Number of Labels/Instances} & \textbf{Percentage} \\
+\midrule
+Training & \todo{xxx} & \todo{xxx} & \todo{xx\%} \\
+Validation & \todo{xxx} & \todo{xxx} & \todo{xx\%} \\
+Testing & \todo{xxx} & \todo{xxx} & \todo{xx\%} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\noindent\guide{Hướng dẫn: Cần mô tả nguồn dữ liệu, số lượng mẫu, số lớp, tên lớp, định dạng nhãn, cách chia train/validation/test và ví dụ minh họa. Nếu dùng dữ liệu công khai, phải trích dẫn nguồn chính thức. Nếu tự thu thập dữ liệu, cần mô tả quy trình thu thập, gán nhãn và kiểm tra chất lượng nhãn. Thống kê dữ liệu càng đầy đủ thì điểm càng cao.}
+
+\begin{figure}[H]
+\centering
+% \includegraphics[width=0.85\linewidth]{figures/dataset_examples.png}
+\caption{Representative examples from the dataset. Replace this figure with real examples from your own topic.}
+\label{fig:dataset_examples}
+\end{figure}
+
+\subsection{Data Preprocessing}
+
+\example{All input images are resized to a fixed resolution before being fed into the models. Pixel values are normalized to improve training stability. Data augmentation is applied only to the training set, including random flipping, rotation, brightness adjustment, and scaling. The validation and test sets are not augmented, ensuring that the reported results reflect the model's generalization ability.}
+
+\noindent\guide{Hướng dẫn: Trình bày rõ resize, normalization, augmentation, xử lý thiếu dữ liệu, chuyển đổi nhãn hoặc trích xuất đặc trưng nếu có. Không chỉ liệt kê kỹ thuật mà cần giải thích tại sao sử dụng. Ví dụ: augmentation giúp tăng độ bền vững khi dữ liệu ít hoặc điều kiện thực tế thay đổi.}
+
+\subsection{Model Architecture or Proposed Method}
+
+\noindent\guide{Hướng dẫn: Đây là một trong những phần quan trọng nhất của báo cáo. Sinh viên cần giải thích rõ mô hình/phương pháp được thiết kế hoặc lựa chọn như thế nào, vì sao thiết kế như vậy, dữ liệu đi qua các khối theo luồng nào, đầu vào/đầu ra là gì, công thức toán học liên quan, hàm loss, thuật toán huấn luyện/suy luận và vai trò của từng thành phần. Mô tả cẩu thả, sơ sài, chỉ chép tên mô hình mà không giải thích nguyên lý sẽ bị trừ điểm nặng.}
+
+\noindent\warning{Phần mô hình/phương pháp nếu chỉ viết chung chung, không có sơ đồ kiến trúc, không có công thức, không giải thích input/output, không nêu loss function hoặc không có thuật toán sẽ bị xem là thiếu nghiêm trọng.}
+
+\example{\textbf{Example:} The selected model is formulated as a modular prediction framework composed of four major components: an input transformation module, a feature extraction backbone, a feature fusion module, and a task-specific prediction head. The input transformation module converts the raw input $x \in \mathbb{R}^{H \times W \times C}$ into a normalized tensor suitable for computational processing. The feature extraction backbone learns hierarchical representations from low-level visual patterns to high-level semantic features. The feature fusion module integrates multi-level representations to improve the recognition of objects or patterns with different scales and appearances. Finally, the prediction head maps the fused features into the target output, such as class probabilities, bounding boxes, segmentation masks, or continuous prediction values.}
+
+\noindent\guide{Hướng dẫn: Đoạn mô tả cần trả lời được câu hỏi mô hình gồm những khối nào và mỗi khối có vai trò gì. Không nên chỉ ghi ``we use YOLO'', ``we use CNN'', hoặc ``we use Transformer'' mà không giải thích cấu trúc và lý do lựa chọn.}
+
+\begin{figure}[H]
+\centering
+% \includegraphics[width=0.92\linewidth]{figures/model_architecture.png}
+\caption{Detailed architecture of the selected/proposed model. Students should replace this figure with a clear diagram showing the main modules, data flow, input size, feature maps, and output.}
+\label{fig:model_architecture}
+\end{figure}
+
+\noindent\guide{Hướng dẫn: Vẽ kiến trúc mô hình càng chi tiết, rõ luồng dữ liệu, kích thước đầu vào/đầu ra, feature maps, các khối chính và vai trò từng thành phần thì điểm càng cao. Nên vẽ bằng PowerPoint, draw.io, LaTeX TikZ, Python visualization hoặc công cụ visualize model. Hình vẽ sơ sài, không có chú thích hoặc không đúng với mô hình thực tế sẽ bị giảm điểm.}
+
+\subsubsection{Design Rationale}
+
+\example{\textbf{Example:} The architecture is designed to achieve a balance between predictive performance and computational efficiency. The feature extraction backbone is responsible for capturing discriminative representations from the input data, whereas the feature fusion module enhances the representation of objects or patterns appearing at different scales. This design is especially useful in practical scenarios where target samples vary in size, illumination, viewpoint, and background complexity. A lightweight prediction head is adopted to reduce the number of trainable parameters and improve inference speed. Therefore, the overall architecture is expected to provide a practical trade-off among accuracy, model complexity, and deployment feasibility.}
+
+\noindent\guide{Hướng dẫn: Cần giải thích vì sao thiết kế như vậy. Ví dụ: dùng multi-scale feature fusion vì đối tượng có nhiều kích thước; dùng attention vì cần tập trung vào vùng quan trọng; dùng mô hình nhẹ vì cần FPS cao; dùng augmentation vì dữ liệu ít; dùng loss đặc biệt vì mất cân bằng lớp hoặc cần định vị chính xác hơn. Thiết kế nào cũng cần có lý do, không nên chỉ liệt kê module.}
+
+\example{\textbf{Example:} The input--output mapping of the model can be generally formulated as:}
+\begin{equation}
+    \hat{y} = f_{\theta}(x),
+\end{equation}
+\example{where $x$ is the input sample, $f_{\theta}(\cdot)$ denotes the model with learnable parameters $\theta$, and $\hat{y}$ is the predicted output. For localization or detection tasks, the model predicts a set of regions, labels, and confidence scores:}
+\begin{equation}
+    \hat{Y} = \{(b_i, c_i, s_i)\}_{i=1}^{N},
+\end{equation}
+\example{where $b_i$ is the predicted region, $c_i$ is the predicted class, $s_i$ is the confidence score, and $N$ is the number of predicted objects or regions.}
+
+\subsubsection{Example of Loss Function and Optimization Objective}
+
+\example{\textbf{Example:} The model is trained by minimizing a task-specific objective function. For a classification task, the cross-entropy loss can be used to measure the discrepancy between the predicted probability distribution and the ground-truth label:}
+\begin{equation}
+    \mathcal{L}_{cls} = -\sum_{k=1}^{K} y_k \log(\hat{y}_k),
+\end{equation}
+\example{where $K$ denotes the number of classes, $y_k$ is the ground-truth indicator for class $k$, and $\hat{y}_k$ is the predicted probability. For a detection task, the overall loss can be expressed as a weighted combination of classification, localization, and confidence losses:}
+\begin{equation}
+    \mathcal{L}_{total} = \lambda_{cls}\mathcal{L}_{cls} + \lambda_{box}\mathcal{L}_{box} + \lambda_{obj}\mathcal{L}_{obj},
+\end{equation}
+\example{where $\mathcal{L}_{box}$ penalizes localization errors, $\mathcal{L}_{obj}$ measures objectness or confidence errors, and $\lambda_{cls}$, $\lambda_{box}$, and $\lambda_{obj}$ are balancing coefficients.}
+
+\noindent\guide{Hướng dẫn: Phải nêu rõ hàm loss dùng trong mô hình. Nếu dùng mô hình có sẵn, cần tìm hiểu loss gốc hoặc loss được framework sử dụng. Nếu loss gồm nhiều thành phần, cần giải thích mỗi thành phần tối ưu điều gì. Mô tả loss sơ sài hoặc không đúng với bài toán sẽ bị trừ điểm.}
+
+\subsubsection{Example of Training and Inference Algorithm}
+
+\example{\textbf{Example:} Algorithm~\ref{alg:model_training_inference} summarizes the training and inference procedure. During training, the model receives mini-batches of input samples and corresponding labels, computes predictions, evaluates the loss, and updates the learnable parameters through gradient-based optimization. During inference, the trained model processes unseen test samples and produces final predictions after task-specific post-processing.}
+
+\begin{algorithm}[H]
+\caption{Example training and inference procedure}
+\label{alg:model_training_inference}
+\small
+\begin{enumerate}[leftmargin=*, itemsep=2pt]
+    \item \textbf{Input:} Training set $\mathcal{D}_{\mathrm{train}}$, validation set $\mathcal{D}_{\mathrm{val}}$, model $f_{\Theta}$, learning rate $\eta$, and number of epochs $T$.
+    \item \textbf{Output:} Trained model parameters $\Theta^{*}$ and final predictions $\hat{Y}$.
+    \item Initialize model parameters $\Theta$.
+    \item For each epoch $t = 1, 2, \ldots, T$, repeat the following steps:
+    \begin{enumerate}[label*=\arabic*., leftmargin=*, itemsep=1pt]
+        \item Load each mini-batch $(x, y)$ from $\mathcal{D}_{\mathrm{train}}$.
+        \item Compute prediction $\hat{y} = f_{\Theta}(x)$.
+        \item Compute training loss $\mathcal{L}(y, \hat{y})$.
+        \item Update parameters using gradient descent: $\Theta \leftarrow \Theta - \eta \nabla_{\Theta}\mathcal{L}$.
+    \end{enumerate}
+    \item Evaluate the model on $\mathcal{D}_{\mathrm{val}}$ and save the best checkpoint.
+    \item Apply the best trained model to the test set.
+    \item Perform post-processing if required, such as thresholding, non-maximum suppression, voting, filtering, or tracking.
+    \item Return final predictions $\hat{Y}$.
+\end{enumerate}
+\end{algorithm}
+
+\noindent\guide{Hướng dẫn: Thuật toán cũng cần có ví dụ cụ thể. Thuật toán phải phản ánh đúng quy trình thực nghiệm của nhóm. Nếu bài toán có hậu xử lý như NMS, thresholding, tracking, voting, ranking hoặc filtering thì cần đưa vào thuật toán. Thuật toán viết càng rõ luồng huấn luyện, kiểm định, kiểm thử và hậu xử lý thì điểm càng cao.}
+
+\subsection{Experimental Setup}
+
+\example{The experiments are implemented using Python and a machine learning/deep learning framework. All models are trained and evaluated using the same dataset split and evaluation protocol. The main training settings include input size, batch size, optimizer, learning rate, number of epochs, and hardware configuration.}
+
+\begin{table}[H]
+\centering
+\caption{Main training and implementation settings.}
+\label{tab:training_settings}
+\begin{tabular}{ll}
+\toprule
+\textbf{Setting} & \textbf{Value} \\
+\midrule
+Programming language & \todo{Python} \\
+Framework & \todo{PyTorch / TensorFlow / Ultralytics / Scikit-learn / Other} \\
+Input size or feature dimension & \todo{e.g., 640$\times$640} \\
+Optimizer & \todo{Adam / SGD / AdamW / Other} \\
+Learning rate & \todo{e.g., 0.001} \\
+Batch size & \todo{e.g., 16} \\
+Number of epochs & \todo{e.g., 100} \\
+Hardware & \todo{GPU/CPU information} \\
+Random seed & \todo{e.g., 42} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\noindent\guide{Hướng dẫn: Báo cáo có thiết lập thực nghiệm rõ ràng, có thể tái lập sẽ được điểm cao hơn. Nên có hình ảnh minh chứng từ môi trường lập trình như Colab, Jupyter Notebook, VS Code, terminal, training logs, confusion matrix, thư mục kết quả hoặc file kết quả đánh giá.}
+
+\subsection{Evaluation Metrics}
+
+\example{The models are evaluated using both predictive-performance metrics and computational-efficiency metrics. Predictive metrics include precision, recall, F1-score, accuracy, mAP, IoU, or Dice score depending on the task. Efficiency metrics include number of parameters, model size, FLOPs, FPS, and inference time.}
+
+\begin{equation}
+    \text{Precision} = \frac{TP}{TP + FP}, \quad
+    \text{Recall} = \frac{TP}{TP + FN},
+\end{equation}
+\begin{equation}
+    F1 = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}.
+\end{equation}
+\begin{equation}
+    \text{IoU} = \frac{|P \cap G|}{|P \cup G|}, \quad
+    \text{DSC} = \frac{2|P \cap G|}{|P| + |G|}.
+\end{equation}
+
+\noindent\guide{Hướng dẫn: Chọn chỉ số phù hợp với bài toán. Bài toán phân loại nên có accuracy, precision, recall, F1-score và confusion matrix. Bài toán phát hiện nên có mAP, precision, recall, Params, FLOPs và FPS. Bài toán phân đoạn nên có IoU, Dice, precision, recall, Params, FLOPs và FPS nếu phù hợp.}
+
+% =====================================================================
+\section{Results}
+% =====================================================================
+
+\noindent\guide{Hướng dẫn viết: Phần Results cần có kết quả định lượng, so sánh mô hình, hiệu quả tính toán, kết quả định tính và phân tích lỗi. So sánh càng nhiều mô hình, trình bày công bằng và phân tích càng sâu thì điểm càng cao.}
+
+\noindent\warning{Yêu cầu tối thiểu: so sánh ít nhất HAI mô hình hoặc phương pháp. So sánh nhiều mô hình hơn trong cùng điều kiện đánh giá có thể được cộng điểm.}
+
+\subsection{Quantitative Comparison}
+
+\example{Table~\ref{tab:main_results} presents the quantitative comparison of the evaluated models on the test set. The results show that the selected model achieves a good balance between accuracy and speed. Although a larger model may obtain slightly higher accuracy, it usually requires more parameters and lower inference speed. Therefore, the final model should be selected based on both performance and deployment requirements.}
+
+\begin{table}[H]
+\centering
+\caption{Performance comparison on the test set.}
+\label{tab:main_results}
+\begin{tabular}{lcccccc}
+\toprule
+\textbf{Model/Method} & \textbf{Main Metric} & \textbf{Precision} & \textbf{Recall} & \textbf{F1-score} & \textbf{Params} & \textbf{FPS} \\
+\midrule
+Model 1 & \todo{xx.x} & \todo{xx.x} & \todo{xx.x} & \todo{xx.x} & \todo{xx M} & \todo{xx.x} \\
+Model 2 & \todo{xx.x} & \todo{xx.x} & \todo{xx.x} & \todo{xx.x} & \todo{xx M} & \todo{xx.x} \\
+Model 3 & \todo{xx.x} & \todo{xx.x} & \todo{xx.x} & \todo{xx.x} & \todo{xx M} & \todo{xx.x} \\
+Model 4 & \todo{xx.x} & \todo{xx.x} & \todo{xx.x} & \todo{xx.x} & \todo{xx M} & \todo{xx.x} \\
+Selected/Proposed Model & \todo{xx.x} & \todo{xx.x} & \todo{xx.x} & \todo{xx.x} & \todo{xx M} & \todo{xx.x} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\noindent\guide{Hướng dẫn: Tất cả mô hình cần được đánh giá trên cùng tập test. Điểm cao hơn khi báo cáo so sánh nhiều mô hình, nhiều chỉ số và giải thích được vì sao mô hình này tốt hơn hoặc phù hợp hơn mô hình khác. Cần có hình ảnh minh chứng từ phần mềm/code/Colab như training results, evaluation logs, confusion matrix, prediction outputs hoặc thư mục lưu kết quả thực nghiệm.}
+
+\subsection{Computational Efficiency}
+
+\example{In addition to accuracy, computational efficiency is important for practical deployment. A model with fewer parameters and higher FPS is generally more suitable for real-time or resource-constrained applications. However, the best choice depends on the trade-off between accuracy and speed.}
+
+\begin{table}[H]
+\centering
+\caption{Computational complexity comparison.}
+\label{tab:complexity_results}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Model/Method} & \textbf{Parameters} & \textbf{Model Size} & \textbf{FLOPs} & \textbf{FPS / Inference Time} \\
+\midrule
+Model 1 & \todo{xx M} & \todo{xx MB} & \todo{xx G} & \todo{xx FPS / xx ms} \\
+Model 2 & \todo{xx M} & \todo{xx MB} & \todo{xx G} & \todo{xx FPS / xx ms} \\
+Model 3 & \todo{xx M} & \todo{xx MB} & \todo{xx G} & \todo{xx FPS / xx ms} \\
+Selected/Proposed Model & \todo{xx M} & \todo{xx MB} & \todo{xx G} & \todo{xx FPS / xx ms} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\noindent\guide{Hướng dẫn: Báo cáo có Params, model size, FLOPs, FPS và inference time sẽ tốt hơn báo cáo chỉ có accuracy. Cần giải thích FPS được đo như thế nào: phần cứng, kích thước đầu vào, batch size, có tính tiền xử lý/hậu xử lý hay không.}
+
+\subsection{Qualitative Results}
+
+\example{Figure~\ref{fig:qualitative_results} presents qualitative results from the evaluated models. Correct predictions demonstrate that the model can identify target objects under normal conditions. However, challenging cases such as small objects, occlusion, blur, low contrast, or complex backgrounds may still cause false positives or false negatives.}
+
+\begin{figure}[H]
+\centering
+% \includegraphics[width=0.92\linewidth]{figures/qualitative_results.png}
+\caption{Qualitative results of the evaluated models. Include correct predictions, difficult cases, and representative examples from different contexts.}
+\label{fig:qualitative_results}
+\end{figure}
+
+\noindent\guide{Hướng dẫn: Điểm cao hơn khi có kết quả định tính của nhiều mô hình trong nhiều ngữ cảnh khác nhau, ví dụ: điều kiện bình thường, thiếu sáng, bị che khuất, đối tượng nhỏ, cảnh phức tạp, dữ liệu nhiễu hoặc lớp mất cân bằng. Mỗi hình cần được mô tả và phân tích trong phần nội dung.}
+
+\subsection{Error Analysis}
+
+\example{The error analysis shows that most incorrect predictions occur in difficult visual conditions. Some objects are missed when they are too small or partially occluded. False positives may occur when the background has patterns similar to the target object. These errors suggest that future improvements may require more diverse training data, stronger augmentation, better feature extraction, or improved post-processing.}
+
+\noindent\guide{Hướng dẫn: Không chỉ trình bày các ví dụ đúng. Báo cáo tốt cần có failure cases và giải thích nguyên nhân lỗi. Phân tích lỗi so sánh nhiều mô hình ở nhiều ngữ cảnh khác nhau sẽ được điểm cao hơn.}
+
+% =====================================================================
+\section{Additional Study}
+% =====================================================================
+
+\noindent\guide{Hướng dẫn: Phần nghiên cứu bổ sung có thể được cộng điểm tùy theo chính sách học phần. Các hướng tốt gồm ablation study, phân tích hyperparameter, chạy nhiều random seed, robustness testing, cross-dataset testing, explainability analysis, deployment testing hoặc kiểm định thống kê. Đặc biệt, nếu nhóm có chỉnh sửa mô hình, bổ sung module mới hoặc đề xuất cải tiến kiến trúc, cần chứng minh từng thay đổi đó ảnh hưởng như thế nào đến kết quả. Báo cáo có nhiều kết quả ablation study chi tiết, trình bày rõ ràng và phân tích hợp lý sẽ được cộng điểm.}
+
+\example{\textbf{Example:} To further evaluate the effectiveness of the modified architecture, an ablation study is conducted by progressively adding each proposed module to the baseline model. The baseline model is first evaluated without any modification. Then, Module A is added to improve feature extraction, Module B is added to enhance multi-scale feature fusion, and Module C is added to refine the prediction head. The results show how each component affects predictive performance, computational cost, and inference speed. For instance, if Module A improves the main metric but increases the number of parameters, while Module B further improves accuracy with only a small reduction in FPS, the ablation study can justify why these modules are useful.}
+
+\begin{table}[H]
+\centering
+\caption{Example of ablation study by progressively adding improvement modules.}
+\label{tab:ablation_study}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Configuration} & \textbf{Main Metric} & \textbf{Params} & \textbf{FLOPs} & \textbf{FPS / Time} \\
+\midrule
+Baseline & \todo{85.2} & \todo{3.10 M} & \todo{8.5 G} & \todo{72.4 FPS} \\
+Baseline + Module A & \todo{87.1} & \todo{3.45 M} & \todo{9.1 G} & \todo{68.7 FPS} \\
+Baseline + Module A + Module B & \todo{88.6} & \todo{3.62 M} & \todo{9.4 G} & \todo{66.9 FPS} \\
+Baseline + Module A + Module B + Module C & \todo{89.3} & \todo{3.70 M} & \todo{9.8 G} & \todo{65.5 FPS} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\noindent\guide{Hướng dẫn: Bảng ablation study cần cho thấy tác động của từng module cải tiến. Không nên chỉ báo cáo mô hình cuối cùng tốt hơn baseline mà không chứng minh module nào đóng góp gì. Nếu một module làm tăng độ chính xác nhưng giảm FPS hoặc tăng Params, cần phân tích rõ sự đánh đổi giữa hiệu năng và chi phí tính toán.}
+
+\example{\textbf{Example:} In addition to the module-wise ablation study, the experiment is repeated using multiple random seeds to evaluate the stability of the model. This is important because a single training run may be affected by random initialization, data shuffling, augmentation randomness, or hardware-related nondeterminism. Reporting the mean and standard deviation over multiple seeds provides stronger evidence than reporting only one result.}
+
+\begin{table}[H]
+\centering
+\caption{Example of evaluation using multiple random seeds.}
+\label{tab:multi_seed_study}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Seed} & \textbf{Main Metric} & \textbf{Precision} & \textbf{Recall} & \textbf{FPS / Time} \\
+\midrule
+0 & \todo{89.1} & \todo{90.2} & \todo{88.4} & \todo{65.6 FPS} \\
+1 & \todo{89.4} & \todo{90.5} & \todo{88.7} & \todo{65.3 FPS} \\
+2 & \todo{89.0} & \todo{90.0} & \todo{88.1} & \todo{65.7 FPS} \\
+3 & \todo{89.6} & \todo{90.8} & \todo{88.9} & \todo{65.4 FPS} \\
+4 & \todo{89.2} & \todo{90.3} & \todo{88.5} & \todo{65.5 FPS} \\
+Mean $\pm$ Std & \todo{89.26 $\pm$ 0.24} & \todo{90.36 $\pm$ 0.30} & \todo{88.52 $\pm$ 0.30} & \todo{65.50 $\pm$ 0.15 FPS} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\noindent\guide{Hướng dẫn: Thí nghiệm với nhiều seed giúp đánh giá độ ổn định của kết quả. Nếu kết quả giữa các seed dao động nhỏ, mô hình có tính ổn định tốt hơn. Nếu dao động lớn, cần phân tích nguyên nhân như dữ liệu ít, mất cân bằng lớp, mô hình nhạy với khởi tạo, hoặc thiết lập huấn luyện chưa ổn định.}
+
+\example{\textbf{Example:} The additional experiments indicate that the proposed modifications improve the main metric from 85.2 to 89.3, while the FPS decreases from 72.4 to 65.5. This suggests that the improved model achieves better predictive performance at the cost of slightly higher computational complexity. Therefore, the final model may be suitable when accuracy is prioritized, while the baseline model may still be preferable in scenarios with strict real-time constraints.}
+
+\noindent\guide{Hướng dẫn: Nghiên cứu bổ sung cần tạo thêm bằng chứng hoặc phân tích mới, không chỉ viết thêm lý thuyết. Nên có bảng, hình, ảnh chụp màn hình, biểu đồ hoặc phân tích trực quan. Các báo cáo có ablation study chi tiết, chạy nhiều seed, phân tích từng module cải tiến và giải thích rõ sự đánh đổi giữa độ chính xác, Params, FLOPs và FPS sẽ được cộng điểm.}
+
+% =====================================================================
+\section{Discussion}
+% =====================================================================
+
+\noindent\guide{Hướng dẫn viết: Discussion cần diễn giải ý nghĩa của kết quả, không chỉ lặp lại số liệu. Cần giải thích vì sao mô hình hoạt động tốt/kém, so sánh với các mô hình khác, nêu điểm mạnh, hạn chế và ý nghĩa thực tế.}
+
+\example{The experimental results indicate that lightweight models can provide a reasonable balance between accuracy and inference speed. The selected model performs well because it extracts useful features while keeping the computational cost relatively low. Compared with larger models, it may have slightly lower accuracy but better FPS, making it more suitable for real-time deployment.}
+
+\example{However, the method still has several limitations. First, the dataset may not cover all real-world conditions. Second, the model may fail when the target objects are small, blurred, occluded, or visually similar to the background. Third, the experiments are conducted on a limited hardware setting, so further testing is needed before practical deployment.}
+
+\example{Future improvements may include collecting more diverse data, applying stronger augmentation, testing more advanced architectures, improving post-processing, and deploying the model on real devices.}
+
+\noindent\guide{Gợi ý để đạt điểm cao: Discussion cần liên hệ lại với mục tiêu và khoảng trống nghiên cứu ở Introduction. Cần trung thực về hạn chế. Không nên khẳng định quá mức khi chưa có số liệu hoặc bằng chứng.}
+
+% =====================================================================
+\section{Conclusion}
+% =====================================================================
+
+\noindent\guide{Hướng dẫn viết: Conclusion nên ngắn gọn, dựa trên bằng chứng và bám sát mục tiêu báo cáo.}
+
+\example{This report studied a model comparison problem for the selected topic. Several models were evaluated using both predictive-performance metrics and computational-efficiency metrics. The results show that the selected model achieves a good trade-off between accuracy, number of parameters, and FPS. Although the method is promising, its performance may still be limited under challenging real-world conditions. Future work should focus on larger datasets, broader model comparison, improved robustness, and real-device deployment.}
+
+\noindent\guide{Hướng dẫn: Không đưa thí nghiệm mới hoặc khẳng định mới vào Conclusion. Chỉ tóm tắt mục tiêu, phương pháp, kết quả chính, hạn chế và hướng phát triển.}
+
+% =====================================================================
+\section*{Scoring Rubric}
+\addcontentsline{toc}{section}{Scoring Rubric}
+% =====================================================================
+
+\begin{table}[H]
+\centering
+\caption*{Recommended scoring rubric for the final report.}
+\begin{tabular}{p{0.22\linewidth}p{0.58\linewidth}c}
+\toprule
+\textbf{Component} & \textbf{Assessment Criteria} & \textbf{Score} \\
+\midrule
+Introduction & Clear background, problem definition, motivation, related work, research gap, objective, and contributions. Real and relevant references are required. & 20\% \\
+Materials and Methods & Dataset/material description, preprocessing, detailed model architecture, experimental setup, reproducibility, and metrics. More detailed architecture diagrams receive higher scores. & 30\% \\
+Results & Quantitative comparison of at least two models/methods, Params, FPS/inference time, qualitative results, software/code evidence, and error analysis. More models and deeper analysis receive higher scores. & 25\% \\
+Discussion & Interpretation, comparison with expectations, strengths, limitations, practical meaning, and future improvements. & 15\% \\
+Conclusion & Concise summary of objective, method, findings, limitations, and future work. & 10\% \\
+Additional Study & Ablation, robustness, explainability, deployment, cross-dataset test, or other meaningful extended analysis. & Bonus \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\noindent\warning{Báo cáo đạt chất lượng, độ hoàn thiện, tính chặt chẽ thực nghiệm, văn phong học thuật và mức độ minh chứng tương đương một bài có thể phát triển để gửi tạp chí/hội thảo ISI/Scopus có thể đạt 10 điểm.}
+
+% =====================================================================
+\section*{Danh mục kiểm tra trước khi nộp báo cáo}
+\addcontentsline{toc}{section}{Danh mục kiểm tra trước khi nộp báo cáo}
+% =====================================================================
+
+Trước khi nộp báo cáo, sinh viên cần kiểm tra các nội dung sau:
+\begin{itemize}[leftmargin=*]
+    \item Tiêu đề báo cáo cụ thể, rõ ràng và phản ánh đúng chủ đề thực hiện.
+    \item Phần tóm tắt/abstract bao quát được toàn bộ nội dung chính của báo cáo.
+    \item Phần Introduction nêu rõ bài toán, khoảng trống nghiên cứu, mục tiêu và đóng góp của báo cáo.
+    \item Tài liệu tham khảo là có thật, phù hợp với chủ đề và được trích dẫn đúng cách.
+    \item Bộ dữ liệu/vật liệu nghiên cứu và thiết lập thực nghiệm được mô tả đủ chi tiết để có thể tái lập.
+    \item Kiến trúc mô hình được mô tả rõ ràng và có hình minh họa trực quan.
+    \item Báo cáo so sánh ít nhất \textbf{hai} mô hình hoặc phương pháp.
+    \item Báo cáo có các chỉ số như \textbf{Params}, \textbf{FPS/thời gian suy luận} và các chỉ số hiệu quả tính toán khác nếu phù hợp.
+    \item Báo cáo có hình ảnh chụp màn hình hoặc hình minh chứng từ phần mềm/code/Colab để chứng minh kết quả thực nghiệm.
+    \item Kết quả được báo cáo dựa trên tập kiểm thử, không chỉ dựa trên tập huấn luyện hoặc tập kiểm định.
+    \item Kết quả định tính bao gồm cả các trường hợp dự đoán đúng và các trường hợp thất bại.
+    \item Phân tích lỗi so sánh các mô hình khác nhau và các bối cảnh khác nhau nếu có thể.
+    \item Phần Discussion trình bày cả điểm mạnh và hạn chế của phương pháp.
+    \item Các nhận định trong báo cáo được hỗ trợ bởi dữ liệu, hình ảnh, bảng biểu hoặc tài liệu trích dẫn.
+    \item Báo cáo đã được kiểm tra lỗi ngữ pháp, định dạng, đạo văn và các tài liệu tham khảo không chính xác hoặc bịa đặt.
+\end{itemize}
+
+\noindent\warning{NHẮC LẠI QUAN TRỌNG: Không được bịa đặt kết quả, bộ dữ liệu, tài liệu tham khảo hoặc thiết lập thực nghiệm. Tài liệu tham khảo bịa đặt hoặc minh chứng thực nghiệm giả có thể không được tính điểm.}
+
+% =====================================================================
+\section*{References}
+\addcontentsline{toc}{section}{References}
+% =====================================================================
+
+% Option 1: Use BibTeX
+% Create a references.bib file and uncomment the following lines:
+% \bibliographystyle{IEEEtranN}
+% \bibliography{references}
+
+% Option 2: Manual references
+\begin{thebibliography}{99}
+
+\bibitem{lecun2015deep}
+Y. LeCun, Y. Bengio, and G. Hinton, ``Deep learning,'' \textit{Nature}, vol. 521, no. 7553, pp. 436--444, 2015.
+
+\bibitem{he2016resnet}
+K. He, X. Zhang, S. Ren, and J. Sun, ``Deep residual learning for image recognition,'' in \textit{Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition}, 2016, pp. 770--778.
+
+\bibitem{dosovitskiy2021vit}
+A. Dosovitskiy et al., ``An image is worth 16x16 words: Transformers for image recognition at scale,'' in \textit{International Conference on Learning Representations}, 2021.
+
+\end{thebibliography}
+
+\end{document}

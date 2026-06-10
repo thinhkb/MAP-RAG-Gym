@@ -1,0 +1,2896 @@
+{
+  "manifest": {
+    "script": "scripts/eval_final_budget_bundle.py",
+    "generated_at_utc": "2026-05-28T12:35:29+00:00",
+    "git_commit": "a54903934a1f91922edecee1faf49a9676388b39",
+    "python_version": "3.12.13",
+    "platform": "Windows-11-10.0.22621-SP0",
+    "paths": {
+      "qa": "G:\\MAP-RAG-Gym\\data\\2wikimultihopqa\\splits\\test.json",
+      "corpus": "G:\\MAP-RAG-Gym\\data\\2wikimultihopqa\\corpus.json",
+      "router_model": "G:\\MAP-RAG-Gym\\outputs\\2wikimultihopqa\\router_hotpot_phase4.joblib"
+    },
+    "dataset": {
+      "name": "2wikimultihopqa",
+      "split": "test",
+      "limit": 90,
+      "effective_questions": 90
+    },
+    "llm": {
+      "provider": "ollama",
+      "model": "llama3.2"
+    },
+    "reproducibility": {
+      "seed": 13,
+      "prompt_version": "v1",
+      "utility": {
+        "reward_weights": {
+          "f1_proxy": 1.0,
+          "process_score": 0.35
+        },
+        "cost_weights": {
+          "tokens": 0.08,
+          "retrieval_calls": 0.1,
+          "latency_ms": 0.05
+        },
+        "cost_normalizers": {
+          "tokens": 2000.0,
+          "retrieval_calls": 4.0,
+          "latency_ms": 10000.0
+        }
+      }
+    },
+    "settings": {
+      "policy_bundle": "outputs/2wikimultihopqa/final_budget_policy_bundle.json",
+      "budget_modes": [
+        "low",
+        "medium",
+        "high"
+      ],
+      "n_candidates": 1,
+      "critic_n_candidates": 3,
+      "retriever_type": "bm25",
+      "retriever_bm25_weight": 0.5,
+      "workflow_retriever_overrides": {},
+      "critic_model": null,
+      "critic_modules": [],
+      "critic_model_overrides": {},
+      "hybrid_min_confidence": 0.55,
+      "hybrid_low_cost_confidence": 0.55,
+      "hybrid_low_cost_workflows": [
+        "W1"
+      ],
+      "bandit_router_model": null,
+      "bandit_gate_baseline_workflow": "W3",
+      "bandit_gate_min_advantage": 0.0,
+      "bandit_gate_min_confidence": 0.0,
+      "bandit_gate_allowed_workflows": [],
+      "meta_router_model": null
+    }
+  },
+  "budget_results": {
+    "low": {
+      "recommended_method": "fixed_W1",
+      "constraints": {
+        "max_tokens": null,
+        "max_latency_ms": null,
+        "max_retrieval_calls": null
+      },
+      "router_settings": {},
+      "source_eval_file": "outputs/2wikimultihopqa/router_eval_large_budget_low_val.json",
+      "summary": {
+        "num_runs": 90,
+        "avg_utility": 0.154,
+        "avg_em": 0.1222,
+        "avg_f1_proxy": 0.1448,
+        "avg_process_score": 0.089,
+        "avg_tokens": 38.7111,
+        "avg_retrieval_calls": 0.0,
+        "avg_latency_ms": 831.9598,
+        "workflow_counts": {
+          "W1": 90
+        }
+      },
+      "utility_profile": {
+        "reward_weights": {
+          "f1_proxy": 1.0,
+          "process_score": 0.25
+        },
+        "cost_weights": {
+          "tokens": 0.16,
+          "retrieval_calls": 0.2,
+          "latency_ms": 0.12
+        },
+        "cost_normalizers": {
+          "tokens": 2000.0,
+          "retrieval_calls": 4.0,
+          "latency_ms": 10000.0
+        }
+      },
+      "per_question": [
+        {
+          "question_id": "dev_403",
+          "question": "Which film came out first, Natürlich Die Nelli or Cairo Declaration (Film)?",
+          "gold_answer": "Natürlich die Nelli",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 1.1273,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        {
+          "question_id": "dev_168",
+          "question": "Where was the place of death of Tamatoa Vi's father?",
+          "gold_answer": "Huahine",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0123,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_197",
+          "question": "Who is Prince Franz De Paula Of Liechtenstein's paternal grandfather?",
+          "gold_answer": "Franz Joseph I",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 0.1372,
+          "em": 0.0,
+          "f1_proxy": 0.1429
+        },
+        {
+          "question_id": "dev_302",
+          "question": "Where was the place of burial of the performer of song This Time (Waylon Jennings Song)?",
+          "gold_answer": "State of Arizona",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0138,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_186",
+          "question": "Which film has the director died first, Edge Of Doom or A Mother'S Secret?",
+          "gold_answer": "A Mother'S Secret",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0118,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_349",
+          "question": "Who is the paternal grandfather of John Ii Of Baden?",
+          "gold_answer": "Bernard I, Margrave of Baden-Baden",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0143,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_367",
+          "question": "Which film has the director born first, Şaban, Son Of Şaban or East/West?",
+          "gold_answer": "Şabanoğlu Şaban",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0118,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_39",
+          "question": "Who was born later, D'Arcy Coulson or Thomas William Adams?",
+          "gold_answer": "D'Arcy Coulson",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 1.1537,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        {
+          "question_id": "dev_43",
+          "question": "Who is the paternal grandfather of Alexandre Berthier, 3Rd Prince Of Wagram?",
+          "gold_answer": "Louis-Alexandre Berthier",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0145,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_216",
+          "question": "Are both villages, Mavrolithari and Ampelakia, Evros, located in the same country?",
+          "gold_answer": "yes",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0113,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_508",
+          "question": "Which film has the director died earlier, Dynamite Smith or A Son Of Satan?",
+          "gold_answer": "Dynamite Smith",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0125,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_243",
+          "question": "When was the company that published Woman'S Century founded?",
+          "gold_answer": "October 27, 1893",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0119,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_140",
+          "question": "Where was the father of Eleonora Di Garzia Di Toledo born?",
+          "gold_answer": "Villafranca del Bierzo",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0111,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_383",
+          "question": "Which film has the director born earlier, Idols Of The Radio or Solos En La Madrugada?",
+          "gold_answer": "Idols of the Radio",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0136,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_557",
+          "question": "Where was the place of death of the director of film Quatre-Vingt-Treize (Film)?",
+          "gold_answer": "Paris, France",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 0.53,
+          "em": 0.0,
+          "f1_proxy": 0.5
+        },
+        {
+          "question_id": "dev_359",
+          "question": "What is the date of death of the director of film Escándalo De Estrellas?",
+          "gold_answer": "August 7, 2004",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0121,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_257",
+          "question": "Where does the director of film Ghost In The Machine (Film) work at?",
+          "gold_answer": "McGill University College of British Columbia",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0131,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_423",
+          "question": "Why did the performer of song Ludlow Massacre (Song) die?",
+          "gold_answer": "Huntington’s disease",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0209,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_163",
+          "question": "What is the place of birth of the performer of song I Wish (Gabrielle Song)?",
+          "gold_answer": "Hackney",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0122,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_553",
+          "question": "Where was the mother of Louise Sophie Of Hanau-Lichtenberg born?",
+          "gold_answer": "Strossburi",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0116,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_455",
+          "question": "Which film has the director who was born later, The Daughter Of Rosie O'Grady or The Whistle (Film)?",
+          "gold_answer": "Daughter of Rosie O'Grady",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0131,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_509",
+          "question": "Which country the director of film West 32Nd is from?",
+          "gold_answer": "U.S.A.",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0121,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_145",
+          "question": "Which film whose director is younger, Joe Palooka In Fighting Mad or Figaro-Ci, Figaro-Là?",
+          "gold_answer": "Figaro-ci, Figaro-là",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 1.1523,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        {
+          "question_id": "dev_594",
+          "question": "Which film has the director born first, 84 Charing Cross Road (Film) or Emperor'S Ball?",
+          "gold_answer": "Emperor'S Ball",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0133,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_44",
+          "question": "Where was the husband of Caterina Visconti born?",
+          "gold_answer": "Pavia",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0118,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_434",
+          "question": "Which film has the director who died later, The Death Kiss or Her Luck In London?",
+          "gold_answer": "Her Luck In London",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0124,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_2",
+          "question": "When did John V, Prince Of Anhalt-Zerbst's father die?",
+          "gold_answer": "12 June 1516",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0121,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_399",
+          "question": "Who is the spouse of the director of film West Of Shanghai?",
+          "gold_answer": "Maureen O'Sullivan",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0133,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_474",
+          "question": "Who is Albert Iv, Prince Of Anhalt-Köthen's paternal grandfather?",
+          "gold_answer": "Albert II, Prince of Anhalt-Zerbst",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 0.1393,
+          "em": 0.0,
+          "f1_proxy": 0.1429
+        },
+        {
+          "question_id": "dev_569",
+          "question": "What is the place of birth of the director of film Encino Man?",
+          "gold_answer": "Albuquerque",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0137,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_75",
+          "question": "Do both films, Dial M For Murder and Marius (1931 Film), have the directors who are from the same country?",
+          "gold_answer": "yes",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0127,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_134",
+          "question": "What is the place of birth of Zhanna Nemtsova's father?",
+          "gold_answer": "Sochi",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0093,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_375",
+          "question": "Who is the paternal grandfather of George De Salis?",
+          "gold_answer": "Jerome, 4th Count de Salis-Soglio",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 0.1415,
+          "em": 0.0,
+          "f1_proxy": 0.1429
+        },
+        {
+          "question_id": "dev_199",
+          "question": "Who is the paternal grandmother of Archduchess Dolores Of Austria?",
+          "gold_answer": "Princess Maria Immaculata of Bourbon-Two Sicilies (1844–1899)",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 0.1219,
+          "em": 0.0,
+          "f1_proxy": 0.125
+        },
+        {
+          "question_id": "dev_545",
+          "question": "Which film has the director who is older, King Of The Zombies or Mon Oncle Benjamin?",
+          "gold_answer": "King of the Zombies",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0129,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_241",
+          "question": "Which film was released more recently, Gaza Ghetto or Kull The Conqueror?",
+          "gold_answer": "Kull The Conqueror",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 1.1531,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        {
+          "question_id": "dev_502",
+          "question": "Do both films, The Wild Frontier (Film) and The Sundowners (1960 Film), have the directors who are from the same country?",
+          "gold_answer": "yes",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0134,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_592",
+          "question": "What is the place of birth of the performer of song Are You Really Mine??",
+          "gold_answer": "Camas",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.01,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_405",
+          "question": "Where was the performer of song Lucky Me, Lucky You born?",
+          "gold_answer": "Abilene",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0125,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_286",
+          "question": "Are the bands The Catheters and Dark At Dawn, from the same country?",
+          "gold_answer": "no",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0121,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_580",
+          "question": "Which film whose director was born first, Gangster'S Boy or Torno A Vivere Da Solo?",
+          "gold_answer": "Gangster'S Boy",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0134,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_470",
+          "question": "Where did the director of film Don Juan (1922 Film) die?",
+          "gold_answer": "Westerland",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0129,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_380",
+          "question": "Where did Bianca Riario's father die?",
+          "gold_answer": "Forlì",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0114,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_259",
+          "question": "Who is the paternal grandmother of Louis, Count Of Verdun?",
+          "gold_answer": "Gerberge of Lorraine",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0121,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_575",
+          "question": "Who is Charles Xiii Of Sweden's paternal grandfather?",
+          "gold_answer": "Christian August of Holstein-Gottorp, Prince of Eutin",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0124,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_535",
+          "question": "Who is the spouse of the director of film På Solsiden?",
+          "gold_answer": "Otto Carlmar",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0148,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_183",
+          "question": "Who was born later, Marc De Clerck or Wiesław Perszke?",
+          "gold_answer": "Wiesław Perszke",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 1.1534,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        {
+          "question_id": "dev_207",
+          "question": "What is the place of birth of Empress Xu (Ming Dynasty)'s husband?",
+          "gold_answer": "Nanjing",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0126,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_300",
+          "question": "Who is younger, Nicolas Görtler or Michel De Salzmann?",
+          "gold_answer": "Nicolas Görtler",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0133,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_180",
+          "question": "Where was the performer of song Bag Skyerne born?",
+          "gold_answer": "Århus",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0123,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_548",
+          "question": "Which film has the director died later, Saturday Night Out or An Italian Romance?",
+          "gold_answer": "A Rekindled Affair",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0126,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_454",
+          "question": "Where was the place of death of the director of film Scugnizzi?",
+          "gold_answer": "Roma",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0094,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_450",
+          "question": "Who died first, Olaf Everson or Abdul Wahab Khan Tarzi?",
+          "gold_answer": "Abdul Wahab Khan Tarzi",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 1.1529,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        {
+          "question_id": "dev_138",
+          "question": "Where was the director of film Age-Old Friends born?",
+          "gold_answer": "Winnipeg",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0122,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_459",
+          "question": "Who is the paternal grandmother of Sudeley Hanbury-Tracy, 3Rd Baron Sudeley?",
+          "gold_answer": "Henrietta Susanna Tracy",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0122,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_269",
+          "question": "Who is the spouse of the performer of song Lolita (Leah Labelle Song)?",
+          "gold_answer": "Rasual Butler",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.015,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_354",
+          "question": "Who is the paternal grandmother of Edward I Of England?",
+          "gold_answer": "Isabella of Angoulême",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0125,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_120",
+          "question": "Which school was established first, Whitehorse Manor Junior School or Sabawoon Rehabilitation Centre?",
+          "gold_answer": "Sabawoon Rehabilitation Centre",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.013,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_321",
+          "question": "Who is the spouse of the performer of song Ängeln I Rummet?",
+          "gold_answer": "Efva Attling",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0118,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_440",
+          "question": "Where did the director of film The Gallant Lords Of Bois-Doré die?",
+          "gold_answer": "Paris, France",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.012,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_372",
+          "question": "Which film came out first, My Wife'S Lodger or Ko 2?",
+          "gold_answer": "My Wife's Lodger",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 1.1537,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        {
+          "question_id": "dev_439",
+          "question": "Which film has the director born later, Cyclone Of The Saddle or Blind Corner?",
+          "gold_answer": "Blind Corner",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 1.1546,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        {
+          "question_id": "dev_562",
+          "question": "Which album was released first, The Oak Ridge Boys Have Arrived or Beans And Fatback?",
+          "gold_answer": "Beans and Fatback",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 1.1542,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        {
+          "question_id": "dev_498",
+          "question": "Where was the place of burial of Gjon Kastrioti Ii's father?",
+          "gold_answer": "Lezha",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0123,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_239",
+          "question": "Where was the father of Augustus William, Duke Of Brunswick-Bevern born?",
+          "gold_answer": "Osterholz",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.012,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_364",
+          "question": "Which film has the director who is older, When You'Re Strange or Vzdušné Torpédo 48?",
+          "gold_answer": "Vzdušné torpédo 48",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 0.5235,
+          "em": 0.0,
+          "f1_proxy": 0.5
+        },
+        {
+          "question_id": "dev_262",
+          "question": "Who lived longer, Csaba Pálinkás or Henry Scheffé?",
+          "gold_answer": "Henry Scheffé",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0127,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_142",
+          "question": "Who is Prince Nicolas, Duke Of Ångermanland's mother?",
+          "gold_answer": "Prinsessan Madeleine",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0111,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_447",
+          "question": "Where was the director of film High (Film) born?",
+          "gold_answer": "Jozi",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.012,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_461",
+          "question": "Are the movies On A Clear Day You Can See Forever (Film) and Education Of A Prince, from the same country?",
+          "gold_answer": "no",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0126,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_268",
+          "question": "Which film was released earlier, New Jersey Drive or It Happened At The World'S Fair?",
+          "gold_answer": "It Happened At The World'S Fair",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 1.1524,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        {
+          "question_id": "dev_86",
+          "question": "Who is Maria Luisa Of Savoy's father-in-law?",
+          "gold_answer": "Louis of Bourbon",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0138,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_595",
+          "question": "Do director of film Just Married (1934 Film) and director of film The Thirteenth Commandment share the same nationality?",
+          "gold_answer": "yes",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0125,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_282",
+          "question": "Where did Henry C. Lord's father graduate from?",
+          "gold_answer": "Bowdoin College",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0104,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_14",
+          "question": "Why did Grand Duke Kirill Vladimirovich Of Russia's wife die?",
+          "gold_answer": "embolic stroke",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.012,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_129",
+          "question": "When was the company that published American Scientist founded?",
+          "gold_answer": "1886",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0126,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_441",
+          "question": "Which film came out earlier, It'S Our Life! or Maximum Ride (Film)?",
+          "gold_answer": "La vie est à nous !",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0126,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_30",
+          "question": "Which film was released more recently, Lo Zappatore or Placer Sangriento?",
+          "gold_answer": "Placer Sangriento",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0125,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_301",
+          "question": "Which country Anthemiolus's father is from?",
+          "gold_answer": "Heraclius",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0118,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_219",
+          "question": "Where was the place of death of Suzanne Farrington's mother?",
+          "gold_answer": "London, England",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0121,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_544",
+          "question": "Which film was released more recently, Bidasari or Tangled Trails?",
+          "gold_answer": "Bidasari",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0123,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_72",
+          "question": "Are both Nikolsk Airport and Svobodny Airport located in the same country?",
+          "gold_answer": "yes",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0117,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_133",
+          "question": "What nationality is the director of film They Call It Love?",
+          "gold_answer": "U.S.A.",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0116,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_191",
+          "question": "What is the date of death of Conan Ii, Duke Of Brittany's mother?",
+          "gold_answer": "1080",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0123,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_230",
+          "question": "Who is the maternal grandmother of Felipe De Marichalar Y Borbón?",
+          "gold_answer": "Queen Sofía of Spain",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0143,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_150",
+          "question": "Who was born later, Gideon Johnson Pillow or Holm Jølsen?",
+          "gold_answer": "Holm Jølsen",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 1.1539,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        {
+          "question_id": "dev_236",
+          "question": "Who is the paternal grandfather of Richard Beauchamp, 1St Earl Of Worcester?",
+          "gold_answer": "Thomas Beauchamp, 11th Earl of Warwick",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 0.142,
+          "em": 0.0,
+          "f1_proxy": 0.1429
+        },
+        {
+          "question_id": "dev_190",
+          "question": "Which film has the director died earlier, Lemonade Joe or Bountiful Summer?",
+          "gold_answer": "Generous Summer",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 0.3483,
+          "em": 0.0,
+          "f1_proxy": 0.3333
+        },
+        {
+          "question_id": "dev_297",
+          "question": "Where was the place of death of George Thomas Orlando Bridgeman's father?",
+          "gold_answer": "Weston Park",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0123,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_265",
+          "question": "What is the date of death of Joan, Countess Of Blois's mother?",
+          "gold_answer": "2 August 1288",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0126,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      ]
+    },
+    "medium": {
+      "recommended_method": "fixed_W1",
+      "constraints": {
+        "max_tokens": null,
+        "max_latency_ms": null,
+        "max_retrieval_calls": null
+      },
+      "router_settings": {},
+      "source_eval_file": "outputs/2wikimultihopqa/router_eval_large_budget_medium_val.json",
+      "summary": {
+        "num_runs": 90,
+        "avg_utility": 0.1704,
+        "avg_em": 0.1222,
+        "avg_f1_proxy": 0.1448,
+        "avg_process_score": 0.089,
+        "avg_tokens": 38.7111,
+        "avg_retrieval_calls": 0.0,
+        "avg_latency_ms": 801.57,
+        "workflow_counts": {
+          "W1": 90
+        }
+      },
+      "utility_profile": {
+        "reward_weights": {
+          "f1_proxy": 1.0,
+          "process_score": 0.35
+        },
+        "cost_weights": {
+          "tokens": 0.08,
+          "retrieval_calls": 0.1,
+          "latency_ms": 0.05
+        },
+        "cost_normalizers": {
+          "tokens": 2000.0,
+          "retrieval_calls": 4.0,
+          "latency_ms": 10000.0
+        }
+      },
+      "per_question": [
+        {
+          "question_id": "dev_403",
+          "question": "Which film came out first, Natürlich Die Nelli or Cairo Declaration (Film)?",
+          "gold_answer": "Natürlich die Nelli",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 1.2275,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        {
+          "question_id": "dev_168",
+          "question": "Where was the place of death of Tamatoa Vi's father?",
+          "gold_answer": "Huahine",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0056,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_197",
+          "question": "Who is Prince Franz De Paula Of Liechtenstein's paternal grandfather?",
+          "gold_answer": "Franz Joseph I",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 0.152,
+          "em": 0.0,
+          "f1_proxy": 0.1429
+        },
+        {
+          "question_id": "dev_302",
+          "question": "Where was the place of burial of the performer of song This Time (Waylon Jennings Song)?",
+          "gold_answer": "State of Arizona",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0059,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_186",
+          "question": "Which film has the director died first, Edge Of Doom or A Mother'S Secret?",
+          "gold_answer": "A Mother'S Secret",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0053,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_349",
+          "question": "Who is the paternal grandfather of John Ii Of Baden?",
+          "gold_answer": "Bernard I, Margrave of Baden-Baden",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0062,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_367",
+          "question": "Which film has the director born first, Şaban, Son Of Şaban or East/West?",
+          "gold_answer": "Şabanoğlu Şaban",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0052,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_39",
+          "question": "Who was born later, D'Arcy Coulson or Thomas William Adams?",
+          "gold_answer": "D'Arcy Coulson",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 1.2276,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        {
+          "question_id": "dev_43",
+          "question": "Who is the paternal grandfather of Alexandre Berthier, 3Rd Prince Of Wagram?",
+          "gold_answer": "Louis-Alexandre Berthier",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0063,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_216",
+          "question": "Are both villages, Mavrolithari and Ampelakia, Evros, located in the same country?",
+          "gold_answer": "yes",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.005,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_508",
+          "question": "Which film has the director died earlier, Dynamite Smith or A Son Of Satan?",
+          "gold_answer": "Dynamite Smith",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0055,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_243",
+          "question": "When was the company that published Woman'S Century founded?",
+          "gold_answer": "October 27, 1893",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0054,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_140",
+          "question": "Where was the father of Eleonora Di Garzia Di Toledo born?",
+          "gold_answer": "Villafranca del Bierzo",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0051,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_383",
+          "question": "Which film has the director born earlier, Idols Of The Radio or Solos En La Madrugada?",
+          "gold_answer": "Idols of the Radio",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0062,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_557",
+          "question": "Where was the place of death of the director of film Quatre-Vingt-Treize (Film)?",
+          "gold_answer": "Paris, France",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 0.5533,
+          "em": 0.0,
+          "f1_proxy": 0.5
+        },
+        {
+          "question_id": "dev_359",
+          "question": "What is the date of death of the director of film Escándalo De Estrellas?",
+          "gold_answer": "August 7, 2004",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0054,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_257",
+          "question": "Where does the director of film Ghost In The Machine (Film) work at?",
+          "gold_answer": "McGill University College of British Columbia",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0057,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_423",
+          "question": "Why did the performer of song Ludlow Massacre (Song) die?",
+          "gold_answer": "Huntington’s disease",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0092,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_163",
+          "question": "What is the place of birth of the performer of song I Wish (Gabrielle Song)?",
+          "gold_answer": "Hackney",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0053,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_553",
+          "question": "Where was the mother of Louise Sophie Of Hanau-Lichtenberg born?",
+          "gold_answer": "Strossburi",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0053,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_455",
+          "question": "Which film has the director who was born later, The Daughter Of Rosie O'Grady or The Whistle (Film)?",
+          "gold_answer": "Daughter of Rosie O'Grady",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.006,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_509",
+          "question": "Which country the director of film West 32Nd is from?",
+          "gold_answer": "U.S.A.",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0055,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_145",
+          "question": "Which film whose director is younger, Joe Palooka In Fighting Mad or Figaro-Ci, Figaro-Là?",
+          "gold_answer": "Figaro-ci, Figaro-là",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 1.227,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        {
+          "question_id": "dev_594",
+          "question": "Which film has the director born first, 84 Charing Cross Road (Film) or Emperor'S Ball?",
+          "gold_answer": "Emperor'S Ball",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0062,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_44",
+          "question": "Where was the husband of Caterina Visconti born?",
+          "gold_answer": "Pavia",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.005,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_434",
+          "question": "Which film has the director who died later, The Death Kiss or Her Luck In London?",
+          "gold_answer": "Her Luck In London",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0054,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_2",
+          "question": "When did John V, Prince Of Anhalt-Zerbst's father die?",
+          "gold_answer": "12 June 1516",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0053,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_399",
+          "question": "Who is the spouse of the director of film West Of Shanghai?",
+          "gold_answer": "Maureen O'Sullivan",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0056,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_474",
+          "question": "Who is Albert Iv, Prince Of Anhalt-Köthen's paternal grandfather?",
+          "gold_answer": "Albert II, Prince of Anhalt-Zerbst",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 0.1529,
+          "em": 0.0,
+          "f1_proxy": 0.1429
+        },
+        {
+          "question_id": "dev_569",
+          "question": "What is the place of birth of the director of film Encino Man?",
+          "gold_answer": "Albuquerque",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0054,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_75",
+          "question": "Do both films, Dial M For Murder and Marius (1931 Film), have the directors who are from the same country?",
+          "gold_answer": "yes",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0055,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_134",
+          "question": "What is the place of birth of Zhanna Nemtsova's father?",
+          "gold_answer": "Sochi",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0041,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_375",
+          "question": "Who is the paternal grandfather of George De Salis?",
+          "gold_answer": "Jerome, 4th Count de Salis-Soglio",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 0.154,
+          "em": 0.0,
+          "f1_proxy": 0.1429
+        },
+        {
+          "question_id": "dev_199",
+          "question": "Who is the paternal grandmother of Archduchess Dolores Of Austria?",
+          "gold_answer": "Princess Maria Immaculata of Bourbon-Two Sicilies (1844–1899)",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 0.1341,
+          "em": 0.0,
+          "f1_proxy": 0.125
+        },
+        {
+          "question_id": "dev_545",
+          "question": "Which film has the director who is older, King Of The Zombies or Mon Oncle Benjamin?",
+          "gold_answer": "King of the Zombies",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0057,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_241",
+          "question": "Which film was released more recently, Gaza Ghetto or Kull The Conqueror?",
+          "gold_answer": "Kull The Conqueror",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 1.2275,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        {
+          "question_id": "dev_502",
+          "question": "Do both films, The Wild Frontier (Film) and The Sundowners (1960 Film), have the directors who are from the same country?",
+          "gold_answer": "yes",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0055,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_592",
+          "question": "What is the place of birth of the performer of song Are You Really Mine??",
+          "gold_answer": "Camas",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0042,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_405",
+          "question": "Where was the performer of song Lucky Me, Lucky You born?",
+          "gold_answer": "Abilene",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0053,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_286",
+          "question": "Are the bands The Catheters and Dark At Dawn, from the same country?",
+          "gold_answer": "no",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0054,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_580",
+          "question": "Which film whose director was born first, Gangster'S Boy or Torno A Vivere Da Solo?",
+          "gold_answer": "Gangster'S Boy",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.006,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_470",
+          "question": "Where did the director of film Don Juan (1922 Film) die?",
+          "gold_answer": "Westerland",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0057,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_380",
+          "question": "Where did Bianca Riario's father die?",
+          "gold_answer": "Forlì",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.005,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_259",
+          "question": "Who is the paternal grandmother of Louis, Count Of Verdun?",
+          "gold_answer": "Gerberge of Lorraine",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0054,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_575",
+          "question": "Who is Charles Xiii Of Sweden's paternal grandfather?",
+          "gold_answer": "Christian August of Holstein-Gottorp, Prince of Eutin",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0052,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_535",
+          "question": "Who is the spouse of the director of film På Solsiden?",
+          "gold_answer": "Otto Carlmar",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0062,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_183",
+          "question": "Who was born later, Marc De Clerck or Wiesław Perszke?",
+          "gold_answer": "Wiesław Perszke",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 1.2277,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        {
+          "question_id": "dev_207",
+          "question": "What is the place of birth of Empress Xu (Ming Dynasty)'s husband?",
+          "gold_answer": "Nanjing",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0052,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_300",
+          "question": "Who is younger, Nicolas Görtler or Michel De Salzmann?",
+          "gold_answer": "Nicolas Görtler",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0055,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_180",
+          "question": "Where was the performer of song Bag Skyerne born?",
+          "gold_answer": "Århus",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0052,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_548",
+          "question": "Which film has the director died later, Saturday Night Out or An Italian Romance?",
+          "gold_answer": "A Rekindled Affair",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0052,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_454",
+          "question": "Where was the place of death of the director of film Scugnizzi?",
+          "gold_answer": "Roma",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.004,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_450",
+          "question": "Who died first, Olaf Everson or Abdul Wahab Khan Tarzi?",
+          "gold_answer": "Abdul Wahab Khan Tarzi",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 1.2275,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        {
+          "question_id": "dev_138",
+          "question": "Where was the director of film Age-Old Friends born?",
+          "gold_answer": "Winnipeg",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0051,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_459",
+          "question": "Who is the paternal grandmother of Sudeley Hanbury-Tracy, 3Rd Baron Sudeley?",
+          "gold_answer": "Henrietta Susanna Tracy",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0051,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_269",
+          "question": "Who is the spouse of the performer of song Lolita (Leah Labelle Song)?",
+          "gold_answer": "Rasual Butler",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0063,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_354",
+          "question": "Who is the paternal grandmother of Edward I Of England?",
+          "gold_answer": "Isabella of Angoulême",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0054,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_120",
+          "question": "Which school was established first, Whitehorse Manor Junior School or Sabawoon Rehabilitation Centre?",
+          "gold_answer": "Sabawoon Rehabilitation Centre",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0054,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_321",
+          "question": "Who is the spouse of the performer of song Ängeln I Rummet?",
+          "gold_answer": "Efva Attling",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.005,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_440",
+          "question": "Where did the director of film The Gallant Lords Of Bois-Doré die?",
+          "gold_answer": "Paris, France",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0052,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_372",
+          "question": "Which film came out first, My Wife'S Lodger or Ko 2?",
+          "gold_answer": "My Wife's Lodger",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 1.2278,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        {
+          "question_id": "dev_439",
+          "question": "Which film has the director born later, Cyclone Of The Saddle or Blind Corner?",
+          "gold_answer": "Blind Corner",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 1.2281,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        {
+          "question_id": "dev_562",
+          "question": "Which album was released first, The Oak Ridge Boys Have Arrived or Beans And Fatback?",
+          "gold_answer": "Beans and Fatback",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 1.2278,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        {
+          "question_id": "dev_498",
+          "question": "Where was the place of burial of Gjon Kastrioti Ii's father?",
+          "gold_answer": "Lezha",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0053,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_239",
+          "question": "Where was the father of Augustus William, Duke Of Brunswick-Bevern born?",
+          "gold_answer": "Osterholz",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0052,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_364",
+          "question": "Which film has the director who is older, When You'Re Strange or Vzdušné Torpédo 48?",
+          "gold_answer": "Vzdušné torpédo 48",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 0.5506,
+          "em": 0.0,
+          "f1_proxy": 0.5
+        },
+        {
+          "question_id": "dev_262",
+          "question": "Who lived longer, Csaba Pálinkás or Henry Scheffé?",
+          "gold_answer": "Henry Scheffé",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0055,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_142",
+          "question": "Who is Prince Nicolas, Duke Of Ångermanland's mother?",
+          "gold_answer": "Prinsessan Madeleine",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0049,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_447",
+          "question": "Where was the director of film High (Film) born?",
+          "gold_answer": "Jozi",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0052,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_461",
+          "question": "Are the movies On A Clear Day You Can See Forever (Film) and Education Of A Prince, from the same country?",
+          "gold_answer": "no",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0055,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_268",
+          "question": "Which film was released earlier, New Jersey Drive or It Happened At The World'S Fair?",
+          "gold_answer": "It Happened At The World'S Fair",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 1.2271,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        {
+          "question_id": "dev_86",
+          "question": "Who is Maria Luisa Of Savoy's father-in-law?",
+          "gold_answer": "Louis of Bourbon",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0061,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_595",
+          "question": "Do director of film Just Married (1934 Film) and director of film The Thirteenth Commandment share the same nationality?",
+          "gold_answer": "yes",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0057,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_282",
+          "question": "Where did Henry C. Lord's father graduate from?",
+          "gold_answer": "Bowdoin College",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0047,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_14",
+          "question": "Why did Grand Duke Kirill Vladimirovich Of Russia's wife die?",
+          "gold_answer": "embolic stroke",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0057,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_129",
+          "question": "When was the company that published American Scientist founded?",
+          "gold_answer": "1886",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0054,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_441",
+          "question": "Which film came out earlier, It'S Our Life! or Maximum Ride (Film)?",
+          "gold_answer": "La vie est à nous !",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0057,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_30",
+          "question": "Which film was released more recently, Lo Zappatore or Placer Sangriento?",
+          "gold_answer": "Placer Sangriento",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0055,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_301",
+          "question": "Which country Anthemiolus's father is from?",
+          "gold_answer": "Heraclius",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.005,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_219",
+          "question": "Where was the place of death of Suzanne Farrington's mother?",
+          "gold_answer": "London, England",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0054,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_544",
+          "question": "Which film was released more recently, Bidasari or Tangled Trails?",
+          "gold_answer": "Bidasari",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0054,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_72",
+          "question": "Are both Nikolsk Airport and Svobodny Airport located in the same country?",
+          "gold_answer": "yes",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.005,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_133",
+          "question": "What nationality is the director of film They Call It Love?",
+          "gold_answer": "U.S.A.",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0051,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_191",
+          "question": "What is the date of death of Conan Ii, Duke Of Brittany's mother?",
+          "gold_answer": "1080",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0053,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_230",
+          "question": "Who is the maternal grandmother of Felipe De Marichalar Y Borbón?",
+          "gold_answer": "Queen Sofía of Spain",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0063,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_150",
+          "question": "Who was born later, Gideon Johnson Pillow or Holm Jølsen?",
+          "gold_answer": "Holm Jølsen",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 1.2276,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        {
+          "question_id": "dev_236",
+          "question": "Who is the paternal grandfather of Richard Beauchamp, 1St Earl Of Worcester?",
+          "gold_answer": "Thomas Beauchamp, 11th Earl of Warwick",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 0.154,
+          "em": 0.0,
+          "f1_proxy": 0.1429
+        },
+        {
+          "question_id": "dev_190",
+          "question": "Which film has the director died earlier, Lemonade Joe or Bountiful Summer?",
+          "gold_answer": "Generous Summer",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 0.3666,
+          "em": 0.0,
+          "f1_proxy": 0.3333
+        },
+        {
+          "question_id": "dev_297",
+          "question": "Where was the place of death of George Thomas Orlando Bridgeman's father?",
+          "gold_answer": "Weston Park",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0053,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_265",
+          "question": "What is the date of death of Joan, Countess Of Blois's mother?",
+          "gold_answer": "2 August 1288",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0053,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      ]
+    },
+    "high": {
+      "recommended_method": "fixed_W1",
+      "constraints": {
+        "max_tokens": null,
+        "max_latency_ms": null,
+        "max_retrieval_calls": null
+      },
+      "router_settings": {},
+      "source_eval_file": "outputs/2wikimultihopqa/router_eval_large_budget_high_val.json",
+      "summary": {
+        "num_runs": 90,
+        "avg_utility": 0.1816,
+        "avg_em": 0.1222,
+        "avg_f1_proxy": 0.1448,
+        "avg_process_score": 0.089,
+        "avg_tokens": 38.7111,
+        "avg_retrieval_calls": 0.0,
+        "avg_latency_ms": 825.5586,
+        "workflow_counts": {
+          "W1": 90
+        }
+      },
+      "utility_profile": {
+        "reward_weights": {
+          "f1_proxy": 1.0,
+          "process_score": 0.45
+        },
+        "cost_weights": {
+          "tokens": 0.04,
+          "retrieval_calls": 0.06,
+          "latency_ms": 0.03
+        },
+        "cost_normalizers": {
+          "tokens": 2000.0,
+          "retrieval_calls": 4.0,
+          "latency_ms": 10000.0
+        }
+      },
+      "per_question": [
+        {
+          "question_id": "dev_403",
+          "question": "Which film came out first, Natürlich Die Nelli or Cairo Declaration (Film)?",
+          "gold_answer": "Natürlich die Nelli",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 1.2968,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        {
+          "question_id": "dev_168",
+          "question": "Where was the place of death of Tamatoa Vi's father?",
+          "gold_answer": "Huahine",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.003,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_197",
+          "question": "Who is Prince Franz De Paula Of Liechtenstein's paternal grandfather?",
+          "gold_answer": "Franz Joseph I",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 0.1599,
+          "em": 0.0,
+          "f1_proxy": 0.1429
+        },
+        {
+          "question_id": "dev_302",
+          "question": "Where was the place of burial of the performer of song This Time (Waylon Jennings Song)?",
+          "gold_answer": "State of Arizona",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0035,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_186",
+          "question": "Which film has the director died first, Edge Of Doom or A Mother'S Secret?",
+          "gold_answer": "A Mother'S Secret",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0033,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_349",
+          "question": "Who is the paternal grandfather of John Ii Of Baden?",
+          "gold_answer": "Bernard I, Margrave of Baden-Baden",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0037,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_367",
+          "question": "Which film has the director born first, Şaban, Son Of Şaban or East/West?",
+          "gold_answer": "Şabanoğlu Şaban",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0031,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_39",
+          "question": "Who was born later, D'Arcy Coulson or Thomas William Adams?",
+          "gold_answer": "D'Arcy Coulson",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 1.2968,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        {
+          "question_id": "dev_43",
+          "question": "Who is the paternal grandfather of Alexandre Berthier, 3Rd Prince Of Wagram?",
+          "gold_answer": "Louis-Alexandre Berthier",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0037,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_216",
+          "question": "Are both villages, Mavrolithari and Ampelakia, Evros, located in the same country?",
+          "gold_answer": "yes",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0029,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_508",
+          "question": "Which film has the director died earlier, Dynamite Smith or A Son Of Satan?",
+          "gold_answer": "Dynamite Smith",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0032,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_243",
+          "question": "When was the company that published Woman'S Century founded?",
+          "gold_answer": "October 27, 1893",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0031,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_140",
+          "question": "Where was the father of Eleonora Di Garzia Di Toledo born?",
+          "gold_answer": "Villafranca del Bierzo",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0028,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_383",
+          "question": "Which film has the director born earlier, Idols Of The Radio or Solos En La Madrugada?",
+          "gold_answer": "Idols of the Radio",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0034,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_557",
+          "question": "Where was the place of death of the director of film Quatre-Vingt-Treize (Film)?",
+          "gold_answer": "Paris, France",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 0.5722,
+          "em": 0.0,
+          "f1_proxy": 0.5
+        },
+        {
+          "question_id": "dev_359",
+          "question": "What is the date of death of the director of film Escándalo De Estrellas?",
+          "gold_answer": "August 7, 2004",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.003,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_257",
+          "question": "Where does the director of film Ghost In The Machine (Film) work at?",
+          "gold_answer": "McGill University College of British Columbia",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0032,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_423",
+          "question": "Why did the performer of song Ludlow Massacre (Song) die?",
+          "gold_answer": "Huntington’s disease",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0051,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_163",
+          "question": "What is the place of birth of the performer of song I Wish (Gabrielle Song)?",
+          "gold_answer": "Hackney",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.003,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_553",
+          "question": "Where was the mother of Louise Sophie Of Hanau-Lichtenberg born?",
+          "gold_answer": "Strossburi",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0029,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_455",
+          "question": "Which film has the director who was born later, The Daughter Of Rosie O'Grady or The Whistle (Film)?",
+          "gold_answer": "Daughter of Rosie O'Grady",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0032,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_509",
+          "question": "Which country the director of film West 32Nd is from?",
+          "gold_answer": "U.S.A.",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0031,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_145",
+          "question": "Which film whose director is younger, Joe Palooka In Fighting Mad or Figaro-Ci, Figaro-Là?",
+          "gold_answer": "Figaro-ci, Figaro-là",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 1.2964,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        {
+          "question_id": "dev_594",
+          "question": "Which film has the director born first, 84 Charing Cross Road (Film) or Emperor'S Ball?",
+          "gold_answer": "Emperor'S Ball",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0034,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_44",
+          "question": "Where was the husband of Caterina Visconti born?",
+          "gold_answer": "Pavia",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0029,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_434",
+          "question": "Which film has the director who died later, The Death Kiss or Her Luck In London?",
+          "gold_answer": "Her Luck In London",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.003,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_2",
+          "question": "When did John V, Prince Of Anhalt-Zerbst's father die?",
+          "gold_answer": "12 June 1516",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.003,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_399",
+          "question": "Who is the spouse of the director of film West Of Shanghai?",
+          "gold_answer": "Maureen O'Sullivan",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0032,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_474",
+          "question": "Who is Albert Iv, Prince Of Anhalt-Köthen's paternal grandfather?",
+          "gold_answer": "Albert II, Prince of Anhalt-Zerbst",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 0.1604,
+          "em": 0.0,
+          "f1_proxy": 0.1429
+        },
+        {
+          "question_id": "dev_569",
+          "question": "What is the place of birth of the director of film Encino Man?",
+          "gold_answer": "Albuquerque",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0032,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_75",
+          "question": "Do both films, Dial M For Murder and Marius (1931 Film), have the directors who are from the same country?",
+          "gold_answer": "yes",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0032,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_134",
+          "question": "What is the place of birth of Zhanna Nemtsova's father?",
+          "gold_answer": "Sochi",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0024,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_375",
+          "question": "Who is the paternal grandfather of George De Salis?",
+          "gold_answer": "Jerome, 4th Count de Salis-Soglio",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 0.1611,
+          "em": 0.0,
+          "f1_proxy": 0.1429
+        },
+        {
+          "question_id": "dev_199",
+          "question": "Who is the paternal grandmother of Archduchess Dolores Of Austria?",
+          "gold_answer": "Princess Maria Immaculata of Bourbon-Two Sicilies (1844–1899)",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 0.1406,
+          "em": 0.0,
+          "f1_proxy": 0.125
+        },
+        {
+          "question_id": "dev_545",
+          "question": "Which film has the director who is older, King Of The Zombies or Mon Oncle Benjamin?",
+          "gold_answer": "King of the Zombies",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0032,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_241",
+          "question": "Which film was released more recently, Gaza Ghetto or Kull The Conqueror?",
+          "gold_answer": "Kull The Conqueror",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 1.2967,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        {
+          "question_id": "dev_502",
+          "question": "Do both films, The Wild Frontier (Film) and The Sundowners (1960 Film), have the directors who are from the same country?",
+          "gold_answer": "yes",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0032,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_592",
+          "question": "What is the place of birth of the performer of song Are You Really Mine??",
+          "gold_answer": "Camas",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0023,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_405",
+          "question": "Where was the performer of song Lucky Me, Lucky You born?",
+          "gold_answer": "Abilene",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0031,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_286",
+          "question": "Are the bands The Catheters and Dark At Dawn, from the same country?",
+          "gold_answer": "no",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0031,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_580",
+          "question": "Which film whose director was born first, Gangster'S Boy or Torno A Vivere Da Solo?",
+          "gold_answer": "Gangster'S Boy",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0034,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_470",
+          "question": "Where did the director of film Don Juan (1922 Film) die?",
+          "gold_answer": "Westerland",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0033,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_380",
+          "question": "Where did Bianca Riario's father die?",
+          "gold_answer": "Forlì",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.003,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_259",
+          "question": "Who is the paternal grandmother of Louis, Count Of Verdun?",
+          "gold_answer": "Gerberge of Lorraine",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0031,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_575",
+          "question": "Who is Charles Xiii Of Sweden's paternal grandfather?",
+          "gold_answer": "Christian August of Holstein-Gottorp, Prince of Eutin",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0031,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_535",
+          "question": "Who is the spouse of the director of film På Solsiden?",
+          "gold_answer": "Otto Carlmar",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0037,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_183",
+          "question": "Who was born later, Marc De Clerck or Wiesław Perszke?",
+          "gold_answer": "Wiesław Perszke",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 1.2967,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        {
+          "question_id": "dev_207",
+          "question": "What is the place of birth of Empress Xu (Ming Dynasty)'s husband?",
+          "gold_answer": "Nanjing",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.003,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_300",
+          "question": "Who is younger, Nicolas Görtler or Michel De Salzmann?",
+          "gold_answer": "Nicolas Görtler",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0033,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_180",
+          "question": "Where was the performer of song Bag Skyerne born?",
+          "gold_answer": "Århus",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0032,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_548",
+          "question": "Which film has the director died later, Saturday Night Out or An Italian Romance?",
+          "gold_answer": "A Rekindled Affair",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0031,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_454",
+          "question": "Where was the place of death of the director of film Scugnizzi?",
+          "gold_answer": "Roma",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0024,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_450",
+          "question": "Who died first, Olaf Everson or Abdul Wahab Khan Tarzi?",
+          "gold_answer": "Abdul Wahab Khan Tarzi",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 1.2964,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        {
+          "question_id": "dev_138",
+          "question": "Where was the director of film Age-Old Friends born?",
+          "gold_answer": "Winnipeg",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0032,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_459",
+          "question": "Who is the paternal grandmother of Sudeley Hanbury-Tracy, 3Rd Baron Sudeley?",
+          "gold_answer": "Henrietta Susanna Tracy",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.003,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_269",
+          "question": "Who is the spouse of the performer of song Lolita (Leah Labelle Song)?",
+          "gold_answer": "Rasual Butler",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0037,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_354",
+          "question": "Who is the paternal grandmother of Edward I Of England?",
+          "gold_answer": "Isabella of Angoulême",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0031,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_120",
+          "question": "Which school was established first, Whitehorse Manor Junior School or Sabawoon Rehabilitation Centre?",
+          "gold_answer": "Sabawoon Rehabilitation Centre",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0032,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_321",
+          "question": "Who is the spouse of the performer of song Ängeln I Rummet?",
+          "gold_answer": "Efva Attling",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0029,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_440",
+          "question": "Where did the director of film The Gallant Lords Of Bois-Doré die?",
+          "gold_answer": "Paris, France",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.003,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_372",
+          "question": "Which film came out first, My Wife'S Lodger or Ko 2?",
+          "gold_answer": "My Wife's Lodger",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 1.2969,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        {
+          "question_id": "dev_439",
+          "question": "Which film has the director born later, Cyclone Of The Saddle or Blind Corner?",
+          "gold_answer": "Blind Corner",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 1.2969,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        {
+          "question_id": "dev_562",
+          "question": "Which album was released first, The Oak Ridge Boys Have Arrived or Beans And Fatback?",
+          "gold_answer": "Beans and Fatback",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 1.2967,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        {
+          "question_id": "dev_498",
+          "question": "Where was the place of burial of Gjon Kastrioti Ii's father?",
+          "gold_answer": "Lezha",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0033,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_239",
+          "question": "Where was the father of Augustus William, Duke Of Brunswick-Bevern born?",
+          "gold_answer": "Osterholz",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0031,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_364",
+          "question": "Which film has the director who is older, When You'Re Strange or Vzdušné Torpédo 48?",
+          "gold_answer": "Vzdušné torpédo 48",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 0.5702,
+          "em": 0.0,
+          "f1_proxy": 0.5
+        },
+        {
+          "question_id": "dev_262",
+          "question": "Who lived longer, Csaba Pálinkás or Henry Scheffé?",
+          "gold_answer": "Henry Scheffé",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0034,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_142",
+          "question": "Who is Prince Nicolas, Duke Of Ångermanland's mother?",
+          "gold_answer": "Prinsessan Madeleine",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.003,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_447",
+          "question": "Where was the director of film High (Film) born?",
+          "gold_answer": "Jozi",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0032,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_461",
+          "question": "Are the movies On A Clear Day You Can See Forever (Film) and Education Of A Prince, from the same country?",
+          "gold_answer": "no",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0033,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_268",
+          "question": "Which film was released earlier, New Jersey Drive or It Happened At The World'S Fair?",
+          "gold_answer": "It Happened At The World'S Fair",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 1.2963,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        {
+          "question_id": "dev_86",
+          "question": "Who is Maria Luisa Of Savoy's father-in-law?",
+          "gold_answer": "Louis of Bourbon",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0035,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_595",
+          "question": "Do director of film Just Married (1934 Film) and director of film The Thirteenth Commandment share the same nationality?",
+          "gold_answer": "yes",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0032,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_282",
+          "question": "Where did Henry C. Lord's father graduate from?",
+          "gold_answer": "Bowdoin College",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0029,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_14",
+          "question": "Why did Grand Duke Kirill Vladimirovich Of Russia's wife die?",
+          "gold_answer": "embolic stroke",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0032,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_129",
+          "question": "When was the company that published American Scientist founded?",
+          "gold_answer": "1886",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0033,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_441",
+          "question": "Which film came out earlier, It'S Our Life! or Maximum Ride (Film)?",
+          "gold_answer": "La vie est à nous !",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0034,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_30",
+          "question": "Which film was released more recently, Lo Zappatore or Placer Sangriento?",
+          "gold_answer": "Placer Sangriento",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0034,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_301",
+          "question": "Which country Anthemiolus's father is from?",
+          "gold_answer": "Heraclius",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0032,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_219",
+          "question": "Where was the place of death of Suzanne Farrington's mother?",
+          "gold_answer": "London, England",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0033,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_544",
+          "question": "Which film was released more recently, Bidasari or Tangled Trails?",
+          "gold_answer": "Bidasari",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0033,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_72",
+          "question": "Are both Nikolsk Airport and Svobodny Airport located in the same country?",
+          "gold_answer": "yes",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0031,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_133",
+          "question": "What nationality is the director of film They Call It Love?",
+          "gold_answer": "U.S.A.",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.003,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_191",
+          "question": "What is the date of death of Conan Ii, Duke Of Brittany's mother?",
+          "gold_answer": "1080",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0032,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_230",
+          "question": "Who is the maternal grandmother of Felipe De Marichalar Y Borbón?",
+          "gold_answer": "Queen Sofía of Spain",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.0038,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_150",
+          "question": "Who was born later, Gideon Johnson Pillow or Holm Jølsen?",
+          "gold_answer": "Holm Jølsen",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 1.2966,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        {
+          "question_id": "dev_236",
+          "question": "Who is the paternal grandfather of Richard Beauchamp, 1St Earl Of Worcester?",
+          "gold_answer": "Thomas Beauchamp, 11th Earl of Warwick",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 0.1608,
+          "em": 0.0,
+          "f1_proxy": 0.1429
+        },
+        {
+          "question_id": "dev_190",
+          "question": "Which film has the director died earlier, Lemonade Joe or Bountiful Summer?",
+          "gold_answer": "Generous Summer",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": 0.38,
+          "em": 0.0,
+          "f1_proxy": 0.3333
+        },
+        {
+          "question_id": "dev_297",
+          "question": "Where was the place of death of George Thomas Orlando Bridgeman's father?",
+          "gold_answer": "Weston Park",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.003,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        {
+          "question_id": "dev_265",
+          "question": "What is the date of death of Joan, Countess Of Blois's mother?",
+          "gold_answer": "2 August 1288",
+          "selected_method": "fixed_W1",
+          "workflow_id": "W1",
+          "utility_total": -0.003,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      ]
+    }
+  }
+}

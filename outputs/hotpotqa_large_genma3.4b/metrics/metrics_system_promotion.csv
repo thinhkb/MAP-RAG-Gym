@@ -1,0 +1,4 @@
+﻿budget_mode,passed,candidate_method,frozen_method,candidate_utility,frozen_utility,utility_delta,candidate_tokens,frozen_tokens,candidate_workflows,frozen_workflows
+high,True,bandit_router,fixed_W3,0.2669,0.2578,0.0091,164.33,128.08,"{'W2': 30, 'W3': 60}",{'W3': 90}
+low,False,gated_bandit_router,fixed_W3,0.146,0.1511,-0.0051,118.62,128.08,"{'W3': 80, 'W1': 10}",{'W3': 90}
+medium,False,bandit_router,fixed_W3,0.1889,0.2176,-0.0287,117.96,128.08,"{'W1': 34, 'W3': 41, 'W2': 12, 'W6': 3}",{'W3': 90}

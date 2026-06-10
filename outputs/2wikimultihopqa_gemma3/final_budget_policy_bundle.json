@@ -1,0 +1,195 @@
+{
+  "source_policy_files": [
+    "outputs/2wikimultihopqa_gemma3/policy_selection_low.json",
+    "outputs/2wikimultihopqa_gemma3/policy_selection_medium.json",
+    "outputs/2wikimultihopqa_gemma3/policy_selection_high.json"
+  ],
+  "source_eval_files": [
+    "outputs/2wikimultihopqa_gemma3/router_eval_budget_low_val.json",
+    "outputs/2wikimultihopqa_gemma3/router_eval_budget_medium_val.json",
+    "outputs/2wikimultihopqa_gemma3/router_eval_budget_high_val.json"
+  ],
+  "budget_policies": {
+    "low": {
+      "recommended_method": "learned_router",
+      "constraints": {
+        "max_tokens": null,
+        "max_latency_ms": null,
+        "max_retrieval_calls": null
+      },
+      "router_settings": {},
+      "source_policy_file": "outputs/2wikimultihopqa_gemma3/policy_selection_low.json",
+      "source_eval_file": "outputs/2wikimultihopqa_gemma3/router_eval_budget_low_val.json",
+      "pareto_frontier": [
+        {
+          "method": "learned_router",
+          "num_runs": 90,
+          "avg_utility": 0.164,
+          "avg_em": 0.1,
+          "avg_f1_proxy": 0.1548,
+          "avg_process_score": 0.0902,
+          "avg_tokens": 42.6889,
+          "avg_retrieval_calls": 0.0444,
+          "avg_latency_ms": 640.4736,
+          "workflow_counts": {
+            "W1": 86,
+            "W3": 4
+          }
+        },
+        {
+          "method": "fixed_W1",
+          "num_runs": 90,
+          "avg_utility": 0.1447,
+          "avg_em": 0.1,
+          "avg_f1_proxy": 0.1358,
+          "avg_process_score": 0.0786,
+          "avg_tokens": 38.5889,
+          "avg_retrieval_calls": 0.0,
+          "avg_latency_ms": 641.1653,
+          "workflow_counts": {
+            "W1": 90
+          }
+        }
+      ]
+    },
+    "medium": {
+      "recommended_method": "fixed_W3",
+      "constraints": {
+        "max_tokens": null,
+        "max_latency_ms": null,
+        "max_retrieval_calls": null
+      },
+      "router_settings": {},
+      "source_policy_file": "outputs/2wikimultihopqa_gemma3/policy_selection_medium.json",
+      "source_eval_file": "outputs/2wikimultihopqa_gemma3/router_eval_budget_medium_val.json",
+      "pareto_frontier": [
+        {
+          "method": "fixed_W3",
+          "num_runs": 90,
+          "avg_utility": 0.1959,
+          "avg_em": 0.1111,
+          "avg_f1_proxy": 0.1639,
+          "avg_process_score": 0.1909,
+          "avg_tokens": 135.7556,
+          "avg_retrieval_calls": 1.0,
+          "avg_latency_ms": 886.4038,
+          "workflow_counts": {
+            "W3": 90
+          }
+        },
+        {
+          "method": "learned_router",
+          "num_runs": 90,
+          "avg_utility": 0.1823,
+          "avg_em": 0.0889,
+          "avg_f1_proxy": 0.1525,
+          "avg_process_score": 0.1748,
+          "avg_tokens": 161.9444,
+          "avg_retrieval_calls": 0.7111,
+          "avg_latency_ms": 1407.1924,
+          "workflow_counts": {
+            "W3": 26,
+            "W6": 16,
+            "W1": 26,
+            "W2": 22
+          }
+        },
+        {
+          "method": "fixed_W1",
+          "num_runs": 90,
+          "avg_utility": 0.1384,
+          "avg_em": 0.0778,
+          "avg_f1_proxy": 0.1207,
+          "avg_process_score": 0.0662,
+          "avg_tokens": 38.5889,
+          "avg_retrieval_calls": 0.0,
+          "avg_latency_ms": 786.4483,
+          "workflow_counts": {
+            "W1": 90
+          }
+        }
+      ]
+    },
+    "high": {
+      "recommended_method": "fixed_W3",
+      "constraints": {
+        "max_tokens": null,
+        "max_latency_ms": null,
+        "max_retrieval_calls": null
+      },
+      "router_settings": {},
+      "source_policy_file": "outputs/2wikimultihopqa_gemma3/policy_selection_high.json",
+      "source_eval_file": "outputs/2wikimultihopqa_gemma3/router_eval_budget_high_val.json",
+      "pareto_frontier": [
+        {
+          "method": "fixed_W3",
+          "num_runs": 90,
+          "avg_utility": 0.2297,
+          "avg_em": 0.1111,
+          "avg_f1_proxy": 0.1639,
+          "avg_process_score": 0.1909,
+          "avg_tokens": 135.7556,
+          "avg_retrieval_calls": 1.0,
+          "avg_latency_ms": 811.7954,
+          "workflow_counts": {
+            "W3": 90
+          }
+        },
+        {
+          "method": "fixed_W1",
+          "num_runs": 90,
+          "avg_utility": 0.1584,
+          "avg_em": 0.0889,
+          "avg_f1_proxy": 0.1287,
+          "avg_process_score": 0.0725,
+          "avg_tokens": 38.5889,
+          "avg_retrieval_calls": 0.0,
+          "avg_latency_ms": 722.8863,
+          "workflow_counts": {
+            "W1": 90
+          }
+        }
+      ]
+    }
+  },
+  "budget_modes": [
+    "high",
+    "low",
+    "medium"
+  ],
+  "policy_table": [
+    {
+      "budget_mode": "high",
+      "recommended_method": "fixed_W3",
+      "constraints": {
+        "max_tokens": null,
+        "max_latency_ms": null,
+        "max_retrieval_calls": null
+      },
+      "router_settings": {},
+      "source_eval_file": "outputs/2wikimultihopqa_gemma3/router_eval_budget_high_val.json"
+    },
+    {
+      "budget_mode": "low",
+      "recommended_method": "learned_router",
+      "constraints": {
+        "max_tokens": null,
+        "max_latency_ms": null,
+        "max_retrieval_calls": null
+      },
+      "router_settings": {},
+      "source_eval_file": "outputs/2wikimultihopqa_gemma3/router_eval_budget_low_val.json"
+    },
+    {
+      "budget_mode": "medium",
+      "recommended_method": "fixed_W3",
+      "constraints": {
+        "max_tokens": null,
+        "max_latency_ms": null,
+        "max_retrieval_calls": null
+      },
+      "router_settings": {},
+      "source_eval_file": "outputs/2wikimultihopqa_gemma3/router_eval_budget_medium_val.json"
+    }
+  ]
+}

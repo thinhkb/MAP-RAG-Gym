@@ -1,0 +1,137 @@
+{
+  "source_eval_file": "outputs/2wikimultihopqa_gemma3/router_eval_budget_low_val.json",
+  "budget_mode": "low",
+  "constraints": {
+    "max_tokens": null,
+    "max_latency_ms": null,
+    "max_retrieval_calls": null
+  },
+  "methods": [
+    "fixed_W1",
+    "fixed_W2",
+    "fixed_W3",
+    "fixed_W6",
+    "learned_router",
+    "rule_based"
+  ],
+  "pareto_frontier": [
+    {
+      "method": "learned_router",
+      "num_runs": 90,
+      "avg_utility": 0.164,
+      "avg_em": 0.1,
+      "avg_f1_proxy": 0.1548,
+      "avg_process_score": 0.0902,
+      "avg_tokens": 42.6889,
+      "avg_retrieval_calls": 0.0444,
+      "avg_latency_ms": 640.4736,
+      "workflow_counts": {
+        "W1": 86,
+        "W3": 4
+      }
+    },
+    {
+      "method": "fixed_W1",
+      "num_runs": 90,
+      "avg_utility": 0.1447,
+      "avg_em": 0.1,
+      "avg_f1_proxy": 0.1358,
+      "avg_process_score": 0.0786,
+      "avg_tokens": 38.5889,
+      "avg_retrieval_calls": 0.0,
+      "avg_latency_ms": 641.1653,
+      "workflow_counts": {
+        "W1": 90
+      }
+    }
+  ],
+  "feasible_methods": [
+    {
+      "method": "learned_router",
+      "num_runs": 90,
+      "avg_utility": 0.164,
+      "avg_em": 0.1,
+      "avg_f1_proxy": 0.1548,
+      "avg_process_score": 0.0902,
+      "avg_tokens": 42.6889,
+      "avg_retrieval_calls": 0.0444,
+      "avg_latency_ms": 640.4736,
+      "workflow_counts": {
+        "W1": 86,
+        "W3": 4
+      }
+    },
+    {
+      "method": "fixed_W1",
+      "num_runs": 90,
+      "avg_utility": 0.1447,
+      "avg_em": 0.1,
+      "avg_f1_proxy": 0.1358,
+      "avg_process_score": 0.0786,
+      "avg_tokens": 38.5889,
+      "avg_retrieval_calls": 0.0,
+      "avg_latency_ms": 641.1653,
+      "workflow_counts": {
+        "W1": 90
+      }
+    },
+    {
+      "method": "fixed_W3",
+      "num_runs": 90,
+      "avg_utility": 0.1415,
+      "avg_em": 0.1111,
+      "avg_f1_proxy": 0.1639,
+      "avg_process_score": 0.1909,
+      "avg_tokens": 135.7556,
+      "avg_retrieval_calls": 1.0,
+      "avg_latency_ms": 779.0102,
+      "workflow_counts": {
+        "W3": 90
+      }
+    },
+    {
+      "method": "rule_based",
+      "num_runs": 90,
+      "avg_utility": 0.1361,
+      "avg_em": 0.1,
+      "avg_f1_proxy": 0.1536,
+      "avg_process_score": 0.1666,
+      "avg_tokens": 122.0111,
+      "avg_retrieval_calls": 0.8111,
+      "avg_latency_ms": 736.9209,
+      "workflow_counts": {
+        "W3": 73,
+        "W1": 17
+      }
+    },
+    {
+      "method": "fixed_W2",
+      "num_runs": 90,
+      "avg_utility": 0.1235,
+      "avg_em": 0.0889,
+      "avg_f1_proxy": 0.1568,
+      "avg_process_score": 0.2143,
+      "avg_tokens": 224.4778,
+      "avg_retrieval_calls": 1.0,
+      "avg_latency_ms": 1576.545,
+      "workflow_counts": {
+        "W2": 90
+      }
+    },
+    {
+      "method": "fixed_W6",
+      "num_runs": 90,
+      "avg_utility": 0.062,
+      "avg_em": 0.0778,
+      "avg_f1_proxy": 0.1252,
+      "avg_process_score": 0.1661,
+      "avg_tokens": 293.6556,
+      "avg_retrieval_calls": 1.0,
+      "avg_latency_ms": 2606.8092,
+      "workflow_counts": {
+        "W6": 90
+      }
+    }
+  ],
+  "recommended_method": "learned_router"
+}

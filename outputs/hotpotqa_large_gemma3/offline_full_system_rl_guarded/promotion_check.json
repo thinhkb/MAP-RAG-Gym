@@ -1,0 +1,132 @@
+{
+  "manifest": {
+    "script": "scripts/check_offline_rl_promotion.py",
+    "generated_at_utc": "2026-06-04T11:44:44+00:00",
+    "git_commit": "468c42fc389c5c340c9053380d6bcce97aac4114",
+    "python_version": "3.12.13",
+    "platform": "Windows-11-10.0.22621-SP0",
+    "paths": {
+      "qa": "G:\\MAP-RAG-Gym\\outputs\\hotpotqa_large_gemma3\\offline_full_system_rl_guarded\\final_budget_policy_test_eval_offline_rl_candidate.json",
+      "corpus": null,
+      "router_model": "G:\\MAP-RAG-Gym\\outputs\\hotpotqa_large_gemma3\\final_budget_policy_test_eval.json"
+    },
+    "dataset": {
+      "name": "offline_full_system_rl",
+      "split": "promotion_gate",
+      "limit": null,
+      "effective_questions": 270
+    },
+    "llm": {
+      "provider": null,
+      "model": null
+    },
+    "reproducibility": {
+      "seed": null,
+      "prompt_version": "v1",
+      "utility": null
+    },
+    "settings": {
+      "candidate_eval": "outputs/hotpotqa_large_gemma3/offline_full_system_rl_guarded/final_budget_policy_test_eval_offline_rl_candidate.json",
+      "frozen_eval": "outputs/hotpotqa_large_gemma3/final_budget_policy_test_eval.json",
+      "budget_modes": [
+        "high",
+        "low",
+        "medium"
+      ],
+      "min_delta": 0.0,
+      "min_delta_by_budget": {
+        "_default": 0.0
+      },
+      "tolerance": 0.0,
+      "tolerance_by_budget": {
+        "_default": 0.0
+      },
+      "require_frontier": false
+    }
+  },
+  "ready_to_promote": false,
+  "blocked_budgets": [
+    "low",
+    "medium"
+  ],
+  "budget_reports": {
+    "high": {
+      "budget_mode": "high",
+      "passed": true,
+      "candidate_method": "bandit_router",
+      "frozen_method": "fixed_W3",
+      "candidate_utility": 0.2898,
+      "frozen_utility": 0.2733,
+      "utility_delta": 0.0165,
+      "min_delta": 0.0,
+      "tolerance": 0.0,
+      "candidate_tokens": 165.8444,
+      "frozen_tokens": 128.0778,
+      "candidate_workflow_counts": {
+        "W3": 62,
+        "W2": 28
+      },
+      "frozen_workflow_counts": {
+        "W3": 90
+      }
+    },
+    "low": {
+      "budget_mode": "low",
+      "passed": false,
+      "candidate_method": "gated_bandit_router",
+      "frozen_method": "rule_based",
+      "candidate_utility": 0.1758,
+      "frozen_utility": 0.1798,
+      "utility_delta": -0.004,
+      "min_delta": 0.0,
+      "tolerance": 0.0,
+      "candidate_tokens": 118.2111,
+      "frozen_tokens": 127.4111,
+      "candidate_workflow_counts": {
+        "W3": 82,
+        "W1": 8
+      },
+      "frozen_workflow_counts": {
+        "W3": 89,
+        "W1": 1
+      }
+    },
+    "medium": {
+      "budget_mode": "medium",
+      "passed": false,
+      "candidate_method": "bandit_router",
+      "frozen_method": "fixed_W3",
+      "candidate_utility": 0.1913,
+      "frozen_utility": 0.2346,
+      "utility_delta": -0.0433,
+      "min_delta": 0.0,
+      "tolerance": 0.0,
+      "candidate_tokens": 145.2111,
+      "frozen_tokens": 128.0778,
+      "candidate_workflow_counts": {
+        "W1": 25,
+        "W3": 32,
+        "W2": 26,
+        "W6": 7
+      },
+      "frozen_workflow_counts": {
+        "W3": 90
+      }
+    }
+  },
+  "frontier_check": {
+    "required": true,
+    "passed": true,
+    "budget_order": [
+      "low",
+      "medium",
+      "high"
+    ],
+    "candidate_utilities": {
+      "low": 0.1758,
+      "medium": 0.1913,
+      "high": 0.2898
+    }
+  },
+  "promotion_rule": "Promote only when every requested budget is non-regressive vs the frozen bundle."
+}

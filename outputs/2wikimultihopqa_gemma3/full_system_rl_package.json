@@ -1,0 +1,336 @@
+{
+  "manifest": {
+    "script": "scripts/build_full_system_rl_package.py",
+    "generated_at_utc": "2026-06-04T05:26:14+00:00",
+    "git_commit": "468c42fc389c5c340c9053380d6bcce97aac4114",
+    "python_version": "3.12.13",
+    "platform": "Windows-11-10.0.22621-SP0",
+    "paths": {
+      "qa": "G:\\MAP-RAG-Gym\\outputs\\2wikimultihopqa_gemma3\\final_budget_policy_test_eval.json",
+      "corpus": null,
+      "router_model": "G:\\MAP-RAG-Gym\\outputs\\2wikimultihopqa_gemma3\\final_budget_policy_bundle.json"
+    },
+    "dataset": {
+      "name": "full_system_rl",
+      "split": "gate",
+      "limit": null,
+      "effective_questions": 270
+    },
+    "llm": {
+      "provider": null,
+      "model": null
+    },
+    "reproducibility": {
+      "seed": null,
+      "prompt_version": "v1",
+      "utility": null
+    },
+    "settings": {
+      "policy_bundle": "outputs/2wikimultihopqa_gemma3/final_budget_policy_bundle.json",
+      "final_eval": "outputs/2wikimultihopqa_gemma3/final_budget_policy_test_eval.json",
+      "final_report": "outputs/2wikimultihopqa_gemma3/final_project_report.json",
+      "reference_eval": null,
+      "offline_reward_modules": [
+        "QR",
+        "AG"
+      ],
+      "direct_critic_tolerance": 0.002,
+      "max_direct_critic_token_multiplier": 1.5
+    }
+  },
+  "stage": {
+    "ready_for_offline_full_system_rl": false,
+    "ready_for_online_full_system_rl": false,
+    "recommended_next_stage": "fix_offline_rl_blockers",
+    "deployment_mode": "online_rl_candidate",
+    "offline_blockers": [
+      "Final project report has not opened offline RL.",
+      "Not every budget mode uses an adaptive macro policy.",
+      "Micro critic reward models are missing or below quality thresholds."
+    ],
+    "online_blockers": []
+  },
+  "macro_layer": {
+    "policy_bundle": "outputs/2wikimultihopqa_gemma3/final_budget_policy_bundle_rl_ready.json",
+    "budget_policies": {
+      "high": {
+        "recommended_method": "bandit_router",
+        "is_adaptive": false,
+        "constraints": {
+          "max_tokens": null,
+          "max_latency_ms": null,
+          "max_retrieval_calls": null
+        },
+        "router_settings": {
+          "bandit_router_model": "outputs\\2wikimultihopqa_gemma3\\offline_full_system_rl_guarded\\macro_bandit_high.joblib"
+        },
+        "source_eval_file": "outputs/2wikimultihopqa_gemma3/router_eval_budget_high_val.json"
+      },
+      "low": {
+        "recommended_method": "gated_bandit_router",
+        "is_adaptive": true,
+        "constraints": {
+          "max_tokens": 110.0,
+          "max_latency_ms": 900.0,
+          "max_retrieval_calls": null
+        },
+        "router_settings": {
+          "bandit_router_model": "outputs\\2wikimultihopqa_gemma3\\offline_full_system_rl_guarded\\macro_bandit_low.joblib",
+          "bandit_gate_baseline_workflow": "W3",
+          "bandit_gate_min_advantage": 0.2,
+          "bandit_gate_min_confidence": 0.65,
+          "bandit_gate_allowed_workflows": [
+            "W1"
+          ]
+        },
+        "source_eval_file": "outputs/2wikimultihopqa_gemma3/router_eval_budget_low_val.json"
+      },
+      "medium": {
+        "recommended_method": "bandit_router",
+        "is_adaptive": false,
+        "constraints": {
+          "max_tokens": null,
+          "max_latency_ms": null,
+          "max_retrieval_calls": null
+        },
+        "router_settings": {
+          "bandit_router_model": "outputs\\2wikimultihopqa_gemma3\\offline_full_system_rl_guarded\\macro_bandit_medium.joblib"
+        },
+        "source_eval_file": "outputs/2wikimultihopqa_gemma3/router_eval_budget_medium_val.json"
+      }
+    },
+    "counterfactual_rollout_coverage": {
+      "high": {
+        "path": "outputs/2wikimultihopqa_gemma3/train_rollouts_high_w2w3_det.json",
+        "num_runs": 840,
+        "num_questions": 420,
+        "workflow_counts": {
+          "W2": 420,
+          "W3": 420
+        },
+        "budget_counts": {
+          "high": 840
+        },
+        "manifest_budget_mode": "high",
+        "n_candidates": 3,
+        "workflow_avg_utility": {
+          "W2": 0.203,
+          "W3": 0.213
+        },
+        "has_counterfactual_workflows": true
+      },
+      "low": {
+        "path": "outputs/2wikimultihopqa_gemma3/train_rollouts.json",
+        "num_runs": 1680,
+        "num_questions": 420,
+        "workflow_counts": {
+          "W1": 420,
+          "W2": 420,
+          "W3": 420,
+          "W6": 420
+        },
+        "budget_counts": {
+          "medium": 1680
+        },
+        "manifest_budget_mode": "medium",
+        "n_candidates": 3,
+        "workflow_avg_utility": {
+          "W1": 0.1535,
+          "W2": 0.1438,
+          "W3": 0.1612,
+          "W6": 0.1089
+        },
+        "has_counterfactual_workflows": true
+      },
+      "medium": {
+        "path": "outputs/2wikimultihopqa_gemma3/train_rollouts.json",
+        "num_runs": 1680,
+        "num_questions": 420,
+        "workflow_counts": {
+          "W1": 420,
+          "W2": 420,
+          "W3": 420,
+          "W6": 420
+        },
+        "budget_counts": {
+          "medium": 1680
+        },
+        "manifest_budget_mode": "medium",
+        "n_candidates": 3,
+        "workflow_avg_utility": {
+          "W1": 0.1535,
+          "W2": 0.1438,
+          "W3": 0.1612,
+          "W6": 0.1089
+        },
+        "has_counterfactual_workflows": true
+      }
+    },
+    "rl_objective": "conservative contextual bandit policy improvement over workflow actions"
+  },
+  "micro_layer": {
+    "reward_modules": [
+      "QR",
+      "AG"
+    ],
+    "critic_models": {
+      "QR": {
+        "module": "QR",
+        "model_path": "outputs/2wikimultihopqa_gemma3/process_critic_qr_local.joblib",
+        "meta_path": "outputs/2wikimultihopqa_gemma3/process_critic_qr_local.joblib.meta.json",
+        "target": "local_reward",
+        "train_counts": {
+          "num_examples": 1071,
+          "modules": {
+            "QR": 1071
+          },
+          "budget_modes": {
+            "medium": 1071
+          }
+        },
+        "eval_counts": {
+          "num_examples": 189,
+          "modules": {
+            "QR": 189
+          },
+          "budget_modes": {
+            "medium": 189
+          }
+        },
+        "eval_metrics": {
+          "count": 189,
+          "mae": 0.0947,
+          "rmse": 0.1298,
+          "pearson": 0.6107,
+          "spearman": 0.6178
+        },
+        "readiness_gate": {
+          "min_eval_examples": 300,
+          "min_spearman": 0.5,
+          "ready_as_offline_reward_model": false
+        }
+      },
+      "AG": {
+        "module": "AG",
+        "model_path": "outputs/2wikimultihopqa_gemma3/process_critic_ag.joblib",
+        "meta_path": "outputs/2wikimultihopqa_gemma3/process_critic_ag.joblib.meta.json",
+        "target": "blended_reward",
+        "train_counts": {
+          "num_examples": 4284,
+          "modules": {
+            "AG": 4284
+          },
+          "budget_modes": {
+            "medium": 4284
+          }
+        },
+        "eval_counts": {
+          "num_examples": 756,
+          "modules": {
+            "AG": 756
+          },
+          "budget_modes": {
+            "medium": 756
+          }
+        },
+        "eval_metrics": {
+          "count": 756,
+          "mae": 0.1463,
+          "rmse": 0.2085,
+          "pearson": 0.6571,
+          "spearman": 0.5757
+        },
+        "readiness_gate": {
+          "min_eval_examples": 300,
+          "min_spearman": 0.25,
+          "ready_as_offline_reward_model": true
+        }
+      }
+    },
+    "direct_critic_evaluations": {},
+    "rl_objective": "critic-scored candidate action reranking/reward modeling inside selected workflows",
+    "online_rerank_default": false
+  },
+  "evaluation": {
+    "final_budget_eval": {
+      "low": {
+        "recommended_method": "gated_bandit_router",
+        "num_runs": 90,
+        "avg_utility": 0.1456,
+        "avg_em": 0.1111,
+        "avg_f1_proxy": 0.1583,
+        "avg_tokens": 114.2556,
+        "avg_latency_ms": 734.189,
+        "workflow_counts": {
+          "W3": 71,
+          "W1": 19
+        }
+      },
+      "medium": {
+        "recommended_method": "bandit_router",
+        "num_runs": 90,
+        "avg_utility": 0.1647,
+        "avg_em": 0.0889,
+        "avg_f1_proxy": 0.1342,
+        "avg_tokens": 142.6444,
+        "avg_latency_ms": 1183.106,
+        "workflow_counts": {
+          "W3": 22,
+          "W1": 32,
+          "W2": 25,
+          "W6": 11
+        }
+      },
+      "high": {
+        "recommended_method": "bandit_router",
+        "num_runs": 90,
+        "avg_utility": 0.1901,
+        "avg_em": 0.0667,
+        "avg_f1_proxy": 0.1233,
+        "avg_tokens": 163.0444,
+        "avg_latency_ms": 1109.6618,
+        "workflow_counts": {
+          "W3": 50,
+          "W2": 40
+        }
+      }
+    },
+    "final_project_report": {
+      "ready_for_offline_rl": false,
+      "ready_for_online_rl": false,
+      "recommended_next_stage": "stabilize_micro_critic",
+      "reasons": [
+        "Medium-budget selection is still dominated by a static workflow.",
+        "High-budget selection is still dominated by a static workflow.",
+        "Micro critic has not yet shown a reliable validation-stage win over a strong fixed baseline."
+      ],
+      "macro_stage_readiness": {},
+      "micro_stage_readiness": {}
+    },
+    "reference_eval": null
+  },
+  "rl_contract": {
+    "macro_state": [
+      "question features",
+      "budget_mode",
+      "router confidence",
+      "cheap retrieval probe"
+    ],
+    "macro_action": "select one workflow under the active budget action set",
+    "micro_state": [
+      "workflow_id",
+      "module",
+      "question",
+      "candidate action",
+      "retrieved evidence",
+      "cost features"
+    ],
+    "micro_action": "rerank/select candidate query, answer, or evidence item",
+    "reward": "budgeted end utility plus budget-aware process critic signal, with explicit token/retrieval/latency penalties",
+    "safety": [
+      "offline updates only until direct critic deployment is utility-safe",
+      "keep budget-specific cost penalties active",
+      "promote a policy only if held-out budget utility is non-regressive against the frozen reference"
+    ]
+  }
+}

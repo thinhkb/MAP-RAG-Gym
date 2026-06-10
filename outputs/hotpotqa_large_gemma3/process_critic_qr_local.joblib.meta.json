@@ -1,0 +1,2017 @@
+{
+  "manifest": {
+    "script": "scripts/train_process_critic.py",
+    "generated_at_utc": "2026-06-04T10:57:14+00:00",
+    "git_commit": "468c42fc389c5c340c9053380d6bcce97aac4114",
+    "python_version": "3.12.13",
+    "platform": "Windows-11-10.0.22621-SP0",
+    "paths": {
+      "qa": "G:\\MAP-RAG-Gym\\outputs\\hotpotqa_large_gemma3\\process_train_budget.json",
+      "corpus": null,
+      "router_model": "G:\\MAP-RAG-Gym\\outputs\\hotpotqa_large_gemma3\\process_critic_qr_local.joblib"
+    },
+    "dataset": {
+      "name": "hotpotqa_large",
+      "split": "train",
+      "limit": 13859,
+      "effective_questions": 357
+    },
+    "llm": {
+      "provider": null,
+      "model": null
+    },
+    "reproducibility": {
+      "seed": 13,
+      "prompt_version": "v1",
+      "utility": null
+    },
+    "settings": {
+      "target": "local_reward",
+      "holdout_ratio": 0.15,
+      "eval_input": null,
+      "modules": [
+        "QR"
+      ]
+    }
+  },
+  "source_process_manifest": {
+    "script": "scripts/build_process_dataset.py",
+    "generated_at_utc": "2026-06-04T10:57:05+00:00",
+    "git_commit": "468c42fc389c5c340c9053380d6bcce97aac4114",
+    "python_version": "3.12.13",
+    "platform": "Windows-11-10.0.22621-SP0",
+    "paths": {
+      "qa": "G:\\MAP-RAG-Gym\\outputs\\hotpotqa_large_gemma3\\train_rollouts.json",
+      "corpus": "G:\\MAP-RAG-Gym\\data\\hotpotqa_large\\corpus.json",
+      "router_model": null
+    },
+    "dataset": {
+      "name": "hotpotqa_large",
+      "split": "train",
+      "limit": 420,
+      "effective_questions": 420
+    },
+    "llm": {
+      "provider": "ollama",
+      "model": "gemma3"
+    },
+    "reproducibility": {
+      "seed": 42,
+      "prompt_version": "v1",
+      "utility": {
+        "medium": {
+          "reward_weights": {
+            "f1_proxy": 1.0,
+            "process_score": 0.35
+          },
+          "cost_weights": {
+            "tokens": 0.08,
+            "retrieval_calls": 0.1,
+            "latency_ms": 0.05
+          },
+          "cost_normalizers": {
+            "tokens": 2000.0,
+            "retrieval_calls": 4.0,
+            "latency_ms": 10000.0
+          }
+        }
+      }
+    },
+    "settings": {
+      "source_rollout_file": "outputs/hotpotqa_large_gemma3/train_rollouts.json",
+      "reward_target": "blended_reward",
+      "reward_formula": "0.7 * local_reward + 0.3 * outcome_utility",
+      "budget_modes": [
+        "medium"
+      ]
+    }
+  },
+  "train_counts": {
+    "num_examples": 1071,
+    "modules": {
+      "QR": 1071
+    },
+    "budget_modes": {
+      "medium": 1071
+    }
+  },
+  "eval_counts": {
+    "num_examples": 189,
+    "modules": {
+      "QR": 189
+    },
+    "budget_modes": {
+      "medium": 189
+    }
+  },
+  "evaluation": {
+    "overall": {
+      "count": 189,
+      "mae": 0.0882,
+      "rmse": 0.1112,
+      "pearson": 0.7488,
+      "spearman": 0.7378
+    },
+    "per_module": {
+      "QR": {
+        "count": 189,
+        "mae": 0.0882,
+        "rmse": 0.1112,
+        "pearson": 0.7488,
+        "spearman": 0.7378
+      }
+    }
+  },
+  "predictions": [
+    {
+      "example_id": "08981fa7-371d-4442-a9be-83b832c6eb67:medium:1:0",
+      "module": "QR",
+      "question_id": "476",
+      "question": "What Division was the college footbal team that fired their head coach on November 24, 2006?",
+      "action_text": "Michigan State University football coach firing 2006",
+      "target": 0.1055,
+      "prediction": 0.4281,
+      "abs_error": 0.3226
+    },
+    {
+      "example_id": "08981fa7-371d-4442-a9be-83b832c6eb67:medium:1:1",
+      "module": "QR",
+      "question_id": "476",
+      "question": "What Division was the college footbal team that fired their head coach on November 24, 2006?",
+      "action_text": "University of Michigan football coach firing 2006",
+      "target": 0.112,
+      "prediction": 0.3895,
+      "abs_error": 0.2775
+    },
+    {
+      "example_id": "08981fa7-371d-4442-a9be-83b832c6eb67:medium:1:2",
+      "module": "QR",
+      "question_id": "476",
+      "question": "What Division was the college footbal team that fired their head coach on November 24, 2006?",
+      "action_text": "University of Michigan football coach firing 2006",
+      "target": 0.112,
+      "prediction": 0.3895,
+      "abs_error": 0.2775
+    },
+    {
+      "example_id": "8158a333-5ff9-48f8-88dd-122d6878aa89:medium:1:0",
+      "module": "QR",
+      "question_id": "336",
+      "question": "What country do both Adnan Akmal and Kamran Akmal represent in cricket?",
+      "action_text": "Adnan Akmal Kamran Akmal cricket teams",
+      "target": 0.3946,
+      "prediction": 0.4285,
+      "abs_error": 0.0339
+    },
+    {
+      "example_id": "8158a333-5ff9-48f8-88dd-122d6878aa89:medium:1:1",
+      "module": "QR",
+      "question_id": "336",
+      "question": "What country do both Adnan Akmal and Kamran Akmal represent in cricket?",
+      "action_text": "Adnan Akmal Kamran Akmal cricket teams",
+      "target": 0.3946,
+      "prediction": 0.4285,
+      "abs_error": 0.0339
+    },
+    {
+      "example_id": "8158a333-5ff9-48f8-88dd-122d6878aa89:medium:1:2",
+      "module": "QR",
+      "question_id": "336",
+      "question": "What country do both Adnan Akmal and Kamran Akmal represent in cricket?",
+      "action_text": "Adnan Akmal Kamran Akmal cricket teams",
+      "target": 0.3946,
+      "prediction": 0.4285,
+      "abs_error": 0.0339
+    },
+    {
+      "example_id": "9440aae2-3708-42d4-9425-9e82699f46d4:medium:1:0",
+      "module": "QR",
+      "question_id": "50",
+      "question": "Which year and which conference was the 14th season for this conference as part of the NCAA Division that the Colorado Buffaloes played in with a record of 2-6 in conference play?",
+      "action_text": "CU Buffaloes 14th season NCAA conference record",
+      "target": 0.3103,
+      "prediction": 0.1832,
+      "abs_error": 0.1271
+    },
+    {
+      "example_id": "9440aae2-3708-42d4-9425-9e82699f46d4:medium:1:1",
+      "module": "QR",
+      "question_id": "50",
+      "question": "Which year and which conference was the 14th season for this conference as part of the NCAA Division that the Colorado Buffaloes played in with a record of 2-6 in conference play?",
+      "action_text": "CU Buffaloes 14th season NCAA conference record",
+      "target": 0.3103,
+      "prediction": 0.1832,
+      "abs_error": 0.1271
+    },
+    {
+      "example_id": "9440aae2-3708-42d4-9425-9e82699f46d4:medium:1:2",
+      "module": "QR",
+      "question_id": "50",
+      "question": "Which year and which conference was the 14th season for this conference as part of the NCAA Division that the Colorado Buffaloes played in with a record of 2-6 in conference play?",
+      "action_text": "CU Buffaloes 14th season NCAA conference record",
+      "target": 0.3103,
+      "prediction": 0.1832,
+      "abs_error": 0.1271
+    },
+    {
+      "example_id": "99686e56-58ba-48e4-9774-a21fce77f857:medium:1:0",
+      "module": "QR",
+      "question_id": "67",
+      "question": "What is the name of the singer who's song was released as the lead single from the album \"Confessions\", and that had popular song stuck behind for eight consecutive weeks?",
+      "action_text": "Usher \"Confessions\" lead single\",",
+      "target": 0.0858,
+      "prediction": 0.1188,
+      "abs_error": 0.033
+    },
+    {
+      "example_id": "99686e56-58ba-48e4-9774-a21fce77f857:medium:1:1",
+      "module": "QR",
+      "question_id": "67",
+      "question": "What is the name of the singer who's song was released as the lead single from the album \"Confessions\", and that had popular song stuck behind for eight consecutive weeks?",
+      "action_text": "Usher \"Confessions\" lead single\",",
+      "target": 0.0858,
+      "prediction": 0.1188,
+      "abs_error": 0.033
+    },
+    {
+      "example_id": "99686e56-58ba-48e4-9774-a21fce77f857:medium:1:2",
+      "module": "QR",
+      "question_id": "67",
+      "question": "What is the name of the singer who's song was released as the lead single from the album \"Confessions\", and that had popular song stuck behind for eight consecutive weeks?",
+      "action_text": "Usher \"Confessions\" lead single\",",
+      "target": 0.0858,
+      "prediction": 0.1188,
+      "abs_error": 0.033
+    },
+    {
+      "example_id": "7cbf9084-ccb4-4cd7-a5cd-27ba667f1260:medium:1:0",
+      "module": "QR",
+      "question_id": "275",
+      "question": "Marion Greene was a health policy analyst for St. Judt Medical company, which had how many principal operations worldwide?",
+      "action_text": "St. Jude Medical operations worldwide",
+      "target": 0.2302,
+      "prediction": 0.1835,
+      "abs_error": 0.0467
+    },
+    {
+      "example_id": "7cbf9084-ccb4-4cd7-a5cd-27ba667f1260:medium:1:1",
+      "module": "QR",
+      "question_id": "275",
+      "question": "Marion Greene was a health policy analyst for St. Judt Medical company, which had how many principal operations worldwide?",
+      "action_text": "St. Jude Medical operations worldwide",
+      "target": 0.2302,
+      "prediction": 0.1835,
+      "abs_error": 0.0467
+    },
+    {
+      "example_id": "7cbf9084-ccb4-4cd7-a5cd-27ba667f1260:medium:1:2",
+      "module": "QR",
+      "question_id": "275",
+      "question": "Marion Greene was a health policy analyst for St. Judt Medical company, which had how many principal operations worldwide?",
+      "action_text": "St. Jude Medical operations worldwide",
+      "target": 0.2302,
+      "prediction": 0.1835,
+      "abs_error": 0.0467
+    },
+    {
+      "example_id": "29e968ea-b678-4d13-9d33-5a978c2ca529:medium:1:0",
+      "module": "QR",
+      "question_id": "290",
+      "question": "What record did the Super Bowl XXXIV champions finish the regular-season with in 1999?",
+      "action_text": "Super Bowl XXXIV champion regular season record 1999",
+      "target": 0.3518,
+      "prediction": 0.4919,
+      "abs_error": 0.1401
+    },
+    {
+      "example_id": "29e968ea-b678-4d13-9d33-5a978c2ca529:medium:1:1",
+      "module": "QR",
+      "question_id": "290",
+      "question": "What record did the Super Bowl XXXIV champions finish the regular-season with in 1999?",
+      "action_text": "Super Bowl XXXIV champion regular season record 1999",
+      "target": 0.3518,
+      "prediction": 0.4919,
+      "abs_error": 0.1401
+    },
+    {
+      "example_id": "29e968ea-b678-4d13-9d33-5a978c2ca529:medium:1:2",
+      "module": "QR",
+      "question_id": "290",
+      "question": "What record did the Super Bowl XXXIV champions finish the regular-season with in 1999?",
+      "action_text": "Super Bowl XXXIV champion regular season record 1999",
+      "target": 0.3518,
+      "prediction": 0.4919,
+      "abs_error": 0.1401
+    },
+    {
+      "example_id": "1b9fb317-9497-49dd-86a9-1f3883d86a8d:medium:1:0",
+      "module": "QR",
+      "question_id": "333",
+      "question": "What Danish eurodance group had a single called \"Barbie Girl\" which resulted in a lawsuit in 2002?",
+      "action_text": "Danish eurodance band Barbie Girl lawsuit 2002",
+      "target": 0.2444,
+      "prediction": 0.3702,
+      "abs_error": 0.1258
+    },
+    {
+      "example_id": "1b9fb317-9497-49dd-86a9-1f3883d86a8d:medium:1:1",
+      "module": "QR",
+      "question_id": "333",
+      "question": "What Danish eurodance group had a single called \"Barbie Girl\" which resulted in a lawsuit in 2002?",
+      "action_text": "Danish eurodance band Barbie Girl lawsuit 2002",
+      "target": 0.2444,
+      "prediction": 0.3702,
+      "abs_error": 0.1258
+    },
+    {
+      "example_id": "1b9fb317-9497-49dd-86a9-1f3883d86a8d:medium:1:2",
+      "module": "QR",
+      "question_id": "333",
+      "question": "What Danish eurodance group had a single called \"Barbie Girl\" which resulted in a lawsuit in 2002?",
+      "action_text": "Danish eurodance band Barbie Girl lawsuit 2002",
+      "target": 0.2444,
+      "prediction": 0.3702,
+      "abs_error": 0.1258
+    },
+    {
+      "example_id": "750ec080-6d46-4b40-8aed-8fc70dc8386d:medium:1:0",
+      "module": "QR",
+      "question_id": "116",
+      "question": "Suicide's 1977 released album features a song based on what brand's comic character?",
+      "action_text": "Suicide 1977 album comic character",
+      "target": 0.3277,
+      "prediction": 0.3956,
+      "abs_error": 0.0679
+    },
+    {
+      "example_id": "750ec080-6d46-4b40-8aed-8fc70dc8386d:medium:1:1",
+      "module": "QR",
+      "question_id": "116",
+      "question": "Suicide's 1977 released album features a song based on what brand's comic character?",
+      "action_text": "Suicide 1977 album comic character",
+      "target": 0.3277,
+      "prediction": 0.3956,
+      "abs_error": 0.0679
+    },
+    {
+      "example_id": "750ec080-6d46-4b40-8aed-8fc70dc8386d:medium:1:2",
+      "module": "QR",
+      "question_id": "116",
+      "question": "Suicide's 1977 released album features a song based on what brand's comic character?",
+      "action_text": "Suicide 1977 album comic character",
+      "target": 0.3277,
+      "prediction": 0.3956,
+      "abs_error": 0.0679
+    },
+    {
+      "example_id": "d8d96d7c-c7c3-4d93-aca2-cb1451e3ce69:medium:1:0",
+      "module": "QR",
+      "question_id": "313",
+      "question": "Who was born first Am Rong or Ava DuVernay ?",
+      "action_text": "Am Rong vs Ava DuVernay birthdates",
+      "target": 0.4392,
+      "prediction": 0.368,
+      "abs_error": 0.0712
+    },
+    {
+      "example_id": "d8d96d7c-c7c3-4d93-aca2-cb1451e3ce69:medium:1:1",
+      "module": "QR",
+      "question_id": "313",
+      "question": "Who was born first Am Rong or Ava DuVernay ?",
+      "action_text": "Am Rong vs Ava DuVernay birthdates",
+      "target": 0.4392,
+      "prediction": 0.368,
+      "abs_error": 0.0712
+    },
+    {
+      "example_id": "d8d96d7c-c7c3-4d93-aca2-cb1451e3ce69:medium:1:2",
+      "module": "QR",
+      "question_id": "313",
+      "question": "Who was born first Am Rong or Ava DuVernay ?",
+      "action_text": "Am Rong vs Ava DuVernay birthdates",
+      "target": 0.4392,
+      "prediction": 0.368,
+      "abs_error": 0.0712
+    },
+    {
+      "example_id": "df397cc4-2b18-48f4-80d5-e148596a4b49:medium:1:0",
+      "module": "QR",
+      "question_id": "160",
+      "question": "Who held the record for the longest service in the Australian Parliament for a woman, and was surpassed by  a former Australian politician who was the 29th Speaker of the House of Representatives?",
+      "action_text": "longest-serving female MP Australia surpassed Speaker",
+      "target": 0.0997,
+      "prediction": 0.1194,
+      "abs_error": 0.0197
+    },
+    {
+      "example_id": "df397cc4-2b18-48f4-80d5-e148596a4b49:medium:1:1",
+      "module": "QR",
+      "question_id": "160",
+      "question": "Who held the record for the longest service in the Australian Parliament for a woman, and was surpassed by  a former Australian politician who was the 29th Speaker of the House of Representatives?",
+      "action_text": "longest-serving female MP Australia surpassed Speaker",
+      "target": 0.0997,
+      "prediction": 0.1194,
+      "abs_error": 0.0197
+    },
+    {
+      "example_id": "df397cc4-2b18-48f4-80d5-e148596a4b49:medium:1:2",
+      "module": "QR",
+      "question_id": "160",
+      "question": "Who held the record for the longest service in the Australian Parliament for a woman, and was surpassed by  a former Australian politician who was the 29th Speaker of the House of Representatives?",
+      "action_text": "longest-serving female MP Australia surpassed Speaker",
+      "target": 0.0997,
+      "prediction": 0.1194,
+      "abs_error": 0.0197
+    },
+    {
+      "example_id": "696ec966-56c4-46b5-a934-8681bf1886e1:medium:1:0",
+      "module": "QR",
+      "question_id": "511",
+      "question": "What was the nationality of the actor playing a Russian hostage taker in \"Hostage for a Day\"?",
+      "action_text": "actor nationality Hostage for a Day Russian hostage taker",
+      "target": 0.4949,
+      "prediction": 0.5885,
+      "abs_error": 0.0936
+    },
+    {
+      "example_id": "696ec966-56c4-46b5-a934-8681bf1886e1:medium:1:1",
+      "module": "QR",
+      "question_id": "511",
+      "question": "What was the nationality of the actor playing a Russian hostage taker in \"Hostage for a Day\"?",
+      "action_text": "actor nationality Hostage for a Day Russian hostage taker",
+      "target": 0.4949,
+      "prediction": 0.5885,
+      "abs_error": 0.0936
+    },
+    {
+      "example_id": "696ec966-56c4-46b5-a934-8681bf1886e1:medium:1:2",
+      "module": "QR",
+      "question_id": "511",
+      "question": "What was the nationality of the actor playing a Russian hostage taker in \"Hostage for a Day\"?",
+      "action_text": "actor nationality Hostage for a Day Russian hostage taker",
+      "target": 0.4949,
+      "prediction": 0.5885,
+      "abs_error": 0.0936
+    },
+    {
+      "example_id": "f5521193-0c4b-43ad-aa4c-2682fd02be0f:medium:1:0",
+      "module": "QR",
+      "question_id": "425",
+      "question": "Las Vegas Festival Grounds is north of the hotel that is owned by which company?",
+      "action_text": "Las Vegas Festival Grounds owner company",
+      "target": 0.4496,
+      "prediction": 0.4556,
+      "abs_error": 0.006
+    },
+    {
+      "example_id": "f5521193-0c4b-43ad-aa4c-2682fd02be0f:medium:1:1",
+      "module": "QR",
+      "question_id": "425",
+      "question": "Las Vegas Festival Grounds is north of the hotel that is owned by which company?",
+      "action_text": "Las Vegas Festival Grounds owner company",
+      "target": 0.4496,
+      "prediction": 0.4556,
+      "abs_error": 0.006
+    },
+    {
+      "example_id": "f5521193-0c4b-43ad-aa4c-2682fd02be0f:medium:1:2",
+      "module": "QR",
+      "question_id": "425",
+      "question": "Las Vegas Festival Grounds is north of the hotel that is owned by which company?",
+      "action_text": "Las Vegas Festival Grounds owner company",
+      "target": 0.4496,
+      "prediction": 0.4556,
+      "abs_error": 0.006
+    },
+    {
+      "example_id": "ed037fba-a059-4ee9-b960-b7e6640045f8:medium:1:0",
+      "module": "QR",
+      "question_id": "463",
+      "question": "Blinding Edge Pictures produced which 2000 film starring Bruce Willis?",
+      "action_text": "Blinding Edge Pictures 2000 film Bruce Willis",
+      "target": 0.6947,
+      "prediction": 0.473,
+      "abs_error": 0.2217
+    },
+    {
+      "example_id": "ed037fba-a059-4ee9-b960-b7e6640045f8:medium:1:1",
+      "module": "QR",
+      "question_id": "463",
+      "question": "Blinding Edge Pictures produced which 2000 film starring Bruce Willis?",
+      "action_text": "Blinding Edge Pictures 2000 film Bruce Willis",
+      "target": 0.6947,
+      "prediction": 0.473,
+      "abs_error": 0.2217
+    },
+    {
+      "example_id": "ed037fba-a059-4ee9-b960-b7e6640045f8:medium:1:2",
+      "module": "QR",
+      "question_id": "463",
+      "question": "Blinding Edge Pictures produced which 2000 film starring Bruce Willis?",
+      "action_text": "Blinding Edge Pictures 2000 film Bruce Willis",
+      "target": 0.6947,
+      "prediction": 0.473,
+      "abs_error": 0.2217
+    },
+    {
+      "example_id": "086adcdf-3593-4ad3-a710-c8dd72ca186f:medium:1:0",
+      "module": "QR",
+      "question_id": "276",
+      "question": "Which Genus has more species Eucryphia or Lepidozamia ?",
+      "action_text": "Eucryphia vs Lepidozamia species count",
+      "target": 0.3282,
+      "prediction": 0.3325,
+      "abs_error": 0.0043
+    },
+    {
+      "example_id": "086adcdf-3593-4ad3-a710-c8dd72ca186f:medium:1:1",
+      "module": "QR",
+      "question_id": "276",
+      "question": "Which Genus has more species Eucryphia or Lepidozamia ?",
+      "action_text": "Eucryphia vs Lepidozamia species count",
+      "target": 0.3282,
+      "prediction": 0.3325,
+      "abs_error": 0.0043
+    },
+    {
+      "example_id": "086adcdf-3593-4ad3-a710-c8dd72ca186f:medium:1:2",
+      "module": "QR",
+      "question_id": "276",
+      "question": "Which Genus has more species Eucryphia or Lepidozamia ?",
+      "action_text": "Eucryphia vs Lepidozamia species count",
+      "target": 0.3282,
+      "prediction": 0.3325,
+      "abs_error": 0.0043
+    },
+    {
+      "example_id": "5af01651-e428-4e1a-8198-2d831daf5790:medium:1:0",
+      "module": "QR",
+      "question_id": "371",
+      "question": "What country does Eric A. Sykes and Eccles, Greater Manchester have ion common?",
+      "action_text": "Eric A. Sykes Eccles Greater Manchester",
+      "target": 0.4497,
+      "prediction": 0.4227,
+      "abs_error": 0.027
+    },
+    {
+      "example_id": "5af01651-e428-4e1a-8198-2d831daf5790:medium:1:1",
+      "module": "QR",
+      "question_id": "371",
+      "question": "What country does Eric A. Sykes and Eccles, Greater Manchester have ion common?",
+      "action_text": "Eric A. Sykes Eccles Greater Manchester",
+      "target": 0.4497,
+      "prediction": 0.4227,
+      "abs_error": 0.027
+    },
+    {
+      "example_id": "5af01651-e428-4e1a-8198-2d831daf5790:medium:1:2",
+      "module": "QR",
+      "question_id": "371",
+      "question": "What country does Eric A. Sykes and Eccles, Greater Manchester have ion common?",
+      "action_text": "Eric A. Sykes Eccles Greater Manchester",
+      "target": 0.4497,
+      "prediction": 0.4227,
+      "abs_error": 0.027
+    },
+    {
+      "example_id": "e806f888-7094-46ce-bbf2-b910bf566624:medium:1:0",
+      "module": "QR",
+      "question_id": "103",
+      "question": "Where is the stadium at which 1964 Georgia Tech Yellow Jackets football team played their home game located? ",
+      "action_text": "Georgia Tech Yellow Jackets football stadium location",
+      "target": 0.3478,
+      "prediction": 0.3094,
+      "abs_error": 0.0384
+    },
+    {
+      "example_id": "e806f888-7094-46ce-bbf2-b910bf566624:medium:1:1",
+      "module": "QR",
+      "question_id": "103",
+      "question": "Where is the stadium at which 1964 Georgia Tech Yellow Jackets football team played their home game located? ",
+      "action_text": "Georgia Tech Yellow Jackets football stadium location",
+      "target": 0.3478,
+      "prediction": 0.3094,
+      "abs_error": 0.0384
+    },
+    {
+      "example_id": "e806f888-7094-46ce-bbf2-b910bf566624:medium:1:2",
+      "module": "QR",
+      "question_id": "103",
+      "question": "Where is the stadium at which 1964 Georgia Tech Yellow Jackets football team played their home game located? ",
+      "action_text": "Georgia Tech Yellow Jackets football stadium location",
+      "target": 0.3478,
+      "prediction": 0.3094,
+      "abs_error": 0.0384
+    },
+    {
+      "example_id": "02cd7997-649e-45ec-bc56-2578a45126da:medium:1:0",
+      "module": "QR",
+      "question_id": "158",
+      "question": "What football club plays in the area between the old tool gates: Brook Bar and Trafford bar?",
+      "action_text": "football club Brook Bar Trafford Bar",
+      "target": 0.4118,
+      "prediction": 0.4505,
+      "abs_error": 0.0387
+    },
+    {
+      "example_id": "02cd7997-649e-45ec-bc56-2578a45126da:medium:1:1",
+      "module": "QR",
+      "question_id": "158",
+      "question": "What football club plays in the area between the old tool gates: Brook Bar and Trafford bar?",
+      "action_text": "football club Brook Bar Trafford Bar",
+      "target": 0.4118,
+      "prediction": 0.4505,
+      "abs_error": 0.0387
+    },
+    {
+      "example_id": "02cd7997-649e-45ec-bc56-2578a45126da:medium:1:2",
+      "module": "QR",
+      "question_id": "158",
+      "question": "What football club plays in the area between the old tool gates: Brook Bar and Trafford bar?",
+      "action_text": "football club Brook Bar Trafford Bar",
+      "target": 0.4118,
+      "prediction": 0.4505,
+      "abs_error": 0.0387
+    },
+    {
+      "example_id": "38f38c26-89f4-48e3-9491-30e99a035408:medium:1:0",
+      "module": "QR",
+      "question_id": "248",
+      "question": "Which author has won more Pulitzer Prizes, Thomas Friedman or Henri Bergson?",
+      "action_text": "Pulitzer Prize winners: Friedman vs Bergson",
+      "target": 0.2093,
+      "prediction": 0.3423,
+      "abs_error": 0.133
+    },
+    {
+      "example_id": "38f38c26-89f4-48e3-9491-30e99a035408:medium:1:1",
+      "module": "QR",
+      "question_id": "248",
+      "question": "Which author has won more Pulitzer Prizes, Thomas Friedman or Henri Bergson?",
+      "action_text": "Pulitzer Prize winners: Friedman vs Bergson",
+      "target": 0.2093,
+      "prediction": 0.3423,
+      "abs_error": 0.133
+    },
+    {
+      "example_id": "38f38c26-89f4-48e3-9491-30e99a035408:medium:1:2",
+      "module": "QR",
+      "question_id": "248",
+      "question": "Which author has won more Pulitzer Prizes, Thomas Friedman or Henri Bergson?",
+      "action_text": "Pulitzer Prize winners: Friedman vs Bergson",
+      "target": 0.2093,
+      "prediction": 0.3423,
+      "abs_error": 0.133
+    },
+    {
+      "example_id": "e8cb6c7f-3a2b-45da-b31a-113f85addb47:medium:1:0",
+      "module": "QR",
+      "question_id": "506",
+      "question": "Is Gasherbrum II or Nuptse closest to the tallest mountain in the world?",
+      "action_text": "Gasherbrum II Nuptse Everest distance",
+      "target": 0.3279,
+      "prediction": 0.4004,
+      "abs_error": 0.0725
+    },
+    {
+      "example_id": "e8cb6c7f-3a2b-45da-b31a-113f85addb47:medium:1:1",
+      "module": "QR",
+      "question_id": "506",
+      "question": "Is Gasherbrum II or Nuptse closest to the tallest mountain in the world?",
+      "action_text": "Gasherbrum II Nuptse Everest distance",
+      "target": 0.3279,
+      "prediction": 0.4004,
+      "abs_error": 0.0725
+    },
+    {
+      "example_id": "e8cb6c7f-3a2b-45da-b31a-113f85addb47:medium:1:2",
+      "module": "QR",
+      "question_id": "506",
+      "question": "Is Gasherbrum II or Nuptse closest to the tallest mountain in the world?",
+      "action_text": "Gasherbrum II Nuptse Everest distance",
+      "target": 0.3279,
+      "prediction": 0.4004,
+      "abs_error": 0.0725
+    },
+    {
+      "example_id": "f6616cef-27a8-4f1d-950f-ae067eea3e85:medium:1:0",
+      "module": "QR",
+      "question_id": "193",
+      "question": "In which city are the headquarters of the American research and scientific development company where Ravi Sethi worked as computer scientist located?",
+      "action_text": "headquarters location of Ravi Sethi's former employer",
+      "target": 0.0894,
+      "prediction": 0.1488,
+      "abs_error": 0.0594
+    },
+    {
+      "example_id": "f6616cef-27a8-4f1d-950f-ae067eea3e85:medium:1:1",
+      "module": "QR",
+      "question_id": "193",
+      "question": "In which city are the headquarters of the American research and scientific development company where Ravi Sethi worked as computer scientist located?",
+      "action_text": "headquarters location of Ravi Sethi's former employer",
+      "target": 0.0894,
+      "prediction": 0.1488,
+      "abs_error": 0.0594
+    },
+    {
+      "example_id": "f6616cef-27a8-4f1d-950f-ae067eea3e85:medium:1:2",
+      "module": "QR",
+      "question_id": "193",
+      "question": "In which city are the headquarters of the American research and scientific development company where Ravi Sethi worked as computer scientist located?",
+      "action_text": "headquarters location of Ravi Sethi's former employer",
+      "target": 0.0894,
+      "prediction": 0.1488,
+      "abs_error": 0.0594
+    },
+    {
+      "example_id": "fa6fe1d5-409b-43fe-8e82-7d4464e51a5e:medium:1:0",
+      "module": "QR",
+      "question_id": "368",
+      "question": "Haruki Murakami said that writing \"Dance Dance Dance\" had been a healing act after his unexpected fame following the publication of a novel published in which year ?",
+      "action_text": "Haruki Murakami 'Dance Dance Dance' publication year",
+      "target": 0.2026,
+      "prediction": 0.1098,
+      "abs_error": 0.0928
+    },
+    {
+      "example_id": "fa6fe1d5-409b-43fe-8e82-7d4464e51a5e:medium:1:1",
+      "module": "QR",
+      "question_id": "368",
+      "question": "Haruki Murakami said that writing \"Dance Dance Dance\" had been a healing act after his unexpected fame following the publication of a novel published in which year ?",
+      "action_text": "Haruki Murakami 'Dance Dance Dance' publication year",
+      "target": 0.2026,
+      "prediction": 0.1098,
+      "abs_error": 0.0928
+    },
+    {
+      "example_id": "fa6fe1d5-409b-43fe-8e82-7d4464e51a5e:medium:1:2",
+      "module": "QR",
+      "question_id": "368",
+      "question": "Haruki Murakami said that writing \"Dance Dance Dance\" had been a healing act after his unexpected fame following the publication of a novel published in which year ?",
+      "action_text": "Haruki Murakami 'Dance Dance Dance' publication year",
+      "target": 0.2026,
+      "prediction": 0.1098,
+      "abs_error": 0.0928
+    },
+    {
+      "example_id": "d4c06589-7815-4a51-9d7e-c6878541c8dc:medium:1:0",
+      "module": "QR",
+      "question_id": "490",
+      "question": "In between Berghuis v. Thompkins and Mississippi University for Women v. Hogan which one was a  case decided 5-4 by the Supreme Court of the United States?",
+      "action_text": "Supreme Court cases Berghuis v. Thompkins Mississippi University for Women v. Hogan decision",
+      "target": 0.4675,
+      "prediction": 0.4662,
+      "abs_error": 0.0013
+    },
+    {
+      "example_id": "d4c06589-7815-4a51-9d7e-c6878541c8dc:medium:1:1",
+      "module": "QR",
+      "question_id": "490",
+      "question": "In between Berghuis v. Thompkins and Mississippi University for Women v. Hogan which one was a  case decided 5-4 by the Supreme Court of the United States?",
+      "action_text": "Supreme Court cases Berghuis v. Thompkins Mississippi University for Women v. Hogan decision",
+      "target": 0.4675,
+      "prediction": 0.4662,
+      "abs_error": 0.0013
+    },
+    {
+      "example_id": "d4c06589-7815-4a51-9d7e-c6878541c8dc:medium:1:2",
+      "module": "QR",
+      "question_id": "490",
+      "question": "In between Berghuis v. Thompkins and Mississippi University for Women v. Hogan which one was a  case decided 5-4 by the Supreme Court of the United States?",
+      "action_text": "Supreme Court cases Berghuis v. Thompkins Mississippi University for Women v. Hogan decision",
+      "target": 0.4675,
+      "prediction": 0.4662,
+      "abs_error": 0.0013
+    },
+    {
+      "example_id": "9a8bb8cc-9ee9-44d2-9a2a-6308d5d14990:medium:1:0",
+      "module": "QR",
+      "question_id": "513",
+      "question": "What professions did S. Sylvan Simon and Danny Cannon have in common?",
+      "action_text": "S. Sylvan Simon Danny Cannon careers",
+      "target": 0.4492,
+      "prediction": 0.3886,
+      "abs_error": 0.0606
+    },
+    {
+      "example_id": "9a8bb8cc-9ee9-44d2-9a2a-6308d5d14990:medium:1:1",
+      "module": "QR",
+      "question_id": "513",
+      "question": "What professions did S. Sylvan Simon and Danny Cannon have in common?",
+      "action_text": "S. Sylvan Simon Danny Cannon careers",
+      "target": 0.4492,
+      "prediction": 0.3886,
+      "abs_error": 0.0606
+    },
+    {
+      "example_id": "9a8bb8cc-9ee9-44d2-9a2a-6308d5d14990:medium:1:2",
+      "module": "QR",
+      "question_id": "513",
+      "question": "What professions did S. Sylvan Simon and Danny Cannon have in common?",
+      "action_text": "S. Sylvan Simon Danny Cannon careers",
+      "target": 0.4492,
+      "prediction": 0.3886,
+      "abs_error": 0.0606
+    },
+    {
+      "example_id": "10a49d0f-425c-4dd7-8e92-bdaf6bd5803f:medium:1:0",
+      "module": "QR",
+      "question_id": "4",
+      "question": "The director of the romantic comedy \"Big Stone Gap\" is based in what New York city?",
+      "action_text": "director Big Stone Gap New York City",
+      "target": 0.3796,
+      "prediction": 0.4968,
+      "abs_error": 0.1172
+    },
+    {
+      "example_id": "10a49d0f-425c-4dd7-8e92-bdaf6bd5803f:medium:1:1",
+      "module": "QR",
+      "question_id": "4",
+      "question": "The director of the romantic comedy \"Big Stone Gap\" is based in what New York city?",
+      "action_text": "director Big Stone Gap New York City",
+      "target": 0.3796,
+      "prediction": 0.4968,
+      "abs_error": 0.1172
+    },
+    {
+      "example_id": "10a49d0f-425c-4dd7-8e92-bdaf6bd5803f:medium:1:2",
+      "module": "QR",
+      "question_id": "4",
+      "question": "The director of the romantic comedy \"Big Stone Gap\" is based in what New York city?",
+      "action_text": "director Big Stone Gap New York City",
+      "target": 0.3796,
+      "prediction": 0.4968,
+      "abs_error": 0.1172
+    },
+    {
+      "example_id": "1d26bf18-913d-4a08-baae-0977640a5160:medium:1:0",
+      "module": "QR",
+      "question_id": "598",
+      "question": "What movie is the the Spinning turtle attraction in the worlds 21st largest theme park based off of?",
+      "action_text": "Spinning Turtle attraction origin 21st largest theme park",
+      "target": 0.533,
+      "prediction": 0.4,
+      "abs_error": 0.133
+    },
+    {
+      "example_id": "1d26bf18-913d-4a08-baae-0977640a5160:medium:1:1",
+      "module": "QR",
+      "question_id": "598",
+      "question": "What movie is the the Spinning turtle attraction in the worlds 21st largest theme park based off of?",
+      "action_text": "Spinning Turtle attraction origin 21st largest theme park",
+      "target": 0.533,
+      "prediction": 0.4,
+      "abs_error": 0.133
+    },
+    {
+      "example_id": "1d26bf18-913d-4a08-baae-0977640a5160:medium:1:2",
+      "module": "QR",
+      "question_id": "598",
+      "question": "What movie is the the Spinning turtle attraction in the worlds 21st largest theme park based off of?",
+      "action_text": "Spinning Turtle attraction origin 21st largest theme park",
+      "target": 0.533,
+      "prediction": 0.4,
+      "abs_error": 0.133
+    },
+    {
+      "example_id": "883dc6e9-cad8-42e8-b0e8-7274f5e1e9a8:medium:1:0",
+      "module": "QR",
+      "question_id": "214",
+      "question": "Who was born first, Arthur Conan Doyle or Penelope Lively?",
+      "action_text": "Arthur Conan Doyle vs Penelope Lively birthdates",
+      "target": 0.4949,
+      "prediction": 0.4104,
+      "abs_error": 0.0845
+    },
+    {
+      "example_id": "883dc6e9-cad8-42e8-b0e8-7274f5e1e9a8:medium:1:1",
+      "module": "QR",
+      "question_id": "214",
+      "question": "Who was born first, Arthur Conan Doyle or Penelope Lively?",
+      "action_text": "Arthur Conan Doyle vs Penelope Lively birthdates",
+      "target": 0.4949,
+      "prediction": 0.4104,
+      "abs_error": 0.0845
+    },
+    {
+      "example_id": "883dc6e9-cad8-42e8-b0e8-7274f5e1e9a8:medium:1:2",
+      "module": "QR",
+      "question_id": "214",
+      "question": "Who was born first, Arthur Conan Doyle or Penelope Lively?",
+      "action_text": "Arthur Conan Doyle vs Penelope Lively birthdates",
+      "target": 0.4949,
+      "prediction": 0.4104,
+      "abs_error": 0.0845
+    },
+    {
+      "example_id": "cf2e238a-3a07-493e-b468-707d458f5c06:medium:1:0",
+      "module": "QR",
+      "question_id": "519",
+      "question": "James Spedding was chiefly known as the editor of the works of an author who served both as Attorney General and as what?",
+      "action_text": "James Spedding Attorney General author",
+      "target": 0.3517,
+      "prediction": 0.223,
+      "abs_error": 0.1287
+    },
+    {
+      "example_id": "cf2e238a-3a07-493e-b468-707d458f5c06:medium:1:1",
+      "module": "QR",
+      "question_id": "519",
+      "question": "James Spedding was chiefly known as the editor of the works of an author who served both as Attorney General and as what?",
+      "action_text": "James Spedding Attorney General author",
+      "target": 0.3517,
+      "prediction": 0.223,
+      "abs_error": 0.1287
+    },
+    {
+      "example_id": "cf2e238a-3a07-493e-b468-707d458f5c06:medium:1:2",
+      "module": "QR",
+      "question_id": "519",
+      "question": "James Spedding was chiefly known as the editor of the works of an author who served both as Attorney General and as what?",
+      "action_text": "James Spedding Attorney General author",
+      "target": 0.3517,
+      "prediction": 0.223,
+      "abs_error": 0.1287
+    },
+    {
+      "example_id": "0fa54977-587c-4f80-979c-18baf4aeb829:medium:1:0",
+      "module": "QR",
+      "question_id": "136",
+      "question": "The 1974 Texas Tech Raiders football team represented what public research university in Lubbock, Texas?",
+      "action_text": "Texas Tech Raiders football team 1974",
+      "target": 0.4948,
+      "prediction": 0.4688,
+      "abs_error": 0.026
+    },
+    {
+      "example_id": "0fa54977-587c-4f80-979c-18baf4aeb829:medium:1:1",
+      "module": "QR",
+      "question_id": "136",
+      "question": "The 1974 Texas Tech Raiders football team represented what public research university in Lubbock, Texas?",
+      "action_text": "Texas Tech Raiders football team 1974",
+      "target": 0.4948,
+      "prediction": 0.4688,
+      "abs_error": 0.026
+    },
+    {
+      "example_id": "0fa54977-587c-4f80-979c-18baf4aeb829:medium:1:2",
+      "module": "QR",
+      "question_id": "136",
+      "question": "The 1974 Texas Tech Raiders football team represented what public research university in Lubbock, Texas?",
+      "action_text": "Texas Tech Raiders football team 1974",
+      "target": 0.4948,
+      "prediction": 0.4688,
+      "abs_error": 0.026
+    },
+    {
+      "example_id": "7b144727-c612-48d4-8e99-e15da30492c9:medium:1:0",
+      "module": "QR",
+      "question_id": "326",
+      "question": "The voice of Homer Simpson also voices what alien character in the television series \"The Simpsons\"?",
+      "action_text": "Homer Simpson \"The Simpsons\" alien voice",
+      "target": 0.4947,
+      "prediction": 0.3205,
+      "abs_error": 0.1742
+    },
+    {
+      "example_id": "7b144727-c612-48d4-8e99-e15da30492c9:medium:1:1",
+      "module": "QR",
+      "question_id": "326",
+      "question": "The voice of Homer Simpson also voices what alien character in the television series \"The Simpsons\"?",
+      "action_text": "Homer Simpson \"The Simpsons\" alien voice",
+      "target": 0.4947,
+      "prediction": 0.3205,
+      "abs_error": 0.1742
+    },
+    {
+      "example_id": "7b144727-c612-48d4-8e99-e15da30492c9:medium:1:2",
+      "module": "QR",
+      "question_id": "326",
+      "question": "The voice of Homer Simpson also voices what alien character in the television series \"The Simpsons\"?",
+      "action_text": "Homer Simpson \"The Simpsons\" alien voice",
+      "target": 0.4947,
+      "prediction": 0.3205,
+      "abs_error": 0.1742
+    },
+    {
+      "example_id": "4499d985-3b03-40d3-aa6a-d80c457aa9e9:medium:1:0",
+      "module": "QR",
+      "question_id": "83",
+      "question": "Handi-Snacks are a snack food product line sold by what American multinational confectionery, food, and beverage company that is based in Illinois?",
+      "action_text": "Handi-Snacks company origin",
+      "target": 0.1119,
+      "prediction": 0.0895,
+      "abs_error": 0.0224
+    },
+    {
+      "example_id": "4499d985-3b03-40d3-aa6a-d80c457aa9e9:medium:1:1",
+      "module": "QR",
+      "question_id": "83",
+      "question": "Handi-Snacks are a snack food product line sold by what American multinational confectionery, food, and beverage company that is based in Illinois?",
+      "action_text": "Handi-Snacks company origin",
+      "target": 0.1119,
+      "prediction": 0.0895,
+      "abs_error": 0.0224
+    },
+    {
+      "example_id": "4499d985-3b03-40d3-aa6a-d80c457aa9e9:medium:1:2",
+      "module": "QR",
+      "question_id": "83",
+      "question": "Handi-Snacks are a snack food product line sold by what American multinational confectionery, food, and beverage company that is based in Illinois?",
+      "action_text": "Handi-Snacks company origin",
+      "target": 0.1119,
+      "prediction": 0.0895,
+      "abs_error": 0.0224
+    },
+    {
+      "example_id": "de6b8b4b-83ea-4611-b0b9-59664f37ef53:medium:1:0",
+      "module": "QR",
+      "question_id": "409",
+      "question": "What are the names of the members of the Detroit-based hip hop duo who has worked with Jason Gilbert?",
+      "action_text": "Detroit hip hop duo Jason Gilbert collaborators",
+      "target": 0.3075,
+      "prediction": 0.3709,
+      "abs_error": 0.0634
+    },
+    {
+      "example_id": "de6b8b4b-83ea-4611-b0b9-59664f37ef53:medium:1:1",
+      "module": "QR",
+      "question_id": "409",
+      "question": "What are the names of the members of the Detroit-based hip hop duo who has worked with Jason Gilbert?",
+      "action_text": "Detroit hip hop duo Jason Gilbert collaborators",
+      "target": 0.3075,
+      "prediction": 0.3709,
+      "abs_error": 0.0634
+    },
+    {
+      "example_id": "de6b8b4b-83ea-4611-b0b9-59664f37ef53:medium:1:2",
+      "module": "QR",
+      "question_id": "409",
+      "question": "What are the names of the members of the Detroit-based hip hop duo who has worked with Jason Gilbert?",
+      "action_text": "Detroit hip hop duo Jason Gilbert collaborators",
+      "target": 0.3075,
+      "prediction": 0.3709,
+      "abs_error": 0.0634
+    },
+    {
+      "example_id": "f09765b7-8ebd-4da1-87db-9e26200f6be3:medium:1:0",
+      "module": "QR",
+      "question_id": "465",
+      "question": "Which American Space Western animated series did Celebrity Home Entertainment released ",
+      "action_text": "Celebrity Home Entertainment American Space Western animated series",
+      "target": 0.7222,
+      "prediction": 0.49,
+      "abs_error": 0.2322
+    },
+    {
+      "example_id": "f09765b7-8ebd-4da1-87db-9e26200f6be3:medium:1:1",
+      "module": "QR",
+      "question_id": "465",
+      "question": "Which American Space Western animated series did Celebrity Home Entertainment released ",
+      "action_text": "Celebrity Home Entertainment American Space Western animated series",
+      "target": 0.7222,
+      "prediction": 0.49,
+      "abs_error": 0.2322
+    },
+    {
+      "example_id": "f09765b7-8ebd-4da1-87db-9e26200f6be3:medium:1:2",
+      "module": "QR",
+      "question_id": "465",
+      "question": "Which American Space Western animated series did Celebrity Home Entertainment released ",
+      "action_text": "Celebrity Home Entertainment American Space Western animated series",
+      "target": 0.7222,
+      "prediction": 0.49,
+      "abs_error": 0.2322
+    },
+    {
+      "example_id": "aa4b38a9-2e56-4cea-a305-a3203827cb07:medium:1:0",
+      "module": "QR",
+      "question_id": "6",
+      "question": "Who was known by his stage name Aladin and helped organizations improve their performance as a consultant?",
+      "action_text": "Aladin consultant performance improvement",
+      "target": 0.209,
+      "prediction": 0.2569,
+      "abs_error": 0.0479
+    },
+    {
+      "example_id": "aa4b38a9-2e56-4cea-a305-a3203827cb07:medium:1:1",
+      "module": "QR",
+      "question_id": "6",
+      "question": "Who was known by his stage name Aladin and helped organizations improve their performance as a consultant?",
+      "action_text": "Aladin consultant performance improvement",
+      "target": 0.209,
+      "prediction": 0.2569,
+      "abs_error": 0.0479
+    },
+    {
+      "example_id": "aa4b38a9-2e56-4cea-a305-a3203827cb07:medium:1:2",
+      "module": "QR",
+      "question_id": "6",
+      "question": "Who was known by his stage name Aladin and helped organizations improve their performance as a consultant?",
+      "action_text": "Aladin consultant performance improvement",
+      "target": 0.209,
+      "prediction": 0.2569,
+      "abs_error": 0.0479
+    },
+    {
+      "example_id": "a240b4e1-1769-4395-870a-d8731da97fc5:medium:1:0",
+      "module": "QR",
+      "question_id": "344",
+      "question": "Garden Island Naval Chapel is the oldest Chistian chapel of a naval branch of what defence force?",
+      "action_text": "Garden Island Naval Chapel Christian chapel defense force",
+      "target": 0.4116,
+      "prediction": 0.503,
+      "abs_error": 0.0914
+    },
+    {
+      "example_id": "a240b4e1-1769-4395-870a-d8731da97fc5:medium:1:1",
+      "module": "QR",
+      "question_id": "344",
+      "question": "Garden Island Naval Chapel is the oldest Chistian chapel of a naval branch of what defence force?",
+      "action_text": "Garden Island Naval Chapel Christian chapel defense force",
+      "target": 0.4116,
+      "prediction": 0.503,
+      "abs_error": 0.0914
+    },
+    {
+      "example_id": "a240b4e1-1769-4395-870a-d8731da97fc5:medium:1:2",
+      "module": "QR",
+      "question_id": "344",
+      "question": "Garden Island Naval Chapel is the oldest Chistian chapel of a naval branch of what defence force?",
+      "action_text": "Garden Island Naval Chapel Christian chapel defense force",
+      "target": 0.4116,
+      "prediction": 0.503,
+      "abs_error": 0.0914
+    },
+    {
+      "example_id": "d82eb043-d6ef-4ffd-b2b4-fc831e1334fa:medium:1:0",
+      "module": "QR",
+      "question_id": "369",
+      "question": "Erica Packer was the second wife of what Australian businessman?",
+      "action_text": "Erica Packer Australian businessman",
+      "target": 0.5666,
+      "prediction": 0.4423,
+      "abs_error": 0.1243
+    },
+    {
+      "example_id": "d82eb043-d6ef-4ffd-b2b4-fc831e1334fa:medium:1:1",
+      "module": "QR",
+      "question_id": "369",
+      "question": "Erica Packer was the second wife of what Australian businessman?",
+      "action_text": "Erica Packer Australian businessman",
+      "target": 0.5666,
+      "prediction": 0.4423,
+      "abs_error": 0.1243
+    },
+    {
+      "example_id": "d82eb043-d6ef-4ffd-b2b4-fc831e1334fa:medium:1:2",
+      "module": "QR",
+      "question_id": "369",
+      "question": "Erica Packer was the second wife of what Australian businessman?",
+      "action_text": "Erica Packer Australian businessman",
+      "target": 0.5666,
+      "prediction": 0.4423,
+      "abs_error": 0.1243
+    },
+    {
+      "example_id": "5f0bdb49-f0a3-491e-8fdf-38fcbd656eb6:medium:1:0",
+      "module": "QR",
+      "question_id": "32",
+      "question": "Which  French ace pilot and adventurer fly L'Oiseau Blanc",
+      "action_text": "L'Oiseau Blanc French pilot adventurer",
+      "target": 0.62,
+      "prediction": 0.4176,
+      "abs_error": 0.2024
+    },
+    {
+      "example_id": "5f0bdb49-f0a3-491e-8fdf-38fcbd656eb6:medium:1:1",
+      "module": "QR",
+      "question_id": "32",
+      "question": "Which  French ace pilot and adventurer fly L'Oiseau Blanc",
+      "action_text": "L'Oiseau Blanc French pilot adventurer",
+      "target": 0.62,
+      "prediction": 0.4176,
+      "abs_error": 0.2024
+    },
+    {
+      "example_id": "5f0bdb49-f0a3-491e-8fdf-38fcbd656eb6:medium:1:2",
+      "module": "QR",
+      "question_id": "32",
+      "question": "Which  French ace pilot and adventurer fly L'Oiseau Blanc",
+      "action_text": "L'Oiseau Blanc French pilot adventurer",
+      "target": 0.62,
+      "prediction": 0.4176,
+      "abs_error": 0.2024
+    },
+    {
+      "example_id": "1e0c5a13-a4db-4b55-9895-2cb00400d19f:medium:1:0",
+      "module": "QR",
+      "question_id": "387",
+      "question": "Dead but Rising was a song by the Danish band fomed in what city in 2001?",
+      "action_text": "Dead But Rising band formation city 2001",
+      "target": 0.54,
+      "prediction": 0.3867,
+      "abs_error": 0.1533
+    },
+    {
+      "example_id": "1e0c5a13-a4db-4b55-9895-2cb00400d19f:medium:1:1",
+      "module": "QR",
+      "question_id": "387",
+      "question": "Dead but Rising was a song by the Danish band fomed in what city in 2001?",
+      "action_text": "Dead But Rising band formation city 2001",
+      "target": 0.54,
+      "prediction": 0.3867,
+      "abs_error": 0.1533
+    },
+    {
+      "example_id": "1e0c5a13-a4db-4b55-9895-2cb00400d19f:medium:1:2",
+      "module": "QR",
+      "question_id": "387",
+      "question": "Dead but Rising was a song by the Danish band fomed in what city in 2001?",
+      "action_text": "Dead But Rising band formation city 2001",
+      "target": 0.54,
+      "prediction": 0.3867,
+      "abs_error": 0.1533
+    },
+    {
+      "example_id": "8f1a432c-a1cd-4c1d-ae2a-57ad0af1eeb8:medium:1:0",
+      "module": "QR",
+      "question_id": "58",
+      "question": "According to the 2001 census, what was the population of the city in which Kirton End is located?",
+      "action_text": "Kirton End 2001 census population",
+      "target": 0.4946,
+      "prediction": 0.3104,
+      "abs_error": 0.1842
+    },
+    {
+      "example_id": "8f1a432c-a1cd-4c1d-ae2a-57ad0af1eeb8:medium:1:1",
+      "module": "QR",
+      "question_id": "58",
+      "question": "According to the 2001 census, what was the population of the city in which Kirton End is located?",
+      "action_text": "Kirton End 2001 census population",
+      "target": 0.4946,
+      "prediction": 0.3104,
+      "abs_error": 0.1842
+    },
+    {
+      "example_id": "8f1a432c-a1cd-4c1d-ae2a-57ad0af1eeb8:medium:1:2",
+      "module": "QR",
+      "question_id": "58",
+      "question": "According to the 2001 census, what was the population of the city in which Kirton End is located?",
+      "action_text": "Kirton End 2001 census population",
+      "target": 0.4946,
+      "prediction": 0.3104,
+      "abs_error": 0.1842
+    },
+    {
+      "example_id": "e5539fca-516e-476c-bb58-097e31e76502:medium:1:0",
+      "module": "QR",
+      "question_id": "174",
+      "question": "Which of the city at the south of Shelly Beach, New South Wales is a local government area in the Hunter region of New South Wales, Australia?",
+      "action_text": "local government area south of Shelly Beach NSW Hunter Region Australia",
+      "target": 0.5945,
+      "prediction": 0.4121,
+      "abs_error": 0.1824
+    },
+    {
+      "example_id": "e5539fca-516e-476c-bb58-097e31e76502:medium:1:1",
+      "module": "QR",
+      "question_id": "174",
+      "question": "Which of the city at the south of Shelly Beach, New South Wales is a local government area in the Hunter region of New South Wales, Australia?",
+      "action_text": "local government area south of Shelly Beach NSW Hunter Region Australia",
+      "target": 0.5945,
+      "prediction": 0.4121,
+      "abs_error": 0.1824
+    },
+    {
+      "example_id": "e5539fca-516e-476c-bb58-097e31e76502:medium:1:2",
+      "module": "QR",
+      "question_id": "174",
+      "question": "Which of the city at the south of Shelly Beach, New South Wales is a local government area in the Hunter region of New South Wales, Australia?",
+      "action_text": "local government area south of Shelly Beach NSW Hunter Region Australia",
+      "target": 0.5945,
+      "prediction": 0.4121,
+      "abs_error": 0.1824
+    },
+    {
+      "example_id": "dd75d736-71fa-4109-ac89-cb6d9a03eefa:medium:1:0",
+      "module": "QR",
+      "question_id": "3",
+      "question": "Are the Laleli Mosque and Esma Sultan Mansion located in the same neighborhood?",
+      "action_text": "Laleli Mosque Esma Sultan Mansion location",
+      "target": 0.4949,
+      "prediction": 0.4115,
+      "abs_error": 0.0834
+    },
+    {
+      "example_id": "dd75d736-71fa-4109-ac89-cb6d9a03eefa:medium:1:1",
+      "module": "QR",
+      "question_id": "3",
+      "question": "Are the Laleli Mosque and Esma Sultan Mansion located in the same neighborhood?",
+      "action_text": "Laleli Mosque Esma Sultan Mansion location",
+      "target": 0.4949,
+      "prediction": 0.4115,
+      "abs_error": 0.0834
+    },
+    {
+      "example_id": "dd75d736-71fa-4109-ac89-cb6d9a03eefa:medium:1:2",
+      "module": "QR",
+      "question_id": "3",
+      "question": "Are the Laleli Mosque and Esma Sultan Mansion located in the same neighborhood?",
+      "action_text": "Laleli Mosque Esma Sultan Mansion location",
+      "target": 0.4949,
+      "prediction": 0.4115,
+      "abs_error": 0.0834
+    },
+    {
+      "example_id": "3d009759-680c-448f-85b1-121f41b4bbc3:medium:1:0",
+      "module": "QR",
+      "question_id": "60",
+      "question": "What distinction is held by the former NBA player who was a member of the Charlotte Hornets during their 1992-93 season and was head coach for the WNBA team Charlotte Sting?",
+      "action_text": "Raymond McDaniel Charlotte Hornets Charlotte Sting",
+      "target": 0.137,
+      "prediction": 0.1423,
+      "abs_error": 0.0053
+    },
+    {
+      "example_id": "3d009759-680c-448f-85b1-121f41b4bbc3:medium:1:1",
+      "module": "QR",
+      "question_id": "60",
+      "question": "What distinction is held by the former NBA player who was a member of the Charlotte Hornets during their 1992-93 season and was head coach for the WNBA team Charlotte Sting?",
+      "action_text": "Raymond McDaniel Charlotte Hornets Charlotte Sting",
+      "target": 0.137,
+      "prediction": 0.1423,
+      "abs_error": 0.0053
+    },
+    {
+      "example_id": "3d009759-680c-448f-85b1-121f41b4bbc3:medium:1:2",
+      "module": "QR",
+      "question_id": "60",
+      "question": "What distinction is held by the former NBA player who was a member of the Charlotte Hornets during their 1992-93 season and was head coach for the WNBA team Charlotte Sting?",
+      "action_text": "Raymond McDaniel Charlotte Hornets Charlotte Sting",
+      "target": 0.137,
+      "prediction": 0.1423,
+      "abs_error": 0.0053
+    },
+    {
+      "example_id": "0b4715e6-a19b-434c-98f7-f73356536833:medium:1:0",
+      "module": "QR",
+      "question_id": "382",
+      "question": "What act for Innocent Records achieved Platinum sales and shares its name with a primary color in the RGB color model?",
+      "action_text": "Innocent Records platinum sales rgb",
+      "target": 0.3276,
+      "prediction": 0.2266,
+      "abs_error": 0.101
+    },
+    {
+      "example_id": "0b4715e6-a19b-434c-98f7-f73356536833:medium:1:1",
+      "module": "QR",
+      "question_id": "382",
+      "question": "What act for Innocent Records achieved Platinum sales and shares its name with a primary color in the RGB color model?",
+      "action_text": "Innocent Records platinum sales rgb",
+      "target": 0.3276,
+      "prediction": 0.2266,
+      "abs_error": 0.101
+    },
+    {
+      "example_id": "0b4715e6-a19b-434c-98f7-f73356536833:medium:1:2",
+      "module": "QR",
+      "question_id": "382",
+      "question": "What act for Innocent Records achieved Platinum sales and shares its name with a primary color in the RGB color model?",
+      "action_text": "Innocent Records platinum sales rgb",
+      "target": 0.3276,
+      "prediction": 0.2266,
+      "abs_error": 0.101
+    },
+    {
+      "example_id": "e4318ca3-7dc8-4935-a7a4-60bfb8fde162:medium:1:0",
+      "module": "QR",
+      "question_id": "167",
+      "question": "Both Bishop Carroll Catholic High School and Kapaun Mt. Carmel Catholic High School are located in which city in Kansas?",
+      "action_text": "Bishop Carroll Catholic High School Kapaun Mt. Carmel Catholic High School Kansas location",
+      "target": 0.5945,
+      "prediction": 0.5905,
+      "abs_error": 0.004
+    },
+    {
+      "example_id": "e4318ca3-7dc8-4935-a7a4-60bfb8fde162:medium:1:1",
+      "module": "QR",
+      "question_id": "167",
+      "question": "Both Bishop Carroll Catholic High School and Kapaun Mt. Carmel Catholic High School are located in which city in Kansas?",
+      "action_text": "Bishop Carroll Catholic High School Kapaun Mt. Carmel Catholic High School Kansas location",
+      "target": 0.5945,
+      "prediction": 0.5905,
+      "abs_error": 0.004
+    },
+    {
+      "example_id": "e4318ca3-7dc8-4935-a7a4-60bfb8fde162:medium:1:2",
+      "module": "QR",
+      "question_id": "167",
+      "question": "Both Bishop Carroll Catholic High School and Kapaun Mt. Carmel Catholic High School are located in which city in Kansas?",
+      "action_text": "Bishop Carroll Catholic High School Kapaun Mt. Carmel Catholic High School Kansas location",
+      "target": 0.5945,
+      "prediction": 0.5905,
+      "abs_error": 0.004
+    },
+    {
+      "example_id": "d795b1b7-2ef9-40bc-ad5b-1e4223e8d1bc:medium:1:0",
+      "module": "QR",
+      "question_id": "161",
+      "question": "Which man who presented the Australia 2022 FIFA World Cup bid was born on October 22, 1930?",
+      "action_text": "Australia 2022 FIFA World Cup bid presenter birthdate October 22 1930",
+      "target": 0.5566,
+      "prediction": 0.4731,
+      "abs_error": 0.0835
+    },
+    {
+      "example_id": "d795b1b7-2ef9-40bc-ad5b-1e4223e8d1bc:medium:1:1",
+      "module": "QR",
+      "question_id": "161",
+      "question": "Which man who presented the Australia 2022 FIFA World Cup bid was born on October 22, 1930?",
+      "action_text": "Australia 2022 FIFA World Cup bid presenter birthdate October 22 1930",
+      "target": 0.5566,
+      "prediction": 0.4731,
+      "abs_error": 0.0835
+    },
+    {
+      "example_id": "d795b1b7-2ef9-40bc-ad5b-1e4223e8d1bc:medium:1:2",
+      "module": "QR",
+      "question_id": "161",
+      "question": "Which man who presented the Australia 2022 FIFA World Cup bid was born on October 22, 1930?",
+      "action_text": "Australia 2022 FIFA World Cup bid presenter birthdate October 22 1930",
+      "target": 0.5566,
+      "prediction": 0.4731,
+      "abs_error": 0.0835
+    },
+    {
+      "example_id": "5365bec6-b6dd-4090-9cf9-2d884fd46c67:medium:1:0",
+      "module": "QR",
+      "question_id": "13",
+      "question": "Are Random House Tower and 888 7th Avenue both used for real estate?",
+      "action_text": "Random House Tower 888 7th Avenue real estate",
+      "target": 0.722,
+      "prediction": 0.5061,
+      "abs_error": 0.2159
+    },
+    {
+      "example_id": "5365bec6-b6dd-4090-9cf9-2d884fd46c67:medium:1:1",
+      "module": "QR",
+      "question_id": "13",
+      "question": "Are Random House Tower and 888 7th Avenue both used for real estate?",
+      "action_text": "Random House Tower 888 7th Avenue real estate",
+      "target": 0.722,
+      "prediction": 0.5061,
+      "abs_error": 0.2159
+    },
+    {
+      "example_id": "5365bec6-b6dd-4090-9cf9-2d884fd46c67:medium:1:2",
+      "module": "QR",
+      "question_id": "13",
+      "question": "Are Random House Tower and 888 7th Avenue both used for real estate?",
+      "action_text": "Random House Tower 888 7th Avenue real estate",
+      "target": 0.722,
+      "prediction": 0.5061,
+      "abs_error": 0.2159
+    },
+    {
+      "example_id": "e621e564-2565-45e9-af50-f37afa09587a:medium:1:0",
+      "module": "QR",
+      "question_id": "433",
+      "question": "Which band has more members, Test Icicles or X Ambassadors?",
+      "action_text": "Test Icicles vs X Ambassadors member count",
+      "target": 0.3284,
+      "prediction": 0.3862,
+      "abs_error": 0.0578
+    },
+    {
+      "example_id": "e621e564-2565-45e9-af50-f37afa09587a:medium:1:1",
+      "module": "QR",
+      "question_id": "433",
+      "question": "Which band has more members, Test Icicles or X Ambassadors?",
+      "action_text": "Test Icicles vs X Ambassadors member count",
+      "target": 0.3284,
+      "prediction": 0.3862,
+      "abs_error": 0.0578
+    },
+    {
+      "example_id": "e621e564-2565-45e9-af50-f37afa09587a:medium:1:2",
+      "module": "QR",
+      "question_id": "433",
+      "question": "Which band has more members, Test Icicles or X Ambassadors?",
+      "action_text": "Test Icicles vs X Ambassadors member count",
+      "target": 0.3284,
+      "prediction": 0.3862,
+      "abs_error": 0.0578
+    },
+    {
+      "example_id": "c9d98d17-f115-4e05-a028-8792e6ab597f:medium:1:0",
+      "module": "QR",
+      "question_id": "28",
+      "question": "Kaiser Ventures corporation was founded by an American industrialist who became known as the father of modern American shipbuilding?",
+      "action_text": "Kaiser Shipbuilding Henry Morgenthau Jr.",
+      "target": 0.1199,
+      "prediction": 0.2525,
+      "abs_error": 0.1326
+    },
+    {
+      "example_id": "c9d98d17-f115-4e05-a028-8792e6ab597f:medium:1:1",
+      "module": "QR",
+      "question_id": "28",
+      "question": "Kaiser Ventures corporation was founded by an American industrialist who became known as the father of modern American shipbuilding?",
+      "action_text": "Kaiser Shipbuilding Henry Morgenthau Jr.",
+      "target": 0.1199,
+      "prediction": 0.2525,
+      "abs_error": 0.1326
+    },
+    {
+      "example_id": "c9d98d17-f115-4e05-a028-8792e6ab597f:medium:1:2",
+      "module": "QR",
+      "question_id": "28",
+      "question": "Kaiser Ventures corporation was founded by an American industrialist who became known as the father of modern American shipbuilding?",
+      "action_text": "Kaiser Shipbuilding Henry Morgenthau Jr.",
+      "target": 0.1199,
+      "prediction": 0.2525,
+      "abs_error": 0.1326
+    },
+    {
+      "example_id": "cc1a87f9-fde7-49be-82f1-47db0252d753:medium:1:0",
+      "module": "QR",
+      "question_id": "358",
+      "question": "What city did the characters from Gargoyles the Movie: The Heroes Awaken wake up in after being in an enchantedly petrified state for a thousand years?",
+      "action_text": "Gargoyles: The Movie awakening location",
+      "target": -0.0057,
+      "prediction": 0.0507,
+      "abs_error": 0.0564
+    },
+    {
+      "example_id": "cc1a87f9-fde7-49be-82f1-47db0252d753:medium:1:1",
+      "module": "QR",
+      "question_id": "358",
+      "question": "What city did the characters from Gargoyles the Movie: The Heroes Awaken wake up in after being in an enchantedly petrified state for a thousand years?",
+      "action_text": "Gargoyles: The Movie awakening location",
+      "target": -0.0057,
+      "prediction": 0.0507,
+      "abs_error": 0.0564
+    },
+    {
+      "example_id": "cc1a87f9-fde7-49be-82f1-47db0252d753:medium:1:2",
+      "module": "QR",
+      "question_id": "358",
+      "question": "What city did the characters from Gargoyles the Movie: The Heroes Awaken wake up in after being in an enchantedly petrified state for a thousand years?",
+      "action_text": "Gargoyles: The Movie awakening location",
+      "target": -0.0057,
+      "prediction": 0.0507,
+      "abs_error": 0.0564
+    },
+    {
+      "example_id": "d5c40932-fa7f-4ac7-aa61-c0a6839e6533:medium:1:0",
+      "module": "QR",
+      "question_id": "573",
+      "question": "Ms. Knope Goes to Washington is the fifth season premiere of an American political comedy television sitcom starring Amy Poehler as who?",
+      "action_text": "Amy Poehler Ms. Knope Goes to Washington",
+      "target": 0.3476,
+      "prediction": 0.2591,
+      "abs_error": 0.0885
+    },
+    {
+      "example_id": "d5c40932-fa7f-4ac7-aa61-c0a6839e6533:medium:1:1",
+      "module": "QR",
+      "question_id": "573",
+      "question": "Ms. Knope Goes to Washington is the fifth season premiere of an American political comedy television sitcom starring Amy Poehler as who?",
+      "action_text": "Amy Poehler Ms. Knope Goes to Washington",
+      "target": 0.3476,
+      "prediction": 0.2591,
+      "abs_error": 0.0885
+    },
+    {
+      "example_id": "d5c40932-fa7f-4ac7-aa61-c0a6839e6533:medium:1:2",
+      "module": "QR",
+      "question_id": "573",
+      "question": "Ms. Knope Goes to Washington is the fifth season premiere of an American political comedy television sitcom starring Amy Poehler as who?",
+      "action_text": "Amy Poehler Ms. Knope Goes to Washington",
+      "target": 0.3476,
+      "prediction": 0.2591,
+      "abs_error": 0.0885
+    },
+    {
+      "example_id": "291203cb-b590-4d2b-9891-bc5c605ded30:medium:1:0",
+      "module": "QR",
+      "question_id": "393",
+      "question": "In which county is the English king Harold Godwinson buried?",
+      "action_text": "burial site Harold Godwinson England",
+      "target": 0.195,
+      "prediction": 0.457,
+      "abs_error": 0.262
+    },
+    {
+      "example_id": "291203cb-b590-4d2b-9891-bc5c605ded30:medium:1:1",
+      "module": "QR",
+      "question_id": "393",
+      "question": "In which county is the English king Harold Godwinson buried?",
+      "action_text": "burial site Harold Godwinson England",
+      "target": 0.195,
+      "prediction": 0.457,
+      "abs_error": 0.262
+    },
+    {
+      "example_id": "291203cb-b590-4d2b-9891-bc5c605ded30:medium:1:2",
+      "module": "QR",
+      "question_id": "393",
+      "question": "In which county is the English king Harold Godwinson buried?",
+      "action_text": "burial site Harold Godwinson England",
+      "target": 0.195,
+      "prediction": 0.457,
+      "abs_error": 0.262
+    },
+    {
+      "example_id": "43442eca-6c27-4093-ac52-ff43db8140e9:medium:1:0",
+      "module": "QR",
+      "question_id": "169",
+      "question": "This Celtic ruler who was born in AD 43 ruled southeastern Britain prior to conquest by which empire?",
+      "action_text": "Celtic ruler southeastern Britain Roman Empire",
+      "target": 0.3282,
+      "prediction": 0.3272,
+      "abs_error": 0.001
+    },
+    {
+      "example_id": "43442eca-6c27-4093-ac52-ff43db8140e9:medium:1:1",
+      "module": "QR",
+      "question_id": "169",
+      "question": "This Celtic ruler who was born in AD 43 ruled southeastern Britain prior to conquest by which empire?",
+      "action_text": "Celtic ruler southeastern Britain Roman Empire",
+      "target": 0.3282,
+      "prediction": 0.3272,
+      "abs_error": 0.001
+    },
+    {
+      "example_id": "43442eca-6c27-4093-ac52-ff43db8140e9:medium:1:2",
+      "module": "QR",
+      "question_id": "169",
+      "question": "This Celtic ruler who was born in AD 43 ruled southeastern Britain prior to conquest by which empire?",
+      "action_text": "Celtic ruler southeastern Britain Roman Empire",
+      "target": 0.3282,
+      "prediction": 0.3272,
+      "abs_error": 0.001
+    },
+    {
+      "example_id": "81314437-4680-43be-b482-4a77ad92b72d:medium:1:0",
+      "module": "QR",
+      "question_id": "442",
+      "question": "What book provided the foundation for Masters and Johnson's research team?",
+      "action_text": "Masters and Johnson research foundation book",
+      "target": 0.4394,
+      "prediction": 0.422,
+      "abs_error": 0.0174
+    },
+    {
+      "example_id": "81314437-4680-43be-b482-4a77ad92b72d:medium:1:1",
+      "module": "QR",
+      "question_id": "442",
+      "question": "What book provided the foundation for Masters and Johnson's research team?",
+      "action_text": "Masters and Johnson research foundation book",
+      "target": 0.4394,
+      "prediction": 0.422,
+      "abs_error": 0.0174
+    },
+    {
+      "example_id": "81314437-4680-43be-b482-4a77ad92b72d:medium:1:2",
+      "module": "QR",
+      "question_id": "442",
+      "question": "What book provided the foundation for Masters and Johnson's research team?",
+      "action_text": "Masters and Johnson research foundation book",
+      "target": 0.4394,
+      "prediction": 0.422,
+      "abs_error": 0.0174
+    },
+    {
+      "example_id": "69e055f5-e154-4d5c-b9c8-9506f2d03326:medium:1:0",
+      "module": "QR",
+      "question_id": "584",
+      "question": "Which king of Northumbria did The \"Historia\" gives the abbot central place in his election as king",
+      "action_text": "Historia abbot Northumbria king election",
+      "target": 0.3025,
+      "prediction": 0.265,
+      "abs_error": 0.0375
+    },
+    {
+      "example_id": "69e055f5-e154-4d5c-b9c8-9506f2d03326:medium:1:1",
+      "module": "QR",
+      "question_id": "584",
+      "question": "Which king of Northumbria did The \"Historia\" gives the abbot central place in his election as king",
+      "action_text": "Historia abbot Northumbria king election",
+      "target": 0.3025,
+      "prediction": 0.265,
+      "abs_error": 0.0375
+    },
+    {
+      "example_id": "69e055f5-e154-4d5c-b9c8-9506f2d03326:medium:1:2",
+      "module": "QR",
+      "question_id": "584",
+      "question": "Which king of Northumbria did The \"Historia\" gives the abbot central place in his election as king",
+      "action_text": "Historia abbot Northumbria king election",
+      "target": 0.3025,
+      "prediction": 0.265,
+      "abs_error": 0.0375
+    },
+    {
+      "example_id": "72dea7da-0ebb-4a7c-8123-e788feb80753:medium:1:0",
+      "module": "QR",
+      "question_id": "414",
+      "question": "The actress that played the leading role in the independent film \"A Perfect Ending\" also stars with John Bregar in a 2008 film directed by who?",
+      "action_text": "A Perfect Ending cast John Bregar 2008 director",
+      "target": 0.1846,
+      "prediction": 0.2637,
+      "abs_error": 0.0791
+    },
+    {
+      "example_id": "72dea7da-0ebb-4a7c-8123-e788feb80753:medium:1:1",
+      "module": "QR",
+      "question_id": "414",
+      "question": "The actress that played the leading role in the independent film \"A Perfect Ending\" also stars with John Bregar in a 2008 film directed by who?",
+      "action_text": "A Perfect Ending cast John Bregar 2008 director",
+      "target": 0.1846,
+      "prediction": 0.2637,
+      "abs_error": 0.0791
+    },
+    {
+      "example_id": "72dea7da-0ebb-4a7c-8123-e788feb80753:medium:1:2",
+      "module": "QR",
+      "question_id": "414",
+      "question": "The actress that played the leading role in the independent film \"A Perfect Ending\" also stars with John Bregar in a 2008 film directed by who?",
+      "action_text": "A Perfect Ending cast John Bregar 2008 director",
+      "target": 0.1846,
+      "prediction": 0.2637,
+      "abs_error": 0.0791
+    },
+    {
+      "example_id": "c5b99665-1e55-4a0a-926d-a2fd457a7779:medium:1:0",
+      "module": "QR",
+      "question_id": "360",
+      "question": "The Waterloo Vase has been used as a garden ornament at whose residence and administrative headquarters?",
+      "action_text": "Waterloo Vase residence and headquarters",
+      "target": 0.3027,
+      "prediction": 0.2465,
+      "abs_error": 0.0562
+    },
+    {
+      "example_id": "c5b99665-1e55-4a0a-926d-a2fd457a7779:medium:1:1",
+      "module": "QR",
+      "question_id": "360",
+      "question": "The Waterloo Vase has been used as a garden ornament at whose residence and administrative headquarters?",
+      "action_text": "Waterloo Vase residence and headquarters",
+      "target": 0.3027,
+      "prediction": 0.2465,
+      "abs_error": 0.0562
+    },
+    {
+      "example_id": "c5b99665-1e55-4a0a-926d-a2fd457a7779:medium:1:2",
+      "module": "QR",
+      "question_id": "360",
+      "question": "The Waterloo Vase has been used as a garden ornament at whose residence and administrative headquarters?",
+      "action_text": "Waterloo Vase residence and headquarters",
+      "target": 0.3027,
+      "prediction": 0.2465,
+      "abs_error": 0.0562
+    },
+    {
+      "example_id": "c4d498fc-122d-4ace-89f5-e1180a720a2e:medium:1:0",
+      "module": "QR",
+      "question_id": "424",
+      "question": "What is the height of the player who won the 2015 AFL Rising Star award?",
+      "action_text": "AFL Rising Star 2015 winner height",
+      "target": 0.4494,
+      "prediction": 0.4643,
+      "abs_error": 0.0149
+    },
+    {
+      "example_id": "c4d498fc-122d-4ace-89f5-e1180a720a2e:medium:1:1",
+      "module": "QR",
+      "question_id": "424",
+      "question": "What is the height of the player who won the 2015 AFL Rising Star award?",
+      "action_text": "AFL Rising Star 2015 winner height",
+      "target": 0.4494,
+      "prediction": 0.4643,
+      "abs_error": 0.0149
+    },
+    {
+      "example_id": "c4d498fc-122d-4ace-89f5-e1180a720a2e:medium:1:2",
+      "module": "QR",
+      "question_id": "424",
+      "question": "What is the height of the player who won the 2015 AFL Rising Star award?",
+      "action_text": "AFL Rising Star 2015 winner height",
+      "target": 0.4494,
+      "prediction": 0.4643,
+      "abs_error": 0.0149
+    },
+    {
+      "example_id": "8b71624f-9444-4d84-a62f-b92b81e89921:medium:1:0",
+      "module": "QR",
+      "question_id": "45",
+      "question": "A medieval fortress in Dirleton, East Lothian, Scotland borders on the south side of what coastal area?",
+      "action_text": "Dirleton fortress coastal border",
+      "target": 0.2256,
+      "prediction": 0.3064,
+      "abs_error": 0.0808
+    },
+    {
+      "example_id": "8b71624f-9444-4d84-a62f-b92b81e89921:medium:1:1",
+      "module": "QR",
+      "question_id": "45",
+      "question": "A medieval fortress in Dirleton, East Lothian, Scotland borders on the south side of what coastal area?",
+      "action_text": "Dirleton fortress coastal border",
+      "target": 0.2256,
+      "prediction": 0.3064,
+      "abs_error": 0.0808
+    },
+    {
+      "example_id": "8b71624f-9444-4d84-a62f-b92b81e89921:medium:1:2",
+      "module": "QR",
+      "question_id": "45",
+      "question": "A medieval fortress in Dirleton, East Lothian, Scotland borders on the south side of what coastal area?",
+      "action_text": "Dirleton fortress coastal border",
+      "target": 0.2256,
+      "prediction": 0.3064,
+      "abs_error": 0.0808
+    },
+    {
+      "example_id": "abdc3ce4-4c17-48be-97db-387abba88b44:medium:1:0",
+      "module": "QR",
+      "question_id": "348",
+      "question": "Wheat salad is composed typically of what red fruit?",
+      "action_text": "wheat salad red fruit",
+      "target": 0.5664,
+      "prediction": 0.4909,
+      "abs_error": 0.0755
+    },
+    {
+      "example_id": "abdc3ce4-4c17-48be-97db-387abba88b44:medium:1:1",
+      "module": "QR",
+      "question_id": "348",
+      "question": "Wheat salad is composed typically of what red fruit?",
+      "action_text": "wheat salad red fruit",
+      "target": 0.5664,
+      "prediction": 0.4909,
+      "abs_error": 0.0755
+    },
+    {
+      "example_id": "abdc3ce4-4c17-48be-97db-387abba88b44:medium:1:2",
+      "module": "QR",
+      "question_id": "348",
+      "question": "Wheat salad is composed typically of what red fruit?",
+      "action_text": "wheat salad red fruit",
+      "target": 0.5664,
+      "prediction": 0.4909,
+      "abs_error": 0.0755
+    },
+    {
+      "example_id": "c6bd2957-961e-4fc8-bcd2-4b9173064649:medium:1:0",
+      "module": "QR",
+      "question_id": "430",
+      "question": "What team did the recipient of the 2007 Brownlow Medal play for?",
+      "action_text": "Brownlow Medal 2007 team",
+      "target": 0.4948,
+      "prediction": 0.3525,
+      "abs_error": 0.1423
+    },
+    {
+      "example_id": "c6bd2957-961e-4fc8-bcd2-4b9173064649:medium:1:1",
+      "module": "QR",
+      "question_id": "430",
+      "question": "What team did the recipient of the 2007 Brownlow Medal play for?",
+      "action_text": "Brownlow Medal 2007 team",
+      "target": 0.4948,
+      "prediction": 0.3525,
+      "abs_error": 0.1423
+    },
+    {
+      "example_id": "c6bd2957-961e-4fc8-bcd2-4b9173064649:medium:1:2",
+      "module": "QR",
+      "question_id": "430",
+      "question": "What team did the recipient of the 2007 Brownlow Medal play for?",
+      "action_text": "Brownlow Medal 2007 team",
+      "target": 0.4948,
+      "prediction": 0.3525,
+      "abs_error": 0.1423
+    },
+    {
+      "example_id": "e6dc3fb3-c9b1-4d4d-9612-3b5590b8e5dd:medium:1:0",
+      "module": "QR",
+      "question_id": "22",
+      "question": "Aside from the Apple Remote, what other device can control the program Apple Remote was originally designed to interact with?",
+      "action_text": "control Apple Remote original interaction",
+      "target": 0.1825,
+      "prediction": 0.2453,
+      "abs_error": 0.0628
+    },
+    {
+      "example_id": "e6dc3fb3-c9b1-4d4d-9612-3b5590b8e5dd:medium:1:1",
+      "module": "QR",
+      "question_id": "22",
+      "question": "Aside from the Apple Remote, what other device can control the program Apple Remote was originally designed to interact with?",
+      "action_text": "control Apple Remote original interaction",
+      "target": 0.1825,
+      "prediction": 0.2453,
+      "abs_error": 0.0628
+    },
+    {
+      "example_id": "e6dc3fb3-c9b1-4d4d-9612-3b5590b8e5dd:medium:1:2",
+      "module": "QR",
+      "question_id": "22",
+      "question": "Aside from the Apple Remote, what other device can control the program Apple Remote was originally designed to interact with?",
+      "action_text": "control Apple Remote original interaction",
+      "target": 0.1825,
+      "prediction": 0.2453,
+      "abs_error": 0.0628
+    },
+    {
+      "example_id": "707df45b-f366-45fa-b2db-e7d7667278c0:medium:1:0",
+      "module": "QR",
+      "question_id": "65",
+      "question": "What WB supernatrual drama series was Jawbreaker star Rose Mcgowan best known for being in?",
+      "action_text": "Rose McGowan WB Supernatural Drama Series",
+      "target": 0.3792,
+      "prediction": 0.4104,
+      "abs_error": 0.0312
+    },
+    {
+      "example_id": "707df45b-f366-45fa-b2db-e7d7667278c0:medium:1:1",
+      "module": "QR",
+      "question_id": "65",
+      "question": "What WB supernatrual drama series was Jawbreaker star Rose Mcgowan best known for being in?",
+      "action_text": "Rose McGowan WB Supernatural Drama Series",
+      "target": 0.3792,
+      "prediction": 0.4104,
+      "abs_error": 0.0312
+    },
+    {
+      "example_id": "707df45b-f366-45fa-b2db-e7d7667278c0:medium:1:2",
+      "module": "QR",
+      "question_id": "65",
+      "question": "What WB supernatrual drama series was Jawbreaker star Rose Mcgowan best known for being in?",
+      "action_text": "Rose McGowan WB Supernatural Drama Series",
+      "target": 0.3792,
+      "prediction": 0.4104,
+      "abs_error": 0.0312
+    },
+    {
+      "example_id": "f6fb57e2-6460-4815-b8c8-61da1b208778:medium:1:0",
+      "module": "QR",
+      "question_id": "177",
+      "question": "When was the Western Germanic language spoken from which the small settlement situated on the river Leda opposite Leer derives its name?",
+      "action_text": "Western Germanic language origin Leda river Leer settlement",
+      "target": 0.3835,
+      "prediction": 0.3251,
+      "abs_error": 0.0584
+    },
+    {
+      "example_id": "f6fb57e2-6460-4815-b8c8-61da1b208778:medium:1:1",
+      "module": "QR",
+      "question_id": "177",
+      "question": "When was the Western Germanic language spoken from which the small settlement situated on the river Leda opposite Leer derives its name?",
+      "action_text": "Western Germanic language origin Leda river Leer settlement",
+      "target": 0.3835,
+      "prediction": 0.3251,
+      "abs_error": 0.0584
+    },
+    {
+      "example_id": "f6fb57e2-6460-4815-b8c8-61da1b208778:medium:1:2",
+      "module": "QR",
+      "question_id": "177",
+      "question": "When was the Western Germanic language spoken from which the small settlement situated on the river Leda opposite Leer derives its name?",
+      "action_text": "Western Germanic language origin Leda river Leer settlement",
+      "target": 0.3835,
+      "prediction": 0.3251,
+      "abs_error": 0.0584
+    },
+    {
+      "example_id": "c1d003b2-3331-4f36-ae5c-d91f7a24447e:medium:1:0",
+      "module": "QR",
+      "question_id": "246",
+      "question": "How many laps did Harry Prowell run during the 10,000 metres race at the 1967 Pan American Games?",
+      "action_text": "Harry Prowell 10000m results 1967 Pan American Games",
+      "target": 0.31,
+      "prediction": 0.3433,
+      "abs_error": 0.0333
+    },
+    {
+      "example_id": "c1d003b2-3331-4f36-ae5c-d91f7a24447e:medium:1:1",
+      "module": "QR",
+      "question_id": "246",
+      "question": "How many laps did Harry Prowell run during the 10,000 metres race at the 1967 Pan American Games?",
+      "action_text": "Harry Prowell 10000m results 1967 Pan American Games",
+      "target": 0.31,
+      "prediction": 0.3433,
+      "abs_error": 0.0333
+    },
+    {
+      "example_id": "c1d003b2-3331-4f36-ae5c-d91f7a24447e:medium:1:2",
+      "module": "QR",
+      "question_id": "246",
+      "question": "How many laps did Harry Prowell run during the 10,000 metres race at the 1967 Pan American Games?",
+      "action_text": "Harry Prowell 10000m results 1967 Pan American Games",
+      "target": 0.31,
+      "prediction": 0.3433,
+      "abs_error": 0.0333
+    }
+  ]
+}

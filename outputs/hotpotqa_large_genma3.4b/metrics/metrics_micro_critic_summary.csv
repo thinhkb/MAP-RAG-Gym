@@ -1,0 +1,3 @@
+﻿module,train_examples,eval_examples,train_budget_low,train_budget_medium,train_budget_high,eval_mae,eval_rmse,eval_pearson,eval_spearman,ready_as_offline_reward_model
+AG,4284,756,0,4284,0,0.1489,0.2335,0.4152,0.4127,True
+QR,1071,189,0,1071,0,0.0839,0.106,0.7525,0.7701,True

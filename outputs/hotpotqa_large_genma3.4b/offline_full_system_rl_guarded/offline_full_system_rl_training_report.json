@@ -1,0 +1,227 @@
+{
+  "manifest": {
+    "script": "scripts/train_offline_full_system_rl.py",
+    "generated_at_utc": "2026-05-28T21:55:34+00:00",
+    "git_commit": "a54903934a1f91922edecee1faf49a9676388b39",
+    "python_version": "3.12.6",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "paths": {
+      "qa": "C:\\Users\\Admin\\MAPRAG\\MAP-RAG-Gym\\outputs\\full_system_rl_package.json",
+      "corpus": null,
+      "router_model": "C:\\Users\\Admin\\MAPRAG\\MAP-RAG-Gym\\outputs\\offline_full_system_rl_guarded\\final_budget_policy_bundle_offline_rl_candidate.json"
+    },
+    "dataset": {
+      "name": "offline_full_system_rl",
+      "split": "train",
+      "limit": null,
+      "effective_questions": 1260
+    },
+    "llm": {
+      "provider": null,
+      "model": null
+    },
+    "reproducibility": {
+      "seed": 13,
+      "prompt_version": "v1",
+      "utility": null
+    },
+    "settings": {
+      "package": "outputs/full_system_rl_package.json",
+      "out_dir": "outputs\\offline_full_system_rl_guarded",
+      "base_router_model": "outputs/router_hotpot_phase4.joblib",
+      "probe_corpus": "data/hotpotqa_large/corpus.json",
+      "holdout_ratio": 0.15,
+      "budget_modes": [
+        "high",
+        "low",
+        "medium"
+      ],
+      "policy_method_by_budget": {
+        "low": "gated_bandit_router",
+        "medium": "bandit_router",
+        "high": "bandit_router"
+      },
+      "gate_baseline_workflow_by_budget": {
+        "low": "W3"
+      },
+      "gate_min_advantage_by_budget": {
+        "low": 0.2
+      },
+      "gate_min_confidence_by_budget": {
+        "low": 0.65
+      },
+      "gate_allowed_workflows_by_budget": {
+        "low": [
+          "W1"
+        ]
+      },
+      "dry_run": false
+    }
+  },
+  "stage": {
+    "offline_full_system_rl_opened": true,
+    "online_rl_enabled": false,
+    "candidate_bundle": "outputs\\offline_full_system_rl_guarded\\final_budget_policy_bundle_offline_rl_candidate.json",
+    "behavior_bundle": "outputs/final_budget_policy_bundle.json",
+    "promotion_required": "Evaluate candidate bundle on held-out val/test before replacing behavior bundle."
+  },
+  "macro_training": {
+    "high": {
+      "rollout_path": "outputs/hotpotqa_large_train_rollouts_high_w2w3_det.json",
+      "candidate_workflows": [
+        "W2",
+        "W3"
+      ],
+      "model_path": "outputs\\offline_full_system_rl_guarded\\macro_bandit_high.joblib",
+      "meta_path": "outputs\\offline_full_system_rl_guarded\\macro_bandit_high.joblib.meta.json",
+      "alpha": 1.0,
+      "preference_margin": 0.0,
+      "preferred_workflows": [],
+      "recommended_method": "bandit_router",
+      "gate_settings": {},
+      "subprocess": {
+        "command": "C:\\Users\\Admin\\MAPRAG\\.venv\\Scripts\\python.exe scripts/train_bandit_router.py --input outputs/hotpotqa_large_train_rollouts_high_w2w3_det.json --output outputs\\offline_full_system_rl_guarded\\macro_bandit_high.joblib --budget_mode high --allowed_workflows W2 W3 --holdout_ratio 0.15 --alpha 1.0 --preference_margin 0.0 --seed 13 --base_router_model outputs/router_hotpot_phase4.joblib --probe_corpus data/hotpotqa_large/corpus.json",
+        "returncode": 0,
+        "stdout_tail": "Bandit training rows by workflow: {'W2': 357, 'W3': 357}\nReward metrics: {'train_mae': 0.2269, 'train_rmse': 0.2987, 'holdout_mae': 0.286, 'holdout_rmse': 0.3858}\nHoldout policy eval: {'num_questions': 63, 'avg_policy_utility': 0.3213, 'avg_oracle_utility': 0.331, 'avg_regret': 0.0097, 'exact_best_rate': 0.8095}\nSaved outputs\\offline_full_system_rl_guarded\\macro_bandit_high.joblib\nSaved outputs\\offline_full_system_rl_guarded\\macro_bandit_high.joblib.meta.json",
+        "stderr_tail": "",
+        "dry_run": false
+      }
+    },
+    "low": {
+      "rollout_path": "outputs/hotpotqa_large_train_rollouts.json",
+      "candidate_workflows": [
+        "W1",
+        "W3"
+      ],
+      "model_path": "outputs\\offline_full_system_rl_guarded\\macro_bandit_low.joblib",
+      "meta_path": "outputs\\offline_full_system_rl_guarded\\macro_bandit_low.joblib.meta.json",
+      "alpha": 0.1,
+      "preference_margin": 0.02,
+      "preferred_workflows": [
+        "W3"
+      ],
+      "recommended_method": "gated_bandit_router",
+      "gate_settings": {
+        "bandit_gate_baseline_workflow": "W3",
+        "bandit_gate_min_advantage": 0.2,
+        "bandit_gate_min_confidence": 0.65,
+        "bandit_gate_allowed_workflows": [
+          "W1"
+        ]
+      },
+      "subprocess": {
+        "command": "C:\\Users\\Admin\\MAPRAG\\.venv\\Scripts\\python.exe scripts/train_bandit_router.py --input outputs/hotpotqa_large_train_rollouts.json --output outputs\\offline_full_system_rl_guarded\\macro_bandit_low.joblib --budget_mode low --allowed_workflows W1 W3 --holdout_ratio 0.15 --alpha 0.1 --preference_margin 0.02 --seed 13 --preferred_workflows W3 --base_router_model outputs/router_hotpot_phase4.joblib --probe_corpus data/hotpotqa_large/corpus.json",
+        "returncode": 0,
+        "stdout_tail": "Bandit training rows by workflow: {'W1': 357, 'W3': 357}\nReward metrics: {'train_mae': 0.0815, 'train_rmse': 0.1174, 'holdout_mae': 0.2157, 'holdout_rmse': 0.3015}\nHoldout policy eval: {'num_questions': 63, 'avg_policy_utility': 0.2055, 'avg_oracle_utility': 0.2139, 'avg_regret': 0.0085, 'exact_best_rate': 0.7778}\nSaved outputs\\offline_full_system_rl_guarded\\macro_bandit_low.joblib\nSaved outputs\\offline_full_system_rl_guarded\\macro_bandit_low.joblib.meta.json",
+        "stderr_tail": "",
+        "dry_run": false
+      }
+    },
+    "medium": {
+      "rollout_path": "outputs/hotpotqa_large_train_rollouts.json",
+      "candidate_workflows": [
+        "W1",
+        "W2",
+        "W3",
+        "W6"
+      ],
+      "model_path": "outputs\\offline_full_system_rl_guarded\\macro_bandit_medium.joblib",
+      "meta_path": "outputs\\offline_full_system_rl_guarded\\macro_bandit_medium.joblib.meta.json",
+      "alpha": 1.0,
+      "preference_margin": 0.0,
+      "preferred_workflows": [],
+      "recommended_method": "bandit_router",
+      "gate_settings": {},
+      "subprocess": {
+        "command": "C:\\Users\\Admin\\MAPRAG\\.venv\\Scripts\\python.exe scripts/train_bandit_router.py --input outputs/hotpotqa_large_train_rollouts.json --output outputs\\offline_full_system_rl_guarded\\macro_bandit_medium.joblib --budget_mode medium --allowed_workflows W1 W2 W3 W6 --holdout_ratio 0.15 --alpha 1.0 --preference_margin 0.0 --seed 13 --base_router_model outputs/router_hotpot_phase4.joblib --probe_corpus data/hotpotqa_large/corpus.json",
+        "returncode": 0,
+        "stdout_tail": "Bandit training rows by workflow: {'W1': 357, 'W2': 357, 'W3': 357, 'W6': 357}\nReward metrics: {'train_mae': 0.1777, 'train_rmse': 0.2376, 'holdout_mae': 0.2447, 'holdout_rmse': 0.3323}\nHoldout policy eval: {'num_questions': 63, 'avg_policy_utility': 0.3061, 'avg_oracle_utility': 0.3081, 'avg_regret': 0.002, 'exact_best_rate': 0.9048}\nSaved outputs\\offline_full_system_rl_guarded\\macro_bandit_medium.joblib\nSaved outputs\\offline_full_system_rl_guarded\\macro_bandit_medium.joblib.meta.json",
+        "stderr_tail": "",
+        "dry_run": false
+      }
+    }
+  },
+  "micro_reward_models": {
+    "QR": {
+      "module": "QR",
+      "model_path": "outputs/process_critic_budget_qr_local.joblib",
+      "meta_path": "outputs/process_critic_budget_qr_local.joblib.meta.json",
+      "target": "local_reward",
+      "train_counts": {
+        "num_examples": 1071,
+        "modules": {
+          "QR": 1071
+        },
+        "budget_modes": {
+          "medium": 1071
+        }
+      },
+      "eval_counts": {
+        "num_examples": 189,
+        "modules": {
+          "QR": 189
+        },
+        "budget_modes": {
+          "medium": 189
+        }
+      },
+      "eval_metrics": {
+        "count": 189,
+        "mae": 0.0839,
+        "rmse": 0.106,
+        "pearson": 0.7525,
+        "spearman": 0.7701
+      },
+      "readiness_gate": {
+        "min_eval_examples": 300,
+        "min_spearman": 0.5,
+        "ready_as_offline_reward_model": false
+      }
+    },
+    "AG": {
+      "module": "AG",
+      "model_path": "outputs/process_critic_budget_ag.joblib",
+      "meta_path": "outputs/process_critic_budget_ag.joblib.meta.json",
+      "target": "blended_reward",
+      "train_counts": {
+        "num_examples": 4284,
+        "modules": {
+          "AG": 4284
+        },
+        "budget_modes": {
+          "medium": 4284
+        }
+      },
+      "eval_counts": {
+        "num_examples": 756,
+        "modules": {
+          "AG": 756
+        },
+        "budget_modes": {
+          "medium": 756
+        }
+      },
+      "eval_metrics": {
+        "count": 756,
+        "mae": 0.1489,
+        "rmse": 0.2335,
+        "pearson": 0.4152,
+        "spearman": 0.4127
+      },
+      "readiness_gate": {
+        "min_eval_examples": 300,
+        "min_spearman": 0.25,
+        "ready_as_offline_reward_model": true
+      }
+    }
+  },
+  "direct_critic_deployment": {
+    "enabled": false,
+    "reason": "The full-system RL package marks direct critic deployment as not ready.",
+    "checks": {}
+  },
+  "next_commands": {
+    "evaluate_candidate_bundle": "python scripts/eval_final_budget_bundle.py --corpus data/hotpotqa_large/corpus.json --qa data/hotpotqa_large/splits/test.json --dataset_split test --dataset_name hotpotqa_large --policy_bundle outputs\\offline_full_system_rl_guarded\\final_budget_policy_bundle_offline_rl_candidate.json --router_model outputs/router_hotpot_budget_calibrated.joblib --llm_provider ollama --llm_model llama3.2 --hybrid_min_confidence 0.55 --hybrid_low_cost_confidence 0.55 --hybrid_low_cost_workflows W1 --budget_modes low medium high --limit 90 --seed 13 --out outputs\\offline_full_system_rl_guarded\\final_budget_policy_test_eval_offline_rl_candidate.json",
+    "compare_with_frozen_bundle": "python scripts/build_final_project_report.py --policy_bundle outputs\\offline_full_system_rl_guarded\\final_budget_policy_bundle_offline_rl_candidate.json --test_eval outputs\\offline_full_system_rl_guarded\\final_budget_policy_test_eval_offline_rl_candidate.json --reference_test_eval outputs/final_budget_policy_test_eval_rl_ready.json --micro_eval_stage high=outputs/router_eval_large_budget_high_switch_qrag_det.json --out outputs\\offline_full_system_rl_guarded\\final_project_report_offline_rl_candidate.json"
+  }
+}

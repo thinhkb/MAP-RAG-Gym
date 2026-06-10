@@ -1,0 +1,271 @@
+﻿budget_mode,question_id,question,gold_answer,selected_method,workflow_id,utility_total,em,f1_proxy
+low,403,"The Indian actor and philanthropist, who starred in ""Mera Damad,"" entered the film industry in what year?",1977,gated_bandit_router,W3,-0.0832,0.0,0.0
+low,168,What was the 58th quadrennial American presidential election held after the 2016 Michigan Democratic primary?,United States presidential election of 2016,gated_bandit_router,W3,0.3067,0.0,0.3
+low,197, Robert Smith founded the multinational company headquartered in what city?,"Golden Valley, Minnesota,",gated_bandit_router,W3,-0.0502,0.0,0.0
+low,302,"What is the birthday of the actress who was the Duchess in ""The Revengers Tragedy""?",23 November 1946,gated_bandit_router,W3,-0.0557,0.0,0.0
+low,186,Who were the directors of the 2009 American science fiction film starring the actor who played Dexter Morgan in the Show,Mark Neveldine and Brian Taylor,gated_bandit_router,W3,-0.0606,0.0,0.0
+low,349,What year did the biographical-comedy-crime film directed by Steven Soderbergh about the highest-level corporate executi,2009,gated_bandit_router,W3,-0.0277,0.0,0.0
+low,367,"For what ""first"" was Ivory Lee Brown's nephew credited for in Heisman Trophy balloting?",first freshman to finish as the runner-up,gated_bandit_router,W3,-0.0537,0.0,0.0
+low,39,Ralph Hefferline was a psychology professor at a university that is located in what city?,New York City,gated_bandit_router,W3,-0.0527,0.0,0.0
+low,43,The battle in which Giuseppe Arimondi lost his life secured what for Ethiopia?,sovereignty,gated_bandit_router,W1,-0.0182,0.0,0.0
+low,216,Ernest Foot was the best friend of the fighter pilot who had how many victories?,44,gated_bandit_router,W1,-0.0181,0.0,0.0
+low,508,"In what London botanical garden can you find the fungus described by Elise Maud Wakefield as ""Lepiota""?",Kew Gardens,gated_bandit_router,W3,1.0953,1.0,1.0
+low,243,Salisbury Woodland Gardens links a zoo with a park designed and built under the watchful eye of who?,Thomas Mawson,gated_bandit_router,W3,-0.0585,0.0,0.0
+low,140,The author of Sexual Politics attended which British University?,Oxford,gated_bandit_router,W3,-0.0518,0.0,0.0
+low,383,"What national historic district is located near a village in the town of Philipstown, New York?",Valhalla Highlands Historic District,gated_bandit_router,W3,0.2936,0.0,0.3333
+low,557,Are Ganzhou and Jimo District both located in China?,yes,gated_bandit_router,W3,0.098,0.0,0.1429
+low,359,Who were the producers of the show for which Chris McKay made his feature film directorial debut?,"Dan Lin, Roy Lee, Phil Lord and Christopher Miller",gated_bandit_router,W3,-0.0588,0.0,0.0
+low,257," The name ""Mountbatten-Windsor"" applies to male-line descendants of the Queen without royal styles and titles which is a",Mountbatten family,gated_bandit_router,W3,0.2968,0.0,0.3333
+low,423,One of the coaches of Southern Methodist University also played what role at the Arizona State Sun Devils?,defensive coordinator,gated_bandit_router,W3,-0.0574,0.0,0.0
+low,163,What British singer-songwriter hosted the 16th Annual Young Hollywood Awards?,Kelly Lee Osbourne,gated_bandit_router,W3,0.1602,0.0,0.2
+low,553,What was the highest ranking in the United States for a single written by an English multi-instrumentalist?,25,gated_bandit_router,W3,-0.0569,0.0,0.0
+low,455,"What shallow water table aquifer is located near the county seat of Keith County, Nebraska?",Ogallala Aquifer,gated_bandit_router,W3,0.2568,0.0,0.25
+low,509,"Who collaborated with Rihanna on the album release ""Numb""?",Eminem,gated_bandit_router,W3,-0.03,0.0,0.0
+low,145,"Who was born first, Erika Jayne or Marco Da Silva",Erika Jayne,gated_bandit_router,W3,0.1292,0.0,0.1429
+low,594,What type of engine powered both the Saab 36 and the Avro Vulcan?,British Bristol Olympus turbojet,gated_bandit_router,W3,0.8339,0.0,0.8
+low,44,Alfred Balk served as the secretary of the Committee on the Employment of Minority Groups in the News Media under which ,Nelson Rockefeller,gated_bandit_router,W3,1.0896,1.0,1.0
+low,434,The movies The Boatniks and The Great Locomotive Chase were both made by which production company?,Walt Disney Productions,gated_bandit_router,W3,-0.0294,0.0,0.0
+low,2,"What science fantasy young adult series, told in first person, has a set of companion books narrating the stories of ens",Animorphs,gated_bandit_router,W3,-0.007,0.0,0.0
+low,399,Wendy Ayche was featured in 2016 in an annual production created by Youtube and what other organization?,Portal A Interactive,gated_bandit_router,W3,-0.0646,0.0,0.0
+low,474,Where was the telefilm shot that was based on the 1977 Katherine Paterson book?,"Edmonton, Alberta",gated_bandit_router,W3,0.2587,0.0,0.25
+low,569,"The Company They Keep is a book written by Diana Pavlac Glyer, who is a professor at a university in Azusa, California, ",evangelical Christian,gated_bandit_router,W3,-0.0078,0.0,0.0
+low,75,What American professional Hawaiian surfer born 18 October 1992 won the Rip Curl Pro Portugal?,John John Florence,gated_bandit_router,W3,-0.0061,0.0,0.0
+low,134,This American crime film set in South Los Angeles was written and directed by the same director and writer of screenwrit,Suicide Squad,gated_bandit_router,W3,-0.0009,0.0,0.0
+low,375,For One Night Only was hosted by the man most well-known for hosting what show from 1962 until 1999?,The Late Late Show,gated_bandit_router,W3,-0.0573,0.0,0.0
+low,199,"Considered the strongest recorded tropical cyclone, which cyclone had a film made about it in 2007?",1999 Odisha cyclone,gated_bandit_router,W3,0.1991,0.0,0.25
+low,545,The first book in the Sprawl Trilogy won what three awards?,"Nebula Award, the Philip K. Dick Award, and the Hugo Award",gated_bandit_router,W3,-0.0526,0.0,0.0
+low,241,What american actress/singer born in 1956 recorded the song Something there for beauty and the beast?,Donna Paige Helmintoller,gated_bandit_router,W3,-0.0756,0.0,0.0
+low,502,What was the largest passenger capacity of the plane type used for BOAC Flight 911 ?,219,gated_bandit_router,W3,-0.0537,0.0,0.0
+low,592,"In what year did the actor who starred in the TV Land original series ""The Soul Man"" host the Black Movie Awards?",2005,gated_bandit_router,W3,-0.055,0.0,0.0
+low,405,Where was the person born who was recognized by MIAL and is an American soprano?,"Laurel, Mississippi",gated_bandit_router,W3,-0.053,0.0,0.0
+low,286,"Other than racing, what sport does the 1998 champion of the Toyota GRand Prix practice?",paracyclist,gated_bandit_router,W3,-0.0531,0.0,0.0
+low,580,My Secret Hotel is a television series starring a South Korean DJ who rose to fame as the lead actress in what?,Queen In-hyun's Man,gated_bandit_router,W3,0.0593,0.0,0.0667
+low,470,What type of profession does Ithu Engal Neethi and Shoba Chandrasekhar have in common?,director,gated_bandit_router,W3,-0.0228,0.0,0.0
+low,380,"Who was born first, José Echegaray y Eizaguirre or P. J. O'Rourke?",José Echegaray y Eizaguirre,gated_bandit_router,W3,0.3448,0.0,0.3333
+low,259,which is larger Asante Traditional Buildings or Gulangyu?,Gulangyu,gated_bandit_router,W3,-0.0518,0.0,0.0
+low,575,"The 2011 La Manga Cup was won by Viking, who beat which Norwegian football club from the town of Kristiansand, currently",IK Start,gated_bandit_router,W3,1.1021,1.0,1.0
+low,535,"Who has released more studio albums, Candlelight Red or Motion City Soundtrack?",Motion City Soundtrack,gated_bandit_router,W3,0.2819,0.0,0.2727
+low,183,"Which professional ice hockey position does the Captain of the National Hockey League All-Star Game ""Away Team"" play?",Canadian professional ice hockey centre,gated_bandit_router,W3,-0.0087,0.0,0.0
+low,207,Who was Chamberlain and Colonel of the military staff of The Merrie Monarch?,Colonel Charles Hastings Judd,gated_bandit_router,W3,0.0939,0.0,0.0909
+low,300,Where is the company that owns thanKing Horse pub restaurant chain based ?,"Bury St Edmunds,",gated_bandit_router,W3,-0.055,0.0,0.0
+low,180,What podcast was the cheif executive officer of Nerdist Industries a guest on?,Comedy Film Nerds,gated_bandit_router,W3,-0.0551,0.0,0.0
+low,548,In the 2012-13 FC Sion they brought in Gennaro Gattuso and a player who now plays for what Scottish team?,Scottish Premiership club Hearts,gated_bandit_router,W1,-0.018,0.0,0.0
+low,454,Are Agee and To Shoot an Elephant both documentaries about war?,no,gated_bandit_router,W3,0.0516,0.0,0.0625
+low,450,What is the name of the oldest child that attended the Trump campaign-Russian meeting?,Donald Trump Jr.,gated_bandit_router,W3,0.7865,0.0,0.75
+low,138,For what type of work is the production company for The Year Without a Santa Claus best known?,"seasonal television specials, particularly its work in stop motion animation",gated_bandit_router,W3,0.2299,0.0,0.2667
+low,459,William Pery served as Captain of the Yeomen of the Guard under the lord who served in what position from 1865 to 1868?,Viscount Cranborne,gated_bandit_router,W3,-0.0504,0.0,0.0
+low,269,Which composer created Night Ferry first performed in 2012 at Symphony Center in Chicago?,Anna Clyne,gated_bandit_router,W3,1.1013,1.0,1.0
+low,354,Were Thomas H. Ince and Joseph McGrath of the same nationality?,no,gated_bandit_router,W3,-0.008,0.0,0.0
+low,120,What major truck road is located in Backford Cross?,The A41,gated_bandit_router,W3,-0.0572,0.0,0.0
+low,321,"What is the international football competition for women that Liu Ailing played in the 1991,1995, 1999 editions?",international football competition,gated_bandit_router,W3,-0.0078,0.0,0.0
+low,440,Ronald Reagan and George H. W. Bush both held which position in office?,President of the United States,gated_bandit_router,W3,0.2344,0.0,0.2308
+low,372,"What South Korean actor was a member of the pop duo TVXQ and stared in Heading to the Ground, a 2009 MBC television seri",Jung Yun-ho,gated_bandit_router,W1,-0.019,0.0,0.0
+low,439,What town host an annual media finance conference that has featured an Australian-born American media mogul?,"Sun Valley, Idaho",gated_bandit_router,W3,1.0894,1.0,1.0
+low,562,"Gualdo Tadino Cathedral, a Roman Catholic cathedral, was dedicated to Saint Bendict of Nursia who is a patron saint of w",Europe,gated_bandit_router,W3,-0.0495,0.0,0.0
+low,498,Walt Zeboski photographed which 40th President during his campaign in 1980?,Ronald Wilson Reagan,gated_bandit_router,W3,0.1364,0.0,0.1818
+low,239,"Which genus has more species, Xanthoceras or Ehretia?",Ehretia,gated_bandit_router,W3,-0.0548,0.0,0.0
+low,364,"Where did the architect of the Governor's House, located in Knutsford, graduate from college?",Cambridge University,gated_bandit_router,W3,-0.0617,0.0,0.0
+low,262,What NIFL Premier Intermediate League team did Sean Connor play for?,Distillery,gated_bandit_router,W3,-0.0501,0.0,0.0
+low,142,Both Truth in Science and Discovery embrace what campaign?,"""Teach the Controversy"" campaign",gated_bandit_router,W3,1.0438,0.0,1.0
+low,447,What Cayman Islands registered Mandarin and Cantonese-language television broadcaster launched Phoenix Hong Kong Channel,Phoenix Television,gated_bandit_router,W3,1.1016,1.0,1.0
+low,461,1956 Night Series Cup games were played at what inner suburb of Melbourne that is 3km south of Melbourne's central busin,Albert Park,gated_bandit_router,W3,-0.0052,0.0,0.0
+low,268,What is the population according to the 2007 population census of the city in which the National Archives and Library of,"3,384,569",gated_bandit_router,W1,0.062,0.0,0.0833
+low,86,"In what year was the novel that Lourenço Mutarelli based ""Nina"" on based first published?",1866,gated_bandit_router,W1,-0.0228,0.0,0.0
+low,595,"Who was born first, Krzysztof Zanussi or Thom Andersen?",Krzysztof Zanussi,gated_bandit_router,W3,0.1272,0.0,0.1333
+low,282,In what month was the relief first officer of the flight that crashed on its way to Cairo with a stop in New York Born?,February,gated_bandit_router,W3,1.0973,1.0,1.0
+low,14,The football manager who recruited David Beckham managed Manchester United during what timeframe?,from 1986 to 2013,gated_bandit_router,W1,-0.0185,0.0,0.0
+low,129,"At what venue was the January 2, 2012 game featured the University of Louisville team?",Mercedes-Benz Superdome,gated_bandit_router,W3,0.163,0.0,0.1667
+low,441,"In between The Bears and I and Oceans which was released on July 31, 1974, by Buena Vista Distribution?",The Bears and I,gated_bandit_router,W3,1.0974,1.0,1.0
+low,30,"When was Poison's album ""Shut Up, Make Love"" released?",2000,gated_bandit_router,W1,-0.0271,0.0,0.0
+low,301,What is the uppermost age range for the sort of fiction written by Alexander Gordon Smith?,early 20s,gated_bandit_router,W3,-0.0677,0.0,0.0
+low,219,Which country did the Falkland Islands beat in the 2010 Commonwealth games that has eleven administrative divisions?,Samoa,gated_bandit_router,W3,-0.0034,0.0,0.0
+low,544,The American Sweetgum is the hostplant of what kind of bug?,moth,gated_bandit_router,W3,-0.0594,0.0,0.0
+low,72,What color clothing do people of the Netherlands wear during Oranjegekte or to celebrate the national holiday Koningsdag,orange,gated_bandit_router,W1,0.063,0.0,0.0833
+low,133,"Which Eminem album included vocals from a singer who had an album titled ""Unapologetic""?","""The Marshall Mathers LP 2""",gated_bandit_router,W3,-0.0256,0.0,0.0
+low,191,"What station broadcast the episode ""Marry Me a Little, Marry Me a Little More"" , of the series created by Max Mutchnick ",National Broadcasting Company,gated_bandit_router,W3,-0.0145,0.0,0.0
+low,230,What building is opposite the ceremonial meeting place of the Accession Council in the United Kingdom?,Mark Masons' Hall,gated_bandit_router,W3,-0.0501,0.0,0.0
+low,150,What occupation was shared by David Yates and Pietro Germi?,director,gated_bandit_router,W3,-0.0284,0.0,0.0
+low,236,"Henry Hall is known for fighting in the Revolutionary War, and for being the first to successfully cultivate this food f",acidic,gated_bandit_router,W3,-0.0576,0.0,0.0
+low,190,Joe Walker played for which team that ends their regular season with the Civil War rivalry game?,Oregon Ducks football,gated_bandit_router,W1,-0.0249,0.0,0.0
+low,297,What officially ended the first phase of the military conflict between the British Raj and the Emirate of Afghanistan fr,Treaty of Gandamak,gated_bandit_router,W3,0.1322,0.0,0.1429
+low,265,"What, known as AAS, is commonly used in bodybuilding?",Anabolic steroids,gated_bandit_router,W3,-0.0534,0.0,0.0
+medium,403,"The Indian actor and philanthropist, who starred in ""Mera Damad,"" entered the film industry in what year?",1977,bandit_router,W1,-0.0076,0.0,0.0
+medium,168,What was the 58th quadrennial American presidential election held after the 2016 Michigan Democratic primary?,United States presidential election of 2016,bandit_router,W3,0.3881,0.0,0.3
+medium,197, Robert Smith founded the multinational company headquartered in what city?,"Golden Valley, Minnesota,",bandit_router,W1,-0.0077,0.0,0.0
+medium,302,"What is the birthday of the actress who was the Duchess in ""The Revengers Tragedy""?",23 November 1946,bandit_router,W1,-0.0076,0.0,0.0
+medium,186,Who were the directors of the 2009 American science fiction film starring the actor who played Dexter Morgan in the Show,Mark Neveldine and Brian Taylor,bandit_router,W3,-0.0095,0.0,0.0
+medium,349,What year did the biographical-comedy-crime film directed by Steven Soderbergh about the highest-level corporate executi,2009,bandit_router,W1,-0.0077,0.0,0.0
+medium,367,"For what ""first"" was Ivory Lee Brown's nephew credited for in Heisman Trophy balloting?",first freshman to finish as the runner-up,bandit_router,W3,-0.005,0.0,0.0
+medium,39,Ralph Hefferline was a psychology professor at a university that is located in what city?,New York City,bandit_router,W1,-0.0078,0.0,0.0
+medium,43,The battle in which Giuseppe Arimondi lost his life secured what for Ethiopia?,sovereignty,bandit_router,W1,-0.0081,0.0,0.0
+medium,216,Ernest Foot was the best friend of the fighter pilot who had how many victories?,44,bandit_router,W1,-0.0076,0.0,0.0
+medium,508,"In what London botanical garden can you find the fungus described by Elise Maud Wakefield as ""Lepiota""?",Kew Gardens,bandit_router,W3,1.205,1.0,1.0
+medium,243,Salisbury Woodland Gardens links a zoo with a park designed and built under the watchful eye of who?,Thomas Mawson,bandit_router,W3,-0.0076,0.0,0.0
+medium,140,The author of Sexual Politics attended which British University?,Oxford,bandit_router,W3,-0.0055,0.0,0.0
+medium,383,"What national historic district is located near a village in the town of Philipstown, New York?",Valhalla Highlands Historic District,bandit_router,W3,0.3512,0.0,0.3333
+medium,557,Are Ganzhou and Jimo District both located in China?,yes,bandit_router,W3,0.1528,0.0,0.1429
+medium,359,Who were the producers of the show for which Chris McKay made his feature film directorial debut?,"Dan Lin, Roy Lee, Phil Lord and Christopher Miller",bandit_router,W3,-0.0063,0.0,0.0
+medium,257," The name ""Mountbatten-Windsor"" applies to male-line descendants of the Queen without royal styles and titles which is a",Mountbatten family,bandit_router,W3,0.3536,0.0,0.3333
+medium,423,One of the coaches of Southern Methodist University also played what role at the Arizona State Sun Devils?,defensive coordinator,bandit_router,W1,0.3654,0.0,0.3333
+medium,163,What British singer-songwriter hosted the 16th Annual Young Hollywood Awards?,Kelly Lee Osbourne,bandit_router,W1,-0.0084,0.0,0.0
+medium,553,What was the highest ranking in the United States for a single written by an English multi-instrumentalist?,25,bandit_router,W1,-0.0078,0.0,0.0
+medium,455,"What shallow water table aquifer is located near the county seat of Keith County, Nebraska?",Ogallala Aquifer,bandit_router,W1,0.0917,0.0,0.0909
+medium,509,"Who collaborated with Rihanna on the album release ""Numb""?",Eminem,bandit_router,W1,-0.0083,0.0,0.0
+medium,145,"Who was born first, Erika Jayne or Marco Da Silva",Erika Jayne,bandit_router,W1,-0.008,0.0,0.0
+medium,594,What type of engine powered both the Saab 36 and the Avro Vulcan?,British Bristol Olympus turbojet,bandit_router,W2,0.8967,0.0,0.8
+medium,44,Alfred Balk served as the secretary of the Committee on the Employment of Minority Groups in the News Media under which ,Nelson Rockefeller,bandit_router,W3,1.2021,1.0,1.0
+medium,434,The movies The Boatniks and The Great Locomotive Chase were both made by which production company?,Walt Disney Productions,bandit_router,W3,0.0312,0.0,0.0
+medium,2,"What science fantasy young adult series, told in first person, has a set of companion books narrating the stories of ens",Animorphs,bandit_router,W3,0.0627,0.0,0.0
+medium,399,Wendy Ayche was featured in 2016 in an annual production created by Youtube and what other organization?,Portal A Interactive,bandit_router,W1,-0.0078,0.0,0.0
+medium,474,Where was the telefilm shot that was based on the 1977 Katherine Paterson book?,"Edmonton, Alberta",bandit_router,W1,-0.0077,0.0,0.0
+medium,569,"The Company They Keep is a book written by Diana Pavlac Glyer, who is a professor at a university in Azusa, California, ",evangelical Christian,bandit_router,W3,0.067,0.0,0.0
+medium,75,What American professional Hawaiian surfer born 18 October 1992 won the Rip Curl Pro Portugal?,John John Florence,bandit_router,W3,0.0641,0.0,0.0
+medium,134,This American crime film set in South Los Angeles was written and directed by the same director and writer of screenwrit,Suicide Squad,bandit_router,W2,0.0104,0.0,0.0
+medium,375,For One Night Only was hosted by the man most well-known for hosting what show from 1962 until 1999?,The Late Late Show,bandit_router,W1,-0.0079,0.0,0.0
+medium,199,"Considered the strongest recorded tropical cyclone, which cyclone had a film made about it in 2007?",1999 Odisha cyclone,bandit_router,W3,0.2565,0.0,0.25
+medium,545,The first book in the Sprawl Trilogy won what three awards?,"Nebula Award, the Philip K. Dick Award, and the Hugo Award",bandit_router,W3,-0.006,0.0,0.0
+medium,241,What american actress/singer born in 1956 recorded the song Something there for beauty and the beast?,Donna Paige Helmintoller,bandit_router,W3,-0.0174,0.0,0.0
+medium,502,What was the largest passenger capacity of the plane type used for BOAC Flight 911 ?,219,bandit_router,W2,0.0012,0.0,0.0
+medium,592,"In what year did the actor who starred in the TV Land original series ""The Soul Man"" host the Black Movie Awards?",2005,bandit_router,W1,-0.0078,0.0,0.0
+medium,405,Where was the person born who was recognized by MIAL and is an American soprano?,"Laurel, Mississippi",bandit_router,W1,-0.0075,0.0,0.0
+medium,286,"Other than racing, what sport does the 1998 champion of the Toyota GRand Prix practice?",paracyclist,bandit_router,W3,-0.0059,0.0,0.0
+medium,580,My Secret Hotel is a television series starring a South Korean DJ who rose to fame as the lead actress in what?,Queen In-hyun's Man,bandit_router,W3,0.1371,0.0,0.0667
+medium,470,What type of profession does Ithu Engal Neethi and Shoba Chandrasekhar have in common?,director,bandit_router,W2,0.0488,0.0,0.0
+medium,380,"Who was born first, José Echegaray y Eizaguirre or P. J. O'Rourke?",José Echegaray y Eizaguirre,bandit_router,W1,0.7346,0.0,0.6667
+medium,259,which is larger Asante Traditional Buildings or Gulangyu?,Gulangyu,bandit_router,W6,-0.0143,0.0,0.0
+medium,575,"The 2011 La Manga Cup was won by Viking, who beat which Norwegian football club from the town of Kristiansand, currently",IK Start,bandit_router,W3,1.2147,1.0,1.0
+medium,535,"Who has released more studio albums, Candlelight Red or Motion City Soundtrack?",Motion City Soundtrack,bandit_router,W3,0.3603,0.0,0.2727
+medium,183,"Which professional ice hockey position does the Captain of the National Hockey League All-Star Game ""Away Team"" play?",Canadian professional ice hockey centre,bandit_router,W3,0.0624,0.0,0.0
+medium,207,Who was Chamberlain and Colonel of the military staff of The Merrie Monarch?,Colonel Charles Hastings Judd,bandit_router,W2,0.139,0.0,0.0909
+medium,300,Where is the company that owns thanKing Horse pub restaurant chain based ?,"Bury St Edmunds,",bandit_router,W1,-0.0077,0.0,0.0
+medium,180,What podcast was the cheif executive officer of Nerdist Industries a guest on?,Comedy Film Nerds,bandit_router,W1,-0.0075,0.0,0.0
+medium,548,In the 2012-13 FC Sion they brought in Gennaro Gattuso and a player who now plays for what Scottish team?,Scottish Premiership club Hearts,bandit_router,W3,-0.0032,0.0,0.0
+medium,454,Are Agee and To Shoot an Elephant both documentaries about war?,no,bandit_router,W3,0.1335,0.0,0.0625
+medium,450,What is the name of the oldest child that attended the Trump campaign-Russian meeting?,Donald Trump Jr.,bandit_router,W2,0.8245,0.0,0.75
+medium,138,For what type of work is the production company for The Year Without a Santa Claus best known?,"seasonal television specials, particularly its work in stop motion animation",bandit_router,W2,-0.0043,0.0,0.0
+medium,459,William Pery served as Captain of the Yeomen of the Guard under the lord who served in what position from 1865 to 1868?,Viscount Cranborne,bandit_router,W3,-0.003,0.0,0.0
+medium,269,Which composer created Night Ferry first performed in 2012 at Symphony Center in Chicago?,Anna Clyne,bandit_router,W6,1.1392,1.0,1.0
+medium,354,Were Thomas H. Ince and Joseph McGrath of the same nationality?,no,bandit_router,W2,0.061,0.0,0.0
+medium,120,What major truck road is located in Backford Cross?,The A41,bandit_router,W1,-0.0096,0.0,0.0
+medium,321,"What is the international football competition for women that Liu Ailing played in the 1991,1995, 1999 editions?",international football competition,bandit_router,W1,0.2465,0.0,0.2308
+medium,440,Ronald Reagan and George H. W. Bush both held which position in office?,President of the United States,bandit_router,W3,0.3166,0.0,0.2308
+medium,372,"What South Korean actor was a member of the pop duo TVXQ and stared in Heading to the Ground, a 2009 MBC television seri",Jung Yun-ho,bandit_router,W1,-0.0071,0.0,0.0
+medium,439,What town host an annual media finance conference that has featured an Australian-born American media mogul?,"Sun Valley, Idaho",bandit_router,W3,1.2016,1.0,1.0
+medium,562,"Gualdo Tadino Cathedral, a Roman Catholic cathedral, was dedicated to Saint Bendict of Nursia who is a patron saint of w",Europe,bandit_router,W2,-0.0041,0.0,0.0
+medium,498,Walt Zeboski photographed which 40th President during his campaign in 1980?,Ronald Wilson Reagan,bandit_router,W3,0.1773,0.0,0.1667
+medium,239,"Which genus has more species, Xanthoceras or Ehretia?",Ehretia,bandit_router,W3,-0.0071,0.0,0.0
+medium,364,"Where did the architect of the Governor's House, located in Knutsford, graduate from college?",Cambridge University,bandit_router,W1,-0.01,0.0,0.0
+medium,262,What NIFL Premier Intermediate League team did Sean Connor play for?,Distillery,bandit_router,W1,-0.0104,0.0,0.0
+medium,142,Both Truth in Science and Discovery embrace what campaign?,"""Teach the Controversy"" campaign",bandit_router,W3,1.1344,0.0,1.0
+medium,447,What Cayman Islands registered Mandarin and Cantonese-language television broadcaster launched Phoenix Hong Kong Channel,Phoenix Television,bandit_router,W3,1.2112,1.0,1.0
+medium,461,1956 Night Series Cup games were played at what inner suburb of Melbourne that is 3km south of Melbourne's central busin,Albert Park,bandit_router,W3,0.6035,0.0,0.5
+medium,268,What is the population according to the 2007 population census of the city in which the National Archives and Library of,"3,384,569",bandit_router,W2,0.1876,0.0,0.1667
+medium,86,"In what year was the novel that Lourenço Mutarelli based ""Nina"" on based first published?",1866,bandit_router,W1,-0.0096,0.0,0.0
+medium,595,"Who was born first, Krzysztof Zanussi or Thom Andersen?",Krzysztof Zanussi,bandit_router,W1,-0.0077,0.0,0.0
+medium,282,In what month was the relief first officer of the flight that crashed on its way to Cairo with a stop in New York Born?,February,bandit_router,W3,0.065,0.0,0.0
+medium,14,The football manager who recruited David Beckham managed Manchester United during what timeframe?,from 1986 to 2013,bandit_router,W1,-0.0078,0.0,0.0
+medium,129,"At what venue was the January 2, 2012 game featured the University of Louisville team?",Mercedes-Benz Superdome,bandit_router,W3,0.2433,0.0,0.1667
+medium,441,"In between The Bears and I and Oceans which was released on July 31, 1974, by Buena Vista Distribution?",The Bears and I,bandit_router,W3,1.2074,1.0,1.0
+medium,30,"When was Poison's album ""Shut Up, Make Love"" released?",2000,bandit_router,W1,-0.0111,0.0,0.0
+medium,301,What is the uppermost age range for the sort of fiction written by Alexander Gordon Smith?,early 20s,bandit_router,W2,0.0141,0.0,0.0
+medium,219,Which country did the Falkland Islands beat in the 2010 Commonwealth games that has eleven administrative divisions?,Samoa,bandit_router,W3,0.0657,0.0,0.0
+medium,544,The American Sweetgum is the hostplant of what kind of bug?,moth,bandit_router,W3,-0.0073,0.0,0.0
+medium,72,What color clothing do people of the Netherlands wear during Oranjegekte or to celebrate the national holiday Koningsdag,orange,bandit_router,W1,0.0904,0.0,0.0909
+medium,133,"Which Eminem album included vocals from a singer who had an album titled ""Unapologetic""?","""The Marshall Mathers LP 2""",bandit_router,W1,-0.0078,0.0,0.0
+medium,191,"What station broadcast the episode ""Marry Me a Little, Marry Me a Little More"" , of the series created by Max Mutchnick ",National Broadcasting Company,bandit_router,W2,0.0259,0.0,0.0
+medium,230,What building is opposite the ceremonial meeting place of the Accession Council in the United Kingdom?,Mark Masons' Hall,bandit_router,W1,-0.0084,0.0,0.0
+medium,150,What occupation was shared by David Yates and Pietro Germi?,director,bandit_router,W3,0.0291,0.0,0.0
+medium,236,"Henry Hall is known for fighting in the Revolutionary War, and for being the first to successfully cultivate this food f",acidic,bandit_router,W6,-0.0325,0.0,0.0
+medium,190,Joe Walker played for which team that ends their regular season with the Civil War rivalry game?,Oregon Ducks football,bandit_router,W1,-0.0108,0.0,0.0
+medium,297,What officially ended the first phase of the military conflict between the British Raj and the Emirate of Afghanistan fr,Treaty of Gandamak,bandit_router,W3,0.214,0.0,0.1429
+medium,265,"What, known as AAS, is commonly used in bodybuilding?",Anabolic steroids,bandit_router,W3,-0.0063,0.0,0.0
+high,403,"The Indian actor and philanthropist, who starred in ""Mera Damad,"" entered the film industry in what year?",1977,bandit_router,W2,0.0755,0.0,0.0
+high,168,What was the 58th quadrennial American presidential election held after the 2016 Michigan Democratic primary?,United States presidential election of 2016,bandit_router,W3,0.4416,0.0,0.3
+high,197, Robert Smith founded the multinational company headquartered in what city?,"Golden Valley, Minnesota,",bandit_router,W3,0.0186,0.0,0.0
+high,302,"What is the birthday of the actress who was the Duchess in ""The Revengers Tragedy""?",23 November 1946,bandit_router,W2,0.0375,0.0,0.0
+high,186,Who were the directors of the 2009 American science fiction film starring the actor who played Dexter Morgan in the Show,Mark Neveldine and Brian Taylor,bandit_router,W3,0.0158,0.0,0.0
+high,349,What year did the biographical-comedy-crime film directed by Steven Soderbergh about the highest-level corporate executi,2009,bandit_router,W2,0.0243,0.0,0.0
+high,367,"For what ""first"" was Ivory Lee Brown's nephew credited for in Heisman Trophy balloting?",first freshman to finish as the runner-up,bandit_router,W3,0.0189,0.0,0.0
+high,39,Ralph Hefferline was a psychology professor at a university that is located in what city?,New York City,bandit_router,W3,0.0191,0.0,0.0
+high,43,The battle in which Giuseppe Arimondi lost his life secured what for Ethiopia?,sovereignty,bandit_router,W2,0.0227,0.0,0.0
+high,216,Ernest Foot was the best friend of the fighter pilot who had how many victories?,44,bandit_router,W2,0.0765,0.0,0.0
+high,508,"In what London botanical garden can you find the fungus described by Elise Maud Wakefield as ""Lepiota""?",Kew Gardens,bandit_router,W3,1.2893,1.0,1.0
+high,243,Salisbury Woodland Gardens links a zoo with a park designed and built under the watchful eye of who?,Thomas Mawson,bandit_router,W3,0.0177,0.0,0.0
+high,140,The author of Sexual Politics attended which British University?,Oxford,bandit_router,W3,0.0175,0.0,0.0
+high,383,"What national historic district is located near a village in the town of Philipstown, New York?",Valhalla Highlands Historic District,bandit_router,W3,0.3837,0.0,0.3333
+high,557,Are Ganzhou and Jimo District both located in China?,yes,bandit_router,W3,0.1641,0.0,0.125
+high,359,Who were the producers of the show for which Chris McKay made his feature film directorial debut?,"Dan Lin, Roy Lee, Phil Lord and Christopher Miller",bandit_router,W2,0.0439,0.0,0.0
+high,257," The name ""Mountbatten-Windsor"" applies to male-line descendants of the Queen without royal styles and titles which is a",Mountbatten family,bandit_router,W3,0.3853,0.0,0.3333
+high,423,One of the coaches of Southern Methodist University also played what role at the Arizona State Sun Devils?,defensive coordinator,bandit_router,W3,0.0197,0.0,0.0
+high,163,What British singer-songwriter hosted the 16th Annual Young Hollywood Awards?,Kelly Lee Osbourne,bandit_router,W3,0.247,0.0,0.2
+high,553,What was the highest ranking in the United States for a single written by an English multi-instrumentalist?,25,bandit_router,W2,0.0304,0.0,0.0
+high,455,"What shallow water table aquifer is located near the county seat of Keith County, Nebraska?",Ogallala Aquifer,bandit_router,W3,0.3893,0.0,0.25
+high,509,"Who collaborated with Rihanna on the album release ""Numb""?",Eminem,bandit_router,W3,0.0613,0.0,0.0
+high,145,"Who was born first, Erika Jayne or Marco Da Silva",Erika Jayne,bandit_router,W3,0.1075,0.0,0.0
+high,594,What type of engine powered both the Saab 36 and the Avro Vulcan?,British Bristol Olympus turbojet,bandit_router,W2,0.9598,0.0,0.8
+high,44,Alfred Balk served as the secretary of the Committee on the Employment of Minority Groups in the News Media under which ,Nelson Rockefeller,bandit_router,W3,1.2877,1.0,1.0
+high,434,The movies The Boatniks and The Great Locomotive Chase were both made by which production company?,Walt Disney Productions,bandit_router,W3,0.0661,0.0,0.0
+high,2,"What science fantasy young adult series, told in first person, has a set of companion books narrating the stories of ens",Animorphs,bandit_router,W3,0.1076,0.0,0.0
+high,399,Wendy Ayche was featured in 2016 in an annual production created by Youtube and what other organization?,Portal A Interactive,bandit_router,W2,0.0396,0.0,0.0
+high,474,Where was the telefilm shot that was based on the 1977 Katherine Paterson book?,"Edmonton, Alberta",bandit_router,W3,0.3898,0.0,0.25
+high,569,"The Company They Keep is a book written by Diana Pavlac Glyer, who is a professor at a university in Azusa, California, ",evangelical Christian,bandit_router,W3,0.1146,0.0,0.0
+high,75,What American professional Hawaiian surfer born 18 October 1992 won the Rip Curl Pro Portugal?,John John Florence,bandit_router,W3,0.109,0.0,0.0
+high,134,This American crime film set in South Los Angeles was written and directed by the same director and writer of screenwrit,Suicide Squad,bandit_router,W2,0.0478,0.0,0.0
+high,375,For One Night Only was hosted by the man most well-known for hosting what show from 1962 until 1999?,The Late Late Show,bandit_router,W2,0.0044,0.0,0.0
+high,199,"Considered the strongest recorded tropical cyclone, which cyclone had a film made about it in 2007?",1999 Odisha cyclone,bandit_router,W3,0.2876,0.0,0.25
+high,545,The first book in the Sprawl Trilogy won what three awards?,"Nebula Award, the Philip K. Dick Award, and the Hugo Award",bandit_router,W3,0.0205,0.0,0.0
+high,241,What american actress/singer born in 1956 recorded the song Something there for beauty and the beast?,Donna Paige Helmintoller,bandit_router,W3,0.0104,0.0,0.0
+high,502,What was the largest passenger capacity of the plane type used for BOAC Flight 911 ?,219,bandit_router,W2,0.0374,0.0,0.0
+high,592,"In what year did the actor who starred in the TV Land original series ""The Soul Man"" host the Black Movie Awards?",2005,bandit_router,W3,0.0251,0.0,0.0
+high,405,Where was the person born who was recognized by MIAL and is an American soprano?,"Laurel, Mississippi",bandit_router,W3,0.0168,0.0,0.0
+high,286,"Other than racing, what sport does the 1998 champion of the Toyota GRand Prix practice?",paracyclist,bandit_router,W3,0.0173,0.0,0.0
+high,580,My Secret Hotel is a television series starring a South Korean DJ who rose to fame as the lead actress in what?,Queen In-hyun's Man,bandit_router,W3,0.1108,0.0,0.0
+high,470,What type of profession does Ithu Engal Neethi and Shoba Chandrasekhar have in common?,director,bandit_router,W2,0.0983,0.0,0.0
+high,380,"Who was born first, José Echegaray y Eizaguirre or P. J. O'Rourke?",José Echegaray y Eizaguirre,bandit_router,W3,0.4735,0.0,0.3333
+high,259,which is larger Asante Traditional Buildings or Gulangyu?,Gulangyu,bandit_router,W3,0.0179,0.0,0.0
+high,575,"The 2011 La Manga Cup was won by Viking, who beat which Norwegian football club from the town of Kristiansand, currently",IK Start,bandit_router,W3,1.3023,1.0,1.0
+high,535,"Who has released more studio albums, Candlelight Red or Motion City Soundtrack?",Motion City Soundtrack,bandit_router,W3,0.5247,0.0,0.375
+high,183,"Which professional ice hockey position does the Captain of the National Hockey League All-Star Game ""Away Team"" play?",Canadian professional ice hockey centre,bandit_router,W3,0.1078,0.0,0.0
+high,207,Who was Chamberlain and Colonel of the military staff of The Merrie Monarch?,Colonel Charles Hastings Judd,bandit_router,W2,0.1811,0.0,0.0833
+high,300,Where is the company that owns thanKing Horse pub restaurant chain based ?,"Bury St Edmunds,",bandit_router,W3,0.0229,0.0,0.0
+high,180,What podcast was the cheif executive officer of Nerdist Industries a guest on?,Comedy Film Nerds,bandit_router,W3,0.0181,0.0,0.0
+high,548,In the 2012-13 FC Sion they brought in Gennaro Gattuso and a player who now plays for what Scottish team?,Scottish Premiership club Hearts,bandit_router,W3,0.022,0.0,0.0
+high,454,Are Agee and To Shoot an Elephant both documentaries about war?,no,bandit_router,W3,0.1837,0.0,0.0625
+high,450,What is the name of the oldest child that attended the Trump campaign-Russian meeting?,Donald Trump Jr.,bandit_router,W2,0.8842,0.0,0.75
+high,138,For what type of work is the production company for The Year Without a Santa Claus best known?,"seasonal television specials, particularly its work in stop motion animation",bandit_router,W2,0.2665,0.0,0.2105
+high,459,William Pery served as Captain of the Yeomen of the Guard under the lord who served in what position from 1865 to 1868?,Viscount Cranborne,bandit_router,W3,0.0213,0.0,0.0
+high,269,Which composer created Night Ferry first performed in 2012 at Symphony Center in Chicago?,Anna Clyne,bandit_router,W2,1.2644,1.0,1.0
+high,354,Were Thomas H. Ince and Joseph McGrath of the same nationality?,no,bandit_router,W2,0.1143,0.0,0.0
+high,120,What major truck road is located in Backford Cross?,The A41,bandit_router,W3,0.0197,0.0,0.0
+high,321,"What is the international football competition for women that Liu Ailing played in the 1991,1995, 1999 editions?",international football competition,bandit_router,W2,0.0912,0.0,0.0
+high,440,Ronald Reagan and George H. W. Bush both held which position in office?,President of the United States,bandit_router,W3,0.3693,0.0,0.2308
+high,372,"What South Korean actor was a member of the pop duo TVXQ and stared in Heading to the Ground, a 2009 MBC television seri",Jung Yun-ho,bandit_router,W2,0.011,0.0,0.0
+high,439,What town host an annual media finance conference that has featured an Australian-born American media mogul?,"Sun Valley, Idaho",bandit_router,W3,1.2867,1.0,1.0
+high,562,"Gualdo Tadino Cathedral, a Roman Catholic cathedral, was dedicated to Saint Bendict of Nursia who is a patron saint of w",Europe,bandit_router,W2,0.0301,0.0,0.0
+high,498,Walt Zeboski photographed which 40th President during his campaign in 1980?,Ronald Wilson Reagan,bandit_router,W3,0.2079,0.0,0.1667
+high,239,"Which genus has more species, Xanthoceras or Ehretia?",Ehretia,bandit_router,W2,0.16,0.0,0.0833
+high,364,"Where did the architect of the Governor's House, located in Knutsford, graduate from college?",Cambridge University,bandit_router,W3,0.0211,0.0,0.0
+high,262,What NIFL Premier Intermediate League team did Sean Connor play for?,Distillery,bandit_router,W3,0.0195,0.0,0.0
+high,142,Both Truth in Science and Discovery embrace what campaign?,"""Teach the Controversy"" campaign",bandit_router,W3,1.1991,0.0,1.0
+high,447,What Cayman Islands registered Mandarin and Cantonese-language television broadcaster launched Phoenix Hong Kong Channel,Phoenix Television,bandit_router,W3,1.2972,1.0,1.0
+high,461,1956 Night Series Cup games were played at what inner suburb of Melbourne that is 3km south of Melbourne's central busin,Albert Park,bandit_router,W3,0.6608,0.0,0.5
+high,268,What is the population according to the 2007 population census of the city in which the National Archives and Library of,"3,384,569",bandit_router,W2,0.2364,0.0,0.1667
+high,86,"In what year was the novel that Lourenço Mutarelli based ""Nina"" on based first published?",1866,bandit_router,W2,0.0573,0.0,0.0
+high,595,"Who was born first, Krzysztof Zanussi or Thom Andersen?",Krzysztof Zanussi,bandit_router,W3,0.6527,0.0,0.5
+high,282,In what month was the relief first officer of the flight that crashed on its way to Cairo with a stop in New York Born?,February,bandit_router,W3,0.1093,0.0,0.0
+high,14,The football manager who recruited David Beckham managed Manchester United during what timeframe?,from 1986 to 2013,bandit_router,W3,0.0788,0.0,0.0
+high,129,"At what venue was the January 2, 2012 game featured the University of Louisville team?",Mercedes-Benz Superdome,bandit_router,W3,0.2946,0.0,0.1667
+high,441,"In between The Bears and I and Oceans which was released on July 31, 1974, by Buena Vista Distribution?",The Bears and I,bandit_router,W3,1.2924,1.0,1.0
+high,30,"When was Poison's album ""Shut Up, Make Love"" released?",2000,bandit_router,W3,0.1121,0.0,0.0
+high,301,What is the uppermost age range for the sort of fiction written by Alexander Gordon Smith?,early 20s,bandit_router,W2,0.052,0.0,0.0
+high,219,Which country did the Falkland Islands beat in the 2010 Commonwealth games that has eleven administrative divisions?,Samoa,bandit_router,W3,0.1097,0.0,0.0
+high,544,The American Sweetgum is the hostplant of what kind of bug?,moth,bandit_router,W3,0.0162,0.0,0.0
+high,72,What color clothing do people of the Netherlands wear during Oranjegekte or to celebrate the national holiday Koningsdag,orange,bandit_router,W2,0.1346,0.0,0.0667
+high,133,"Which Eminem album included vocals from a singer who had an album titled ""Unapologetic""?","""The Marshall Mathers LP 2""",bandit_router,W3,0.0646,0.0,0.0
+high,191,"What station broadcast the episode ""Marry Me a Little, Marry Me a Little More"" , of the series created by Max Mutchnick ",National Broadcasting Company,bandit_router,W2,0.0712,0.0,0.0
+high,230,What building is opposite the ceremonial meeting place of the Accession Council in the United Kingdom?,Mark Masons' Hall,bandit_router,W2,0.0249,0.0,0.0
+high,150,What occupation was shared by David Yates and Pietro Germi?,director,bandit_router,W2,1.2556,1.0,1.0
+high,236,"Henry Hall is known for fighting in the Revolutionary War, and for being the first to successfully cultivate this food f",acidic,bandit_router,W3,0.0176,0.0,0.0
+high,190,Joe Walker played for which team that ends their regular season with the Civil War rivalry game?,Oregon Ducks football,bandit_router,W3,0.8371,0.0,0.6667
+high,297,What officially ended the first phase of the military conflict between the British Raj and the Emirate of Afghanistan fr,Treaty of Gandamak,bandit_router,W2,0.147,0.0,0.0667
+high,265,"What, known as AAS, is commonly used in bodybuilding?",Anabolic steroids,bandit_router,W3,0.0169,0.0,0.0

@@ -13,11 +13,11 @@ import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
-# ── paths ──────────────────────────────────────────────────────────
 ROOT = pathlib.Path(__file__).resolve().parent
 OUT  = ROOT / "outputs"
 MET  = OUT / "metrics"
 VIZ  = OUT / "report_visualizations"
+ARCH_IMG = ROOT / "Baocao" / "ChatGPT Image 20_37_09 4 thg 6, 2026.png"
 
 # ── helpers ────────────────────────────────────────────────────────
 @st.cache_data
@@ -36,6 +36,132 @@ def safe_csv(name):
 def safe_json(name):
     p = OUT / name
     return load_json(p) if p.exists() else None
+
+
+def _infer_experiment_meta(exp_dir: pathlib.Path):
+    """Infer dataset/model/provider from output folder name and logs."""
+    if exp_dir == OUT:
+        return {
+            "experiment": "hotpotqa_large_llama3.2_baseline",
+            "dataset": "hotpotqa_large",
+            "provider": "ollama",
+            "model": "llama3.2",
+            "output_dir": str(exp_dir.relative_to(ROOT)),
+        }
+
+    name = exp_dir.name
+    dataset = "hotpotqa_large" if "hotpotqa" in name else ("2wikimultihopqa" if "2wiki" in name else "unknown")
+    provider = "ollama"
+    model = "unknown"
+    if "gemini" in name:
+        provider, model = "gemini", "gemini-2.0-flash"
+    elif "gemma3.4b" in name or "gemma3_4b" in name or "genma3.4b" in name:
+        provider, model = "ollama", "gemma3:4b"
+    elif "gemma3" in name:
+        provider, model = "ollama", "gemma3"
+    elif "llama" in name:
+        provider, model = "ollama", "llama3.2"
+
+    log = exp_dir / "run_all.log"
+    train_limit, eval_limit = None, None
+    if log.exists():
+        try:
+            text = log.read_text(encoding="utf-8", errors="ignore")[:3000]
+            import re
+            m = re.search(r"Dataset:\s*([^|\n]+)", text)
+            if m:
+                dataset = m.group(1).strip()
+            m = re.search(r"(?:LLM Model\s*:|ollama/)([\w.:-]+)", text)
+            if m and model == "unknown":
+                model = m.group(1).strip()
+            m = re.search(r"Train(?: limit)?\s*[=:]\s*(\d+)", text)
+            if m:
+                train_limit = int(m.group(1))
+            m = re.search(r"Eval(?: limit)?\s*[=:]\s*(\d+)", text)
+            if m:
+                eval_limit = int(m.group(1))
+        except Exception:
+            pass
+
+    return {
+        "experiment": name,
+        "dataset": dataset,
+        "provider": provider,
+        "model": model,
+        "train_limit": train_limit,
+        "eval_limit": eval_limit,
+        "output_dir": str(exp_dir.relative_to(ROOT)),
+    }
+
+
+@st.cache_data
+def discover_experiments():
+    """Scan outputs/ and collect completed experiment metrics."""
+    rows, configs, critic_rows, gate_rows = [], [], [], []
+    candidates = []
+    if (OUT / "metrics" / "metrics_macro_budget_summary.csv").exists():
+        candidates.append(OUT)
+    if OUT.exists():
+        for d in sorted([p for p in OUT.iterdir() if p.is_dir()]):
+            if (d / "metrics" / "metrics_macro_budget_summary.csv").exists():
+                candidates.append(d)
+
+    for exp_dir in candidates:
+        meta = _infer_experiment_meta(exp_dir)
+        metrics_dir = exp_dir / "metrics"
+        budget_path = metrics_dir / "metrics_macro_budget_summary.csv"
+        try:
+            bdf = pd.read_csv(budget_path)
+            for _, r in bdf.iterrows():
+                row = dict(meta)
+                row.update(r.to_dict())
+                rows.append(row)
+
+            best = bdf.loc[bdf["avg_utility"].idxmax()].to_dict()
+            cfg = dict(meta)
+            cfg.update({
+                "best_budget": best.get("budget_mode"),
+                "best_utility": best.get("avg_utility"),
+                "best_em": best.get("avg_em"),
+                "best_f1": best.get("avg_f1_proxy"),
+                "best_tokens": best.get("avg_tokens"),
+                "best_latency_ms": best.get("avg_latency_ms"),
+                "num_budgets": len(bdf),
+                "completed": True,
+            })
+            configs.append(cfg)
+        except Exception:
+            continue
+
+        cp = metrics_dir / "metrics_micro_critic_summary.csv"
+        if cp.exists():
+            cdf = pd.read_csv(cp)
+            for _, r in cdf.iterrows():
+                row = dict(meta)
+                row.update(r.to_dict())
+                critic_rows.append(row)
+
+        sp = metrics_dir / "metrics_system_overview.csv"
+        if sp.exists():
+            sdf = pd.read_csv(sp)
+            for _, r in sdf.iterrows():
+                row = dict(meta)
+                row.update(r.to_dict())
+                gate_rows.append(row)
+
+    return {
+        "budget": pd.DataFrame(rows),
+        "configs": pd.DataFrame(configs),
+        "critics": pd.DataFrame(critic_rows),
+        "gates": pd.DataFrame(gate_rows),
+    }
+
+
+def fmt_num(x, nd=4):
+    try:
+        return f"{float(x):.{nd}f}"
+    except Exception:
+        return x
 
 COLORS = {
     "low": "#6366f1", "medium": "#f59e0b", "high": "#10b981",
@@ -103,7 +229,16 @@ with st.sidebar:
         st.markdown(f"**{wf}**: {desc}")
 
 # ── tabs ───────────────────────────────────────────────────────────
-tabs = st.tabs(["📈 Overview", "🔀 Macro Layer", "🔬 Micro Layer", "🚦 System Gates", "📊 Visualizations", "🏃 Live Demo"])
+tabs = st.tabs([
+    "📈 Overview",
+    "🏗️ Architecture",
+    "🏆 Experiment Comparison",
+    "🔀 Macro Layer",
+    "🔬 Micro Layer",
+    "🚦 System Gates",
+    "📊 Visualizations",
+    "🏃 Live Demo",
+])
 
 # ━━━━ TAB 0: Overview ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 with tabs[0]:
@@ -159,8 +294,183 @@ with tabs[0]:
                 st.markdown("**Promotion Status**")
                 st.dataframe(promo_df[["budget_mode","passed","candidate_utility","frozen_utility","utility_delta"]], hide_index=True)
 
-# ━━━━ TAB 1: Macro Layer ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# ━━━━ TAB 1: Architecture ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 with tabs[1]:
+    st.subheader("🏗️ MAP-RAG-Gym System Architecture")
+    if ARCH_IMG.exists():
+        st.image(str(ARCH_IMG), caption="MAP-RAG-Gym: Adaptive Multi-Workflow RAG with Process Evaluation", use_container_width=True)
+    else:
+        st.warning(f"Architecture image not found: `{ARCH_IMG}`")
+
+    st.markdown("""
+    ### Main Processing Flow
+    1. **Input question + budget** enters the macro router.
+    2. **Macro layer** selects workflow W1/W2/W3/W6 based on budget constraints.
+    3. **Micro layer** applies process critic (QR/AG) when the deployment gate allows.
+    4. **System layer** checks Offline RL, Promotion Gate, Bandit Gate, Critic Gate.
+    5. Final output includes answer, utility, EM/F1 proxy, token cost, and latency.
+    """)
+
+    st.markdown("#### Workflow Library")
+    wf_table = pd.DataFrame([
+        {"Workflow": "W1", "Pipeline": "AG", "Role": "Direct answer / lowest cost"},
+        {"Workflow": "W2", "Pipeline": "QR → RA → AG", "Role": "Rewrite + retrieve + answer"},
+        {"Workflow": "W3", "Pipeline": "RA → DS → AG", "Role": "Retrieve + document selection + answer"},
+        {"Workflow": "W4", "Pipeline": "QDP → RA → AS", "Role": "Parallel question decomposition"},
+        {"Workflow": "W5", "Pipeline": "QDS → QR → RA → AS", "Role": "Serial decomposition"},
+        {"Workflow": "W6", "Pipeline": "DRAFT → REFLECT → RA → AG", "Role": "Reflective RAG"},
+    ])
+    st.dataframe(wf_table, hide_index=True, use_container_width=True)
+
+# ━━━━ TAB 2: Experiment Comparison ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+with tabs[2]:
+    st.subheader("🏆 Experiment Results — All Trained Runs in `outputs/`")
+    exp = discover_experiments()
+    budget_all = exp["budget"]
+    cfg_all = exp["configs"]
+    critic_all = exp["critics"]
+    gate_all = exp["gates"]
+
+    if budget_all.empty:
+        st.warning("No completed experiments found in `outputs/**/metrics/metrics_macro_budget_summary.csv`.")
+    else:
+        c1, c2, c3, c4 = st.columns(4)
+        c1.metric("Experiments", cfg_all["experiment"].nunique())
+        c2.metric("Datasets", cfg_all["dataset"].nunique())
+        c3.metric("Models", cfg_all["model"].nunique())
+        best_idx = budget_all["avg_utility"].astype(float).idxmax()
+        best_row = budget_all.loc[best_idx]
+        c4.metric("Best Utility", f"{best_row['avg_utility']:.4f}", f"{best_row['experiment']} / {best_row['budget_mode']}")
+
+        st.markdown("#### Training Configurations")
+        show_cfg = cfg_all[[
+            "experiment", "dataset", "provider", "model", "train_limit", "eval_limit",
+            "best_budget", "best_utility", "best_em", "best_f1", "best_tokens", "best_latency_ms", "output_dir"
+        ]].copy()
+        st.dataframe(show_cfg.sort_values("best_utility", ascending=False), hide_index=True, use_container_width=True)
+
+        st.markdown("#### Budget-Level Comparison Table")
+        show_budget = budget_all[[
+            "experiment", "dataset", "provider", "model", "budget_mode", "recommended_method",
+            "num_runs", "avg_utility", "avg_em", "avg_f1_proxy", "avg_process_score",
+            "avg_tokens", "avg_latency_ms", "workflow_distribution", "zero_utility_rate"
+        ]].copy()
+        st.dataframe(show_budget.sort_values(["avg_utility"], ascending=False), hide_index=True, use_container_width=True)
+
+        st.markdown("#### Utility by Experiment & Budget")
+        fig_cmp = px.bar(
+            budget_all,
+            x="experiment",
+            y="avg_utility",
+            color="budget_mode",
+            barmode="group",
+            hover_data=["dataset", "model", "avg_em", "avg_f1_proxy", "avg_tokens", "avg_latency_ms"],
+            color_discrete_map={"low": "#6366f1", "medium": "#f59e0b", "high": "#10b981"},
+            template="plotly_dark",
+        )
+        fig_cmp.update_layout(height=520, xaxis_tickangle=-25, paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)")
+        st.plotly_chart(fig_cmp, use_container_width=True)
+
+        c1, c2 = st.columns(2)
+        with c1:
+            fig_cost = px.scatter(
+                budget_all,
+                x="avg_tokens",
+                y="avg_utility",
+                color="model",
+                symbol="budget_mode",
+                size="avg_latency_ms",
+                hover_name="experiment",
+                hover_data=["dataset", "avg_em", "avg_f1_proxy"],
+                title="Utility vs Token Cost",
+                template="plotly_dark",
+            )
+            fig_cost.update_layout(paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)")
+            st.plotly_chart(fig_cost, use_container_width=True)
+        with c2:
+            fig_lat = px.scatter(
+                budget_all,
+                x="avg_latency_ms",
+                y="avg_utility",
+                color="dataset",
+                symbol="model",
+                size="avg_tokens",
+                hover_name="experiment",
+                title="Utility vs Latency",
+                template="plotly_dark",
+            )
+            fig_lat.update_layout(paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)")
+            st.plotly_chart(fig_lat, use_container_width=True)
+
+        st.markdown("#### Micro Critic Summary")
+        if not critic_all.empty:
+            critic_cols = ["experiment", "dataset", "model", "module", "eval_spearman", "eval_pearson", "eval_mae", "eval_rmse", "ready_as_offline_reward_model"]
+            st.dataframe(critic_all[critic_cols].sort_values(["eval_spearman"], ascending=False), hide_index=True, use_container_width=True)
+        else:
+            st.info("No `metrics_micro_critic_summary.csv` found.")
+
+        st.markdown("#### System Gates")
+        if not gate_all.empty:
+            gate_pivot = gate_all.pivot_table(index=["experiment", "dataset", "model"], columns=["category", "metric"], values="value", aggfunc="first")
+            st.dataframe(gate_pivot, use_container_width=True)
+        else:
+            st.info("No `metrics_system_overview.csv` found.")
+
+        with st.expander("Notes on data scanning"):
+            st.markdown("""
+            - App auto-scans `outputs/metrics/` and every `outputs/<experiment>/metrics/`.
+            - Root `outputs/metrics/` is labeled `hotpotqa_large_llama3.2_baseline` (legacy run, may not be strictly comparable).
+            - Directories without `metrics_macro_budget_summary.csv` are skipped.
+            - `hotpotqa_large_genma3.4b` retains its original directory name including the `genma3` typo.
+            """)
+
+        # ── Paper Reference Comparison ──────────────────────────────
+        st.divider()
+        st.markdown("#### 📄 Comparison with Original Paper Results")
+        st.markdown("""
+        The charts below show how our trained system compares to published baselines
+        from the original HotpotQA paper reference. **Note:** the paper reports official
+        HotpotQA EM/F1, while this project uses a local HotpotQA-large split, local LLM
+        settings, and `f1_proxy` + utility/cost metrics — so direct comparison is approximate.
+        """)
+
+        _viz = ROOT / "outputs" / "report_visualizations"
+        _paper_imgs = [
+            ("09_hotpotqa_paper_reference.png", "HotpotQA Paper Reference — EM/F1 Comparison"),
+            ("10_hotpotqa_paper_reference_table.png", "Paper Reference — Detailed Results Table"),
+            ("11_budget_summary_table.png", "Budget Summary — Our System"),
+            ("12_system_gate_table.png", "System Gate Status — Our System"),
+        ]
+        for fname, caption in _paper_imgs:
+            p = _viz / fname
+            if p.exists():
+                st.image(str(p), caption=caption, use_container_width=True)
+
+        st.markdown("#### 📊 Detailed Pipeline Visualizations (Baseline Run)")
+        _detail_imgs = [
+            ("01_budget_quality.png", "Quality Metrics by Budget Mode"),
+            ("02_budget_costs.png", "Cost Metrics by Budget Mode"),
+            ("03_macro_quality_cost_tradeoff.png", "Quality vs Cost Tradeoff"),
+            ("04_workflow_distribution.png", "Workflow Distribution per Budget"),
+            ("05_micro_critic_summary.png", "Micro Critic Performance Summary"),
+            ("06_critic_deployment_tradeoff.png", "Critic Deployment Tradeoff"),
+            ("07_selective_critic_gate.png", "Selective Critic Gate Analysis"),
+            ("08_high_bandit_cv.png", "High-Budget Bandit Cross-Validation"),
+        ]
+        cols_per_row = 2
+        for i in range(0, len(_detail_imgs), cols_per_row):
+            cols = st.columns(cols_per_row)
+            for j, col in enumerate(cols):
+                idx = i + j
+                if idx < len(_detail_imgs):
+                    fname, caption = _detail_imgs[idx]
+                    p = _viz / fname
+                    if p.exists():
+                        with col:
+                            st.image(str(p), caption=caption, use_container_width=True)
+
+# ━━━━ TAB 3: Macro Layer ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+with tabs[3]:
     st.subheader("Macro Layer — Workflow Routing & Budget Policies")
     budget_df = safe_csv("metrics_macro_budget_summary.csv")
     if budget_df is not None:
@@ -226,7 +536,7 @@ with tabs[1]:
             st.dataframe(cv_df.head(10), hide_index=True)
 
 # ━━━━ TAB 2: Micro Layer ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-with tabs[2]:
+with tabs[4]:
     st.subheader("Micro Layer — Process Critic")
     critic_df = safe_csv("metrics_micro_critic_summary.csv")
     if critic_df is not None:
@@ -287,7 +597,7 @@ with tabs[2]:
             st.dataframe(sel_df, hide_index=True)
 
 # ━━━━ TAB 3: System Gates ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-with tabs[3]:
+with tabs[5]:
     st.subheader("System Gates & RL Status")
     regate = safe_json("regate_report.json")
     if regate:
@@ -353,7 +663,7 @@ with tabs[3]:
         st.json(promo)
 
 # ━━━━ TAB 4: Visualizations ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-with tabs[4]:
+with tabs[6]:
     st.subheader("Report Visualizations")
     if VIZ.exists():
         pngs = sorted(VIZ.glob("*.png"))
@@ -372,7 +682,7 @@ with tabs[4]:
         st.info("Visualization directory not found.")
 
 # ━━━━ TAB 5: Live Demo ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-with tabs[5]:
+with tabs[7]:
     st.subheader("🏃 Interactive Q&A Demo")
     st.markdown("Nhập câu hỏi → hệ thống **tự động chọn workflow** tối ưu dựa trên trained bandit router + budget.")
 

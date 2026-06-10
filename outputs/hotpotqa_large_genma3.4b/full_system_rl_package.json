@@ -1,0 +1,369 @@
+{
+  "manifest": {
+    "script": "scripts/build_full_system_rl_package.py",
+    "generated_at_utc": "2026-05-28T21:54:40+00:00",
+    "git_commit": "a54903934a1f91922edecee1faf49a9676388b39",
+    "python_version": "3.12.6",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "paths": {
+      "qa": "C:\\Users\\Admin\\MAPRAG\\MAP-RAG-Gym\\outputs\\final_budget_policy_test_eval.json",
+      "corpus": null,
+      "router_model": "C:\\Users\\Admin\\MAPRAG\\MAP-RAG-Gym\\outputs\\final_budget_policy_bundle.json"
+    },
+    "dataset": {
+      "name": "full_system_rl",
+      "split": "gate",
+      "limit": null,
+      "effective_questions": 270
+    },
+    "llm": {
+      "provider": null,
+      "model": null
+    },
+    "reproducibility": {
+      "seed": null,
+      "prompt_version": "v1",
+      "utility": null
+    },
+    "settings": {
+      "policy_bundle": "outputs/final_budget_policy_bundle.json",
+      "final_eval": "outputs/final_budget_policy_test_eval.json",
+      "final_report": "outputs/final_project_report.json",
+      "reference_eval": null,
+      "offline_reward_modules": [
+        "QR",
+        "AG"
+      ],
+      "direct_critic_tolerance": 0.002,
+      "max_direct_critic_token_multiplier": 1.5
+    }
+  },
+  "stage": {
+    "ready_for_offline_full_system_rl": false,
+    "ready_for_online_full_system_rl": true,
+    "recommended_next_stage": "online_full_system_rl_with_selective_critic",
+    "deployment_mode": "selective_critic_online",
+    "offline_blockers": [
+      "Final project report has not opened offline RL.",
+      "Not every budget mode uses an adaptive macro policy.",
+      "Micro critic reward models are missing or below quality thresholds."
+    ],
+    "online_blockers": []
+  },
+  "macro_layer": {
+    "policy_bundle": "outputs/final_budget_policy_bundle_rl_ready.json",
+    "budget_policies": {
+      "high": {
+        "recommended_method": "bandit_router",
+        "is_adaptive": false,
+        "constraints": {
+          "max_tokens": null,
+          "max_latency_ms": null,
+          "max_retrieval_calls": null
+        },
+        "router_settings": {
+          "bandit_router_model": "outputs/improved_high_bandit.joblib"
+        },
+        "source_eval_file": "outputs/router_eval_large_budget_high_val.json",
+        "improved_bandit": {
+          "config": {
+            "name": "ens_ra10.0_n150_d4_lr005_b0.4",
+            "type": "ensemble",
+            "ridge_alpha": 10.0,
+            "gbt_n_estimators": 150,
+            "gbt_max_depth": 4,
+            "gbt_learning_rate": 0.05,
+            "gbt_subsample": 0.8,
+            "blend": 0.4,
+            "cv_avg_regret": 0.012,
+            "cv_std_regret": 0.0112,
+            "cv_avg_best_rate": 0.8381,
+            "cv_std_best_rate": 0.0333,
+            "per_fold_regret": [
+              0.0289,
+              0.0067,
+              0.0179,
+              0.004,
+              0.0027
+            ],
+            "per_fold_best_rate": [
+              0.8095,
+              0.8214,
+              0.8452,
+              0.8214,
+              0.8929
+            ]
+          },
+          "regret": 0.012,
+          "exact_best_rate": 0.8381
+        }
+      },
+      "low": {
+        "recommended_method": "gated_bandit_router",
+        "is_adaptive": false,
+        "constraints": {
+          "max_tokens": 110.0,
+          "max_latency_ms": 900.0,
+          "max_retrieval_calls": null
+        },
+        "router_settings": {
+          "bandit_router_model": "outputs\\offline_full_system_rl_guarded\\macro_bandit_low.joblib",
+          "bandit_gate_baseline_workflow": "W3",
+          "bandit_gate_min_advantage": 0.2,
+          "bandit_gate_min_confidence": 0.65,
+          "bandit_gate_allowed_workflows": [
+            "W1"
+          ]
+        },
+        "source_eval_file": "outputs/router_eval_large_budget_low_val.json"
+      },
+      "medium": {
+        "recommended_method": "bandit_router",
+        "is_adaptive": false,
+        "constraints": {
+          "max_tokens": null,
+          "max_latency_ms": null,
+          "max_retrieval_calls": null
+        },
+        "router_settings": {
+          "bandit_router_model": "outputs\\offline_full_system_rl_guarded\\macro_bandit_medium.joblib"
+        },
+        "source_eval_file": "outputs/router_eval_large_budget_medium_val.json"
+      }
+    },
+    "counterfactual_rollout_coverage": {
+      "high": {
+        "path": "outputs/hotpotqa_large_train_rollouts_high_w2w3_det.json",
+        "num_runs": 840,
+        "num_questions": 420,
+        "workflow_counts": {
+          "W2": 420,
+          "W3": 420
+        },
+        "budget_counts": {
+          "high": 840
+        },
+        "manifest_budget_mode": "high",
+        "n_candidates": 3,
+        "workflow_avg_utility": {
+          "W2": 0.1711,
+          "W3": 0.2486
+        },
+        "has_counterfactual_workflows": true
+      },
+      "low": {
+        "path": "outputs/hotpotqa_large_train_rollouts.json",
+        "num_runs": 1680,
+        "num_questions": 420,
+        "workflow_counts": {
+          "W1": 420,
+          "W2": 420,
+          "W3": 420,
+          "W6": 420
+        },
+        "budget_counts": {
+          "medium": 1680
+        },
+        "manifest_budget_mode": "medium",
+        "n_candidates": 3,
+        "workflow_avg_utility": {
+          "W1": 0.0931,
+          "W2": 0.0925,
+          "W3": 0.1977,
+          "W6": 0.0794
+        },
+        "has_counterfactual_workflows": true
+      },
+      "medium": {
+        "path": "outputs/hotpotqa_large_train_rollouts.json",
+        "num_runs": 1680,
+        "num_questions": 420,
+        "workflow_counts": {
+          "W1": 420,
+          "W2": 420,
+          "W3": 420,
+          "W6": 420
+        },
+        "budget_counts": {
+          "medium": 1680
+        },
+        "manifest_budget_mode": "medium",
+        "n_candidates": 3,
+        "workflow_avg_utility": {
+          "W1": 0.0931,
+          "W2": 0.0925,
+          "W3": 0.1977,
+          "W6": 0.0794
+        },
+        "has_counterfactual_workflows": true
+      }
+    },
+    "rl_objective": "conservative contextual bandit policy improvement over workflow actions"
+  },
+  "micro_layer": {
+    "reward_modules": [
+      "QR",
+      "AG"
+    ],
+    "critic_models": {
+      "QR": {
+        "module": "QR",
+        "model_path": "outputs/process_critic_budget_qr_local.joblib",
+        "meta_path": "outputs/process_critic_budget_qr_local.joblib.meta.json",
+        "target": "local_reward",
+        "train_counts": {
+          "num_examples": 1071,
+          "modules": {
+            "QR": 1071
+          },
+          "budget_modes": {
+            "medium": 1071
+          }
+        },
+        "eval_counts": {
+          "num_examples": 189,
+          "modules": {
+            "QR": 189
+          },
+          "budget_modes": {
+            "medium": 189
+          }
+        },
+        "eval_metrics": {
+          "count": 189,
+          "mae": 0.0839,
+          "rmse": 0.106,
+          "pearson": 0.7525,
+          "spearman": 0.7701
+        },
+        "readiness_gate": {
+          "min_eval_examples": 300,
+          "min_spearman": 0.5,
+          "ready_as_offline_reward_model": false
+        }
+      },
+      "AG": {
+        "module": "AG",
+        "model_path": "outputs/process_critic_budget_ag.joblib",
+        "meta_path": "outputs/process_critic_budget_ag.joblib.meta.json",
+        "target": "blended_reward",
+        "train_counts": {
+          "num_examples": 4284,
+          "modules": {
+            "AG": 4284
+          },
+          "budget_modes": {
+            "medium": 4284
+          }
+        },
+        "eval_counts": {
+          "num_examples": 756,
+          "modules": {
+            "AG": 756
+          },
+          "budget_modes": {
+            "medium": 756
+          }
+        },
+        "eval_metrics": {
+          "count": 756,
+          "mae": 0.1489,
+          "rmse": 0.2335,
+          "pearson": 0.4152,
+          "spearman": 0.4127
+        },
+        "readiness_gate": {
+          "min_eval_examples": 300,
+          "min_spearman": 0.25,
+          "ready_as_offline_reward_model": true
+        }
+      }
+    },
+    "direct_critic_evaluations": {},
+    "rl_objective": "critic-scored candidate action reranking/reward modeling inside selected workflows",
+    "online_rerank_default": false
+  },
+  "evaluation": {
+    "final_budget_eval": {
+      "low": {
+        "recommended_method": "gated_bandit_router",
+        "num_runs": 90,
+        "avg_utility": 0.146,
+        "avg_em": 0.0889,
+        "avg_f1_proxy": 0.1652,
+        "avg_tokens": 118.6222,
+        "avg_latency_ms": 1690.6094,
+        "workflow_counts": {
+          "W3": 80,
+          "W1": 10
+        }
+      },
+      "medium": {
+        "recommended_method": "bandit_router",
+        "num_runs": 90,
+        "avg_utility": 0.1889,
+        "avg_em": 0.0778,
+        "avg_f1_proxy": 0.1577,
+        "avg_tokens": 117.9556,
+        "avg_latency_ms": 1947.3432,
+        "workflow_counts": {
+          "W1": 34,
+          "W3": 41,
+          "W2": 12,
+          "W6": 3
+        }
+      },
+      "high": {
+        "recommended_method": "bandit_router",
+        "num_runs": 90,
+        "avg_utility": 0.2669,
+        "avg_em": 0.0889,
+        "avg_f1_proxy": 0.1808,
+        "avg_tokens": 164.3333,
+        "avg_latency_ms": 2295.0214,
+        "workflow_counts": {
+          "W2": 30,
+          "W3": 60
+        }
+      }
+    },
+    "final_project_report": {
+      "ready_for_offline_rl": false,
+      "ready_for_online_rl": false,
+      "recommended_next_stage": "stabilize_micro_critic",
+      "reasons": [
+        "Low-budget selection is still not using an adaptive routing policy.",
+        "Medium-budget selection is still dominated by a static workflow.",
+        "High-budget selection is still dominated by a static workflow.",
+        "Micro critic has not yet shown a reliable validation-stage win over a strong fixed baseline."
+      ],
+      "macro_stage_readiness": {},
+      "micro_stage_readiness": {}
+    },
+    "reference_eval": null
+  },
+  "rl_contract": {
+    "macro_state": [
+      "question features",
+      "budget_mode",
+      "router confidence",
+      "cheap retrieval probe"
+    ],
+    "macro_action": "select one workflow under the active budget action set",
+    "micro_state": [
+      "workflow_id",
+      "module",
+      "question",
+      "candidate action",
+      "retrieved evidence",
+      "cost features"
+    ],
+    "micro_action": "rerank/select candidate query, answer, or evidence item",
+    "reward": "budgeted end utility plus budget-aware process critic signal, with explicit token/retrieval/latency penalties",
+    "safety": [
+      "offline updates only until direct critic deployment is utility-safe",
+      "keep budget-specific cost penalties active",
+      "promote a policy only if held-out budget utility is non-regressive against the frozen reference"
+    ]
+  }
+}

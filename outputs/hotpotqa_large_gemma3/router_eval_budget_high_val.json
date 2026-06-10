@@ -1,0 +1,4151 @@
+{
+  "manifest": {
+    "script": "scripts/eval_phase4_router.py",
+    "generated_at_utc": "2026-06-04T11:21:56+00:00",
+    "git_commit": "468c42fc389c5c340c9053380d6bcce97aac4114",
+    "python_version": "3.12.13",
+    "platform": "Windows-11-10.0.22621-SP0",
+    "paths": {
+      "qa": "G:\\MAP-RAG-Gym\\data\\hotpotqa_large\\splits\\val.json",
+      "corpus": "G:\\MAP-RAG-Gym\\data\\hotpotqa_large\\corpus.json",
+      "router_model": "G:\\MAP-RAG-Gym\\outputs\\hotpotqa_large_gemma3\\router_phase4.joblib"
+    },
+    "dataset": {
+      "name": "hotpotqa_large",
+      "split": "val",
+      "limit": 90,
+      "effective_questions": 90
+    },
+    "llm": {
+      "provider": "ollama",
+      "model": "gemma3"
+    },
+    "reproducibility": {
+      "seed": 13,
+      "prompt_version": "v1",
+      "utility": {
+        "reward_weights": {
+          "f1_proxy": 1.0,
+          "process_score": 0.45
+        },
+        "cost_weights": {
+          "tokens": 0.04,
+          "retrieval_calls": 0.06,
+          "latency_ms": 0.03
+        },
+        "cost_normalizers": {
+          "tokens": 2000.0,
+          "retrieval_calls": 4.0,
+          "latency_ms": 10000.0
+        }
+      }
+    },
+    "settings": {
+      "fixed_workflows": [
+        "W1",
+        "W2",
+        "W3",
+        "W6"
+      ],
+      "methods": [],
+      "budget_mode": "high",
+      "n_candidates": 1,
+      "critic_n_candidates": 3,
+      "retriever_type": "bm25",
+      "retriever_bm25_weight": 0.5,
+      "workflow_retriever_overrides": {},
+      "critic_model": null,
+      "critic_modules": [],
+      "critic_model_overrides": {},
+      "hybrid_min_confidence": null,
+      "hybrid_low_cost_confidence": null,
+      "hybrid_low_cost_workflows": [],
+      "bandit_router_model": null,
+      "bandit_gate_baseline_workflow": "W3",
+      "bandit_gate_min_advantage": 0.0,
+      "bandit_gate_min_confidence": 0.0,
+      "bandit_gate_allowed_workflows": [],
+      "meta_router_model": null
+    }
+  },
+  "settings": {
+    "limit": 90,
+    "llm_provider": "ollama",
+    "llm_model": "gemma3",
+    "n_candidates": 1,
+    "critic_n_candidates": 3,
+    "seed": 13,
+    "retriever_type": "bm25",
+    "retriever_bm25_weight": 0.5,
+    "workflow_retriever_overrides": {},
+    "fixed_workflows": [
+      "W1",
+      "W2",
+      "W3",
+      "W6"
+    ],
+    "methods": [],
+    "budget_mode": "high",
+    "router_model": "outputs/hotpotqa_large_gemma3/router_phase4.joblib",
+    "critic_model": null,
+    "critic_modules": [],
+    "critic_model_overrides": {},
+    "hybrid_min_confidence": null,
+    "hybrid_low_cost_confidence": null,
+    "hybrid_low_cost_workflows": [],
+    "bandit_router_model": null,
+    "bandit_gate_baseline_workflow": "W3",
+    "bandit_gate_min_advantage": 0.0,
+    "bandit_gate_min_confidence": 0.0,
+    "bandit_gate_allowed_workflows": [],
+    "meta_router_model": null
+  },
+  "summary": {
+    "fixed_W1": {
+      "num_runs": 90,
+      "avg_utility": 0.1314,
+      "avg_em": 0.0667,
+      "avg_f1_proxy": 0.1081,
+      "avg_process_score": 0.0582,
+      "avg_tokens": 41.1222,
+      "avg_retrieval_calls": 0.0,
+      "avg_latency_ms": 699.2569,
+      "workflow_counts": {
+        "W1": 90
+      }
+    },
+    "fixed_W2": {
+      "num_runs": 90,
+      "avg_utility": 0.2215,
+      "avg_em": 0.0667,
+      "avg_f1_proxy": 0.1535,
+      "avg_process_score": 0.2063,
+      "avg_tokens": 253.3,
+      "avg_retrieval_calls": 1.0,
+      "avg_latency_ms": 1603.9594,
+      "workflow_counts": {
+        "W2": 90
+      }
+    },
+    "fixed_W3": {
+      "num_runs": 90,
+      "avg_utility": 0.3316,
+      "avg_em": 0.1333,
+      "avg_f1_proxy": 0.2328,
+      "avg_process_score": 0.2635,
+      "avg_tokens": 121.8444,
+      "avg_retrieval_calls": 1.0,
+      "avg_latency_ms": 777.335,
+      "workflow_counts": {
+        "W3": 90
+      }
+    },
+    "fixed_W6": {
+      "num_runs": 90,
+      "avg_utility": 0.1644,
+      "avg_em": 0.0444,
+      "avg_f1_proxy": 0.1171,
+      "avg_process_score": 0.1736,
+      "avg_tokens": 326.0556,
+      "avg_retrieval_calls": 1.0,
+      "avg_latency_ms": 3101.5797,
+      "workflow_counts": {
+        "W6": 90
+      }
+    },
+    "rule_based": {
+      "num_runs": 90,
+      "avg_utility": 0.2415,
+      "avg_em": 0.1,
+      "avg_f1_proxy": 0.1741,
+      "avg_process_score": 0.209,
+      "avg_tokens": 236.1111,
+      "avg_retrieval_calls": 1.1111,
+      "avg_latency_ms": 1742.7858,
+      "workflow_counts": {
+        "W3": 34,
+        "W4": 3,
+        "W2": 20,
+        "W6": 31,
+        "W5": 2
+      }
+    },
+    "learned_router": {
+      "num_runs": 90,
+      "avg_utility": 0.2478,
+      "avg_em": 0.0778,
+      "avg_f1_proxy": 0.1722,
+      "avg_process_score": 0.2206,
+      "avg_tokens": 222.6889,
+      "avg_retrieval_calls": 1.0,
+      "avg_latency_ms": 1431.4622,
+      "workflow_counts": {
+        "W6": 14,
+        "W3": 28,
+        "W2": 48
+      }
+    }
+  },
+  "per_question": [
+    {
+      "question_id": "307",
+      "question": "What prolific English engineer, who died on 15 December 1857, contributed to the advent of the hot air engine by way of their open cycle devices?",
+      "gold_answer": "George Cayley",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0096,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.7866,
+          "em": 0.0,
+          "f1_proxy": 0.6667
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.8406,
+          "em": 0.0,
+          "f1_proxy": 0.6667
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.1815,
+          "em": 0.0,
+          "f1_proxy": 0.1111
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.8408,
+          "em": 0.0,
+          "f1_proxy": 0.6667
+        },
+        "learned_router": {
+          "workflow_id": "W6",
+          "confidence": 0.3742,
+          "utility_total": 0.1815,
+          "em": 0.0,
+          "f1_proxy": 0.1111
+        }
+      }
+    },
+    {
+      "question_id": "23",
+      "question": "Which performance act has a higher instrument to person ratio, Badly Drawn Boy or Wolf Alice? ",
+      "gold_answer": "Badly Drawn Boy",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0027,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.3051,
+          "em": 0.0,
+          "f1_proxy": 0.2
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.5183,
+          "em": 0.0,
+          "f1_proxy": 0.375
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.3188,
+          "em": 0.0,
+          "f1_proxy": 0.2
+        },
+        "rule_based": {
+          "workflow_id": "W4",
+          "utility_total": 0.1897,
+          "em": 0.0,
+          "f1_proxy": 0.1765
+        },
+        "learned_router": {
+          "workflow_id": "W3",
+          "confidence": 0.5625,
+          "utility_total": 0.5185,
+          "em": 0.0,
+          "f1_proxy": 0.375
+        }
+      }
+    },
+    {
+      "question_id": "388",
+      "question": "The man, who the award in which \"Summer of the Monkeys\" won, was a spokesman for white sector of America?",
+      "gold_answer": "middle America",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0028,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": -0.0032,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0188,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0756,
+          "em": 0.0,
+          "f1_proxy": 0.0714
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0189,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W3",
+          "confidence": 0.4013,
+          "utility_total": 0.0192,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "503",
+      "question": "What is the birthday of this Anglo-Irish actress, courtean, and mistress, who was the mother to the illegitimate daughter of King William IV?",
+      "gold_answer": "22 November",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0027,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0006,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.4775,
+          "em": 0.0,
+          "f1_proxy": 0.3333
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0063,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W2",
+          "utility_total": -0.0002,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.5272,
+          "utility_total": -0.0003,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "534",
+      "question": "In what year did the Guild of Music Supervisors Awards recognize a British-American romantic drama film based on the 1952 romance novel \"The Price of Salt\" starring Cate Blanchett?",
+      "gold_answer": "2016",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0028,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.1899,
+          "em": 0.0,
+          "f1_proxy": 0.125
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.2473,
+          "em": 0.0,
+          "f1_proxy": 0.125
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0561,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.2476,
+          "em": 0.0,
+          "f1_proxy": 0.125
+        },
+        "learned_router": {
+          "workflow_id": "W3",
+          "confidence": 0.5051,
+          "utility_total": 0.2478,
+          "em": 0.0,
+          "f1_proxy": 0.125
+        }
+      }
+    },
+    {
+      "question_id": "235",
+      "question": "The Kansas City Wizards have had three home venues in Kansas City in their time.  Which was their first?",
+      "gold_answer": "Arrowhead Stadium",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0026,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0735,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0316,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.286,
+          "em": 0.0,
+          "f1_proxy": 0.2
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0317,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W3",
+          "confidence": 0.5301,
+          "utility_total": 0.0319,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "203",
+      "question": "At the 71st Golden Globe Awards for television in 2013, what achievement did Breaking Bad, police sitcom Brooklyn Nine-Nine and American Hustle attain?",
+      "gold_answer": "multiple awards",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": 0.0685,
+          "em": 0.0,
+          "f1_proxy": 0.0625
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0418,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.2226,
+          "em": 0.0,
+          "f1_proxy": 0.0952
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0227,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.0231,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.4368,
+          "utility_total": 0.0421,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "162",
+      "question": "What major city is the Faith Lutheran Middle School and High School located by?",
+      "gold_answer": "Las Vegas",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0028,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.3458,
+          "em": 0.0,
+          "f1_proxy": 0.25
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.3897,
+          "em": 0.0,
+          "f1_proxy": 0.25
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.3238,
+          "em": 0.0,
+          "f1_proxy": 0.2222
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.3238,
+          "em": 0.0,
+          "f1_proxy": 0.2222
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.5071,
+          "utility_total": 0.346,
+          "em": 0.0,
+          "f1_proxy": 0.25
+        }
+      }
+    },
+    {
+      "question_id": "495",
+      "question": "How many restaurants comprise the quick service restaurant chain that Ron Joyce helped found?",
+      "gold_answer": "4,613",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0026,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0761,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0775,
+          "em": 0.0,
+          "f1_proxy": 0.0385
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": -0.1594,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W2",
+          "utility_total": 0.0762,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W6",
+          "confidence": 0.4176,
+          "utility_total": 0.0681,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "586",
+      "question": "Fantasy Records is know for recordings of comedian Lenny Bruce, Creedence Clearwater Revival, and what American jazz pianist who composed the music for the animated television adaptations of the \"Peanuts\" comic strip?",
+      "gold_answer": "Vincent Anthony Guaraldi",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0029,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.331,
+          "em": 0.0,
+          "f1_proxy": 0.25
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.3915,
+          "em": 0.0,
+          "f1_proxy": 0.25
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.3149,
+          "em": 0.0,
+          "f1_proxy": 0.25
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.3149,
+          "em": 0.0,
+          "f1_proxy": 0.25
+        },
+        "learned_router": {
+          "workflow_id": "W3",
+          "confidence": 0.4245,
+          "utility_total": 0.3916,
+          "em": 0.0,
+          "f1_proxy": 0.25
+        }
+      }
+    },
+    {
+      "question_id": "179",
+      "question": "What country does Hatton Hill and Hatton Castle, Angus have in common?",
+      "gold_answer": "Scotland",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": 1.2975,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.2366,
+          "em": 0.0,
+          "f1_proxy": 0.1429
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 1.2915,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.2129,
+          "em": 0.0,
+          "f1_proxy": 0.1429
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.2128,
+          "em": 0.0,
+          "f1_proxy": 0.1429
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.5547,
+          "utility_total": 0.2363,
+          "em": 0.0,
+          "f1_proxy": 0.1429
+        }
+      }
+    },
+    {
+      "question_id": "328",
+      "question": "Were Enrique Carreras and Lionel Ngakane both filmakers during the 20th century? ",
+      "gold_answer": "yes",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0027,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0505,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0193,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0305,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.0306,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W3",
+          "confidence": 0.5302,
+          "utility_total": 0.0195,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "104",
+      "question": "Since 2 June 2017, The Leader of Fine Gael had been held by which Irish Fine Gael politician who has served as Taoiseach and Minister for Defence?",
+      "gold_answer": "Leo Varadkar",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": 1.2972,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 1.2479,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 1.2983,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 1.2143,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 1.2143,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "learned_router": {
+          "workflow_id": "W3",
+          "confidence": 0.5372,
+          "utility_total": 1.2985,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        }
+      }
+    },
+    {
+      "question_id": "546",
+      "question": "What drug is among the list of illegal drugs in the Philippines and can be taken by mouth or by injection?",
+      "gold_answer": "Ephedrine",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0031,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.4257,
+          "em": 0.0,
+          "f1_proxy": 0.3333
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 1.2919,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0415,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.0417,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.4819,
+          "utility_total": 0.426,
+          "em": 0.0,
+          "f1_proxy": 0.3333
+        }
+      }
+    },
+    {
+      "question_id": "147",
+      "question": "What is the name of the Isles who were led by Aonghus Mór and covered a total land area of over 8300 km2?",
+      "gold_answer": "Kingdom of the Isles",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": 0.0639,
+          "em": 0.0,
+          "f1_proxy": 0.0588
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.1485,
+          "em": 0.0,
+          "f1_proxy": 0.0769
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.1965,
+          "em": 0.0,
+          "f1_proxy": 0.0769
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.1721,
+          "em": 0.0,
+          "f1_proxy": 0.1111
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.1725,
+          "em": 0.0,
+          "f1_proxy": 0.1111
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.4571,
+          "utility_total": 0.1486,
+          "em": 0.0,
+          "f1_proxy": 0.0769
+        }
+      }
+    },
+    {
+      "question_id": "303",
+      "question": "Which film starring Patrick Tatten is based on a book written by Steve Lopez?",
+      "gold_answer": "The Soloist",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0027,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0366,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 1.2943,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0192,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 1.2943,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.4549,
+          "utility_total": 0.0369,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "125",
+      "question": "Mummulgum is a stop on the Bruxner Highway before reaching the town on the banks of which river?",
+      "gold_answer": "Richmond",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0028,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.6257,
+          "em": 0.0,
+          "f1_proxy": 0.5
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.6603,
+          "em": 0.0,
+          "f1_proxy": 0.5
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.6027,
+          "em": 0.0,
+          "f1_proxy": 0.5
+        },
+        "rule_based": {
+          "workflow_id": "W5",
+          "utility_total": -0.0122,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W3",
+          "confidence": 0.5406,
+          "utility_total": 0.6603,
+          "em": 0.0,
+          "f1_proxy": 0.5
+        }
+      }
+    },
+    {
+      "question_id": "395",
+      "question": "Which Grand Slam singles tournament have Francesca Schiavone and Olga Morozova both been finalists in?",
+      "gold_answer": "French Open",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0026,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.8044,
+          "em": 0.0,
+          "f1_proxy": 0.6667
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.8415,
+          "em": 0.0,
+          "f1_proxy": 0.6667
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.7767,
+          "em": 0.0,
+          "f1_proxy": 0.6667
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.7771,
+          "em": 0.0,
+          "f1_proxy": 0.6667
+        },
+        "learned_router": {
+          "workflow_id": "W3",
+          "confidence": 0.4191,
+          "utility_total": 0.8416,
+          "em": 0.0,
+          "f1_proxy": 0.6667
+        }
+      }
+    },
+    {
+      "question_id": "182",
+      "question": "Which English musician is known for both the songs \"See Yourself\" and \"Withing You Without You\"?",
+      "gold_answer": "George Harrison",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": 1.2974,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0021,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.1079,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.2429,
+          "em": 0.0,
+          "f1_proxy": 0.1818
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.2432,
+          "em": 0.0,
+          "f1_proxy": 0.1818
+        },
+        "learned_router": {
+          "workflow_id": "W6",
+          "confidence": 0.373,
+          "utility_total": 0.2432,
+          "em": 0.0,
+          "f1_proxy": 0.1818
+        }
+      }
+    },
+    {
+      "question_id": "567",
+      "question": "Which company owns the hotel on whose premises the Cotal Arena is located ?",
+      "gold_answer": "Las Vegas Sands company.",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0028,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0134,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0202,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0089,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0201,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.3293,
+          "utility_total": 0.0137,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "588",
+      "question": "Which country borders the Central African Republic and is south of Libya and east of Niger?",
+      "gold_answer": "Republic of Chad",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0027,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.6521,
+          "em": 0.0,
+          "f1_proxy": 0.5
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.6584,
+          "em": 0.0,
+          "f1_proxy": 0.5
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.6072,
+          "em": 0.0,
+          "f1_proxy": 0.5
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.6074,
+          "em": 0.0,
+          "f1_proxy": 0.5
+        },
+        "learned_router": {
+          "workflow_id": "W6",
+          "confidence": 0.4179,
+          "utility_total": 0.6074,
+          "em": 0.0,
+          "f1_proxy": 0.5
+        }
+      }
+    },
+    {
+      "question_id": "578",
+      "question": "Chicagoland Sports Hall of Fame was founded by the company located in what Washington town, near the state capital?",
+      "gold_answer": "Tumwater, Washington",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0027,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0169,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0192,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0383,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0195,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.3802,
+          "utility_total": 0.0169,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "448",
+      "question": "What is the name of the film starring Rose McGowan and features the character Earl McGraw's daughter?",
+      "gold_answer": "Planet Terror",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0028,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0801,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0221,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0343,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.0344,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.538,
+          "utility_total": 0.0804,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "110",
+      "question": "Based on a True Story... is an album by which country music star, with the single My Eyes?",
+      "gold_answer": "Blake Shelton",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0034,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 1.2413,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 1.293,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": -0.0038,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 1.2929,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.3677,
+          "utility_total": 1.2414,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        }
+      }
+    },
+    {
+      "question_id": "555",
+      "question": "Name a musician that worked with Hiren Roy and Vilayat Khan.",
+      "gold_answer": "Nikhil Banerjee",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0028,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0951,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.1154,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0687,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W2",
+          "utility_total": 0.095,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W6",
+          "confidence": 0.5283,
+          "utility_total": 0.0689,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "421",
+      "question": "\"A Summer in the Cage\" and \"American Hardcore\" are both what kind of film?",
+      "gold_answer": "documentary",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": 0.5723,
+          "em": 0.0,
+          "f1_proxy": 0.5
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": -0.0019,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 1.2887,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0398,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.0402,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.4436,
+          "utility_total": -0.0016,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "531",
+      "question": "Are Mauritz Stiller and Johannes Grenzfurthner both of the same nationality?",
+      "gold_answer": "no",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0026,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0953,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.1083,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0831,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.0821,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.4846,
+          "utility_total": 0.0953,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "217",
+      "question": "From March 631 to April 631, Farrukhzad Khosrau V was the king of an empire that succeeded which empire?",
+      "gold_answer": "the Parthian Empire",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0027,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.3958,
+          "em": 0.0,
+          "f1_proxy": 0.3333
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.3906,
+          "em": 0.0,
+          "f1_proxy": 0.3333
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.3847,
+          "em": 0.0,
+          "f1_proxy": 0.3333
+        },
+        "rule_based": {
+          "workflow_id": "W2",
+          "utility_total": 0.3958,
+          "em": 0.0,
+          "f1_proxy": 0.3333
+        },
+        "learned_router": {
+          "workflow_id": "W3",
+          "confidence": 0.4023,
+          "utility_total": 0.3906,
+          "em": 0.0,
+          "f1_proxy": 0.3333
+        }
+      }
+    },
+    {
+      "question_id": "132",
+      "question": "Alice David is the voice of Lara Croft in a video game developed by which company ?",
+      "gold_answer": "Crystal Dynamics",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0026,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0308,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 1.294,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0258,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 1.2942,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "learned_router": {
+          "workflow_id": "W3",
+          "confidence": 0.3812,
+          "utility_total": 1.2943,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        }
+      }
+    },
+    {
+      "question_id": "74",
+      "question": "Robert Suettinger was the national intelligence officer under which former Governor of Arkansas?",
+      "gold_answer": "William Jefferson Clinton",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0026,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.028,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0189,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0357,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0189,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.5524,
+          "utility_total": 0.0284,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "378",
+      "question": "Which of the movie which has Rich Lee 3-D previsualizations was directed by Francis Lawrence?",
+      "gold_answer": "Constantine",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0027,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0696,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.1094,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0649,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.1095,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W6",
+          "confidence": 0.4622,
+          "utility_total": 0.065,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "80",
+      "question": "What is the county seat of the county where East Lempster, New Hampshire is located?",
+      "gold_answer": "Newport",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0028,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0503,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0188,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0369,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.019,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.4632,
+          "utility_total": 0.0504,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "365",
+      "question": " What is the latest album of Tim Hecker, the Canadian electronic music maker?",
+      "gold_answer": "Love Streams",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0027,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 1.2624,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0322,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 1.2074,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0322,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.5723,
+          "utility_total": 1.2626,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        }
+      }
+    },
+    {
+      "question_id": "256",
+      "question": "What year did Roy Rogers and his third wife star in a film directed by Frank McDonald?",
+      "gold_answer": "1945",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0026,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0437,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0734,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0208,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.0233,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W6",
+          "confidence": 0.3985,
+          "utility_total": 0.0233,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "192",
+      "question": "Georges-Henri Bousquet translated the work of a historian who is of what heritage?",
+      "gold_answer": "North African Arab",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0032,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0418,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0214,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0437,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0217,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.4581,
+          "utility_total": 0.0421,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "16",
+      "question": "The Vermont Catamounts men's soccer team currently competes in a conference that was formerly known as what from 1988 to 1996?",
+      "gold_answer": "the North Atlantic Conference",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": 0.2848,
+          "em": 0.0,
+          "f1_proxy": 0.25
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.2369,
+          "em": 0.0,
+          "f1_proxy": 0.2
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.2471,
+          "em": 0.0,
+          "f1_proxy": 0.2
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0769,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W2",
+          "utility_total": 0.2372,
+          "em": 0.0,
+          "f1_proxy": 0.2
+        },
+        "learned_router": {
+          "workflow_id": "W6",
+          "confidence": 0.3422,
+          "utility_total": 0.077,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "408",
+      "question": "How large is the shopping mall where KGOT radio station has its studios ?",
+      "gold_answer": "728,000 ft²",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0027,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0251,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0361,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0454,
+          "em": 0.0,
+          "f1_proxy": 0.04
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.036,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.5348,
+          "utility_total": 0.0251,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "151",
+      "question": "Marcus Wayne Garland spent nine seasons with an American professional baseball team that is based in Baltimore, Maryland, and was one of the AMerican League's original eight charter franchises when the league was established in what year?",
+      "gold_answer": "1901",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": 1.297,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.3274,
+          "em": 0.0,
+          "f1_proxy": 0.25
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.3876,
+          "em": 0.0,
+          "f1_proxy": 0.25
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.264,
+          "em": 0.0,
+          "f1_proxy": 0.2
+        },
+        "rule_based": {
+          "workflow_id": "W2",
+          "utility_total": 0.3278,
+          "em": 0.0,
+          "f1_proxy": 0.25
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.3691,
+          "utility_total": 0.3276,
+          "em": 0.0,
+          "f1_proxy": 0.25
+        }
+      }
+    },
+    {
+      "question_id": "106",
+      "question": "hree Men on a Horse is a play by a playwright born in which year ?",
+      "gold_answer": "1887",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0029,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.035,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.019,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.001,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0189,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W3",
+          "confidence": 0.52,
+          "utility_total": 0.0192,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "342",
+      "question": "Who was the president of the Sinn Fein political party during the Hume-Adams Dialogue?",
+      "gold_answer": "Gerard \"Gerry\" Adams",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.003,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.1564,
+          "em": 0.0,
+          "f1_proxy": 0.1
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0207,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0332,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0207,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.5411,
+          "utility_total": 0.1566,
+          "em": 0.0,
+          "f1_proxy": 0.1
+        }
+      }
+    },
+    {
+      "question_id": "114",
+      "question": "Which component of shellite has the formula (ON)CHOH?",
+      "gold_answer": "picric acid",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0028,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0386,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.017,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.006,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.017,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.4956,
+          "utility_total": 0.0389,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "242",
+      "question": "Which professional baseball player and National 1993 Baseball Hall of Fame inductee is featured in the Greatest Sports Legends anthology? ",
+      "gold_answer": "Reginald Martinez \"Reggie\" Jackson",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0026,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0298,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0199,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0435,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.0438,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.423,
+          "utility_total": 0.0302,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "493",
+      "question": "After he was contracted by the team that is headquartered in Affalterbach, Baden-Württemberg, Germany, Dario Franchitti competed in what series?",
+      "gold_answer": "DTM",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": 0.1013,
+          "em": 0.0,
+          "f1_proxy": 0.0909
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0669,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.1143,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0496,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W2",
+          "utility_total": 0.0672,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W3",
+          "confidence": 0.4871,
+          "utility_total": 0.1144,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "264",
+      "question": "What was the name of the fanzine that interviewed the Sex Pistols bassist when he was in the band \"The Flowers of Romance?\"",
+      "gold_answer": "SKUM",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0036,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.074,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 1.2898,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 1.2562,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "rule_based": {
+          "workflow_id": "W2",
+          "utility_total": 0.0742,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.4152,
+          "utility_total": 0.0742,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "272",
+      "question": "What movie did Pitof direct which had an action-adventure tie-in video game based off of it in 2004?",
+      "gold_answer": "Catwoman",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0026,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 1.2575,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.1123,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0046,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W2",
+          "utility_total": 1.2577,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "learned_router": {
+          "workflow_id": "W6",
+          "confidence": 0.3626,
+          "utility_total": 0.0048,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "549",
+      "question": "WAVN is a Gospel formatted broadcast radio station tied to which city in DeSoto County, Mississippi?",
+      "gold_answer": "Southaven, Mississippi",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": 0.2272,
+          "em": 0.0,
+          "f1_proxy": 0.2
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 1.2736,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 1.3081,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 1.2439,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 1.308,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "learned_router": {
+          "workflow_id": "W3",
+          "confidence": 0.4491,
+          "utility_total": 1.3081,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        }
+      }
+    },
+    {
+      "question_id": "254",
+      "question": "in 1999, Spirit Halloween LLC was purchased by a mall retailer that has how many stores in the United States and Canada ?",
+      "gold_answer": "over 600 stores",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0027,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0229,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.8426,
+          "em": 0.0,
+          "f1_proxy": 0.6667
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0841,
+          "em": 0.0,
+          "f1_proxy": 0.0588
+        },
+        "rule_based": {
+          "workflow_id": "W2",
+          "utility_total": 0.0231,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W3",
+          "confidence": 0.3301,
+          "utility_total": 0.8427,
+          "em": 0.0,
+          "f1_proxy": 0.6667
+        }
+      }
+    },
+    {
+      "question_id": "79",
+      "question": "In which year was the King who made the 1925 Birthday Honours born?",
+      "gold_answer": "1865",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0026,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0101,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.022,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0112,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.022,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W3",
+          "confidence": 0.404,
+          "utility_total": 0.0222,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "171",
+      "question": "What is the birthplace of the Senator who represents the first of 62 districts in the State Senate?",
+      "gold_answer": "Brooklyn, New York",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0026,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0228,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.7572,
+          "em": 0.0,
+          "f1_proxy": 0.6667
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.127,
+          "em": 0.0,
+          "f1_proxy": 0.1111
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.7572,
+          "em": 0.0,
+          "f1_proxy": 0.6667
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.5354,
+          "utility_total": 0.0228,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "528",
+      "question": "Which band was formed first, Wavves or Social Code?",
+      "gold_answer": "Social Code",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": 0.5723,
+          "em": 0.0,
+          "f1_proxy": 0.5
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.4324,
+          "em": 0.0,
+          "f1_proxy": 0.3333
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.4744,
+          "em": 0.0,
+          "f1_proxy": 0.3333
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0072,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.0076,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.7122,
+          "utility_total": 0.4325,
+          "em": 0.0,
+          "f1_proxy": 0.3333
+        }
+      }
+    },
+    {
+      "question_id": "536",
+      "question": "What number president was Annie Caputo nominated by to become a member of the Nuclear Regulatory Commission?",
+      "gold_answer": "45th",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0029,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0231,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0276,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0294,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0276,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.589,
+          "utility_total": 0.0231,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "18",
+      "question": "Roger O. Egeberg was Assistant Secretary for Health and Scientific Affairs during the administration of a president that served during what years?",
+      "gold_answer": "1969 until 1974",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0027,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0604,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0323,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0545,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W2",
+          "utility_total": 0.0607,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.4031,
+          "utility_total": 0.0607,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "427",
+      "question": "Which river system in Chilhowie, Virginia was the starting place for most Longhunters?",
+      "gold_answer": "Holston River",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0026,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0546,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0181,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0156,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0183,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W3",
+          "confidence": 0.3582,
+          "utility_total": 0.0184,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "436",
+      "question": "Where is the school that Tyler Kalinoski went to located?",
+      "gold_answer": "located in Olathe, Kansas",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0026,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0329,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.2421,
+          "em": 0.0,
+          "f1_proxy": 0.2
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0287,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W2",
+          "utility_total": 0.0331,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W6",
+          "confidence": 0.4466,
+          "utility_total": 0.0287,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "187",
+      "question": "Which travel parody series featured American actor, comedian, and radio host best known as the host of \"The Joe Schmo Show\"?",
+      "gold_answer": "Hidden America with Jonah Ray",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0028,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0231,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0271,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.006,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.0063,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.571,
+          "utility_total": 0.0233,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "267",
+      "question": "Candy Coburn has shared the stage with an American country music group with who playing guitar?",
+      "gold_answer": "Charles Kelley",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0027,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0457,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0206,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0392,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0208,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W3",
+          "confidence": 0.3391,
+          "utility_total": 0.021,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "240",
+      "question": "What arcade game is named after the only player in major league history to have a 0.300 batting average for 7 consecutive seasons?",
+      "gold_answer": "a pinball machine",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0032,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0013,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0169,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0001,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W5",
+          "utility_total": 0.3508,
+          "em": 0.0,
+          "f1_proxy": 0.3333
+        },
+        "learned_router": {
+          "workflow_id": "W3",
+          "confidence": 0.4793,
+          "utility_total": 0.0174,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "517",
+      "question": "Which avant-garde Japanese composer studied with John Cage and wrote Music for Electric Metronomes?",
+      "gold_answer": "Toshi Ichiyanagi",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.003,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.2997,
+          "em": 0.0,
+          "f1_proxy": 0.1818
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.3183,
+          "em": 0.0,
+          "f1_proxy": 0.1818
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.2869,
+          "em": 0.0,
+          "f1_proxy": 0.1818
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.2868,
+          "em": 0.0,
+          "f1_proxy": 0.1818
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.4511,
+          "utility_total": 0.3,
+          "em": 0.0,
+          "f1_proxy": 0.1818
+        }
+      }
+    },
+    {
+      "question_id": "357",
+      "question": "Which novelist, J. G. Farrell or Louis Aragon, wrote of the political and human consequences of his country's colonial rule?",
+      "gold_answer": "Farrell",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": 0.3804,
+          "em": 0.0,
+          "f1_proxy": 0.3333
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.1643,
+          "em": 0.0,
+          "f1_proxy": 0.0909
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.2159,
+          "em": 0.0,
+          "f1_proxy": 0.0909
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0091,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.0095,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.3487,
+          "utility_total": 0.1647,
+          "em": 0.0,
+          "f1_proxy": 0.0909
+        }
+      }
+    },
+    {
+      "question_id": "305",
+      "question": "The 1984 film \"Marlene\" is a documentary about an actress born in what year?",
+      "gold_answer": "1901",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0027,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0196,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0196,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0008,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0196,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W3",
+          "confidence": 0.3577,
+          "utility_total": 0.0199,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "289",
+      "question": "Which came to market first, \"Hey Pa! There's a Goat on the Roof\" or \"Poleconomy\"",
+      "gold_answer": "Hey Pa! There's a Goat on the Roof",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": 1.2971,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.6063,
+          "em": 0.0,
+          "f1_proxy": 0.5
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.671,
+          "em": 0.0,
+          "f1_proxy": 0.5
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": -0.0031,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": -0.0028,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.4436,
+          "utility_total": 0.6065,
+          "em": 0.0,
+          "f1_proxy": 0.5
+        }
+      }
+    },
+    {
+      "question_id": "137",
+      "question": "During Siege of Bharatpur, which Commander-in-Chief of Ireland and Commander-in-Chief of India contributed to the storming of the castle?",
+      "gold_answer": "Lord Combermere",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0036,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0473,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0174,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": -0.0056,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": -0.0053,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.3874,
+          "utility_total": 0.0477,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "464",
+      "question": "What kind of dinosaur does Raymond Ochoa voice in the Pixar film \"The Good Dinosaur\"?",
+      "gold_answer": "Apatosaurus",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.003,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0682,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.1116,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0408,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.1119,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.3858,
+          "utility_total": 0.0687,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "154",
+      "question": "Are Broughtonia and Laeliocattleya both orchids?",
+      "gold_answer": "yes",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": 1.2973,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.209,
+          "em": 0.0,
+          "f1_proxy": 0.1667
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.2961,
+          "em": 0.0,
+          "f1_proxy": 0.25
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.1999,
+          "em": 0.0,
+          "f1_proxy": 0.1667
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.2001,
+          "em": 0.0,
+          "f1_proxy": 0.1667
+        },
+        "learned_router": {
+          "workflow_id": "W3",
+          "confidence": 0.6341,
+          "utility_total": 0.1821,
+          "em": 0.0,
+          "f1_proxy": 0.1429
+        }
+      }
+    },
+    {
+      "question_id": "208",
+      "question": "Who has written more than 300 papers, Semyon Aranovich Gershgorin or Pavel Alexandrov?",
+      "gold_answer": "Pavel Sergeyevich Alexandrov",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0028,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0096,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0268,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0821,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W4",
+          "utility_total": -0.017,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W3",
+          "confidence": 0.4056,
+          "utility_total": 0.027,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "62",
+      "question": "Who was born earlier, Emma Bull or Virginia Woolf?",
+      "gold_answer": "Adeline Virginia Woolf",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0025,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.1727,
+          "em": 0.0,
+          "f1_proxy": 0.125
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0189,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0472,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.0473,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.3606,
+          "utility_total": 0.1728,
+          "em": 0.0,
+          "f1_proxy": 0.125
+        }
+      }
+    },
+    {
+      "question_id": "159",
+      "question": "The song \"Chim Chim Cher-ee\" can be heard  in the \"Mary Poppins\" scene of a Disney ride that debuted in what year?",
+      "gold_answer": "1989",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.004,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0153,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.033,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": -0.0012,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W2",
+          "utility_total": 0.0156,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W6",
+          "confidence": 0.36,
+          "utility_total": -0.0009,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "64",
+      "question": "Scott Parkin has been a vocal critic of Exxonmobil and another corporation that has operations in how many countries ?",
+      "gold_answer": "more than 70 countries",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0027,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0929,
+          "em": 0.0,
+          "f1_proxy": 0.0667
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0184,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0127,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W2",
+          "utility_total": 0.0933,
+          "em": 0.0,
+          "f1_proxy": 0.0667
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.3429,
+          "utility_total": 0.0932,
+          "em": 0.0,
+          "f1_proxy": 0.0667
+        }
+      }
+    },
+    {
+      "question_id": "1",
+      "question": "What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?",
+      "gold_answer": "Chief of Protocol",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0041,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0222,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0212,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0358,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.036,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.3823,
+          "utility_total": 0.0226,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "565",
+      "question": "What are both James Hetfield and Bob Marley?",
+      "gold_answer": "musician, singer, and songwriter",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0026,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.1627,
+          "em": 0.0,
+          "f1_proxy": 0.1111
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0248,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0179,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.0181,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.4544,
+          "utility_total": 0.1665,
+          "em": 0.0,
+          "f1_proxy": 0.1111
+        }
+      }
+    },
+    {
+      "question_id": "47",
+      "question": "What type of forum did a former Soviet statesman initiate?",
+      "gold_answer": "Organizations could come together to address global issues",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0027,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0346,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0191,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0031,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0195,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.6701,
+          "utility_total": 0.0351,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "330",
+      "question": "Where is the singer of \"B Boy\" raised?",
+      "gold_answer": "Philadelphia",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0027,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0085,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0187,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": -0.0114,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0187,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.578,
+          "utility_total": 0.0085,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "175",
+      "question": "Are Bamboo Mañalac and Danny Jones both musicians?",
+      "gold_answer": "yes",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0025,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0609,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0212,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0262,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.0263,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W3",
+          "confidence": 0.4946,
+          "utility_total": 0.0211,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "422",
+      "question": "How many novels are there in the series of novels of which Shadows in Flight is the tenth novel ?",
+      "gold_answer": "fifteen",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0033,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0161,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0252,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0164,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W2",
+          "utility_total": 0.0163,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W6",
+          "confidence": 0.4551,
+          "utility_total": 0.0167,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "225",
+      "question": "What is the name of the ethnic group who settled in Canada in the 17th century that participated in a conflict with Irish Catholic immigrants in the Shiners' War?",
+      "gold_answer": "French Canadians",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0028,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.1694,
+          "em": 0.0,
+          "f1_proxy": 0.1053
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.4755,
+          "em": 0.0,
+          "f1_proxy": 0.3333
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.1591,
+          "em": 0.0,
+          "f1_proxy": 0.1053
+        },
+        "rule_based": {
+          "workflow_id": "W2",
+          "utility_total": 0.1693,
+          "em": 0.0,
+          "f1_proxy": 0.1053
+        },
+        "learned_router": {
+          "workflow_id": "W3",
+          "confidence": 0.3836,
+          "utility_total": 0.4755,
+          "em": 0.0,
+          "f1_proxy": 0.3333
+        }
+      }
+    },
+    {
+      "question_id": "19",
+      "question": "Which writer was from England, Henry Roth or Robert Erskine Childers?",
+      "gold_answer": "Robert Erskine Childers DSC",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": 0.8598,
+          "em": 0.0,
+          "f1_proxy": 0.75
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.6476,
+          "em": 0.0,
+          "f1_proxy": 0.5
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.8425,
+          "em": 0.0,
+          "f1_proxy": 0.75
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.5977,
+          "em": 0.0,
+          "f1_proxy": 0.5
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.5977,
+          "em": 0.0,
+          "f1_proxy": 0.5
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.4252,
+          "utility_total": 0.6479,
+          "em": 0.0,
+          "f1_proxy": 0.5
+        }
+      }
+    },
+    {
+      "question_id": "355",
+      "question": "Are Phlebodium and Pieris both species of ferns?",
+      "gold_answer": "no",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0026,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0795,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0669,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0339,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.0351,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W3",
+          "confidence": 0.4626,
+          "utility_total": 0.0669,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "278",
+      "question": "Meaning \"reddish water\" in Hawaiian, which location was Butch Van Artsdalen known for surfing 25-foot waves at?",
+      "gold_answer": "Waimea Bay",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0027,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.2604,
+          "em": 0.0,
+          "f1_proxy": 0.1667
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.2884,
+          "em": 0.0,
+          "f1_proxy": 0.1538
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.1423,
+          "em": 0.0,
+          "f1_proxy": 0.087
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.2882,
+          "em": 0.0,
+          "f1_proxy": 0.1538
+        },
+        "learned_router": {
+          "workflow_id": "W3",
+          "confidence": 0.4108,
+          "utility_total": 0.2885,
+          "em": 0.0,
+          "f1_proxy": 0.1538
+        }
+      }
+    },
+    {
+      "question_id": "413",
+      "question": "The VMAQT-1 logo is a female spirit in Irish mythology who heralds the death of what?",
+      "gold_answer": "a family member",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0026,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.2372,
+          "em": 0.0,
+          "f1_proxy": 0.1429
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 1.2945,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0682,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 1.2946,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "learned_router": {
+          "workflow_id": "W3",
+          "confidence": 0.4765,
+          "utility_total": 1.2948,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        }
+      }
+    },
+    {
+      "question_id": "520",
+      "question": "Which movie directed by James Gunn portrayed the fictional character, Ego the Living Planet?",
+      "gold_answer": "Guardians of the Galaxy Vol. 2",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": 0.6872,
+          "em": 0.0,
+          "f1_proxy": 0.6
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.4827,
+          "em": 0.0,
+          "f1_proxy": 0.4
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.2149,
+          "em": 0.0,
+          "f1_proxy": 0.1667
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.3408,
+          "em": 0.0,
+          "f1_proxy": 0.2667
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.2148,
+          "em": 0.0,
+          "f1_proxy": 0.1667
+        },
+        "learned_router": {
+          "workflow_id": "W6",
+          "confidence": 0.4318,
+          "utility_total": 0.3412,
+          "em": 0.0,
+          "f1_proxy": 0.2667
+        }
+      }
+    },
+    {
+      "question_id": "304",
+      "question": "Are Skeptical Inquirer and The Progressive Populist both tabloid-style magazines?",
+      "gold_answer": "no",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0028,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0732,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.1133,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0709,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.071,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.5472,
+          "utility_total": 0.0732,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "329",
+      "question": "The city that contains the Yunnan Provincial Museum is also known by what nickname?",
+      "gold_answer": "Spring city",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0028,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0329,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0228,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0347,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W2",
+          "utility_total": 0.0328,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.425,
+          "utility_total": 0.033,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "589",
+      "question": "Which piece did Ludwig van Beethoven publish in 1801 that was dedicated to Count Moritz von Fries? ",
+      "gold_answer": "Symphony No. 7",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": 0.0507,
+          "em": 0.0,
+          "f1_proxy": 0.0476
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 1.2597,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 1.2974,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.5537,
+          "em": 0.0,
+          "f1_proxy": 0.5
+        },
+        "rule_based": {
+          "workflow_id": "W2",
+          "utility_total": 1.2597,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "learned_router": {
+          "workflow_id": "W6",
+          "confidence": 0.6148,
+          "utility_total": 0.554,
+          "em": 0.0,
+          "f1_proxy": 0.5
+        }
+      }
+    },
+    {
+      "question_id": "35",
+      "question": "Alexander Kerensky was defeated and destroyed by the Bolsheviks in the course of a civil war that ended when ?",
+      "gold_answer": "October 1922",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0027,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0481,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0636,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0384,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W2",
+          "utility_total": 0.0485,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.5195,
+          "utility_total": 0.0485,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "85",
+      "question": "When was the American lawyer, lobbyist and political consultant who was a senior member of the presidential campaign of Donald Trump born?",
+      "gold_answer": "April 1, 1949",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0027,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": -0.0073,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0634,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.5628,
+          "em": 0.0,
+          "f1_proxy": 0.5
+        },
+        "rule_based": {
+          "workflow_id": "W6",
+          "utility_total": 0.5632,
+          "em": 0.0,
+          "f1_proxy": 0.5
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.5403,
+          "utility_total": -0.0072,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "115",
+      "question": "The Argentine PGA Championship record holder has won how many tournaments worldwide?",
+      "gold_answer": "230",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0027,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.02,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0251,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.021,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0252,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.3885,
+          "utility_total": 0.0201,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "579",
+      "question": "The album \"The Best of LeAnn Rimes\" contained a song used as the theme song for a film. What is the name of the film?",
+      "gold_answer": "Coyote Ugly",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0028,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0364,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 1.2908,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.028,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 1.2909,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "learned_router": {
+          "workflow_id": "W3",
+          "confidence": 0.3462,
+          "utility_total": 1.2912,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        }
+      }
+    },
+    {
+      "question_id": "57",
+      "question": "who is younger Keith Bostic or Jerry Glanville ?",
+      "gold_answer": "Keith Bostic",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": 0.3805,
+          "em": 0.0,
+          "f1_proxy": 0.3333
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.4522,
+          "em": 0.0,
+          "f1_proxy": 0.3333
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.1139,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.4482,
+          "em": 0.0,
+          "f1_proxy": 0.3333
+        },
+        "rule_based": {
+          "workflow_id": "W4",
+          "utility_total": 0.0226,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.3637,
+          "utility_total": 0.4524,
+          "em": 0.0,
+          "f1_proxy": 0.3333
+        }
+      }
+    },
+    {
+      "question_id": "284",
+      "question": "I'd Come for You is a single by the band formed in what Alberta city?",
+      "gold_answer": "Hanna",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0027,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0176,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0194,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0197,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W3",
+          "utility_total": 0.0196,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.5295,
+          "utility_total": 0.0179,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    },
+    {
+      "question_id": "350",
+      "question": "when was the album that includes the song by Dustin Lynch released to country radio on February 17, 2017?",
+      "gold_answer": "September 8, 2017",
+      "results": {
+        "fixed_W1": {
+          "workflow_id": "W1",
+          "utility_total": -0.0028,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W2": {
+          "workflow_id": "W2",
+          "utility_total": 0.0247,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W3": {
+          "workflow_id": "W3",
+          "utility_total": 0.0229,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "fixed_W6": {
+          "workflow_id": "W6",
+          "utility_total": 0.0579,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "rule_based": {
+          "workflow_id": "W2",
+          "utility_total": 0.0247,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        },
+        "learned_router": {
+          "workflow_id": "W2",
+          "confidence": 0.5516,
+          "utility_total": 0.025,
+          "em": 0.0,
+          "f1_proxy": 0.0
+        }
+      }
+    }
+  ]
+}

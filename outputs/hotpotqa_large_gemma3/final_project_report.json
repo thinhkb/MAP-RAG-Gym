@@ -1,0 +1,57 @@
+{
+  "policy_bundle": "outputs/hotpotqa_large_gemma3/final_budget_policy_bundle.json",
+  "test_eval": "outputs/hotpotqa_large_gemma3/final_budget_policy_test_eval.json",
+  "reference_test_eval": null,
+  "final_policy_table": [
+    {
+      "budget_mode": "high",
+      "recommended_method": "fixed_W3",
+      "avg_utility": 0.2733,
+      "avg_em": 0.1,
+      "avg_f1_proxy": 0.1824,
+      "avg_tokens": 128.0778,
+      "avg_latency_ms": 745.7251,
+      "workflow_counts": {
+        "W3": 90
+      }
+    },
+    {
+      "budget_mode": "low",
+      "recommended_method": "rule_based",
+      "avg_utility": 0.1798,
+      "avg_em": 0.1,
+      "avg_f1_proxy": 0.1877,
+      "avg_tokens": 127.4111,
+      "avg_latency_ms": 810.9429,
+      "workflow_counts": {
+        "W3": 89,
+        "W1": 1
+      }
+    },
+    {
+      "budget_mode": "medium",
+      "recommended_method": "fixed_W3",
+      "avg_utility": 0.2346,
+      "avg_em": 0.1,
+      "avg_f1_proxy": 0.1824,
+      "avg_tokens": 128.0778,
+      "avg_latency_ms": 746.4518,
+      "workflow_counts": {
+        "W3": 90
+      }
+    }
+  ],
+  "rl_readiness": {
+    "ready_for_offline_rl": false,
+    "ready_for_online_rl": false,
+    "recommended_next_stage": "stabilize_micro_critic",
+    "reasons": [
+      "Medium-budget selection is still dominated by a static workflow.",
+      "High-budget selection is still dominated by a static workflow.",
+      "Micro critic has not yet shown a reliable validation-stage win over a strong fixed baseline."
+    ],
+    "recommended_scope": "Continue with repeated validation for adaptive macro policies and critic gating. Do not open a global online RL loop yet."
+  },
+  "macro_bandit_stages": {},
+  "micro_stages": {}
+}

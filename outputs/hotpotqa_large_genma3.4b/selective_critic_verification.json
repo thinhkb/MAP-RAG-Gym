@@ -1,0 +1,162 @@
+{
+  "manifest": {
+    "script": "scripts/verify_selective_critic.py",
+    "generated_at_utc": "2026-05-29T01:48:31+00:00",
+    "git_commit": "a54903934a1f91922edecee1faf49a9676388b39",
+    "python_version": "3.12.6",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "paths": {
+      "qa": "C:\\Users\\Admin\\MAPRAG\\MAP-RAG-Gym\\outputs\\router_eval_large_budget_high_w2w3_det_critic2_val.json",
+      "corpus": null,
+      "router_model": null
+    },
+    "dataset": {
+      "name": "selective_critic_verification",
+      "split": "validation",
+      "limit": null,
+      "effective_questions": 90
+    },
+    "llm": {
+      "provider": null,
+      "model": null
+    },
+    "reproducibility": {
+      "seed": null,
+      "prompt_version": "v1",
+      "utility": null
+    },
+    "settings": {
+      "critic_eval": "outputs/router_eval_large_budget_high_w2w3_det_critic2_val.json",
+      "base_method": "learned_router",
+      "critic_method": "learned_router_critic",
+      "budget_mode": "high"
+    }
+  },
+  "baseline": {
+    "method": "learned_router",
+    "avg_utility": 0.29,
+    "avg_tokens": 220.1333
+  },
+  "full_critic": {
+    "method": "learned_router_critic",
+    "avg_utility": 0.2779,
+    "avg_tokens": 507.2889
+  },
+  "gate_results": [
+    {
+      "gate_threshold": 0.0,
+      "critic_used_count": 90,
+      "critic_skipped_count": 0,
+      "critic_usage_rate": 1.0,
+      "avg_utility": 0.2779,
+      "avg_tokens": 507.29,
+      "token_multiplier": 2.3045,
+      "utility_vs_base": -0.0121,
+      "utility_vs_critic": 0.0
+    },
+    {
+      "gate_threshold": 0.5,
+      "critic_used_count": 75,
+      "critic_skipped_count": 15,
+      "critic_usage_rate": 0.8333,
+      "avg_utility": 0.277,
+      "avg_tokens": 459.43,
+      "token_multiplier": 2.0871,
+      "utility_vs_base": -0.013,
+      "utility_vs_critic": -0.0009
+    },
+    {
+      "gate_threshold": 0.55,
+      "critic_used_count": 85,
+      "critic_skipped_count": 5,
+      "critic_usage_rate": 0.9444,
+      "avg_utility": 0.2786,
+      "avg_tokens": 491.34,
+      "token_multiplier": 2.232,
+      "utility_vs_base": -0.0114,
+      "utility_vs_critic": 0.0007
+    },
+    {
+      "gate_threshold": 0.6,
+      "critic_used_count": 86,
+      "critic_skipped_count": 4,
+      "critic_usage_rate": 0.9556,
+      "avg_utility": 0.2786,
+      "avg_tokens": 494.53,
+      "token_multiplier": 2.2465,
+      "utility_vs_base": -0.0114,
+      "utility_vs_critic": 0.0007
+    },
+    {
+      "gate_threshold": 0.65,
+      "critic_used_count": 87,
+      "critic_skipped_count": 3,
+      "critic_usage_rate": 0.9667,
+      "avg_utility": 0.2783,
+      "avg_tokens": 497.72,
+      "token_multiplier": 2.261,
+      "utility_vs_base": -0.0117,
+      "utility_vs_critic": 0.0004
+    },
+    {
+      "gate_threshold": 0.7,
+      "critic_used_count": 90,
+      "critic_skipped_count": 0,
+      "critic_usage_rate": 1.0,
+      "avg_utility": 0.2779,
+      "avg_tokens": 507.29,
+      "token_multiplier": 2.3045,
+      "utility_vs_base": -0.0121,
+      "utility_vs_critic": 0.0
+    },
+    {
+      "gate_threshold": 0.75,
+      "critic_used_count": 90,
+      "critic_skipped_count": 0,
+      "critic_usage_rate": 1.0,
+      "avg_utility": 0.2779,
+      "avg_tokens": 507.29,
+      "token_multiplier": 2.3045,
+      "utility_vs_base": -0.0121,
+      "utility_vs_critic": 0.0
+    },
+    {
+      "gate_threshold": 0.8,
+      "critic_used_count": 90,
+      "critic_skipped_count": 0,
+      "critic_usage_rate": 1.0,
+      "avg_utility": 0.2779,
+      "avg_tokens": 507.29,
+      "token_multiplier": 2.3045,
+      "utility_vs_base": -0.0121,
+      "utility_vs_critic": 0.0
+    },
+    {
+      "gate_threshold": 1.0,
+      "critic_used_count": 0,
+      "critic_skipped_count": 90,
+      "critic_usage_rate": 0.0,
+      "avg_utility": 0.29,
+      "avg_tokens": 220.13,
+      "token_multiplier": 1.0,
+      "utility_vs_base": 0.0,
+      "utility_vs_critic": 0.0121
+    }
+  ],
+  "best_passing_gate": {
+    "gate_threshold": 1.0,
+    "critic_used_count": 0,
+    "critic_skipped_count": 90,
+    "critic_usage_rate": 0.0,
+    "avg_utility": 0.29,
+    "avg_tokens": 220.13,
+    "token_multiplier": 1.0,
+    "utility_vs_base": 0.0,
+    "utility_vs_critic": 0.0121
+  },
+  "best_critic_using_gate": null,
+  "deployment_gates": {
+    "max_token_multiplier": 1.25,
+    "max_utility_loss": -0.001
+  }
+}

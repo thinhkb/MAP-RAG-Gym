@@ -1,0 +1,224 @@
+{
+  "source_policy_files": [
+    "outputs/policy_selection_low.json",
+    "outputs/policy_selection_medium.json",
+    "outputs/policy_selection_high.json"
+  ],
+  "source_eval_files": [
+    "outputs/router_eval_large_budget_low_val.json",
+    "outputs/router_eval_large_budget_medium_val.json",
+    "outputs/router_eval_large_budget_high_val.json"
+  ],
+  "budget_policies": {
+    "low": {
+      "recommended_method": "fixed_W3",
+      "constraints": {
+        "max_tokens": null,
+        "max_latency_ms": null,
+        "max_retrieval_calls": null
+      },
+      "router_settings": {},
+      "source_policy_file": "outputs/policy_selection_low.json",
+      "source_eval_file": "outputs/router_eval_large_budget_low_val.json",
+      "pareto_frontier": [
+        {
+          "method": "fixed_W3",
+          "num_runs": 90,
+          "avg_utility": 0.2025,
+          "avg_em": 0.1222,
+          "avg_f1_proxy": 0.2172,
+          "avg_process_score": 0.2582,
+          "avg_tokens": 121.8444,
+          "avg_retrieval_calls": 1.0,
+          "avg_latency_ms": 1628.6092,
+          "workflow_counts": {
+            "W3": 90
+          }
+        },
+        {
+          "method": "rule_based",
+          "num_runs": 90,
+          "avg_utility": 0.1984,
+          "avg_em": 0.1111,
+          "avg_f1_proxy": 0.2119,
+          "avg_process_score": 0.2482,
+          "avg_tokens": 117.5778,
+          "avg_retrieval_calls": 0.9333,
+          "avg_latency_ms": 1628.0414,
+          "workflow_counts": {
+            "W3": 84,
+            "W1": 6
+          }
+        },
+        {
+          "method": "learned_router",
+          "num_runs": 90,
+          "avg_utility": 0.0969,
+          "avg_em": 0.0444,
+          "avg_f1_proxy": 0.1054,
+          "avg_process_score": 0.0608,
+          "avg_tokens": 45.3667,
+          "avg_retrieval_calls": 0.0667,
+          "avg_latency_ms": 1394.5881,
+          "workflow_counts": {
+            "W1": 84,
+            "W3": 6
+          }
+        },
+        {
+          "method": "fixed_W1",
+          "num_runs": 90,
+          "avg_utility": 0.0876,
+          "avg_em": 0.0444,
+          "avg_f1_proxy": 0.096,
+          "avg_process_score": 0.0468,
+          "avg_tokens": 41.1222,
+          "avg_retrieval_calls": 0.0,
+          "avg_latency_ms": 1408.256,
+          "workflow_counts": {
+            "W1": 90
+          }
+        }
+      ]
+    },
+    "medium": {
+      "recommended_method": "fixed_W3",
+      "constraints": {
+        "max_tokens": null,
+        "max_latency_ms": null,
+        "max_retrieval_calls": null
+      },
+      "router_settings": {},
+      "source_policy_file": "outputs/policy_selection_medium.json",
+      "source_eval_file": "outputs/router_eval_large_budget_medium_val.json",
+      "pareto_frontier": [
+        {
+          "method": "fixed_W3",
+          "num_runs": 90,
+          "avg_utility": 0.2717,
+          "avg_em": 0.1222,
+          "avg_f1_proxy": 0.2192,
+          "avg_process_score": 0.2585,
+          "avg_tokens": 121.8444,
+          "avg_retrieval_calls": 1.0,
+          "avg_latency_ms": 1616.6022,
+          "workflow_counts": {
+            "W3": 90
+          }
+        },
+        {
+          "method": "learned_router",
+          "num_runs": 90,
+          "avg_utility": 0.2372,
+          "avg_em": 0.1,
+          "avg_f1_proxy": 0.197,
+          "avg_process_score": 0.2065,
+          "avg_tokens": 117.7222,
+          "avg_retrieval_calls": 0.7111,
+          "avg_latency_ms": 1918.2951,
+          "workflow_counts": {
+            "W3": 55,
+            "W2": 3,
+            "W1": 26,
+            "W6": 6
+          }
+        },
+        {
+          "method": "fixed_W1",
+          "num_runs": 90,
+          "avg_utility": 0.1036,
+          "avg_em": 0.0444,
+          "avg_f1_proxy": 0.0959,
+          "avg_process_score": 0.0468,
+          "avg_tokens": 41.1222,
+          "avg_retrieval_calls": 0.0,
+          "avg_latency_ms": 1402.3857,
+          "workflow_counts": {
+            "W1": 90
+          }
+        }
+      ]
+    },
+    "high": {
+      "recommended_method": "fixed_W3",
+      "constraints": {
+        "max_tokens": null,
+        "max_latency_ms": null,
+        "max_retrieval_calls": null
+      },
+      "router_settings": {},
+      "source_policy_file": "outputs/policy_selection_high.json",
+      "source_eval_file": "outputs/router_eval_large_budget_high_val.json",
+      "pareto_frontier": [
+        {
+          "method": "fixed_W3",
+          "num_runs": 90,
+          "avg_utility": 0.3077,
+          "avg_em": 0.1111,
+          "avg_f1_proxy": 0.215,
+          "avg_process_score": 0.2555,
+          "avg_tokens": 121.8444,
+          "avg_retrieval_calls": 1.0,
+          "avg_latency_ms": 1621.6533,
+          "workflow_counts": {
+            "W3": 90
+          }
+        },
+        {
+          "method": "fixed_W1",
+          "num_runs": 90,
+          "avg_utility": 0.1093,
+          "avg_em": 0.0444,
+          "avg_f1_proxy": 0.0937,
+          "avg_process_score": 0.046,
+          "avg_tokens": 41.1222,
+          "avg_retrieval_calls": 0.0,
+          "avg_latency_ms": 1410.3236,
+          "workflow_counts": {
+            "W1": 90
+          }
+        }
+      ]
+    }
+  },
+  "budget_modes": [
+    "high",
+    "low",
+    "medium"
+  ],
+  "policy_table": [
+    {
+      "budget_mode": "high",
+      "recommended_method": "fixed_W3",
+      "constraints": {
+        "max_tokens": null,
+        "max_latency_ms": null,
+        "max_retrieval_calls": null
+      },
+      "router_settings": {},
+      "source_eval_file": "outputs/router_eval_large_budget_high_val.json"
+    },
+    {
+      "budget_mode": "low",
+      "recommended_method": "fixed_W3",
+      "constraints": {
+        "max_tokens": null,
+        "max_latency_ms": null,
+        "max_retrieval_calls": null
+      },
+      "router_settings": {},
+      "source_eval_file": "outputs/router_eval_large_budget_low_val.json"
+    },
+    {
+      "budget_mode": "medium",
+      "recommended_method": "fixed_W3",
+      "constraints": {
+        "max_tokens": null,
+        "max_latency_ms": null,
+        "max_retrieval_calls": null
+      },
+      "router_settings": {},
+      "source_eval_file": "outputs/router_eval_large_budget_medium_val.json"
+    }
+  ]
+}

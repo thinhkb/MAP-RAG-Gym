@@ -1,0 +1,2127 @@
+{
+  "manifest": {
+    "script": "scripts/train_process_critic.py",
+    "generated_at_utc": "2026-05-28T20:22:52+00:00",
+    "git_commit": "a54903934a1f91922edecee1faf49a9676388b39",
+    "python_version": "3.12.6",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "paths": {
+      "qa": "C:\\Users\\Admin\\MAPRAG\\MAP-RAG-Gym\\outputs\\hotpotqa_large_process_train_budget.json",
+      "corpus": null,
+      "router_model": "C:\\Users\\Admin\\MAPRAG\\MAP-RAG-Gym\\outputs\\process_critic_budget_ag.joblib"
+    },
+    "dataset": {
+      "name": "hotpotqa_large",
+      "split": "train",
+      "limit": 13860,
+      "effective_questions": 357
+    },
+    "llm": {
+      "provider": null,
+      "model": null
+    },
+    "reproducibility": {
+      "seed": 13,
+      "prompt_version": "v1",
+      "utility": null
+    },
+    "settings": {
+      "target": "blended_reward",
+      "holdout_ratio": 0.15,
+      "eval_input": null,
+      "modules": [
+        "AG"
+      ]
+    }
+  },
+  "source_process_manifest": {
+    "script": "scripts/build_process_dataset.py",
+    "generated_at_utc": "2026-05-28T20:22:39+00:00",
+    "git_commit": "a54903934a1f91922edecee1faf49a9676388b39",
+    "python_version": "3.12.6",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "paths": {
+      "qa": "C:\\Users\\Admin\\MAPRAG\\MAP-RAG-Gym\\outputs\\hotpotqa_large_train_rollouts.json",
+      "corpus": "C:\\Users\\Admin\\MAPRAG\\MAP-RAG-Gym\\data\\hotpotqa_large\\corpus.json",
+      "router_model": null
+    },
+    "dataset": {
+      "name": "hotpotqa_large",
+      "split": "train",
+      "limit": 420,
+      "effective_questions": 420
+    },
+    "llm": {
+      "provider": "ollama",
+      "model": "gemma3:4b"
+    },
+    "reproducibility": {
+      "seed": 42,
+      "prompt_version": "v1",
+      "utility": {
+        "medium": {
+          "reward_weights": {
+            "f1_proxy": 1.0,
+            "process_score": 0.35
+          },
+          "cost_weights": {
+            "tokens": 0.08,
+            "retrieval_calls": 0.1,
+            "latency_ms": 0.05
+          },
+          "cost_normalizers": {
+            "tokens": 2000.0,
+            "retrieval_calls": 4.0,
+            "latency_ms": 10000.0
+          }
+        }
+      }
+    },
+    "settings": {
+      "source_rollout_file": "outputs/hotpotqa_large_train_rollouts.json",
+      "reward_target": "blended_reward",
+      "reward_formula": "0.7 * local_reward + 0.3 * outcome_utility",
+      "budget_modes": [
+        "medium"
+      ]
+    }
+  },
+  "train_counts": {
+    "num_examples": 4284,
+    "modules": {
+      "AG": 4284
+    },
+    "budget_modes": {
+      "medium": 4284
+    }
+  },
+  "eval_counts": {
+    "num_examples": 756,
+    "modules": {
+      "AG": 756
+    },
+    "budget_modes": {
+      "medium": 756
+    }
+  },
+  "evaluation": {
+    "overall": {
+      "count": 756,
+      "mae": 0.1489,
+      "rmse": 0.2335,
+      "pearson": 0.4152,
+      "spearman": 0.4127
+    },
+    "per_module": {
+      "AG": {
+        "count": 756,
+        "mae": 0.1489,
+        "rmse": 0.2335,
+        "pearson": 0.4152,
+        "spearman": 0.4127
+      }
+    }
+  },
+  "predictions": [
+    {
+      "example_id": "4c35ed6e-de69-4641-9281-7890c4b48dce:medium:1:0",
+      "module": "AG",
+      "question_id": "476",
+      "question": "What Division was the college footbal team that fired their head coach on November 24, 2006?",
+      "action_text": "Michigan",
+      "target": -0.0354,
+      "prediction": 0.2696,
+      "abs_error": 0.305
+    },
+    {
+      "example_id": "4c35ed6e-de69-4641-9281-7890c4b48dce:medium:1:1",
+      "module": "AG",
+      "question_id": "476",
+      "question": "What Division was the college footbal team that fired their head coach on November 24, 2006?",
+      "action_text": "Michigan",
+      "target": -0.0354,
+      "prediction": 0.2689,
+      "abs_error": 0.3043
+    },
+    {
+      "example_id": "4c35ed6e-de69-4641-9281-7890c4b48dce:medium:1:2",
+      "module": "AG",
+      "question_id": "476",
+      "question": "What Division was the college footbal team that fired their head coach on November 24, 2006?",
+      "action_text": "Michigan",
+      "target": -0.0354,
+      "prediction": 0.2689,
+      "abs_error": 0.3043
+    },
+    {
+      "example_id": "bea468ef-3a80-496f-bfda-aceed9b52c6c:medium:3:0",
+      "module": "AG",
+      "question_id": "476",
+      "question": "What Division was the college footbal team that fired their head coach on November 24, 2006?",
+      "action_text": "Miami",
+      "target": -0.0278,
+      "prediction": 0.1481,
+      "abs_error": 0.1759
+    },
+    {
+      "example_id": "bea468ef-3a80-496f-bfda-aceed9b52c6c:medium:3:1",
+      "module": "AG",
+      "question_id": "476",
+      "question": "What Division was the college footbal team that fired their head coach on November 24, 2006?",
+      "action_text": "Miami",
+      "target": -0.0278,
+      "prediction": 0.1473,
+      "abs_error": 0.1751
+    },
+    {
+      "example_id": "bea468ef-3a80-496f-bfda-aceed9b52c6c:medium:3:2",
+      "module": "AG",
+      "question_id": "476",
+      "question": "What Division was the college footbal team that fired their head coach on November 24, 2006?",
+      "action_text": "Miami",
+      "target": -0.0278,
+      "prediction": 0.1473,
+      "abs_error": 0.1751
+    },
+    {
+      "example_id": "0755504f-8c89-4b86-be61-127fba04d1d5:medium:3:0",
+      "module": "AG",
+      "question_id": "476",
+      "question": "What Division was the college footbal team that fired their head coach on November 24, 2006?",
+      "action_text": "uncertain",
+      "target": 0.0018,
+      "prediction": 0.0246,
+      "abs_error": 0.0228
+    },
+    {
+      "example_id": "0755504f-8c89-4b86-be61-127fba04d1d5:medium:3:1",
+      "module": "AG",
+      "question_id": "476",
+      "question": "What Division was the college footbal team that fired their head coach on November 24, 2006?",
+      "action_text": "uncertain",
+      "target": 0.0018,
+      "prediction": 0.0238,
+      "abs_error": 0.022
+    },
+    {
+      "example_id": "0755504f-8c89-4b86-be61-127fba04d1d5:medium:3:2",
+      "module": "AG",
+      "question_id": "476",
+      "question": "What Division was the college footbal team that fired their head coach on November 24, 2006?",
+      "action_text": "uncertain",
+      "target": 0.0018,
+      "prediction": 0.0238,
+      "abs_error": 0.022
+    },
+    {
+      "example_id": "5f0239f6-d92a-4a5e-a230-1d296266922c:medium:4:0",
+      "module": "AG",
+      "question_id": "476",
+      "question": "What Division was the college footbal team that fired their head coach on November 24, 2006?",
+      "action_text": "Miami",
+      "target": -0.0163,
+      "prediction": 0.1502,
+      "abs_error": 0.1665
+    },
+    {
+      "example_id": "5f0239f6-d92a-4a5e-a230-1d296266922c:medium:4:1",
+      "module": "AG",
+      "question_id": "476",
+      "question": "What Division was the college footbal team that fired their head coach on November 24, 2006?",
+      "action_text": "Miami",
+      "target": -0.0163,
+      "prediction": 0.1495,
+      "abs_error": 0.1658
+    },
+    {
+      "example_id": "5f0239f6-d92a-4a5e-a230-1d296266922c:medium:4:2",
+      "module": "AG",
+      "question_id": "476",
+      "question": "What Division was the college footbal team that fired their head coach on November 24, 2006?",
+      "action_text": "Miami",
+      "target": -0.0163,
+      "prediction": 0.1495,
+      "abs_error": 0.1658
+    },
+    {
+      "example_id": "51f22ee8-abcc-4121-aec4-0b5e4e95d1ac:medium:1:0",
+      "module": "AG",
+      "question_id": "336",
+      "question": "What country do both Adnan Akmal and Kamran Akmal represent in cricket?",
+      "action_text": "Pakistan",
+      "target": -0.0126,
+      "prediction": 0.1743,
+      "abs_error": 0.1869
+    },
+    {
+      "example_id": "51f22ee8-abcc-4121-aec4-0b5e4e95d1ac:medium:1:1",
+      "module": "AG",
+      "question_id": "336",
+      "question": "What country do both Adnan Akmal and Kamran Akmal represent in cricket?",
+      "action_text": "Pakistan",
+      "target": -0.0126,
+      "prediction": 0.1735,
+      "abs_error": 0.1861
+    },
+    {
+      "example_id": "51f22ee8-abcc-4121-aec4-0b5e4e95d1ac:medium:1:2",
+      "module": "AG",
+      "question_id": "336",
+      "question": "What country do both Adnan Akmal and Kamran Akmal represent in cricket?",
+      "action_text": "Pakistan",
+      "target": -0.0126,
+      "prediction": 0.1735,
+      "abs_error": 0.1861
+    },
+    {
+      "example_id": "7deaad6d-2b5e-494e-aed4-9370d594bc14:medium:3:0",
+      "module": "AG",
+      "question_id": "336",
+      "question": "What country do both Adnan Akmal and Kamran Akmal represent in cricket?",
+      "action_text": "Both Adnan Akmal and Kamran Akmal represent Pakistan in cricket.",
+      "target": -0.0144,
+      "prediction": 0.0691,
+      "abs_error": 0.0835
+    },
+    {
+      "example_id": "7deaad6d-2b5e-494e-aed4-9370d594bc14:medium:3:1",
+      "module": "AG",
+      "question_id": "336",
+      "question": "What country do both Adnan Akmal and Kamran Akmal represent in cricket?",
+      "action_text": "Both Adnan Akmal and Kamran Akmal represent Pakistan in cricket.",
+      "target": -0.0144,
+      "prediction": 0.0683,
+      "abs_error": 0.0827
+    },
+    {
+      "example_id": "7deaad6d-2b5e-494e-aed4-9370d594bc14:medium:3:2",
+      "module": "AG",
+      "question_id": "336",
+      "question": "What country do both Adnan Akmal and Kamran Akmal represent in cricket?",
+      "action_text": "Both Adnan Akmal and Kamran Akmal represent Pakistan in cricket.",
+      "target": -0.0144,
+      "prediction": 0.0683,
+      "abs_error": 0.0827
+    },
+    {
+      "example_id": "9cb6a1ef-68db-49a5-850f-2f9e1e9f434a:medium:3:0",
+      "module": "AG",
+      "question_id": "336",
+      "question": "What country do both Adnan Akmal and Kamran Akmal represent in cricket?",
+      "action_text": "Both Adnan Akmal and Kamran Akmal represent Pakistan in cricket",
+      "target": 0.0101,
+      "prediction": 0.1068,
+      "abs_error": 0.0967
+    },
+    {
+      "example_id": "9cb6a1ef-68db-49a5-850f-2f9e1e9f434a:medium:3:1",
+      "module": "AG",
+      "question_id": "336",
+      "question": "What country do both Adnan Akmal and Kamran Akmal represent in cricket?",
+      "action_text": "Both Adnan Akmal and Kamran Akmal represent Pakistan in cricket",
+      "target": 0.0101,
+      "prediction": 0.106,
+      "abs_error": 0.0959
+    },
+    {
+      "example_id": "9cb6a1ef-68db-49a5-850f-2f9e1e9f434a:medium:3:2",
+      "module": "AG",
+      "question_id": "336",
+      "question": "What country do both Adnan Akmal and Kamran Akmal represent in cricket?",
+      "action_text": "Both Adnan Akmal and Kamran Akmal represent Pakistan in cricket",
+      "target": 0.0101,
+      "prediction": 0.106,
+      "abs_error": 0.0959
+    },
+    {
+      "example_id": "2cec2a2b-05e7-4f95-a232-93869c30443c:medium:4:0",
+      "module": "AG",
+      "question_id": "336",
+      "question": "What country do both Adnan Akmal and Kamran Akmal represent in cricket?",
+      "action_text": "Both Adnan Akmal and Kamran Akmal represent Pakistan in cricket.",
+      "target": -0.0161,
+      "prediction": 0.0662,
+      "abs_error": 0.0823
+    },
+    {
+      "example_id": "2cec2a2b-05e7-4f95-a232-93869c30443c:medium:4:1",
+      "module": "AG",
+      "question_id": "336",
+      "question": "What country do both Adnan Akmal and Kamran Akmal represent in cricket?",
+      "action_text": "Both Adnan Akmal and Kamran Akmal represent Pakistan in cricket.",
+      "target": -0.0161,
+      "prediction": 0.0654,
+      "abs_error": 0.0815
+    },
+    {
+      "example_id": "2cec2a2b-05e7-4f95-a232-93869c30443c:medium:4:2",
+      "module": "AG",
+      "question_id": "336",
+      "question": "What country do both Adnan Akmal and Kamran Akmal represent in cricket?",
+      "action_text": "Both Adnan Akmal and Kamran Akmal represent Pakistan in cricket.",
+      "target": -0.0161,
+      "prediction": 0.0654,
+      "abs_error": 0.0815
+    },
+    {
+      "example_id": "a26fdb52-773f-4d57-ba54-3394cb3cc3d0:medium:1:0",
+      "module": "AG",
+      "question_id": "50",
+      "question": "Which year and which conference was the 14th season for this conference as part of the NCAA Division that the Colorado Buffaloes played in with a record of 2-6 in conference play?",
+      "action_text": "uncertain",
+      "target": -0.0132,
+      "prediction": -0.0343,
+      "abs_error": 0.0211
+    },
+    {
+      "example_id": "a26fdb52-773f-4d57-ba54-3394cb3cc3d0:medium:1:1",
+      "module": "AG",
+      "question_id": "50",
+      "question": "Which year and which conference was the 14th season for this conference as part of the NCAA Division that the Colorado Buffaloes played in with a record of 2-6 in conference play?",
+      "action_text": "uncertain",
+      "target": -0.0132,
+      "prediction": -0.0351,
+      "abs_error": 0.0219
+    },
+    {
+      "example_id": "a26fdb52-773f-4d57-ba54-3394cb3cc3d0:medium:1:2",
+      "module": "AG",
+      "question_id": "50",
+      "question": "Which year and which conference was the 14th season for this conference as part of the NCAA Division that the Colorado Buffaloes played in with a record of 2-6 in conference play?",
+      "action_text": "uncertain",
+      "target": -0.0132,
+      "prediction": -0.0351,
+      "abs_error": 0.0219
+    },
+    {
+      "example_id": "31f9c455-beac-487e-97ac-cc248d16acc2:medium:3:0",
+      "module": "AG",
+      "question_id": "50",
+      "question": "Which year and which conference was the 14th season for this conference as part of the NCAA Division that the Colorado Buffaloes played in with a record of 2-6 in conference play?",
+      "action_text": "The 14th season was in 2010 as part of the NCAA Division I FBS football season.",
+      "target": -0.0218,
+      "prediction": -0.0543,
+      "abs_error": 0.0325
+    },
+    {
+      "example_id": "31f9c455-beac-487e-97ac-cc248d16acc2:medium:3:1",
+      "module": "AG",
+      "question_id": "50",
+      "question": "Which year and which conference was the 14th season for this conference as part of the NCAA Division that the Colorado Buffaloes played in with a record of 2-6 in conference play?",
+      "action_text": "The 14th season was in 2010 as part of the NCAA Division I FBS football season.",
+      "target": -0.0218,
+      "prediction": -0.0551,
+      "abs_error": 0.0333
+    },
+    {
+      "example_id": "31f9c455-beac-487e-97ac-cc248d16acc2:medium:3:2",
+      "module": "AG",
+      "question_id": "50",
+      "question": "Which year and which conference was the 14th season for this conference as part of the NCAA Division that the Colorado Buffaloes played in with a record of 2-6 in conference play?",
+      "action_text": "The 14th season was in 2010 as part of the NCAA Division I FBS football season.",
+      "target": -0.0218,
+      "prediction": -0.0551,
+      "abs_error": 0.0333
+    },
+    {
+      "example_id": "d7b144bd-0cb6-4de6-86d9-a77344b9fe00:medium:3:0",
+      "module": "AG",
+      "question_id": "50",
+      "question": "Which year and which conference was the 14th season for this conference as part of the NCAA Division that the Colorado Buffaloes played in with a record of 2-6 in conference play?",
+      "action_text": "uncertain",
+      "target": -0.0177,
+      "prediction": -0.0041,
+      "abs_error": 0.0136
+    },
+    {
+      "example_id": "d7b144bd-0cb6-4de6-86d9-a77344b9fe00:medium:3:1",
+      "module": "AG",
+      "question_id": "50",
+      "question": "Which year and which conference was the 14th season for this conference as part of the NCAA Division that the Colorado Buffaloes played in with a record of 2-6 in conference play?",
+      "action_text": "uncertain",
+      "target": -0.0177,
+      "prediction": -0.0049,
+      "abs_error": 0.0128
+    },
+    {
+      "example_id": "d7b144bd-0cb6-4de6-86d9-a77344b9fe00:medium:3:2",
+      "module": "AG",
+      "question_id": "50",
+      "question": "Which year and which conference was the 14th season for this conference as part of the NCAA Division that the Colorado Buffaloes played in with a record of 2-6 in conference play?",
+      "action_text": "uncertain",
+      "target": -0.0177,
+      "prediction": -0.0049,
+      "abs_error": 0.0128
+    },
+    {
+      "example_id": "de26dcb3-feed-48ff-b78f-3536a608d8f8:medium:4:0",
+      "module": "AG",
+      "question_id": "50",
+      "question": "Which year and which conference was the 14th season for this conference as part of the NCAA Division that the Colorado Buffaloes played in with a record of 2-6 in conference play?",
+      "action_text": "uncertain",
+      "target": -0.0273,
+      "prediction": -0.0371,
+      "abs_error": 0.0098
+    },
+    {
+      "example_id": "de26dcb3-feed-48ff-b78f-3536a608d8f8:medium:4:1",
+      "module": "AG",
+      "question_id": "50",
+      "question": "Which year and which conference was the 14th season for this conference as part of the NCAA Division that the Colorado Buffaloes played in with a record of 2-6 in conference play?",
+      "action_text": "uncertain",
+      "target": -0.0273,
+      "prediction": -0.0379,
+      "abs_error": 0.0106
+    },
+    {
+      "example_id": "de26dcb3-feed-48ff-b78f-3536a608d8f8:medium:4:2",
+      "module": "AG",
+      "question_id": "50",
+      "question": "Which year and which conference was the 14th season for this conference as part of the NCAA Division that the Colorado Buffaloes played in with a record of 2-6 in conference play?",
+      "action_text": "uncertain",
+      "target": -0.0273,
+      "prediction": -0.0379,
+      "abs_error": 0.0106
+    },
+    {
+      "example_id": "d7c322a8-ba6c-47bf-be73-64158f7b602d:medium:1:0",
+      "module": "AG",
+      "question_id": "67",
+      "question": "What is the name of the singer who's song was released as the lead single from the album \"Confessions\", and that had popular song stuck behind for eight consecutive weeks?",
+      "action_text": "Usher",
+      "target": 0.7778,
+      "prediction": 0.1766,
+      "abs_error": 0.6012
+    },
+    {
+      "example_id": "d7c322a8-ba6c-47bf-be73-64158f7b602d:medium:1:1",
+      "module": "AG",
+      "question_id": "67",
+      "question": "What is the name of the singer who's song was released as the lead single from the album \"Confessions\", and that had popular song stuck behind for eight consecutive weeks?",
+      "action_text": "Usher",
+      "target": 0.7778,
+      "prediction": 0.1759,
+      "abs_error": 0.6019
+    },
+    {
+      "example_id": "d7c322a8-ba6c-47bf-be73-64158f7b602d:medium:1:2",
+      "module": "AG",
+      "question_id": "67",
+      "question": "What is the name of the singer who's song was released as the lead single from the album \"Confessions\", and that had popular song stuck behind for eight consecutive weeks?",
+      "action_text": "Usher",
+      "target": 0.7778,
+      "prediction": 0.1759,
+      "abs_error": 0.6019
+    },
+    {
+      "example_id": "6b9ae6c2-95a6-4547-81bd-8e7722f561a8:medium:3:0",
+      "module": "AG",
+      "question_id": "67",
+      "question": "What is the name of the singer who's song was released as the lead single from the album \"Confessions\", and that had popular song stuck behind for eight consecutive weeks?",
+      "action_text": "uncertain",
+      "target": -0.0192,
+      "prediction": 0.0268,
+      "abs_error": 0.046
+    },
+    {
+      "example_id": "6b9ae6c2-95a6-4547-81bd-8e7722f561a8:medium:3:1",
+      "module": "AG",
+      "question_id": "67",
+      "question": "What is the name of the singer who's song was released as the lead single from the album \"Confessions\", and that had popular song stuck behind for eight consecutive weeks?",
+      "action_text": "uncertain",
+      "target": -0.0192,
+      "prediction": 0.026,
+      "abs_error": 0.0452
+    },
+    {
+      "example_id": "6b9ae6c2-95a6-4547-81bd-8e7722f561a8:medium:3:2",
+      "module": "AG",
+      "question_id": "67",
+      "question": "What is the name of the singer who's song was released as the lead single from the album \"Confessions\", and that had popular song stuck behind for eight consecutive weeks?",
+      "action_text": "uncertain",
+      "target": -0.0192,
+      "prediction": 0.026,
+      "abs_error": 0.0452
+    },
+    {
+      "example_id": "1a404b48-8323-4013-b50c-56fbf1bbd084:medium:3:0",
+      "module": "AG",
+      "question_id": "67",
+      "question": "What is the name of the singer who's song was released as the lead single from the album \"Confessions\", and that had popular song stuck behind for eight consecutive weeks?",
+      "action_text": "Ricki-Lee Coulter",
+      "target": -0.0139,
+      "prediction": 0.2469,
+      "abs_error": 0.2608
+    },
+    {
+      "example_id": "1a404b48-8323-4013-b50c-56fbf1bbd084:medium:3:1",
+      "module": "AG",
+      "question_id": "67",
+      "question": "What is the name of the singer who's song was released as the lead single from the album \"Confessions\", and that had popular song stuck behind for eight consecutive weeks?",
+      "action_text": "Ricki-Lee Coulter",
+      "target": -0.0139,
+      "prediction": 0.2461,
+      "abs_error": 0.26
+    },
+    {
+      "example_id": "1a404b48-8323-4013-b50c-56fbf1bbd084:medium:3:2",
+      "module": "AG",
+      "question_id": "67",
+      "question": "What is the name of the singer who's song was released as the lead single from the album \"Confessions\", and that had popular song stuck behind for eight consecutive weeks?",
+      "action_text": "Ricki-Lee Coulter",
+      "target": -0.0139,
+      "prediction": 0.2461,
+      "abs_error": 0.26
+    },
+    {
+      "example_id": "61756e95-d78c-49c6-bd7a-e9cd5ed1300e:medium:4:0",
+      "module": "AG",
+      "question_id": "67",
+      "question": "What is the name of the singer who's song was released as the lead single from the album \"Confessions\", and that had popular song stuck behind for eight consecutive weeks?",
+      "action_text": "uncertain",
+      "target": -0.0275,
+      "prediction": 0.0136,
+      "abs_error": 0.0411
+    },
+    {
+      "example_id": "61756e95-d78c-49c6-bd7a-e9cd5ed1300e:medium:4:1",
+      "module": "AG",
+      "question_id": "67",
+      "question": "What is the name of the singer who's song was released as the lead single from the album \"Confessions\", and that had popular song stuck behind for eight consecutive weeks?",
+      "action_text": "uncertain",
+      "target": -0.0275,
+      "prediction": 0.0128,
+      "abs_error": 0.0403
+    },
+    {
+      "example_id": "61756e95-d78c-49c6-bd7a-e9cd5ed1300e:medium:4:2",
+      "module": "AG",
+      "question_id": "67",
+      "question": "What is the name of the singer who's song was released as the lead single from the album \"Confessions\", and that had popular song stuck behind for eight consecutive weeks?",
+      "action_text": "uncertain",
+      "target": -0.0275,
+      "prediction": 0.0128,
+      "abs_error": 0.0403
+    },
+    {
+      "example_id": "79056c9d-5228-48b7-8f72-969f80722a57:medium:1:0",
+      "module": "AG",
+      "question_id": "275",
+      "question": "Marion Greene was a health policy analyst for St. Judt Medical company, which had how many principal operations worldwide?",
+      "action_text": "uncertain",
+      "target": -0.0128,
+      "prediction": -0.0059,
+      "abs_error": 0.0069
+    },
+    {
+      "example_id": "79056c9d-5228-48b7-8f72-969f80722a57:medium:1:1",
+      "module": "AG",
+      "question_id": "275",
+      "question": "Marion Greene was a health policy analyst for St. Judt Medical company, which had how many principal operations worldwide?",
+      "action_text": "uncertain",
+      "target": -0.0128,
+      "prediction": -0.0067,
+      "abs_error": 0.0061
+    },
+    {
+      "example_id": "79056c9d-5228-48b7-8f72-969f80722a57:medium:1:2",
+      "module": "AG",
+      "question_id": "275",
+      "question": "Marion Greene was a health policy analyst for St. Judt Medical company, which had how many principal operations worldwide?",
+      "action_text": "uncertain",
+      "target": -0.0128,
+      "prediction": -0.0067,
+      "abs_error": 0.0061
+    },
+    {
+      "example_id": "cd87b9a4-18b0-4090-90d7-db330c627289:medium:3:0",
+      "module": "AG",
+      "question_id": "275",
+      "question": "Marion Greene was a health policy analyst for St. Judt Medical company, which had how many principal operations worldwide?",
+      "action_text": "The answer is uncertain",
+      "target": -0.0343,
+      "prediction": -0.0191,
+      "abs_error": 0.0152
+    },
+    {
+      "example_id": "cd87b9a4-18b0-4090-90d7-db330c627289:medium:3:1",
+      "module": "AG",
+      "question_id": "275",
+      "question": "Marion Greene was a health policy analyst for St. Judt Medical company, which had how many principal operations worldwide?",
+      "action_text": "The Surgeon General has authority to commit resources for the Air Force Medical Service, to make decisions affecting the delivery of medical services, and to develop plans, programs and procedures to support worldwide medical service missions. The Surgeon General exercises direction, guidance and technical management of more than 42,000 people assigned to 74 medical treatment facilities worldwide.",
+      "target": 0.0071,
+      "prediction": -0.0861,
+      "abs_error": 0.0932
+    },
+    {
+      "example_id": "cd87b9a4-18b0-4090-90d7-db330c627289:medium:3:2",
+      "module": "AG",
+      "question_id": "275",
+      "question": "Marion Greene was a health policy analyst for St. Judt Medical company, which had how many principal operations worldwide?",
+      "action_text": "The Surgeon General has authority to commit resources for the Air Force Medical Service, to make decisions affecting the delivery of medical services, and to develop plans, programs and procedures to support worldwide medical service missions. The Surgeon General exercises direction, guidance and technical management of more than 42,000 people assigned to 74 medical treatment facilities worldwide.",
+      "target": 0.0071,
+      "prediction": -0.0869,
+      "abs_error": 0.094
+    },
+    {
+      "example_id": "a335ee83-0c0e-496b-ab6b-77482d6f81bd:medium:3:0",
+      "module": "AG",
+      "question_id": "275",
+      "question": "Marion Greene was a health policy analyst for St. Judt Medical company, which had how many principal operations worldwide?",
+      "action_text": "The context does not specify how many principal operations St. Jude Medical had worldwide",
+      "target": -0.0095,
+      "prediction": -0.0235,
+      "abs_error": 0.014
+    },
+    {
+      "example_id": "a335ee83-0c0e-496b-ab6b-77482d6f81bd:medium:3:1",
+      "module": "AG",
+      "question_id": "275",
+      "question": "Marion Greene was a health policy analyst for St. Judt Medical company, which had how many principal operations worldwide?",
+      "action_text": "The context does not state how many principal operations St. Jude Medical had worldwide",
+      "target": -0.0095,
+      "prediction": -0.0435,
+      "abs_error": 0.034
+    },
+    {
+      "example_id": "a335ee83-0c0e-496b-ab6b-77482d6f81bd:medium:3:2",
+      "module": "AG",
+      "question_id": "275",
+      "question": "Marion Greene was a health policy analyst for St. Judt Medical company, which had how many principal operations worldwide?",
+      "action_text": "The context does not state how many principal operations St. Jude Medical had worldwide",
+      "target": -0.0095,
+      "prediction": -0.0435,
+      "abs_error": 0.034
+    },
+    {
+      "example_id": "f24c9c04-b450-45d2-9746-654354cc415c:medium:4:0",
+      "module": "AG",
+      "question_id": "275",
+      "question": "Marion Greene was a health policy analyst for St. Judt Medical company, which had how many principal operations worldwide?",
+      "action_text": "Owens & Minor has logistics operations in the United States and Europe",
+      "target": -0.0157,
+      "prediction": 0.1206,
+      "abs_error": 0.1363
+    },
+    {
+      "example_id": "f24c9c04-b450-45d2-9746-654354cc415c:medium:4:1",
+      "module": "AG",
+      "question_id": "275",
+      "question": "Marion Greene was a health policy analyst for St. Judt Medical company, which had how many principal operations worldwide?",
+      "action_text": "Owens & Minor has logistics operations in the United States and Europe",
+      "target": -0.0157,
+      "prediction": 0.1198,
+      "abs_error": 0.1355
+    },
+    {
+      "example_id": "f24c9c04-b450-45d2-9746-654354cc415c:medium:4:2",
+      "module": "AG",
+      "question_id": "275",
+      "question": "Marion Greene was a health policy analyst for St. Judt Medical company, which had how many principal operations worldwide?",
+      "action_text": "Owens & Minor has logistics operations in the United States and Europe",
+      "target": -0.0157,
+      "prediction": 0.1198,
+      "abs_error": 0.1355
+    },
+    {
+      "example_id": "686c3f07-deb0-4160-b061-dbdb50f7df39:medium:1:0",
+      "module": "AG",
+      "question_id": "290",
+      "question": "What record did the Super Bowl XXXIV champions finish the regular-season with in 1999?",
+      "action_text": "The Baltimore Ravens finished the 1999 regular season with a 10-6 record [1]",
+      "target": 0.05,
+      "prediction": 0.0726,
+      "abs_error": 0.0226
+    },
+    {
+      "example_id": "686c3f07-deb0-4160-b061-dbdb50f7df39:medium:1:1",
+      "module": "AG",
+      "question_id": "290",
+      "question": "What record did the Super Bowl XXXIV champions finish the regular-season with in 1999?",
+      "action_text": "The Baltimore Ravens finished the 1999 regular season with a 10-6 record [1]",
+      "target": 0.05,
+      "prediction": 0.0718,
+      "abs_error": 0.0218
+    },
+    {
+      "example_id": "686c3f07-deb0-4160-b061-dbdb50f7df39:medium:1:2",
+      "module": "AG",
+      "question_id": "290",
+      "question": "What record did the Super Bowl XXXIV champions finish the regular-season with in 1999?",
+      "action_text": "The Baltimore Ravens finished the 1999 regular season with a 10-6 record [1]",
+      "target": 0.05,
+      "prediction": 0.0718,
+      "abs_error": 0.0218
+    },
+    {
+      "example_id": "3aae2cf2-22b1-4b7d-923d-82b564a36262:medium:3:0",
+      "module": "AG",
+      "question_id": "290",
+      "question": "What record did the Super Bowl XXXIV champions finish the regular-season with in 1999?",
+      "action_text": "The St. Louis Rams finished the 1999 regular season as Super Bowl XXXIV champions [2].",
+      "target": -0.0116,
+      "prediction": -0.0184,
+      "abs_error": 0.0068
+    },
+    {
+      "example_id": "3aae2cf2-22b1-4b7d-923d-82b564a36262:medium:3:1",
+      "module": "AG",
+      "question_id": "290",
+      "question": "What record did the Super Bowl XXXIV champions finish the regular-season with in 1999?",
+      "action_text": "The St. Louis Rams finished the 1999 regular season as Super Bowl XXXIV champions [2].",
+      "target": -0.0116,
+      "prediction": -0.0192,
+      "abs_error": 0.0076
+    },
+    {
+      "example_id": "3aae2cf2-22b1-4b7d-923d-82b564a36262:medium:3:2",
+      "module": "AG",
+      "question_id": "290",
+      "question": "What record did the Super Bowl XXXIV champions finish the regular-season with in 1999?",
+      "action_text": "The St. Louis Rams finished the 1999 regular season as Super Bowl XXXIV champions [2].",
+      "target": -0.0116,
+      "prediction": -0.0192,
+      "abs_error": 0.0076
+    },
+    {
+      "example_id": "7dce1f4b-9a22-4c9f-8c2a-8244e662fa52:medium:3:0",
+      "module": "AG",
+      "question_id": "290",
+      "question": "What record did the Super Bowl XXXIV champions finish the regular-season with in 1999?",
+      "action_text": "uncertain",
+      "target": -0.015,
+      "prediction": 0.0294,
+      "abs_error": 0.0444
+    },
+    {
+      "example_id": "7dce1f4b-9a22-4c9f-8c2a-8244e662fa52:medium:3:1",
+      "module": "AG",
+      "question_id": "290",
+      "question": "What record did the Super Bowl XXXIV champions finish the regular-season with in 1999?",
+      "action_text": "uncertain",
+      "target": -0.015,
+      "prediction": 0.0287,
+      "abs_error": 0.0437
+    },
+    {
+      "example_id": "7dce1f4b-9a22-4c9f-8c2a-8244e662fa52:medium:3:2",
+      "module": "AG",
+      "question_id": "290",
+      "question": "What record did the Super Bowl XXXIV champions finish the regular-season with in 1999?",
+      "action_text": "uncertain",
+      "target": -0.015,
+      "prediction": 0.0287,
+      "abs_error": 0.0437
+    },
+    {
+      "example_id": "24ec9e5c-3ef6-4150-880c-9d466c963bfc:medium:4:0",
+      "module": "AG",
+      "question_id": "290",
+      "question": "What record did the Super Bowl XXXIV champions finish the regular-season with in 1999?",
+      "action_text": "The St. Louis Rams finished the 1999 regular season with a 95–58 record, finishing first in the National League [2].",
+      "target": 0.0352,
+      "prediction": -0.0566,
+      "abs_error": 0.0918
+    },
+    {
+      "example_id": "24ec9e5c-3ef6-4150-880c-9d466c963bfc:medium:4:1",
+      "module": "AG",
+      "question_id": "290",
+      "question": "What record did the Super Bowl XXXIV champions finish the regular-season with in 1999?",
+      "action_text": "The St. Louis Rams finished the 1999 regular season with a 95–58 record, finishing first in the National League [2].",
+      "target": 0.0352,
+      "prediction": -0.0574,
+      "abs_error": 0.0926
+    },
+    {
+      "example_id": "24ec9e5c-3ef6-4150-880c-9d466c963bfc:medium:4:2",
+      "module": "AG",
+      "question_id": "290",
+      "question": "What record did the Super Bowl XXXIV champions finish the regular-season with in 1999?",
+      "action_text": "The St. Louis Rams finished the 1999 regular season with a 95–58 record, finishing first in the National League [2].",
+      "target": 0.0352,
+      "prediction": -0.0574,
+      "abs_error": 0.0926
+    },
+    {
+      "example_id": "8e1187f6-a673-4c5a-ad0f-fa637d651ff6:medium:1:0",
+      "module": "AG",
+      "question_id": "333",
+      "question": "What Danish eurodance group had a single called \"Barbie Girl\" which resulted in a lawsuit in 2002?",
+      "action_text": "Aqua",
+      "target": 0.7755,
+      "prediction": 0.1565,
+      "abs_error": 0.619
+    },
+    {
+      "example_id": "8e1187f6-a673-4c5a-ad0f-fa637d651ff6:medium:1:1",
+      "module": "AG",
+      "question_id": "333",
+      "question": "What Danish eurodance group had a single called \"Barbie Girl\" which resulted in a lawsuit in 2002?",
+      "action_text": "Aqua",
+      "target": 0.7755,
+      "prediction": 0.1557,
+      "abs_error": 0.6198
+    },
+    {
+      "example_id": "8e1187f6-a673-4c5a-ad0f-fa637d651ff6:medium:1:2",
+      "module": "AG",
+      "question_id": "333",
+      "question": "What Danish eurodance group had a single called \"Barbie Girl\" which resulted in a lawsuit in 2002?",
+      "action_text": "Aqua",
+      "target": 0.7755,
+      "prediction": 0.1557,
+      "abs_error": 0.6198
+    },
+    {
+      "example_id": "cda4f0c8-8031-4bde-9264-4920b6fe3969:medium:3:0",
+      "module": "AG",
+      "question_id": "333",
+      "question": "What Danish eurodance group had a single called \"Barbie Girl\" which resulted in a lawsuit in 2002?",
+      "action_text": "Aqua",
+      "target": 0.749,
+      "prediction": 0.1728,
+      "abs_error": 0.5762
+    },
+    {
+      "example_id": "cda4f0c8-8031-4bde-9264-4920b6fe3969:medium:3:1",
+      "module": "AG",
+      "question_id": "333",
+      "question": "What Danish eurodance group had a single called \"Barbie Girl\" which resulted in a lawsuit in 2002?",
+      "action_text": "Aqua",
+      "target": 0.749,
+      "prediction": 0.172,
+      "abs_error": 0.577
+    },
+    {
+      "example_id": "cda4f0c8-8031-4bde-9264-4920b6fe3969:medium:3:2",
+      "module": "AG",
+      "question_id": "333",
+      "question": "What Danish eurodance group had a single called \"Barbie Girl\" which resulted in a lawsuit in 2002?",
+      "action_text": "Aqua",
+      "target": 0.749,
+      "prediction": 0.172,
+      "abs_error": 0.577
+    },
+    {
+      "example_id": "f0a8e8e3-d1eb-46db-a797-5dbdd9667134:medium:3:0",
+      "module": "AG",
+      "question_id": "333",
+      "question": "What Danish eurodance group had a single called \"Barbie Girl\" which resulted in a lawsuit in 2002?",
+      "action_text": "Aqua",
+      "target": 0.7689,
+      "prediction": 0.1925,
+      "abs_error": 0.5764
+    },
+    {
+      "example_id": "f0a8e8e3-d1eb-46db-a797-5dbdd9667134:medium:3:1",
+      "module": "AG",
+      "question_id": "333",
+      "question": "What Danish eurodance group had a single called \"Barbie Girl\" which resulted in a lawsuit in 2002?",
+      "action_text": "Aqua",
+      "target": 0.7689,
+      "prediction": 0.1917,
+      "abs_error": 0.5772
+    },
+    {
+      "example_id": "f0a8e8e3-d1eb-46db-a797-5dbdd9667134:medium:3:2",
+      "module": "AG",
+      "question_id": "333",
+      "question": "What Danish eurodance group had a single called \"Barbie Girl\" which resulted in a lawsuit in 2002?",
+      "action_text": "Aqua",
+      "target": 0.7689,
+      "prediction": 0.1917,
+      "abs_error": 0.5772
+    },
+    {
+      "example_id": "17463203-2019-4b02-a890-b31f76bc8d96:medium:4:0",
+      "module": "AG",
+      "question_id": "333",
+      "question": "What Danish eurodance group had a single called \"Barbie Girl\" which resulted in a lawsuit in 2002?",
+      "action_text": "Aqua",
+      "target": 0.7316,
+      "prediction": 0.1438,
+      "abs_error": 0.5878
+    },
+    {
+      "example_id": "17463203-2019-4b02-a890-b31f76bc8d96:medium:4:1",
+      "module": "AG",
+      "question_id": "333",
+      "question": "What Danish eurodance group had a single called \"Barbie Girl\" which resulted in a lawsuit in 2002?",
+      "action_text": "Aqua",
+      "target": 0.7316,
+      "prediction": 0.143,
+      "abs_error": 0.5886
+    },
+    {
+      "example_id": "17463203-2019-4b02-a890-b31f76bc8d96:medium:4:2",
+      "module": "AG",
+      "question_id": "333",
+      "question": "What Danish eurodance group had a single called \"Barbie Girl\" which resulted in a lawsuit in 2002?",
+      "action_text": "Aqua",
+      "target": 0.7316,
+      "prediction": 0.143,
+      "abs_error": 0.5886
+    },
+    {
+      "example_id": "59c2016e-6669-4928-b2c3-c0aba5b07b0b:medium:1:0",
+      "module": "AG",
+      "question_id": "116",
+      "question": "Suicide's 1977 released album features a song based on what brand's comic character?",
+      "action_text": "Suicide's 1977 album features a song based on the comic character Tintin",
+      "target": -0.0176,
+      "prediction": 0.2062,
+      "abs_error": 0.2238
+    },
+    {
+      "example_id": "59c2016e-6669-4928-b2c3-c0aba5b07b0b:medium:1:1",
+      "module": "AG",
+      "question_id": "116",
+      "question": "Suicide's 1977 released album features a song based on what brand's comic character?",
+      "action_text": "Suicide's 1977 album features a song based on the comic character Tintin",
+      "target": -0.0176,
+      "prediction": 0.2054,
+      "abs_error": 0.223
+    },
+    {
+      "example_id": "59c2016e-6669-4928-b2c3-c0aba5b07b0b:medium:1:2",
+      "module": "AG",
+      "question_id": "116",
+      "question": "Suicide's 1977 released album features a song based on what brand's comic character?",
+      "action_text": "Suicide's 1977 album features a song based on the comic character Tintin",
+      "target": -0.0176,
+      "prediction": 0.2054,
+      "abs_error": 0.223
+    },
+    {
+      "example_id": "586facd8-0b42-451a-801a-9c850830ea3e:medium:3:0",
+      "module": "AG",
+      "question_id": "116",
+      "question": "Suicide's 1977 released album features a song based on what brand's comic character?",
+      "action_text": "uncertain",
+      "target": -0.0188,
+      "prediction": 0.0068,
+      "abs_error": 0.0256
+    },
+    {
+      "example_id": "586facd8-0b42-451a-801a-9c850830ea3e:medium:3:1",
+      "module": "AG",
+      "question_id": "116",
+      "question": "Suicide's 1977 released album features a song based on what brand's comic character?",
+      "action_text": "uncertain",
+      "target": -0.0188,
+      "prediction": 0.006,
+      "abs_error": 0.0248
+    },
+    {
+      "example_id": "586facd8-0b42-451a-801a-9c850830ea3e:medium:3:2",
+      "module": "AG",
+      "question_id": "116",
+      "question": "Suicide's 1977 released album features a song based on what brand's comic character?",
+      "action_text": "uncertain",
+      "target": -0.0188,
+      "prediction": 0.006,
+      "abs_error": 0.0248
+    },
+    {
+      "example_id": "771b4d99-4122-4400-b261-7a1f2462c7a1:medium:3:0",
+      "module": "AG",
+      "question_id": "116",
+      "question": "Suicide's 1977 released album features a song based on what brand's comic character?",
+      "action_text": "Suicide's 1977 album features a song based on Batman",
+      "target": -0.0079,
+      "prediction": 0.2508,
+      "abs_error": 0.2587
+    },
+    {
+      "example_id": "771b4d99-4122-4400-b261-7a1f2462c7a1:medium:3:1",
+      "module": "AG",
+      "question_id": "116",
+      "question": "Suicide's 1977 released album features a song based on what brand's comic character?",
+      "action_text": "Suicide's 1977 album features a song based on Batman",
+      "target": -0.0079,
+      "prediction": 0.25,
+      "abs_error": 0.2579
+    },
+    {
+      "example_id": "771b4d99-4122-4400-b261-7a1f2462c7a1:medium:3:2",
+      "module": "AG",
+      "question_id": "116",
+      "question": "Suicide's 1977 released album features a song based on what brand's comic character?",
+      "action_text": "Suicide's 1977 album features a song based on Batman",
+      "target": -0.0079,
+      "prediction": 0.25,
+      "abs_error": 0.2579
+    },
+    {
+      "example_id": "a73f1491-009e-408f-a8da-4cb632fdd219:medium:4:0",
+      "module": "AG",
+      "question_id": "116",
+      "question": "Suicide's 1977 released album features a song based on what brand's comic character?",
+      "action_text": "uncertain",
+      "target": -0.0257,
+      "prediction": -0.008,
+      "abs_error": 0.0177
+    },
+    {
+      "example_id": "a73f1491-009e-408f-a8da-4cb632fdd219:medium:4:1",
+      "module": "AG",
+      "question_id": "116",
+      "question": "Suicide's 1977 released album features a song based on what brand's comic character?",
+      "action_text": "uncertain",
+      "target": -0.0257,
+      "prediction": -0.0088,
+      "abs_error": 0.0169
+    },
+    {
+      "example_id": "a73f1491-009e-408f-a8da-4cb632fdd219:medium:4:2",
+      "module": "AG",
+      "question_id": "116",
+      "question": "Suicide's 1977 released album features a song based on what brand's comic character?",
+      "action_text": "uncertain",
+      "target": -0.0257,
+      "prediction": -0.0088,
+      "abs_error": 0.0169
+    },
+    {
+      "example_id": "8dd2a54b-15cb-479a-9e58-e418bdd8f315:medium:1:0",
+      "module": "AG",
+      "question_id": "313",
+      "question": "Who was born first Am Rong or Ava DuVernay ?",
+      "action_text": "uncertain",
+      "target": -0.0128,
+      "prediction": -0.0015,
+      "abs_error": 0.0113
+    },
+    {
+      "example_id": "8dd2a54b-15cb-479a-9e58-e418bdd8f315:medium:1:1",
+      "module": "AG",
+      "question_id": "313",
+      "question": "Who was born first Am Rong or Ava DuVernay ?",
+      "action_text": "uncertain",
+      "target": -0.0128,
+      "prediction": -0.0023,
+      "abs_error": 0.0105
+    },
+    {
+      "example_id": "8dd2a54b-15cb-479a-9e58-e418bdd8f315:medium:1:2",
+      "module": "AG",
+      "question_id": "313",
+      "question": "Who was born first Am Rong or Ava DuVernay ?",
+      "action_text": "uncertain",
+      "target": -0.0128,
+      "prediction": -0.0023,
+      "abs_error": 0.0105
+    },
+    {
+      "example_id": "448bae43-525a-467f-8555-8d36cd2dcd44:medium:3:0",
+      "module": "AG",
+      "question_id": "313",
+      "question": "Who was born first Am Rong or Ava DuVernay ?",
+      "action_text": "Emayatzy Corinealdi was born first.",
+      "target": -0.0186,
+      "prediction": 0.0824,
+      "abs_error": 0.101
+    },
+    {
+      "example_id": "448bae43-525a-467f-8555-8d36cd2dcd44:medium:3:1",
+      "module": "AG",
+      "question_id": "313",
+      "question": "Who was born first Am Rong or Ava DuVernay ?",
+      "action_text": "Emayatzy Corinealdi was born first.",
+      "target": -0.0186,
+      "prediction": 0.0816,
+      "abs_error": 0.1002
+    },
+    {
+      "example_id": "448bae43-525a-467f-8555-8d36cd2dcd44:medium:3:2",
+      "module": "AG",
+      "question_id": "313",
+      "question": "Who was born first Am Rong or Ava DuVernay ?",
+      "action_text": "Emayatzy Corinealdi was born first.",
+      "target": -0.0186,
+      "prediction": 0.0816,
+      "abs_error": 0.1002
+    },
+    {
+      "example_id": "9cc529a3-2cc5-4f55-82c7-c87a05227d5c:medium:3:0",
+      "module": "AG",
+      "question_id": "313",
+      "question": "Who was born first Am Rong or Ava DuVernay ?",
+      "action_text": "Emayatzy Corinealdi was born first",
+      "target": 0.0017,
+      "prediction": 0.1152,
+      "abs_error": 0.1135
+    },
+    {
+      "example_id": "9cc529a3-2cc5-4f55-82c7-c87a05227d5c:medium:3:1",
+      "module": "AG",
+      "question_id": "313",
+      "question": "Who was born first Am Rong or Ava DuVernay ?",
+      "action_text": "Emayatzy Corinealdi was born first",
+      "target": 0.0017,
+      "prediction": 0.1144,
+      "abs_error": 0.1127
+    },
+    {
+      "example_id": "9cc529a3-2cc5-4f55-82c7-c87a05227d5c:medium:3:2",
+      "module": "AG",
+      "question_id": "313",
+      "question": "Who was born first Am Rong or Ava DuVernay ?",
+      "action_text": "Emayatzy Corinealdi was born first",
+      "target": 0.0017,
+      "prediction": 0.1144,
+      "abs_error": 0.1127
+    },
+    {
+      "example_id": "9dace3c1-61f4-403d-be14-8b45801c8a2d:medium:4:0",
+      "module": "AG",
+      "question_id": "313",
+      "question": "Who was born first Am Rong or Ava DuVernay ?",
+      "action_text": "The question cannot be answered from the provided context",
+      "target": -0.0294,
+      "prediction": -0.0136,
+      "abs_error": 0.0158
+    },
+    {
+      "example_id": "9dace3c1-61f4-403d-be14-8b45801c8a2d:medium:4:1",
+      "module": "AG",
+      "question_id": "313",
+      "question": "Who was born first Am Rong or Ava DuVernay ?",
+      "action_text": "The question cannot be answered from the provided context",
+      "target": -0.0294,
+      "prediction": -0.0144,
+      "abs_error": 0.015
+    },
+    {
+      "example_id": "9dace3c1-61f4-403d-be14-8b45801c8a2d:medium:4:2",
+      "module": "AG",
+      "question_id": "313",
+      "question": "Who was born first Am Rong or Ava DuVernay ?",
+      "action_text": "The question cannot be answered from the provided context",
+      "target": -0.0294,
+      "prediction": -0.0144,
+      "abs_error": 0.015
+    },
+    {
+      "example_id": "f928c35a-f679-4b64-b77f-c3ddb71eba8b:medium:1:0",
+      "module": "AG",
+      "question_id": "160",
+      "question": "Who held the record for the longest service in the Australian Parliament for a woman, and was surpassed by  a former Australian politician who was the 29th Speaker of the House of Representatives?",
+      "action_text": "As of 2023, Kate Ellis held the record for the longest service as a female member of the Australian Parliament, which she surpassed in 2023 [1]",
+      "target": -0.028,
+      "prediction": -0.0556,
+      "abs_error": 0.0276
+    },
+    {
+      "example_id": "f928c35a-f679-4b64-b77f-c3ddb71eba8b:medium:1:1",
+      "module": "AG",
+      "question_id": "160",
+      "question": "Who held the record for the longest service in the Australian Parliament for a woman, and was surpassed by  a former Australian politician who was the 29th Speaker of the House of Representatives?",
+      "action_text": "As of 2023, Kate Ellis held the record for the longest service in the Australian Parliament for a woman, having served for 21 years and 173 days [1]. She was surpassed by Anne Burton [2], who was the 29th Speaker of the House of Representatives [2].",
+      "target": -0.028,
+      "prediction": -0.1843,
+      "abs_error": 0.1563
+    },
+    {
+      "example_id": "f928c35a-f679-4b64-b77f-c3ddb71eba8b:medium:1:2",
+      "module": "AG",
+      "question_id": "160",
+      "question": "Who held the record for the longest service in the Australian Parliament for a woman, and was surpassed by  a former Australian politician who was the 29th Speaker of the House of Representatives?",
+      "action_text": "As of 2023, Kate Ellis held the record for the longest service in the Australian Parliament for a woman, having served for 21 years and 173 days [1]. She was surpassed by Anne Burton [2], who was the 29th Speaker of the House of Representatives [2].",
+      "target": -0.028,
+      "prediction": -0.1843,
+      "abs_error": 0.1563
+    },
+    {
+      "example_id": "ec6103d2-d7ad-49c8-8bc3-d3506330206b:medium:3:0",
+      "module": "AG",
+      "question_id": "160",
+      "question": "Who held the record for the longest service in the Australian Parliament for a woman, and was surpassed by  a former Australian politician who was the 29th Speaker of the House of Representatives?",
+      "action_text": "Kathy Sullivan held the record for the longest service in the Australian Parliament for a woman, oustripping the record previously held by Dorothy Tangney [1].",
+      "target": -0.0056,
+      "prediction": -0.0764,
+      "abs_error": 0.0708
+    },
+    {
+      "example_id": "ec6103d2-d7ad-49c8-8bc3-d3506330206b:medium:3:1",
+      "module": "AG",
+      "question_id": "160",
+      "question": "Who held the record for the longest service in the Australian Parliament for a woman, and was surpassed by  a former Australian politician who was the 29th Speaker of the House of Representatives?",
+      "action_text": "Kathy Sullivan held the record for the longest service in the Australian Parliament for a woman, oustripping the record previously held by Dorothy Tangney [1].",
+      "target": -0.0056,
+      "prediction": -0.0772,
+      "abs_error": 0.0716
+    },
+    {
+      "example_id": "ec6103d2-d7ad-49c8-8bc3-d3506330206b:medium:3:2",
+      "module": "AG",
+      "question_id": "160",
+      "question": "Who held the record for the longest service in the Australian Parliament for a woman, and was surpassed by  a former Australian politician who was the 29th Speaker of the House of Representatives?",
+      "action_text": "Kathy Sullivan held the record for the longest service in the Australian Parliament for a woman, oustripping the record previously held by Dorothy Tangney [1].",
+      "target": -0.0056,
+      "prediction": -0.0772,
+      "abs_error": 0.0716
+    },
+    {
+      "example_id": "b6f5f4e8-6606-4ae3-8a56-ed33c415bd35:medium:3:0",
+      "module": "AG",
+      "question_id": "160",
+      "question": "Who held the record for the longest service in the Australian Parliament for a woman, and was surpassed by  a former Australian politician who was the 29th Speaker of the House of Representatives?",
+      "action_text": "Kathy Sullivan held the record for the longest service in the Australian Parliament for a woman, oustripping the record previously held by Dorothy Tangney. This record has since been surpassed by Bronwyn Bishop",
+      "target": 0.0812,
+      "prediction": -0.0626,
+      "abs_error": 0.1438
+    },
+    {
+      "example_id": "b6f5f4e8-6606-4ae3-8a56-ed33c415bd35:medium:3:1",
+      "module": "AG",
+      "question_id": "160",
+      "question": "Who held the record for the longest service in the Australian Parliament for a woman, and was surpassed by  a former Australian politician who was the 29th Speaker of the House of Representatives?",
+      "action_text": "Kathy Sullivan held the record for the longest service in the Australian Parliament for a woman, oustripping the record previously held by Dorothy Tangney. This record has since been surpassed by Bronwyn Bishop",
+      "target": 0.0812,
+      "prediction": -0.0634,
+      "abs_error": 0.1446
+    },
+    {
+      "example_id": "b6f5f4e8-6606-4ae3-8a56-ed33c415bd35:medium:3:2",
+      "module": "AG",
+      "question_id": "160",
+      "question": "Who held the record for the longest service in the Australian Parliament for a woman, and was surpassed by  a former Australian politician who was the 29th Speaker of the House of Representatives?",
+      "action_text": "Kathy Sullivan held the record for the longest service in the Australian Parliament for a woman, oustripping the record previously held by Dorothy Tangney. This record has since been surpassed by Bronwyn Bishop",
+      "target": 0.0812,
+      "prediction": -0.0634,
+      "abs_error": 0.1446
+    },
+    {
+      "example_id": "da5c4fcb-211c-4626-a51f-e22550bd560f:medium:4:0",
+      "module": "AG",
+      "question_id": "160",
+      "question": "Who held the record for the longest service in the Australian Parliament for a woman, and was surpassed by  a former Australian politician who was the 29th Speaker of the House of Representatives?",
+      "action_text": "Kathy Sullivan held the record for the longest service in the Australian Parliament for a woman, oustripping the record previously held by Dorothy Tangney. This record was surpassed by Bronwyn Bishop [2], a former Australian politician who was the 29th Speaker of the House of Representatives [2].",
+      "target": 0.0263,
+      "prediction": -0.2033,
+      "abs_error": 0.2296
+    },
+    {
+      "example_id": "da5c4fcb-211c-4626-a51f-e22550bd560f:medium:4:1",
+      "module": "AG",
+      "question_id": "160",
+      "question": "Who held the record for the longest service in the Australian Parliament for a woman, and was surpassed by  a former Australian politician who was the 29th Speaker of the House of Representatives?",
+      "action_text": "Kathy Sullivan held the record for the longest service in the Australian Parliament for a woman, oustripping the record previously held by Dorothy Tangney. This record was surpassed by Bronwyn Bishop [2], a former Australian politician who was the 29th Speaker of the House of Representatives [2].",
+      "target": 0.0263,
+      "prediction": -0.2041,
+      "abs_error": 0.2304
+    },
+    {
+      "example_id": "da5c4fcb-211c-4626-a51f-e22550bd560f:medium:4:2",
+      "module": "AG",
+      "question_id": "160",
+      "question": "Who held the record for the longest service in the Australian Parliament for a woman, and was surpassed by  a former Australian politician who was the 29th Speaker of the House of Representatives?",
+      "action_text": "Kathy Sullivan held the record for the longest service in the Australian Parliament for a woman, oustripping the record previously held by Dorothy Tangney. This record was surpassed by Bronwyn Bishop [2], a former Australian politician who was the 29th Speaker of the House of Representatives [2].",
+      "target": 0.0263,
+      "prediction": -0.2041,
+      "abs_error": 0.2304
+    },
+    {
+      "example_id": "264bd618-b7c5-4988-a5a2-d38cfa15a903:medium:1:0",
+      "module": "AG",
+      "question_id": "511",
+      "question": "What was the nationality of the actor playing a Russian hostage taker in \"Hostage for a Day\"?",
+      "action_text": "The actor playing a Russian hostage taker in \"Hostage for a Day\" was Russian [1]",
+      "target": -0.0178,
+      "prediction": 0.0646,
+      "abs_error": 0.0824
+    },
+    {
+      "example_id": "264bd618-b7c5-4988-a5a2-d38cfa15a903:medium:1:1",
+      "module": "AG",
+      "question_id": "511",
+      "question": "What was the nationality of the actor playing a Russian hostage taker in \"Hostage for a Day\"?",
+      "action_text": "The actor playing a Russian hostage taker in \"Hostage for a Day\" was Russian [1]",
+      "target": -0.0178,
+      "prediction": 0.0638,
+      "abs_error": 0.0816
+    },
+    {
+      "example_id": "264bd618-b7c5-4988-a5a2-d38cfa15a903:medium:1:2",
+      "module": "AG",
+      "question_id": "511",
+      "question": "What was the nationality of the actor playing a Russian hostage taker in \"Hostage for a Day\"?",
+      "action_text": "The actor playing a Russian hostage taker in \"Hostage for a Day\" was Russian [1]",
+      "target": -0.0178,
+      "prediction": 0.0638,
+      "abs_error": 0.0816
+    },
+    {
+      "example_id": "33dd1d94-dc73-4e6b-9e70-2160840408e4:medium:3:0",
+      "module": "AG",
+      "question_id": "511",
+      "question": "What was the nationality of the actor playing a Russian hostage taker in \"Hostage for a Day\"?",
+      "action_text": "The actor playing a Russian hostage taker in \"Hostage for a Day\" was Canadian [3].",
+      "target": 0.0844,
+      "prediction": 0.0745,
+      "abs_error": 0.0099
+    },
+    {
+      "example_id": "33dd1d94-dc73-4e6b-9e70-2160840408e4:medium:3:1",
+      "module": "AG",
+      "question_id": "511",
+      "question": "What was the nationality of the actor playing a Russian hostage taker in \"Hostage for a Day\"?",
+      "action_text": "The actor playing a Russian hostage taker in \"Hostage for a Day\" was Canadian [3]",
+      "target": 0.0844,
+      "prediction": 0.0737,
+      "abs_error": 0.0107
+    },
+    {
+      "example_id": "33dd1d94-dc73-4e6b-9e70-2160840408e4:medium:3:2",
+      "module": "AG",
+      "question_id": "511",
+      "question": "What was the nationality of the actor playing a Russian hostage taker in \"Hostage for a Day\"?",
+      "action_text": "The actor playing a Russian hostage taker in \"Hostage for a Day\" was Canadian [3]",
+      "target": 0.0844,
+      "prediction": 0.0737,
+      "abs_error": 0.0107
+    },
+    {
+      "example_id": "7a2f23e4-157e-4793-ac44-17006a74f9bf:medium:3:0",
+      "module": "AG",
+      "question_id": "511",
+      "question": "What was the nationality of the actor playing a Russian hostage taker in \"Hostage for a Day\"?",
+      "action_text": "uncertain",
+      "target": -0.0041,
+      "prediction": 0.0355,
+      "abs_error": 0.0396
+    },
+    {
+      "example_id": "7a2f23e4-157e-4793-ac44-17006a74f9bf:medium:3:1",
+      "module": "AG",
+      "question_id": "511",
+      "question": "What was the nationality of the actor playing a Russian hostage taker in \"Hostage for a Day\"?",
+      "action_text": "uncertain",
+      "target": -0.0041,
+      "prediction": 0.0347,
+      "abs_error": 0.0388
+    },
+    {
+      "example_id": "7a2f23e4-157e-4793-ac44-17006a74f9bf:medium:3:2",
+      "module": "AG",
+      "question_id": "511",
+      "question": "What was the nationality of the actor playing a Russian hostage taker in \"Hostage for a Day\"?",
+      "action_text": "uncertain",
+      "target": -0.0041,
+      "prediction": 0.0347,
+      "abs_error": 0.0388
+    },
+    {
+      "example_id": "8bb66050-4fe2-46cc-b286-273b42bed508:medium:4:0",
+      "module": "AG",
+      "question_id": "511",
+      "question": "What was the nationality of the actor playing a Russian hostage taker in \"Hostage for a Day\"?",
+      "action_text": "The actor playing a Russian hostage taker in \"Hostage for a Day\" was Canadian [1]",
+      "target": 0.0674,
+      "prediction": 0.0623,
+      "abs_error": 0.0051
+    },
+    {
+      "example_id": "8bb66050-4fe2-46cc-b286-273b42bed508:medium:4:1",
+      "module": "AG",
+      "question_id": "511",
+      "question": "What was the nationality of the actor playing a Russian hostage taker in \"Hostage for a Day\"?",
+      "action_text": "The actor playing a Russian hostage taker in \"Hostage for a Day\" was Canadian [1]",
+      "target": 0.0674,
+      "prediction": 0.0615,
+      "abs_error": 0.0059
+    },
+    {
+      "example_id": "8bb66050-4fe2-46cc-b286-273b42bed508:medium:4:2",
+      "module": "AG",
+      "question_id": "511",
+      "question": "What was the nationality of the actor playing a Russian hostage taker in \"Hostage for a Day\"?",
+      "action_text": "The actor playing a Russian hostage taker in \"Hostage for a Day\" was Canadian [1]",
+      "target": 0.0674,
+      "prediction": 0.0615,
+      "abs_error": 0.0059
+    },
+    {
+      "example_id": "e30da13a-077e-4e32-947f-d02e37176039:medium:1:0",
+      "module": "AG",
+      "question_id": "425",
+      "question": "Las Vegas Festival Grounds is north of the hotel that is owned by which company?",
+      "action_text": "uncertain",
+      "target": -0.0128,
+      "prediction": -0.0167,
+      "abs_error": 0.0039
+    },
+    {
+      "example_id": "e30da13a-077e-4e32-947f-d02e37176039:medium:1:1",
+      "module": "AG",
+      "question_id": "425",
+      "question": "Las Vegas Festival Grounds is north of the hotel that is owned by which company?",
+      "action_text": "uncertain",
+      "target": -0.0128,
+      "prediction": -0.0175,
+      "abs_error": 0.0047
+    },
+    {
+      "example_id": "e30da13a-077e-4e32-947f-d02e37176039:medium:1:2",
+      "module": "AG",
+      "question_id": "425",
+      "question": "Las Vegas Festival Grounds is north of the hotel that is owned by which company?",
+      "action_text": "uncertain",
+      "target": -0.0128,
+      "prediction": -0.0175,
+      "abs_error": 0.0047
+    },
+    {
+      "example_id": "764928c4-0408-4d2e-9a13-559ac19493da:medium:3:0",
+      "module": "AG",
+      "question_id": "425",
+      "question": "Las Vegas Festival Grounds is north of the hotel that is owned by which company?",
+      "action_text": "MGM-owned Circus Circus Hotel and Casino",
+      "target": -0.0153,
+      "prediction": 0.1367,
+      "abs_error": 0.152
+    },
+    {
+      "example_id": "764928c4-0408-4d2e-9a13-559ac19493da:medium:3:1",
+      "module": "AG",
+      "question_id": "425",
+      "question": "Las Vegas Festival Grounds is north of the hotel that is owned by which company?",
+      "action_text": "MGM-owned Circus Circus Hotel and Casino",
+      "target": -0.0153,
+      "prediction": 0.1359,
+      "abs_error": 0.1512
+    },
+    {
+      "example_id": "764928c4-0408-4d2e-9a13-559ac19493da:medium:3:2",
+      "module": "AG",
+      "question_id": "425",
+      "question": "Las Vegas Festival Grounds is north of the hotel that is owned by which company?",
+      "action_text": "MGM-owned Circus Circus Hotel and Casino",
+      "target": -0.0153,
+      "prediction": 0.1359,
+      "abs_error": 0.1512
+    },
+    {
+      "example_id": "b615a43a-25fc-4b32-b756-9a43a2609f0c:medium:3:0",
+      "module": "AG",
+      "question_id": "425",
+      "question": "Las Vegas Festival Grounds is north of the hotel that is owned by which company?",
+      "action_text": "MGM-owned Circus Circus Hotel and Casino",
+      "target": 0.0058,
+      "prediction": 0.1777,
+      "abs_error": 0.1719
+    },
+    {
+      "example_id": "b615a43a-25fc-4b32-b756-9a43a2609f0c:medium:3:1",
+      "module": "AG",
+      "question_id": "425",
+      "question": "Las Vegas Festival Grounds is north of the hotel that is owned by which company?",
+      "action_text": "MGM-owned Circus Circus Hotel and Casino",
+      "target": 0.0058,
+      "prediction": 0.1769,
+      "abs_error": 0.1711
+    },
+    {
+      "example_id": "b615a43a-25fc-4b32-b756-9a43a2609f0c:medium:3:2",
+      "module": "AG",
+      "question_id": "425",
+      "question": "Las Vegas Festival Grounds is north of the hotel that is owned by which company?",
+      "action_text": "MGM-owned Circus Circus Hotel and Casino",
+      "target": 0.0058,
+      "prediction": 0.1769,
+      "abs_error": 0.1711
+    },
+    {
+      "example_id": "f383dc11-bbeb-4b76-8a2b-076ab7c4d65f:medium:4:0",
+      "module": "AG",
+      "question_id": "425",
+      "question": "Las Vegas Festival Grounds is north of the hotel that is owned by which company?",
+      "action_text": "MGM-owned Circus Circus Hotel and Casino",
+      "target": -0.0204,
+      "prediction": 0.134,
+      "abs_error": 0.1544
+    },
+    {
+      "example_id": "f383dc11-bbeb-4b76-8a2b-076ab7c4d65f:medium:4:1",
+      "module": "AG",
+      "question_id": "425",
+      "question": "Las Vegas Festival Grounds is north of the hotel that is owned by which company?",
+      "action_text": "MGM-owned Circus Circus Hotel and Casino",
+      "target": -0.0204,
+      "prediction": 0.1332,
+      "abs_error": 0.1536
+    },
+    {
+      "example_id": "f383dc11-bbeb-4b76-8a2b-076ab7c4d65f:medium:4:2",
+      "module": "AG",
+      "question_id": "425",
+      "question": "Las Vegas Festival Grounds is north of the hotel that is owned by which company?",
+      "action_text": "MGM-owned Circus Circus Hotel and Casino",
+      "target": -0.0204,
+      "prediction": 0.1332,
+      "abs_error": 0.1536
+    },
+    {
+      "example_id": "f727ce3b-6ab9-4b9e-bc69-cb644fd111c0:medium:1:0",
+      "module": "AG",
+      "question_id": "463",
+      "question": "Blinding Edge Pictures produced which 2000 film starring Bruce Willis?",
+      "action_text": "Unbreakable",
+      "target": 0.779,
+      "prediction": 0.193,
+      "abs_error": 0.586
+    },
+    {
+      "example_id": "f727ce3b-6ab9-4b9e-bc69-cb644fd111c0:medium:1:1",
+      "module": "AG",
+      "question_id": "463",
+      "question": "Blinding Edge Pictures produced which 2000 film starring Bruce Willis?",
+      "action_text": "Unbreakable",
+      "target": 0.779,
+      "prediction": 0.1922,
+      "abs_error": 0.5868
+    },
+    {
+      "example_id": "f727ce3b-6ab9-4b9e-bc69-cb644fd111c0:medium:1:2",
+      "module": "AG",
+      "question_id": "463",
+      "question": "Blinding Edge Pictures produced which 2000 film starring Bruce Willis?",
+      "action_text": "Unbreakable",
+      "target": 0.779,
+      "prediction": 0.1922,
+      "abs_error": 0.5868
+    },
+    {
+      "example_id": "f53580b6-e8ac-4374-8b1c-b8ae7080994e:medium:3:0",
+      "module": "AG",
+      "question_id": "463",
+      "question": "Blinding Edge Pictures produced which 2000 film starring Bruce Willis?",
+      "action_text": "uncertain",
+      "target": -0.0101,
+      "prediction": 0.0143,
+      "abs_error": 0.0244
+    },
+    {
+      "example_id": "f53580b6-e8ac-4374-8b1c-b8ae7080994e:medium:3:1",
+      "module": "AG",
+      "question_id": "463",
+      "question": "Blinding Edge Pictures produced which 2000 film starring Bruce Willis?",
+      "action_text": "uncertain",
+      "target": -0.0101,
+      "prediction": 0.0135,
+      "abs_error": 0.0236
+    },
+    {
+      "example_id": "f53580b6-e8ac-4374-8b1c-b8ae7080994e:medium:3:2",
+      "module": "AG",
+      "question_id": "463",
+      "question": "Blinding Edge Pictures produced which 2000 film starring Bruce Willis?",
+      "action_text": "uncertain",
+      "target": -0.0101,
+      "prediction": 0.0135,
+      "abs_error": 0.0236
+    },
+    {
+      "example_id": "449966dc-689f-4e86-982b-3b08f611641f:medium:3:0",
+      "module": "AG",
+      "question_id": "463",
+      "question": "Blinding Edge Pictures produced which 2000 film starring Bruce Willis?",
+      "action_text": "Unbreakable",
+      "target": 0.7676,
+      "prediction": 0.2259,
+      "abs_error": 0.5417
+    },
+    {
+      "example_id": "449966dc-689f-4e86-982b-3b08f611641f:medium:3:1",
+      "module": "AG",
+      "question_id": "463",
+      "question": "Blinding Edge Pictures produced which 2000 film starring Bruce Willis?",
+      "action_text": "Unbreakable",
+      "target": 0.7676,
+      "prediction": 0.2251,
+      "abs_error": 0.5425
+    },
+    {
+      "example_id": "449966dc-689f-4e86-982b-3b08f611641f:medium:3:2",
+      "module": "AG",
+      "question_id": "463",
+      "question": "Blinding Edge Pictures produced which 2000 film starring Bruce Willis?",
+      "action_text": "Unbreakable",
+      "target": 0.7676,
+      "prediction": 0.2251,
+      "abs_error": 0.5425
+    },
+    {
+      "example_id": "da025082-0eba-4d45-8900-560f0a4357cd:medium:4:0",
+      "module": "AG",
+      "question_id": "463",
+      "question": "Blinding Edge Pictures produced which 2000 film starring Bruce Willis?",
+      "action_text": "uncertain",
+      "target": -0.0096,
+      "prediction": 0.0114,
+      "abs_error": 0.021
+    },
+    {
+      "example_id": "da025082-0eba-4d45-8900-560f0a4357cd:medium:4:1",
+      "module": "AG",
+      "question_id": "463",
+      "question": "Blinding Edge Pictures produced which 2000 film starring Bruce Willis?",
+      "action_text": "uncertain",
+      "target": -0.0096,
+      "prediction": 0.0106,
+      "abs_error": 0.0202
+    },
+    {
+      "example_id": "da025082-0eba-4d45-8900-560f0a4357cd:medium:4:2",
+      "module": "AG",
+      "question_id": "463",
+      "question": "Blinding Edge Pictures produced which 2000 film starring Bruce Willis?",
+      "action_text": "uncertain",
+      "target": -0.0096,
+      "prediction": 0.0106,
+      "abs_error": 0.0202
+    },
+    {
+      "example_id": "8369d590-8223-4246-a759-95479bbff9af:medium:1:0",
+      "module": "AG",
+      "question_id": "276",
+      "question": "Which Genus has more species Eucryphia or Lepidozamia ?",
+      "action_text": "Uncertain",
+      "target": -0.0128,
+      "prediction": -0.0507,
+      "abs_error": 0.0379
+    },
+    {
+      "example_id": "8369d590-8223-4246-a759-95479bbff9af:medium:1:1",
+      "module": "AG",
+      "question_id": "276",
+      "question": "Which Genus has more species Eucryphia or Lepidozamia ?",
+      "action_text": "Uncertain",
+      "target": -0.0128,
+      "prediction": -0.0515,
+      "abs_error": 0.0387
+    },
+    {
+      "example_id": "8369d590-8223-4246-a759-95479bbff9af:medium:1:2",
+      "module": "AG",
+      "question_id": "276",
+      "question": "Which Genus has more species Eucryphia or Lepidozamia ?",
+      "action_text": "Uncertain",
+      "target": -0.0128,
+      "prediction": -0.0515,
+      "abs_error": 0.0387
+    },
+    {
+      "example_id": "5800b828-e69f-4e97-acf0-9c4e342f688e:medium:3:0",
+      "module": "AG",
+      "question_id": "276",
+      "question": "Which Genus has more species Eucryphia or Lepidozamia ?",
+      "action_text": "Eucryphia has more species with seven species compared to Lepidozamia which has two species [2]",
+      "target": 0.0702,
+      "prediction": 0.0691,
+      "abs_error": 0.0011
+    },
+    {
+      "example_id": "5800b828-e69f-4e97-acf0-9c4e342f688e:medium:3:1",
+      "module": "AG",
+      "question_id": "276",
+      "question": "Which Genus has more species Eucryphia or Lepidozamia ?",
+      "action_text": "Eucryphia has more species, with seven species compared to Lepidozamia which has two",
+      "target": 0.0741,
+      "prediction": 0.0741,
+      "abs_error": 0.0
+    },
+    {
+      "example_id": "5800b828-e69f-4e97-acf0-9c4e342f688e:medium:3:2",
+      "module": "AG",
+      "question_id": "276",
+      "question": "Which Genus has more species Eucryphia or Lepidozamia ?",
+      "action_text": "Eucryphia has more species, with seven species compared to Lepidozamia which has two",
+      "target": 0.0741,
+      "prediction": 0.0734,
+      "abs_error": 0.0007
+    },
+    {
+      "example_id": "6a770f1b-6a7a-4ba1-be8b-5afc00d42faf:medium:3:0",
+      "module": "AG",
+      "question_id": "276",
+      "question": "Which Genus has more species Eucryphia or Lepidozamia ?",
+      "action_text": "Eucryphia has more species",
+      "target": 0.2013,
+      "prediction": 0.1422,
+      "abs_error": 0.0591
+    },
+    {
+      "example_id": "6a770f1b-6a7a-4ba1-be8b-5afc00d42faf:medium:3:1",
+      "module": "AG",
+      "question_id": "276",
+      "question": "Which Genus has more species Eucryphia or Lepidozamia ?",
+      "action_text": "Eucryphia has more species",
+      "target": 0.2013,
+      "prediction": 0.1414,
+      "abs_error": 0.0599
+    },
+    {
+      "example_id": "6a770f1b-6a7a-4ba1-be8b-5afc00d42faf:medium:3:2",
+      "module": "AG",
+      "question_id": "276",
+      "question": "Which Genus has more species Eucryphia or Lepidozamia ?",
+      "action_text": "Eucryphia has more species",
+      "target": 0.2013,
+      "prediction": 0.1414,
+      "abs_error": 0.0599
+    },
+    {
+      "example_id": "bbcc71f4-f04c-4eca-971d-d9f16216a07e:medium:4:0",
+      "module": "AG",
+      "question_id": "276",
+      "question": "Which Genus has more species Eucryphia or Lepidozamia ?",
+      "action_text": "Eucryphia has more species than Lepidozamia.",
+      "target": 0.0895,
+      "prediction": 0.0932,
+      "abs_error": 0.0037
+    },
+    {
+      "example_id": "bbcc71f4-f04c-4eca-971d-d9f16216a07e:medium:4:1",
+      "module": "AG",
+      "question_id": "276",
+      "question": "Which Genus has more species Eucryphia or Lepidozamia ?",
+      "action_text": "Eucryphia has more species, with seven species compared to Lepidozamia which has two",
+      "target": 0.0651,
+      "prediction": 0.066,
+      "abs_error": 0.0009
+    },
+    {
+      "example_id": "bbcc71f4-f04c-4eca-971d-d9f16216a07e:medium:4:2",
+      "module": "AG",
+      "question_id": "276",
+      "question": "Which Genus has more species Eucryphia or Lepidozamia ?",
+      "action_text": "Eucryphia has more species, with seven species compared to Lepidozamia which has two",
+      "target": 0.0651,
+      "prediction": 0.0652,
+      "abs_error": 0.0001
+    },
+    {
+      "example_id": "4b80792b-6b9e-40de-a672-98f22d4d4256:medium:1:0",
+      "module": "AG",
+      "question_id": "371",
+      "question": "What country does Eric A. Sykes and Eccles, Greater Manchester have ion common?",
+      "action_text": "Eric A. Sykes and Eccles, Greater Manchester have England in common",
+      "target": 0.0784,
+      "prediction": 0.0897,
+      "abs_error": 0.0113
+    },
+    {
+      "example_id": "4b80792b-6b9e-40de-a672-98f22d4d4256:medium:1:1",
+      "module": "AG",
+      "question_id": "371",
+      "question": "What country does Eric A. Sykes and Eccles, Greater Manchester have ion common?",
+      "action_text": "Eric A. Sykes and Eccles, Greater Manchester have England in common",
+      "target": 0.0784,
+      "prediction": 0.0889,
+      "abs_error": 0.0105
+    },
+    {
+      "example_id": "4b80792b-6b9e-40de-a672-98f22d4d4256:medium:1:2",
+      "module": "AG",
+      "question_id": "371",
+      "question": "What country does Eric A. Sykes and Eccles, Greater Manchester have ion common?",
+      "action_text": "Eric A. Sykes and Eccles, Greater Manchester have England in common",
+      "target": 0.0784,
+      "prediction": 0.0889,
+      "abs_error": 0.0105
+    },
+    {
+      "example_id": "191c518c-ab31-4018-a117-1414eb3afedc:medium:3:0",
+      "module": "AG",
+      "question_id": "371",
+      "question": "What country does Eric A. Sykes and Eccles, Greater Manchester have ion common?",
+      "action_text": "uncertain",
+      "target": -0.0157,
+      "prediction": -0.0191,
+      "abs_error": 0.0034
+    },
+    {
+      "example_id": "191c518c-ab31-4018-a117-1414eb3afedc:medium:3:1",
+      "module": "AG",
+      "question_id": "371",
+      "question": "What country does Eric A. Sykes and Eccles, Greater Manchester have ion common?",
+      "action_text": "uncertain",
+      "target": -0.0157,
+      "prediction": -0.0199,
+      "abs_error": 0.0042
+    },
+    {
+      "example_id": "191c518c-ab31-4018-a117-1414eb3afedc:medium:3:2",
+      "module": "AG",
+      "question_id": "371",
+      "question": "What country does Eric A. Sykes and Eccles, Greater Manchester have ion common?",
+      "action_text": "uncertain",
+      "target": -0.0157,
+      "prediction": -0.0199,
+      "abs_error": 0.0042
+    },
+    {
+      "example_id": "032d003e-a888-46eb-a48d-4891a3d651ab:medium:3:0",
+      "module": "AG",
+      "question_id": "371",
+      "question": "What country does Eric A. Sykes and Eccles, Greater Manchester have ion common?",
+      "action_text": "Eric A. Sykes",
+      "target": 0.0053,
+      "prediction": 0.1637,
+      "abs_error": 0.1584
+    },
+    {
+      "example_id": "032d003e-a888-46eb-a48d-4891a3d651ab:medium:3:1",
+      "module": "AG",
+      "question_id": "371",
+      "question": "What country does Eric A. Sykes and Eccles, Greater Manchester have ion common?",
+      "action_text": "Eric A. Sykes",
+      "target": 0.0053,
+      "prediction": 0.1629,
+      "abs_error": 0.1576
+    },
+    {
+      "example_id": "032d003e-a888-46eb-a48d-4891a3d651ab:medium:3:2",
+      "module": "AG",
+      "question_id": "371",
+      "question": "What country does Eric A. Sykes and Eccles, Greater Manchester have ion common?",
+      "action_text": "Eric A. Sykes",
+      "target": 0.0053,
+      "prediction": 0.1629,
+      "abs_error": 0.1576
+    },
+    {
+      "example_id": "3db7b434-07bd-4cb4-88cb-ebf02b96dd28:medium:4:0",
+      "module": "AG",
+      "question_id": "371",
+      "question": "What country does Eric A. Sykes and Eccles, Greater Manchester have ion common?",
+      "action_text": "uncertain",
+      "target": -0.0186,
+      "prediction": -0.022,
+      "abs_error": 0.0034
+    },
+    {
+      "example_id": "3db7b434-07bd-4cb4-88cb-ebf02b96dd28:medium:4:1",
+      "module": "AG",
+      "question_id": "371",
+      "question": "What country does Eric A. Sykes and Eccles, Greater Manchester have ion common?",
+      "action_text": "uncertain",
+      "target": -0.0186,
+      "prediction": -0.0228,
+      "abs_error": 0.0042
+    },
+    {
+      "example_id": "3db7b434-07bd-4cb4-88cb-ebf02b96dd28:medium:4:2",
+      "module": "AG",
+      "question_id": "371",
+      "question": "What country does Eric A. Sykes and Eccles, Greater Manchester have ion common?",
+      "action_text": "uncertain",
+      "target": -0.0186,
+      "prediction": -0.0228,
+      "abs_error": 0.0042
+    },
+    {
+      "example_id": "97c9b468-ed3b-41ac-9aca-eba6934ca90b:medium:1:0",
+      "module": "AG",
+      "question_id": "103",
+      "question": "Where is the stadium at which 1964 Georgia Tech Yellow Jackets football team played their home game located? ",
+      "action_text": "The 1964 Georgia Tech Yellow Jackets football team played their home games at Sanford Stadium [1]",
+      "target": 0.024,
+      "prediction": 0.0095,
+      "abs_error": 0.0145
+    },
+    {
+      "example_id": "97c9b468-ed3b-41ac-9aca-eba6934ca90b:medium:1:1",
+      "module": "AG",
+      "question_id": "103",
+      "question": "Where is the stadium at which 1964 Georgia Tech Yellow Jackets football team played their home game located? ",
+      "action_text": "Memorial Stadium",
+      "target": 0.0019,
+      "prediction": 0.1142,
+      "abs_error": 0.1123
+    },
+    {
+      "example_id": "97c9b468-ed3b-41ac-9aca-eba6934ca90b:medium:1:2",
+      "module": "AG",
+      "question_id": "103",
+      "question": "Where is the stadium at which 1964 Georgia Tech Yellow Jackets football team played their home game located? ",
+      "action_text": "Memorial Stadium",
+      "target": 0.0019,
+      "prediction": 0.1142,
+      "abs_error": 0.1123
+    },
+    {
+      "example_id": "564b9965-b793-4812-a4ee-e7cff588b512:medium:3:0",
+      "module": "AG",
+      "question_id": "103",
+      "question": "Where is the stadium at which 1964 Georgia Tech Yellow Jackets football team played their home game located? ",
+      "action_text": "The Georgia Tech Yellow Jackets football team plays at Bobby Dodd Stadium at Historic Grant Field in Atlanta, Georgia [1]",
+      "target": 0.0364,
+      "prediction": -0.0651,
+      "abs_error": 0.1015
+    },
+    {
+      "example_id": "564b9965-b793-4812-a4ee-e7cff588b512:medium:3:1",
+      "module": "AG",
+      "question_id": "103",
+      "question": "Where is the stadium at which 1964 Georgia Tech Yellow Jackets football team played their home game located? ",
+      "action_text": "The Georgia Tech Yellow Jackets football team plays at Bobby Dodd Stadium at Historic Grant Field in Atlanta, Georgia [1]",
+      "target": 0.0364,
+      "prediction": -0.0659,
+      "abs_error": 0.1023
+    },
+    {
+      "example_id": "564b9965-b793-4812-a4ee-e7cff588b512:medium:3:2",
+      "module": "AG",
+      "question_id": "103",
+      "question": "Where is the stadium at which 1964 Georgia Tech Yellow Jackets football team played their home game located? ",
+      "action_text": "The Georgia Tech Yellow Jackets football team plays at Bobby Dodd Stadium at Historic Grant Field in Atlanta, Georgia [1]",
+      "target": 0.0364,
+      "prediction": -0.0659,
+      "abs_error": 0.1023
+    },
+    {
+      "example_id": "746e9e2d-5bb2-4416-b1ef-b246308da681:medium:3:0",
+      "module": "AG",
+      "question_id": "103",
+      "question": "Where is the stadium at which 1964 Georgia Tech Yellow Jackets football team played their home game located? ",
+      "action_text": "Grant Field in Atlanta, Georgia",
+      "target": 0.0015,
+      "prediction": 0.0814,
+      "abs_error": 0.0799
+    },
+    {
+      "example_id": "746e9e2d-5bb2-4416-b1ef-b246308da681:medium:3:1",
+      "module": "AG",
+      "question_id": "103",
+      "question": "Where is the stadium at which 1964 Georgia Tech Yellow Jackets football team played their home game located? ",
+      "action_text": "Grant Field in Atlanta, Georgia",
+      "target": 0.0015,
+      "prediction": 0.0806,
+      "abs_error": 0.0791
+    },
+    {
+      "example_id": "746e9e2d-5bb2-4416-b1ef-b246308da681:medium:3:2",
+      "module": "AG",
+      "question_id": "103",
+      "question": "Where is the stadium at which 1964 Georgia Tech Yellow Jackets football team played their home game located? ",
+      "action_text": "Grant Field in Atlanta, Georgia",
+      "target": 0.0015,
+      "prediction": 0.0806,
+      "abs_error": 0.0791
+    },
+    {
+      "example_id": "7331ad66-03ac-4a7c-a4c1-988a2deaabbe:medium:4:0",
+      "module": "AG",
+      "question_id": "103",
+      "question": "Where is the stadium at which 1964 Georgia Tech Yellow Jackets football team played their home game located? ",
+      "action_text": "The 1964 Georgia Tech Yellow Jackets football team played their home games at Grant Field in Atlanta, Georgia [1].",
+      "target": 0.0374,
+      "prediction": -0.0437,
+      "abs_error": 0.0811
+    },
+    {
+      "example_id": "7331ad66-03ac-4a7c-a4c1-988a2deaabbe:medium:4:1",
+      "module": "AG",
+      "question_id": "103",
+      "question": "Where is the stadium at which 1964 Georgia Tech Yellow Jackets football team played their home game located? ",
+      "action_text": "The 1964 Georgia Tech Yellow Jackets football team played their home games at Grant Field in Atlanta, Georgia [1].",
+      "target": 0.0374,
+      "prediction": -0.0445,
+      "abs_error": 0.0819
+    },
+    {
+      "example_id": "7331ad66-03ac-4a7c-a4c1-988a2deaabbe:medium:4:2",
+      "module": "AG",
+      "question_id": "103",
+      "question": "Where is the stadium at which 1964 Georgia Tech Yellow Jackets football team played their home game located? ",
+      "action_text": "The 1964 Georgia Tech Yellow Jackets football team played their home games at Grant Field in Atlanta, Georgia [1].",
+      "target": 0.0374,
+      "prediction": -0.0445,
+      "abs_error": 0.0819
+    },
+    {
+      "example_id": "af3db528-5498-4909-bbb3-ca47e6a35e5b:medium:1:0",
+      "module": "AG",
+      "question_id": "158",
+      "question": "What football club plays in the area between the old tool gates: Brook Bar and Trafford bar?",
+      "action_text": "Manchester United",
+      "target": 0.777,
+      "prediction": 0.1963,
+      "abs_error": 0.5807
+    },
+    {
+      "example_id": "af3db528-5498-4909-bbb3-ca47e6a35e5b:medium:1:1",
+      "module": "AG",
+      "question_id": "158",
+      "question": "What football club plays in the area between the old tool gates: Brook Bar and Trafford bar?",
+      "action_text": "Manchester United",
+      "target": 0.777,
+      "prediction": 0.1955,
+      "abs_error": 0.5815
+    },
+    {
+      "example_id": "af3db528-5498-4909-bbb3-ca47e6a35e5b:medium:1:2",
+      "module": "AG",
+      "question_id": "158",
+      "question": "What football club plays in the area between the old tool gates: Brook Bar and Trafford bar?",
+      "action_text": "Manchester United",
+      "target": 0.777,
+      "prediction": 0.1955,
+      "abs_error": 0.5815
+    },
+    {
+      "example_id": "55fcd86f-93c1-4ab6-8a3a-ce40e5fcfd99:medium:3:0",
+      "module": "AG",
+      "question_id": "158",
+      "question": "What football club plays in the area between the old tool gates: Brook Bar and Trafford bar?",
+      "action_text": "Old Trafford plays in the area between the old tool gates: Brooks's Bar and Trafford Bar.",
+      "target": -0.0302,
+      "prediction": 0.0212,
+      "abs_error": 0.0514
+    },
+    {
+      "example_id": "55fcd86f-93c1-4ab6-8a3a-ce40e5fcfd99:medium:3:1",
+      "module": "AG",
+      "question_id": "158",
+      "question": "What football club plays in the area between the old tool gates: Brook Bar and Trafford bar?",
+      "action_text": "Old Trafford plays in the area between the old tool gates: Brooks's Bar and Trafford Bar.",
+      "target": -0.0302,
+      "prediction": 0.0204,
+      "abs_error": 0.0506
+    },
+    {
+      "example_id": "55fcd86f-93c1-4ab6-8a3a-ce40e5fcfd99:medium:3:2",
+      "module": "AG",
+      "question_id": "158",
+      "question": "What football club plays in the area between the old tool gates: Brook Bar and Trafford bar?",
+      "action_text": "Old Trafford plays in the area between the old tool gates: Brooks's Bar and Trafford Bar.",
+      "target": -0.0302,
+      "prediction": 0.0204,
+      "abs_error": 0.0506
+    },
+    {
+      "example_id": "2aec7444-4806-4161-9421-6b5c0733cb64:medium:3:0",
+      "module": "AG",
+      "question_id": "158",
+      "question": "What football club plays in the area between the old tool gates: Brook Bar and Trafford bar?",
+      "action_text": "Manchester United F.C.",
+      "target": 0.3884,
+      "prediction": 0.228,
+      "abs_error": 0.1604
+    },
+    {
+      "example_id": "2aec7444-4806-4161-9421-6b5c0733cb64:medium:3:1",
+      "module": "AG",
+      "question_id": "158",
+      "question": "What football club plays in the area between the old tool gates: Brook Bar and Trafford bar?",
+      "action_text": "Manchester United F.C.",
+      "target": 0.3884,
+      "prediction": 0.2272,
+      "abs_error": 0.1612
+    }
+  ]
+}

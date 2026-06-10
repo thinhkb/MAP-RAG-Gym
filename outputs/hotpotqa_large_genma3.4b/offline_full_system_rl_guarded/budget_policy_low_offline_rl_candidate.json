@@ -1,0 +1,30 @@
+{
+  "budget_mode": "low",
+  "recommended_method": "gated_bandit_router",
+  "constraints": {
+    "max_tokens": 110.0,
+    "max_latency_ms": 900.0,
+    "max_retrieval_calls": null
+  },
+  "source_eval_file": "outputs/hotpotqa_large_train_rollouts.json",
+  "router_settings": {
+    "bandit_router_model": "outputs\\offline_full_system_rl_guarded\\macro_bandit_low.joblib",
+    "bandit_gate_baseline_workflow": "W3",
+    "bandit_gate_min_advantage": 0.2,
+    "bandit_gate_min_confidence": 0.65,
+    "bandit_gate_allowed_workflows": [
+      "W1"
+    ]
+  },
+  "offline_rl": {
+    "stage": "macro_candidate_policy",
+    "holdout_policy_eval": {
+      "avg_policy_utility": 0.2055,
+      "avg_oracle_utility": 0.2139,
+      "avg_regret": 0.0085,
+      "exact_best_rate": 0.7778,
+      "num_questions": 63
+    },
+    "promotion_required": "Evaluate on validation/test and promote only if non-regressive vs frozen bundle."
+  }
+}
