@@ -1,0 +1,194 @@
+{
+  "generated_at_utc": "2026-06-10T14:28:01+00:00",
+  "output_dir": "outputs/hotpotqa_large_gemma3",
+  "source_files": {
+    "full_system_rl_package": "outputs/hotpotqa_large_gemma3/full_system_rl_package.json",
+    "macro_budget_metrics": "outputs/hotpotqa_large_gemma3/metrics/metrics_macro_budget_summary.csv",
+    "micro_critic_metrics": "outputs/hotpotqa_large_gemma3/metrics/metrics_micro_critic_summary.csv",
+    "cv_ensemble_report": "outputs/hotpotqa_large_gemma3/cv_ensemble_report.json",
+    "selective_critic_verification": "outputs/hotpotqa_large_gemma3/selective_critic_verification.json",
+    "regate_report": "outputs/hotpotqa_large_gemma3/regate_report.json"
+  },
+  "experimental_setup": {
+    "name": "full_system_rl",
+    "split": "gate",
+    "effective_questions": 270,
+    "policy_bundle": "outputs/hotpotqa_large_gemma3/final_budget_policy_bundle.json",
+    "final_eval": "outputs/hotpotqa_large_gemma3/final_budget_policy_test_eval.json",
+    "final_report": "outputs/hotpotqa_large_gemma3/final_project_report.json",
+    "rollout_coverage": {
+      "high": {
+        "path": "outputs/hotpotqa_large_gemma3/train_rollouts_high_w2w3_det.json",
+        "num_runs": 840,
+        "num_questions": 420,
+        "workflow_counts": {
+          "W2": 420,
+          "W3": 420
+        },
+        "budget_counts": {
+          "high": 840
+        },
+        "manifest_budget_mode": "high",
+        "n_candidates": 3,
+        "workflow_avg_utility": {
+          "W2": 0.1892,
+          "W3": 0.2683
+        },
+        "has_counterfactual_workflows": true
+      },
+      "low": {
+        "path": "outputs/hotpotqa_large_gemma3/train_rollouts.json",
+        "num_runs": 1680,
+        "num_questions": 420,
+        "workflow_counts": {
+          "W1": 420,
+          "W2": 420,
+          "W3": 420,
+          "W6": 420
+        },
+        "budget_counts": {
+          "medium": 1680
+        },
+        "manifest_budget_mode": "medium",
+        "n_candidates": 3,
+        "workflow_avg_utility": {
+          "W1": 0.1017,
+          "W2": 0.1375,
+          "W3": 0.2235,
+          "W6": 0.1107
+        },
+        "has_counterfactual_workflows": true
+      },
+      "medium": {
+        "path": "outputs/hotpotqa_large_gemma3/train_rollouts.json",
+        "num_runs": 1680,
+        "num_questions": 420,
+        "workflow_counts": {
+          "W1": 420,
+          "W2": 420,
+          "W3": 420,
+          "W6": 420
+        },
+        "budget_counts": {
+          "medium": 1680
+        },
+        "manifest_budget_mode": "medium",
+        "n_candidates": 3,
+        "workflow_avg_utility": {
+          "W1": 0.1017,
+          "W2": 0.1375,
+          "W3": 0.2235,
+          "W6": 0.1107
+        },
+        "has_counterfactual_workflows": true
+      }
+    },
+    "output_dir": "outputs/hotpotqa_large_gemma3"
+  },
+  "macro_budget_results": [
+    {
+      "budget_mode": "low",
+      "method": "gated_bandit_router",
+      "num_runs": "90",
+      "avg_utility": "0.168",
+      "avg_em": "0.1444",
+      "avg_f1_proxy": "0.1726",
+      "avg_tokens": "90.09",
+      "avg_latency_ms": "887.52",
+      "workflow_distribution": "{'W3': 52, 'W1': 38}",
+      "zero_utility_rate": "0.7667"
+    },
+    {
+      "budget_mode": "medium",
+      "method": "bandit_router",
+      "num_runs": "90",
+      "avg_utility": "0.2161",
+      "avg_em": "0.1444",
+      "avg_f1_proxy": "0.1748",
+      "avg_tokens": "180.97",
+      "avg_latency_ms": "1923.32",
+      "workflow_distribution": "{'W3': 20, 'W6': 23, 'W2': 28, 'W1': 19}",
+      "zero_utility_rate": "0.3889"
+    },
+    {
+      "budget_mode": "high",
+      "method": "bandit_router",
+      "num_runs": "90",
+      "avg_utility": "0.2353",
+      "avg_em": "0.1333",
+      "avg_f1_proxy": "0.1567",
+      "avg_tokens": "204.24",
+      "avg_latency_ms": "1722.43",
+      "workflow_distribution": "{'W3': 32, 'W2': 58}",
+      "zero_utility_rate": "0.0"
+    }
+  ],
+  "micro_critic_results": [
+    {
+      "module": "AG",
+      "train_examples": "4283",
+      "eval_examples": "756",
+      "train_budget_low": "0",
+      "train_budget_medium": "4283",
+      "train_budget_high": "0",
+      "eval_mae": "0.2203",
+      "eval_rmse": "0.295",
+      "eval_pearson": "0.2987",
+      "eval_spearman": "0.2112",
+      "ready_as_offline_reward_model": "False"
+    },
+    {
+      "module": "QR",
+      "train_examples": "1071",
+      "eval_examples": "189",
+      "train_budget_low": "0",
+      "train_budget_medium": "1071",
+      "train_budget_high": "0",
+      "eval_mae": "0.0955",
+      "eval_rmse": "0.1202",
+      "eval_pearson": "0.705",
+      "eval_spearman": "0.6745",
+      "ready_as_offline_reward_model": "True"
+    }
+  ],
+  "bandit_result": {
+    "source": "outputs/hotpotqa_large_gemma3/cv_ensemble_report.json",
+    "model": "outputs/hotpotqa_large_gemma3/cv_ensemble_high_bandit.joblib",
+    "best_config": "ens_ra10.0_n150_d4_lr005_b0.4",
+    "avg_regret": 0.0193,
+    "exact_best_rate": 0.8333,
+    "meets_online_threshold": true
+  },
+  "selective_critic_result": {
+    "baseline_utility": 0.2441,
+    "baseline_tokens": 237.6444,
+    "full_critic_utility": 0.2329,
+    "full_critic_tokens": 564.3,
+    "best_passing_gate": {
+      "gate_threshold": 1.0,
+      "critic_used_count": 0,
+      "critic_skipped_count": 90,
+      "critic_usage_rate": 0.0,
+      "avg_utility": 0.2441,
+      "avg_tokens": 237.64,
+      "token_multiplier": 1.0,
+      "utility_vs_base": 0.0,
+      "utility_vs_critic": 0.0112
+    },
+    "best_critic_using_gate": null,
+    "source": "outputs/hotpotqa_large_gemma3/selective_critic_verification.json"
+  },
+  "rl_status": {
+    "offline_rl_ready": false,
+    "online_rl_ready": false,
+    "deployment_mode": "online_rl_candidate",
+    "recommended_next_stage": "fix_offline_rl_blockers",
+    "deployment_recommendation": null,
+    "online_blockers": [],
+    "offline_blockers": [
+      "Final project report has not opened offline RL.",
+      "Not every budget mode uses an adaptive macro policy.",
+      "Micro critic reward models are missing or below quality thresholds."
+    ]
+  }
+}

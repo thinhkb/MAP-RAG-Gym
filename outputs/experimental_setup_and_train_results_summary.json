@@ -1,0 +1,199 @@
+{
+  "generated_at_utc": "2026-06-10T14:51:34+00:00",
+  "output_dir": "outputs",
+  "source_files": {
+    "full_system_rl_package": "outputs/full_system_rl_package.json",
+    "macro_budget_metrics": "outputs/metrics/metrics_macro_budget_summary.csv",
+    "micro_critic_metrics": "outputs/metrics/metrics_micro_critic_summary.csv",
+    "cv_ensemble_report": "outputs/cv_ensemble_report.json",
+    "selective_critic_verification": "outputs/selective_critic_verification.json",
+    "regate_report": "outputs/regate_report.json"
+  },
+  "experimental_setup": {
+    "name": "full_system_rl",
+    "split": "gate",
+    "effective_questions": 270,
+    "policy_bundle": "outputs/final_budget_policy_bundle.json",
+    "final_eval": "outputs/final_budget_policy_test_eval.json",
+    "final_report": "outputs/final_project_report.json",
+    "rollout_coverage": {
+      "high": {
+        "path": "outputs/hotpotqa_large_train_rollouts_high_w2w3_det.json",
+        "num_runs": 840,
+        "num_questions": 420,
+        "workflow_counts": {
+          "W2": 420,
+          "W3": 420
+        },
+        "budget_counts": {
+          "high": 840
+        },
+        "manifest_budget_mode": "high",
+        "n_candidates": 3,
+        "workflow_avg_utility": {
+          "W2": 0.3666,
+          "W3": 0.3924
+        },
+        "has_counterfactual_workflows": true
+      },
+      "low": {
+        "path": "outputs/hotpotqa_large_train_rollouts.json",
+        "num_runs": 1680,
+        "num_questions": 420,
+        "workflow_counts": {
+          "W1": 420,
+          "W2": 420,
+          "W3": 420,
+          "W6": 420
+        },
+        "budget_counts": {
+          "medium": 1680
+        },
+        "manifest_budget_mode": "medium",
+        "n_candidates": 3,
+        "workflow_avg_utility": {
+          "W1": 0.2212,
+          "W2": 0.3056,
+          "W3": 0.3433,
+          "W6": 0.2547
+        },
+        "has_counterfactual_workflows": true
+      },
+      "medium": {
+        "path": "outputs/hotpotqa_large_train_rollouts.json",
+        "num_runs": 1680,
+        "num_questions": 420,
+        "workflow_counts": {
+          "W1": 420,
+          "W2": 420,
+          "W3": 420,
+          "W6": 420
+        },
+        "budget_counts": {
+          "medium": 1680
+        },
+        "manifest_budget_mode": "medium",
+        "n_candidates": 3,
+        "workflow_avg_utility": {
+          "W1": 0.2212,
+          "W2": 0.3056,
+          "W3": 0.3433,
+          "W6": 0.2547
+        },
+        "has_counterfactual_workflows": true
+      }
+    },
+    "output_dir": "outputs"
+  },
+  "macro_budget_results": [
+    {
+      "budget_mode": "low",
+      "method": "gated_bandit_router",
+      "num_runs": "90",
+      "avg_utility": "0.2776",
+      "avg_em": "0.2222",
+      "avg_f1_proxy": "0.272",
+      "avg_tokens": "104.46",
+      "avg_latency_ms": "761.99",
+      "workflow_distribution": "{'W1': 25, 'W3': 65}",
+      "zero_utility_rate": "0.6"
+    },
+    {
+      "budget_mode": "medium",
+      "method": "bandit_router",
+      "num_runs": "90",
+      "avg_utility": "0.3613",
+      "avg_em": "0.2444",
+      "avg_f1_proxy": "0.3011",
+      "avg_tokens": "116.4",
+      "avg_latency_ms": "907.93",
+      "workflow_distribution": "{'W1': 36, 'W3': 43, 'W2': 6, 'W6': 5}",
+      "zero_utility_rate": "0.4444"
+    },
+    {
+      "budget_mode": "high",
+      "method": "bandit_router",
+      "num_runs": "90",
+      "avg_utility": "0.4375",
+      "avg_em": "0.2778",
+      "avg_f1_proxy": "0.322",
+      "avg_tokens": "176.53",
+      "avg_latency_ms": "1151.62",
+      "workflow_distribution": "{'W3': 53, 'W2': 37}",
+      "zero_utility_rate": "0.0"
+    }
+  ],
+  "micro_critic_results": [
+    {
+      "module": "AG",
+      "train_examples": "4283",
+      "eval_examples": "756",
+      "train_budget_low": "0",
+      "train_budget_medium": "4283",
+      "train_budget_high": "0",
+      "eval_mae": "0.2203",
+      "eval_rmse": "0.295",
+      "eval_pearson": "0.2987",
+      "eval_spearman": "0.2112",
+      "ready_as_offline_reward_model": "False"
+    },
+    {
+      "module": "QR",
+      "train_examples": "1071",
+      "eval_examples": "189",
+      "train_budget_low": "0",
+      "train_budget_medium": "1071",
+      "train_budget_high": "0",
+      "eval_mae": "0.0955",
+      "eval_rmse": "0.1202",
+      "eval_pearson": "0.705",
+      "eval_spearman": "0.6745",
+      "ready_as_offline_reward_model": "True"
+    }
+  ],
+  "bandit_result": {
+    "source": "outputs/regate_report.json",
+    "model": "outputs/improved_high_bandit.joblib",
+    "best_config": "ens_ra10.0_n150_d4_lr005_b0.4",
+    "avg_regret": 0.0193,
+    "exact_best_rate": 0.8333,
+    "meets_online_threshold": true
+  },
+  "selective_critic_result": {
+    "baseline_utility": 0.405,
+    "baseline_tokens": 218.4222,
+    "full_critic_utility": 0.3915,
+    "full_critic_tokens": 522.0444,
+    "best_passing_gate": {
+      "gate_threshold": 1.0,
+      "critic_used_count": 0,
+      "critic_skipped_count": 90,
+      "critic_usage_rate": 0.0,
+      "avg_utility": 0.405,
+      "avg_tokens": 218.42,
+      "token_multiplier": 1.0,
+      "utility_vs_base": 0.0,
+      "utility_vs_critic": 0.0135
+    },
+    "best_critic_using_gate": null,
+    "source": "outputs/selective_critic_verification.json",
+    "online_strategy": "confidence_gate=1.0",
+    "online_token_multiplier": 1.0,
+    "online_utility_gap": 0.0,
+    "meets_online_threshold": true,
+    "verified_on_holdout": true
+  },
+  "rl_status": {
+    "offline_rl_ready": false,
+    "online_rl_ready": true,
+    "deployment_mode": "selective_critic_online",
+    "recommended_next_stage": "online_full_system_rl_with_selective_critic",
+    "deployment_recommendation": "Online RL with selective critic is ready.",
+    "online_blockers": [],
+    "offline_blockers": [
+      "Final project report has not opened offline RL.",
+      "Not every budget mode uses an adaptive macro policy.",
+      "Micro critic reward models are missing or below quality thresholds."
+    ]
+  }
+}

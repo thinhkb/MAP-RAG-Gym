@@ -1,0 +1,794 @@
+[
+  {
+    "budget": "low",
+    "workflow": "W3",
+    "router_mode": "fallback",
+    "router_confidence": null,
+    "router_scores": null,
+    "question": "Who wrote Pride and Prejudice?",
+    "gold_answer": "Jane Austen",
+    "final_answer": "Jane Austen",
+    "utility": 1.0245,
+    "exact_match": 0,
+    "f1": 0,
+    "tokens": 147.0,
+    "retrieval_calls": 1.0,
+    "latency_ms": 8108.55,
+    "elapsed_s": 8.109051942825317,
+    "num_steps": 3,
+    "steps": [
+      {
+        "step_id": 1,
+        "module": "RA",
+        "scores": {
+          "retrieval_utility": 0.7222
+        },
+        "cost": {
+          "retrieval_calls": 1,
+          "latency_ms": 0.0
+        },
+        "notes": "",
+        "input_data": {
+          "query": "Who wrote Pride and Prejudice?",
+          "top_k": 4,
+          "retriever_type": "bm25"
+        },
+        "output_data": {
+          "docs": [
+            {
+              "doc_id": "d1",
+              "title": "Pride and Prejudice",
+              "score": 1.0821154361465637
+            },
+            {
+              "doc_id": "d2",
+              "title": "Jane Austen",
+              "score": 0.9471188569837249
+            },
+            {
+              "doc_id": "d7",
+              "title": "Wikipedia style note",
+              "score": 0.2615489525095403
+            },
+            {
+              "doc_id": "d3",
+              "title": "Persuasion",
+              "score": 0.0
+            }
+          ],
+          "retriever_type": "bm25"
+        }
+      },
+      {
+        "step_id": 2,
+        "module": "DS",
+        "scores": {
+          "selection_precision": 0.75
+        },
+        "cost": {
+          "latency_ms": 0.0
+        },
+        "notes": "",
+        "input_data": {
+          "num_docs": 4,
+          "keep_k": 2
+        },
+        "output_data": {
+          "selected_doc_ids": [
+            "d1",
+            "d2"
+          ]
+        }
+      },
+      {
+        "step_id": 3,
+        "module": "AG",
+        "scores": {
+          "grounding": 0.2,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "cost": {
+          "tokens": 147,
+          "latency_ms": 8108.55
+        },
+        "notes": "",
+        "input_data": {
+          "question": "Who wrote Pride and Prejudice?",
+          "num_docs": 2,
+          "n": 3
+        },
+        "output_data": {
+          "answer_candidates": [
+            "Jane Austen",
+            "Jane Austen",
+            "Jane Austen"
+          ],
+          "payloads": [
+            {
+              "answer": "Jane Austen",
+              "evidence_ids": [
+                2
+              ],
+              "confidence": 1.0
+            },
+            {
+              "answer": "Jane Austen",
+              "evidence_ids": [
+                2
+              ],
+              "confidence": 1.0
+            },
+            {
+              "answer": "Jane Austen",
+              "evidence_ids": [
+                2
+              ],
+              "confidence": 1.0
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "budget": "medium",
+    "workflow": "W3",
+    "router_mode": "fallback",
+    "router_confidence": null,
+    "router_scores": null,
+    "question": "Who wrote Pride and Prejudice?",
+    "gold_answer": "Jane Austen",
+    "final_answer": "Jane Austen",
+    "utility": 1.2086,
+    "exact_match": 0,
+    "f1": 0,
+    "tokens": 147.0,
+    "retrieval_calls": 1.0,
+    "latency_ms": 3506.5,
+    "elapsed_s": 3.5064992904663086,
+    "num_steps": 3,
+    "steps": [
+      {
+        "step_id": 1,
+        "module": "RA",
+        "scores": {
+          "retrieval_utility": 0.7222
+        },
+        "cost": {
+          "retrieval_calls": 1,
+          "latency_ms": 0.12
+        },
+        "notes": "",
+        "input_data": {
+          "query": "Who wrote Pride and Prejudice?",
+          "top_k": 4,
+          "retriever_type": "bm25"
+        },
+        "output_data": {
+          "docs": [
+            {
+              "doc_id": "d1",
+              "title": "Pride and Prejudice",
+              "score": 1.0821154361465637
+            },
+            {
+              "doc_id": "d2",
+              "title": "Jane Austen",
+              "score": 0.9471188569837249
+            },
+            {
+              "doc_id": "d7",
+              "title": "Wikipedia style note",
+              "score": 0.2615489525095403
+            },
+            {
+              "doc_id": "d3",
+              "title": "Persuasion",
+              "score": 0.0
+            }
+          ],
+          "retriever_type": "bm25"
+        }
+      },
+      {
+        "step_id": 2,
+        "module": "DS",
+        "scores": {
+          "selection_precision": 0.75
+        },
+        "cost": {
+          "latency_ms": 0.0
+        },
+        "notes": "",
+        "input_data": {
+          "num_docs": 4,
+          "keep_k": 2
+        },
+        "output_data": {
+          "selected_doc_ids": [
+            "d1",
+            "d2"
+          ]
+        }
+      },
+      {
+        "step_id": 3,
+        "module": "AG",
+        "scores": {
+          "grounding": 0.2,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "cost": {
+          "tokens": 147,
+          "latency_ms": 3506.38
+        },
+        "notes": "",
+        "input_data": {
+          "question": "Who wrote Pride and Prejudice?",
+          "num_docs": 2,
+          "n": 3
+        },
+        "output_data": {
+          "answer_candidates": [
+            "Jane Austen",
+            "Jane Austen",
+            "Jane Austen"
+          ],
+          "payloads": [
+            {
+              "answer": "Jane Austen",
+              "evidence_ids": [
+                2
+              ],
+              "confidence": 1.0
+            },
+            {
+              "answer": "Jane Austen",
+              "evidence_ids": [
+                2
+              ],
+              "confidence": 1.0
+            },
+            {
+              "answer": "Jane Austen",
+              "evidence_ids": [
+                2
+              ],
+              "confidence": 1.0
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "budget": "high",
+    "workflow": "W3",
+    "router_mode": "fallback",
+    "router_confidence": null,
+    "router_scores": null,
+    "question": "Who wrote Pride and Prejudice?",
+    "gold_answer": "Jane Austen",
+    "final_answer": "Jane Austen",
+    "utility": 1.3016,
+    "exact_match": 0,
+    "f1": 0,
+    "tokens": 147.0,
+    "retrieval_calls": 1.0,
+    "latency_ms": 3644.98,
+    "elapsed_s": 3.6449878215789795,
+    "num_steps": 3,
+    "steps": [
+      {
+        "step_id": 1,
+        "module": "RA",
+        "scores": {
+          "retrieval_utility": 0.7222
+        },
+        "cost": {
+          "retrieval_calls": 1,
+          "latency_ms": 0.54
+        },
+        "notes": "",
+        "input_data": {
+          "query": "Who wrote Pride and Prejudice?",
+          "top_k": 4,
+          "retriever_type": "bm25"
+        },
+        "output_data": {
+          "docs": [
+            {
+              "doc_id": "d1",
+              "title": "Pride and Prejudice",
+              "score": 1.0821154361465637
+            },
+            {
+              "doc_id": "d2",
+              "title": "Jane Austen",
+              "score": 0.9471188569837249
+            },
+            {
+              "doc_id": "d7",
+              "title": "Wikipedia style note",
+              "score": 0.2615489525095403
+            },
+            {
+              "doc_id": "d3",
+              "title": "Persuasion",
+              "score": 0.0
+            }
+          ],
+          "retriever_type": "bm25"
+        }
+      },
+      {
+        "step_id": 2,
+        "module": "DS",
+        "scores": {
+          "selection_precision": 0.75
+        },
+        "cost": {
+          "latency_ms": 0.0
+        },
+        "notes": "",
+        "input_data": {
+          "num_docs": 4,
+          "keep_k": 2
+        },
+        "output_data": {
+          "selected_doc_ids": [
+            "d1",
+            "d2"
+          ]
+        }
+      },
+      {
+        "step_id": 3,
+        "module": "AG",
+        "scores": {
+          "grounding": 0.2,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "cost": {
+          "tokens": 147,
+          "latency_ms": 3644.44
+        },
+        "notes": "",
+        "input_data": {
+          "question": "Who wrote Pride and Prejudice?",
+          "num_docs": 2,
+          "n": 3
+        },
+        "output_data": {
+          "answer_candidates": [
+            "Jane Austen",
+            "Jane Austen",
+            "Jane Austen"
+          ],
+          "payloads": [
+            {
+              "answer": "Jane Austen",
+              "evidence_ids": [
+                2
+              ],
+              "confidence": 1.0
+            },
+            {
+              "answer": "Jane Austen",
+              "evidence_ids": [
+                2
+              ],
+              "confidence": 1.0
+            },
+            {
+              "answer": "Jane Austen",
+              "evidence_ids": [
+                2
+              ],
+              "confidence": 1.0
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "budget": "low",
+    "workflow": "W3",
+    "router_mode": "fallback",
+    "router_confidence": null,
+    "router_scores": null,
+    "question": "Which novel by the author of Pride and Prejudice was published posthumously?",
+    "gold_answer": "Persuasion",
+    "final_answer": "Persuasion",
+    "utility": 1.0783,
+    "exact_match": 0,
+    "f1": 0,
+    "tokens": 156.0,
+    "retrieval_calls": 1.0,
+    "latency_ms": 3746.94,
+    "elapsed_s": 3.746943950653076,
+    "num_steps": 3,
+    "steps": [
+      {
+        "step_id": 1,
+        "module": "RA",
+        "scores": {
+          "retrieval_utility": 0.7682
+        },
+        "cost": {
+          "retrieval_calls": 1,
+          "latency_ms": 0.0
+        },
+        "notes": "",
+        "input_data": {
+          "query": "Which novel by the author of Pride and Prejudice was published posthumously?",
+          "top_k": 4,
+          "retriever_type": "bm25"
+        },
+        "output_data": {
+          "docs": [
+            {
+              "doc_id": "d1",
+              "title": "Pride and Prejudice",
+              "score": 4.2493005564635435
+            },
+            {
+              "doc_id": "d3",
+              "title": "Persuasion",
+              "score": 3.1311992979118224
+            },
+            {
+              "doc_id": "d5",
+              "title": "Japan GDP",
+              "score": 2.868402820844042
+            },
+            {
+              "doc_id": "d2",
+              "title": "Jane Austen",
+              "score": 1.1760389302693026
+            }
+          ],
+          "retriever_type": "bm25"
+        }
+      },
+      {
+        "step_id": 2,
+        "module": "DS",
+        "scores": {
+          "selection_precision": 0.8364
+        },
+        "cost": {
+          "latency_ms": 0.0
+        },
+        "notes": "",
+        "input_data": {
+          "num_docs": 4,
+          "keep_k": 2
+        },
+        "output_data": {
+          "selected_doc_ids": [
+            "d1",
+            "d3"
+          ]
+        }
+      },
+      {
+        "step_id": 3,
+        "module": "AG",
+        "scores": {
+          "grounding": 0.1111,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "cost": {
+          "tokens": 156,
+          "latency_ms": 3746.94
+        },
+        "notes": "",
+        "input_data": {
+          "question": "Which novel by the author of Pride and Prejudice was published posthumously?",
+          "num_docs": 2,
+          "n": 3
+        },
+        "output_data": {
+          "answer_candidates": [
+            "Persuasion",
+            "Persuasion",
+            "Persuasion"
+          ],
+          "payloads": [
+            {
+              "answer": "Persuasion",
+              "evidence_ids": [
+                2
+              ],
+              "confidence": 1.0
+            },
+            {
+              "answer": "Persuasion",
+              "evidence_ids": [
+                2
+              ],
+              "confidence": 1.0
+            },
+            {
+              "answer": "Persuasion",
+              "evidence_ids": [
+                2
+              ],
+              "confidence": 1.0
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "budget": "medium",
+    "workflow": "W3",
+    "router_mode": "fallback",
+    "router_confidence": null,
+    "router_scores": null,
+    "question": "Which novel by the author of Pride and Prejudice was published posthumously?",
+    "gold_answer": "Persuasion",
+    "final_answer": "Persuasion",
+    "utility": 1.2109,
+    "exact_match": 0,
+    "f1": 0,
+    "tokens": 156.0,
+    "retrieval_calls": 1.0,
+    "latency_ms": 3597.48,
+    "elapsed_s": 3.5979788303375244,
+    "num_steps": 3,
+    "steps": [
+      {
+        "step_id": 1,
+        "module": "RA",
+        "scores": {
+          "retrieval_utility": 0.7682
+        },
+        "cost": {
+          "retrieval_calls": 1,
+          "latency_ms": 0.0
+        },
+        "notes": "",
+        "input_data": {
+          "query": "Which novel by the author of Pride and Prejudice was published posthumously?",
+          "top_k": 4,
+          "retriever_type": "bm25"
+        },
+        "output_data": {
+          "docs": [
+            {
+              "doc_id": "d1",
+              "title": "Pride and Prejudice",
+              "score": 4.2493005564635435
+            },
+            {
+              "doc_id": "d3",
+              "title": "Persuasion",
+              "score": 3.1311992979118224
+            },
+            {
+              "doc_id": "d5",
+              "title": "Japan GDP",
+              "score": 2.868402820844042
+            },
+            {
+              "doc_id": "d2",
+              "title": "Jane Austen",
+              "score": 1.1760389302693026
+            }
+          ],
+          "retriever_type": "bm25"
+        }
+      },
+      {
+        "step_id": 2,
+        "module": "DS",
+        "scores": {
+          "selection_precision": 0.8364
+        },
+        "cost": {
+          "latency_ms": 0.0
+        },
+        "notes": "",
+        "input_data": {
+          "num_docs": 4,
+          "keep_k": 2
+        },
+        "output_data": {
+          "selected_doc_ids": [
+            "d1",
+            "d3"
+          ]
+        }
+      },
+      {
+        "step_id": 3,
+        "module": "AG",
+        "scores": {
+          "grounding": 0.1111,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "cost": {
+          "tokens": 156,
+          "latency_ms": 3597.48
+        },
+        "notes": "",
+        "input_data": {
+          "question": "Which novel by the author of Pride and Prejudice was published posthumously?",
+          "num_docs": 2,
+          "n": 3
+        },
+        "output_data": {
+          "answer_candidates": [
+            "Persuasion",
+            "Persuasion",
+            "Persuasion"
+          ],
+          "payloads": [
+            {
+              "answer": "Persuasion",
+              "evidence_ids": [
+                2
+              ],
+              "confidence": 1.0
+            },
+            {
+              "answer": "Persuasion",
+              "evidence_ids": [
+                2
+              ],
+              "confidence": 1.0
+            },
+            {
+              "answer": "Persuasion",
+              "evidence_ids": [
+                2
+              ],
+              "confidence": 1.0
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "budget": "high",
+    "workflow": "W3",
+    "router_mode": "fallback",
+    "router_confidence": null,
+    "router_scores": null,
+    "question": "Which novel by the author of Pride and Prejudice was published posthumously?",
+    "gold_answer": "Persuasion",
+    "final_answer": "Persuasion",
+    "utility": 1.3058,
+    "exact_match": 0,
+    "f1": 0,
+    "tokens": 156.0,
+    "retrieval_calls": 1.0,
+    "latency_ms": 3500.9100000000003,
+    "elapsed_s": 3.500908851623535,
+    "num_steps": 3,
+    "steps": [
+      {
+        "step_id": 1,
+        "module": "RA",
+        "scores": {
+          "retrieval_utility": 0.7682
+        },
+        "cost": {
+          "retrieval_calls": 1,
+          "latency_ms": 1.01
+        },
+        "notes": "",
+        "input_data": {
+          "query": "Which novel by the author of Pride and Prejudice was published posthumously?",
+          "top_k": 4,
+          "retriever_type": "bm25"
+        },
+        "output_data": {
+          "docs": [
+            {
+              "doc_id": "d1",
+              "title": "Pride and Prejudice",
+              "score": 4.2493005564635435
+            },
+            {
+              "doc_id": "d3",
+              "title": "Persuasion",
+              "score": 3.1311992979118224
+            },
+            {
+              "doc_id": "d5",
+              "title": "Japan GDP",
+              "score": 2.868402820844042
+            },
+            {
+              "doc_id": "d2",
+              "title": "Jane Austen",
+              "score": 1.1760389302693026
+            }
+          ],
+          "retriever_type": "bm25"
+        }
+      },
+      {
+        "step_id": 2,
+        "module": "DS",
+        "scores": {
+          "selection_precision": 0.8364
+        },
+        "cost": {
+          "latency_ms": 0.0
+        },
+        "notes": "",
+        "input_data": {
+          "num_docs": 4,
+          "keep_k": 2
+        },
+        "output_data": {
+          "selected_doc_ids": [
+            "d1",
+            "d3"
+          ]
+        }
+      },
+      {
+        "step_id": 3,
+        "module": "AG",
+        "scores": {
+          "grounding": 0.1111,
+          "em": 1.0,
+          "f1_proxy": 1.0
+        },
+        "cost": {
+          "tokens": 156,
+          "latency_ms": 3499.9
+        },
+        "notes": "",
+        "input_data": {
+          "question": "Which novel by the author of Pride and Prejudice was published posthumously?",
+          "num_docs": 2,
+          "n": 3
+        },
+        "output_data": {
+          "answer_candidates": [
+            "Persuasion",
+            "Persuasion",
+            "Persuasion"
+          ],
+          "payloads": [
+            {
+              "answer": "Persuasion",
+              "evidence_ids": [
+                2
+              ],
+              "confidence": 1.0
+            },
+            {
+              "answer": "Persuasion",
+              "evidence_ids": [
+                2
+              ],
+              "confidence": 1.0
+            },
+            {
+              "answer": "Persuasion",
+              "evidence_ids": [
+                2
+              ],
+              "confidence": 1.0
+            }
+          ]
+        }
+      }
+    ]
+  }
+]
